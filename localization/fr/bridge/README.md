@@ -18,19 +18,19 @@ Découpler une abstraction de son implémentation afin que les deux puissent var
 
 Exemple concret
 
-> Considérons que vous avez une arme avec différents enchantements, et que vous êtes censé permettre de mélanger 
+> Considérons que vous avez une arme avec différents enchantements, et que vous êtes censé permettre de mélanger
 > différentes armes avec différents enchantements. Que feriez-vous ? Créer plusieurs copies de chaque arme pour chacun
-> des enchantements ou simplement créer un enchantement séparé et l'appliquer à l'arme en fonction des besoins ? 
+> des enchantements ou simplement créer un enchantement séparé et l'appliquer à l'arme en fonction des besoins ?
 > Le pattron de concepetion Bridge pattern vous permet de faire la deuxième solution.
 
 En clair
 
-> Bridge pattern consiste à préférer la composition à l'héritage. Les détails de la mise en œuvre(implémentation) 
+> Bridge pattern consiste à préférer la composition à l'héritage. Les détails de la mise en œuvre(implémentation)
 > sont transférés d'une hiérarchie à un autre objet ayant une hiérarchie distincte.
 
 Wikipedia dit
 
-> Bridge pattern est un patron de conception utilisé en génie logiciel qui vise à "découpler une abstraction de sa 
+> Bridge pattern est un patron de conception utilisé en génie logiciel qui vise à "découpler une abstraction de sa
 > mise en œuvre(son implémention) de manière à ce que les deux puissent varier de manière indépendante"
 
 **Exemple de programme**
@@ -199,11 +199,18 @@ The item's glow fades.
 
 Utilisez Bridge pattern lorsque
 
-* Vous souhaitez éviter un lien permanent entre une abstraction et son implémentation. Cela peut être le cas, par exemple, lorsque l'implémentation doit être sélectionnée ou changée au moment de l'exécution.
-* Les abstractions et leurs implémentations doivent être extensibles par des classes filles. Dans ce cas, Bridge pattern vous permet de combiner les différentes abstractions et implémentations et de les étendre indépendamment.
-* Les changements dans l'implémentation d'une abstraction ne doivent pas avoir d'impact sur les clients, c'est-à-dire que leur code ne doit pas être recompilé.
-* Vous avez une prolifération de classes. Une telle hiérarchie de classes indique la nécessité de diviser un objet en deux parties. Rumbaugh utilise le terme de "généralisations imbriquées" pour désigner de telles hiérarchies de classes.
-* Vous souhaitez partager une implémentation entre plusieurs objets (peut-être en utilisant le comptage de références), et ce fait doit être caché au client. Un exemple simple est la classe String de Coplien, dans laquelle plusieurs objets peuvent partager la même représentation d'une chaîne de caractères.
+* Vous souhaitez éviter un lien permanent entre une abstraction et son implémentation. Cela peut être le cas, par
+  exemple, lorsque l'implémentation doit être sélectionnée ou changée au moment de l'exécution.
+* Les abstractions et leurs implémentations doivent être extensibles par des classes filles. Dans ce cas, Bridge pattern
+  vous permet de combiner les différentes abstractions et implémentations et de les étendre indépendamment.
+* Les changements dans l'implémentation d'une abstraction ne doivent pas avoir d'impact sur les clients, c'est-à-dire
+  que leur code ne doit pas être recompilé.
+* Vous avez une prolifération de classes. Une telle hiérarchie de classes indique la nécessité de diviser un objet en
+  deux parties. Rumbaugh utilise le terme de "généralisations imbriquées" pour désigner de telles hiérarchies de
+  classes.
+* Vous souhaitez partager une implémentation entre plusieurs objets (peut-être en utilisant le comptage de références),
+  et ce fait doit être caché au client. Un exemple simple est la classe String de Coplien, dans laquelle plusieurs
+  objets peuvent partager la même représentation d'une chaîne de caractères.
 
 ## Tutoriel
 

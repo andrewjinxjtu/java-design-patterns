@@ -31,6 +31,7 @@ import com.google.inject.Inject;
 import com.iluwatar.hexagonal.banking.WireTransfers;
 import com.iluwatar.hexagonal.database.LotteryTicketRepository;
 import com.iluwatar.hexagonal.eventlog.LotteryEventLog;
+
 import java.util.Map;
 
 /**
@@ -38,56 +39,56 @@ import java.util.Map;
  */
 public class LotteryAdministration {
 
-  private final LotteryTicketRepository repository;
-  private final LotteryEventLog notifications;
-  private final WireTransfers wireTransfers;
+    private final LotteryTicketRepository repository;
+    private final LotteryEventLog notifications;
+    private final WireTransfers wireTransfers;
 
-  /**
-   * Constructor.
-   */
-  @Inject
-  public LotteryAdministration(LotteryTicketRepository repository, LotteryEventLog notifications,
-                               WireTransfers wireTransfers) {
-    this.repository = repository;
-    this.notifications = notifications;
-    this.wireTransfers = wireTransfers;
-  }
-
-  /**
-   * Get all the lottery tickets submitted for lottery.
-   */
-  public Map<LotteryTicketId, LotteryTicket> getAllSubmittedTickets() {
-    return repository.findAll();
-  }
-
-  /**
-   * Draw lottery numbers.
-   */
-  public LotteryNumbers performLottery() {
-    var numbers = LotteryNumbers.createRandom();
-    var tickets = getAllSubmittedTickets();
-    for (var id : tickets.keySet()) {
-      var lotteryTicket = tickets.get(id);
-      var playerDetails = lotteryTicket.playerDetails();
-      var playerAccount = playerDetails.bankAccount();
-      var result = LotteryUtils.checkTicketForPrize(repository, id, numbers).getResult();
-      if (result == LotteryTicketCheckResult.CheckResult.WIN_PRIZE) {
-        if (wireTransfers.transferFunds(PRIZE_AMOUNT, SERVICE_BANK_ACCOUNT, playerAccount)) {
-          notifications.ticketWon(playerDetails, PRIZE_AMOUNT);
-        } else {
-          notifications.prizeError(playerDetails, PRIZE_AMOUNT);
-        }
-      } else if (result == LotteryTicketCheckResult.CheckResult.NO_PRIZE) {
-        notifications.ticketDidNotWin(playerDetails);
-      }
+    /**
+     * Constructor.
+     */
+    @Inject
+    public LotteryAdministration(LotteryTicketRepository repository, LotteryEventLog notifications,
+                                 WireTransfers wireTransfers) {
+        this.repository = repository;
+        this.notifications = notifications;
+        this.wireTransfers = wireTransfers;
     }
-    return numbers;
-  }
 
-  /**
-   * Begin new lottery round.
-   */
-  public void resetLottery() {
-    repository.deleteAll();
-  }
+    /**
+     * Get all the lottery tickets submitted for lottery.
+     */
+    public Map<LotteryTicketId, LotteryTicket> getAllSubmittedTickets() {
+        return repository.findAll();
+    }
+
+    /**
+     * Draw lottery numbers.
+     */
+    public LotteryNumbers performLottery() {
+        var numbers = LotteryNumbers.createRandom();
+        var tickets = getAllSubmittedTickets();
+        for (var id : tickets.keySet()) {
+            var lotteryTicket = tickets.get(id);
+            var playerDetails = lotteryTicket.playerDetails();
+            var playerAccount = playerDetails.bankAccount();
+            var result = LotteryUtils.checkTicketForPrize(repository, id, numbers).getResult();
+            if (result == LotteryTicketCheckResult.CheckResult.WIN_PRIZE) {
+                if (wireTransfers.transferFunds(PRIZE_AMOUNT, SERVICE_BANK_ACCOUNT, playerAccount)) {
+                    notifications.ticketWon(playerDetails, PRIZE_AMOUNT);
+                } else {
+                    notifications.prizeError(playerDetails, PRIZE_AMOUNT);
+                }
+            } else if (result == LotteryTicketCheckResult.CheckResult.NO_PRIZE) {
+                notifications.ticketDidNotWin(playerDetails);
+            }
+        }
+        return numbers;
+    }
+
+    /**
+     * Begin new lottery round.
+     */
+    public void resetLottery() {
+        repository.deleteAll();
+    }
 }

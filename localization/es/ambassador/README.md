@@ -9,33 +9,41 @@ tag:
 
 ## Propósito
 
-Proporcionar una instancia de servicio auxiliar a un cliente y delegar en ella las funcionalidades comunes de un recurso compartido.
+Proporcionar una instancia de servicio auxiliar a un cliente y delegar en ella las funcionalidades comunes de un recurso
+compartido.
 
 ## Explicación
 
 Ejemplo real
 
-> Un servicio remoto tiene muchos clientes accediendo a una función que este servicio proporciona. El servicio es una aplicación heredada y
-> es imposible actualizarla. Un gran número de solicitudes por parte de los usuarios están causando problemas de conectividad. Nuevas reglas
-> respecto a la frecuencia de solicitudes deberían implementarse junto con comprobaciones de latencia y registros del lado del cliente.
+> Un servicio remoto tiene muchos clientes accediendo a una función que este servicio proporciona. El servicio es una
+> aplicación heredada y
+> es imposible actualizarla. Un gran número de solicitudes por parte de los usuarios están causando problemas de
+> conectividad. Nuevas reglas
+> respecto a la frecuencia de solicitudes deberían implementarse junto con comprobaciones de latencia y registros del
+> lado del cliente.
 
 En otras palabras
 
-> Con el patrón Ambassador, podemos implementar una menor frecuencia en solicitudes de clientes junto con comprobaciones de latencia y
+> Con el patrón Ambassador, podemos implementar una menor frecuencia en solicitudes de clientes junto con comprobaciones
+> de latencia y
 > registros.
 
 Según la Documentación de Microsoft
 
 > Un servicio de Ambassador puede considerarse como un proxy fuera de proceso que coexiste con el cliente.
 >
-> Este patrón puede ser útil para la descarga de tareas comunes de conectividad de cliente, como la supervisión, el registro, el enrutamiento,
-> la seguridad (por ejemplo, TLS) y los patrones de resistencia(*) de una manera independiente del lenguaje. A menudo se utiliza con aplicaciones heredadas,
+> Este patrón puede ser útil para la descarga de tareas comunes de conectividad de cliente, como la supervisión, el
+> registro, el enrutamiento,
+> la seguridad (por ejemplo, TLS) y los patrones de resistencia(*) de una manera independiente del lenguaje. A menudo se
+> utiliza con aplicaciones heredadas,
 > u otras aplicaciones que son difíciles de modificar, con el fin de ampliar sus capacidades de red. También puede
 > habilitar un equipo especializado para implementar esas características.
 
 **Código de ejemplo**
 
-Con la introducción anterior en mente vamos a imitar su funcionalidad en el siguiente ejemplo. Tenemos una interface implementada
+Con la introducción anterior en mente vamos a imitar su funcionalidad en el siguiente ejemplo. Tenemos una interface
+implementada
 por el servicio remoto así como el servicio ambassador:
 
 ```java
@@ -174,8 +182,10 @@ Service result: -1
 
 ## Aplicaciones
 
-Ambassador es aplicable cuando trabajamos con un servicio remoto heredado que no puede ser modificado o que sería extremamente
-difícil de modificar. Las características de conectividad pueden implementarse en el cliente sin necesidad de realizar cambios en el servicio
+Ambassador es aplicable cuando trabajamos con un servicio remoto heredado que no puede ser modificado o que sería
+extremamente
+difícil de modificar. Las características de conectividad pueden implementarse en el cliente sin necesidad de realizar
+cambios en el servicio
 remoto.
 
 * Ambassador proporciona una interface local para un servicio remoto.
@@ -203,6 +213,8 @@ remoto.
 * [Designing Distributed Systems: Patterns and Paradigms for Scalable, Reliable Services](https://www.amazon.com/s?k=designing+distributed+systems&sprefix=designing+distri%2Caps%2C156&linkCode=ll2&tag=javadesignpat-20&linkId=a12581e625462f9038557b01794e5341&language=en_US&ref_=as_li_ss_tl)
 
 ## Notas del traductor
+
 (*) La versión original en inglés de la documentación de Microsoft hace referencia al término resiliencia y
 en su traducción al español lo traduce como resistencia, aunque enlaza al apartado patrones de confiabilidad. Véase:
+
 * [Versión de la Documentación para el Patrón Ambassador de Microsoft en español.](https://learn.microsoft.com/es-es/azure/architecture/patterns/ambassador)

@@ -16,13 +16,14 @@ L'utilisateur fait un appel unique au service d'agrégation, et ce dernier appel
 
 Exemple concret
 
-> Notre marché en ligne a besoin d'informations sur les produits et leur stock actuel. Elle fait appel à un service 
+> Notre marché en ligne a besoin d'informations sur les produits et leur stock actuel. Elle fait appel à un service
 > d'agrégation qui, à son tour, appelle le microservice d'information sur les produits et le microservice d'inventaire
 > des produits et renvoie les informations combinées.
 
 En clair
 
-> Aggregator Microservice collecte des éléments de données provenant de divers microservices et renvoie un agrégat pour traitement.. 
+> Aggregator Microservice collecte des éléments de données provenant de divers microservices et renvoie un agrégat pour
+> traitement..
 
 Stack Overflow dit
 
@@ -72,7 +73,8 @@ public class Aggregator {
 }
 ```
 
-Voici l'essentiel de la mise en œuvre du microservice d'information. Le microservice dInventory est similaire, il renvoie simplement l'inventaire.
+Voici l'essentiel de la mise en œuvre du microservice d'information. Le microservice dInventory est similaire, il
+renvoie simplement l'inventaire.
 
 ```java
 @RestController
@@ -97,7 +99,8 @@ curl http://localhost:50004/product
 
 ## Application
 
-Utilisez le modèle de microservices agrégateur lorsque vous avez besoin d'une API unifiée pour différents microservices, quel que soit l'appareil client.
+Utilisez le modèle de microservices agrégateur lorsque vous avez besoin d'une API unifiée pour différents microservices,
+quel que soit l'appareil client.
 
 ## Crédits
 

@@ -34,12 +34,12 @@ import org.junit.jupiter.api.Test;
  */
 class PlayerDetailsTest {
 
-  @Test
-  void testEquals() {
-    var details1 = new PlayerDetails("tom@foo.bar", "11212-123434", "+12323425");
-    var details2 = new PlayerDetails("tom@foo.bar", "11212-123434", "+12323425");
-    assertEquals(details1, details2);
-    var details3 = new PlayerDetails("john@foo.bar", "16412-123439", "+34323432");
-    assertNotEquals(details1, details3);
-  }
+    @Test
+    void testEquals() {
+        var details1 = new PlayerDetails("tom@foo.bar", "11212-123434", "+12323425");
+        var details2 = new PlayerDetails("tom@foo.bar", "11212-123434", "+12323425");
+        assertEquals(details1, details2);
+        var details3 = new PlayerDetails("john@foo.bar", "16412-123439", "+34323432");
+        assertNotEquals(details1, details3);
+    }
 }

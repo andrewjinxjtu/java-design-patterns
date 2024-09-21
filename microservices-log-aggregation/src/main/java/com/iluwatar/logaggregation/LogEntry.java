@@ -25,6 +25,7 @@
 package com.iluwatar.logaggregation;
 
 import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -35,8 +36,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class LogEntry {
-  private String serviceName;
-  private LogLevel level;
-  private String message;
-  private LocalDateTime timestamp;
+    private String serviceName;
+    private LogLevel level;
+    private String message;
+    private LocalDateTime timestamp;
 }

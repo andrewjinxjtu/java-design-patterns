@@ -29,12 +29,12 @@ package com.iluwatar.health.check;
  * runtime exception that wraps the original cause.
  */
 public class HealthCheckInterruptedException extends RuntimeException {
-  /**
-   * Constructs a new HealthCheckInterruptedException with the specified cause.
-   *
-   * @param cause the cause of the exception
-   */
-  public HealthCheckInterruptedException(Throwable cause) {
-    super("Health check interrupted", cause);
-  }
+    /**
+     * Constructs a new HealthCheckInterruptedException with the specified cause.
+     *
+     * @param cause the cause of the exception
+     */
+    public HealthCheckInterruptedException(Throwable cause) {
+        super("Health check interrupted", cause);
+    }
 }

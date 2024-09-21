@@ -8,20 +8,27 @@ tag:
 ---
 
 ## Propósito
+
 Como se explica en el libro Game Programming Patterns de Robert Nystrom, el patrón objeto tipo ayuda a
 
-> Permitir la creación flexible de nuevas "clases" mediante la creación de una única clase, cada instancia de la cual representa un tipo diferente de objeto
+> Permitir la creación flexible de nuevas "clases" mediante la creación de una única clase, cada instancia de la cual
+> representa un tipo diferente de objeto
 
 ## Explicación
+
 Ejemplo del mundo real
-> Estás trabajando en un juego con muchas razas diferentes de monstruos. Cada raza de monstruo tiene diferentes valores para los atributos, como ataque, salud, inteligencia, etc. Quieres crear nuevas razas de monstruos, o modificar los atributos de una raza existente, sin necesidad de modificar el código y recompilar el juego.
+> Estás trabajando en un juego con muchas razas diferentes de monstruos. Cada raza de monstruo tiene diferentes valores
+> para los atributos, como ataque, salud, inteligencia, etc. Quieres crear nuevas razas de monstruos, o modificar los
+> atributos de una raza existente, sin necesidad de modificar el código y recompilar el juego.
 
 En palabras sencillas
-> Definimos una clase de objeto de tipo y una clase de objeto tipado. Damos a cada instancia de objeto de tipo una referencia a un objeto tipado, que contiene la información para ese tipo.
+> Definimos una clase de objeto de tipo y una clase de objeto tipado. Damos a cada instancia de objeto de tipo una
+> referencia a un objeto tipado, que contiene la información para ese tipo.
 
 **Ejemplo programático**
 
-Supongamos que estamos desarrollando un juego de Candy Crush. Hay muchos tipos de caramelos diferentes, y es posible que queramos editar o crear nuevos con el tiempo a medida que desarrollamos el juego.
+Supongamos que estamos desarrollando un juego de Candy Crush. Hay muchos tipos de caramelos diferentes, y es posible que
+queramos editar o crear nuevos con el tiempo a medida que desarrollamos el juego.
 
 En primer lugar, tenemos un tipo para los caramelos, con un nombre de campo, padre, puntos y Tipo.
 
@@ -53,7 +60,8 @@ public class Candy {
 }
 ```
 
-Los datos de campo de los tipos de caramelos se almacenan en el archivo JSON ``candy.json``. Se pueden añadir nuevos caramelos simplemente añadiéndolos a este archivo.
+Los datos de campo de los tipos de caramelos se almacenan en el archivo JSON ``candy.json``. Se pueden añadir nuevos
+caramelos simplemente añadiéndolos a este archivo.
 
 ```json
 {"candies" : [
@@ -103,7 +111,8 @@ Los datos de campo de los tipos de caramelos se almacenan en el archivo JSON ``c
 }
 ```
 
-El archivo JSON se analiza, instanciando cada tipo de caramelo y almacenándolo en una tabla hash. El campo ``type`` se compara con el enum ``Type`` definido en la clase Candy.
+El archivo JSON se analiza, instanciando cada tipo de caramelo y almacenándolo en una tabla hash. El campo ``type`` se
+compara con el enum ``Type`` definido en la clase Candy.
 
 ```java
 public class JsonParser {
@@ -152,15 +161,21 @@ public class JsonParser {
 
 ## En palabras sencillas
 
-El patrón Tipo-Objeto en Java es un método para encapsular propiedades y comportamientos específicos de un tipo dentro de un objeto. Este patrón de diseño facilita la adición de nuevos tipos sin necesidad de realizar cambios en el código existente, mejorando así la expansión y el mantenimiento de la base de código.
+El patrón Tipo-Objeto en Java es un método para encapsular propiedades y comportamientos específicos de un tipo dentro
+de un objeto. Este patrón de diseño facilita la adición de nuevos tipos sin necesidad de realizar cambios en el código
+existente, mejorando así la expansión y el mantenimiento de la base de código.
 
 ## Wikipedia dice
 
-Aunque no existe una entrada específica en Wikipedia para el patrón Tipo-Objeto, se trata de una técnica de uso común en la programación orientada a objetos. Este patrón ayuda a gestionar objetos que comparten características similares pero tienen valores diferentes para esas características. Su uso está muy extendido en el desarrollo de juegos, donde numerosos tipos de objetos (como los enemigos) comparten un comportamiento común pero tienen propiedades diferentes.
+Aunque no existe una entrada específica en Wikipedia para el patrón Tipo-Objeto, se trata de una técnica de uso común en
+la programación orientada a objetos. Este patrón ayuda a gestionar objetos que comparten características similares pero
+tienen valores diferentes para esas características. Su uso está muy extendido en el desarrollo de juegos, donde
+numerosos tipos de objetos (como los enemigos) comparten un comportamiento común pero tienen propiedades diferentes.
 
 ## Ejemplo programático
 
-Consideremos un ejemplo en el que intervienen distintos tipos de enemigos en un juego. Cada tipo de enemigo tiene propiedades distintas, como velocidad, salud y daño.
+Consideremos un ejemplo en el que intervienen distintos tipos de enemigos en un juego. Cada tipo de enemigo tiene
+propiedades distintas, como velocidad, salud y daño.
 
 ```java
 public class EnemyType {
@@ -191,9 +206,12 @@ public class Enemy {
 }
 ```
 
-En el ejemplo anterior, `EnemyType` encapsula propiedades específicas del tipo (nombre, velocidad, salud, daño), y `Enemy` utiliza una instancia de `EnemyType` para definir su tipo. De esta forma, puedes añadir tantos tipos de enemigos como quieras sin modificar la clase "Enemigo".
+En el ejemplo anterior, `EnemyType` encapsula propiedades específicas del tipo (nombre, velocidad, salud, daño), y
+`Enemy` utiliza una instancia de `EnemyType` para definir su tipo. De esta forma, puedes añadir tantos tipos de enemigos
+como quieras sin modificar la clase "Enemigo".
 
 ## Aplicabilidad
+
 Este patrón puede utilizarse cuando:
 
 * No sabemos de antemano qué tipos vamos a necesitar.
@@ -201,6 +219,7 @@ Este patrón puede utilizarse cuando:
 * La única diferencia entre los diferentes "tipos" de objetos son los datos, no el comportamiento.
 
 ## Otro ejemplo con diagrama de clases
+
 ![alt text](./etc/typeobjectpattern.urm.png "Type-Object pattern class diagram")
 
 ## Créditos

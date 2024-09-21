@@ -15,12 +15,14 @@ différents types de documents.
 ## Explication
 
 Le patron de conception "Abstract Document" permet de gérer des propriétés supplémentaires non statiques. Ce modèle
-utilise le concept de traits pour assurer la sécurité des types et séparer les propriétés des différentes 
+utilise le concept de traits pour assurer la sécurité des types et séparer les propriétés des différentes
 classes dans un ensemble d'interfaces
 
 Exemple concret
 
->  Prenons l'exemple d'une voiture composée de plusieurs pièces. Cependant, nous ne savons pas si la voiture en question possède réellement toutes les pièces ou seulement certaines d'entre elles. Nos voitures sont dynamiques et extrêmement flexibles.
+> Prenons l'exemple d'une voiture composée de plusieurs pièces. Cependant, nous ne savons pas si la voiture en question
+> possède réellement toutes les pièces ou seulement certaines d'entre elles. Nos voitures sont dynamiques et extrêmement
+> flexibles.
 
 En clair
 
@@ -28,12 +30,16 @@ En clair
 
 Wikipedia dit
 
-> Un patron de conception structurelle orienté objet pour organiser des objets comme clé-valeur faiblement typés et exposer des données à l'aide de vues typées. L'objectif de ce modèle est d'atteindre un haut degré de flexibilité entre les composants
-dans un langage fortement typé où de nouvelles propriétés peuvent être ajoutées à l'arbre d'objets à la volée, sans perdre le soutien de la sécurité de type.
+> Un patron de conception structurelle orienté objet pour organiser des objets comme clé-valeur faiblement typés et
+> exposer des données à l'aide de vues typées. L'objectif de ce modèle est d'atteindre un haut degré de flexibilité entre
+> les composants
+> dans un langage fortement typé où de nouvelles propriétés peuvent être ajoutées à l'arbre d'objets à la volée, sans
+> perdre le soutien de la sécurité de type.
 
 **Exemple de programme**
 
-Définissons en premier les classes de base `Document` et `AbstractDocument`. Ils font en sorte que l'objet contienne une carte(map) de propriétés et un nombre quelconque d'objets enfants.
+Définissons en premier les classes de base `Document` et `AbstractDocument`. Ils font en sorte que l'objet contienne une
+carte(map) de propriétés et un nombre quelconque d'objets enfants.
 
 ```java
 public interface Document {
@@ -78,7 +84,9 @@ public abstract class AbstractDocument implements Document {
   ...
 }
 ```
-Ensuite, nous définissons une enumération  `Property` et un ensemble d'interfaces pour le type, le prix, le modèle et les pièces. Cela nous permet de créer une interface statique pour notre classe `Car`.
+
+Ensuite, nous définissons une enumération  `Property` et un ensemble d'interfaces pour le type, le prix, le modèle et
+les pièces. Cela nous permet de créer une interface statique pour notre classe `Car`.
 
 ```java
 public enum Property {
@@ -172,25 +180,53 @@ Enfin, voici comment nous construisons et utilisons la "voiture" dans un exemple
 
 ## Application
 
-Ce modèle est particulièrement utile dans les scénarios où vous avez différents types de documents qui partagent des attributs ou des comportements communs, mais qui ont également des attributs ou des comportements uniques,  spécifiques à leurs types individuels. Voici quelques
+Ce modèle est particulièrement utile dans les scénarios où vous avez différents types de documents qui partagent des
+attributs ou des comportements communs, mais qui ont également des attributs ou des comportements uniques, spécifiques à
+leurs types individuels. Voici quelques
 Voici quelques scénarios dans lesquels le patron de conception Abstract Document peut s'appliquer :
 
-* Systèmes de gestion de contenu (SGC) : dans un SGC (CMS en anglais), vous pouvez avoir différents types de contenu tels que des articles, des images, des vidéos, etc. Chaque type de contenu peut avoir des attributs communs tels que la date de création, l'auteur et les balises, mais aussi des attributs spécifiques tels que les dimensions de l'image pour les images ou la durée de la vidéo pour les vidéos.
+* Systèmes de gestion de contenu (SGC) : dans un SGC (CMS en anglais), vous pouvez avoir différents types de contenu
+  tels que des articles, des images, des vidéos, etc. Chaque type de contenu peut avoir des attributs communs tels que
+  la date de création, l'auteur et les balises, mais aussi des attributs spécifiques tels que les dimensions de l'image
+  pour les images ou la durée de la vidéo pour les vidéos.
 
-* Systèmes de gestion de fichiers : Si vous concevez un système de gestion de fichiers dans lequel différents types de fichiers doivent être gérés; tels que des documents, des images, des fichiers audio et des répertoires, le patron "Abstract Document" peut vous aider à fournir un moyen cohérent d'accéder à des attributs tels que la taille du fichier, la date de création, etc., tout en autorisant des attributs spécifiques tels que la résolution de l'image ou la durée de l'audio.
+* Systèmes de gestion de fichiers : Si vous concevez un système de gestion de fichiers dans lequel différents types de
+  fichiers doivent être gérés; tels que des documents, des images, des fichiers audio et des répertoires, le patron "
+  Abstract Document" peut vous aider à fournir un moyen cohérent d'accéder à des attributs tels que la taille du
+  fichier, la date de création, etc., tout en autorisant des attributs spécifiques tels que la résolution de l'image ou
+  la durée de l'audio.
 
-* Systèmes de commerce électronique ou vente en ligne : Une plateforme de commerce électronique peut avoir différents types de produits tels que des produits physiques, des téléchargements numériques et des abonnements. Chaque type peut partager des attributs communs tels que le nom, le prix et la description, tout en ayant des attributs uniques tels que le poids d'expédition pour les produits physiques ou le lien de téléchargement pour les produits numériques.
+* Systèmes de commerce électronique ou vente en ligne : Une plateforme de commerce électronique peut avoir différents
+  types de produits tels que des produits physiques, des téléchargements numériques et des abonnements. Chaque type peut
+  partager des attributs communs tels que le nom, le prix et la description, tout en ayant des attributs uniques tels
+  que le poids d'expédition pour les produits physiques ou le lien de téléchargement pour les produits numériques.
 
-* Systèmes de dossiers médicaux : En médécine, les dossiers des patients peuvent inclure différents types de données telles que des données démographiques, des antécédents médicaux, des résultats d'examens et des prescriptions. Le patron de conception "abstract document" peut aider à gérer des attributs partagés tels que l'ID du patient et sa date de naissance, tout en s'adaptant à des attributs spécialisés tels que les résultats d'examens ou les médicaments prescrits.
+* Systèmes de dossiers médicaux : En médécine, les dossiers des patients peuvent inclure différents types de données
+  telles que des données démographiques, des antécédents médicaux, des résultats d'examens et des prescriptions. Le
+  patron de conception "abstract document" peut aider à gérer des attributs partagés tels que l'ID du patient et sa date
+  de naissance, tout en s'adaptant à des attributs spécialisés tels que les résultats d'examens ou les médicaments
+  prescrits.
 
-* Gestion de la configuration : Lorsqu'il s'agit de paramètres de configuration pour des applications logicielles, il peut y avoir différents types d'éléments de configuration, chacun avec son propre ensemble d'attributs. Le patron de conception "abstract document" peut être utilisé pour gérer ces éléments de configuration tout en garantissant une manière cohérente d'accéder à leurs attributs et de les manipuler.
+* Gestion de la configuration : Lorsqu'il s'agit de paramètres de configuration pour des applications logicielles, il
+  peut y avoir différents types d'éléments de configuration, chacun avec son propre ensemble d'attributs. Le patron de
+  conception "abstract document" peut être utilisé pour gérer ces éléments de configuration tout en garantissant une
+  manière cohérente d'accéder à leurs attributs et de les manipuler.
 
-* Plateformes éducatives : Les systèmes éducatifs peuvent disposer de différents types de matériel pédagogique, tels que des contenus textuels, des vidéos, des quiz et des devoirs. Les attributs communs tels que le titre, l'auteur et la date de publication peuvent être partagés, tandis que les attributs uniques tels que la durée des vidéos ou les dates d'échéance des devoirs peuvent être spécifiques à chaque type.
+* Plateformes éducatives : Les systèmes éducatifs peuvent disposer de différents types de matériel pédagogique, tels que
+  des contenus textuels, des vidéos, des quiz et des devoirs. Les attributs communs tels que le titre, l'auteur et la
+  date de publication peuvent être partagés, tandis que les attributs uniques tels que la durée des vidéos ou les dates
+  d'échéance des devoirs peuvent être spécifiques à chaque type.
 
-* Outils de gestion de projet : Dans les applications de gestion de projet, vous pouvez avoir différents types de tâches comme les tâches à faire, les étapes et les problèmes. Le modèle de document abstrait peut être utilisé pour gérer des attributs généraux tels que le nom de la tâche et le destinataire, tout en autorisant des attributs spécifiques tels que la date du jalon ou la priorité du problème.
+* Outils de gestion de projet : Dans les applications de gestion de projet, vous pouvez avoir différents types de tâches
+  comme les tâches à faire, les étapes et les problèmes. Le modèle de document abstrait peut être utilisé pour gérer des
+  attributs généraux tels que le nom de la tâche et le destinataire, tout en autorisant des attributs spécifiques tels
+  que la date du jalon ou la priorité du problème.
 
-L'idée principale du patron de conception Abstract Document est de fournir un moyen flexible et extensible de gérer différents types de documents ou d'entités avec des attributs partagés et distincts. En définissant une interface commune et en l'implémentant
-dans les différents types de documents, vous pouvez obtenir une approche plus organisée et cohérente de la manipulation de structures de données complexes.
+L'idée principale du patron de conception Abstract Document est de fournir un moyen flexible et extensible de gérer
+différents types de documents ou d'entités avec des attributs partagés et distincts. En définissant une interface
+commune et en l'implémentant
+dans les différents types de documents, vous pouvez obtenir une approche plus organisée et cohérente de la manipulation
+de structures de données complexes.
 
 ## Crédits
 

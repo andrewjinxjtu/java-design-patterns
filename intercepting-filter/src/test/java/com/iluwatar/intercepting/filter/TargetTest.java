@@ -31,12 +31,11 @@ import org.junit.jupiter.api.Test;
 
 /**
  * TargetTest
- *
  */
 class TargetTest {
-    
+
     @Test
-    void testSetup(){
+    void testSetup() {
         final var target = new Target();
         assertEquals(target.getSize().getWidth(), Double.valueOf(640));
         assertEquals(target.getSize().getHeight(), Double.valueOf(480));

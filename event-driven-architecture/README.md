@@ -22,17 +22,24 @@ tag:
 
 ## Intent of Event-Driven Architecture Design Pattern
 
-Event-Driven Architecture (EDA) is designed to orchestrate behavior around the production, detection, consumption of, and reaction to events. This architecture enables highly decoupled, scalable, and dynamic interconnections between event producers and consumers.
+Event-Driven Architecture (EDA) is designed to orchestrate behavior around the production, detection, consumption of,
+and reaction to events. This architecture enables highly decoupled, scalable, and dynamic interconnections between event
+producers and consumers.
 
 ## Detailed Explanation of Event-Driven Architecture Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world example of the Event-Driven Architecture (EDA) pattern is the operation of an air traffic control system. In this system, events such as aircraft entering airspace, changes in weather conditions, and ground vehicle movements trigger specific responses like altering flight paths, scheduling gate assignments, and updating runway usage. This setup allows for highly efficient, responsive, and safe management of airport operations, reflecting EDA's core principles of asynchronous communication and dynamic event handling.
+> A real-world example of the Event-Driven Architecture (EDA) pattern is the operation of an air traffic control system.
+> In this system, events such as aircraft entering airspace, changes in weather conditions, and ground vehicle movements
+> trigger specific responses like altering flight paths, scheduling gate assignments, and updating runway usage. This
+> setup allows for highly efficient, responsive, and safe management of airport operations, reflecting EDA's core
+> principles of asynchronous communication and dynamic event handling.
 
 In plain words
 
-> Event-Driven Architecture is a design pattern where system behavior is dictated by the occurrence of specific events, allowing for dynamic, efficient, and decoupled responses.
+> Event-Driven Architecture is a design pattern where system behavior is dictated by the occurrence of specific events,
+> allowing for dynamic, efficient, and decoupled responses.
 
 Wikipedia says
 
@@ -40,12 +47,16 @@ Wikipedia says
 
 ## Programmatic Example of Event-Driven Architecture in Java
 
-The Event-Driven Architecture (EDA) pattern in this module is implemented using several key classes and concepts:  
+The Event-Driven Architecture (EDA) pattern in this module is implemented using several key classes and concepts:
 
-* Event: This is an abstract class that represents an event. It's the base class for all types of events that can occur in the system.  
-* UserCreatedEvent and UserUpdatedEvent: These are concrete classes that extend the Event class. They represent specific types of events that can occur in the system, namely the creation and updating of a user.  
-* EventDispatcher: This class is responsible for dispatching events to their respective handlers. It maintains a mapping of event types to handlers.  
-* UserCreatedEventHandler and UserUpdatedEventHandler: These are the handler classes for the UserCreatedEvent and UserUpdatedEvent respectively. They contain the logic to execute when these events occur.  
+* Event: This is an abstract class that represents an event. It's the base class for all types of events that can occur
+  in the system.
+* UserCreatedEvent and UserUpdatedEvent: These are concrete classes that extend the Event class. They represent specific
+  types of events that can occur in the system, namely the creation and updating of a user.
+* EventDispatcher: This class is responsible for dispatching events to their respective handlers. It maintains a mapping
+  of event types to handlers.
+* UserCreatedEventHandler and UserUpdatedEventHandler: These are the handler classes for the UserCreatedEvent and
+  UserUpdatedEvent respectively. They contain the logic to execute when these events occur.
 
 First, we'll define the `Event` abstract class and the concrete event classes `UserCreatedEvent` and `UserUpdatedEvent`.
 
@@ -151,7 +162,9 @@ Running the example produces the following console output:
 22:15:20.000 [main] INFO com.iluwatar.eda.handler.UserUpdatedEventHandler -- User 'iluwatar' has been Updated!
 ```
 
-This example demonstrates the Event-Driven Architecture pattern, where the occurrence of events drives the flow of the program. The system is designed to respond to events as they occur, which allows for a high degree of flexibility and decoupling between components.
+This example demonstrates the Event-Driven Architecture pattern, where the occurrence of events drives the flow of the
+program. The system is designed to respond to events as they occur, which allows for a high degree of flexibility and
+decoupling between components.
 
 ## Detailed Explanation of Event-Driven Architecture Pattern with Real-World Examples
 
@@ -172,7 +185,8 @@ Use an Event-driven architecture when
 * Complex event processing systems in finance, such as stock trading platforms.
 * IoT systems for dynamic device and information management.
 * Chargify, a billing API, exposes payment activity through various events (https://docs.chargify.com/api-events)
-* Amazon's AWS Lambda, lets you execute code in response to events such as changes to Amazon S3 buckets, updates to an Amazon DynamoDB table, or custom events generated by your applications or devices. (https://aws.amazon.com/lambda)
+* Amazon's AWS Lambda, lets you execute code in response to events such as changes to Amazon S3 buckets, updates to an
+  Amazon DynamoDB table, or custom events generated by your applications or devices. (https://aws.amazon.com/lambda)
 * MySQL runs triggers based on events such as inserts and update events happening on database tables.
 
 ## Benefits and Trade-offs of Event-Driven Architecture Pattern

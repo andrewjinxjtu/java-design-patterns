@@ -6,7 +6,7 @@ tag:
 - Gang of Four
 ---
 
-## 의도 
+## 의도
 
 동일한 구성 프로세스가 다른 표현을 생성할 수 있도록 복잡한 객체의 구성을 해당 표현과 분리합니다.
 
@@ -14,7 +14,8 @@ tag:
 
 실제 예제
 
-> 롤플레잉 게임의 캐릭터 생성기를 상상해 보세요. 가장 쉬운 옵션은 컴퓨터가 사용자를 위해 문자를 만들도록 하는 것입니다. 직업, 성별, 머리색 등 캐릭터 세부 정보를 수동으로 선택하려면 캐릭터 생성은 모든 선택이 준비되었을 때 완료되는 단계별 프로세스가 됩니다.
+> 롤플레잉 게임의 캐릭터 생성기를 상상해 보세요. 가장 쉬운 옵션은 컴퓨터가 사용자를 위해 문자를 만들도록 하는 것입니다. 직업, 성별, 머리색 등 캐릭터 세부 정보를 수동으로 선택하려면 캐릭터 생성은 모든 선택이
+> 준비되었을 때 완료되는 단계별 프로세스가 됩니다.
 
 쉽게 말하자면
 
@@ -31,12 +32,12 @@ public Hero(Profession profession, String name, HairType hairType, HairColor hai
 }
 ```
 
-보시다시피 생성자 매개 변수의 수는 빠르게 감당할 수 없게 되고 매개 변수의 배치를 이해하는 것이 어려워질 수 있습니다. 또한 이 매개 변수 목록은 나중에 더 많은 옵션을 추가하려는 경우 계속 증가할 수 있습니다. 이를 점층적 생성자 안티-패턴(telescoping constructor anti-pattern)이라고 합니다.
+보시다시피 생성자 매개 변수의 수는 빠르게 감당할 수 없게 되고 매개 변수의 배치를 이해하는 것이 어려워질 수 있습니다. 또한 이 매개 변수 목록은 나중에 더 많은 옵션을 추가하려는 경우 계속 증가할 수 있습니다.
+이를 점층적 생성자 안티-패턴(telescoping constructor anti-pattern)이라고 합니다.
 
 **코드 예제**
 
 올바른 대안은 빌더 패턴을 사용하는 것입니다. 우선, 우리는 우리가 창조하고 싶은 영웅을 가지고 있습니다. :
-
 
 ```java
 public final class Hero {
@@ -105,7 +106,6 @@ public final class Hero {
 
 그런 다음, 다음과 같이 사용할 수 있습니다.
 
-
 ```java
 var mage = new Hero.Builder(Profession.MAGE, "Riobard").withHairColor(HairColor.BLACK).withWeapon(Weapon.DAGGER).build();
 ```
@@ -130,7 +130,8 @@ var mage = new Hero.Builder(Profession.MAGE, "Riobard").withHairColor(HairColor.
 ## 실제 사례
 
 * [java.lang.StringBuilder](http://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html)
-* [java.nio.ByteBuffer](http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html#put-byte-) as well as similar buffers such as FloatBuffer, IntBuffer and so on.
+* [java.nio.ByteBuffer](http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html#put-byte-) as well as similar
+  buffers such as FloatBuffer, IntBuffer and so on.
 * [java.lang.StringBuffer](http://docs.oracle.com/javase/8/docs/api/java/lang/StringBuffer.html#append-boolean-)
 * All implementations of [java.lang.Appendable](http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html)
 * [Apache Camel builders](https://github.com/apache/camel/tree/0e195428ee04531be27a0b659005e3aa8d159d23/camel-core/src/main/java/org/apache/camel/builder)

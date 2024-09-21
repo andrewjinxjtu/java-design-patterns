@@ -27,8 +27,10 @@ Dicho de otra forma
 Según Wikipedia
 
 > Un patrón de diseño estructural orientado a objetos para organizar objetos en contenedores clave-valor vagamente
-> tipados y exponiendo los datos usando vistas tipadas. El propósito del patrón es conseguir un alto grado de flexibilidad
-> entre componentes en un lenguaje de tipado fuerte donde nuevas propiedades pueden añadirse al árbol de objetos sobre la
+> tipados y exponiendo los datos usando vistas tipadas. El propósito del patrón es conseguir un alto grado de
+> flexibilidad
+> entre componentes en un lenguaje de tipado fuerte donde nuevas propiedades pueden añadirse al árbol de objetos sobre
+> la
 > marcha sin perder el soporte de la seguridad de tipos. El patrón hace uso de atributos para separar diferentes
 > propiedades de una clase en distintas interfaces.
 

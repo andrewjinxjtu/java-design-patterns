@@ -15,7 +15,7 @@ tag:
 
 वास्तविक दुनिया का उदाहरण
 
->कार्य निष्पादन समाप्त होने के बाद हमें सूचित किया जाना आवश्यक है। हम इसके लिए कॉलबैक विधि पास करते हैं
+> कार्य निष्पादन समाप्त होने के बाद हमें सूचित किया जाना आवश्यक है। हम इसके लिए कॉलबैक विधि पास करते हैं
 > निष्पादक और उसके हमें वापस बुलाने की प्रतीक्षा करें।
 
 साफ़ शब्दों में
@@ -81,4 +81,5 @@ public final class SimpleTask extends Task {
 
 ## वास्तविक दुनिया के उदाहरण
 
-* [CyclicBarrier](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CyclicBarrier.html#CyclicBarrier%28int,%20java.lang.Runnable%29) कंस्ट्रक्टर एक कॉलबैक स्वीकार कर सकता है जो हर बार बैरियर ट्रिप होने पर ट्रिगर हो जाएगा।
+* [CyclicBarrier](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CyclicBarrier.html#CyclicBarrier%28int,%20java.lang.Runnable%29)
+  कंस्ट्रक्टर एक कॉलबैक स्वीकार कर सकता है जो हर बार बैरियर ट्रिप होने पर ट्रिगर हो जाएगा।

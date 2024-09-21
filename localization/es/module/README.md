@@ -7,26 +7,42 @@ tag:
 ---
 
 ## Propósito
-El patrón de módulos se utiliza para implementar el concepto de módulos de software, definido por la programación modular, en un lenguaje de programación con soporte directo incompleto para el concepto.
+
+El patrón de módulos se utiliza para implementar el concepto de módulos de software, definido por la programación
+modular, en un lenguaje de programación con soporte directo incompleto para el concepto.
 
 ## Explicación
 
 Ejemplo real
 
-> En una bulliciosa ciudad del software, distintos componentes de software, como la base de datos, la interfaz de usuario y la API, a menudo necesitan colaborar. En lugar de que cada componente hable directamente con los demás, confían en el gestor de módulos. Este gestor de módulos actúa como un mercado central, donde cada componente registra sus servicios y solicitudes para los demás. Esto garantiza que los componentes permanezcan desacoplados y que los cambios en uno de ellos no afecten a todo el sistema.
+> En una bulliciosa ciudad del software, distintos componentes de software, como la base de datos, la interfaz de
+> usuario y la API, a menudo necesitan colaborar. En lugar de que cada componente hable directamente con los demás,
+> confían en el gestor de módulos. Este gestor de módulos actúa como un mercado central, donde cada componente registra
+> sus servicios y solicitudes para los demás. Esto garantiza que los componentes permanezcan desacoplados y que los
+> cambios en uno de ellos no afecten a todo el sistema.
 
 
-> Imagina un smartphone moderno. Tiene distintas aplicaciones, como mensajería, cámara y reproductor de música. Aunque cada una funciona de forma independiente, a veces necesitan compartir recursos como el acceso a los contactos o el almacenamiento. En lugar de que cada aplicación tenga su propia forma de acceder a estos recursos, utilizan los módulos integrados del teléfono, como el módulo de contactos o el de almacenamiento. Esto garantiza una experiencia coherente para el usuario y evita posibles conflictos entre aplicaciones.
+> Imagina un smartphone moderno. Tiene distintas aplicaciones, como mensajería, cámara y reproductor de música. Aunque
+> cada una funciona de forma independiente, a veces necesitan compartir recursos como el acceso a los contactos o el
+> almacenamiento. En lugar de que cada aplicación tenga su propia forma de acceder a estos recursos, utilizan los módulos
+> integrados del teléfono, como el módulo de contactos o el de almacenamiento. Esto garantiza una experiencia coherente
+> para el usuario y evita posibles conflictos entre aplicaciones.
 
 En pocas palabras
 
-> El patrón Módulo encapsula funciones y datos relacionados en una sola unidad, lo que permite tener componentes de software organizados y manejables.
+> El patrón Módulo encapsula funciones y datos relacionados en una sola unidad, lo que permite tener componentes de
+> software organizados y manejables.
 
 Wikipedia dice
 
-> En ingeniería de software, el patrón módulo es un patrón de diseño utilizado para implementar el concepto de módulos de software, definido por la programación modular, en un lenguaje de programación con soporte directo incompleto para el concepto.
+> En ingeniería de software, el patrón módulo es un patrón de diseño utilizado para implementar el concepto de módulos
+> de software, definido por la programación modular, en un lenguaje de programación con soporte directo incompleto para el
+> concepto.
 
-> Este patrón se puede implementar de varias maneras dependiendo del lenguaje de programación anfitrión, como el patrón de diseño singleton, miembros estáticos orientados a objetos en una clase y funciones globales de procedimiento. En Python, el patrón está integrado en el lenguaje, y cada archivo .py es automáticamente un módulo. Lo mismo ocurre en Ada, donde el paquete puede considerarse un módulo (similar a una clase estática).
+> Este patrón se puede implementar de varias maneras dependiendo del lenguaje de programación anfitrión, como el patrón
+> de diseño singleton, miembros estáticos orientados a objetos en una clase y funciones globales de procedimiento. En
+> Python, el patrón está integrado en el lenguaje, y cada archivo .py es automáticamente un módulo. Lo mismo ocurre en
+> Ada, donde el paquete puede considerarse un módulo (similar a una clase estática).
 
 **Ejemplo programático**
 
@@ -152,12 +168,17 @@ Console Output: Hello, Module Pattern!
 ```
 
 ## Diagrama de clases
+
 ![alt text](./etc/module.png "Module")
 
 ## Aplicabilidad
-El patrón Módulo puede considerarse un patrón de creación y un patrón estructural. Gestiona la creación y organización de otros elementos, y los agrupa como lo hace el patrón estructural.
 
-Un objeto que aplica este patrón puede proporcionar el equivalente de un espacio de nombres, proporcionando el proceso de inicialización y finalización de una clase estática o de una clase con miembros estáticos con una sintaxis y una semántica más limpias y concisas.
+El patrón Módulo puede considerarse un patrón de creación y un patrón estructural. Gestiona la creación y organización
+de otros elementos, y los agrupa como lo hace el patrón estructural.
+
+Un objeto que aplica este patrón puede proporcionar el equivalente de un espacio de nombres, proporcionando el proceso
+de inicialización y finalización de una clase estática o de una clase con miembros estáticos con una sintaxis y una
+semántica más limpias y concisas.
 
 ## Créditos
 

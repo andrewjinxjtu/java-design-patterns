@@ -19,7 +19,9 @@ Proporcionar un sustituto o marcador de posición de otro objeto para controlar 
 
 Ejemplo real
 
-> Imagina una torre donde los magos locales van a estudiar sus hechizos. A la torre de marfil sólo se puede acceder a través de un proxy que asegura que sólo los tres primeros magos pueden entrar. Aquí el proxy representa la funcionalidad de la torre y le añade control de acceso.
+> Imagina una torre donde los magos locales van a estudiar sus hechizos. A la torre de marfil sólo se puede acceder a
+> través de un proxy que asegura que sólo los tres primeros magos pueden entrar. Aquí el proxy representa la funcionalidad
+> de la torre y le añade control de acceso.
 
 En palabras sencillas
 
@@ -27,11 +29,16 @@ En palabras sencillas
 
 Wikipedia dice
 
-> Un proxy, en su forma más general, es una clase que funciona como interfaz de otra cosa. Un proxy es una envoltura o un objeto agente que está siendo llamado por el cliente para acceder al objeto real de servicio detrás de las escenas. El uso del proxy puede ser simplemente el reenvío al objeto real, o puede proporcionar lógica adicional. En el proxy se puede proporcionar funcionalidad adicional, por ejemplo, almacenamiento en caché cuando las operaciones en el objeto real consumen muchos recursos, o comprobación de condiciones previas antes de invocar operaciones en el objeto real.
+> Un proxy, en su forma más general, es una clase que funciona como interfaz de otra cosa. Un proxy es una envoltura o
+> un objeto agente que está siendo llamado por el cliente para acceder al objeto real de servicio detrás de las escenas.
+> El uso del proxy puede ser simplemente el reenvío al objeto real, o puede proporcionar lógica adicional. En el proxy se
+> puede proporcionar funcionalidad adicional, por ejemplo, almacenamiento en caché cuando las operaciones en el objeto
+> real consumen muchos recursos, o comprobación de condiciones previas antes de invocar operaciones en el objeto real.
 
 **Ejemplo programático**
 
-Tomando el ejemplo anterior de nuestra torre de asistentes. En primer lugar tenemos la interfaz `WizardTower` y la clase `IvoryTower`.
+Tomando el ejemplo anterior de nuestra torre de asistentes. En primer lugar tenemos la interfaz `WizardTower` y la clase
+`IvoryTower`.
 
 ```java
 public interface WizardTower {
@@ -122,7 +129,8 @@ Brown wizard is not allowed to enter!
 
 ## Aplicabilidad
 
-El proxy es aplicable siempre que se necesite una referencia a un objeto más versátil o sofisticada que un simple puntero.
+El proxy es aplicable siempre que se necesite una referencia a un objeto más versátil o sofisticada que un simple
+puntero.
 que un simple puntero. He aquí varias situaciones comunes en las que el patrón Proxy es
 aplicable.
 
@@ -147,8 +155,8 @@ Típicamente, el patrón proxy se utiliza para
 
 * [java.lang.reflect.Proxy](http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Proxy.html)
 * [Apache Commons Proxy](https://commons.apache.org/proper/commons-proxy/)
-* Mocking frameworks [Mockito](https://site.mockito.org/), 
-[Powermock](https://powermock.github.io/), [EasyMock](https://easymock.org/)
+* Mocking frameworks [Mockito](https://site.mockito.org/),
+  [Powermock](https://powermock.github.io/), [EasyMock](https://easymock.org/)
 * [UIAppearance](https://developer.apple.com/documentation/uikit/uiappearance)
 
 ## Patrones relacionados

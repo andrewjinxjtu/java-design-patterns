@@ -26,22 +26,23 @@ package com.iluwatar.fanout.fanin;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.List;
 
 class FanOutFanInTest {
 
-  @Test
-  void fanOutFanInTest() {
-    final List<Long> numbers = Arrays.asList(1L, 3L, 4L, 7L, 8L);
+    @Test
+    void fanOutFanInTest() {
+        final List<Long> numbers = Arrays.asList(1L, 3L, 4L, 7L, 8L);
 
-    final List<SquareNumberRequest> requests =
-        numbers.stream().map(SquareNumberRequest::new).toList();
+        final List<SquareNumberRequest> requests =
+                numbers.stream().map(SquareNumberRequest::new).toList();
 
-    final Consumer consumer = new Consumer(0L);
+        final Consumer consumer = new Consumer(0L);
 
-    final Long sumOfSquaredNumbers = FanOutFanIn.fanOutFanIn(requests, consumer);
+        final Long sumOfSquaredNumbers = FanOutFanIn.fanOutFanIn(requests, consumer);
 
-    Assertions.assertEquals(139, sumOfSquaredNumbers);
-  }
+        Assertions.assertEquals(139, sumOfSquaredNumbers);
+    }
 }

@@ -34,11 +34,11 @@ import lombok.Setter;
 @Setter
 public class InvestorRole extends CustomerRole {
 
-  private String name;
+    private String name;
 
-  private long amountToInvest;
+    private long amountToInvest;
 
-  public String invest() {
-    return String.format("Investor %s has invested %d dollars", name, amountToInvest);
-  }
+    public String invest() {
+        return String.format("Investor %s has invested %d dollars", name, amountToInvest);
+    }
 }

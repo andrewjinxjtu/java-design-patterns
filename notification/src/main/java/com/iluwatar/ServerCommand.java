@@ -32,14 +32,14 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public class ServerCommand {
-  protected DataTransferObject data;
+    protected DataTransferObject data;
 
-  /**
-   * Basic getter to extract information from our data.
-   *
-   * @return the notification stored within the data
-   */
-  public Notification getNotification() {
-    return data.getNotification();
-  }
+    /**
+     * Basic getter to extract information from our data.
+     *
+     * @return the notification stored within the data
+     */
+    public Notification getNotification() {
+        return data.getNotification();
+    }
 }

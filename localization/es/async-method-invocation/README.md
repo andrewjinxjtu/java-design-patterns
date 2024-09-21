@@ -8,8 +8,10 @@ tag:
 
 ## Propósito
 
-Asynchronous method invocation (invocación de método asincrónico) es un patrón con el que el hilo o subproceso de llamada
-no se bloquea mientras espera resultados. El patrón proporciona procesamiento en paralelo de múltiples tareas independientes y recupera los resultados a través de
+Asynchronous method invocation (invocación de método asincrónico) es un patrón con el que el hilo o subproceso de
+llamada
+no se bloquea mientras espera resultados. El patrón proporciona procesamiento en paralelo de múltiples tareas
+independientes y recupera los resultados a través de
 devoluciones de llamada (callbacks) o esperando hasta que termine el procedimiento.
 
 ## Explicación
@@ -158,7 +160,8 @@ Utiliza el patrón de invocación del método asíncrono cuando
 
 * Tienes múltiples tareas independientes que pueden ejecutarse en paralelo
 * Necesitas mejorar el desempeño de un grupo de tareas secuenciales
-* Tienes una cantidad limitada de capacidad de procesamiento o tareas de ejecución prolongada y la llamada no debe esperar a que las tareas estén listas
+* Tienes una cantidad limitada de capacidad de procesamiento o tareas de ejecución prolongada y la llamada no debe
+  esperar a que las tareas estén listas
 
 ## Ejemplos cotidianos
 

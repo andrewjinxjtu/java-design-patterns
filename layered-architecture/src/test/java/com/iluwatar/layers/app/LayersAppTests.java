@@ -34,16 +34,16 @@ import org.springframework.context.ApplicationContext;
 @SpringBootTest(classes = LayersApp.class)
 class LayersAppTests {
 
-  private final ApplicationContext applicationContext;
+    private final ApplicationContext applicationContext;
 
-  @Autowired
-  LayersAppTests(ApplicationContext applicationContext) {
-    this.applicationContext = applicationContext;
-  }
+    @Autowired
+    LayersAppTests(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
-  @Test
-  void contextLoads() {
-    assertNotNull(applicationContext);
-  }
+    @Test
+    void contextLoads() {
+        assertNotNull(applicationContext);
+    }
 
 }

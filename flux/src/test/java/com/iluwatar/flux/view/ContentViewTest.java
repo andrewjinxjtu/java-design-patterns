@@ -36,20 +36,19 @@ import org.junit.jupiter.api.Test;
 
 /**
  * ContentViewTest
- *
  */
 class ContentViewTest {
 
-  @Test
-  void testStoreChanged() {
-    final var store = mock(ContentStore.class);
-    when(store.getContent()).thenReturn(Content.PRODUCTS);
+    @Test
+    void testStoreChanged() {
+        final var store = mock(ContentStore.class);
+        when(store.getContent()).thenReturn(Content.PRODUCTS);
 
-    final var view = new ContentView();
-    view.storeChanged(store);
+        final var view = new ContentView();
+        view.storeChanged(store);
 
-    verify(store, times(1)).getContent();
-    verifyNoMoreInteractions(store);
-  }
+        verify(store, times(1)).getContent();
+        verifyNoMoreInteractions(store);
+    }
 
 }

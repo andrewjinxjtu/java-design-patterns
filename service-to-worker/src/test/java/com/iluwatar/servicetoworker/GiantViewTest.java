@@ -36,14 +36,14 @@ import org.junit.jupiter.api.Test;
  */
 class GiantViewTest {
 
-  /**
-   * Test display giant.
-   */
-  @Test
-  void testDispalyGiant() {
-    GiantModel giantModel = new GiantModel("giant1", Health.HEALTHY, Fatigue.ALERT,
-        Nourishment.SATURATED);
-    GiantView giantView = new GiantView();
-    assertDoesNotThrow(() -> giantView.displayGiant(giantModel));
-  }
+    /**
+     * Test display giant.
+     */
+    @Test
+    void testDispalyGiant() {
+        GiantModel giantModel = new GiantModel("giant1", Health.HEALTHY, Fatigue.ALERT,
+                Nourishment.SATURATED);
+        GiantView giantView = new GiantView();
+        assertDoesNotThrow(() -> giantView.displayGiant(giantModel));
+    }
 }

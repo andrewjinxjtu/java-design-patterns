@@ -29,6 +29,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -42,28 +43,28 @@ import lombok.ToString;
 @Getter
 @Entity
 public class Book {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
-  private String title;
-  private double price;
-  @ManyToOne
-  private Author author;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String title;
+    private double price;
+    @ManyToOne
+    private Author author;
 
-  /**
-   * Constructor.
-   *
-   * @param title  title of the book
-   * @param price  price of the book
-   * @param author author of the book
-   */
-  public Book(String title, double price, Author author) {
-    this.title = title;
-    this.price = price;
-    this.author = author;
-  }
+    /**
+     * Constructor.
+     *
+     * @param title  title of the book
+     * @param price  price of the book
+     * @param author author of the book
+     */
+    public Book(String title, double price, Author author) {
+        this.title = title;
+        this.price = price;
+        this.author = author;
+    }
 
-  protected Book() {
-  }
+    protected Book() {
+    }
 
 }

@@ -29,14 +29,14 @@ import org.junit.jupiter.api.Test;
 
 class SquareNumberRequestTest {
 
-  @Test
-  void delayedSquaringTest() {
-    Consumer consumer = new Consumer(10L);
+    @Test
+    void delayedSquaringTest() {
+        Consumer consumer = new Consumer(10L);
 
-    SquareNumberRequest squareNumberRequest = new SquareNumberRequest(5L);
+        SquareNumberRequest squareNumberRequest = new SquareNumberRequest(5L);
 
-    squareNumberRequest.delayedSquaring(consumer);
+        squareNumberRequest.delayedSquaring(consumer);
 
-    Assertions.assertEquals(35, consumer.getSumOfSquaredNumbers().get());
-  }
+        Assertions.assertEquals(35, consumer.getSumOfSquaredNumbers().get());
+    }
 }

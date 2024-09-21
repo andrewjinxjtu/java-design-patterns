@@ -31,27 +31,27 @@ package com.iluwatar.repository;
  */
 public interface JpaRepository<T> {
 
-  /**
-   * Get object by its PK.
-   *
-   * @param id primary key
-   * @return {@link T}
-   */
-  T findById(long id);
+    /**
+     * Get object by its PK.
+     *
+     * @param id primary key
+     * @return {@link T}
+     */
+    T findById(long id);
 
-  /**
-   * Get current object version.
-   *
-   * @param id primary key
-   * @return object's version
-   */
-  int getEntityVersionById(long id);
+    /**
+     * Get current object version.
+     *
+     * @param id primary key
+     * @return object's version
+     */
+    int getEntityVersionById(long id);
 
-  /**
-   * Update object.
-   *
-   * @param obj entity to update
-   * @return number of modified records
-   */
-  int update(T obj);
+    /**
+     * Update object.
+     *
+     * @param obj entity to update
+     * @return number of modified records
+     */
+    int update(T obj);
 }

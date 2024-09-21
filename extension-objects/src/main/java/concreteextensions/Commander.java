@@ -36,9 +36,9 @@ import units.CommanderUnit;
 @Slf4j
 public record Commander(CommanderUnit unit) implements CommanderExtension {
 
-  @Override
-  public void commanderReady() {
-    LOGGER.info("[Commander] " + unit.getName() + " is ready!");
-  }
+    @Override
+    public void commanderReady() {
+        LOGGER.info("[Commander] " + unit.getName() + " is ready!");
+    }
 
 }

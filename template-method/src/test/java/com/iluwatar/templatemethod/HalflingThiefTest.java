@@ -32,49 +32,48 @@ import org.junit.jupiter.api.Test;
 
 /**
  * HalflingThiefTest
- *
  */
 class HalflingThiefTest {
 
-  /**
-   * Verify if the thief uses the provided stealing method
-   */
-  @Test
-  void testSteal() {
-    final var method = spy(StealingMethod.class);
-    final var thief = new HalflingThief(method);
+    /**
+     * Verify if the thief uses the provided stealing method
+     */
+    @Test
+    void testSteal() {
+        final var method = spy(StealingMethod.class);
+        final var thief = new HalflingThief(method);
 
-    thief.steal();
-    verify(method).steal();
-    String target = verify(method).pickTarget();
-    verify(method).confuseTarget(target);
-    verify(method).stealTheItem(target);
+        thief.steal();
+        verify(method).steal();
+        String target = verify(method).pickTarget();
+        verify(method).confuseTarget(target);
+        verify(method).stealTheItem(target);
 
-    verifyNoMoreInteractions(method);
-  }
+        verifyNoMoreInteractions(method);
+    }
 
-  /**
-   * Verify if the thief uses the provided stealing method, and the new method after changing it
-   */
-  @Test
-  void testChangeMethod() {
-    final var initialMethod = spy(StealingMethod.class);
-    final var thief = new HalflingThief(initialMethod);
+    /**
+     * Verify if the thief uses the provided stealing method, and the new method after changing it
+     */
+    @Test
+    void testChangeMethod() {
+        final var initialMethod = spy(StealingMethod.class);
+        final var thief = new HalflingThief(initialMethod);
 
-    thief.steal();
-    verify(initialMethod).steal();
-    String target = verify(initialMethod).pickTarget();
-    verify(initialMethod).confuseTarget(target);
-    verify(initialMethod).stealTheItem(target);
+        thief.steal();
+        verify(initialMethod).steal();
+        String target = verify(initialMethod).pickTarget();
+        verify(initialMethod).confuseTarget(target);
+        verify(initialMethod).stealTheItem(target);
 
-    final var newMethod = spy(StealingMethod.class);
-    thief.changeMethod(newMethod);
+        final var newMethod = spy(StealingMethod.class);
+        thief.changeMethod(newMethod);
 
-    thief.steal();
-    verify(newMethod).steal();
-    String newTarget = verify(newMethod).pickTarget();
-    verify(newMethod).confuseTarget(newTarget);
-    verify(newMethod).stealTheItem(newTarget);
-    verifyNoMoreInteractions(initialMethod, newMethod);
-  }
+        thief.steal();
+        verify(newMethod).steal();
+        String newTarget = verify(newMethod).pickTarget();
+        verify(newMethod).confuseTarget(newTarget);
+        verify(newMethod).stealTheItem(newTarget);
+        verifyNoMoreInteractions(initialMethod, newMethod);
+    }
 }

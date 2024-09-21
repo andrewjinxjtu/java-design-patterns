@@ -6,21 +6,24 @@ tag:
  - Performance
 ---
 
-
 ## Intention
 
-Le patron de conception des "active object" actifs dissocie l'exécution et l'invocation des méthodes pour les objets qui résident chacun dans leur fil de contrôle. L'objectif est d'introduire la concurrence en utilisant l'invocation asynchrone des méthodes et un planificateur pour traiter les demandes.
+Le patron de conception des "active object" actifs dissocie l'exécution et l'invocation des méthodes pour les objets qui
+résident chacun dans leur fil de contrôle. L'objectif est d'introduire la concurrence en utilisant l'invocation
+asynchrone des méthodes et un planificateur pour traiter les demandes.
 
 ## Explication
 
-La classe qui met en œuvre le patron "active object", contiendra un mécanisme d'auto-synchronisation sans utiliser de méthodes "synchronisées".
+La classe qui met en œuvre le patron "active object", contiendra un mécanisme d'auto-synchronisation sans utiliser de
+méthodes "synchronisées".
 
 **Exemple concret**
 
-> Les orques sont connus pour leur caractère sauvage et leur âme indomptable. Il semble qu'ils aient leur propre système de contrôle basé sur leur comportement antérieur.
+> Les orques sont connus pour leur caractère sauvage et leur âme indomptable. Il semble qu'ils aient leur propre système
+> de contrôle basé sur leur comportement antérieur.
 
-Pour mettre en œuvre une créature qui possède son propre mécanisme de contrôle et qui n'expose que son API et non l'exécution elle-même, nous pouvons utiliser le patron "active-object".
-
+Pour mettre en œuvre une créature qui possède son propre mécanisme de contrôle et qui n'expose que son API et non l'
+exécution elle-même, nous pouvons utiliser le patron "active-object".
 
 **Exemple de programme**
 
@@ -80,7 +83,8 @@ public abstract class ActiveCreature{
 }
 ```
 
-Nous pouvons constater que toute classe qui hérite de la classe ActiveCreature aura son propre fil de contrôle pour invoquer et exécuter les méthodes.
+Nous pouvons constater que toute classe qui hérite de la classe ActiveCreature aura son propre fil de contrôle pour
+invoquer et exécuter les méthodes.
 
 Par exemple, la classe Orc :
 
@@ -94,7 +98,8 @@ public class Orc extends ActiveCreature {
 }
 ```
 
-Désormais, nous pouvons créer plusieurs créatures telles que des orques, leur dire de manger et d'errer, et elles s'exécuteront selon leur propre fil(mechanisme) de contrôle :
+Désormais, nous pouvons créer plusieurs créatures telles que des orques, leur dire de manger et d'errer, et elles
+s'exécuteront selon leur propre fil(mechanisme) de contrôle :
 
 ```java
   public static void main(String[] args) {  

@@ -29,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,74 +46,74 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest(properties = {"locations=classpath:applicationContext.xml"})
 class RepositoryTest {
 
-  @Resource
-  private PersonRepository repository;
+    @Resource
+    private PersonRepository repository;
 
-  private final Person peter = new Person("Peter", "Sagan", 17);
-  private final Person nasta = new Person("Nasta", "Kuzminova", 25);
-  private final Person john = new Person("John", "lawrence", 35);
-  private final Person terry = new Person("Terry", "Law", 36);
+    private final Person peter = new Person("Peter", "Sagan", 17);
+    private final Person nasta = new Person("Nasta", "Kuzminova", 25);
+    private final Person john = new Person("John", "lawrence", 35);
+    private final Person terry = new Person("Terry", "Law", 36);
 
-  private final List<Person> persons = List.of(peter, nasta, john, terry);
+    private final List<Person> persons = List.of(peter, nasta, john, terry);
 
-  /**
-   * Prepare data for test
-   */
-  @BeforeEach
-  void setup() {
-    repository.saveAll(persons);
-  }
+    /**
+     * Prepare data for test
+     */
+    @BeforeEach
+    void setup() {
+        repository.saveAll(persons);
+    }
 
-  @Test
-  void testFindAll() {
-    var actuals = repository.findAll();
-    assertTrue(actuals.containsAll(persons) && persons.containsAll(actuals));
-  }
+    @Test
+    void testFindAll() {
+        var actuals = repository.findAll();
+        assertTrue(actuals.containsAll(persons) && persons.containsAll(actuals));
+    }
 
-  @Test
-  void testSave() {
-    var terry = repository.findByName("Terry");
-    terry.setSurname("Lee");
-    terry.setAge(47);
-    repository.save(terry);
+    @Test
+    void testSave() {
+        var terry = repository.findByName("Terry");
+        terry.setSurname("Lee");
+        terry.setAge(47);
+        repository.save(terry);
 
-    terry = repository.findByName("Terry");
-    assertEquals(terry.getSurname(), "Lee");
-    assertEquals(47, terry.getAge());
-  }
+        terry = repository.findByName("Terry");
+        assertEquals(terry.getSurname(), "Lee");
+        assertEquals(47, terry.getAge());
+    }
 
-  @Test
-  void testDelete() {
-    var terry = repository.findByName("Terry");
-    repository.delete(terry);
+    @Test
+    void testDelete() {
+        var terry = repository.findByName("Terry");
+        repository.delete(terry);
 
-    assertEquals(3, repository.count());
-    assertNull(repository.findByName("Terry"));
-  }
+        assertEquals(3, repository.count());
+        assertNull(repository.findByName("Terry"));
+    }
 
-  @Test
-  void testCount() {
-    assertEquals(4, repository.count());
-  }
+    @Test
+    void testCount() {
+        assertEquals(4, repository.count());
+    }
 
-  @Test
-  void testFindAllByAgeBetweenSpec() {
-    var persons = repository.findAll(new PersonSpecifications.AgeBetweenSpec(20, 40));
+    @Test
+    void testFindAllByAgeBetweenSpec() {
+        var persons = repository.findAll(new PersonSpecifications.AgeBetweenSpec(20, 40));
 
-    assertEquals(3, persons.size());
-    assertTrue(persons.stream().allMatch(item -> item.getAge() > 20 && item.getAge() < 40));
-  }
+        assertEquals(3, persons.size());
+        assertTrue(persons.stream().allMatch(item -> item.getAge() > 20 && item.getAge() < 40));
+    }
 
-  @Test
-  void testFindOneByNameEqualSpec() {
-    var actual = repository.findOne(new PersonSpecifications.NameEqualSpec("Terry"));
-    assertTrue(actual.isPresent());
-    assertEquals(terry, actual.get());
-  }
+    @Test
+    void testFindOneByNameEqualSpec() {
+        var actual = repository.findOne(new PersonSpecifications.NameEqualSpec("Terry"));
+        assertTrue(actual.isPresent());
+        assertEquals(terry, actual.get());
+    }
 
-  @AfterEach
-  void cleanup() {
-    repository.deleteAll();
-  }
+    @AfterEach
+    void cleanup() {
+        repository.deleteAll();
+    }
 
 }

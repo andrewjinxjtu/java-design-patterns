@@ -32,40 +32,39 @@ import org.junit.jupiter.api.Test;
 
 /**
  * QueenTest
- *
  */
 class QueenTest {
 
-  @Test
-  void testNotFlirtyUncomplemented() {
-    final var queen = new Queen();
-    queen.setFlirtiness(false);
-    queen.changeMood();
-    assertFalse(queen.getMood());
-  }
+    @Test
+    void testNotFlirtyUncomplemented() {
+        final var queen = new Queen();
+        queen.setFlirtiness(false);
+        queen.changeMood();
+        assertFalse(queen.getMood());
+    }
 
-  @Test
-  void testNotFlirtyComplemented() {
-    final var queen = new Queen();
-    queen.setFlirtiness(false);
-    queen.receiveCompliments();
-    queen.changeMood();
-    assertFalse(queen.getMood());
-  }
+    @Test
+    void testNotFlirtyComplemented() {
+        final var queen = new Queen();
+        queen.setFlirtiness(false);
+        queen.receiveCompliments();
+        queen.changeMood();
+        assertFalse(queen.getMood());
+    }
 
-  @Test
-  void testFlirtyUncomplemented() {
-    final var queen = new Queen();
-    queen.changeMood();
-    assertFalse(queen.getMood());
-  }
+    @Test
+    void testFlirtyUncomplemented() {
+        final var queen = new Queen();
+        queen.changeMood();
+        assertFalse(queen.getMood());
+    }
 
-  @Test
-  void testFlirtyComplemented() {
-    final var queen = new Queen();
-    queen.receiveCompliments();
-    queen.changeMood();
-    assertTrue(queen.getMood());
-  }
+    @Test
+    void testFlirtyComplemented() {
+        final var queen = new Queen();
+        queen.receiveCompliments();
+        queen.changeMood();
+        assertTrue(queen.getMood());
+    }
 
 }

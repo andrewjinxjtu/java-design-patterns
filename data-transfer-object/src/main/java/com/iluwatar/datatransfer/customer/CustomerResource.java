@@ -25,6 +25,7 @@
 package com.iluwatar.datatransfer.customer;
 
 import java.util.List;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -33,21 +34,21 @@ import lombok.RequiredArgsConstructor;
  * has all customer details.
  */
 public record CustomerResource(List<CustomerDto> customers) {
-  /**
-   * Save new customer.
-   *
-   * @param customer save new customer to list.
-   */
-  public void save(CustomerDto customer) {
-    customers.add(customer);
-  }
+    /**
+     * Save new customer.
+     *
+     * @param customer save new customer to list.
+     */
+    public void save(CustomerDto customer) {
+        customers.add(customer);
+    }
 
-  /**
-   * Delete customer with given id.
-   *
-   * @param customerId delete customer with id {@code customerId}
-   */
-  public void delete(String customerId) {
-    customers.removeIf(customer -> customer.id().equals(customerId));
-  }
+    /**
+     * Delete customer with given id.
+     *
+     * @param customerId delete customer with id {@code customerId}
+     */
+    public void delete(String customerId) {
+        customers.removeIf(customer -> customer.id().equals(customerId));
+    }
 }

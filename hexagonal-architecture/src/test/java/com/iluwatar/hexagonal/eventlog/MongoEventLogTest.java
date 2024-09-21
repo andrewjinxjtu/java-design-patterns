@@ -39,48 +39,48 @@ import org.junit.jupiter.api.Test;
 @Disabled
 class MongoEventLogTest {
 
-  private static final String TEST_DB = "lotteryDBTest";
-  private static final String TEST_EVENTS_COLLECTION = "testEvents";
+    private static final String TEST_DB = "lotteryDBTest";
+    private static final String TEST_EVENTS_COLLECTION = "testEvents";
 
-  private MongoEventLog mongoEventLog;
+    private MongoEventLog mongoEventLog;
 
-  @BeforeEach
-  void init() {
-    MongoConnectionPropertiesLoader.load();
-    var mongoClient = new MongoClient(System.getProperty("mongo-host"),
-        Integer.parseInt(System.getProperty("mongo-port")));
-    mongoClient.dropDatabase(TEST_DB);
-    mongoClient.close();
-    mongoEventLog = new MongoEventLog(TEST_DB, TEST_EVENTS_COLLECTION);
-  }
+    @BeforeEach
+    void init() {
+        MongoConnectionPropertiesLoader.load();
+        var mongoClient = new MongoClient(System.getProperty("mongo-host"),
+                Integer.parseInt(System.getProperty("mongo-port")));
+        mongoClient.dropDatabase(TEST_DB);
+        mongoClient.close();
+        mongoEventLog = new MongoEventLog(TEST_DB, TEST_EVENTS_COLLECTION);
+    }
 
-  @Test
-  void testSetup() {
-    assertEquals(0, mongoEventLog.getEventsCollection().countDocuments());
-  }
+    @Test
+    void testSetup() {
+        assertEquals(0, mongoEventLog.getEventsCollection().countDocuments());
+    }
 
-  @Test
-  void testFundTransfers() {
-    var playerDetails = new PlayerDetails("john@wayne.com", "000-000", "03432534543");
-    mongoEventLog.prizeError(playerDetails, 1000);
-    assertEquals(1, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.prizeError(playerDetails, 1000);
-    assertEquals(2, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.ticketDidNotWin(playerDetails);
-    assertEquals(3, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.ticketDidNotWin(playerDetails);
-    assertEquals(4, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.ticketSubmitError(playerDetails);
-    assertEquals(5, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.ticketSubmitError(playerDetails);
-    assertEquals(6, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.ticketSubmitted(playerDetails);
-    assertEquals(7, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.ticketSubmitted(playerDetails);
-    assertEquals(8, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.ticketWon(playerDetails, 1000);
-    assertEquals(9, mongoEventLog.getEventsCollection().countDocuments());
-    mongoEventLog.ticketWon(playerDetails, 1000);
-    assertEquals(10, mongoEventLog.getEventsCollection().countDocuments());
-  }
+    @Test
+    void testFundTransfers() {
+        var playerDetails = new PlayerDetails("john@wayne.com", "000-000", "03432534543");
+        mongoEventLog.prizeError(playerDetails, 1000);
+        assertEquals(1, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.prizeError(playerDetails, 1000);
+        assertEquals(2, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.ticketDidNotWin(playerDetails);
+        assertEquals(3, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.ticketDidNotWin(playerDetails);
+        assertEquals(4, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.ticketSubmitError(playerDetails);
+        assertEquals(5, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.ticketSubmitError(playerDetails);
+        assertEquals(6, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.ticketSubmitted(playerDetails);
+        assertEquals(7, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.ticketSubmitted(playerDetails);
+        assertEquals(8, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.ticketWon(playerDetails, 1000);
+        assertEquals(9, mongoEventLog.getEventsCollection().countDocuments());
+        mongoEventLog.ticketWon(playerDetails, 1000);
+        assertEquals(10, mongoEventLog.getEventsCollection().countDocuments());
+    }
 }

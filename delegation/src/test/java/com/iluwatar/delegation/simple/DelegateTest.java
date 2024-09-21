@@ -32,8 +32,10 @@ import ch.qos.logback.core.AppenderBase;
 import com.iluwatar.delegation.simple.printers.CanonPrinter;
 import com.iluwatar.delegation.simple.printers.EpsonPrinter;
 import com.iluwatar.delegation.simple.printers.HpPrinter;
+
 import java.util.LinkedList;
 import java.util.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,68 +46,68 @@ import org.slf4j.LoggerFactory;
  */
 class DelegateTest {
 
-  private InMemoryAppender appender;
+    private InMemoryAppender appender;
 
-  @BeforeEach
-  void setUp() {
-    appender = new InMemoryAppender();
-  }
-
-  @AfterEach
-  void tearDown() {
-    appender.stop();
-  }
-
-  private static final String MESSAGE = "Test Message Printed";
-
-  @Test
-  void testCanonPrinter() {
-    var printerController = new PrinterController(new CanonPrinter());
-    printerController.print(MESSAGE);
-
-    assertEquals("Canon Printer : Test Message Printed", appender.getLastMessage());
-  }
-
-  @Test
-  void testHpPrinter() {
-    var printerController = new PrinterController(new HpPrinter());
-    printerController.print(MESSAGE);
-
-    assertEquals("HP Printer : Test Message Printed", appender.getLastMessage());
-  }
-
-  @Test
-  void testEpsonPrinter() {
-    var printerController = new PrinterController(new EpsonPrinter());
-    printerController.print(MESSAGE);
-
-    assertEquals("Epson Printer : Test Message Printed", appender.getLastMessage());
-  }
-
-  /**
-   * Logging Appender
-   */
-  private static class InMemoryAppender extends AppenderBase<ILoggingEvent> {
-
-    private final List<ILoggingEvent> log = new LinkedList<>();
-
-    public InMemoryAppender() {
-      ((Logger) LoggerFactory.getLogger("root")).addAppender(this);
-      start();
+    @BeforeEach
+    void setUp() {
+        appender = new InMemoryAppender();
     }
 
-    @Override
-    protected void append(ILoggingEvent eventObject) {
-      log.add(eventObject);
+    @AfterEach
+    void tearDown() {
+        appender.stop();
     }
 
-    public String getLastMessage() {
-      return log.get(log.size() - 1).getFormattedMessage();
+    private static final String MESSAGE = "Test Message Printed";
+
+    @Test
+    void testCanonPrinter() {
+        var printerController = new PrinterController(new CanonPrinter());
+        printerController.print(MESSAGE);
+
+        assertEquals("Canon Printer : Test Message Printed", appender.getLastMessage());
     }
 
-    public int getLogSize() {
-      return log.size();
+    @Test
+    void testHpPrinter() {
+        var printerController = new PrinterController(new HpPrinter());
+        printerController.print(MESSAGE);
+
+        assertEquals("HP Printer : Test Message Printed", appender.getLastMessage());
     }
-  }
+
+    @Test
+    void testEpsonPrinter() {
+        var printerController = new PrinterController(new EpsonPrinter());
+        printerController.print(MESSAGE);
+
+        assertEquals("Epson Printer : Test Message Printed", appender.getLastMessage());
+    }
+
+    /**
+     * Logging Appender
+     */
+    private static class InMemoryAppender extends AppenderBase<ILoggingEvent> {
+
+        private final List<ILoggingEvent> log = new LinkedList<>();
+
+        public InMemoryAppender() {
+            ((Logger) LoggerFactory.getLogger("root")).addAppender(this);
+            start();
+        }
+
+        @Override
+        protected void append(ILoggingEvent eventObject) {
+            log.add(eventObject);
+        }
+
+        public String getLastMessage() {
+            return log.get(log.size() - 1).getFormattedMessage();
+        }
+
+        public int getLogSize() {
+            return log.size();
+        }
+    }
 
 }

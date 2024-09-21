@@ -27,6 +27,7 @@ package com.iluwatar.page.controller;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -34,24 +35,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class SignupControllerTest {
 
-  /**
-   * Verify if user can sign up and redirect to user page
-   */
-  @Test
-  void testSignup() {
-    var controller = new SignupController();
-    controller.getSignup();
+    /**
+     * Verify if user can sign up and redirect to user page
+     */
+    @Test
+    void testSignup() {
+        var controller = new SignupController();
+        controller.getSignup();
 
-    RedirectAttributes redirectAttributes = new RedirectAttributesModelMap();
-    String redirectPath = controller.create(retrieveSignupData(), redirectAttributes);
-    assertEquals("redirect:/user", redirectPath);
-  }
+        RedirectAttributes redirectAttributes = new RedirectAttributesModelMap();
+        String redirectPath = controller.create(retrieveSignupData(), redirectAttributes);
+        assertEquals("redirect:/user", redirectPath);
+    }
 
-  public static SignupModel retrieveSignupData() {
-    SignupModel model = new SignupModel();
-    model.setName("Lily");
-    model.setEmail("lily@email.com");
-    model.setPassword("password1234");
-    return model;
-  }
+    public static SignupModel retrieveSignupData() {
+        SignupModel model = new SignupModel();
+        model.setName("Lily");
+        model.setEmail("lily@email.com");
+        model.setPassword("password1234");
+        return model;
+    }
 }

@@ -8,18 +8,23 @@ tag:
 
 ## Mục tiêu
 
-Mẫu Đối Tượng Chủ Động (tiếng Anh: Active Object) chia tách việc thực thi hàm khỏi lời gọi hàm cho các đối tượng mà mỗi đối tượng nằm trong luồng điều khiển của chúng.
-Mục tiêu là tận dụng khả năng xử lý đồng thời, bằng cách sử dụng phương thức bất đồng bộ và bộ lập lịch để xử lý các yêu cầu.
+Mẫu Đối Tượng Chủ Động (tiếng Anh: Active Object) chia tách việc thực thi hàm khỏi lời gọi hàm cho các đối tượng mà mỗi
+đối tượng nằm trong luồng điều khiển của chúng.
+Mục tiêu là tận dụng khả năng xử lý đồng thời, bằng cách sử dụng phương thức bất đồng bộ và bộ lập lịch để xử lý các yêu
+cầu.
 
 ## Giải thích
 
-Lớp hiện thực mẫu Đối Tượng Chủ Động sẽ bao gồm cơ chế tự đồng bộ (self-synchronization) nhưng không sử dụng đến phương thức/từ khóa 'synchronized'.
+Lớp hiện thực mẫu Đối Tượng Chủ Động sẽ bao gồm cơ chế tự đồng bộ (self-synchronization) nhưng không sử dụng đến phương
+thức/từ khóa 'synchronized'.
 
 Ví dụ thực tế
 
-> Tộc Orcs được biết đến với tính cách hoang dã và không thuần hóa được. Có thể coi như họ có một luồng điều khiển riêng do họ quyết định việc thực thi mà ta không can thiệp được.
+> Tộc Orcs được biết đến với tính cách hoang dã và không thuần hóa được. Có thể coi như họ có một luồng điều khiển riêng
+> do họ quyết định việc thực thi mà ta không can thiệp được.
 
-Để hiện thực hóa một sinh vật mà nó sở hữu riêng cơ chế điều khiển luồng và chỉ để lộ ra giao diện lập trình (API), chúng ta có thể sử dụng mẫu Đối Tượng Chủ Động.
+Để hiện thực hóa một sinh vật mà nó sở hữu riêng cơ chế điều khiển luồng và chỉ để lộ ra giao diện lập trình (API),
+chúng ta có thể sử dụng mẫu Đối Tượng Chủ Động.
 
 **Chương trình ví dụ**
 
@@ -93,7 +98,8 @@ public class Orc extends ActiveCreature {
 }
 ```
 
-Bây giờ, chúng ta có thể khởi tạo các sinh vật như Orcs, bảo chúng ăn (gọi hàm `eat()`) và tản bộ (gọi hàm `roam()`), và chúng sẽ thực thi trên luồng điều khiển của riêng chúng:
+Bây giờ, chúng ta có thể khởi tạo các sinh vật như Orcs, bảo chúng ăn (gọi hàm `eat()`) và tản bộ (gọi hàm `roam()`), và
+chúng sẽ thực thi trên luồng điều khiển của riêng chúng:
 
 ```java
   public static void main(String[] args) {  

@@ -34,13 +34,13 @@ import org.junit.jupiter.api.Test;
  */
 class HammerTest extends WeaponTest {
 
-  /**
-   * Invoke all possible actions on the weapon and check if the actions are executed on the actual
-   * underlying weapon implementation.
-   */
-  @Test
-  void testHammer() {
-    final var hammer = spy(new Hammer(mock(FlyingEnchantment.class)));
-    testBasicWeaponActions(hammer);
-  }
+    /**
+     * Invoke all possible actions on the weapon and check if the actions are executed on the actual
+     * underlying weapon implementation.
+     */
+    @Test
+    void testHammer() {
+        final var hammer = spy(new Hammer(mock(FlyingEnchantment.class)));
+        testBasicWeaponActions(hammer);
+    }
 }

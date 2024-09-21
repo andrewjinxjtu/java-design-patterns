@@ -23,9 +23,14 @@ To decouple the creation of object dependencies from their usage, allowing for m
 
 Real-world example
 
-> Imagine a high-end restaurant where the chef needs various ingredients to prepare dishes. Instead of the chef personally going to different suppliers for each ingredient, a trusted supplier delivers all the required fresh ingredients daily. This allows the chef to focus on cooking without worrying about sourcing the ingredients.
+> Imagine a high-end restaurant where the chef needs various ingredients to prepare dishes. Instead of the chef
+> personally going to different suppliers for each ingredient, a trusted supplier delivers all the required fresh
+> ingredients daily. This allows the chef to focus on cooking without worrying about sourcing the ingredients.
 >
-> In the Dependency Injection design pattern, the trusted supplier acts as the "injector," providing the necessary dependencies (ingredients) to the chef (object). The chef can then use these dependencies without knowing where they came from, ensuring a clean separation between the creation and use of dependencies. This setup enhances efficiency, flexibility, and maintainability in the kitchen, much like in a software system.
+> In the Dependency Injection design pattern, the trusted supplier acts as the "injector," providing the necessary
+> dependencies (ingredients) to the chef (object). The chef can then use these dependencies without knowing where they
+> came from, ensuring a clean separation between the creation and use of dependencies. This setup enhances efficiency,
+> flexibility, and maintainability in the kitchen, much like in a software system.
 
 In plain words
 
@@ -33,11 +38,13 @@ In plain words
 
 Wikipedia says
 
-> In software engineering, dependency injection is a technique in which an object receives other objects that it depends on. These other objects are called dependencies.
+> In software engineering, dependency injection is a technique in which an object receives other objects that it depends
+> on. These other objects are called dependencies.
 
 ## Programmatic Example of Dependency Injection Pattern in Java
 
-The old wizard likes to fill his pipe and smoke tobacco once in a while. However, he doesn't want to depend on a single tobacco brand only but likes to be able to enjoy them all interchangeably.
+The old wizard likes to fill his pipe and smoke tobacco once in a while. However, he doesn't want to depend on a single
+tobacco brand only but likes to be able to enjoy them all interchangeably.
 
 Let's first introduce the `Tobacco` interface and the concrete brands.
 
@@ -123,11 +130,13 @@ The program output:
 * When aiming to reduce the coupling between classes and increase the modularity of the application.
 * In scenarios where the object creation process is complex or should be separated from the class usage.
 * In applications requiring easier unit testing by allowing dependencies to be mocked or stubbed.
-* Within frameworks or libraries that manage object lifecycles and dependencies, such as Spring or Jakarta EE (formerly Java EE).
+* Within frameworks or libraries that manage object lifecycles and dependencies, such as Spring or Jakarta EE (formerly
+  Java EE).
 
 ## Real-World Applications of Dependency Injection Pattern in Java
 
-* Frameworks like Spring, Jakarta EE, and Google Guice use Dependency Injection (DI) extensively to manage component lifecycles and dependencies.
+* Frameworks like Spring, Jakarta EE, and Google Guice use Dependency Injection (DI) extensively to manage component
+  lifecycles and dependencies.
 * Desktop and web applications that require flexible architecture with easily interchangeable components.
 
 ## Benefits and Trade-offs of Dependency Injection Pattern
@@ -146,9 +155,13 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/) and [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Used to create instances that the DI mechanism will inject.
-* [Service Locator](https://java-design-patterns.com/patterns/service-locator/): An alternative to DI for locating services or components, though it does not decouple the lookup process as effectively as DI.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Often used in conjunction with DI to provide a single instance of a service across the application.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/)
+  and [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Used to create instances that the
+  DI mechanism will inject.
+* [Service Locator](https://java-design-patterns.com/patterns/service-locator/): An alternative to DI for locating
+  services or components, though it does not decouple the lookup process as effectively as DI.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Often used in conjunction with DI to provide a
+  single instance of a service across the application.
 
 ## References and Credits
 

@@ -30,8 +30,8 @@ import org.junit.jupiter.api.Test;
 
 class ApplicationRoleObjectTest {
 
-  @Test
-  void shouldExecuteApplicationWithoutException() {
-    assertDoesNotThrow(() -> ApplicationRoleObject.main(new String[]{}));
-  }
+    @Test
+    void shouldExecuteApplicationWithoutException() {
+        assertDoesNotThrow(() -> ApplicationRoleObject.main(new String[]{}));
+    }
 }

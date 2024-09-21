@@ -29,7 +29,7 @@ package com.iluwatar.circuitbreaker;
  */
 public class RemoteServiceException extends Exception {
 
-  public RemoteServiceException(String message) {
-    super(message);
-  }
+    public RemoteServiceException(String message) {
+        super(message);
+    }
 }

@@ -32,94 +32,93 @@ import org.junit.jupiter.api.Test;
 
 /**
  * GiantControllerTest
- *
  */
 class GiantControllerTest {
 
-  /**
-   * Verify if the controller passes the health level through to the model and vice versa
-   */
-  @Test
-  void testSetHealth() {
-    final var model = mock(GiantModel.class);
-    final var view = mock(GiantView.class);
-    final var controller = new GiantController(model, view);
+    /**
+     * Verify if the controller passes the health level through to the model and vice versa
+     */
+    @Test
+    void testSetHealth() {
+        final var model = mock(GiantModel.class);
+        final var view = mock(GiantView.class);
+        final var controller = new GiantController(model, view);
 
-    verifyNoMoreInteractions(model, view);
+        verifyNoMoreInteractions(model, view);
 
-    for (final var health : Health.values()) {
-      controller.setHealth(health);
-      verify(model).setHealth(health);
-      verifyNoMoreInteractions(view);
+        for (final var health : Health.values()) {
+            controller.setHealth(health);
+            verify(model).setHealth(health);
+            verifyNoMoreInteractions(view);
+        }
+
+        controller.getHealth();
+        //noinspection ResultOfMethodCallIgnored
+        verify(model).getHealth();
+
+        verifyNoMoreInteractions(model, view);
     }
 
-    controller.getHealth();
-    //noinspection ResultOfMethodCallIgnored
-    verify(model).getHealth();
+    /**
+     * Verify if the controller passes the fatigue level through to the model and vice versa
+     */
+    @Test
+    void testSetFatigue() {
+        final var model = mock(GiantModel.class);
+        final var view = mock(GiantView.class);
+        final var controller = new GiantController(model, view);
 
-    verifyNoMoreInteractions(model, view);
-  }
+        verifyNoMoreInteractions(model, view);
 
-  /**
-   * Verify if the controller passes the fatigue level through to the model and vice versa
-   */
-  @Test
-  void testSetFatigue() {
-    final var model = mock(GiantModel.class);
-    final var view = mock(GiantView.class);
-    final var controller = new GiantController(model, view);
+        for (final var fatigue : Fatigue.values()) {
+            controller.setFatigue(fatigue);
+            verify(model).setFatigue(fatigue);
+            verifyNoMoreInteractions(view);
+        }
 
-    verifyNoMoreInteractions(model, view);
+        controller.getFatigue();
+        //noinspection ResultOfMethodCallIgnored
+        verify(model).getFatigue();
 
-    for (final var fatigue : Fatigue.values()) {
-      controller.setFatigue(fatigue);
-      verify(model).setFatigue(fatigue);
-      verifyNoMoreInteractions(view);
+        verifyNoMoreInteractions(model, view);
     }
 
-    controller.getFatigue();
-    //noinspection ResultOfMethodCallIgnored
-    verify(model).getFatigue();
+    /**
+     * Verify if the controller passes the nourishment level through to the model and vice versa
+     */
+    @Test
+    void testSetNourishment() {
+        final var model = mock(GiantModel.class);
+        final var view = mock(GiantView.class);
+        final var controller = new GiantController(model, view);
 
-    verifyNoMoreInteractions(model, view);
-  }
+        verifyNoMoreInteractions(model, view);
 
-  /**
-   * Verify if the controller passes the nourishment level through to the model and vice versa
-   */
-  @Test
-  void testSetNourishment() {
-    final var model = mock(GiantModel.class);
-    final var view = mock(GiantView.class);
-    final var controller = new GiantController(model, view);
+        for (final var nourishment : Nourishment.values()) {
+            controller.setNourishment(nourishment);
+            verify(model).setNourishment(nourishment);
+            verifyNoMoreInteractions(view);
+        }
 
-    verifyNoMoreInteractions(model, view);
+        controller.getNourishment();
+        //noinspection ResultOfMethodCallIgnored
+        verify(model).getNourishment();
 
-    for (final var nourishment : Nourishment.values()) {
-      controller.setNourishment(nourishment);
-      verify(model).setNourishment(nourishment);
-      verifyNoMoreInteractions(view);
+        verifyNoMoreInteractions(model, view);
     }
 
-    controller.getNourishment();
-    //noinspection ResultOfMethodCallIgnored
-    verify(model).getNourishment();
+    @Test
+    void testUpdateView() {
+        final var model = mock(GiantModel.class);
+        final var view = mock(GiantView.class);
+        final var controller = new GiantController(model, view);
 
-    verifyNoMoreInteractions(model, view);
-  }
+        verifyNoMoreInteractions(model, view);
 
-  @Test
-  void testUpdateView() {
-    final var model = mock(GiantModel.class);
-    final var view = mock(GiantView.class);
-    final var controller = new GiantController(model, view);
+        controller.updateView();
+        verify(view).displayGiant(model);
 
-    verifyNoMoreInteractions(model, view);
-
-    controller.updateView();
-    verify(view).displayGiant(model);
-
-    verifyNoMoreInteractions(model, view);
-  }
+        verifyNoMoreInteractions(model, view);
+    }
 
 }

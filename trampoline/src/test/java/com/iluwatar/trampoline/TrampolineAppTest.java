@@ -33,10 +33,10 @@ import org.junit.jupiter.api.Test;
  */
 class TrampolineAppTest {
 
-  @Test
-  void testTrampolineWithFactorialFunction() {
-    long result = TrampolineApp.loop(10, 1).result();
-    assertEquals(3_628_800, result);
-  }
+    @Test
+    void testTrampolineWithFactorialFunction() {
+        long result = TrampolineApp.loop(10, 1).result();
+        assertEquals(3_628_800, result);
+    }
 
 }

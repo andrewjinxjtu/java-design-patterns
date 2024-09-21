@@ -34,27 +34,26 @@ import org.junit.jupiter.api.Test;
 
 /**
  * SimpleMessageTest
- *
  */
 class SimpleMessageTest {
 
-  @Test
-  void testGetHeaders() {
-    final var message = new SimpleMessage();
-    assertNotNull(message.getHeaders());
-    assertTrue(message.getHeaders().isEmpty());
+    @Test
+    void testGetHeaders() {
+        final var message = new SimpleMessage();
+        assertNotNull(message.getHeaders());
+        assertTrue(message.getHeaders().isEmpty());
 
-    final var senderName = "test";
-    message.addHeader(Message.Headers.SENDER, senderName);
-    assertNotNull(message.getHeaders());
-    assertFalse(message.getHeaders().isEmpty());
-    assertEquals(senderName, message.getHeaders().get(Message.Headers.SENDER));
-  }
+        final var senderName = "test";
+        message.addHeader(Message.Headers.SENDER, senderName);
+        assertNotNull(message.getHeaders());
+        assertFalse(message.getHeaders().isEmpty());
+        assertEquals(senderName, message.getHeaders().get(Message.Headers.SENDER));
+    }
 
-  @Test
-  void testUnModifiableHeaders() {
-    final var message = new SimpleMessage();
-    final var headers = message.getHeaders();
-    assertThrows(UnsupportedOperationException.class, () -> headers.put(Message.Headers.SENDER, "test"));
-  }
+    @Test
+    void testUnModifiableHeaders() {
+        final var message = new SimpleMessage();
+        final var headers = message.getHeaders();
+        assertThrows(UnsupportedOperationException.class, () -> headers.put(Message.Headers.SENDER, "test"));
+    }
 }

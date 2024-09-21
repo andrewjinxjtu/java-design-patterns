@@ -19,31 +19,45 @@ tag:
 
 ## Intent of Special Case Design Pattern
 
-The Special Case design pattern in Java offers a robust framework for addressing unique or exceptional conditions in software development without complicating the main codebase.
+The Special Case design pattern in Java offers a robust framework for addressing unique or exceptional conditions in
+software development without complicating the main codebase.
 
 ## Detailed Explanation of Special Case Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a toll booth system on a highway. Normally, vehicles pass through the booth, and the system charges a toll based on the vehicle type. However, there are special cases: emergency vehicles like ambulances and fire trucks, which should not be charged.
+> Consider a toll booth system on a highway. Normally, vehicles pass through the booth, and the system charges a toll
+> based on the vehicle type. However, there are special cases: emergency vehicles like ambulances and fire trucks, which
+> should not be charged.
 >
-> For instance, in a toll management system, the Special Case pattern facilitates separate handling for emergency vehicles, ensuring a streamlined toll process without additional checks. The emergency vehicle class would override the toll calculation method to ensure no charge is applied, encapsulating this special behavior without cluttering the main toll calculation logic with conditional checks. This keeps the codebase clean and ensures the special case is handled consistently.
+> For instance, in a toll management system, the Special Case pattern facilitates separate handling for emergency
+> vehicles, ensuring a streamlined toll process without additional checks. The emergency vehicle class would override the
+> toll calculation method to ensure no charge is applied, encapsulating this special behavior without cluttering the main
+> toll calculation logic with conditional checks. This keeps the codebase clean and ensures the special case is handled
+> consistently.
 
 In plain words
 
-> The Special Case design pattern encapsulates and isolates exceptional conditions and specific scenarios to simplify the main code logic and enhance maintainability.
+> The Special Case design pattern encapsulates and isolates exceptional conditions and specific scenarios to simplify
+> the main code logic and enhance maintainability.
 
 In [Patterns of Enterprise Application Architecture](https://amzn.to/3WfKBPR) Martin Fowler says:
 
-> If you’ll pardon the unresistable pun, I see [Null Object](https://java-design-patterns.com/patterns/null-object/) as special case of Special Case.
+> If you’ll pardon the unresistable pun, I see [Null Object](https://java-design-patterns.com/patterns/null-object/) as
+> special case of Special Case.
 
 ## Programmatic Example of Special Case Pattern in Java
 
-The Special Case Pattern is a software design pattern that is used to handle a specific, often uncommon, case separately from the general case in the code. This pattern is useful when a class has behavior that requires conditional logic based on its state. Instead of cluttering the class with conditional logic, we can encapsulate the special behavior in a subclass.
+The Special Case Pattern is a software design pattern that is used to handle a specific, often uncommon, case separately
+from the general case in the code. This pattern is useful when a class has behavior that requires conditional logic
+based on its state. Instead of cluttering the class with conditional logic, we can encapsulate the special behavior in a
+subclass.
 
-In an e-commerce system, the presentation layer relies on the application layer to generate a specific view model. There is a successful scenario where the receipt view model includes actual purchase data, along with a few failure scenarios.
+In an e-commerce system, the presentation layer relies on the application layer to generate a specific view model. There
+is a successful scenario where the receipt view model includes actual purchase data, along with a few failure scenarios.
 
-The `Db` class is a singleton that holds data for users, accounts, and products. It provides methods to seed data into the database and find data in the database.
+The `Db` class is a singleton that holds data for users, accounts, and products. It provides methods to seed data into
+the database and find data in the database.
 
 ```java
 @RequiredArgsConstructor
@@ -240,11 +254,13 @@ Here is the output from running the example.
 11:23:48.676 [main] INFO com.iluwatar.specialcase.ReceiptDto -- Receipt: 800.0 paid
 ```
 
-In conclusion, the Special Case Pattern helps to keep the code clean and easy to understand by separating the special case from the general case. It also promotes code reuse and makes the code easier to maintain.
+In conclusion, the Special Case Pattern helps to keep the code clean and easy to understand by separating the special
+case from the general case. It also promotes code reuse and makes the code easier to maintain.
 
 ## When to Use the Special Case Pattern in Java
 
-* Use when you want to encapsulate and handle special cases or error conditions in a manner that avoids conditional logic scattered throughout the main codebase.
+* Use when you want to encapsulate and handle special cases or error conditions in a manner that avoids conditional
+  logic scattered throughout the main codebase.
 * Useful in scenarios where certain operations have known exceptional cases that require different handling.
 
 ## Real-World Applications of Special Case Pattern in Java
@@ -265,13 +281,17 @@ Adopting the Special Case design pattern
 Trade-offs:
 
 * May introduce additional classes or interfaces, increasing the number of components in the system.
-* Requires careful design to ensure that special cases are correctly encapsulated and do not introduce unexpected behaviors.
+* Requires careful design to ensure that special cases are correctly encapsulated and do not introduce unexpected
+  behaviors.
 
 ## Related Java Design Patterns
 
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Can be used to add special case behavior to objects dynamically without modifying their code.
-* [Null Object](https://java-design-patterns.com/patterns/null-object/): Used to provide a default behavior for null references, which is a specific type of special case.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Allows dynamic switching of special case behaviors by encapsulating them in different strategy classes.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Can be used to add special case behavior to objects
+  dynamically without modifying their code.
+* [Null Object](https://java-design-patterns.com/patterns/null-object/): Used to provide a default behavior for null
+  references, which is a specific type of special case.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Allows dynamic switching of special case behaviors by
+  encapsulating them in different strategy classes.
 
 ## References and Credits
 

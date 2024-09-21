@@ -25,6 +25,7 @@
 package com.iluwatar.gameloop;
 
 import java.security.SecureRandom;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,73 +34,73 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class GameLoop {
 
-  protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  protected volatile GameStatus status;
+    protected volatile GameStatus status;
 
-  protected final GameController controller;
+    protected final GameController controller;
 
-  /**
-   * Initialize game status to be stopped.
-   */
-  protected GameLoop() {
-    controller = new GameController();
-    status = GameStatus.STOPPED;
-  }
-
-  /**
-   * Run game loop.
-   */
-  public void run() {
-    status = GameStatus.RUNNING;
-    Thread gameThread = new Thread(this::processGameLoop);
-    gameThread.start();
-  }
-
-  /**
-   * Stop game loop.
-   */
-  public void stop() {
-    status = GameStatus.STOPPED;
-  }
-
-  /**
-   * Check if game is running or not.
-   *
-   * @return {@code true} if the game is running.
-   */
-  public boolean isGameRunning() {
-    return status == GameStatus.RUNNING;
-  }
-
-  /**
-   * Handle any user input that has happened since the last call. In order to
-   * simulate the situation in real-life game, here we add a random time lag.
-   * The time lag ranges from 50 ms to 250 ms.
-   */
-  protected void processInput() {
-    try {
-      var lag = new SecureRandom().nextInt(200) + 50;
-      Thread.sleep(lag);
-    } catch (InterruptedException e) {
-      logger.error(e.getMessage());
-      /* Clean up whatever needs to be handled before interrupting  */
-      Thread.currentThread().interrupt();
+    /**
+     * Initialize game status to be stopped.
+     */
+    protected GameLoop() {
+        controller = new GameController();
+        status = GameStatus.STOPPED;
     }
-  }
 
-  /**
-   * Render game frames to screen. Here we print bullet position to simulate
-   * this process.
-   */
-  protected void render() {
-    var position = controller.getBulletPosition();
-    logger.info("Current bullet position: {}", position);
-  }
+    /**
+     * Run game loop.
+     */
+    public void run() {
+        status = GameStatus.RUNNING;
+        Thread gameThread = new Thread(this::processGameLoop);
+        gameThread.start();
+    }
 
-  /**
-   * execute game loop logic.
-   */
-  protected abstract void processGameLoop();
+    /**
+     * Stop game loop.
+     */
+    public void stop() {
+        status = GameStatus.STOPPED;
+    }
+
+    /**
+     * Check if game is running or not.
+     *
+     * @return {@code true} if the game is running.
+     */
+    public boolean isGameRunning() {
+        return status == GameStatus.RUNNING;
+    }
+
+    /**
+     * Handle any user input that has happened since the last call. In order to
+     * simulate the situation in real-life game, here we add a random time lag.
+     * The time lag ranges from 50 ms to 250 ms.
+     */
+    protected void processInput() {
+        try {
+            var lag = new SecureRandom().nextInt(200) + 50;
+            Thread.sleep(lag);
+        } catch (InterruptedException e) {
+            logger.error(e.getMessage());
+            /* Clean up whatever needs to be handled before interrupting  */
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    /**
+     * Render game frames to screen. Here we print bullet position to simulate
+     * this process.
+     */
+    protected void render() {
+        var position = controller.getBulletPosition();
+        logger.info("Current bullet position: {}", position);
+    }
+
+    /**
+     * execute game loop logic.
+     */
+    protected abstract void processGameLoop();
 
 }

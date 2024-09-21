@@ -40,7 +40,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Book {
 
-  private String title;
-  private double price;
+    private String title;
+    private double price;
 
 }

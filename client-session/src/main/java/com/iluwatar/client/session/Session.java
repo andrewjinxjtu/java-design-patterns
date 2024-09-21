@@ -35,14 +35,14 @@ import lombok.Data;
 @AllArgsConstructor
 public class Session {
 
-  /**
-   * Session id.
-   */
-  private String id;
+    /**
+     * Session id.
+     */
+    private String id;
 
-  /**
-   * Client name.
-   */
-  private String clientName;
+    /**
+     * Client name.
+     */
+    private String clientName;
 
 }

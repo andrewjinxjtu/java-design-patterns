@@ -19,29 +19,42 @@ tag:
 
 ## Intent of Lazy Loading Design Pattern
 
-The Lazy Loading design pattern in Java defers object initialization until the object is actually needed, minimizing memory usage and reducing startup times. This technique is crucial for optimizing Java application performance.
+The Lazy Loading design pattern in Java defers object initialization until the object is actually needed, minimizing
+memory usage and reducing startup times. This technique is crucial for optimizing Java application performance.
 
 ## Detailed Explanation of Lazy Loading Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world analogy for the Lazy Loading pattern in Java is using lights in a smart home. Instead of switching all lights on at once when someone enters the house, motion sensors detect and turn on lights only in rooms being used. This mirrors how Java developers can optimize performance by delaying object creation.
+> A real-world analogy for the Lazy Loading pattern in Java is using lights in a smart home. Instead of switching all
+> lights on at once when someone enters the house, motion sensors detect and turn on lights only in rooms being used. This
+> mirrors how Java developers can optimize performance by delaying object creation.
 
 In plain words
 
-> The Lazy Loading pattern defers the creation of an object or resource until it's actually needed, optimizing memory usage and improving performance.
+> The Lazy Loading pattern defers the creation of an object or resource until it's actually needed, optimizing memory
+> usage and improving performance.
 
 Wikipedia says
 
-> Lazy loading (also known as asynchronous loading) is a technique used in computer programming, especially web design and web development, to defer initialization of an object until it is needed. It can contribute to efficiency in the program's operation if properly and appropriately used. This makes it ideal in use cases where network content is accessed and initialization times are to be kept at a minimum, such as in the case of web pages. For example, deferring loading of images on a web page until they are needed for viewing can make the initial display of the web page faster. The opposite of lazy loading is eager loading.
+> Lazy loading (also known as asynchronous loading) is a technique used in computer programming, especially web design
+> and web development, to defer initialization of an object until it is needed. It can contribute to efficiency in the
+> program's operation if properly and appropriately used. This makes it ideal in use cases where network content is
+> accessed and initialization times are to be kept at a minimum, such as in the case of web pages. For example, deferring
+> loading of images on a web page until they are needed for viewing can make the initial display of the web page faster.
+> The opposite of lazy loading is eager loading.
 
 ## Programmatic Example of Lazy Loading Pattern in Java
 
-The Lazy Loading design pattern is a performance optimization technique that delays the initialization of an object or a costly computation until it's absolutely necessary. This pattern can significantly improve the performance of your application by avoiding unnecessary computation and reducing memory usage.
+The Lazy Loading design pattern is a performance optimization technique that delays the initialization of an object or a
+costly computation until it's absolutely necessary. This pattern can significantly improve the performance of your
+application by avoiding unnecessary computation and reducing memory usage.
 
-In the provided code, we can see an example of the Lazy Loading pattern in the `App`, `HolderNaive`, `HolderThreadSafe`, and `Java8Holder` classes.
+In the provided code, we can see an example of the Lazy Loading pattern in the `App`, `HolderNaive`, `HolderThreadSafe`,
+and `Java8Holder` classes.
 
-The `App` class is the entry point of the application. It creates instances of `HolderNaive`, `HolderThreadSafe`, and `Java8Holder`, and retrieves the `Heavy` object from them.
+The `App` class is the entry point of the application. It creates instances of `HolderNaive`, `HolderThreadSafe`, and
+`Java8Holder`, and retrieves the `Heavy` object from them.
 
 ```java
 @Slf4j
@@ -64,7 +77,8 @@ public class App {
 }
 ```
 
-The `HolderNaive`, `HolderThreadSafe`, and `Java8Holder` classes are implementations of the Lazy Loading pattern with increasing sophistication.
+The `HolderNaive`, `HolderThreadSafe`, and `Java8Holder` classes are implementations of the Lazy Loading pattern with
+increasing sophistication.
 
 The `HolderNaive` class is a simple, non-thread-safe implementation of the pattern.
 
@@ -85,7 +99,8 @@ public class HolderNaive {
 }
 ```
 
-The `HolderThreadSafe` class is a thread-safe implementation of the pattern, but with heavy synchronization on each access.
+The `HolderThreadSafe` class is a thread-safe implementation of the pattern, but with heavy synchronization on each
+access.
 
 ```java
 public class HolderThreadSafe {
@@ -133,7 +148,9 @@ public class Java8Holder {
 }
 ```
 
-In this example, the `App` class retrieves a `Heavy` object from `HolderNaive`, `HolderThreadSafe`, and `Java8Holder`. These classes delay the creation of the `Heavy` object until it's actually needed, demonstrating the Lazy Loading pattern.
+In this example, the `App` class retrieves a `Heavy` object from `HolderNaive`, `HolderThreadSafe`, and `Java8Holder`.
+These classes delay the creation of the `Heavy` object until it's actually needed, demonstrating the Lazy Loading
+pattern.
 
 ## When to Use the Lazy Loading Pattern in Java
 
@@ -145,7 +162,8 @@ Use Lazy Loading when:
 
 ## Real-World Applications of Lazy Loading Pattern in Java
 
-* Hibernate (Java ORM Framework): Delays loading of related objects until they are accessed, leveraging the Lazy Loading pattern to optimize Java application performance.
+* Hibernate (Java ORM Framework): Delays loading of related objects until they are accessed, leveraging the Lazy Loading
+  pattern to optimize Java application performance.
 * JPA annotations @OneToOne, @OneToMany, @ManyToOne, @ManyToMany and fetch = FetchType.LAZY
 * Spring Framework (Dependency Injection): Loads beans only when required, reducing application startup time.
 
@@ -163,9 +181,11 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Proxy](https://java-design-patterns.com/patterns/proxy/): Can act as a placeholder for lazy-loaded objects, deferring their actual loading until necessary.
+* [Proxy](https://java-design-patterns.com/patterns/proxy/): Can act as a placeholder for lazy-loaded objects, deferring
+  their actual loading until necessary.
 * Virtual Proxy: Specific type of Proxy that handles object creation on demand.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Often combined with Lazy Loading to ensure only one instance of an object is created and loaded lazily.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Often combined with Lazy Loading to ensure only one
+  instance of an object is created and loaded lazily.
 
 ## References and Credits
 

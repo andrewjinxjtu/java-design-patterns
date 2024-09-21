@@ -50,24 +50,24 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class CakeLayer {
 
-  @Id
-  @GeneratedValue
-  private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-  private String name;
+    private String name;
 
-  private int calories;
+    private int calories;
 
-  @ManyToOne(cascade = CascadeType.ALL)
-  private Cake cake;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Cake cake;
 
-  public CakeLayer(String name, int calories) {
-    this.setName(name);
-    this.setCalories(calories);
-  }
+    public CakeLayer(String name, int calories) {
+        this.setName(name);
+        this.setCalories(calories);
+    }
 
-  @Override
-  public String toString() {
-    return String.format("id=%s name=%s calories=%d", id, name, calories);
-  }
+    @Override
+    public String toString() {
+        return String.format("id=%s name=%s calories=%d", id, name, calories);
+    }
 }

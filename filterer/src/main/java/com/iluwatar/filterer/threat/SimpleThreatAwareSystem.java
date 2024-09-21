@@ -25,9 +25,11 @@
 package com.iluwatar.filterer.threat;
 
 import com.iluwatar.filterer.domain.Filterer;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -40,40 +42,40 @@ import lombok.ToString;
 @RequiredArgsConstructor
 public class SimpleThreatAwareSystem implements ThreatAwareSystem {
 
-  private final String systemId;
-  private final List<Threat> issues;
+    private final String systemId;
+    private final List<Threat> issues;
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String systemId() {
-    return systemId;
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String systemId() {
+        return systemId;
+    }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public List<? extends Threat> threats() {
-    return new ArrayList<>(issues);
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<? extends Threat> threats() {
+        return new ArrayList<>(issues);
+    }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Filterer<? extends ThreatAwareSystem, ? extends Threat> filtered() {
-    return this::filteredGroup;
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Filterer<? extends ThreatAwareSystem, ? extends Threat> filtered() {
+        return this::filteredGroup;
+    }
 
-  private ThreatAwareSystem filteredGroup(Predicate<? super Threat> predicate) {
-    return new SimpleThreatAwareSystem(this.systemId, filteredItems(predicate));
-  }
+    private ThreatAwareSystem filteredGroup(Predicate<? super Threat> predicate) {
+        return new SimpleThreatAwareSystem(this.systemId, filteredItems(predicate));
+    }
 
-  private List<Threat> filteredItems(Predicate<? super Threat> predicate) {
-    return this.issues.stream()
-            .filter(predicate).toList();
-  }
+    private List<Threat> filteredItems(Predicate<? super Threat> predicate) {
+        return this.issues.stream()
+                .filter(predicate).toList();
+    }
 
 }

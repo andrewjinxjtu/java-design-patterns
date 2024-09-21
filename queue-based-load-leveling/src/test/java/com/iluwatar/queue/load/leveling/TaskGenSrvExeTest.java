@@ -34,23 +34,23 @@ import org.junit.jupiter.api.Test;
  */
 class TaskGenSrvExeTest {
 
-  @Test
-  void taskGeneratorTest() {
-    var msgQueue = new MessageQueue();
+    @Test
+    void taskGeneratorTest() {
+        var msgQueue = new MessageQueue();
 
-    // Create a task generator thread with 1 job to submit.
-    var taskRunnable = new TaskGenerator(msgQueue, 1);
-    var taskGenThr = new Thread(taskRunnable);
-    taskGenThr.start();
+        // Create a task generator thread with 1 job to submit.
+        var taskRunnable = new TaskGenerator(msgQueue, 1);
+        var taskGenThr = new Thread(taskRunnable);
+        taskGenThr.start();
 
-    assertNotNull(taskGenThr);
+        assertNotNull(taskGenThr);
 
-    // Create a service executor thread.
-    var srvRunnable = new ServiceExecutor(msgQueue);
-    var srvExeThr = new Thread(srvRunnable);
-    srvExeThr.start();
+        // Create a service executor thread.
+        var srvRunnable = new ServiceExecutor(msgQueue);
+        var srvExeThr = new Thread(srvRunnable);
+        srvExeThr.start();
 
-    assertNotNull(srvExeThr);
-  }
+        assertNotNull(srvExeThr);
+    }
 
 }

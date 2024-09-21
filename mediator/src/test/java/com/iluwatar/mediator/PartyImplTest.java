@@ -32,31 +32,30 @@ import org.junit.jupiter.api.Test;
 
 /**
  * PartyImplTest
- *
  */
 class PartyImplTest {
 
-  /**
-   * Verify if a member is notified when it's joining a party. Generate an action and see if the
-   * other member gets it. Also check members don't get their own actions.
-   */
-  @Test
-  void testPartyAction() {
-    final var partyMember1 = mock(PartyMember.class);
-    final var partyMember2 = mock(PartyMember.class);
+    /**
+     * Verify if a member is notified when it's joining a party. Generate an action and see if the
+     * other member gets it. Also check members don't get their own actions.
+     */
+    @Test
+    void testPartyAction() {
+        final var partyMember1 = mock(PartyMember.class);
+        final var partyMember2 = mock(PartyMember.class);
 
-    final var party = new PartyImpl();
-    party.addMember(partyMember1);
-    party.addMember(partyMember2);
+        final var party = new PartyImpl();
+        party.addMember(partyMember1);
+        party.addMember(partyMember2);
 
-    verify(partyMember1).joinedParty(party);
-    verify(partyMember2).joinedParty(party);
+        verify(partyMember1).joinedParty(party);
+        verify(partyMember2).joinedParty(party);
 
-    party.act(partyMember1, Action.GOLD);
-    verifyNoMoreInteractions(partyMember1);
-    verify(partyMember2).partyAction(Action.GOLD);
+        party.act(partyMember1, Action.GOLD);
+        verifyNoMoreInteractions(partyMember1);
+        verify(partyMember2).partyAction(Action.GOLD);
 
-    verifyNoMoreInteractions(partyMember1, partyMember2);
-  }
+        verifyNoMoreInteractions(partyMember1, partyMember2);
+    }
 
 }

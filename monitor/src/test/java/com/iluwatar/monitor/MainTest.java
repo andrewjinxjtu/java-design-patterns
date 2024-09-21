@@ -25,23 +25,27 @@
 package com.iluwatar.monitor;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.concurrent.CountDownLatch;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-/** Test if the application starts without throwing an exception. */
+/**
+ * Test if the application starts without throwing an exception.
+ */
 class MainTest {
 
-  @Test
-  void shouldExecuteApplicationWithoutException() {
-    assertDoesNotThrow(() -> Main.main(new String[] {}));
-  }
+    @Test
+    void shouldExecuteApplicationWithoutException() {
+        assertDoesNotThrow(() -> Main.main(new String[]{}));
+    }
 
-  @Test
-  void runnerShouldExecuteWithoutException() {
-    var bank = new Bank(4, 1000);
-    var latch = new CountDownLatch(1);
+    @Test
+    void runnerShouldExecuteWithoutException() {
+        var bank = new Bank(4, 1000);
+        var latch = new CountDownLatch(1);
 
-    assertDoesNotThrow(() -> Main.runner(bank, latch));
-    assertEquals(0, latch.getCount());
-  }
+        assertDoesNotThrow(() -> Main.runner(bank, latch));
+        assertEquals(0, latch.getCount());
+    }
 }

@@ -28,48 +28,49 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class IdentityMapTest {
-  @Test
-  void addToMap(){
-    // new instance of an identity map(not connected to any DB here)
-    IdentityMap idMap = new IdentityMap();
-    // Dummy person instances
-    Person person1 = new Person(11, "Michael", 27304159);
-    Person person2 = new Person(22, "John", 42273631);
-    Person person3 = new Person(33, "Arthur", 27489171);
-    Person person4 = new Person(44, "Finn", 20499078);
-    // id already in map
-    Person person5 = new Person(11, "Michael", 40599078);
-    // All records go into identity map
-    idMap.addPerson(person1);
-    idMap.addPerson(person2);
-    idMap.addPerson(person3);
-    idMap.addPerson(person4);
-    idMap.addPerson(person5);
-    // Test no duplicate in our Map.
-    Assertions.assertEquals(4,idMap.size(),"Size of the map is incorrect");
-    // Test record not updated by add method.
-    Assertions.assertEquals(27304159,idMap.getPerson(11).getPhoneNum(),"Incorrect return value for phone number");
-  }
-  @Test
-  void testGetFromMap() {
-    // new instance of an identity map(not connected to any DB here)
-    IdentityMap idMap = new IdentityMap();
-    // Dummy person instances
-    Person person1 = new Person(11, "Michael", 27304159);
-    Person person2 = new Person(22, "John", 42273631);
-    Person person3 = new Person(33, "Arthur", 27489171);
-    Person person4 = new Person(44, "Finn", 20499078);
-    Person person5 = new Person(55, "Michael", 40599078);
-    // All records go into identity map
-    idMap.addPerson(person1);
-    idMap.addPerson(person2);
-    idMap.addPerson(person3);
-    idMap.addPerson(person4);
-    idMap.addPerson(person5);
-    // Test for dummy persons in the map
-    Assertions.assertEquals(person1,idMap.getPerson(11),"Incorrect person record returned");
-    Assertions.assertEquals(person4,idMap.getPerson(44),"Incorrect person record returned");
-    // Test for person with given id not in map
-    Assertions.assertNull(idMap.getPerson(1), "Incorrect person record returned");
-  }
+    @Test
+    void addToMap() {
+        // new instance of an identity map(not connected to any DB here)
+        IdentityMap idMap = new IdentityMap();
+        // Dummy person instances
+        Person person1 = new Person(11, "Michael", 27304159);
+        Person person2 = new Person(22, "John", 42273631);
+        Person person3 = new Person(33, "Arthur", 27489171);
+        Person person4 = new Person(44, "Finn", 20499078);
+        // id already in map
+        Person person5 = new Person(11, "Michael", 40599078);
+        // All records go into identity map
+        idMap.addPerson(person1);
+        idMap.addPerson(person2);
+        idMap.addPerson(person3);
+        idMap.addPerson(person4);
+        idMap.addPerson(person5);
+        // Test no duplicate in our Map.
+        Assertions.assertEquals(4, idMap.size(), "Size of the map is incorrect");
+        // Test record not updated by add method.
+        Assertions.assertEquals(27304159, idMap.getPerson(11).getPhoneNum(), "Incorrect return value for phone number");
+    }
+
+    @Test
+    void testGetFromMap() {
+        // new instance of an identity map(not connected to any DB here)
+        IdentityMap idMap = new IdentityMap();
+        // Dummy person instances
+        Person person1 = new Person(11, "Michael", 27304159);
+        Person person2 = new Person(22, "John", 42273631);
+        Person person3 = new Person(33, "Arthur", 27489171);
+        Person person4 = new Person(44, "Finn", 20499078);
+        Person person5 = new Person(55, "Michael", 40599078);
+        // All records go into identity map
+        idMap.addPerson(person1);
+        idMap.addPerson(person2);
+        idMap.addPerson(person3);
+        idMap.addPerson(person4);
+        idMap.addPerson(person5);
+        // Test for dummy persons in the map
+        Assertions.assertEquals(person1, idMap.getPerson(11), "Incorrect person record returned");
+        Assertions.assertEquals(person4, idMap.getPerson(44), "Incorrect person record returned");
+        // Test for person with given id not in map
+        Assertions.assertNull(idMap.getPerson(1), "Incorrect person record returned");
+    }
 }

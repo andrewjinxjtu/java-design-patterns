@@ -37,29 +37,29 @@ import lombok.extern.slf4j.Slf4j;
  * creating objects ({@link Blacksmith#manufactureWeapon}). The concrete subclasses (
  * {@link OrcBlacksmith}, {@link ElfBlacksmith}) then override the method to produce objects of
  * their liking.
- *
  */
 @Slf4j
 public class App {
 
-  private static final String MANUFACTURED = "{} manufactured {}";
+    private static final String MANUFACTURED = "{} manufactured {}";
 
-  /**
-   * Program entry point.
-   * @param args command line args
-   */
-  public static void main(String[] args) {
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
 
-    Blacksmith blacksmith = new OrcBlacksmith();
-    Weapon weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
-    LOGGER.info(MANUFACTURED, blacksmith, weapon);
-    weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
-    LOGGER.info(MANUFACTURED, blacksmith, weapon);
+        Blacksmith blacksmith = new OrcBlacksmith();
+        Weapon weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+        LOGGER.info(MANUFACTURED, blacksmith, weapon);
+        weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
+        LOGGER.info(MANUFACTURED, blacksmith, weapon);
 
-    blacksmith = new ElfBlacksmith();
-    weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
-    LOGGER.info(MANUFACTURED, blacksmith, weapon);
-    weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
-    LOGGER.info(MANUFACTURED, blacksmith, weapon);
-  }
+        blacksmith = new ElfBlacksmith();
+        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+        LOGGER.info(MANUFACTURED, blacksmith, weapon);
+        weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
+        LOGGER.info(MANUFACTURED, blacksmith, weapon);
+    }
 }

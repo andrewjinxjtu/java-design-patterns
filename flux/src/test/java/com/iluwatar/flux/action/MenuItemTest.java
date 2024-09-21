@@ -31,17 +31,16 @@ import org.junit.jupiter.api.Test;
 
 /**
  * MenuItemTest
- *
  */
 class MenuItemTest {
 
-  @Test
-  void testToString() {
-    for (final var menuItem : MenuItem.values()) {
-      final var toString = menuItem.toString();
-      assertNotNull(toString);
-      assertFalse(toString.trim().isEmpty());
+    @Test
+    void testToString() {
+        for (final var menuItem : MenuItem.values()) {
+            final var toString = menuItem.toString();
+            assertNotNull(toString);
+            assertFalse(toString.trim().isEmpty());
+        }
     }
-  }
 
 }

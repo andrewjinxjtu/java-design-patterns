@@ -8,13 +8,15 @@ tag:
 
 ## Intento
 
-Permette di aggiungere nuove funzioni alle gerarchie di classi esistenti senza influire su tali gerarchie e senza creare i cicli di dipendenza problematici che sono intrinseci al pattern Visitor dei GoF.
+Permette di aggiungere nuove funzioni alle gerarchie di classi esistenti senza influire su tali gerarchie e senza creare
+i cicli di dipendenza problematici che sono intrinseci al pattern Visitor dei GoF.
 
 ## Spiegazione
 
 Esempio del mondo reale
 
-> Abbiamo una gerarchia di classi di modem. I modem in questa gerarchia devono essere visitati da un algoritmo esterno basato su criteri di filtraggio (ad esempio, se si tratta di un modem compatibile con Unix o DOS).
+> Abbiamo una gerarchia di classi di modem. I modem in questa gerarchia devono essere visitati da un algoritmo esterno
+> basato su criteri di filtraggio (ad esempio, se si tratta di un modem compatibile con Unix o DOS).
 
 In parole semplici
 
@@ -22,7 +24,9 @@ In parole semplici
 
 [WikiWikiWeb](https://wiki.c2.com/?AcyclicVisitor) dice
 
->Il pattern Acyclic Visitor consente di aggiungere nuove funzioni alle gerarchie di classi esistenti senza influire su tali gerarchie e senza creare i cicli di dipendenza che sono intrinseci al pattern Visitor dei Gang of Four. _(Testo tradotto dalla voce Acyclic Visitor da WikiWikiWeb in lingua inglese)._
+> Il pattern Acyclic Visitor consente di aggiungere nuove funzioni alle gerarchie di classi esistenti senza influire su
+> tali gerarchie e senza creare i cicli di dipendenza che sono intrinseci al pattern Visitor dei Gang of Four. _(Testo
+tradotto dalla voce Acyclic Visitor da WikiWikiWeb in lingua inglese)._
 
 **Esempio di codice**
 
@@ -57,7 +61,6 @@ public class Hayes extends Modem {
   }
 }
 ```
-
 
 Successivamente introduciamo la gerarchia delle classi `ModemVisitor`.
 
@@ -127,8 +130,10 @@ Output del programma:
 
 Questo pattern può essere utilizzato nei seguenti casi:
 
-* Quando è necessario aggiungere una nuova funzione a una gerarchia esistente senza la necessità di modificarla o influenzarla. 
-* Quando ci sono funzioni che operano su una gerarchia, ma che non appartengono alla gerarchia stessa, ad esempio, il problema di ConfigureForDOS / ConfigureForUnix / ConfigureForX. 
+* Quando è necessario aggiungere una nuova funzione a una gerarchia esistente senza la necessità di modificarla o
+  influenzarla.
+* Quando ci sono funzioni che operano su una gerarchia, ma che non appartengono alla gerarchia stessa, ad esempio, il
+  problema di ConfigureForDOS / ConfigureForUnix / ConfigureForX.
 * Quando è necessario eseguire operazioni molto diverse su un oggetto a seconda del suo tipo.
 * Quando la gerarchia delle classi visitate sarà frequentemente estesa con nuovi derivati dalla classe Element.
 * Quando la ricompilazione, il relinking, il ritestare o la ridistribuzione dei derivati da Element è molto costoso.
@@ -147,7 +152,9 @@ Aspetti positivi:
 
 Aspetti negativi:
 
-* Viola il [Principio di sostituzione di Liskov](https://java-design-patterns.com/principles/#liskov-substitution-principle) mostrando di poter accettare tutti i visitatori ma essendo solo interessato a visitatori specifici.
+* Viola
+  il [Principio di sostituzione di Liskov](https://java-design-patterns.com/principles/#liskov-substitution-principle)
+  mostrando di poter accettare tutti i visitatori ma essendo solo interessato a visitatori specifici.
 * Deve essere creata una gerarchia parallela di visitatori per tutti i membri della gerarchia di classi visitabili.
 
 ## Pattern correlati

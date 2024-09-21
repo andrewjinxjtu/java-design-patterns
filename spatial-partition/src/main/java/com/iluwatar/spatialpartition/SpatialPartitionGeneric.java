@@ -35,13 +35,13 @@ import java.util.Map;
 
 public abstract class SpatialPartitionGeneric<T> {
 
-  Map<Integer, T> playerPositions;
-  QuadTree quadTree;
+    Map<Integer, T> playerPositions;
+    QuadTree quadTree;
 
-  /**
-   * handles collisions for object obj using quadtree.
-   *
-   * @param obj is the object for which collisions need to be checked
-   */
-  abstract void handleCollisionsUsingQt(T obj);
+    /**
+     * handles collisions for object obj using quadtree.
+     *
+     * @param obj is the object for which collisions need to be checked
+     */
+    abstract void handleCollisionsUsingQt(T obj);
 }

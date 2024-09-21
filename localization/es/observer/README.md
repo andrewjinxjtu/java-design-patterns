@@ -13,13 +13,15 @@ Dependents, Publish-Subscribe
 
 ## Propósito
 
-Defina una dependencia de uno a muchos entre objetos para que cuando un objeto cambie de estado, todos sus dependientes sean notificados y actualizados automáticamente.
+Defina una dependencia de uno a muchos entre objetos para que cuando un objeto cambie de estado, todos sus dependientes
+sean notificados y actualizados automáticamente.
 
 ## Explicación
 
 Ejemplo real
 
-> En una tierra muy lejana viven las razas de los hobbits y los orcos. Ambos viven principalmente al aire libre, por lo que siguen de cerca los cambios meteorológicos. Se podría decir que observan constantemente el tiempo.
+> En una tierra muy lejana viven las razas de los hobbits y los orcos. Ambos viven principalmente al aire libre, por lo
+> que siguen de cerca los cambios meteorológicos. Se podría decir que observan constantemente el tiempo.
 
 En palabras simples
 
@@ -27,7 +29,9 @@ En palabras simples
 
 Wikipedia dice
 
-> El patrón observador es un patrón de diseño de software en el que un objeto, llamado sujeto, mantiene una lista de sus dependientes, llamados observadores, y les notifica automáticamente cualquier cambio de estado, normalmente llamando a uno de sus métodos.
+> El patrón observador es un patrón de diseño de software en el que un objeto, llamado sujeto, mantiene una lista de sus
+> dependientes, llamados observadores, y les notifica automáticamente cualquier cambio de estado, normalmente llamando a
+> uno de sus métodos.
 
 **Ejemplo programático**
 
@@ -99,6 +103,7 @@ public class Weather {
   }
 }
 ```
+
 Aquí está el ejemplo completo en acción.
 
 ```java
@@ -136,9 +141,11 @@ The hobbits are facing sunny weather now
 
 Utilice el patrón Observador en cualquiera de las siguientes situaciones:
 
-* Cuando una abstracción tiene dos aspectos, uno dependiente del otro. Encapsular estos aspectos en objetos separados te permite variarlos y reutilizarlos independientemente.
+* Cuando una abstracción tiene dos aspectos, uno dependiente del otro. Encapsular estos aspectos en objetos separados te
+  permite variarlos y reutilizarlos independientemente.
 * Cuando un cambio en un objeto requiere cambiar otros, y no sabes cuántos objetos necesitan ser cambiados.
-* Cuando un objeto debe ser capaz de notificar a otros objetos sin hacer suposiciones sobre quiénes son estos objetos. En otras palabras, no quieres que estos objetos estén estrechamente acoplados.
+* Cuando un objeto debe ser capaz de notificar a otros objetos sin hacer suposiciones sobre quiénes son estos objetos.
+  En otras palabras, no quieres que estos objetos estén estrechamente acoplados.
 
 ## Usos conocidos
 

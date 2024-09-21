@@ -28,7 +28,8 @@ En palabras sencillas
 
 Wikipedia dice
 
-> En programación informática, el patrón de estrategia (también conocido como patrón de política) es un patrón de > diseño de software de comportamiento que permite seleccionar un algoritmo en tiempo de ejecución.
+> En programación informática, el patrón de estrategia (también conocido como patrón de política) es un patrón de >
+> diseño de software de comportamiento que permite seleccionar un algoritmo en tiempo de ejecución.
 > patrón de diseño de software que permite seleccionar un algoritmo en tiempo de ejecución.
 
 **Ejemplo programático**
@@ -170,12 +171,17 @@ La salida del programa es la misma que la anterior.
 
 Utilice el patrón Strategy cuando
 
-* Muchas clases relacionadas sólo difieren en su comportamiento. Las estrategias proporcionan una forma de configurar una clase con uno de varios comportamientos
-* Necesita diferentes variantes de un algoritmo. Por ejemplo, puede definir algoritmos que reflejen diferentes compensaciones espacio/tiempo. Las estrategias pueden utilizarse cuando estas variantes se implementan como una jerarquía de clases de algoritmos
-* Un algoritmo utiliza datos que los clientes no deberían conocer. Utilice el patrón Strategy para evitar exponer estructuras de datos complejas específicas del algoritmo.
-* Una clase define muchos comportamientos, y éstos aparecen como múltiples sentencias condicionales en sus operaciones. En lugar de muchas condicionales, mueva las ramas condicionales relacionadas a su propia clase Strategy.
+* Muchas clases relacionadas sólo difieren en su comportamiento. Las estrategias proporcionan una forma de configurar
+  una clase con uno de varios comportamientos
+* Necesita diferentes variantes de un algoritmo. Por ejemplo, puede definir algoritmos que reflejen diferentes
+  compensaciones espacio/tiempo. Las estrategias pueden utilizarse cuando estas variantes se implementan como una
+  jerarquía de clases de algoritmos
+* Un algoritmo utiliza datos que los clientes no deberían conocer. Utilice el patrón Strategy para evitar exponer
+  estructuras de datos complejas específicas del algoritmo.
+* Una clase define muchos comportamientos, y éstos aparecen como múltiples sentencias condicionales en sus operaciones.
+  En lugar de muchas condicionales, mueva las ramas condicionales relacionadas a su propia clase Strategy.
 
-## Tutorial 
+## Tutorial
 
 * [Strategy Pattern Tutorial](https://www.journaldev.com/1754/strategy-design-pattern-in-java-example-tutorial)
 

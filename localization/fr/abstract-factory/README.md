@@ -19,19 +19,24 @@ sans spécifier leurs classes concrètes.
 
 Exemple concret
 
-> Pour créer un royaume, nous avons besoin d'objets ayant un thème commun. Le royaume elfique a besoin d'un roi elfique, d'un château elfique et d'une armée elfique, tandis que le royaume orque a besoin d'un roi orque, d'un château orque et d'une armée orque. Il existe une dépendance entre les objets du royaume.
+> Pour créer un royaume, nous avons besoin d'objets ayant un thème commun. Le royaume elfique a besoin d'un roi elfique,
+> d'un château elfique et d'une armée elfique, tandis que le royaume orque a besoin d'un roi orque, d'un château orque et
+> d'une armée orque. Il existe une dépendance entre les objets du royaume.
 
 En clair
 
-> Une usine d'usines ; une usine qui regroupe les usines individuelles mais liées/dépendantes sans spécifier leurs classes concrètes.
+> Une usine d'usines ; une usine qui regroupe les usines individuelles mais liées/dépendantes sans spécifier leurs
+> classes concrètes.
 
 Wikipedia dit
 
-> Le modèle d'usine abstraite permet d'encapsuler un groupe d'usines individuelles ayant un thème commun sans spécifier leurs classes concrètes.
+> Le modèle d'usine abstraite permet d'encapsuler un groupe d'usines individuelles ayant un thème commun sans spécifier
+> leurs classes concrètes.
 
 **Exemple de programme**
 
-Traduction de l'exemple du royaume ci-dessus. Tout d'abord, nous avons quelques interfaces et implémentations pour les objets du royaume.
+Traduction de l'exemple du royaume ci-dessus. Tout d'abord, nous avons quelques interfaces et implémentations pour les
+objets du royaume.
 
 ```java
 public interface Castle {
@@ -119,7 +124,8 @@ public class OrcKingdomFactory implements KingdomFactory {
 }
 ```
 
-Nous disposons maintenant d'une fabrique abstraite qui nous permet de créer une famille d'objets apparentés, par exemple la fabrique de royaume elfique crée un château elfique, un roi et une armée, etc.
+Nous disposons maintenant d'une fabrique abstraite qui nous permet de créer une famille d'objets apparentés, par exemple
+la fabrique de royaume elfique crée un château elfique, un roi et une armée, etc.
 
 ```java
 var factory = new ElfKingdomFactory();
@@ -140,9 +146,13 @@ This is the elven king!
 This is the elven Army!
 ```
 
-Maintenant, nous pouvons concevoir une fabrique pour nos différentes fabriques de royaumes. Dans cet exemple, nous avons créé `FactoryMaker`, responsable de retourner une instance de `ElfKingdomFactory` ou de `OrcKingdomFactory`.  
-Le client peut utiliser `FactoryMaker` pour créer la fabrique concrète désirée qui, à son tour, produira différents objets concrets (dérivés de `Army`, `King`, `Castle`).  
-Dans cet exemple, nous avons également utilisé une énumération pour paramétrer le type de fabrique de royaume que le client va demander.
+Maintenant, nous pouvons concevoir une fabrique pour nos différentes fabriques de royaumes. Dans cet exemple, nous avons
+créé `FactoryMaker`, responsable de retourner une instance de `ElfKingdomFactory` ou de `OrcKingdomFactory`.  
+Le client peut utiliser `FactoryMaker` pour créer la fabrique concrète désirée qui, à son tour, produira différents
+objets concrets (dérivés de `Army`, `King`, `Castle`).  
+Dans cet exemple, nous avons également utilisé une énumération pour paramétrer le type de fabrique de royaume que le
+client va demander.
+
 ```java
 public static class FactoryMaker {
 
@@ -178,33 +188,39 @@ public static class FactoryMaker {
 
 ![alt text](../../../abstract-factory/etc/abstract-factory.urm.png "Abstract Factory class diagram")
 
-
 ## Application
 
 Utiliser le patron de conception  "abstract factory" lorsque
 
 * Le système doit être indépendant de la manière dont ses produits sont créés, composés et représentés.
 * Le système doit être configuré avec l'une des multiples familles de produits.
-* La famille d'objets produits apparentés est conçue pour être utilisée ensemble, et vous devez faire respecter cette contrainte
-* Vous voulez fournir une bibliothèque de classes de produits, et vous voulez révéler seulement leurs interfaces, pas leurs implémentations.
+* La famille d'objets produits apparentés est conçue pour être utilisée ensemble, et vous devez faire respecter cette
+  contrainte
+* Vous voulez fournir une bibliothèque de classes de produits, et vous voulez révéler seulement leurs interfaces, pas
+  leurs implémentations.
 * La durée de vie de la dépendance est conceptuellement plus courte que la durée de vie du consommateur.
 * Vous avez besoin d'une valeur d'exécution pour construire une dépendance particulière.
 * Vous voulez décider quel produit appeler à partir d'une famille au moment de l'exécution.
-* Vous devez fournir un ou plusieurs paramètres qui ne sont connus qu'au moment de l'exécution avant de pouvoir résoudre une dépendance.
+* Vous devez fournir un ou plusieurs paramètres qui ne sont connus qu'au moment de l'exécution avant de pouvoir résoudre
+  une dépendance.
 * Lorsque vous avez besoin d'une cohérence entre les produits.
-* Vous ne voulez pas modifier le code existant lorsque vous ajoutez de nouveaux produits ou de nouvelles familles de produits au programme.
+* Vous ne voulez pas modifier le code existant lorsque vous ajoutez de nouveaux produits ou de nouvelles familles de
+  produits au programme.
 
 Exemples de cas d'utilisation
 
-* Choisir d'appeler l'implémentation appropriée de FileSystemAcmeService ou DatabaseAcmeService ou NetworkAcmeService au moment de l'exécution.
+* Choisir d'appeler l'implémentation appropriée de FileSystemAcmeService ou DatabaseAcmeService ou NetworkAcmeService au
+  moment de l'exécution.
 * L'écriture de cas de tests unitaires devient beaucoup plus facile.
 * Outils d'interface utilisateur pour différents systèmes d'exploitation.
 
 ## Conséquences
 
-* L'injection de dépendances en Java masque les dépendances des classes de service qui peuvent entraîner des erreurs d'exécution qui auraient été détectées au moment de la compilation.
+* L'injection de dépendances en Java masque les dépendances des classes de service qui peuvent entraîner des erreurs d'
+  exécution qui auraient été détectées au moment de la compilation.
 * Si le modèle est idéal pour la création d'objets prédéfinis, l'ajout de nouveaux objets peut s'avérer difficile.
-* Le code devient plus compliqué qu'il ne devrait l'être car un grand nombre de nouvelles interfaces et classes sont introduites en même temps que le modèle.
+* Le code devient plus compliqué qu'il ne devrait l'être car un grand nombre de nouvelles interfaces et classes sont
+  introduites en même temps que le modèle.
 
 ## Tutoriels
 

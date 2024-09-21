@@ -28,6 +28,7 @@ import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -84,7 +85,7 @@ class CustomerTest {
         customer.buyProduct(product);
 
         assertEquals(customer.getPurchases(), new ArrayList<>());
-        assertEquals(customer.getMoney(), Money.of(USD,100));
+        assertEquals(customer.getMoney(), Money.of(USD, 100));
 
         product.setPrice(Money.of(USD, 100.0));
 

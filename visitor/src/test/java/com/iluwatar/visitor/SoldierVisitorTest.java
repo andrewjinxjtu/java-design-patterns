@@ -28,20 +28,19 @@ import java.util.Optional;
 
 /**
  * SoldierVisitorTest
- *
  */
 class SoldierVisitorTest extends VisitorTest<SoldierVisitor> {
 
-  /**
-   * Create a new test instance for the given visitor.
-   */
-  public SoldierVisitorTest() {
-    super(
-        new SoldierVisitor(),
-        null,
-        null,
-        ("Greetings soldier")
-    );
-  }
+    /**
+     * Create a new test instance for the given visitor.
+     */
+    public SoldierVisitorTest() {
+        super(
+                new SoldierVisitor(),
+                null,
+                null,
+                ("Greetings soldier")
+        );
+    }
 
 }

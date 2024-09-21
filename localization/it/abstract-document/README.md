@@ -8,15 +8,19 @@ tag:
 
 ## Intento
 
-Il design pattern "Abstract Document" è un design pattern strutturale che mira a fornire un modo coerente per gestire strutture dati gerarchiche e ad albero, definendo un'interfaccia comune per vari tipi di documenti.
+Il design pattern "Abstract Document" è un design pattern strutturale che mira a fornire un modo coerente per gestire
+strutture dati gerarchiche e ad albero, definendo un'interfaccia comune per vari tipi di documenti.
 
 ## Spiegazione
 
-Il pattern Abstract Document consente di gestire proprietà aggiuntive e non statiche. Questo pattern utilizza il concetto di trait per consentire la sicurezza dei tipi e separare le proprietà delle diverse classi in un insieme di interfacce.
+Il pattern Abstract Document consente di gestire proprietà aggiuntive e non statiche. Questo pattern utilizza il
+concetto di trait per consentire la sicurezza dei tipi e separare le proprietà delle diverse classi in un insieme di
+interfacce.
 
 Esempio del mondo reale
 
->  Prendiamo ad esempio un'auto composta da diverse parti. Tuttavia, non sappiamo se l'auto ha tutte le parti o solo alcune di esse. Le nostre auto sono dinamiche ed estremamente flessibili.
+> Prendiamo ad esempio un'auto composta da diverse parti. Tuttavia, non sappiamo se l'auto ha tutte le parti o solo
+> alcune di esse. Le nostre auto sono dinamiche ed estremamente flessibili.
 
 In parole semplici
 
@@ -33,7 +37,8 @@ Wikipedia dice
 
 **Esempio di codice**
 
-Per prima cosa definiamo le classi di base `Document` e `AbstractDocument`. Essenzialmente, queste classi fanno sì che l'oggetto contenga una mappa di proprietà e una qualunque quantità di oggetti figlio.
+Per prima cosa definiamo le classi di base `Document` e `AbstractDocument`. Essenzialmente, queste classi fanno sì che
+l'oggetto contenga una mappa di proprietà e una qualunque quantità di oggetti figlio.
 
 ```java
 public interface Document {
@@ -78,7 +83,9 @@ public abstract class AbstractDocument implements Document {
   ...
 }
 ```
-Successivamente definiamo un enum `Property` e un insieme di interfacce per tipo, prezzo, modello e parti. Questo ci permette di creare interfacce dall'aspetto statico per la nostra classe `Car`.
+
+Successivamente definiamo un enum `Property` e un insieme di interfacce per tipo, prezzo, modello e parti. Questo ci
+permette di creare interfacce dall'aspetto statico per la nostra classe `Car`.
 
 ```java
 public enum Property {
@@ -172,23 +179,49 @@ E infine, costruiamo e usiamo la classe `Car` in un esempio completo.
 
 ## Applicabilità
 
-Questo pattern è particolarmente utile in scenari in cui si hanno diversi tipi di documenti che condividono alcune proprietà o comportamenti comuni, ma hanno anche proprietà o comportamenti unici specifici per i rispettivi tipi. Ecco alcuni scenari in cui il pattern Abstract Document può essere applicabile:
+Questo pattern è particolarmente utile in scenari in cui si hanno diversi tipi di documenti che condividono alcune
+proprietà o comportamenti comuni, ma hanno anche proprietà o comportamenti unici specifici per i rispettivi tipi. Ecco
+alcuni scenari in cui il pattern Abstract Document può essere applicabile:
 
-* Sistemi di Gestione dei Contenuti (CMS): In un CMS, potresti avere vari tipi di contenuti, come articoli, immagini, video, ecc. Ogni tipo di contenuto potrebbe condividere attributi comuni come la data di creazione, l'autore e i tag, ma potrebbe anche avere attributi specifici come le dimensioni dell'immagine per le immagini o la durata del video per i video.
+* Sistemi di Gestione dei Contenuti (CMS): In un CMS, potresti avere vari tipi di contenuti, come articoli, immagini,
+  video, ecc. Ogni tipo di contenuto potrebbe condividere attributi comuni come la data di creazione, l'autore e i tag,
+  ma potrebbe anche avere attributi specifici come le dimensioni dell'immagine per le immagini o la durata del video per
+  i video.
 
-* File System: Se stai progettando un file system in cui è necessario gestire diversi tipi di file, come documenti, immagini, file audio e directory, il pattern Abstract Document può aiutare a fornire un modo coerente per accedere agli attributi come la dimensione del file, la data di creazione, ecc., consentendo allo stesso tempo attributi specifici come la risoluzione dell'immagine o la durata dell'audio.
+* File System: Se stai progettando un file system in cui è necessario gestire diversi tipi di file, come documenti,
+  immagini, file audio e directory, il pattern Abstract Document può aiutare a fornire un modo coerente per accedere
+  agli attributi come la dimensione del file, la data di creazione, ecc., consentendo allo stesso tempo attributi
+  specifici come la risoluzione dell'immagine o la durata dell'audio.
 
-* Sistemi di E-commerce: Una piattaforma di e-commerce potrebbe avere diversi tipi di prodotti, come prodotti fisici, download digitali e abbonamenti. Ogni tipo potrebbe condividere attributi comuni come il nome, il prezzo e la descrizione, ma avere attributi unici come il peso di spedizione per i prodotti fisici o il link di download per i prodotti digitali.
+* Sistemi di E-commerce: Una piattaforma di e-commerce potrebbe avere diversi tipi di prodotti, come prodotti fisici,
+  download digitali e abbonamenti. Ogni tipo potrebbe condividere attributi comuni come il nome, il prezzo e la
+  descrizione, ma avere attributi unici come il peso di spedizione per i prodotti fisici o il link di download per i
+  prodotti digitali.
 
-* Sistemi di Gestione delle Cartelle Cliniche: Nel settore sanitario, le cartelle cliniche dei pazienti potrebbero includere vari tipi di dati come dati demografici, storia clinica, risultati dei test e prescrizioni. Il pattern Abstract Document può aiutare a gestire attributi condivisi come l'ID del paziente e la data di nascita, consentendo allo stesso tempo di gestire attributi specializzati come i risultati dei test o le prescrizioni.
+* Sistemi di Gestione delle Cartelle Cliniche: Nel settore sanitario, le cartelle cliniche dei pazienti potrebbero
+  includere vari tipi di dati come dati demografici, storia clinica, risultati dei test e prescrizioni. Il pattern
+  Abstract Document può aiutare a gestire attributi condivisi come l'ID del paziente e la data di nascita, consentendo
+  allo stesso tempo di gestire attributi specializzati come i risultati dei test o le prescrizioni.
 
-* Gestione delle Configurazioni: Quando si tratta di impostazioni di configurazione per applicazioni software, possono esserci diversi tipi di elementi di configurazione, ciascuno con il proprio insieme di attributi. Il pattern Abstract Document può essere utilizzato per gestire questi elementi di configurazione, garantendo un modo coerente per accedere e manipolare i loro attributi.
+* Gestione delle Configurazioni: Quando si tratta di impostazioni di configurazione per applicazioni software, possono
+  esserci diversi tipi di elementi di configurazione, ciascuno con il proprio insieme di attributi. Il pattern Abstract
+  Document può essere utilizzato per gestire questi elementi di configurazione, garantendo un modo coerente per accedere
+  e manipolare i loro attributi.
 
-* Piattaforme Educative: I sistemi educativi potrebbero avere vari tipi di materiali didattici come contenuti basati su testo, video, quiz e compiti. Attributi comuni come il titolo, l'autore e la data di pubblicazione possono essere condivisi, mentre attributi unici come la durata del video o le scadenze degli esercizi possono essere specifici per ciascun tipo.
+* Piattaforme Educative: I sistemi educativi potrebbero avere vari tipi di materiali didattici come contenuti basati su
+  testo, video, quiz e compiti. Attributi comuni come il titolo, l'autore e la data di pubblicazione possono essere
+  condivisi, mentre attributi unici come la durata del video o le scadenze degli esercizi possono essere specifici per
+  ciascun tipo.
 
-* Strumenti di Gestione dei Progetti: Nelle applicazioni di gestione dei progetti, potresti avere diversi tipi di attività come attività specifiche, fasi e problemi. Il pattern Abstract Document potrebbe essere utilizzato per gestire attributi generali come il nome dell'attività specifica e l'assegnatario, consentendo allo stesso tempo attributi specifici come la data della fase o la priorità del problema.
+* Strumenti di Gestione dei Progetti: Nelle applicazioni di gestione dei progetti, potresti avere diversi tipi di
+  attività come attività specifiche, fasi e problemi. Il pattern Abstract Document potrebbe essere utilizzato per
+  gestire attributi generali come il nome dell'attività specifica e l'assegnatario, consentendo allo stesso tempo
+  attributi specifici come la data della fase o la priorità del problema.
 
-L'idea chiave alla base del design pattern Abstract Document è fornire un modo flessibile ed estensibile per gestire diversi tipi di documenti o entità con attributi comuni e distinti. Definendo un'interfaccia comune e implementandola in vari tipi di documenti, è possibile ottenere un approccio più organizzato e coerente alla gestione di strutture dati complesse.
+L'idea chiave alla base del design pattern Abstract Document è fornire un modo flessibile ed estensibile per gestire
+diversi tipi di documenti o entità con attributi comuni e distinti. Definendo un'interfaccia comune e implementandola in
+vari tipi di documenti, è possibile ottenere un approccio più organizzato e coerente alla gestione di strutture dati
+complesse.
 
 ## Collegamenti esterni
 

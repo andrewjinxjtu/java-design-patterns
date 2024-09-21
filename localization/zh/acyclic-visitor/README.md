@@ -142,7 +142,8 @@ public class ConfigureForUnixVisitor implements ZoomVisitor {
 
 坏处:
 
-* 通过证明它可以接受所有访客，但实际上仅对特定访客感兴趣，从而违反了[Liskov的替代原则](https://java-design-patterns.com/principles/#liskov-substitution-principle)
+*
+通过证明它可以接受所有访客，但实际上仅对特定访客感兴趣，从而违反了[Liskov的替代原则](https://java-design-patterns.com/principles/#liskov-substitution-principle)
 * 必须为可访问的类层次结构中的所有成员创建访问者的并行层次结构。
 
 ## 相关的模式

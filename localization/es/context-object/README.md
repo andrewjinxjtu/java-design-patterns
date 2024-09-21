@@ -32,7 +32,8 @@ Ejemplo del mundo real
 
 [Core J2EE Patterns](http://corej2eepatterns.com/ContextObject.htm) dice
 
-> Utilice un objeto de contexto (Context Object) para encapsular el estado de una manera independiente del protocolo para ser compartido
+> Utilice un objeto de contexto (Context Object) para encapsular el estado de una manera independiente del protocolo
+> para ser compartido
 > en toda tu aplicación.
 
 **Ejemplo programático**
@@ -83,7 +84,8 @@ public class ServiceContextFactory {
 }
 ```
 
-Instanciar el objeto de contexto en la primera capa `LayerA` y la capa contigua `LayerB` hasta llamar al contexto en la capa actual `LayerC`,
+Instanciar el objeto de contexto en la primera capa `LayerA` y la capa contigua `LayerB` hasta llamar al contexto en la
+capa actual `LayerC`,
 que estructura el objeto.
 
 ```Java

@@ -13,13 +13,20 @@ tag:
 
 ## Intent of Acyclic Visitor Design Pattern
 
-The Acyclic Visitor pattern in Java decouples operations from an object hierarchy, providing a flexible design for various applications.
+The Acyclic Visitor pattern in Java decouples operations from an object hierarchy, providing a flexible design for
+various applications.
 
 ## Detailed Explanation of Acyclic Visitor Pattern with Real-World Examples
 
 Real-world example
 
-> An analogous real-world example of the Acyclic Visitor pattern in Java is a museum guide system, demonstrating the practical application of this design pattern. Imagine a museum with various exhibits like paintings, sculptures, and historical artifacts. The museum has different types of guides (audio guide, human guide, virtual reality guide) that provide information about each exhibit. Instead of modifying the exhibits every time a new guide type is introduced, each guide implements an interface to visit different exhibit types. This way, the museum can add new types of guides without altering the existing exhibits, ensuring that the system remains extensible and maintainable without forming any dependency cycles.
+> An analogous real-world example of the Acyclic Visitor pattern in Java is a museum guide system, demonstrating the
+> practical application of this design pattern. Imagine a museum with various exhibits like paintings, sculptures, and
+> historical artifacts. The museum has different types of guides (audio guide, human guide, virtual reality guide) that
+> provide information about each exhibit. Instead of modifying the exhibits every time a new guide type is introduced,
+> each guide implements an interface to visit different exhibit types. This way, the museum can add new types of guides
+> without altering the existing exhibits, ensuring that the system remains extensible and maintainable without forming any
+> dependency cycles.
 
 In plain words
 
@@ -27,11 +34,13 @@ In plain words
 
 [WikiWikiWeb](https://wiki.c2.com/?AcyclicVisitor) says
 
-> The Acyclic Visitor pattern allows new functions to be added to existing class hierarchies without affecting those hierarchies, and without creating the dependency cycles that are inherent to the GangOfFour VisitorPattern.
+> The Acyclic Visitor pattern allows new functions to be added to existing class hierarchies without affecting those
+> hierarchies, and without creating the dependency cycles that are inherent to the GangOfFour VisitorPattern.
 
 ## Programmatic Example of Acyclic Visitor in Java
 
-In this Java example, we have a hierarchy of modem classes illustrating the Acyclic Visitor pattern. The modems in this hierarchy need to be visited by an external algorithm based on filtering criteria (is it Unix or DOS compatible modem).
+In this Java example, we have a hierarchy of modem classes illustrating the Acyclic Visitor pattern. The modems in this
+hierarchy need to be visited by an external algorithm based on filtering criteria (is it Unix or DOS compatible modem).
 
 Here's the `Modem` hierarchy.
 
@@ -147,7 +156,8 @@ Program output:
 This pattern can be used:
 
 * When you need to add a new function to an existing hierarchy without the need to alter or affect that hierarchy.
-* When there are functions that operate upon a hierarchy, but which do not belong in the hierarchy itself. e.g. the ConfigureForDOS / ConfigureForUnix / ConfigureForX issue.
+* When there are functions that operate upon a hierarchy, but which do not belong in the hierarchy itself. e.g. the
+  ConfigureForDOS / ConfigureForUnix / ConfigureForX issue.
 * When you need to perform very different operations on an object depending upon its type.
 * When the visited class hierarchy will be frequently extended with new derivatives of the Element class.
 * When the recompilation, relinking, retesting or redistribution of the derivatives of Element is very expensive.
@@ -171,9 +181,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Composite](https://java-design-patterns.com/patterns/composite/): Often used in conjunction with Acyclic Visitor to allow treating individual objects and compositions uniformly.
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Can be used alongside to add responsibilities to objects dynamically.
-* [Visitor](https://java-design-patterns.com/patterns/visitor/): The Acyclic Visitor pattern is a variation of the Visitor pattern that avoids cyclic dependencies.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Often used in conjunction with Acyclic Visitor to
+  allow treating individual objects and compositions uniformly.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Can be used alongside to add responsibilities to
+  objects dynamically.
+* [Visitor](https://java-design-patterns.com/patterns/visitor/): The Acyclic Visitor pattern is a variation of the
+  Visitor pattern that avoids cyclic dependencies.
 
 ## References and Credits
 

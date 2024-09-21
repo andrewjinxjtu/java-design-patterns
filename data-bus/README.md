@@ -19,23 +19,41 @@ tag:
 
 ## Intent of Data Bus Design Pattern
 
-The Data Bus design pattern aims to provide a centralized communication channel through which various components of a system can exchange data without being directly connected, thus promoting loose coupling and enhancing scalability and maintainability.
+The Data Bus design pattern aims to provide a centralized communication channel through which various components of a
+system can exchange data without being directly connected, thus promoting loose coupling and enhancing scalability and
+maintainability.
 
 ## Detailed Explanation of Data Bus Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a large airport as an analogous real-world example of the Data Bus pattern. In an airport, various airlines, passengers, baggage handlers, and security personnel all need to communicate and share information. Instead of each entity communicating directly with every other entity, the airport uses a centralized announcement system (the Data Bus). Flight information, security alerts, and other critical updates are broadcast over this system, and each entity listens for the messages relevant to them. This setup allows the airport to decouple the communication process, ensuring that each entity only receives the information they need, while allowing the system to scale and integrate new entities without disrupting the existing ones. This is similar to how the Data Bus pattern in Java promotes centralized communication and event handling, enhancing system scalability and maintainability.
+> Consider a large airport as an analogous real-world example of the Data Bus pattern. In an airport, various airlines,
+> passengers, baggage handlers, and security personnel all need to communicate and share information. Instead of each
+> entity communicating directly with every other entity, the airport uses a centralized announcement system (the Data
+> Bus). Flight information, security alerts, and other critical updates are broadcast over this system, and each entity
+> listens for the messages relevant to them. This setup allows the airport to decouple the communication process, ensuring
+> that each entity only receives the information they need, while allowing the system to scale and integrate new entities
+> without disrupting the existing ones. This is similar to how the Data Bus pattern in Java promotes centralized
+> communication and event handling, enhancing system scalability and maintainability.
 
 In plain words
 
-> Data Bus is a design pattern that connects components of an application for communication based on the type of message or event being transferred. This pattern promotes decoupling, making it easier to scale and maintain the system by allowing components to communicate without direct dependencies.
+> Data Bus is a design pattern that connects components of an application for communication based on the type of message
+> or event being transferred. This pattern promotes decoupling, making it easier to scale and maintain the system by
+> allowing components to communicate without direct dependencies.
 
 ## Programmatic Example of Data Bus Pattern in Java
 
-Say you have an app that enables online bookings and participation in events. You want the app to send notifications, such as event advertisements, to all ordinary members of the community or organization holding the events. However, you do not want to send such advertisements to event administrators or organizers. Instead, you want to send them notifications about the timing of new advertisements sent to all members. The Data Bus enables you to selectively notify community members by type (ordinary members or event administrators) by making their classes or components only accept messages of a certain type. Thus, ordinary members and administrators do not need to know about each other or the specific classes or components used to notify the entire community, except for knowing the type of messages being sent.
+Say you have an app that enables online bookings and participation in events. You want the app to send notifications,
+such as event advertisements, to all ordinary members of the community or organization holding the events. However, you
+do not want to send such advertisements to event administrators or organizers. Instead, you want to send them
+notifications about the timing of new advertisements sent to all members. The Data Bus enables you to selectively notify
+community members by type (ordinary members or event administrators) by making their classes or components only accept
+messages of a certain type. Thus, ordinary members and administrators do not need to know about each other or the
+specific classes or components used to notify the entire community, except for knowing the type of messages being sent.
 
-In the online events app example above, we first define our `Member` interface and its implementations: `MessageCollectorMember` (ordinary community members) and `StatusMember` (event administrators or organizers).
+In the online events app example above, we first define our `Member` interface and its implementations:
+`MessageCollectorMember` (ordinary community members) and `StatusMember` (event administrators or organizers).
 
 ```java
 public interface Member extends Consumer<DataType> {
@@ -76,7 +94,8 @@ public class DataBus {
 
 The `accept` method is applied to each member in the `publish` method.
 
-For ordinary community members (`MessageCollectorMember`), the `accept` method can handle only `MessageData` type messages.
+For ordinary community members (`MessageCollectorMember`), the `accept` method can handle only `MessageData` type
+messages.
 
 ```java
 public class MessageCollectorMember implements Member {
@@ -98,7 +117,8 @@ public class MessageCollectorMember implements Member {
 }
 ```
 
-For event administrators or organizers (`StatusMember`), the `accept` method can handle `StartingData` and `StoppingData` type messages.
+For event administrators or organizers (`StatusMember`), the `accept` method can handle `StartingData` and
+`StoppingData` type messages.
 
 ```java
 public class StatusMember implements Member {
@@ -148,7 +168,9 @@ When the data bus publishes a message, the output is as follows:
 02:33:57.633 [main] INFO com.iluwatar.databus.members.StatusMember - Receiver 1 sees application started at 2022-10-26T02:33:57.613529100
 ```
 
-As shown, `MessageCollectorMembers` only accept messages of type `MessageData`, so they do not see the `StartingData` or `StoppingData` messages, which are only visible to `StatusMember` (the event administrators or organizers). This selective message handling prevents ordinary community members from receiving administrative notifications.
+As shown, `MessageCollectorMembers` only accept messages of type `MessageData`, so they do not see the `StartingData` or
+`StoppingData` messages, which are only visible to `StatusMember` (the event administrators or organizers). This
+selective message handling prevents ordinary community members from receiving administrative notifications.
 
 ## When to Use the Data Bus Pattern in Java
 
@@ -181,9 +203,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Mediator](https://java-design-patterns.com/patterns/mediator/): Facilitates communication between components, but unlike Data Bus, it centralizes control.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Similar in nature to the publish-subscribe mechanism used in Data Bus for notifying changes to multiple objects.
-* Publish/Subscribe: The Data Bus pattern is often implemented using the publish-subscribe mechanism, where publishers post messages to the bus without knowledge of the subscribers.
+* [Mediator](https://java-design-patterns.com/patterns/mediator/): Facilitates communication between components, but
+  unlike Data Bus, it centralizes control.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Similar in nature to the publish-subscribe mechanism
+  used in Data Bus for notifying changes to multiple objects.
+* Publish/Subscribe: The Data Bus pattern is often implemented using the publish-subscribe mechanism, where publishers
+  post messages to the bus without knowledge of the subscribers.
 
 ## References and Credits
 

@@ -28,7 +28,9 @@ Decorator パターンは、サブクラス化よりも柔軟な機能拡張方�
 
 Wikipedia の説明
 
-> オブジェクト指向プログラミングにおいて、Decorator パターンは、同じクラスの別のオブジェクトの振る舞いに影響を与えることなく、静的もしくは動的に、個別のオブジェクトに振る舞いを加えることができるデザインパターンである。Decorator パターンは、単一責任の原則を遵守するためにしばしば便利である。なぜなら、クラスの機能性を変更せずに拡張することで、開放/閉鎖原則などの関心事の特異な分野を元に、クラスの間で機能性を分割することができるためである。
+> オブジェクト指向プログラミングにおいて、Decorator
+> パターンは、同じクラスの別のオブジェクトの振る舞いに影響を与えることなく、静的もしくは動的に、個別のオブジェクトに振る舞いを加えることができるデザインパターンである。Decorator
+> パターンは、単一責任の原則を遵守するためにしばしば便利である。なぜなら、クラスの機能性を変更せずに拡張することで、開放/閉鎖原則などの関心事の特異な分野を元に、クラスの間で機能性を分割することができるためである。
 
 **サンプルコード**
 
@@ -134,7 +136,8 @@ Clubbed troll power: 20.
 
 * 個々のオブジェクトに責任を動的、かつ透明に(すなわち、他のオブジェクトに影響を与えないように)追加する場合。
 * 責任を取りはずすことができるようにする場合。
-* サブクラス化による拡張が非現実的な場合。非常に多くの独立した拡張が起こり得ることがある。このような場合、サブクラス化により全ての組み合わせの拡張に対応しようとすると、莫大な数のサブクラスが必要になるだろう。また、クラス定義が隠蔽されている場合や入手できない場合にも、このパターンを利用できる。
+*
+サブクラス化による拡張が非現実的な場合。非常に多くの独立した拡張が起こり得ることがある。このような場合、サブクラス化により全ての組み合わせの拡張に対応しようとすると、莫大な数のサブクラスが必要になるだろう。また、クラス定義が隠蔽されている場合や入手できない場合にも、このパターンを利用できる。
 
 ## チュートリアル
 
@@ -142,12 +145,12 @@ Clubbed troll power: 20.
 
 ## 使用例
 
- * [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html),
- [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html) and [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
- * [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
- * [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
- * [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
-
+* [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html),
+  [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html)
+  and [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
+* [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
+* [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
+* [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
 
 ## クレジット
 

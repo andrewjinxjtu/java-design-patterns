@@ -26,6 +26,7 @@ package com.iluwatar.pageobject;
 
 import java.io.IOException;
 import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
 import org.htmlunit.WebClient;
 import org.htmlunit.html.HtmlAnchor;
@@ -36,63 +37,63 @@ import org.htmlunit.html.HtmlPage;
  */
 @Slf4j
 public class AlbumListPage extends Page {
-  private static final String ALBUM_LIST_HTML_FILE = "album-list.html";
-  private static final String PAGE_URL = "file:" + AUT_PATH + ALBUM_LIST_HTML_FILE;
+    private static final String ALBUM_LIST_HTML_FILE = "album-list.html";
+    private static final String PAGE_URL = "file:" + AUT_PATH + ALBUM_LIST_HTML_FILE;
 
-  private HtmlPage page;
-
-
-  /**
-   * Constructor.
-   */
-  public AlbumListPage(WebClient webClient) {
-    super(webClient);
-  }
+    private HtmlPage page;
 
 
-  /**
-   * Navigates to the Album List Page.
-   *
-   * @return {@link AlbumListPage}
-   */
-  public AlbumListPage navigateToPage() {
-    try {
-      page = this.webClient.getPage(PAGE_URL);
-    } catch (IOException e) {
-      LOGGER.error("An error occurred on navigateToPage.", e);
+    /**
+     * Constructor.
+     */
+    public AlbumListPage(WebClient webClient) {
+        super(webClient);
     }
-    return this;
-  }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public boolean isAt() {
-    return "Album List".equals(page.getTitleText());
-  }
 
-  /**
-   * Selects an album by the given album title.
-   *
-   * @param albumTitle the title of the album to click
-   * @return the album page
-   */
-  public AlbumPage selectAlbum(String albumTitle) {
-    // uses XPath to find list of html anchor tags with the class album in it
-    var albumLinks = (List<Object>) page.getByXPath("//tr[@class='album']//a");
-    for (var anchor : albumLinks) {
-      if (((HtmlAnchor) anchor).getTextContent().equals(albumTitle)) {
+    /**
+     * Navigates to the Album List Page.
+     *
+     * @return {@link AlbumListPage}
+     */
+    public AlbumListPage navigateToPage() {
         try {
-          ((HtmlAnchor) anchor).click();
-          return new AlbumPage(webClient);
+            page = this.webClient.getPage(PAGE_URL);
         } catch (IOException e) {
-          LOGGER.error("An error occurred on selectAlbum", e);
+            LOGGER.error("An error occurred on navigateToPage.", e);
         }
-      }
+        return this;
     }
-    throw new IllegalArgumentException("No links with the album title: " + albumTitle);
-  }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isAt() {
+        return "Album List".equals(page.getTitleText());
+    }
+
+    /**
+     * Selects an album by the given album title.
+     *
+     * @param albumTitle the title of the album to click
+     * @return the album page
+     */
+    public AlbumPage selectAlbum(String albumTitle) {
+        // uses XPath to find list of html anchor tags with the class album in it
+        var albumLinks = (List<Object>) page.getByXPath("//tr[@class='album']//a");
+        for (var anchor : albumLinks) {
+            if (((HtmlAnchor) anchor).getTextContent().equals(albumTitle)) {
+                try {
+                    ((HtmlAnchor) anchor).click();
+                    return new AlbumPage(webClient);
+                } catch (IOException e) {
+                    LOGGER.error("An error occurred on selectAlbum", e);
+                }
+            }
+        }
+        throw new IllegalArgumentException("No links with the album title: " + albumTitle);
+    }
 
 
 }

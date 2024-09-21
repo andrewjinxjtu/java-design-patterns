@@ -26,16 +26,15 @@ package com.iluwatar.singleton;
 
 /**
  * ThreadSafeLazyLoadedIvoryTowerTest
- *
  */
 class ThreadSafeLazyLoadedIvoryTowerTest
-    extends SingletonTest<ThreadSafeLazyLoadedIvoryTower> {
+        extends SingletonTest<ThreadSafeLazyLoadedIvoryTower> {
 
-  /**
-   * Create a new singleton test instance using the given 'getInstance' method.
-   */
-  public ThreadSafeLazyLoadedIvoryTowerTest() {
-    super(ThreadSafeLazyLoadedIvoryTower::getInstance);
-  }
+    /**
+     * Create a new singleton test instance using the given 'getInstance' method.
+     */
+    public ThreadSafeLazyLoadedIvoryTowerTest() {
+        super(ThreadSafeLazyLoadedIvoryTower::getInstance);
+    }
 
 }

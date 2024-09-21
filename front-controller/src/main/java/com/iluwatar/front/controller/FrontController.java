@@ -31,13 +31,13 @@ package com.iluwatar.front.controller;
  */
 public class FrontController {
 
-  private final Dispatcher dispatcher;
+    private final Dispatcher dispatcher;
 
-  public FrontController() {
-    this.dispatcher = new Dispatcher();
-  }
+    public FrontController() {
+        this.dispatcher = new Dispatcher();
+    }
 
-  public void handleRequest(String request) {
-    dispatcher.dispatch(request);
-  }
+    public void handleRequest(String request) {
+        dispatcher.dispatch(request);
+    }
 }

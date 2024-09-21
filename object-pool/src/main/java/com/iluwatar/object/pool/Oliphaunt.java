@@ -25,6 +25,7 @@
 package com.iluwatar.object.pool;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,25 +35,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Oliphaunt {
 
-  private static final AtomicInteger counter = new AtomicInteger(0);
+    private static final AtomicInteger counter = new AtomicInteger(0);
 
-  @Getter
-  private final int id;
+    @Getter
+    private final int id;
 
-  /**
-   * Constructor.
-   */
-  public Oliphaunt() {
-    id = counter.incrementAndGet();
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      LOGGER.error("Error occurred: ", e);
+    /**
+     * Constructor.
+     */
+    public Oliphaunt() {
+        id = counter.incrementAndGet();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            LOGGER.error("Error occurred: ", e);
+        }
     }
-  }
 
-  @Override
-  public String toString() {
-    return String.format("Oliphaunt id=%d", id);
-  }
+    @Override
+    public String toString() {
+        return String.format("Oliphaunt id=%d", id);
+    }
 }

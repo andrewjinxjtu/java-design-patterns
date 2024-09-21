@@ -40,9 +40,9 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Room {
 
-  private int id;
-  private String roomType;
-  private int price;
-  private boolean booked;
+    private int id;
+    private String roomType;
+    private int price;
+    private boolean booked;
 
 }

@@ -34,27 +34,27 @@ import org.junit.jupiter.api.Test;
  */
 class DelayedRemoteServiceTest {
 
-  /**
-   * Testing immediate response of the delayed service.
-   *
-   * @throws RemoteServiceException
-   */
-  @Test
-  void testDefaultConstructor() throws RemoteServiceException {
-    Assertions.assertThrows(RemoteServiceException.class, () -> {
-      var obj = new DelayedRemoteService();
-      obj.call();
-    });
-  }
+    /**
+     * Testing immediate response of the delayed service.
+     *
+     * @throws RemoteServiceException
+     */
+    @Test
+    void testDefaultConstructor() throws RemoteServiceException {
+        Assertions.assertThrows(RemoteServiceException.class, () -> {
+            var obj = new DelayedRemoteService();
+            obj.call();
+        });
+    }
 
-  /**
-   * Testing server started in past (2 seconds ago) and with a simulated delay of 1 second.
-   *
-   * @throws RemoteServiceException
-   */
-  @Test
-  void testParameterizedConstructor() throws RemoteServiceException {
-      var obj = new DelayedRemoteService(System.nanoTime()-2000*1000*1000,1);
-      assertEquals("Delayed service is working",obj.call());
-  }
+    /**
+     * Testing server started in past (2 seconds ago) and with a simulated delay of 1 second.
+     *
+     * @throws RemoteServiceException
+     */
+    @Test
+    void testParameterizedConstructor() throws RemoteServiceException {
+        var obj = new DelayedRemoteService(System.nanoTime() - 2000 * 1000 * 1000, 1);
+        assertEquals("Delayed service is working", obj.call());
+    }
 }

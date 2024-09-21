@@ -7,26 +7,35 @@ tag:
 ---
 
 ## Còn được gọi là
+
 Wrapper
 
 ## Mục đích
-Chuyển đổi giao diện của một lớp thành một giao diện khác mà mình mong muốn. Adapter cho phép các lớp làm việc cùng nhau, mặc dù ban đầu chúng không thể làm việc cùng nhau do giao diện không tương thích.
+
+Chuyển đổi giao diện của một lớp thành một giao diện khác mà mình mong muốn. Adapter cho phép các lớp làm việc cùng
+nhau, mặc dù ban đầu chúng không thể làm việc cùng nhau do giao diện không tương thích.
 
 ## Giải thích
 
 Ví dụ thực tế
 
-> Hãy tưởng tượng rằng bạn có một số hình ảnh trên thẻ nhớ của bạn và bạn cần chuyển chúng sang máy tính của bạn. Để chuyển chúng, bạn cần một loại adapter nào đó tương thích với các cổng máy tính của bạn để bạn có thể kết nối thẻ nhớ vào máy tính của bạn. Trong trường hợp này, đầu đọc thẻ là một cái adapter.
-> Ví dụ nổi tiếng khác là adapter điện; một phích cắm ba chân không thể kết nối vào một ổ cắm hai chân, nó cần sử dụng một adapter điện để làm cho nó tương thích với ổ cắm hai chân.
+> Hãy tưởng tượng rằng bạn có một số hình ảnh trên thẻ nhớ của bạn và bạn cần chuyển chúng sang máy tính của bạn. Để
+> chuyển chúng, bạn cần một loại adapter nào đó tương thích với các cổng máy tính của bạn để bạn có thể kết nối thẻ nhớ
+> vào máy tính của bạn. Trong trường hợp này, đầu đọc thẻ là một cái adapter.
+> Ví dụ nổi tiếng khác là adapter điện; một phích cắm ba chân không thể kết nối vào một ổ cắm hai chân, nó cần sử dụng
+> một adapter điện để làm cho nó tương thích với ổ cắm hai chân.
 > Một ví dụ khác là thông dịch viên dịch lời của người này cho người khác hiểu được.
 
 ## Nói đơn giản hơn
 
-> Mẫu Adapter cho phép bạn bọc một đối tượng ban đầu không tương thích vào một adapter để làm cho nó tương thích với một lớp khác.
+> Mẫu Adapter cho phép bạn bọc một đối tượng ban đầu không tương thích vào một adapter để làm cho nó tương thích với một
+> lớp khác.
 
 Theo Wikipedia
 
-> Trong kỹ thuật phần mềm, mẫu thiết kế Adapter là một mẫu thiết kế phần mềm cho phép giao diện của một lớp hiện có được sử dụng như một giao diện khác. Nó thường được sử dụng để làm cho các lớp hiện có làm việc với các lớp khác mà không cần sửa đổi mã nguồn của chúng.
+> Trong kỹ thuật phần mềm, mẫu thiết kế Adapter là một mẫu thiết kế phần mềm cho phép giao diện của một lớp hiện có được
+> sử dụng như một giao diện khác. Nó thường được sử dụng để làm cho các lớp hiện có làm việc với các lớp khác mà không cần
+> sửa đổi mã nguồn của chúng.
 
 **Mã nguồn mẫu**
 
@@ -64,7 +73,8 @@ public class Captain {
 }
 ```
 
-Bây giờ hãy nói rằng hải tặc đang đến và thuyền trưởng của chúng ta cần trốn thoát nhưng chỉ có một thuyền câu sẵn có. Chúng ta cần tạo một adapter cho phép thuyền trưởng vận hành thuyền câu với kỹ năng chèo của mình.
+Bây giờ hãy nói rằng hải tặc đang đến và thuyền trưởng của chúng ta cần trốn thoát nhưng chỉ có một thuyền câu sẵn có.
+Chúng ta cần tạo một adapter cho phép thuyền trưởng vận hành thuyền câu với kỹ năng chèo của mình.
 
 ```java
 @Slf4j
@@ -91,15 +101,21 @@ captain.row();
 ```
 
 ## Sơ đồ lớp
+
 ![alt text](../../../adapter/etc/adapter.urm.png "Adapter class diagram")
 
 ## Áp dụng
+
 Sử dụng mẫu Adapter khi:
 
 * Bạn muốn sử dụng một lớp hiện có, và giao diện của nó không phù hợp với giao diện bạn cần
-* Bạn muốn tạo một lớp có thể tái sử dụng làm việc với các lớp không liên quan hoặc không thể dự đoán trước, tức là các lớp không nhất thiết phải có giao diện tương thích
-* Bạn cần sử dụng nhiều lớp con hiện có, nhưng việc điều chỉnh giao diện của chúng thông qua việc kế thừa là không hiệu quả. Một đối tượng adapter có thể điều chỉnh giao diện của lớp cha của nó.
-* Hầu hết các ứng dụng sử dụng thư viện bên ngoài sử dụng adapter như một lớp trung gian giữa ứng dụng và thư viện bên ngoài. Nếu muốn sử dụng thư viện khác, chỉ cần tạo một adapter cho thư viện mới mà không cần thay đổi mã nguồn của ứng dụng.
+* Bạn muốn tạo một lớp có thể tái sử dụng làm việc với các lớp không liên quan hoặc không thể dự đoán trước, tức là các
+  lớp không nhất thiết phải có giao diện tương thích
+* Bạn cần sử dụng nhiều lớp con hiện có, nhưng việc điều chỉnh giao diện của chúng thông qua việc kế thừa là không hiệu
+  quả. Một đối tượng adapter có thể điều chỉnh giao diện của lớp cha của nó.
+* Hầu hết các ứng dụng sử dụng thư viện bên ngoài sử dụng adapter như một lớp trung gian giữa ứng dụng và thư viện bên
+  ngoài. Nếu muốn sử dụng thư viện khác, chỉ cần tạo một adapter cho thư viện mới mà không cần thay đổi mã nguồn của ứng
+  dụng.
 
 ## Hướng dẫn
 
@@ -107,18 +123,21 @@ Sử dụng mẫu Adapter khi:
 * [Refactoring Guru](https://refactoring.guru/design-patterns/adapter/java/example)
 * [Baeldung](https://www.baeldung.com/java-adapter-pattern)
 
-## Kết luận 
+## Kết luận
 
 Lớp adapter và đối tượng adapter có những lợi ích và khả năng thích ứng khác nhau. Một lớp adapter
 
-* Chuyển đổi một lớp Adaptee để phù hợp với Target bằng cách ràng buộc với một lớp Adaptee cụ thể. Kết quả là, khi chúng ta muốn thích ứng một lớp và tất cả các lớp con của nó, thì lớp adapter sẽ không hoạt động.
+* Chuyển đổi một lớp Adaptee để phù hợp với Target bằng cách ràng buộc với một lớp Adaptee cụ thể. Kết quả là, khi chúng
+  ta muốn thích ứng một lớp và tất cả các lớp con của nó, thì lớp adapter sẽ không hoạt động.
 * Cho phép Adapter ghi đè một số hành vi của Adaptee vì Adapter là một lớp con của Adaptee.
 * Chỉ giới thiệu một đối tượng và không cần thêm con trỏ để truy cập gián tiếp đến Adaptee.
 
-Một đối tượng Adapter 
+Một đối tượng Adapter
 
-* Cho phép một Adapter làm việc với nhiều Adaptees, tức là chính Adaptee và tất cả các lớp con của nó (nếu có). Adapter cũng có thể thêm chức năng cho tất cả Adaptee cùng một lúc.
-* Làm cho việc ghi đè hành vi của Adaptee trở nên khó khăn hơn. Nó sẽ yêu cầu việc kế thừa Adaptee và làm cho Adapter tham chiếu đến lớp con thay vì chính Adaptee.
+* Cho phép một Adapter làm việc với nhiều Adaptees, tức là chính Adaptee và tất cả các lớp con của nó (nếu có). Adapter
+  cũng có thể thêm chức năng cho tất cả Adaptee cùng một lúc.
+* Làm cho việc ghi đè hành vi của Adaptee trở nên khó khăn hơn. Nó sẽ yêu cầu việc kế thừa Adaptee và làm cho Adapter
+  tham chiếu đến lớp con thay vì chính Adaptee.
 
 ## Ví dụ trong thực tế
 

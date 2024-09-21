@@ -30,13 +30,13 @@ import lombok.Getter;
  * enum for sort order types.
  */
 public enum SortOrder {
-  ASC("asc"),
-  DESC("desc");
+    ASC("asc"),
+    DESC("desc");
 
-  @Getter
-  private String value;
+    @Getter
+    private String value;
 
-  SortOrder(String value) {
-    this.value = value;
-  }
+    SortOrder(String value) {
+        this.value = value;
+    }
 }

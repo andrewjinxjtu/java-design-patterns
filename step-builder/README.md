@@ -19,27 +19,38 @@ tag:
 
 ## Intent of Step Builder Design Pattern
 
-The Step Builder pattern in Java is an advanced technique to create complex objects with clarity and flexibility. It is perfect for scenarios requiring meticulous step-by-step object construction.
+The Step Builder pattern in Java is an advanced technique to create complex objects with clarity and flexibility. It is
+perfect for scenarios requiring meticulous step-by-step object construction.
 
 ## Detailed Explanation of Step Builder Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a scenario where you are assembling a custom computer. The process involves several steps: selecting the CPU, choosing the motherboard, adding memory, picking a graphics card, and installing storage. Each step builds on the previous one, gradually creating a fully functional computer. This step-by-step assembly process mirrors the Step Builder design pattern, ensuring that each component is correctly chosen and installed in a structured manner, ultimately resulting in a custom-built computer that meets specific requirements and preferences.
+> Imagine a scenario where you are assembling a custom computer. The process involves several steps: selecting the CPU,
+> choosing the motherboard, adding memory, picking a graphics card, and installing storage. Each step builds on the
+> previous one, gradually creating a fully functional computer. This step-by-step assembly process mirrors the Step
+> Builder design pattern, ensuring that each component is correctly chosen and installed in a structured manner,
+> ultimately resulting in a custom-built computer that meets specific requirements and preferences.
 
 In plain words
 
-> The Step Builder pattern constructs complex objects incrementally through a series of defined steps, ensuring clarity and flexibility in the creation process.
+> The Step Builder pattern constructs complex objects incrementally through a series of defined steps, ensuring clarity
+> and flexibility in the creation process.
 
 Wikipedia says
 
-> The Step Builder pattern is a variation of the Builder design pattern, designed to provide a flexible solution for constructing complex objects step-by-step. This pattern is particularly useful when an object requires multiple initialization steps, which can be done incrementally to ensure clarity and flexibility in the creation process.
+> The Step Builder pattern is a variation of the Builder design pattern, designed to provide a flexible solution for
+> constructing complex objects step-by-step. This pattern is particularly useful when an object requires multiple
+> initialization steps, which can be done incrementally to ensure clarity and flexibility in the creation process.
 
 ## Programmatic Example of Step Builder Pattern in Java
 
-The Step Builder pattern in Java is an extension of the Builder pattern that guides the user through the creation of an object in a step-by-step manner. This pattern improves the user experience by only showing the next step methods available, and not showing the build method until it's the right time to build the object.
+The Step Builder pattern in Java is an extension of the Builder pattern that guides the user through the creation of an
+object in a step-by-step manner. This pattern improves the user experience by only showing the next step methods
+available, and not showing the build method until it's the right time to build the object.
 
-Let's consider a `Character` class that has many attributes such as `name`, `fighterClass`, `wizardClass`, `weapon`, `spell`, and `abilities`.
+Let's consider a `Character` class that has many attributes such as `name`, `fighterClass`, `wizardClass`, `weapon`,
+`spell`, and `abilities`.
 
 ```java
 @Getter
@@ -61,7 +72,8 @@ public class Character {
 }
 ```
 
-Creating an instance of this class can be complex due to the number of attributes. This is where the Step Builder pattern comes in handy.
+Creating an instance of this class can be complex due to the number of attributes. This is where the Step Builder
+pattern comes in handy.
 
 We create a `CharacterStepBuilder` class that guides the user through the creation of a `Character` object.
 
@@ -78,7 +90,9 @@ public class CharacterStepBuilder {
 }
 ```
 
-The `CharacterStepBuilder` class defines a series of nested interfaces, each representing a step in the construction process. Each interface declares a method for the next step, guiding the user through the construction of a `Character` object.
+The `CharacterStepBuilder` class defines a series of nested interfaces, each representing a step in the construction
+process. Each interface declares a method for the next step, guiding the user through the construction of a `Character`
+object.
 
 ```java
 public interface NameStep {
@@ -199,9 +213,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Builder](https://java-design-patterns.com/patterns/builder/): Both patterns help in constructing complex objects. Step Builder is a variation that emphasizes incremental step-by-step construction.
-* [Fluent Interface](https://java-design-patterns.com/patterns/fluentinterface/): Often used in conjunction with the Step Builder pattern to provide a fluent API for constructing objects.
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Sometimes used with the Step Builder pattern to encapsulate the creation logic of the builder itself.
+* [Builder](https://java-design-patterns.com/patterns/builder/): Both patterns help in constructing complex objects.
+  Step Builder is a variation that emphasizes incremental step-by-step construction.
+* [Fluent Interface](https://java-design-patterns.com/patterns/fluentinterface/): Often used in conjunction with the
+  Step Builder pattern to provide a fluent API for constructing objects.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Sometimes used with the Step Builder
+  pattern to encapsulate the creation logic of the builder itself.
 
 ## References and Credits
 

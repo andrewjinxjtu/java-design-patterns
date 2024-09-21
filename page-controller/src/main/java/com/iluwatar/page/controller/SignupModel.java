@@ -35,8 +35,8 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class SignupModel {
-  private String name;
-  private String email;
-  private String password;
+    private String name;
+    private String email;
+    private String password;
 
 }

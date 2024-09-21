@@ -35,10 +35,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 public @interface Path {
-  /**
-   * Path parameter to be replaced in the url.
-   *
-   * @return Path parameter.
-   */
-  String value();
+    /**
+     * Path parameter to be replaced in the url.
+     *
+     * @return Path parameter.
+     */
+    String value();
 }

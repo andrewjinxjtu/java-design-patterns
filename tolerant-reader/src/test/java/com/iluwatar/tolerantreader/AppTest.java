@@ -27,6 +27,7 @@ package com.iluwatar.tolerantreader;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.File;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,17 +37,17 @@ import org.junit.jupiter.api.Test;
  */
 class AppTest {
 
-  @Test
-  void shouldExecuteWithoutException() {
-    assertDoesNotThrow(() -> App.main(new String[]{}));
-  }
+    @Test
+    void shouldExecuteWithoutException() {
+        assertDoesNotThrow(() -> App.main(new String[]{}));
+    }
 
-  @BeforeEach
-  @AfterEach
-  void cleanup() {
-    var file1 = new File("fish1.out");
-    file1.delete();
-    var file2 = new File("fish2.out");
-    file2.delete();
-  }
+    @BeforeEach
+    @AfterEach
+    void cleanup() {
+        var file1 = new File("fish1.out");
+        file1.delete();
+        var file2 = new File("fish2.out");
+        file2.delete();
+    }
 }

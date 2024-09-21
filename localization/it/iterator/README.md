@@ -11,7 +11,9 @@ tag:
 Cursor
 
 ## Intento
-Fornire un modo per accedere agli elementi di un oggetto aggregato in modo sequenziale senza esporre la sua rappresentazione sottostante.
+
+Fornire un modo per accedere agli elementi di un oggetto aggregato in modo sequenziale senza esporre la sua
+rappresentazione sottostante.
 
 ## Spiegazione
 
@@ -23,13 +25,15 @@ Esempio del mondo reale
 
 In parole semplici
 
-> I contenitori possono fornire un'interfaccia di iterazione agnostica alla rappresentazione per consentire l'accesso agli
+> I contenitori possono fornire un'interfaccia di iterazione agnostica alla rappresentazione per consentire l'accesso
+> agli
 > elementi.
 
 Wikipedia dice
 
 > Nella programmazione orientata agli oggetti, il pattern iterator è un design pattern in cui un iteratore viene
-> utilizzato per attraversare un contenitore e accedere agli elementi del contenitore stesso. _(Testo tradotto dalla voce Iterator Pattern da Wikipedia in lingua inglese)._
+> utilizzato per attraversare un contenitore e accedere agli elementi del contenitore stesso. _(Testo tradotto dalla
+voce Iterator Pattern da Wikipedia in lingua inglese)._
 
 **Esempio di codice**
 

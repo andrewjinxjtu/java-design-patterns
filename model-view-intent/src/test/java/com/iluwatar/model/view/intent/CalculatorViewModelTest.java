@@ -26,6 +26,7 @@ package com.iluwatar.model.view.intent;
 
 import com.iluwatar.model.view.intent.actions.*;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,82 +34,82 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculatorViewModelTest {
 
-  private CalculatorModel modelAfterExecutingActions(List<CalculatorAction> actions) {
-    CalculatorViewModel viewModel = new CalculatorViewModel();
-    for (CalculatorAction action : actions) {
-      viewModel.handleAction(action);
+    private CalculatorModel modelAfterExecutingActions(List<CalculatorAction> actions) {
+        CalculatorViewModel viewModel = new CalculatorViewModel();
+        for (CalculatorAction action : actions) {
+            viewModel.handleAction(action);
+        }
+        return viewModel.getCalculatorModel();
     }
-    return viewModel.getCalculatorModel();
-  }
 
-  @Test
-  void testSetup() {
-    CalculatorModel model = modelAfterExecutingActions(new ArrayList<>());
-    assertEquals(0, model.getVariable());
-    assertEquals(0, model.getOutput());
-  }
+    @Test
+    void testSetup() {
+        CalculatorModel model = modelAfterExecutingActions(new ArrayList<>());
+        assertEquals(0, model.getVariable());
+        assertEquals(0, model.getOutput());
+    }
 
-  @Test
-  void testSetVariable() {
-    List<CalculatorAction> actions = List.of(
-        new SetVariableCalculatorAction(10.0)
-    );
-    CalculatorModel model = modelAfterExecutingActions(actions);
-    assertEquals(10.0, model.getVariable());
-    assertEquals(0, model.getOutput());
-  }
+    @Test
+    void testSetVariable() {
+        List<CalculatorAction> actions = List.of(
+                new SetVariableCalculatorAction(10.0)
+        );
+        CalculatorModel model = modelAfterExecutingActions(actions);
+        assertEquals(10.0, model.getVariable());
+        assertEquals(0, model.getOutput());
+    }
 
-  @Test
-  void testAddition() {
-    List<CalculatorAction> actions = List.of(
-        new SetVariableCalculatorAction(2.0),
-        new AdditionCalculatorAction(),
-        new AdditionCalculatorAction(),
-        new SetVariableCalculatorAction(7.0),
-        new AdditionCalculatorAction()
-    );
-    CalculatorModel model = modelAfterExecutingActions(actions);
-    assertEquals(7.0, model.getVariable());
-    assertEquals(11.0, model.getOutput());
-  }
+    @Test
+    void testAddition() {
+        List<CalculatorAction> actions = List.of(
+                new SetVariableCalculatorAction(2.0),
+                new AdditionCalculatorAction(),
+                new AdditionCalculatorAction(),
+                new SetVariableCalculatorAction(7.0),
+                new AdditionCalculatorAction()
+        );
+        CalculatorModel model = modelAfterExecutingActions(actions);
+        assertEquals(7.0, model.getVariable());
+        assertEquals(11.0, model.getOutput());
+    }
 
-  @Test
-  void testSubtraction() {
-    List<CalculatorAction> actions = List.of(
-        new SetVariableCalculatorAction(2.0),
-        new AdditionCalculatorAction(),
-        new AdditionCalculatorAction(),
-        new SubtractionCalculatorAction()
-    );
-    CalculatorModel model = modelAfterExecutingActions(actions);
-    assertEquals(2.0, model.getVariable());
-    assertEquals(2.0, model.getOutput());
-  }
+    @Test
+    void testSubtraction() {
+        List<CalculatorAction> actions = List.of(
+                new SetVariableCalculatorAction(2.0),
+                new AdditionCalculatorAction(),
+                new AdditionCalculatorAction(),
+                new SubtractionCalculatorAction()
+        );
+        CalculatorModel model = modelAfterExecutingActions(actions);
+        assertEquals(2.0, model.getVariable());
+        assertEquals(2.0, model.getOutput());
+    }
 
-  @Test
-  void testMultiplication() {
-    List<CalculatorAction> actions = List.of(
-        new SetVariableCalculatorAction(2.0),
-        new AdditionCalculatorAction(),
-        new AdditionCalculatorAction(),
-        new MultiplicationCalculatorAction()
-    );
-    CalculatorModel model = modelAfterExecutingActions(actions);
-    assertEquals(2.0, model.getVariable());
-    assertEquals(8.0, model.getOutput());
-  }
+    @Test
+    void testMultiplication() {
+        List<CalculatorAction> actions = List.of(
+                new SetVariableCalculatorAction(2.0),
+                new AdditionCalculatorAction(),
+                new AdditionCalculatorAction(),
+                new MultiplicationCalculatorAction()
+        );
+        CalculatorModel model = modelAfterExecutingActions(actions);
+        assertEquals(2.0, model.getVariable());
+        assertEquals(8.0, model.getOutput());
+    }
 
-  @Test
-  void testDivision() {
-    List<CalculatorAction> actions = List.of(
-        new SetVariableCalculatorAction(2.0),
-        new AdditionCalculatorAction(),
-        new AdditionCalculatorAction(),
-        new SetVariableCalculatorAction(2.0),
-        new DivisionCalculatorAction()
-    );
-    CalculatorModel model = modelAfterExecutingActions(actions);
-    assertEquals(2.0, model.getVariable());
-    assertEquals(2.0, model.getOutput());
-  }
+    @Test
+    void testDivision() {
+        List<CalculatorAction> actions = List.of(
+                new SetVariableCalculatorAction(2.0),
+                new AdditionCalculatorAction(),
+                new AdditionCalculatorAction(),
+                new SetVariableCalculatorAction(2.0),
+                new DivisionCalculatorAction()
+        );
+        CalculatorModel model = modelAfterExecutingActions(actions);
+        assertEquals(2.0, model.getVariable());
+        assertEquals(2.0, model.getOutput());
+    }
 }

@@ -32,20 +32,19 @@ import org.junit.jupiter.api.Test;
 
 /**
  * NazgulTest
- *
  */
 class NazgulTest {
 
-  /**
-   * Verify if {@link Nazgul#getInstance(NazgulName)} returns the correct Nazgul multiton instance
-   */
-  @Test
-  void testGetInstance() {
-    for (final var name : NazgulName.values()) {
-      final var nazgul = Nazgul.getInstance(name);
-      assertNotNull(nazgul);
-      assertSame(nazgul, Nazgul.getInstance(name));
-      assertEquals(name, nazgul.getName());
+    /**
+     * Verify if {@link Nazgul#getInstance(NazgulName)} returns the correct Nazgul multiton instance
+     */
+    @Test
+    void testGetInstance() {
+        for (final var name : NazgulName.values()) {
+            final var nazgul = Nazgul.getInstance(name);
+            assertNotNull(nazgul);
+            assertSame(nazgul, Nazgul.getInstance(name));
+            assertEquals(name, nazgul.getName());
+        }
     }
-  }
 }

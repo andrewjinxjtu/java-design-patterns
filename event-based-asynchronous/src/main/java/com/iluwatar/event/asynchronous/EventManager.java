@@ -28,6 +28,7 @@ import java.security.SecureRandom;
 import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
 import lombok.Getter;
 
 /**
@@ -40,184 +41,184 @@ import lombok.Getter;
  */
 public class EventManager implements ThreadCompleteListener {
 
-  public static final int MAX_RUNNING_EVENTS = 1000;
-  // Just don't want to have too many running events. :)
-  public static final int MIN_ID = 1;
-  public static final int MAX_ID = MAX_RUNNING_EVENTS;
-  public static final Duration MAX_EVENT_TIME = Duration.ofSeconds(1800); // 30 minutes.
-  private int currentlyRunningSyncEvent = -1;
-  private final SecureRandom rand;
+    public static final int MAX_RUNNING_EVENTS = 1000;
+    // Just don't want to have too many running events. :)
+    public static final int MIN_ID = 1;
+    public static final int MAX_ID = MAX_RUNNING_EVENTS;
+    public static final Duration MAX_EVENT_TIME = Duration.ofSeconds(1800); // 30 minutes.
+    private int currentlyRunningSyncEvent = -1;
+    private final SecureRandom rand;
 
-  @Getter
-  private final Map<Integer, AsyncEvent> eventPool;
+    @Getter
+    private final Map<Integer, AsyncEvent> eventPool;
 
-  private static final String DOES_NOT_EXIST = " does not exist.";
+    private static final String DOES_NOT_EXIST = " does not exist.";
 
-  /**
-   * EventManager constructor.
-   */
-  public EventManager() {
-    rand = new SecureRandom();
-    eventPool = new ConcurrentHashMap<>(MAX_RUNNING_EVENTS);
+    /**
+     * EventManager constructor.
+     */
+    public EventManager() {
+        rand = new SecureRandom();
+        eventPool = new ConcurrentHashMap<>(MAX_RUNNING_EVENTS);
 
-  }
-
-  /**
-   * Create a Synchronous event.
-   *
-   * @param eventTime Time an event should run for.
-   * @return eventId
-   * @throws MaxNumOfEventsAllowedException When too many events are running at a time.
-   * @throws InvalidOperationException      No new synchronous events can be created when one is
-   *                                        already running.
-   * @throws LongRunningEventException      Long-running events are not allowed in the app.
-   */
-  public int create(Duration eventTime)
-      throws MaxNumOfEventsAllowedException, InvalidOperationException, LongRunningEventException {
-    if (currentlyRunningSyncEvent != -1) {
-      throw new InvalidOperationException("Event [" + currentlyRunningSyncEvent + "] is still"
-          + " running. Please wait until it finishes and try again.");
     }
 
-    var eventId = createEvent(eventTime, true);
-    currentlyRunningSyncEvent = eventId;
+    /**
+     * Create a Synchronous event.
+     *
+     * @param eventTime Time an event should run for.
+     * @return eventId
+     * @throws MaxNumOfEventsAllowedException When too many events are running at a time.
+     * @throws InvalidOperationException      No new synchronous events can be created when one is
+     *                                        already running.
+     * @throws LongRunningEventException      Long-running events are not allowed in the app.
+     */
+    public int create(Duration eventTime)
+            throws MaxNumOfEventsAllowedException, InvalidOperationException, LongRunningEventException {
+        if (currentlyRunningSyncEvent != -1) {
+            throw new InvalidOperationException("Event [" + currentlyRunningSyncEvent + "] is still"
+                    + " running. Please wait until it finishes and try again.");
+        }
 
-    return eventId;
-  }
+        var eventId = createEvent(eventTime, true);
+        currentlyRunningSyncEvent = eventId;
 
-  /**
-   * Create an Asynchronous event.
-   *
-   * @param eventTime Time an event should run for.
-   * @return eventId
-   * @throws MaxNumOfEventsAllowedException When too many events are running at a time.
-   * @throws LongRunningEventException      Long-running events are not allowed in the app.
-   */
-  public int createAsync(Duration eventTime) throws MaxNumOfEventsAllowedException,
-      LongRunningEventException {
-    return createEvent(eventTime, false);
-  }
-
-  private int createEvent(Duration eventTime, boolean isSynchronous)
-      throws MaxNumOfEventsAllowedException, LongRunningEventException {
-    if (eventTime.isNegative()) {
-      throw new IllegalArgumentException("eventTime cannot be negative");
+        return eventId;
     }
 
-    if (eventPool.size() == MAX_RUNNING_EVENTS) {
-      throw new MaxNumOfEventsAllowedException("Too many events are running at the moment."
-          + " Please try again later.");
+    /**
+     * Create an Asynchronous event.
+     *
+     * @param eventTime Time an event should run for.
+     * @return eventId
+     * @throws MaxNumOfEventsAllowedException When too many events are running at a time.
+     * @throws LongRunningEventException      Long-running events are not allowed in the app.
+     */
+    public int createAsync(Duration eventTime) throws MaxNumOfEventsAllowedException,
+            LongRunningEventException {
+        return createEvent(eventTime, false);
     }
 
-    if (eventTime.getSeconds() > MAX_EVENT_TIME.getSeconds()) {
-      throw new LongRunningEventException(
-          "Maximum event time allowed is " + MAX_EVENT_TIME + " seconds. Please try again.");
+    private int createEvent(Duration eventTime, boolean isSynchronous)
+            throws MaxNumOfEventsAllowedException, LongRunningEventException {
+        if (eventTime.isNegative()) {
+            throw new IllegalArgumentException("eventTime cannot be negative");
+        }
+
+        if (eventPool.size() == MAX_RUNNING_EVENTS) {
+            throw new MaxNumOfEventsAllowedException("Too many events are running at the moment."
+                    + " Please try again later.");
+        }
+
+        if (eventTime.getSeconds() > MAX_EVENT_TIME.getSeconds()) {
+            throw new LongRunningEventException(
+                    "Maximum event time allowed is " + MAX_EVENT_TIME + " seconds. Please try again.");
+        }
+
+        var newEventId = generateId();
+
+        var newEvent = new AsyncEvent(newEventId, eventTime, isSynchronous);
+        newEvent.addListener(this);
+        eventPool.put(newEventId, newEvent);
+
+        return newEventId;
     }
 
-    var newEventId = generateId();
+    /**
+     * Starts event.
+     *
+     * @param eventId The event that needs to be started.
+     * @throws EventDoesNotExistException If event does not exist in our eventPool.
+     */
+    public void start(int eventId) throws EventDoesNotExistException {
+        if (!eventPool.containsKey(eventId)) {
+            throw new EventDoesNotExistException(eventId + DOES_NOT_EXIST);
+        }
 
-    var newEvent = new AsyncEvent(newEventId, eventTime, isSynchronous);
-    newEvent.addListener(this);
-    eventPool.put(newEventId, newEvent);
-
-    return newEventId;
-  }
-
-  /**
-   * Starts event.
-   *
-   * @param eventId The event that needs to be started.
-   * @throws EventDoesNotExistException If event does not exist in our eventPool.
-   */
-  public void start(int eventId) throws EventDoesNotExistException {
-    if (!eventPool.containsKey(eventId)) {
-      throw new EventDoesNotExistException(eventId + DOES_NOT_EXIST);
+        eventPool.get(eventId).start();
     }
 
-    eventPool.get(eventId).start();
-  }
+    /**
+     * Stops event.
+     *
+     * @param eventId The event that needs to be stopped.
+     * @throws EventDoesNotExistException If event does not exist in our eventPool.
+     */
+    public void cancel(int eventId) throws EventDoesNotExistException {
+        if (!eventPool.containsKey(eventId)) {
+            throw new EventDoesNotExistException(eventId + DOES_NOT_EXIST);
+        }
 
-  /**
-   * Stops event.
-   *
-   * @param eventId The event that needs to be stopped.
-   * @throws EventDoesNotExistException If event does not exist in our eventPool.
-   */
-  public void cancel(int eventId) throws EventDoesNotExistException {
-    if (!eventPool.containsKey(eventId)) {
-      throw new EventDoesNotExistException(eventId + DOES_NOT_EXIST);
+        if (eventId == currentlyRunningSyncEvent) {
+            currentlyRunningSyncEvent = -1;
+        }
+
+        eventPool.get(eventId).stop();
+        eventPool.remove(eventId);
     }
 
-    if (eventId == currentlyRunningSyncEvent) {
-      currentlyRunningSyncEvent = -1;
+    /**
+     * Get status of a running event.
+     *
+     * @param eventId The event to inquire status of.
+     * @throws EventDoesNotExistException If event does not exist in our eventPool.
+     */
+    public void status(int eventId) throws EventDoesNotExistException {
+        if (!eventPool.containsKey(eventId)) {
+            throw new EventDoesNotExistException(eventId + DOES_NOT_EXIST);
+        }
+
+        eventPool.get(eventId).status();
     }
 
-    eventPool.get(eventId).stop();
-    eventPool.remove(eventId);
-  }
-
-  /**
-   * Get status of a running event.
-   *
-   * @param eventId The event to inquire status of.
-   * @throws EventDoesNotExistException If event does not exist in our eventPool.
-   */
-  public void status(int eventId) throws EventDoesNotExistException {
-    if (!eventPool.containsKey(eventId)) {
-      throw new EventDoesNotExistException(eventId + DOES_NOT_EXIST);
+    /**
+     * Gets status of all running events.
+     */
+    @SuppressWarnings("rawtypes")
+    public void statusOfAllEvents() {
+        eventPool.entrySet().forEach(entry -> ((AsyncEvent) ((Map.Entry) entry).getValue()).status());
     }
 
-    eventPool.get(eventId).status();
-  }
-
-  /**
-   * Gets status of all running events.
-   */
-  @SuppressWarnings("rawtypes")
-  public void statusOfAllEvents() {
-    eventPool.entrySet().forEach(entry -> ((AsyncEvent) ((Map.Entry) entry).getValue()).status());
-  }
-
-  /**
-   * Stop all running events.
-   */
-  @SuppressWarnings("rawtypes")
-  public void shutdown() {
-    eventPool.entrySet().forEach(entry -> ((AsyncEvent) ((Map.Entry) entry).getValue()).stop());
-  }
-
-  /**
-   * Returns a pseudo-random number between min and max, inclusive. The difference between min and
-   * max can be at most
-   * <code>Integer.MAX_VALUE - 1</code>.
-   */
-  private int generateId() {
-    // nextInt is normally exclusive of the top value,
-    // so add 1 to make it inclusive
-    var randomNum = rand.nextInt((MAX_ID - MIN_ID) + 1) + MIN_ID;
-    while (eventPool.containsKey(randomNum)) {
-      randomNum = rand.nextInt((MAX_ID - MIN_ID) + 1) + MIN_ID;
+    /**
+     * Stop all running events.
+     */
+    @SuppressWarnings("rawtypes")
+    public void shutdown() {
+        eventPool.entrySet().forEach(entry -> ((AsyncEvent) ((Map.Entry) entry).getValue()).stop());
     }
 
-    return randomNum;
-  }
+    /**
+     * Returns a pseudo-random number between min and max, inclusive. The difference between min and
+     * max can be at most
+     * <code>Integer.MAX_VALUE - 1</code>.
+     */
+    private int generateId() {
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        var randomNum = rand.nextInt((MAX_ID - MIN_ID) + 1) + MIN_ID;
+        while (eventPool.containsKey(randomNum)) {
+            randomNum = rand.nextInt((MAX_ID - MIN_ID) + 1) + MIN_ID;
+        }
 
-  /**
-   * Callback from an {@link AsyncEvent} (once it is complete). The Event is then removed from the pool.
-   */
-  @Override
-  public void completedEventHandler(int eventId) {
-    eventPool.get(eventId).status();
-    if (eventPool.get(eventId).isSynchronous()) {
-      currentlyRunningSyncEvent = -1;
+        return randomNum;
     }
-    eventPool.remove(eventId);
-  }
 
-  /**
-   * Get number of currently running Synchronous events.
-   */
-  public int numOfCurrentlyRunningSyncEvent() {
-    return currentlyRunningSyncEvent;
-  }
+    /**
+     * Callback from an {@link AsyncEvent} (once it is complete). The Event is then removed from the pool.
+     */
+    @Override
+    public void completedEventHandler(int eventId) {
+        eventPool.get(eventId).status();
+        if (eventPool.get(eventId).isSynchronous()) {
+            currentlyRunningSyncEvent = -1;
+        }
+        eventPool.remove(eventId);
+    }
+
+    /**
+     * Get number of currently running Synchronous events.
+     */
+    public int numOfCurrentlyRunningSyncEvent() {
+        return currentlyRunningSyncEvent;
+    }
 }

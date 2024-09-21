@@ -31,45 +31,45 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 /**
  * KingsHandTest
- *
  */
 class KingsHandTest extends EventEmitterTest<KingsHand> {
 
-  /**
-   * Create a new test instance, using the correct object factory
-   */
-  public KingsHandTest() {
-    super(null, null, KingsHand::new, KingsHand::new);
-  }
+    /**
+     * Create a new test instance, using the correct object factory
+     */
+    public KingsHandTest() {
+        super(null, null, KingsHand::new, KingsHand::new);
+    }
 
-  /**
-   * The {@link KingsHand} is both an {@link EventEmitter} as an {@link EventObserver} so verify if
-   * every event received is passed up to its superior, in most cases {@link KingJoffrey} but now
-   * just a mocked observer.
-   */
-  @Test
-  void testPassThrough() {
-    final var observer = mock(EventObserver.class);
-    final var kingsHand = new KingsHand();
-    kingsHand.registerObserver(observer, Event.STARK_SIGHTED);
-    kingsHand.registerObserver(observer, Event.WARSHIPS_APPROACHING);
-    kingsHand.registerObserver(observer, Event.TRAITOR_DETECTED);
-    kingsHand.registerObserver(observer, Event.WHITE_WALKERS_SIGHTED);
+    /**
+     * The {@link KingsHand} is both an {@link EventEmitter} as an {@link EventObserver} so verify if
+     * every event received is passed up to its superior, in most cases {@link KingJoffrey} but now
+     * just a mocked observer.
+     */
+    @Test
+    void testPassThrough() {
+        final var observer = mock(EventObserver.class);
+        final var kingsHand = new KingsHand();
+        kingsHand.registerObserver(observer, Event.STARK_SIGHTED);
+        kingsHand.registerObserver(observer, Event.WARSHIPS_APPROACHING);
+        kingsHand.registerObserver(observer, Event.TRAITOR_DETECTED);
+        kingsHand.registerObserver(observer, Event.WHITE_WALKERS_SIGHTED);
 
-    // The kings hand should not pass any events before he received one
-    verifyNoMoreInteractions(observer);
+        // The kings hand should not pass any events before he received one
+        verifyNoMoreInteractions(observer);
 
-    // Verify if each event is passed on to the observer, nothing less, nothing more.
-    Arrays.stream(Event.values()).forEach(event -> {
-      kingsHand.onEvent(event);
-      verify(observer, times(1)).onEvent(eq(event));
-      verifyNoMoreInteractions(observer);
-    });
+        // Verify if each event is passed on to the observer, nothing less, nothing more.
+        Arrays.stream(Event.values()).forEach(event -> {
+            kingsHand.onEvent(event);
+            verify(observer, times(1)).onEvent(eq(event));
+            verifyNoMoreInteractions(observer);
+        });
 
-  }
+    }
 
 }

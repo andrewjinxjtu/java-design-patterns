@@ -37,17 +37,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductController {
 
-  /**
-   * Validates the product based on the request.
-   *
-   * @param request the request body containing product information (can be null)
-   * @return ResponseEntity containing the validation result (true)
-   */
-  @PostMapping("/product/validate")
-  public ResponseEntity<Boolean> validateProduct(@RequestBody(required = false) String request) {
-    LOGGER.info("Received product validation request: {}", request);
-    boolean result = true;
-    LOGGER.info("Product validation result: {}", result);
-    return ResponseEntity.ok(result);
-  }
+    /**
+     * Validates the product based on the request.
+     *
+     * @param request the request body containing product information (can be null)
+     * @return ResponseEntity containing the validation result (true)
+     */
+    @PostMapping("/product/validate")
+    public ResponseEntity<Boolean> validateProduct(@RequestBody(required = false) String request) {
+        LOGGER.info("Received product validation request: {}", request);
+        boolean result = true;
+        LOGGER.info("Product validation result: {}", result);
+        return ResponseEntity.ok(result);
+    }
 }

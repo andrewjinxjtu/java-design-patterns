@@ -13,21 +13,30 @@ tag:
 
 ## Intent of Repository Design Pattern
 
-The Repository design pattern acts as a central hub for managing all Java data access logic, abstracting the details of data storage and retrieval from the rest of the application.
+The Repository design pattern acts as a central hub for managing all Java data access logic, abstracting the details of
+data storage and retrieval from the rest of the application.
 
 ## Detailed Explanation of Repository Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a library system where a librarian acts as the repository. Instead of each library patron searching through the entire library for a book (the data), they go to the librarian (the repository) who knows exactly where each book is located, regardless of whether it's on a shelf, in the storeroom, or borrowed by someone else. The librarian abstracts the complexities of book storage, allowing patrons to request books without needing to understand the storage system. This setup simplifies the process for patrons (clients) and centralizes the management of books (data access logic).
+> Imagine a library system where a librarian acts as the repository. Instead of each library patron searching through
+> the entire library for a book (the data), they go to the librarian (the repository) who knows exactly where each book is
+> located, regardless of whether it's on a shelf, in the storeroom, or borrowed by someone else. The librarian abstracts
+> the complexities of book storage, allowing patrons to request books without needing to understand the storage system.
+> This setup simplifies the process for patrons (clients) and centralizes the management of books (data access logic).
 
 In plain words
 
-> The Repository pattern provides a central place for handling all data access logic, abstracting the complexities of data storage and retrieval from the rest of the application.
+> The Repository pattern provides a central place for handling all data access logic, abstracting the complexities of
+> data storage and retrieval from the rest of the application.
 
-[Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) says
+[Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)
+says
 
-> Repositories are classes or components that encapsulate the logic required to access data sources. They centralize common data access functionality, providing better maintainability and decoupling the infrastructure or technology used to access databases from the domain model layer.
+> Repositories are classes or components that encapsulate the logic required to access data sources. They centralize
+> common data access functionality, providing better maintainability and decoupling the infrastructure or technology used
+> to access databases from the domain model layer.
 
 ## Programmatic Example of Repository Pattern in Java
 
@@ -177,8 +186,10 @@ INFO  [2024-05-27 07:00:32,881] com.iluwatar.repository.App: Person(id=4, name=T
 
 ## When to Use the Repository Pattern in Java
 
-* Apply the Repository pattern when aiming to decouple business logic from data access layers in Java applications, ensuring more flexible and maintainable code.
-* Suitable for scenarios where multiple data sources might be used and the business logic should remain unaware of the data source specifics.
+* Apply the Repository pattern when aiming to decouple business logic from data access layers in Java applications,
+  ensuring more flexible and maintainable code.
+* Suitable for scenarios where multiple data sources might be used and the business logic should remain unaware of the
+  data source specifics.
 * Ideal for testing purposes as it allows the use of mock repositories.
 
 ## Repository Pattern Java Tutorials
@@ -190,7 +201,8 @@ INFO  [2024-05-27 07:00:32,881] com.iluwatar.repository.App: Person(id=4, name=T
 
 ## Real-World Applications of Repository Pattern in Java
 
-* Spring Data JPA exemplifies the Repository pattern by providing a robust repository abstraction layer over JPA implementations, tailored for Java.
+* Spring Data JPA exemplifies the Repository pattern by providing a robust repository abstraction layer over JPA
+  implementations, tailored for Java.
 * Hibernate: Often used with DAOs that act as repositories for accessing and managing data entities.
 * Java EE applications frequently utilize repository patterns to separate business logic from data access code.
 
@@ -209,8 +221,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Data Mapper](https://java-design-patterns.com/patterns/data-mapper/): While Repository handles data access, Data Mapper is responsible for transferring data between objects and a database, maintaining the data integrity.
-* [Unit of Work](https://java-design-patterns.com/patterns/unit-of-work/): Often used alongside Repository to manage transactions and track changes to the data.
+* [Data Mapper](https://java-design-patterns.com/patterns/data-mapper/): While Repository handles data access, Data
+  Mapper is responsible for transferring data between objects and a database, maintaining the data integrity.
+* [Unit of Work](https://java-design-patterns.com/patterns/unit-of-work/): Often used alongside Repository to manage
+  transactions and track changes to the data.
 
 ## References and Credits
 

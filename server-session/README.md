@@ -18,31 +18,48 @@ tag:
 
 ## Intent of Server Session Design Pattern
 
-Effectively manage user session data on the server-side with Java's Server Session pattern to maintain consistent state across multiple client interactions, enhancing both security and user experience.
+Effectively manage user session data on the server-side with Java's Server Session pattern to maintain consistent state
+across multiple client interactions, enhancing both security and user experience.
 
 ## Detailed Explanation of Server Session Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a hotel where each guest is given a unique room key card upon check-in. Similar to how a hotel key card stores a guest's personal preferences (such as preferred room temperature, wake-up call times, and minibar choices), the Server Session pattern in Java securely stores user preferences server-side, ensuring a personalized and secure user experience. Whenever the guest interacts with hotel services, such as ordering room service or accessing the gym, the system retrieves their preferences using the information on the key card. The hotel’s central server maintains these preferences, ensuring consistent and personalized service throughout the guest's stay. Similarly, the Server Session design pattern manages user data on the server, providing a seamless experience across multiple interactions within a web application. 
+> Imagine a hotel where each guest is given a unique room key card upon check-in. Similar to how a hotel key card stores
+> a guest's personal preferences (such as preferred room temperature, wake-up call times, and minibar choices), the Server
+> Session pattern in Java securely stores user preferences server-side, ensuring a personalized and secure user
+> experience. Whenever the guest interacts with hotel services, such as ordering room service or accessing the gym, the
+> system retrieves their preferences using the information on the key card. The hotel’s central server maintains these
+> preferences, ensuring consistent and personalized service throughout the guest's stay. Similarly, the Server Session
+> design pattern manages user data on the server, providing a seamless experience across multiple interactions within a
+> web application.
 
 In plain words
 
-> The Server Session design pattern manages and stores user session data on the server to maintain state across multiple client requests in web applications.
+> The Server Session design pattern manages and stores user session data on the server to maintain state across multiple
+> client requests in web applications.
 
 Wikipedia says
 
-> A session token is a unique identifier that is generated and sent from a server to a client to identify the current interaction session. The client usually stores and sends the token as an HTTP cookie and/or sends it as a parameter in GET or POST queries. The reason to use session tokens is that the client only has to handle the identifier—all session data is stored on the server (usually in a database, to which the client does not have direct access) linked to that identifier.
+> A session token is a unique identifier that is generated and sent from a server to a client to identify the current
+> interaction session. The client usually stores and sends the token as an HTTP cookie and/or sends it as a parameter in
+> GET or POST queries. The reason to use session tokens is that the client only has to handle the identifier—all session
+> data is stored on the server (usually in a database, to which the client does not have direct access) linked to that
+> identifier.
 
 ## Programmatic Example of Server Session Pattern in Java
 
-The Server Session design pattern is a behavioral design pattern that assigns the responsibility of storing session data on the server side. This pattern is particularly useful in the context of stateless protocols like HTTP where all requests are isolated events independent of previous requests.
+The Server Session design pattern is a behavioral design pattern that assigns the responsibility of storing session data
+on the server side. This pattern is particularly useful in the context of stateless protocols like HTTP where all
+requests are isolated events independent of previous requests.
 
-In this pattern, when a user logs in, a session identifier is created and stored for future requests in a list. When a user logs out, the session identifier is deleted from the list along with the appropriate user session data.
+In this pattern, when a user logs in, a session identifier is created and stored for future requests in a list. When a
+user logs out, the session identifier is deleted from the list along with the appropriate user session data.
 
 Let's take a look at a programmatic example of the Server Session design pattern.
 
-The `main` application starts a server and assigns handlers to manage login and logout requests. It also starts a background task to check for expired sessions.
+The `main` application starts a server and assigns handlers to manage login and logout requests. It also starts a
+background task to check for expired sessions.
 
 ```java
 public class App {
@@ -90,7 +107,8 @@ public class App {
 }
 ```
 
-The `LoginHandler` is responsible for handling login requests. When a user logs in, a session identifier is created and stored for future requests in a list.
+The `LoginHandler` is responsible for handling login requests. When a user logs in, a session identifier is created and
+stored for future requests in a list.
 
 ```java
 public class LoginHandler {
@@ -109,7 +127,8 @@ public class LoginHandler {
 }
 ```
 
-The `LogoutHandler` is responsible for handling logout requests. When a user logs out, the session identifier is deleted from the list along with the appropriate user session data.
+The `LogoutHandler` is responsible for handling logout requests. When a user logs out, the session identifier is deleted
+from the list along with the appropriate user session data.
 
 ```java
 public class LogoutHandler {
@@ -135,7 +154,8 @@ Console output for starting the `App` class's `main` method:
 12:09:50.998 [main] INFO com.iluwatar.sessionserver.App -- Server started. Listening on port 8080...
 ```
 
-This is a basic example of the Server Session design pattern. The actual implementation of the `handle` methods in the `LoginHandler` and `LogoutHandler` classes would depend on the specific requirements of your application.
+This is a basic example of the Server Session design pattern. The actual implementation of the `handle` methods in the
+`LoginHandler` and `LogoutHandler` classes would depend on the specific requirements of your application.
 
 ## When to Use the Server Session Pattern in Java
 
@@ -165,9 +185,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [State](https://java-design-patterns.com/patterns/state/): Manages state-specific behavior, which can be utilized within session management to handle different user states.
-* [Proxy](https://java-design-patterns.com/patterns/proxy/): Can be used to add a layer of control over session data access.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Often used to create a single instance of a session manager.
+* [State](https://java-design-patterns.com/patterns/state/): Manages state-specific behavior, which can be utilized
+  within session management to handle different user states.
+* [Proxy](https://java-design-patterns.com/patterns/proxy/): Can be used to add a layer of control over session data
+  access.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Often used to create a single instance of a session
+  manager.
 
 ## References and Credits
 

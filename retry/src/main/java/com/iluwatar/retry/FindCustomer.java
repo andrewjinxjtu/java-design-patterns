@@ -34,19 +34,19 @@ import java.util.List;
  * <p>This is an imaginary operation that, for some imagined input, returns the ID for a customer.
  * However, this is a "flaky" operation that is supposed to fail intermittently, but for the
  * purposes of this example it fails in a programmed way depending on the constructor parameters.
- *
  */
 
 public record FindCustomer(String customerId, Deque<BusinessException> errors) implements BusinessOperation<String> {
-  public FindCustomer(String customerId, BusinessException... errors) {
-    this(customerId, new ArrayDeque<>(List.of(errors)));
-  }
-  @Override
-  public String perform() throws BusinessException {
-    if (!this.errors.isEmpty()) {
-      throw this.errors.pop();
+    public FindCustomer(String customerId, BusinessException... errors) {
+        this(customerId, new ArrayDeque<>(List.of(errors)));
     }
 
-    return this.customerId;
-  }
+    @Override
+    public String perform() throws BusinessException {
+        if (!this.errors.isEmpty()) {
+            throw this.errors.pop();
+        }
+
+        return this.customerId;
+    }
 }

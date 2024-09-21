@@ -17,7 +17,8 @@ tag:
 
 ## Intent of Separated Interface Design Pattern
 
-The Separated Interface design pattern defines a client interface in a separate package from its implementation to allow for easier swapping of implementations and better separation of concerns.
+The Separated Interface design pattern defines a client interface in a separate package from its implementation to allow
+for easier swapping of implementations and better separation of concerns.
 
 ## Detailed Explanation of Separated Interface Pattern with Real-World Examples
 
@@ -25,7 +26,12 @@ Real-world example
 
 > Consider a restaurant where the menu (interface) is separate from the kitchen operations (implementation).
 >
-> In this analogy, the menu lists the dishes customers can order, without detailing how they are prepared. Different restaurants (or even different chefs within the same restaurant) can use their own recipes and methods to prepare the dishes listed on the menu. This separation allows the restaurant to update its menu or change its chefs without disrupting the overall dining experience. Similarly, in software, the Separated Interface pattern decouples the interface from its implementation, allowing changes and variations in the implementation without affecting the client code that relies on the interface.
+> In this analogy, the menu lists the dishes customers can order, without detailing how they are prepared. Different
+> restaurants (or even different chefs within the same restaurant) can use their own recipes and methods to prepare the
+> dishes listed on the menu. This separation allows the restaurant to update its menu or change its chefs without
+> disrupting the overall dining experience. Similarly, in software, the Separated Interface pattern decouples the
+> interface from its implementation, allowing changes and variations in the implementation without affecting the client
+> code that relies on the interface.
 
 In plain words
 
@@ -33,13 +39,19 @@ In plain words
 
 ## Programmatic Example of Separated Interface Pattern in Java
 
-The Java Separated Interface design pattern is a crucial software architecture strategy that promotes separating the interface definition from its implementation, crucial for enhancing system flexibility and scalability. This allows the client to be completely unaware of the implementation, promoting loose coupling and enhancing flexibility.
+The Java Separated Interface design pattern is a crucial software architecture strategy that promotes separating the
+interface definition from its implementation, crucial for enhancing system flexibility and scalability. This allows the
+client to be completely unaware of the implementation, promoting loose coupling and enhancing flexibility.
 
-In the given code, the `InvoiceGenerator` class is the client that uses the `TaxCalculator` interface to calculate tax. The `TaxCalculator` interface is implemented by two classes: `ForeignTaxCalculator` and `DomesticTaxCalculator`. These implementations are injected into the `InvoiceGenerator` class at runtime, demonstrating the Separated Interface pattern.
+In the given code, the `InvoiceGenerator` class is the client that uses the `TaxCalculator` interface to calculate tax.
+The `TaxCalculator` interface is implemented by two classes: `ForeignTaxCalculator` and `DomesticTaxCalculator`. These
+implementations are injected into the `InvoiceGenerator` class at runtime, demonstrating the Separated Interface
+pattern.
 
 Let's break down the code:
 
-First, we have the `TaxCalculator` interface. This interface defines a single method `calculate` that takes an amount and returns the calculated tax.
+First, we have the `TaxCalculator` interface. This interface defines a single method `calculate` that takes an amount
+and returns the calculated tax.
 
 ```java
 public interface TaxCalculator {
@@ -47,7 +59,8 @@ public interface TaxCalculator {
 }
 ```
 
-Next, we have two classes `ForeignTaxCalculator` and `DomesticTaxCalculator` that implement the `TaxCalculator` interface. These classes provide the concrete logic for tax calculation.
+Next, we have two classes `ForeignTaxCalculator` and `DomesticTaxCalculator` that implement the `TaxCalculator`
+interface. These classes provide the concrete logic for tax calculation.
 
 ```java
 public class ForeignTaxCalculator implements TaxCalculator {
@@ -69,7 +82,8 @@ public class DomesticTaxCalculator implements TaxCalculator {
 }
 ```
 
-The `InvoiceGenerator` class is the client that uses the `TaxCalculator` interface. It doesn't know about the concrete implementations of the `TaxCalculator` interface. It just knows that it has a `TaxCalculator` that can calculate tax.
+The `InvoiceGenerator` class is the client that uses the `TaxCalculator` interface. It doesn't know about the concrete
+implementations of the `TaxCalculator` interface. It just knows that it has a `TaxCalculator` that can calculate tax.
 
 ```java
 public class InvoiceGenerator {
@@ -87,7 +101,8 @@ public class InvoiceGenerator {
 }
 ```
 
-Finally, in the `App` class, we create instances of `InvoiceGenerator` with different `TaxCalculator` implementations. This demonstrates how the Separated Interface pattern allows us to inject different implementations at runtime.
+Finally, in the `App` class, we create instances of `InvoiceGenerator` with different `TaxCalculator` implementations.
+This demonstrates how the Separated Interface pattern allows us to inject different implementations at runtime.
 
 ```java
 public class App {
@@ -110,12 +125,14 @@ Console output:
 11:38:53.210 [main] INFO com.iluwatar.separatedinterface.App -- Domestic Tax applied: 60.0
 ```
 
-In this way, the Separated Interface pattern allows us to decouple the interface of a component from its implementation, enhancing flexibility and maintainability and making it ideal for dynamic Java application environments.
+In this way, the Separated Interface pattern allows us to decouple the interface of a component from its implementation,
+enhancing flexibility and maintainability and making it ideal for dynamic Java application environments.
 
 ## When to Use the Separated Interface Pattern in Java
 
 * Use when you want to decouple the interface of a component from its implementation.
-* Particularly effective in large-scale Java systems, where separate teams handle different components, the Separated Interface pattern ensures seamless integration and easier maintenance.
+* Particularly effective in large-scale Java systems, where separate teams handle different components, the Separated
+  Interface pattern ensures seamless integration and easier maintenance.
 * Ideal when the implementation might change over time or vary between deployments.
 
 ## Separated Interface Pattern Tutorials
@@ -125,7 +142,8 @@ In this way, the Separated Interface pattern allows us to decouple the interface
 ## Real-World Applications of Separated Interface Pattern in Java
 
 * Java's JDBC (Java Database Connectivity) API separates the client interface from the database driver implementations.
-* Remote Method Invocation (RMI) in Java, where the client and server interfaces are defined separately from the implementations.
+* Remote Method Invocation (RMI) in Java, where the client and server interfaces are defined separately from the
+  implementations.
 
 ## Benefits and Trade-offs of Separated Interface Pattern
 
@@ -142,9 +160,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): Adapts one interface to another, which can be used alongside Separated Interface to integrate different implementations.
-* [Bridge](https://java-design-patterns.com/patterns/bridge/): Separates an object’s interface from its implementation, similar to Separated Interface but usually applied to larger-scale architectural issues.
-* [Dependency Injection](https://java-design-patterns.com/patterns/dependency-injection/): Often used to inject the implementation of a separated interface, promoting loose coupling.
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): Adapts one interface to another, which can be used
+  alongside Separated Interface to integrate different implementations.
+* [Bridge](https://java-design-patterns.com/patterns/bridge/): Separates an object’s interface from its implementation,
+  similar to Separated Interface but usually applied to larger-scale architectural issues.
+* [Dependency Injection](https://java-design-patterns.com/patterns/dependency-injection/): Often used to inject the
+  implementation of a separated interface, promoting loose coupling.
 
 ## References and Credits
 

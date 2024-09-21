@@ -26,6 +26,7 @@ package com.iluwatar.dirtyflag;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -54,30 +55,30 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App {
 
-  /**
-   * Program execution point.
-   */
-  public void run() {
-    final var executorService = Executors.newSingleThreadScheduledExecutor();
-    executorService.scheduleAtFixedRate(new Runnable() {
-      final World world = new World();
+    /**
+     * Program execution point.
+     */
+    public void run() {
+        final var executorService = Executors.newSingleThreadScheduledExecutor();
+        executorService.scheduleAtFixedRate(new Runnable() {
+            final World world = new World();
 
-      @Override
-      public void run() {
-        var countries = world.fetch();
-        LOGGER.info("Our world currently has the following countries:-");
-        countries.stream().map(country -> "\t" + country).forEach(LOGGER::info);
-      }
-    }, 0, 15, TimeUnit.SECONDS); // Run at every 15 seconds.
-  }
+            @Override
+            public void run() {
+                var countries = world.fetch();
+                LOGGER.info("Our world currently has the following countries:-");
+                countries.stream().map(country -> "\t" + country).forEach(LOGGER::info);
+            }
+        }, 0, 15, TimeUnit.SECONDS); // Run at every 15 seconds.
+    }
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
-    var app = new App();
-    app.run();
-  }
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
+        var app = new App();
+        app.run();
+    }
 }

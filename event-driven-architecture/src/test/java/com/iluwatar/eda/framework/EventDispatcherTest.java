@@ -39,33 +39,33 @@ import org.junit.jupiter.api.Test;
  */
 class EventDispatcherTest {
 
-  /**
-   * This unit test should register events and event handlers correctly with the event dispatcher
-   * and events should be dispatched accordingly.
-   */
-  @Test
-  void testEventDriverPattern() {
+    /**
+     * This unit test should register events and event handlers correctly with the event dispatcher
+     * and events should be dispatched accordingly.
+     */
+    @Test
+    void testEventDriverPattern() {
 
-    var dispatcher = spy(new EventDispatcher());
-    var userCreatedEventHandler = spy(new UserCreatedEventHandler());
-    var userUpdatedEventHandler = spy(new UserUpdatedEventHandler());
-    dispatcher.registerHandler(UserCreatedEvent.class, userCreatedEventHandler);
-    dispatcher.registerHandler(UserUpdatedEvent.class, userUpdatedEventHandler);
+        var dispatcher = spy(new EventDispatcher());
+        var userCreatedEventHandler = spy(new UserCreatedEventHandler());
+        var userUpdatedEventHandler = spy(new UserUpdatedEventHandler());
+        dispatcher.registerHandler(UserCreatedEvent.class, userCreatedEventHandler);
+        dispatcher.registerHandler(UserUpdatedEvent.class, userUpdatedEventHandler);
 
-    var user = new User("iluwatar");
+        var user = new User("iluwatar");
 
-    var userCreatedEvent = new UserCreatedEvent(user);
-    var userUpdatedEvent = new UserUpdatedEvent(user);
+        var userCreatedEvent = new UserCreatedEvent(user);
+        var userUpdatedEvent = new UserUpdatedEvent(user);
 
-    //fire a userCreatedEvent and verify that userCreatedEventHandler has been invoked.
-    dispatcher.dispatch(userCreatedEvent);
-    verify(userCreatedEventHandler).onEvent(userCreatedEvent);
-    verify(dispatcher).dispatch(userCreatedEvent);
+        //fire a userCreatedEvent and verify that userCreatedEventHandler has been invoked.
+        dispatcher.dispatch(userCreatedEvent);
+        verify(userCreatedEventHandler).onEvent(userCreatedEvent);
+        verify(dispatcher).dispatch(userCreatedEvent);
 
-    //fire a userCreatedEvent and verify that userUpdatedEventHandler has been invoked.
-    dispatcher.dispatch(userUpdatedEvent);
-    verify(userUpdatedEventHandler).onEvent(userUpdatedEvent);
-    verify(dispatcher).dispatch(userUpdatedEvent);
-  }
+        //fire a userCreatedEvent and verify that userUpdatedEventHandler has been invoked.
+        dispatcher.dispatch(userUpdatedEvent);
+        verify(userUpdatedEventHandler).onEvent(userUpdatedEvent);
+        verify(dispatcher).dispatch(userUpdatedEvent);
+    }
 
 }

@@ -18,7 +18,10 @@ tag:
 
 ## Intent of Model-View-ViewModel Design Pattern
 
-The intent of the Model-View-ViewModel (MVVM) pattern in Java is to provide a clear [separation of concerns](https://java-design-patterns.com/principles/#separation-of-concerns) between the UI logic, the presentation logic, and the business logic by dividing the application into three interconnected components: Model, View, and ViewModel.
+The intent of the Model-View-ViewModel (MVVM) pattern in Java is to provide a
+clear [separation of concerns](https://java-design-patterns.com/principles/#separation-of-concerns) between the UI
+logic, the presentation logic, and the business logic by dividing the application into three interconnected components:
+Model, View, and ViewModel.
 
 ## Detailed Explanation of Model-View-ViewModel Pattern with Real-World Examples
 
@@ -26,21 +29,34 @@ Real-world example
 
 > Consider a real-world analogous example of the MVVM pattern similar to organizing a cooking show. In this scenario:
 >
-> - **Model:** Represents the recipe itself, which includes the ingredients and the steps needed to cook the dish. The model is purely about the data and rules for preparing the dish but does not concern itself with how this information is presented to the audience.
+> - **Model:** Represents the recipe itself, which includes the ingredients and the steps needed to cook the dish. The
+    model is purely about the data and rules for preparing the dish but does not concern itself with how this
+    information is presented to the audience.
 >
-> - **View:** Is akin to the kitchen set where the cooking show is filmed, including all the visual elements like the layout of the kitchen, the placement of ingredients, and the cookware. The view is responsible for the visual presentation and how the audience sees the cooking process.
+> - **View:** Is akin to the kitchen set where the cooking show is filmed, including all the visual elements like the
+    layout of the kitchen, the placement of ingredients, and the cookware. The view is responsible for the visual
+    presentation and how the audience sees the cooking process.
 >
-> - **ViewModel:** Acts like the script for the cooking show, where it interprets the recipe (model) and organizes the flow of the show. It tells the chef (view) what to display next, when to add ingredients, and how to respond to changes like substituting an ingredient. The ViewModel bridges the gap between the technical details of the recipe and the chef's presentation, ensuring the audience understands each step without delving into the complexities of the recipe itself.
+> - **ViewModel:** Acts like the script for the cooking show, where it interprets the recipe (model) and organizes the
+    flow of the show. It tells the chef (view) what to display next, when to add ingredients, and how to respond to
+    changes like substituting an ingredient. The ViewModel bridges the gap between the technical details of the recipe
+    and the chef's presentation, ensuring the audience understands each step without delving into the complexities of
+    the recipe itself.
 >
-> In this example, the ViewModel allows the chef to focus on cooking and interacting with the audience, while the underlying recipe remains unchanged, promoting a clear separation of concerns.
+> In this example, the ViewModel allows the chef to focus on cooking and interacting with the audience, while the
+> underlying recipe remains unchanged, promoting a clear separation of concerns.
 
 In plain words
 
-> The MVVM design pattern separates an application into three distinct components: the Model, which holds the data and business logic; the View, which displays the user interface; and the ViewModel, which acts as an intermediary to bind data from the Model to the View.
+> The MVVM design pattern separates an application into three distinct components: the Model, which holds the data and
+> business logic; the View, which displays the user interface; and the ViewModel, which acts as an intermediary to bind
+> data from the Model to the View.
 
 Wikipedia says
 
-> Model–view–viewmodel (MVVM) is a software architectural pattern that facilitates the separation of the development of the graphical user interface (the view) – be it via a markup language or GUI code – from the development of the business logic or back-end logic (the model) so that the view is not dependent on any specific model platform. 
+> Model–view–viewmodel (MVVM) is a software architectural pattern that facilitates the separation of the development of
+> the graphical user interface (the view) – be it via a markup language or GUI code – from the development of the business
+> logic or back-end logic (the model) so that the view is not dependent on any specific model platform.
 
 ## Programmatic Example of Model-View-ViewModel Pattern in Java
 
@@ -125,7 +141,9 @@ To deploy the example, go to model-view-viewmodel folder and run:
 
 ## When to Use the Model-View-ViewModel Pattern in Java
 
-MVVM is applicable in applications requiring a clear separation between the user interface and the underlying business logic, especially in large-scale, data-driven applications where UI and business logic change independently. This makes the Model-View-ViewModel pattern ideal for Java applications.
+MVVM is applicable in applications requiring a clear separation between the user interface and the underlying business
+logic, especially in large-scale, data-driven applications where UI and business logic change independently. This makes
+the Model-View-ViewModel pattern ideal for Java applications.
 
 ## Model-View-ViewModel Pattern Java Tutorials
 
@@ -155,8 +173,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [MVC (Model-View-Controller)](https://java-design-patterns.com/patterns/model-view-controller/): MVVM can be seen as a derivative of MVC with a stronger emphasis on binding and decoupling, where the ViewModel acts as an intermediary unlike the controller in MVC.
-* [MVP (Model-View-Presenter)](https://java-design-patterns.com/patterns/model-view-presenter/): Similar to MVVM but with a focus on the presenter handling the UI logic, making MVVM's ViewModel more passive in terms of direct UI manipulation.
+* [MVC (Model-View-Controller)](https://java-design-patterns.com/patterns/model-view-controller/): MVVM can be seen as a
+  derivative of MVC with a stronger emphasis on binding and decoupling, where the ViewModel acts as an intermediary
+  unlike the controller in MVC.
+* [MVP (Model-View-Presenter)](https://java-design-patterns.com/patterns/model-view-presenter/): Similar to MVVM but
+  with a focus on the presenter handling the UI logic, making MVVM's ViewModel more passive in terms of direct UI
+  manipulation.
 
 ## References and Credits
 

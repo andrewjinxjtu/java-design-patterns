@@ -39,23 +39,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Card {
 
-  /**
-   * Primary key.
-   */
-  private long id;
+    /**
+     * Primary key.
+     */
+    private long id;
 
-  /**
-   * Foreign key points to card's owner.
-   */
-  private long personId;
+    /**
+     * Foreign key points to card's owner.
+     */
+    private long personId;
 
-  /**
-   * Sum of money.
-   */
-  private float sum;
+    /**
+     * Sum of money.
+     */
+    private float sum;
 
-  /**
-   * Current version of object.
-   */
-  private int version;
+    /**
+     * Current version of object.
+     */
+    private int version;
 }

@@ -27,6 +27,7 @@ package com.iluwatar.execute.around;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.File;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,15 +37,15 @@ import org.junit.jupiter.api.Test;
  */
 class AppTest {
 
-  @Test
-  void shouldExecuteApplicationWithoutException() {
-    assertDoesNotThrow(() -> App.main(new String[]{}));
-  }
+    @Test
+    void shouldExecuteApplicationWithoutException() {
+        assertDoesNotThrow(() -> App.main(new String[]{}));
+    }
 
-  @BeforeEach
-  @AfterEach
-  void cleanup() {
-    var file = new File("testfile.txt");
-    file.delete();
-  }
+    @BeforeEach
+    @AfterEach
+    void cleanup() {
+        var file = new File("testfile.txt");
+        file.delete();
+    }
 }

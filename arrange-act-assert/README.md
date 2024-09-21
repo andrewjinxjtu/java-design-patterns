@@ -16,19 +16,23 @@ tag:
 
 ## Intent of Arrange/Act/Assert Design Pattern
 
-The Arrange/Act/Assert pattern is essential in unit testing in Java. This testing method structures unit tests clearly by dividing them into three distinct sections: setup (Arrange), execution (Act), and verification (Assert).
+The Arrange/Act/Assert pattern is essential in unit testing in Java. This testing method structures unit tests clearly
+by dividing them into three distinct sections: setup (Arrange), execution (Act), and verification (Assert).
 
 ## Detailed Explanation of Arrange/Act/Assert Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine you are organizing a small event. To ensure everything runs smoothly, you follow a pattern similar to Arrange/Act/Assert:
+> Imagine you are organizing a small event. To ensure everything runs smoothly, you follow a pattern similar to
+> Arrange/Act/Assert:
 >
 > 1. **Arrange**: You set up the venue, prepare the guest list, arrange seating, and organize the catering.
 > 2. **Act**: You conduct the event according to the plan, welcoming guests, serving food, and following the schedule.
-> 3. **Assert**: After the event, you evaluate its success by checking guest feedback, ensuring all tasks were completed, and reviewing if everything went as planned.
+> 3. **Assert**: After the event, you evaluate its success by checking guest feedback, ensuring all tasks were
+     completed, and reviewing if everything went as planned.
 >
-> This clear separation of preparation, execution, and evaluation helps ensure the event is well-organized and successful, mirroring the structured approach of the Arrange/Act/Assert pattern in software testing.
+> This clear separation of preparation, execution, and evaluation helps ensure the event is well-organized and
+> successful, mirroring the structured approach of the Arrange/Act/Assert pattern in software testing.
 
 In plain words
 
@@ -40,7 +44,8 @@ WikiWikiWeb says
 
 ## Programmatic Example of Arrange/Act/Assert Pattern in Java
 
-We need to write comprehensive and clear unit test suite for a class. Using the Arrange/Act/Assert pattern in Java testing ensures clarity.
+We need to write comprehensive and clear unit test suite for a class. Using the Arrange/Act/Assert pattern in Java
+testing ensures clarity.
 
 Let's first introduce our `Cash` class to be unit tested.
 
@@ -72,7 +77,8 @@ public class Cash {
 }
 ```
 
-Then we write our unit tests according to Arrange/Act/Assert pattern. Notice the clearly separated steps for each unit test.
+Then we write our unit tests according to Arrange/Act/Assert pattern. Notice the clearly separated steps for each unit
+test.
 
 ```java
 class CashAAATest {
@@ -133,7 +139,8 @@ Use Arrange/Act/Assert pattern when
 ## Real-World Applications of Arrange/Act/Assert Pattern in Java
 
 * This pattern is particularly useful when practicing TDD and/or BDD methodologies in Java.
-* Utilized in various programming languages and testing frameworks, such as JUnit (Java), NUnit (.NET), and xUnit frameworks.
+* Utilized in various programming languages and testing frameworks, such as JUnit (Java), NUnit (.NET), and xUnit
+  frameworks.
 
 ## Benefits and Trade-offs of Arrange/Act/Assert Pattern
 
@@ -146,11 +153,13 @@ Benefits:
 Trade-offs:
 
 * May introduce redundancy in tests, as similar arrangements may be repeated across tests.
-* Some complex tests might not fit neatly into this structure, requiring additional context or setup outside these three phases.
+* Some complex tests might not fit neatly into this structure, requiring additional context or setup outside these three
+  phases.
 
 ## Related Java Design Patterns
 
-* [Page Object](https://java-design-patterns.com/patterns/page-object/): A pattern for organizing UI tests that can be used in conjunction with Arrange/Act/Assert.
+* [Page Object](https://java-design-patterns.com/patterns/page-object/): A pattern for organizing UI tests that can be
+  used in conjunction with Arrange/Act/Assert.
 
 ## References and Credits
 

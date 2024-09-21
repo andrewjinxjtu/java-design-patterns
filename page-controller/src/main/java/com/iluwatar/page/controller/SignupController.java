@@ -38,31 +38,32 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @Component
 public class SignupController {
-  SignupView view = new SignupView();
-  /**
-   * Signup Controller can handle http request and decide which model and view use.
-   */
-  SignupController() {
-  }
+    SignupView view = new SignupView();
 
-  /**
-   * Handle http GET request.
-   */
-  @GetMapping("/signup")
-  public String getSignup() {
-    return view.display();
-  }
+    /**
+     * Signup Controller can handle http request and decide which model and view use.
+     */
+    SignupController() {
+    }
 
-  /**
-   * Handle http POST request and access model and view.
-   */
-  @PostMapping("/signup")
-  public String create(SignupModel form, RedirectAttributes redirectAttributes) {
-    LOGGER.info(form.getName());
-    LOGGER.info(form.getEmail());
-    redirectAttributes.addAttribute("name", form.getName());
-    redirectAttributes.addAttribute("email", form.getEmail());
-    redirectAttributes.addFlashAttribute("userInfo", form);
-    return view.redirect(form);
-  }
+    /**
+     * Handle http GET request.
+     */
+    @GetMapping("/signup")
+    public String getSignup() {
+        return view.display();
+    }
+
+    /**
+     * Handle http POST request and access model and view.
+     */
+    @PostMapping("/signup")
+    public String create(SignupModel form, RedirectAttributes redirectAttributes) {
+        LOGGER.info(form.getName());
+        LOGGER.info(form.getEmail());
+        redirectAttributes.addAttribute("name", form.getName());
+        redirectAttributes.addAttribute("email", form.getEmail());
+        redirectAttributes.addFlashAttribute("userInfo", form);
+        return view.redirect(form);
+    }
 }

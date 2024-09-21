@@ -26,6 +26,7 @@
 package com.iluwatar.client.session;
 
 import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -37,29 +38,28 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @AllArgsConstructor
 public class Server {
-  private String host;
+    private String host;
 
-  private int port;
+    private int port;
 
 
-  /**
-   * Creates a new session.
-   *
-   * @param name name of the client
-   *
-   * @return Session Object
-   */
-  public Session getSession(String name) {
-    return new Session(UUID.randomUUID().toString(), name);
-  }
+    /**
+     * Creates a new session.
+     *
+     * @param name name of the client
+     * @return Session Object
+     */
+    public Session getSession(String name) {
+        return new Session(UUID.randomUUID().toString(), name);
+    }
 
-  /**
-   * Processes a request based on the session.
-   *
-   * @param request Request object with data and Session
-   */
-  public void process(Request request) {
-    LOGGER.info("Processing Request with client: " + request.getSession().getClientName() + " data: " + request.getData());
-  }
+    /**
+     * Processes a request based on the session.
+     *
+     * @param request Request object with data and Session
+     */
+    public void process(Request request) {
+        LOGGER.info("Processing Request with client: " + request.getSession().getClientName() + " data: " + request.getData());
+    }
 
 }

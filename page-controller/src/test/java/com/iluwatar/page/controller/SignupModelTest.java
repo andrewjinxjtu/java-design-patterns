@@ -25,39 +25,40 @@
 package com.iluwatar.page.controller;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test for Signup Model
  */
 public class SignupModelTest {
-  /**
-   * Verify if a user can set a name properly
-   */
-  @Test
-  void testSetName() {
-    SignupModel model = new SignupModel();
-    model.setName("Lily");
-    assertEquals("Lily", model.getName());
-  }
+    /**
+     * Verify if a user can set a name properly
+     */
+    @Test
+    void testSetName() {
+        SignupModel model = new SignupModel();
+        model.setName("Lily");
+        assertEquals("Lily", model.getName());
+    }
 
-  /**
-   * Verify if a user can set an email properly
-   */
-  @Test
-  void testSetEmail() {
-    SignupModel model = new SignupModel();
-    model.setEmail("Lily@email");
-    assertEquals("Lily@email", model.getEmail());
-  }
+    /**
+     * Verify if a user can set an email properly
+     */
+    @Test
+    void testSetEmail() {
+        SignupModel model = new SignupModel();
+        model.setEmail("Lily@email");
+        assertEquals("Lily@email", model.getEmail());
+    }
 
-  /**
-   * Verify if a user can set a password properly
-   */
-  @Test
-  void testSetPassword() {
-    SignupModel model = new SignupModel();
-    model.setPassword("password1234");
-    assertEquals("password1234", model.getPassword());
-  }
+    /**
+     * Verify if a user can set a password properly
+     */
+    @Test
+    void testSetPassword() {
+        SignupModel model = new SignupModel();
+        model.setPassword("password1234");
+        assertEquals("password1234", model.getPassword());
+    }
 }

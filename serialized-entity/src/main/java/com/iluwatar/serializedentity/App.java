@@ -27,6 +27,7 @@ package com.iluwatar.serializedentity;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.sql.DataSource;
+
 import lombok.extern.slf4j.Slf4j;
 import org.h2.jdbcx.JdbcDataSource;
 
@@ -44,86 +45,87 @@ import org.h2.jdbcx.JdbcDataSource;
  * "China" and "UnitedArabEmirates" and persist them to database.
  * Last, with "serializedChina.selectCountry()" and "serializedUnitedArabEmirates.selectCountry()" we could read "China"
  * and "UnitedArabEmirates" from database as sets of bytes, then deserialize them back to Java object (Country). </p>
- *
  */
 @Slf4j
 public class App {
 
-  private static final String DB_URL = "jdbc:h2:~/testdb";
+    private static final String DB_URL = "jdbc:h2:~/testdb";
 
-  private App() {}
+    private App() {
+    }
 
-  /**
-   * Program entry point.
-   * @param args command line args.
-   * @throws IOException if any
-   * @throws ClassNotFoundException if any
-   */
-  public static void main(String[] args) throws IOException, ClassNotFoundException {
-    final var dataSource = createDataSource();
+    /**
+     * Program entry point.
+     *
+     * @param args command line args.
+     * @throws IOException            if any
+     * @throws ClassNotFoundException if any
+     */
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        final var dataSource = createDataSource();
 
-    deleteSchema(dataSource);
-    createSchema(dataSource);
+        deleteSchema(dataSource);
+        createSchema(dataSource);
 
-    // Initializing Country Object China
-    final var China = new Country(
-            86,
-            "China",
-            "Asia",
-            "Chinese"
-    );
+        // Initializing Country Object China
+        final var China = new Country(
+                86,
+                "China",
+                "Asia",
+                "Chinese"
+        );
 
-    // Initializing Country Object UnitedArabEmirates
-    final var UnitedArabEmirates = new Country(
-            971,
-            "United Arab Emirates",
-            "Asia",
-            "Arabic"
-    );
+        // Initializing Country Object UnitedArabEmirates
+        final var UnitedArabEmirates = new Country(
+                971,
+                "United Arab Emirates",
+                "Asia",
+                "Arabic"
+        );
 
-    // Initializing CountrySchemaSql Object with parameter "China" and "dataSource"
-    final var serializedChina = new CountrySchemaSql(China, dataSource);
-    // Initializing CountrySchemaSql Object with parameter "UnitedArabEmirates" and "dataSource"
-    final var serializedUnitedArabEmirates = new CountrySchemaSql(UnitedArabEmirates, dataSource);
+        // Initializing CountrySchemaSql Object with parameter "China" and "dataSource"
+        final var serializedChina = new CountrySchemaSql(China, dataSource);
+        // Initializing CountrySchemaSql Object with parameter "UnitedArabEmirates" and "dataSource"
+        final var serializedUnitedArabEmirates = new CountrySchemaSql(UnitedArabEmirates, dataSource);
 
     /*
     By using CountrySchemaSql.insertCountry() method, the private (Country) type variable  within Object
     CountrySchemaSql will be serialized to a set of bytes and persist to database.
     For more details of CountrySchemaSql.insertCountry() method please refer to CountrySchemaSql.java file
     */
-    serializedChina.insertCountry();
-    serializedUnitedArabEmirates.insertCountry();
+        serializedChina.insertCountry();
+        serializedUnitedArabEmirates.insertCountry();
 
     /*
     By using CountrySchemaSql.selectCountry() method, CountrySchemaSql object will read the sets of bytes from database
     and deserialize it to Country object.
     For more details of CountrySchemaSql.selectCountry() method please refer to CountrySchemaSql.java file
     */
-    serializedChina.selectCountry();
-    serializedUnitedArabEmirates.selectCountry();
-  }
-
-  private static void deleteSchema(DataSource dataSource) {
-    try (var connection = dataSource.getConnection();
-         var statement = connection.createStatement()) {
-      statement.execute(CountrySchemaSql.DELETE_SCHEMA_SQL);
-    } catch (SQLException e) {
-      LOGGER.info("Exception thrown " + e.getMessage());
+        serializedChina.selectCountry();
+        serializedUnitedArabEmirates.selectCountry();
     }
-  }
 
-  private static void createSchema(DataSource dataSource) {
-    try (var connection = dataSource.getConnection();
-         var statement = connection.createStatement()) {
-      statement.execute(CountrySchemaSql.CREATE_SCHEMA_SQL);
-    } catch (SQLException e) {
-      LOGGER.info("Exception thrown " + e.getMessage());
+    private static void deleteSchema(DataSource dataSource) {
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement()) {
+            statement.execute(CountrySchemaSql.DELETE_SCHEMA_SQL);
+        } catch (SQLException e) {
+            LOGGER.info("Exception thrown " + e.getMessage());
+        }
     }
-  }
 
-  private static DataSource createDataSource() {
-    var dataSource = new JdbcDataSource();
-    dataSource.setURL(DB_URL);
-    return dataSource;
-  }
+    private static void createSchema(DataSource dataSource) {
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement()) {
+            statement.execute(CountrySchemaSql.CREATE_SCHEMA_SQL);
+        } catch (SQLException e) {
+            LOGGER.info("Exception thrown " + e.getMessage());
+        }
+    }
+
+    private static DataSource createDataSource() {
+        var dataSource = new JdbcDataSource();
+        dataSource.setURL(DB_URL);
+        return dataSource;
+    }
 }

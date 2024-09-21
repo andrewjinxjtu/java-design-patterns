@@ -17,13 +17,21 @@ tag:
 
 ## Intent of Currying Design Pattern
 
-Currying decomposes a function that takes multiple arguments into a sequence of functions that each take a single argument. This technique is integral in functional programming, enabling the creation of higher-order functions through partial application of its arguments. Using currying in Java can lead to more modular, reusable, and maintainable code.
+Currying decomposes a function that takes multiple arguments into a sequence of functions that each take a single
+argument. This technique is integral in functional programming, enabling the creation of higher-order functions through
+partial application of its arguments. Using currying in Java can lead to more modular, reusable, and maintainable code.
 
 ## Detailed Explanation of Currying Pattern with Real-World Examples
 
 Real-world example
 
-> Currying in programming can be compared to an assembly line in a factory. Imagine a car manufacturing process where each station on the assembly line performs a specific task, such as installing the engine, painting the car, and adding the wheels. Each station takes a partially completed car and performs a single operation before passing it to the next station. Similarly, in currying, a function that requires multiple arguments is broken down into a series of functions, each taking a single argument and returning another function until all arguments are provided. This step-by-step processing simplifies complex tasks by dividing them into manageable, sequential operations, which is especially useful in Java functional programming.
+> Currying in programming can be compared to an assembly line in a factory. Imagine a car manufacturing process where
+> each station on the assembly line performs a specific task, such as installing the engine, painting the car, and adding
+> the wheels. Each station takes a partially completed car and performs a single operation before passing it to the next
+> station. Similarly, in currying, a function that requires multiple arguments is broken down into a series of functions,
+> each taking a single argument and returning another function until all arguments are provided. This step-by-step
+> processing simplifies complex tasks by dividing them into manageable, sequential operations, which is especially useful
+> in Java functional programming.
 
 In plain words
 
@@ -31,11 +39,14 @@ In plain words
 
 Wikipedia says
 
-> In mathematics and computer science, currying is the technique of translating a function that takes multiple arguments into a sequence of families of functions, each taking a single argument.
+> In mathematics and computer science, currying is the technique of translating a function that takes multiple arguments
+> into a sequence of families of functions, each taking a single argument.
 
 ## Programmatic example of Currying Pattern in Java
 
-Consider a librarian who wants to populate their library with books. The librarian wants functions which can create books corresponding to specific genres and authors. Currying makes this possible by writing a curried book builder function and utilising partial application.
+Consider a librarian who wants to populate their library with books. The librarian wants functions which can create
+books corresponding to specific genres and authors. Currying makes this possible by writing a curried book builder
+function and utilising partial application.
 
 We have a `Book` class and `Genre` enum.
 
@@ -71,7 +82,9 @@ Book createBook(Genre genre, String author, String title, LocalDate publicationD
 }
 ```
 
-However, what if we only wanted to create books from the `FANTASY` genre? Passing the `FANTASY` parameter with each method call would be repetitive. Alternatively, we could define a new method specifically for creating `FANTASY` books, but it would be impractical to create a separate method for each genre. The solution is to use a curried function.
+However, what if we only wanted to create books from the `FANTASY` genre? Passing the `FANTASY` parameter with each
+method call would be repetitive. Alternatively, we could define a new method specifically for creating `FANTASY` books,
+but it would be impractical to create a separate method for each genre. The solution is to use a curried function.
 
 ```java
 static Function<Genre, Function<String, Function<String, Function<LocalDate, Book>>>> book_creator
@@ -82,13 +95,17 @@ static Function<Genre, Function<String, Function<String, Function<LocalDate, Boo
         -> new Book(bookGenre, bookAuthor, bookTitle, bookPublicationDate);
 ```
 
-Note that the order of the parameters is important. `genre` must come before `author`, `author` must come before `title` and so on. We must be considerate of this when writing curried functions to take full advantage of partial application. Using the above function, we can define a new function `fantasyBookFunc`, to generate `FANTASY` books as follows:
+Note that the order of the parameters is important. `genre` must come before `author`, `author` must come before `title`
+and so on. We must be considerate of this when writing curried functions to take full advantage of partial application.
+Using the above function, we can define a new function `fantasyBookFunc`, to generate `FANTASY` books as follows:
 
 ```java
 Function<String, Function<String, Function<LocalDate, Book>>> fantasyBookFunc = Book.book_creator.apply(Genre.FANTASY);
 ```
 
-Unfortunately, the type signature of `BOOK_CREATOR` and `fantasyBookFunc` are difficult to read and understand. We can improve this by using the [builder pattern](https://java-design-patterns.com/patterns/builder/) and functional interfaces.
+Unfortunately, the type signature of `BOOK_CREATOR` and `fantasyBookFunc` are difficult to read and understand. We can
+improve this by using the [builder pattern](https://java-design-patterns.com/patterns/builder/) and functional
+interfaces.
 
 ```java
 public static AddGenre builder() {
@@ -116,7 +133,10 @@ public interface AddPublicationDate {
 }
 ```
 
-The semantics of the `builder` function can easily be understood. The `builder` function returns a function `AddGenre`, which adds the genre to the book. Similarity, the `AddGenre` function returns another function `AddTitle`, which adds the title to the book and so on, until the `AddPublicationDate` function returns a `Book`. For example, we could create a `Book` as follows:
+The semantics of the `builder` function can easily be understood. The `builder` function returns a function `AddGenre`,
+which adds the genre to the book. Similarity, the `AddGenre` function returns another function `AddTitle`, which adds
+the title to the book and so on, until the `AddPublicationDate` function returns a `Book`. For example, we could create
+a `Book` as follows:
 
 ```java
 Book book = Book.builder().withGenre(Genre.FANTASY)
@@ -125,7 +145,8 @@ Book book = Book.builder().withGenre(Genre.FANTASY)
     .withPublicationDate(LocalDate.of(2000, 7, 2));
 ```
 
-The below example demonstrates how partial application can be used with the `builder` function to create specialised book builder functions.
+The below example demonstrates how partial application can be used with the `builder` function to create specialised
+book builder functions.
 
 ```java
 public static void main(String[] args) {
@@ -190,7 +211,8 @@ Program output:
 
 * When functions need to be called with some arguments preset in Java.
 * In functional programming languages or paradigms to simplify functions that take multiple arguments.
-* To improve code reusability and composability by breaking down functions into simpler, unary functions, enhancing the modularity of Java applications.
+* To improve code reusability and composability by breaking down functions into simpler, unary functions, enhancing the
+  modularity of Java applications.
 
 ## Currying Pattern Java Tutorials
 
@@ -218,13 +240,17 @@ Trade-offs:
 * Can lead to performance overhead due to the creation of additional closures.
 * May make debugging more challenging, as it introduces additional layers of function calls.
 * Can be less intuitive for developers unfamiliar with functional programming concepts.
-* As shown in the programmatic example above, curried functions with several parameters have a cumbersome type signature in Java.
+* As shown in the programmatic example above, curried functions with several parameters have a cumbersome type signature
+  in Java.
 
 ## Related Java Design Patterns
 
-* Function Composition: Currying is often used in conjunction with function composition to enable more readable and concise code.
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): While not the same, currying shares the decorator pattern's concept of wrapping functionality.
-* [Factory](https://java-design-patterns.com/patterns/factory/): Currying can be used to create factory functions that produce variations of a function with certain arguments preset.
+* Function Composition: Currying is often used in conjunction with function composition to enable more readable and
+  concise code.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): While not the same, currying shares the decorator
+  pattern's concept of wrapping functionality.
+* [Factory](https://java-design-patterns.com/patterns/factory/): Currying can be used to create factory functions that
+  produce variations of a function with certain arguments preset.
 
 ## References and Credits
 

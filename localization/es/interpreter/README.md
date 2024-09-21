@@ -15,7 +15,8 @@ representación para interpretar las frases del lenguaje.
 
 Ejemplo real
 
-> Los niños enanos están aprendiendo matemáticas básicas en la escuela. Empiezan por lo más básico: "1 + 1", "4 - 2", "5 + 5", etcétera.
+> Los niños enanos están aprendiendo matemáticas básicas en la escuela. Empiezan por lo más básico: "1 + 1", "4 - 2", "
+> 5 + 5", etcétera.
 
 En palabras simples
 
@@ -23,11 +24,15 @@ En palabras simples
 
 Wikipedia dice
 
-> En programación informática, el patrón intérprete es un patrón de diseño que especifica cómo evaluar sentencias en un lenguaje. La idea básica es tener una clase para cada símbolo (terminal o no terminal) en un lenguaje informático especializado. El árbol sintáctico de una sentencia en el lenguaje es una instancia del patrón compuesto y se utiliza para evaluar (interpretar) la sentencia para un cliente.
+> En programación informática, el patrón intérprete es un patrón de diseño que especifica cómo evaluar sentencias en un
+> lenguaje. La idea básica es tener una clase para cada símbolo (terminal o no terminal) en un lenguaje informático
+> especializado. El árbol sintáctico de una sentencia en el lenguaje es una instancia del patrón compuesto y se utiliza
+> para evaluar (interpretar) la sentencia para un cliente.
 
 **Ejemplo programático**
 
-Para poder interpretar matemáticas básicas, necesitamos una jerarquía de expresiones. La abstracción básica para ello es la clase `Expression`.
+Para poder interpretar matemáticas básicas, necesitamos una jerarquía de expresiones. La abstracción básica para ello es
+la clase `Expression`.
 
 ```java
 public abstract class Expression {
@@ -151,8 +156,14 @@ result: 8
 Utilice el patrón Intérprete cuando exista un lenguaje que interpretar, y pueda representar las sentencias
 del lenguaje como árboles sintácticos abstractos. El patrón Intérprete funciona mejor cuando
 
-* La gramática es simple. Para gramáticas complejas, la jerarquía de clases para la gramática se hace grande e inmanejable. Herramientas como los generadores de analizadores sintácticos son una mejor alternativa en estos casos. Pueden interpretar expresiones sin construir árboles sintácticos abstractos, lo que puede ahorrar espacio y posiblemente tiempo.
-* La eficiencia no es una preocupación crítica. Por lo general, los intérpretes más eficientes no se implementan interpretando directamente los árboles de análisis sintáctico, sino traduciéndolos primero a otra forma. Por ejemplo, las expresiones regulares suelen transformarse en máquinas de estados. Pero incluso entonces, el traductor puede ser implementado por el patrón Intérprete, por lo que el patrón sigue siendo aplicable.
+* La gramática es simple. Para gramáticas complejas, la jerarquía de clases para la gramática se hace grande e
+  inmanejable. Herramientas como los generadores de analizadores sintácticos son una mejor alternativa en estos casos.
+  Pueden interpretar expresiones sin construir árboles sintácticos abstractos, lo que puede ahorrar espacio y
+  posiblemente tiempo.
+* La eficiencia no es una preocupación crítica. Por lo general, los intérpretes más eficientes no se implementan
+  interpretando directamente los árboles de análisis sintáctico, sino traduciéndolos primero a otra forma. Por ejemplo,
+  las expresiones regulares suelen transformarse en máquinas de estados. Pero incluso entonces, el traductor puede ser
+  implementado por el patrón Intérprete, por lo que el patrón sigue siendo aplicable.
 
 ## Usos conocidos
 
@@ -160,7 +171,6 @@ del lenguaje como árboles sintácticos abstractos. El patrón Intérprete funci
 * [java.text.Normalizer](http://docs.oracle.com/javase/8/docs/api/java/text/Normalizer.html)
 * Todas las subclases de [java.text.Format](http://docs.oracle.com/javase/8/docs/api/java/text/Format.html)
 * [javax.el.ELResolver](http://docs.oracle.com/javaee/7/api/javax/el/ELResolver.html)
-
 
 ## Créditos
 

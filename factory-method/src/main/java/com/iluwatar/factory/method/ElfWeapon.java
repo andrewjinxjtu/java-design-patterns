@@ -32,8 +32,8 @@ import lombok.RequiredArgsConstructor;
  */
 public record ElfWeapon(WeaponType weaponType) implements Weapon {
 
-  @Override
-  public String toString() {
-    return "an elven " + weaponType;
-  }
+    @Override
+    public String toString() {
+        return "an elven " + weaponType;
+    }
 }

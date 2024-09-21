@@ -30,29 +30,29 @@ import org.slf4j.LoggerFactory;
 /**
  * In Registry pattern, objects of a single class are stored and provide a global point of access to them.
  * Note that there is no restriction on the number of objects.
- * 
+ *
  * <p> The given example {@link CustomerRegistry} represents the registry used to store and
  * access {@link Customer} objects. </p>
  */
 public class App {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
-    CustomerRegistry customerRegistry = CustomerRegistry.getInstance();
-    var john = new Customer("1", "John");
-    customerRegistry.addCustomer(john);
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
+        CustomerRegistry customerRegistry = CustomerRegistry.getInstance();
+        var john = new Customer("1", "John");
+        customerRegistry.addCustomer(john);
 
-    var julia = new Customer("2", "Julia");
-    customerRegistry.addCustomer(julia);
+        var julia = new Customer("2", "Julia");
+        customerRegistry.addCustomer(julia);
 
-    LOGGER.info("John {}", customerRegistry.getCustomer("1"));
-    LOGGER.info("Julia {}", customerRegistry.getCustomer("2"));
-  }
+        LOGGER.info("John {}", customerRegistry.getCustomer("1"));
+        LOGGER.info("Julia {}", customerRegistry.getCustomer("2"));
+    }
 
 }

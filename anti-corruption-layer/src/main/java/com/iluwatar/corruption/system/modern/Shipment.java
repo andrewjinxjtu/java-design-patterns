@@ -34,7 +34,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Shipment {
-  private String item;
-  private int qty;
-  private int price;
+    private String item;
+    private int qty;
+    private int price;
 }

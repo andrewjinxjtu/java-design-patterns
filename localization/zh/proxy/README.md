@@ -27,7 +27,8 @@ tag:
 
 维基百科说
 
-> 在最一般的形式上，代理是一个类，它充当与其他对象的接口。代理是客户端调用的包装器或代理对象，以访问后台的实际服务对象。代理本身可以简单地转发到真实对象，也可以提供其他逻辑。在代理中，可以提供额外的功能，例如在对实对象的操作占用大量资源时进行缓存，或者在对实对象的操作被调用之前检查前提条件。
+>
+在最一般的形式上，代理是一个类，它充当与其他对象的接口。代理是客户端调用的包装器或代理对象，以访问后台的实际服务对象。代理本身可以简单地转发到真实对象，也可以提供其他逻辑。在代理中，可以提供额外的功能，例如在对实对象的操作占用大量资源时进行缓存，或者在对实对象的操作被调用之前检查前提条件。
 
 **程序示例**
 
@@ -146,8 +147,8 @@ Brown wizard is not allowed to enter!
 
 * [java.lang.reflect.Proxy](http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Proxy.html)
 * [Apache Commons Proxy](https://commons.apache.org/proper/commons-proxy/)
-* Mocking frameworks [Mockito](https://site.mockito.org/), 
-[Powermock](https://powermock.github.io/), [EasyMock](https://easymock.org/)
+* Mocking frameworks [Mockito](https://site.mockito.org/),
+  [Powermock](https://powermock.github.io/), [EasyMock](https://easymock.org/)
 
 ## 相关设计模式
 

@@ -18,25 +18,40 @@ tag:
 
 ## Intent of Layered Architecture Design Pattern
 
-The Layered Architecture design pattern helps organize applications into groups of subtasks at different levels of abstraction, facilitating independent development and maintenance of each layer.
+The Layered Architecture design pattern helps organize applications into groups of subtasks at different levels of
+abstraction, facilitating independent development and maintenance of each layer.
 
 ## Detailed Explanation of Layered Architecture Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine constructing a modern high-rise building, analogous to using the Layered Architecture design pattern in software development. This pattern allows each software layer, such as the data layer, service layer, and presentation layer, to support seamless interaction while maintaining independence, enhancing maintainability and scalability. Just as a building is divided into layers such as the foundation, structural floors, residential floors, and the rooftop, each with specific functions and built using different materials and techniques, a software application can be similarly structured.
-> 
-> In this analogy, the foundation represents the data layer, responsible for managing database operations. The structural floors are akin to the service layer, which contains business logic and rules. The residential floors parallel the presentation layer, which deals with user interfaces and interactions. Finally, the rooftop could be seen as the API layer, allowing external systems to communicate with the application. 
-> 
-> Just as each floor in a building is constructed to support the layers above and below, each software layer supports seamless interaction with its neighboring layers while maintaining a degree of independence. This structure allows for easy maintenance and updates, such as refurbishing the interiors (presentation layer) without affecting the underlying structures (business logic and data layers).
+> Imagine constructing a modern high-rise building, analogous to using the Layered Architecture design pattern in
+> software development. This pattern allows each software layer, such as the data layer, service layer, and presentation
+> layer, to support seamless interaction while maintaining independence, enhancing maintainability and scalability. Just
+> as a building is divided into layers such as the foundation, structural floors, residential floors, and the rooftop,
+> each with specific functions and built using different materials and techniques, a software application can be similarly
+> structured.
+>
+> In this analogy, the foundation represents the data layer, responsible for managing database operations. The
+> structural floors are akin to the service layer, which contains business logic and rules. The residential floors
+> parallel the presentation layer, which deals with user interfaces and interactions. Finally, the rooftop could be seen
+> as the API layer, allowing external systems to communicate with the application.
+>
+> Just as each floor in a building is constructed to support the layers above and below, each software layer supports
+> seamless interaction with its neighboring layers while maintaining a degree of independence. This structure allows for
+> easy maintenance and updates, such as refurbishing the interiors (presentation layer) without affecting the underlying
+> structures (business logic and data layers).
 
 In plain words
 
-> The Layered Architecture pattern organizes software into hierarchical groups of tasks, each encapsulated in distinct layers that interact with each other, facilitating ease of maintenance, scalability, and clear separation of concerns.
+> The Layered Architecture pattern organizes software into hierarchical groups of tasks, each encapsulated in distinct
+> layers that interact with each other, facilitating ease of maintenance, scalability, and clear separation of concerns.
 
 Wikipedia says
 
-> In software engineering, multitier architecture (often referred to as n-tier architecture) or multilayered architecture is a client–server architecture in which presentation, application processing, and data management functions are physically separated.
+> In software engineering, multitier architecture (often referred to as n-tier architecture) or multilayered
+> architecture is a client–server architecture in which presentation, application processing, and data management
+> functions are physically separated.
 
 ## Programmatic Example of Layered Architecture in Java
 
@@ -92,7 +107,9 @@ public class CakeViewImpl implements View {
 
 ## When to Use the Layered Architecture Pattern in Java
 
-This pattern is suitable for structuring applications that can be divided into groups where each group has a specific role or responsibility. Common in enterprise applications, it simplifies dependencies, enhances maintainability, and supports scaling and technology stack segregation.
+This pattern is suitable for structuring applications that can be divided into groups where each group has a specific
+role or responsibility. Common in enterprise applications, it simplifies dependencies, enhances maintainability, and
+supports scaling and technology stack segregation.
 
 Use the Layers architecture when
 
@@ -121,8 +138,11 @@ Trade-offs
 
 ## Related Java Design Patterns
 
-* [Model-View-Controller](https://java-design-patterns.com/patterns/model-view-controller/): Shares separation of concerns by dividing application into input, processing, and output. Layered Architecture often implements an MVC within its presentation layer.
-* Service-Oriented Architecture (SOA): Both patterns emphasize modularization but SOA focuses more on distributed services that can be reused across different systems.
+* [Model-View-Controller](https://java-design-patterns.com/patterns/model-view-controller/): Shares separation of
+  concerns by dividing application into input, processing, and output. Layered Architecture often implements an MVC
+  within its presentation layer.
+* Service-Oriented Architecture (SOA): Both patterns emphasize modularization but SOA focuses more on distributed
+  services that can be reused across different systems.
 
 ## References and Credits
 

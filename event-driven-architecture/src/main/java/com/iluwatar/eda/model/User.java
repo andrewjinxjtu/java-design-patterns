@@ -33,4 +33,5 @@ import lombok.RequiredArgsConstructor;
  * This {@link User} class is a basic pojo used to demonstrate user data sent along with the {@link
  * UserCreatedEvent} and {@link UserUpdatedEvent} events.
  */
-public record User(String username) {}
+public record User(String username) {
+}

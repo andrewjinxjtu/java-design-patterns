@@ -31,6 +31,7 @@ import com.google.inject.Inject;
 import com.iluwatar.hexagonal.banking.WireTransfers;
 import com.iluwatar.hexagonal.database.LotteryTicketRepository;
 import com.iluwatar.hexagonal.eventlog.LotteryEventLog;
+
 import java.util.Optional;
 
 /**
@@ -38,46 +39,46 @@ import java.util.Optional;
  */
 public class LotteryService {
 
-  private final LotteryTicketRepository repository;
-  private final LotteryEventLog notifications;
-  private final WireTransfers wireTransfers;
+    private final LotteryTicketRepository repository;
+    private final LotteryEventLog notifications;
+    private final WireTransfers wireTransfers;
 
-  /**
-   * Constructor.
-   */
-  @Inject
-  public LotteryService(LotteryTicketRepository repository, LotteryEventLog notifications,
-                        WireTransfers wireTransfers) {
-    this.repository = repository;
-    this.notifications = notifications;
-    this.wireTransfers = wireTransfers;
-  }
-
-  /**
-   * Submit lottery ticket to participate in the lottery.
-   */
-  public Optional<LotteryTicketId> submitTicket(LotteryTicket ticket) {
-    var playerDetails = ticket.playerDetails();
-    var playerAccount = playerDetails.bankAccount();
-    var result = wireTransfers.transferFunds(TICKET_PRIZE, playerAccount, SERVICE_BANK_ACCOUNT);
-    if (!result) {
-      notifications.ticketSubmitError(playerDetails);
-      return Optional.empty();
+    /**
+     * Constructor.
+     */
+    @Inject
+    public LotteryService(LotteryTicketRepository repository, LotteryEventLog notifications,
+                          WireTransfers wireTransfers) {
+        this.repository = repository;
+        this.notifications = notifications;
+        this.wireTransfers = wireTransfers;
     }
-    var optional = repository.save(ticket);
-    if (optional.isPresent()) {
-      notifications.ticketSubmitted(playerDetails);
-    }
-    return optional;
-  }
 
-  /**
-   * Check if lottery ticket has won.
-   */
-  public LotteryTicketCheckResult checkTicketForPrize(
-      LotteryTicketId id,
-      LotteryNumbers winningNumbers
-  ) {
-    return LotteryUtils.checkTicketForPrize(repository, id, winningNumbers);
-  }
+    /**
+     * Submit lottery ticket to participate in the lottery.
+     */
+    public Optional<LotteryTicketId> submitTicket(LotteryTicket ticket) {
+        var playerDetails = ticket.playerDetails();
+        var playerAccount = playerDetails.bankAccount();
+        var result = wireTransfers.transferFunds(TICKET_PRIZE, playerAccount, SERVICE_BANK_ACCOUNT);
+        if (!result) {
+            notifications.ticketSubmitError(playerDetails);
+            return Optional.empty();
+        }
+        var optional = repository.save(ticket);
+        if (optional.isPresent()) {
+            notifications.ticketSubmitted(playerDetails);
+        }
+        return optional;
+    }
+
+    /**
+     * Check if lottery ticket has won.
+     */
+    public LotteryTicketCheckResult checkTicketForPrize(
+            LotteryTicketId id,
+            LotteryNumbers winningNumbers
+    ) {
+        return LotteryUtils.checkTicketForPrize(repository, id, winningNumbers);
+    }
 }

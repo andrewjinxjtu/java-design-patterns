@@ -32,14 +32,14 @@ import lombok.Setter;
  */
 public class Task {
 
-  @Getter
-  private final int time;
+    @Getter
+    private final int time;
 
-  @Getter
-  @Setter
-  private boolean finished;
+    @Getter
+    @Setter
+    private boolean finished;
 
-  public Task(int time) {
-    this.time = time;
-  }
+    public Task(int time) {
+        this.time = time;
+    }
 }

@@ -31,15 +31,15 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public enum Fatigue {
-  ALERT("alert"),
-  TIRED("tired"),
-  SLEEPING("sleeping");
+    ALERT("alert"),
+    TIRED("tired"),
+    SLEEPING("sleeping");
 
-  private final String title;
+    private final String title;
 
 
-  @Override
-  public String toString() {
-    return title;
-  }
+    @Override
+    public String toString() {
+        return title;
+    }
 }

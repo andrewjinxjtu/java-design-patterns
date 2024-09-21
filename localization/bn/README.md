@@ -24,7 +24,11 @@
 
 <br/>
 
-বিভিন্ন ভাষায় পড়ুন : [**zh**](localization/zh/README.md), [**ko**](localization/ko/README.md), [**fr**](localization/fr/README.md), [**tr**](localization/tr/README.md), [**ar**](localization/ar/README.md), [**es**](localization/es/README.md), [**pt**](localization/pt/README.md), [**id**](localization/id/README.md), [**ru**](localization/ru/README.md), [**de**](localization/de/README.md), [**ja**](localization/ja/README.md), [**vi**](localization/vi/README.md), [**bn**](localization/bn/README.md)
+বিভিন্ন ভাষায় পড়ুন : [**zh**](localization/zh/README.md), [**ko**](localization/ko/README.md), [**fr
+**](localization/fr/README.md), [**tr**](localization/tr/README.md), [**ar**](localization/ar/README.md), [**es
+**](localization/es/README.md), [**pt**](localization/pt/README.md), [**id**](localization/id/README.md), [**ru
+**](localization/ru/README.md), [**de**](localization/de/README.md), [**ja**](localization/ja/README.md), [**vi
+**](localization/vi/README.md), [**bn**](localization/bn/README.md)
 
 <br/>
 
@@ -48,7 +52,8 @@
 
 এই সাইটটি জাভা ডিজাইন প্যাটার্ন প্রদর্শন করে। সমাধান উন্নত করা হয়েছে
 
-ওপেন সোর্স সম্প্রদায়ের অভিজ্ঞ প্রোগ্রামার এবং স্থপতি দ্বারা। প্যাটার্নগুলি তাদের উচ্চ-স্তরের বর্ণনা দ্বারা বা তাদের দেখে ব্রাউজ করা যেতে পারে
+ওপেন সোর্স সম্প্রদায়ের অভিজ্ঞ প্রোগ্রামার এবং স্থপতি দ্বারা। প্যাটার্নগুলি তাদের উচ্চ-স্তরের বর্ণনা দ্বারা বা তাদের
+দেখে ব্রাউজ করা যেতে পারে
 
 সোর্স কোড। কোড উদাহরণ ভাল মন্তব্য করা হয় এবং হিসাবে চিন্তা করা যেতে পারে
 
@@ -72,17 +77,20 @@
 
 [available design patterns](https://java-design-patterns.com/patterns/) নিম্নলিখিত পন্থাগুলির যেকোনো একটি দ্বারা
 
- - নাম দ্বারা একটি নির্দিষ্ট প্যাটার্ন জন্য অনুসন্ধান করুন। একটি খুঁজে পাচ্ছেন না? একটি নতুন প্যাটার্ন রিপোর্ট করুন [here](https://github.com/iluwatar/java-design-patterns/issues).
+- নাম দ্বারা একটি নির্দিষ্ট প্যাটার্ন জন্য অনুসন্ধান করুন। একটি খুঁজে পাচ্ছেন না? একটি নতুন প্যাটার্ন রিপোর্ট
+  করুন [here](https://github.com/iluwatar/java-design-patterns/issues).
 
- - ট্যাগ ব্যবহার করা যেমন `পারফরম্যান্স`, `গ্যাং অফ ফোর` বা `ডেটা অ্যাক্সেস`। 
+- ট্যাগ ব্যবহার করা যেমন `পারফরম্যান্স`, `গ্যাং অফ ফোর` বা `ডেটা অ্যাক্সেস`।
 
- - প্যাটার্ন বিভাগ, `সৃজনশীল`, `আচরণমূলক` এবং অন্যান্য ব্যবহার করে।
+- প্যাটার্ন বিভাগ, `সৃজনশীল`, `আচরণমূলক` এবং অন্যান্য ব্যবহার করে।
 
-আশা করি, আপনি এই সাইটে উপস্থাপিত অবজেক্ট-ওরিয়েন্টেড সমাধানগুলিকে আপনার আর্কিটেকচারে উপযোগী খুঁজে পাবেন এবং সেগুলিকে বিকাশ করার সময় আমরা সেগুলি শিখতে যতটা মজা পেয়েছি।
+আশা করি, আপনি এই সাইটে উপস্থাপিত অবজেক্ট-ওরিয়েন্টেড সমাধানগুলিকে আপনার আর্কিটেকচারে উপযোগী খুঁজে পাবেন এবং সেগুলিকে
+বিকাশ করার সময় আমরা সেগুলি শিখতে যতটা মজা পেয়েছি।
 
 # কিভাবে অবদান রাখতে হয়
 
-আপনি যদি প্রকল্পে অবদান রাখতে ইচ্ছুক হন তবে আপনি আমাদের প্রাসঙ্গিক তথ্য পাবেন [developer wiki](https://github.com/iluwatar/java-design-patterns/wiki). 
+আপনি যদি প্রকল্পে অবদান রাখতে ইচ্ছুক হন তবে আপনি আমাদের প্রাসঙ্গিক তথ্য
+পাবেন [developer wiki](https://github.com/iluwatar/java-design-patterns/wiki).
 
 আমরা আপনাকে সাহায্য করব এবং আপনার প্রশ্নের উত্তর দেব [Gitter chatroom](https://gitter.im/iluwatar/java-design-patterns).
 

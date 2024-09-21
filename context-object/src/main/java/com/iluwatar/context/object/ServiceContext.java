@@ -34,7 +34,7 @@ import lombok.Setter;
 @Setter
 public class ServiceContext {
 
-  String accountService;
-  String sessionService;
-  String searchService;
+    String accountService;
+    String sessionService;
+    String searchService;
 }

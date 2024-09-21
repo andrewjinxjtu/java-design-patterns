@@ -25,6 +25,7 @@
 package com.iluwatar.component;
 
 import java.awt.event.KeyEvent;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -44,19 +45,19 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public final class App {
-  /**
-   * Program entry point.
-   *
-   * @param args args command line args.
-   */
-  public static void main(String[] args) {
-    final var player = GameObject.createPlayer();
-    final var npc = GameObject.createNpc();
+    /**
+     * Program entry point.
+     *
+     * @param args args command line args.
+     */
+    public static void main(String[] args) {
+        final var player = GameObject.createPlayer();
+        final var npc = GameObject.createNpc();
 
 
-    LOGGER.info("Player Update:");
-    player.update(KeyEvent.KEY_LOCATION_LEFT);
-    LOGGER.info("NPC Update:");
-    npc.demoUpdate();
-  }
+        LOGGER.info("Player Update:");
+        player.update(KeyEvent.KEY_LOCATION_LEFT);
+        LOGGER.info("NPC Update:");
+        npc.demoUpdate();
+    }
 }

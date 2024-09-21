@@ -31,7 +31,8 @@ tag:
 
 维基百科说
 
-> 乐观并发控制假设多个事务可以频繁完成而不会互相干扰。 在运行时，事务使用数据资源而不获取这些资源的锁。 在提交之前，每个事务都将验证没有其他事务修改了已读取的数据。如果检查发现有冲突的修改，则提交的事务将回滚并可以重新启动。
+> 乐观并发控制假设多个事务可以频繁完成而不会互相干扰。 在运行时，事务使用数据资源而不获取这些资源的锁。
+> 在提交之前，每个事务都将验证没有其他事务修改了已读取的数据。如果检查发现有冲突的修改，则提交的事务将回滚并可以重新启动。
 
 **程序示例**
 
@@ -138,20 +139,25 @@ Exception: Tried to update stale version 0 while actual version is 1
 * 强的数据一致性
 
 ## 教程
+
 * [Version Number Pattern Tutorial](http://www.java2s.com/Tutorial/Java/0355__JPA/VersioningEntity.htm)
 
 ## 已知用途
- * [Hibernate](https://vladmihalcea.com/jpa-entity-version-property-hibernate/)
- * [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-versioning)
- * [Apache Solr](https://lucene.apache.org/solr/guide/6_6/updating-parts-of-documents.html)
+
+* [Hibernate](https://vladmihalcea.com/jpa-entity-version-property-hibernate/)
+* [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-versioning)
+* [Apache Solr](https://lucene.apache.org/solr/guide/6_6/updating-parts-of-documents.html)
 
 ## 意义
+
 版本号模式允许实现并发控制，通常通过乐观离线锁模式来完成。
 
 ## 相关模式
+
 * [Optimistic Offline Lock](https://martinfowler.com/eaaCatalog/optimisticOfflineLock.html)
 
 ## 鸣谢
+
 * [Optimistic Locking in JPA](https://www.baeldung.com/jpa-optimistic-locking)
 * [JPA entity versioning](https://www.byteslounge.com/tutorials/jpa-entity-versioning-version-and-optimistic-locking)
 * [J2EE Design Patterns](http://ommolketab.ir/aaf-lib/axkwht7wxrhvgs2aqkxse8hihyu9zv.pdf)

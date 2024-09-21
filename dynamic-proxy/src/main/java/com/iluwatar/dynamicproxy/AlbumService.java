@@ -30,6 +30,7 @@ import com.iluwatar.dynamicproxy.tinyrestclient.annotation.Get;
 import com.iluwatar.dynamicproxy.tinyrestclient.annotation.Path;
 import com.iluwatar.dynamicproxy.tinyrestclient.annotation.Post;
 import com.iluwatar.dynamicproxy.tinyrestclient.annotation.Put;
+
 import java.util.List;
 
 /**
@@ -39,49 +40,49 @@ import java.util.List;
  */
 public interface AlbumService {
 
-  /**
-   * Get a list of albums from an endpoint.
-   *
-   * @return List of albums' data.
-   */
-  @Get("/albums")
-  List<Album> readAlbums();
+    /**
+     * Get a list of albums from an endpoint.
+     *
+     * @return List of albums' data.
+     */
+    @Get("/albums")
+    List<Album> readAlbums();
 
-  /**
-   * Get a specific album from an endpoint.
-   *
-   * @param albumId Album's id to search for.
-   * @return Album's data.
-   */
-  @Get("/albums/{albumId}")
-  Album readAlbum(@Path("albumId") Integer albumId);
+    /**
+     * Get a specific album from an endpoint.
+     *
+     * @param albumId Album's id to search for.
+     * @return Album's data.
+     */
+    @Get("/albums/{albumId}")
+    Album readAlbum(@Path("albumId") Integer albumId);
 
-  /**
-   * Creates a new album.
-   *
-   * @param album Album's data to be created.
-   * @return New album's data.
-   */
-  @Post("/albums")
-  Album createAlbum(@Body Album album);
+    /**
+     * Creates a new album.
+     *
+     * @param album Album's data to be created.
+     * @return New album's data.
+     */
+    @Post("/albums")
+    Album createAlbum(@Body Album album);
 
-  /**
-   * Updates an existing album.
-   *
-   * @param albumId Album's id to be modified.
-   * @param album   New album's data.
-   * @return Updated album's data.
-   */
-  @Put("/albums/{albumId}")
-  Album updateAlbum(@Path("albumId") Integer albumId, @Body Album album);
+    /**
+     * Updates an existing album.
+     *
+     * @param albumId Album's id to be modified.
+     * @param album   New album's data.
+     * @return Updated album's data.
+     */
+    @Put("/albums/{albumId}")
+    Album updateAlbum(@Path("albumId") Integer albumId, @Body Album album);
 
-  /**
-   * Deletes an album.
-   *
-   * @param albumId Album's id to be deleted.
-   * @return Empty album.
-   */
-  @Delete("/albums/{albumId}")
-  Album deleteAlbum(@Path("albumId") Integer albumId);
+    /**
+     * Deletes an album.
+     *
+     * @param albumId Album's id to be deleted.
+     * @return Empty album.
+     */
+    @Delete("/albums/{albumId}")
+    Album deleteAlbum(@Path("albumId") Integer albumId);
 
 }

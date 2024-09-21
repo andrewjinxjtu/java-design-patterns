@@ -26,18 +26,18 @@ package com.iluwatar.model.view.intent.actions;
 
 /**
  * Addition {@link CalculatorAction}.
- * */
+ */
 public class AdditionCalculatorAction implements CalculatorAction {
-  /**
-   * Subclass tag.
-   * */
-  public static final String ADDITION = "ADDITION";
+    /**
+     * Subclass tag.
+     */
+    public static final String ADDITION = "ADDITION";
 
-  /**
-   * Makes checking subclass type trivial.
-   * */
-  @Override
-  public String tag() {
-    return ADDITION;
-  }
+    /**
+     * Makes checking subclass type trivial.
+     */
+    @Override
+    public String tag() {
+        return ADDITION;
+    }
 }

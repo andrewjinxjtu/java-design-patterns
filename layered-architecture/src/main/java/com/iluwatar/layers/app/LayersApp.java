@@ -44,9 +44,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages = {"com.iluwatar.layers", "service", "dto", "exception", "view", "dao"})
 public class LayersApp {
 
-  public static void main(String[] args) {
-    SpringApplication.run(LayersApp.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(LayersApp.class, args);
 
-  }
+    }
 
 }

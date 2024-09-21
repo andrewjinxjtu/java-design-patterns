@@ -17,21 +17,30 @@ tag:
 
 ## Intent of Poison Pill Design Pattern
 
-The Poison Pill design pattern is used to gracefully shut down a service or a producer-consumer system by sending a special message (the "poison pill") to message queue which indicates that no more messages will be sent, allowing the consumers to terminate.
+The Poison Pill design pattern is used to gracefully shut down a service or a producer-consumer system by sending a
+special message (the "poison pill") to message queue which indicates that no more messages will be sent, allowing the
+consumers to terminate.
 
 ## Detailed Explanation of Poison Pill Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world analogy for the Poison Pill design pattern is the use of a "closed" sign in a retail store. When the store is ready to close for the day, the manager places a "closed" sign on the door. This sign acts as a signal to any new customers that no more customers will be admitted, but it doesn't immediately force out the customers already inside. The store staff will then attend to the remaining customers, allowing them to complete their purchases before finally locking up and turning off the lights. Similarly, in the Poison Pill pattern, a special "poison pill" message signals consumers to stop accepting new tasks while allowing them to finish processing the current tasks before shutting down gracefully. 
+> A real-world analogy for the Poison Pill design pattern is the use of a "closed" sign in a retail store. When the
+> store is ready to close for the day, the manager places a "closed" sign on the door. This sign acts as a signal to any
+> new customers that no more customers will be admitted, but it doesn't immediately force out the customers already
+> inside. The store staff will then attend to the remaining customers, allowing them to complete their purchases before
+> finally locking up and turning off the lights. Similarly, in the Poison Pill pattern, a special "poison pill" message
+> signals consumers to stop accepting new tasks while allowing them to finish processing the current tasks before shutting
+> down gracefully.
 
 In plain words
 
-> Poison Pill is a known message structure that ends the message exchange.   
+> Poison Pill is a known message structure that ends the message exchange.
 
 ## Programmatic Example of Poison Pill Pattern in Java
 
-In this Java example, the Poison Pill serves as a shutdown signal within message queues, demonstrating effective thread management and consumer communication.
+In this Java example, the Poison Pill serves as a shutdown signal within message queues, demonstrating effective thread
+management and consumer communication.
 
 Let's define the message structure first. There's interface `Message` and implementation `SimpleMessage`.
 
@@ -87,7 +96,8 @@ public class SimpleMessage implements Message {
 }
 ```
 
-To pass messages we are using message queues. Here we define the types related to the message queue: `MqPublishPoint`, `MqSubscribePoint` and `MessageQueue`. `SimpleMessageQueue` implements all these interfaces.
+To pass messages we are using message queues. Here we define the types related to the message queue: `MqPublishPoint`,
+`MqSubscribePoint` and `MessageQueue`. `SimpleMessageQueue` implements all these interfaces.
 
 ```java
 public interface MqPublishPoint {
@@ -120,7 +130,8 @@ public class SimpleMessageQueue implements MessageQueue {
 }
 ```
 
-Next, we need message `Producer` and `Consumer`. Internally they use the message queues from above. It's important to notice that when `Producer` stops, it sends out the poison pill to inform `Consumer` that the messaging has finished. 
+Next, we need message `Producer` and `Consumer`. Internally they use the message queues from above. It's important to
+notice that when `Producer` stops, it sends out the poison pill to inform `Consumer` that the messaging has finished.
 
 ```java
 public class Producer {
@@ -243,9 +254,11 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Producer-Consumer](https://java-design-patterns.com/patterns/producer-consumer/): Works in tandem with the Poison Pill pattern to handle the communication and shutdown of consumers.
+* [Producer-Consumer](https://java-design-patterns.com/patterns/producer-consumer/): Works in tandem with the Poison
+  Pill pattern to handle the communication and shutdown of consumers.
 * Message Queue: Often uses poison pills to signal the end of message processing in the queue.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Can be used to notify subscribers about the shutdown event.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Can be used to notify subscribers about the shutdown
+  event.
 
 ## References and Credits
 

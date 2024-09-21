@@ -28,6 +28,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -46,108 +47,112 @@ import org.joda.money.Money;
 @Builder
 public class Customer {
 
-  @NonNull private final CustomerDao customerDao;
-  @Builder.Default private List<Product> purchases = new ArrayList<>();
-  @NonNull private String name;
-  @NonNull private Money money;
+    @NonNull
+    private final CustomerDao customerDao;
+    @Builder.Default
+    private List<Product> purchases = new ArrayList<>();
+    @NonNull
+    private String name;
+    @NonNull
+    private Money money;
 
-  /**
-   * Save customer or update if customer already exist.
-   */
-  public void save() {
-    try {
-      Optional<Customer> customer = customerDao.findByName(name);
-      if (customer.isPresent()) {
-        customerDao.update(this);
-      } else {
-        customerDao.save(this);
-      }
-    } catch (SQLException ex) {
-      LOGGER.error(ex.getMessage());
+    /**
+     * Save customer or update if customer already exist.
+     */
+    public void save() {
+        try {
+            Optional<Customer> customer = customerDao.findByName(name);
+            if (customer.isPresent()) {
+                customerDao.update(this);
+            } else {
+                customerDao.save(this);
+            }
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage());
+        }
     }
-  }
 
-  /**
-   * Add product to purchases, save to db and withdraw money.
-   *
-   * @param product to buy.
-   */
-  public void buyProduct(Product product) {
-    LOGGER.info(
-        String.format(
-            "%s want to buy %s($%.2f)...",
-            name, product.getName(), product.getSalePrice().getAmount()));
-    try {
-      withdraw(product.getSalePrice());
-    } catch (IllegalArgumentException ex) {
-      LOGGER.error(ex.getMessage());
-      return;
+    /**
+     * Add product to purchases, save to db and withdraw money.
+     *
+     * @param product to buy.
+     */
+    public void buyProduct(Product product) {
+        LOGGER.info(
+                String.format(
+                        "%s want to buy %s($%.2f)...",
+                        name, product.getName(), product.getSalePrice().getAmount()));
+        try {
+            withdraw(product.getSalePrice());
+        } catch (IllegalArgumentException ex) {
+            LOGGER.error(ex.getMessage());
+            return;
+        }
+        try {
+            customerDao.addProduct(product, this);
+            purchases.add(product);
+            LOGGER.info(String.format("%s bought %s!", name, product.getName()));
+        } catch (SQLException exception) {
+            receiveMoney(product.getSalePrice());
+            LOGGER.error(exception.getMessage());
+        }
     }
-    try {
-      customerDao.addProduct(product, this);
-      purchases.add(product);
-      LOGGER.info(String.format("%s bought %s!", name, product.getName()));
-    } catch (SQLException exception) {
-      receiveMoney(product.getSalePrice());
-      LOGGER.error(exception.getMessage());
+
+    /**
+     * Remove product from purchases, delete from db and return money.
+     *
+     * @param product to return.
+     */
+    public void returnProduct(Product product) {
+        LOGGER.info(
+                String.format(
+                        "%s want to return %s($%.2f)...",
+                        name, product.getName(), product.getSalePrice().getAmount()));
+        if (purchases.contains(product)) {
+            try {
+                customerDao.deleteProduct(product, this);
+                purchases.remove(product);
+                receiveMoney(product.getSalePrice());
+                LOGGER.info(String.format("%s returned %s!", name, product.getName()));
+            } catch (SQLException ex) {
+                LOGGER.error(ex.getMessage());
+            }
+        } else {
+            LOGGER.error(String.format("%s didn't buy %s...", name, product.getName()));
+        }
     }
-  }
 
-  /**
-   * Remove product from purchases, delete from db and return money.
-   *
-   * @param product to return.
-   */
-  public void returnProduct(Product product) {
-    LOGGER.info(
-        String.format(
-            "%s want to return %s($%.2f)...",
-            name, product.getName(), product.getSalePrice().getAmount()));
-    if (purchases.contains(product)) {
-      try {
-        customerDao.deleteProduct(product, this);
-        purchases.remove(product);
-        receiveMoney(product.getSalePrice());
-        LOGGER.info(String.format("%s returned %s!", name, product.getName()));
-      } catch (SQLException ex) {
-        LOGGER.error(ex.getMessage());
-      }
-    } else {
-      LOGGER.error(String.format("%s didn't buy %s...", name, product.getName()));
+    /**
+     * Print customer's purchases.
+     */
+    public void showPurchases() {
+        Optional<String> purchasesToShow =
+                purchases.stream()
+                        .map(p -> p.getName() + " - $" + p.getSalePrice().getAmount())
+                        .reduce((p1, p2) -> p1 + ", " + p2);
+
+        if (purchasesToShow.isPresent()) {
+            LOGGER.info(name + " bought: " + purchasesToShow.get());
+        } else {
+            LOGGER.info(name + " didn't bought anything");
+        }
     }
-  }
 
-  /**
-   * Print customer's purchases.
-   */
-  public void showPurchases() {
-    Optional<String> purchasesToShow =
-        purchases.stream()
-            .map(p -> p.getName() + " - $" + p.getSalePrice().getAmount())
-            .reduce((p1, p2) -> p1 + ", " + p2);
-
-    if (purchasesToShow.isPresent()) {
-      LOGGER.info(name + " bought: " + purchasesToShow.get());
-    } else {
-      LOGGER.info(name + " didn't bought anything");
+    /**
+     * Print customer's money balance.
+     */
+    public void showBalance() {
+        LOGGER.info(name + " balance: " + money);
     }
-  }
 
-  /**
-   * Print customer's money balance.
-   */
-  public void showBalance() {
-    LOGGER.info(name + " balance: " + money);
-  }
-
-  private void withdraw(Money amount) throws IllegalArgumentException {
-    if (money.compareTo(amount) < 0) {
-      throw new IllegalArgumentException("Not enough money!");
+    private void withdraw(Money amount) throws IllegalArgumentException {
+        if (money.compareTo(amount) < 0) {
+            throw new IllegalArgumentException("Not enough money!");
+        }
+        money = money.minus(amount);
     }
-    money = money.minus(amount);
-  }
 
-  private void receiveMoney(Money amount) {
-    money = money.plus(amount);
-  }
+    private void receiveMoney(Money amount) {
+        money = money.plus(amount);
+    }
 }

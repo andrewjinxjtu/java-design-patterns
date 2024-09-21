@@ -12,21 +12,25 @@ Token
 
 ## Propósito
 
-Sin violar la encapsulación, capturar y externalizar el estado interno de un objeto para que el objeto pueda ser restaurado a este estado más tarde.
+Sin violar la encapsulación, capturar y externalizar el estado interno de un objeto para que el objeto pueda ser
+restaurado a este estado más tarde.
 
 ## Explicación
 
 Ejemplo del mundo real
 
-> Estamos trabajando en una aplicación de astrología en la que necesitamos analizar las propiedades de las estrellas a lo largo del tiempo. Estamos creando instantáneas de los estados de las estrellas utilizando el patrón Memento.
+> Estamos trabajando en una aplicación de astrología en la que necesitamos analizar las propiedades de las estrellas a
+> lo largo del tiempo. Estamos creando instantáneas de los estados de las estrellas utilizando el patrón Memento.
 
 En palabras sencillas
 
-> El patrón Memento captura el estado interno de los objetos facilitando su almacenamiento y restauración en cualquier punto del tiempo.
+> El patrón Memento captura el estado interno de los objetos facilitando su almacenamiento y restauración en cualquier
+> punto del tiempo.
 
 Wikipedia dice
 
-> El patrón memento es un patrón de diseño de software que proporciona la capacidad de restaurar un objeto a su estado anterior (deshacer vía rollback).
+> El patrón memento es un patrón de diseño de software que proporciona la capacidad de restaurar un objeto a su estado
+> anterior (deshacer vía rollback).
 
 **Ejemplo programático**
 
@@ -43,7 +47,8 @@ public enum StarType {
 }
 ```
 
-A continuación, vayamos directamente a lo esencial. Aquí está la clase `Star` junto con los mementos que necesitamos manipular. Presta especial atención a los métodos `getMemento` y `setMemento`.
+A continuación, vayamos directamente a lo esencial. Aquí está la clase `Star` junto con los mementos que necesitamos
+manipular. Presta especial atención a los métodos `getMemento` y `setMemento`.
 
 ```java
 public interface StarMemento {
@@ -157,7 +162,8 @@ sun age: 10000000 years mass: 500000 tons
 Utilice el patrón Memento cuando:
 
 * Es necesario guardar una instantánea del estado de un objeto para poder restaurarlo más tarde, y
-* Una interfaz directa para obtener el estado expondría detalles de implementación y rompería la encapsulación del objeto.
+* Una interfaz directa para obtener el estado expondría detalles de implementación y rompería la encapsulación del
+  objeto.
 
 ## Usos conocidos
 

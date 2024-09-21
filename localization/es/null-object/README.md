@@ -8,13 +8,19 @@ tag:
 
 ## Propósito
 
-En la mayoría de los lenguajes orientados a objetos, como Java o C#, las referencias pueden ser nulas. Estas referencias deben comprobarse para asegurarse de que no son nulas antes de invocar cualquier método, porque normalmente los métodos no pueden invocarse sobre referencias nulas. En lugar de utilizar una referencia nula para indicar la ausencia de un objeto (por ejemplo, un cliente inexistente), se utiliza un objeto que implementa la interfaz esperada, pero cuyo cuerpo de método está vacío. La ventaja de este enfoque sobre una implementación por defecto es que un objeto nulo es muy predecible y no tiene efectos secundarios: no hace nada.
+En la mayoría de los lenguajes orientados a objetos, como Java o C#, las referencias pueden ser nulas. Estas referencias
+deben comprobarse para asegurarse de que no son nulas antes de invocar cualquier método, porque normalmente los métodos
+no pueden invocarse sobre referencias nulas. En lugar de utilizar una referencia nula para indicar la ausencia de un
+objeto (por ejemplo, un cliente inexistente), se utiliza un objeto que implementa la interfaz esperada, pero cuyo cuerpo
+de método está vacío. La ventaja de este enfoque sobre una implementación por defecto es que un objeto nulo es muy
+predecible y no tiene efectos secundarios: no hace nada.
 
 ## Explicación
 
 Ejemplo del mundo real
 
-> Estamos construyendo un árbol binario a partir de nodos. Hay nodos normales y nodos "vacíos". Recorrer el árbol normalmente no debería causar errores, por lo que utilizamos el patrón de objetos nulos cuando es necesario.
+> Estamos construyendo un árbol binario a partir de nodos. Hay nodos normales y nodos "vacíos". Recorrer el árbol
+> normalmente no debería causar errores, por lo que utilizamos el patrón de objetos nulos cuando es necesario.
 
 En palabras sencillas
 
@@ -22,7 +28,9 @@ En palabras sencillas
 
 Wikipedia dice
 
-> En programación informática orientada a objetos, un objeto nulo es un objeto sin valor referenciado o con un comportamiento neutro ("nulo") definido. El patrón de diseño de objetos nulos describe los usos de tales objetos y su comportamiento (o la falta del mismo).
+> En programación informática orientada a objetos, un objeto nulo es un objeto sin valor referenciado o con un
+> comportamiento neutro ("nulo") definido. El patrón de diseño de objetos nulos describe los usos de tales objetos y su
+> comportamiento (o la falta del mismo).
 
 **Ejemplo programático**
 

@@ -22,6 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package com.iluwatar.adapter;
 
 /**
@@ -45,18 +46,18 @@ package com.iluwatar.adapter;
  */
 public final class App {
 
-  private App() {
-  }
+    private App() {
+    }
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(final String[] args) {
-    // The captain can only operate rowing boats but with adapter he is able to
-    // use fishing boats as well
-    var captain = new Captain(new FishingBoatAdapter());
-    captain.row();
-  }
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(final String[] args) {
+        // The captain can only operate rowing boats but with adapter he is able to
+        // use fishing boats as well
+        var captain = new Captain(new FishingBoatAdapter());
+        captain.row();
+    }
 }

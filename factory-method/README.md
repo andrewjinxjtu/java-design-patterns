@@ -18,15 +18,22 @@ tag:
 
 ## Intent of Factory Method Design Pattern
 
-Define an interface for creating an object using the Factory Method Pattern, but let subclasses decide which class to instantiate. This creational design pattern lets a class defer instantiation to subclasses, enhancing code flexibility and maintenance.
+Define an interface for creating an object using the Factory Method Pattern, but let subclasses decide which class to
+instantiate. This creational design pattern lets a class defer instantiation to subclasses, enhancing code flexibility
+and maintenance.
 
 ## Detailed Explanation of Factory Method Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a logistics company that needs to deliver different types of packages: standard, express, and oversized. The company has a central system that processes delivery requests but does not know the specifics of how each package type is handled. To manage this, the company uses a Factory Method pattern.
+> Imagine a logistics company that needs to deliver different types of packages: standard, express, and oversized. The
+> company has a central system that processes delivery requests but does not know the specifics of how each package type
+> is handled. To manage this, the company uses a Factory Method pattern.
 >
-> In this setup, there is a central `DeliveryRequest` class with a method `createPackage()`. This method is overridden in subclasses like `StandardDelivery`, `ExpressDelivery`, and `OversizedDelivery`, each of which knows how to create and manage the respective package type. This way, the central system can handle delivery requests without needing to know the details of how each package type is created and processed, allowing for flexibility and easier maintenance.
+> In this setup, there is a central `DeliveryRequest` class with a method `createPackage()`. This method is overridden
+> in subclasses like `StandardDelivery`, `ExpressDelivery`, and `OversizedDelivery`, each of which knows how to create and
+> manage the respective package type. This way, the central system can handle delivery requests without needing to know
+> the details of how each package type is created and processed, allowing for flexibility and easier maintenance.
 
 In plain words
 
@@ -34,13 +41,19 @@ In plain words
 
 Wikipedia says
 
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method — either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with
+> the problem of creating objects without having to specify the exact class of the object that will be created. This is
+> done by creating objects by calling a factory method — either specified in an interface and implemented by child
+> classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a
+> constructor.
 
 ## Programmatic Example of Factory Method Pattern in Java
 
-The Factory Method approach is pivotal in Java Design Patterns for achieving flexible and maintainable code as we see in the following example.
+The Factory Method approach is pivotal in Java Design Patterns for achieving flexible and maintainable code as we see in
+the following example.
 
-Blacksmith manufactures weapons. Elves require Elvish weapons and orcs require Orcish weapons. Depending on the customer at hand the right type of blacksmith is summoned.
+Blacksmith manufactures weapons. Elves require Elvish weapons and orcs require Orcish weapons. Depending on the customer
+at hand the right type of blacksmith is summoned.
 
 First of all, we have a `Blacksmith` interface and some implementations for it:
 
@@ -82,6 +95,7 @@ public static void main(String[] args) {
 ```
 
 Program output:
+
 ```
 06:40:07.269 [main] INFO com.iluwatar.factory.method.App -- The orc blacksmith manufactured an orcish spear
 06:40:07.271 [main] INFO com.iluwatar.factory.method.App -- The orc blacksmith manufactured an orcish axe
@@ -95,7 +109,8 @@ Use the Factory Method Pattern in Java when:
 
 * Class cannot anticipate the class of objects it must create.
 * Class wants its subclasses to specify the objects it creates.
-* Classes delegate responsibility to one of several helper subclasses, and you want to localize the knowledge of which helper subclass is the delegate.
+* Classes delegate responsibility to one of several helper subclasses, and you want to localize the knowledge of which
+  helper subclass is the delegate.
 
 ## Real-World Applications of Factory Method Pattern in Java
 
@@ -114,7 +129,8 @@ Benefits:
 
 * The Factory Method Pattern provides hooks for subclasses, enhancing code flexibility and maintainability.
 * Connects parallel class hierarchies.
-* Eliminates the need to bind application-specific classes into the code. The code only deals with the product interface; hence it can work with any user-defined concrete product classes.
+* Eliminates the need to bind application-specific classes into the code. The code only deals with the product
+  interface; hence it can work with any user-defined concrete product classes.
 
 Trade-offs:
 
@@ -122,8 +138,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Factory methods are often called within Abstract Factory patterns.
-* [Prototype](https://java-design-patterns.com/patterns/prototype/): A factory method that returns a new instance of a class that is a clone of a prototype class.
+* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Factory methods are often called
+  within Abstract Factory patterns.
+* [Prototype](https://java-design-patterns.com/patterns/prototype/): A factory method that returns a new instance of a
+  class that is a clone of a prototype class.
 
 ## References and Credits
 

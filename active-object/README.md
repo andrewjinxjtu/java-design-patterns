@@ -14,23 +14,35 @@ tag:
 
 ## Intent of Active Object Design Pattern
 
-The Active Object pattern provides a reliable method for asynchronous processing in Java, ensuring responsive applications and efficient thread management. It achieves this by encapsulating tasks within objects that have their own thread and message queue. This separation keeps the main thread responsive and avoids issues like direct thread manipulation or shared state access.
+The Active Object pattern provides a reliable method for asynchronous processing in Java, ensuring responsive
+applications and efficient thread management. It achieves this by encapsulating tasks within objects that have their own
+thread and message queue. This separation keeps the main thread responsive and avoids issues like direct thread
+manipulation or shared state access.
 
 ## Detailed Explanation of Active Object Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a busy restaurant where customers place orders with waiters. Instead of the waiters going to the kitchen to prepare the food themselves, they write the orders on slips and hand them to a dispatcher. The dispatcher manages a pool of chefs who prepare the meals asynchronously. Once a chef is free, they pick up the next order from the queue, prepare the dish, and notify the waiter when it's ready for serving.
+> Imagine a busy restaurant where customers place orders with waiters. Instead of the waiters going to the kitchen to
+> prepare the food themselves, they write the orders on slips and hand them to a dispatcher. The dispatcher manages a pool
+> of chefs who prepare the meals asynchronously. Once a chef is free, they pick up the next order from the queue, prepare
+> the dish, and notify the waiter when it's ready for serving.
 >
-> In this analogy, the waiters represent the client threads, the dispatcher represents the scheduler, and the chefs represent the method execution in separate threads. This setup allows the waiters to continue taking orders without being blocked by the food preparation process, much like the Active Object pattern decouples method invocation from execution to enhance concurrency.
+> In this analogy, the waiters represent the client threads, the dispatcher represents the scheduler, and the chefs
+> represent the method execution in separate threads. This setup allows the waiters to continue taking orders without
+> being blocked by the food preparation process, much like the Active Object pattern decouples method invocation from
+> execution to enhance concurrency.
 
 In plain words
 
-> The Active Object pattern decouples method execution from method invocation to improve concurrency and responsiveness in multithreaded applications.
+> The Active Object pattern decouples method execution from method invocation to improve concurrency and responsiveness
+> in multithreaded applications.
 
 Wikipedia says
 
-> The active object design pattern decouples method execution from method invocation for objects that each reside in their own thread of control.[1] The goal is to introduce concurrency, by using asynchronous method invocation and a scheduler for handling requests.
+> The active object design pattern decouples method execution from method invocation for objects that each reside in
+> their own thread of control.[1] The goal is to introduce concurrency, by using asynchronous method invocation and a
+> scheduler for handling requests.
 >
 > The pattern consists of six elements:
 >
@@ -43,9 +55,12 @@ Wikipedia says
 
 ## Programmatic Example of Active Object in Java
 
-This section explains how the Active Object design pattern works in Java, highlighting its use in asynchronous task management and concurrency control.
+This section explains how the Active Object design pattern works in Java, highlighting its use in asynchronous task
+management and concurrency control.
 
-The Orcs are known for their wildness and untameable soul. It seems like they have their own thread of control based on previous behavior. To implement a creature that has its own thread of control mechanism and expose its API only and not the execution itself, we can use the Active Object pattern.
+The Orcs are known for their wildness and untameable soul. It seems like they have their own thread of control based on
+previous behavior. To implement a creature that has its own thread of control mechanism and expose its API only and not
+the execution itself, we can use the Active Object pattern.
 
 ```java
 public abstract class ActiveCreature {
@@ -103,7 +118,8 @@ public abstract class ActiveCreature {
 }
 ```
 
-We can see that any class that will extend the `ActiveCreature` class will have its own thread of control to invoke and execute methods.
+We can see that any class that will extend the `ActiveCreature` class will have its own thread of control to invoke and
+execute methods.
 
 For example, the `Orc` class:
 
@@ -116,7 +132,8 @@ public class Orc extends ActiveCreature {
 }
 ```
 
-Now, we can create multiple creatures such as orcs, tell them to eat and roam, and they will execute it on their own thread of control:
+Now, we can create multiple creatures such as orcs, tell them to eat and roam, and they will execute it on their own
+thread of control:
 
 ```java
 public class App implements Runnable {
@@ -170,7 +187,8 @@ Program output:
 
 Use the Active Object pattern in Java when:
 
-* when you need to handle asynchronous tasks without blocking the main thread, ensuring better performance and responsiveness.
+* when you need to handle asynchronous tasks without blocking the main thread, ensuring better performance and
+  responsiveness.
 * When you need to interact with external resources asynchronously.
 * When you want to improve the responsiveness of your application.
 * When you need to manage concurrent tasks in a modular and maintainable way.
@@ -187,7 +205,8 @@ Use the Active Object pattern in Java when:
 
 ## Benefits and Trade-offs of Active Object Pattern
 
-Discover the benefits and trade-offs of using the Active Object pattern in Java, including improved thread safety and potential overhead concerns.
+Discover the benefits and trade-offs of using the Active Object pattern in Java, including improved thread safety and
+potential overhead concerns.
 
 Benefits:
 
@@ -203,9 +222,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Command](https://java-design-patterns.com/patterns/command/): Encapsulates a request as an object, similarly to how the Active Object pattern encapsulates method calls.
-* [Promise](https://java-design-patterns.com/patterns/promise/): Provides a means to retrieve the result of an asynchronous method call, often used in conjunction with Active Object.
-* [Proxy](https://java-design-patterns.com/patterns/proxy/): The Active Object pattern can use a proxy to handle method invocations asynchronously.
+* [Command](https://java-design-patterns.com/patterns/command/): Encapsulates a request as an object, similarly to how
+  the Active Object pattern encapsulates method calls.
+* [Promise](https://java-design-patterns.com/patterns/promise/): Provides a means to retrieve the result of an
+  asynchronous method call, often used in conjunction with Active Object.
+* [Proxy](https://java-design-patterns.com/patterns/proxy/): The Active Object pattern can use a proxy to handle method
+  invocations asynchronously.
 
 ## References and Credits
 

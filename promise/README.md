@@ -19,15 +19,22 @@ tag:
 
 ## Intent of Promise Design Pattern
 
-The Promise design pattern is used to handle asynchronous operations by providing a placeholder for a result that is initially unknown but will be resolved in the future.
+The Promise design pattern is used to handle asynchronous operations by providing a placeholder for a result that is
+initially unknown but will be resolved in the future.
 
 ## Detailed Explanation of Promise Pattern with Real-World Examples
 
 Real-world example
 
-> In an online pizza ordering system, when a customer places an order, the system immediately acknowledges the order and provides a tracking number (the promise). The pizza preparation and delivery process happens asynchronously in the background. The customer can check the status of their order at any time using the tracking number. Once the pizza is prepared and out for delivery, the customer receives a notification (promise resolved) about the delivery status. If there are any issues, such as an unavailable ingredient or delivery delay, the customer is notified about the error (promise rejected).
-> 
-> This analogy illustrates how the Promise design pattern manages asynchronous tasks, decoupling the initial request from the eventual outcome, and handling both results and errors efficiently.
+> In an online pizza ordering system, when a customer places an order, the system immediately acknowledges the order and
+> provides a tracking number (the promise). The pizza preparation and delivery process happens asynchronously in the
+> background. The customer can check the status of their order at any time using the tracking number. Once the pizza is
+> prepared and out for delivery, the customer receives a notification (promise resolved) about the delivery status. If
+> there are any issues, such as an unavailable ingredient or delivery delay, the customer is notified about the error (
+> promise rejected).
+>
+> This analogy illustrates how the Promise design pattern manages asynchronous tasks, decoupling the initial request
+> from the eventual outcome, and handling both results and errors efficiently.
 
 In plain words
 
@@ -35,13 +42,18 @@ In plain words
 
 Wikipedia says
 
-> In computer science, future, promise, delay, and deferred refer to constructs used for synchronizing program execution in some concurrent programming languages. They describe an object that acts as a proxy for a result that is initially unknown, usually because the computation of its value is not yet complete.
+> In computer science, future, promise, delay, and deferred refer to constructs used for synchronizing program execution
+> in some concurrent programming languages. They describe an object that acts as a proxy for a result that is initially
+> unknown, usually because the computation of its value is not yet complete.
 
 ## Programmatic Example of Promise Pattern in Java
 
-The Promise design pattern is a software design pattern that's often used in concurrent programming to handle asynchronous operations. It represents a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason.
+The Promise design pattern is a software design pattern that's often used in concurrent programming to handle
+asynchronous operations. It represents a proxy for a value not necessarily known when the promise is created. It allows
+you to associate handlers with an asynchronous action's eventual success value or failure reason.
 
-In the provided example, a Promise is used to download files and perform operations like line counting and character frequency analysis asynchronously, showcasing the pattern's utility in practical applications.
+In the provided example, a Promise is used to download files and perform operations like line counting and character
+frequency analysis asynchronously, showcasing the pattern's utility in practical applications.
 
 ```java
 @Slf4j
@@ -113,7 +125,10 @@ public class App {
 }
 ```
 
-In this code, the `Promise` class is used to create promises for various operations. The `thenApply` method is used to chain promises, meaning that the result of one promise is used as the input for the next promise. The `thenAccept` method is used to handle the result of a promise. The `fulfillInAsync` method is used to fulfill a promise asynchronously, and the `onError` method is used to handle any errors that occur while fulfilling the promise.
+In this code, the `Promise` class is used to create promises for various operations. The `thenApply` method is used to
+chain promises, meaning that the result of one promise is used as the input for the next promise. The `thenAccept`
+method is used to handle the result of a promise. The `fulfillInAsync` method is used to fulfill a promise
+asynchronously, and the `onError` method is used to handle any errors that occur while fulfilling the promise.
 
 Program output:
 
@@ -156,13 +171,17 @@ Benefits:
 Trade-offs:
 
 * Complexity: Can add complexity to the codebase if overused or misused.
-* Debugging: Asynchronous code can be harder to debug compared to synchronous code due to the non-linear flow of execution.
+* Debugging: Asynchronous code can be harder to debug compared to synchronous code due to the non-linear flow of
+  execution.
 
 ## Related Java Design Patterns
 
-* [Observer](https://java-design-patterns.com/patterns/observer/): Promises can be used in conjunction with the Observer pattern to notify subscribers about the completion of asynchronous operations.
-* [Callback](https://java-design-patterns.com/patterns/callback/): Promises often replace callback mechanisms by providing a more structured and readable way to handle asynchronous results.
-* [Async Method Invocation](https://java-design-patterns.com/patterns/async-method-invocation/): Promises are often used to handle the results of asynchronous method invocations, allowing for non-blocking execution and result handling.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Promises can be used in conjunction with the Observer
+  pattern to notify subscribers about the completion of asynchronous operations.
+* [Callback](https://java-design-patterns.com/patterns/callback/): Promises often replace callback mechanisms by
+  providing a more structured and readable way to handle asynchronous results.
+* [Async Method Invocation](https://java-design-patterns.com/patterns/async-method-invocation/): Promises are often used
+  to handle the results of asynchronous method invocations, allowing for non-blocking execution and result handling.
 
 ## References and Credits
 

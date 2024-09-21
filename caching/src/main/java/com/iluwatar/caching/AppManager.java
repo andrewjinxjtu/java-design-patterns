@@ -25,7 +25,9 @@
 package com.iluwatar.caching;
 
 import com.iluwatar.caching.database.DbManager;
+
 import java.util.Optional;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -38,121 +40,121 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class AppManager {
-  /**
-   * Caching Policy.
-   */
-  private CachingPolicy cachingPolicy;
-  /**
-   * Database Manager.
-   */
-  private final DbManager dbManager;
-  /**
-   * Cache Store.
-   */
-  private final CacheStore cacheStore;
+    /**
+     * Caching Policy.
+     */
+    private CachingPolicy cachingPolicy;
+    /**
+     * Database Manager.
+     */
+    private final DbManager dbManager;
+    /**
+     * Cache Store.
+     */
+    private final CacheStore cacheStore;
 
-  /**
-   * Constructor.
-   *
-   * @param newDbManager database manager
-   */
-  public AppManager(final DbManager newDbManager) {
-    this.dbManager = newDbManager;
-    this.cacheStore = new CacheStore(newDbManager);
-  }
-
-  /**
-   * Developer/Tester is able to choose whether the application should use
-   * MongoDB as its underlying data storage or a simple Java data structure
-   * to (temporarily) store the data/objects during runtime.
-   */
-  public void initDb() {
-    dbManager.connect();
-  }
-
-  /**
-   * Initialize caching policy.
-   *
-   * @param policy is a {@link CachingPolicy}
-   */
-  public void initCachingPolicy(final CachingPolicy policy) {
-    cachingPolicy = policy;
-    if (cachingPolicy == CachingPolicy.BEHIND) {
-      Runtime.getRuntime().addShutdownHook(new Thread(cacheStore::flushCache));
+    /**
+     * Constructor.
+     *
+     * @param newDbManager database manager
+     */
+    public AppManager(final DbManager newDbManager) {
+        this.dbManager = newDbManager;
+        this.cacheStore = new CacheStore(newDbManager);
     }
-    cacheStore.clearCache();
-  }
 
-  /**
-   * Find user account.
-   *
-   * @param userId String
-   * @return {@link UserAccount}
-   */
-  public UserAccount find(final String userId) {
-    LOGGER.info("Trying to find {} in cache", userId);
-    if (cachingPolicy == CachingPolicy.THROUGH
-            || cachingPolicy == CachingPolicy.AROUND) {
-      return cacheStore.readThrough(userId);
-    } else if (cachingPolicy == CachingPolicy.BEHIND) {
-      return cacheStore.readThroughWithWriteBackPolicy(userId);
-    } else if (cachingPolicy == CachingPolicy.ASIDE) {
-      return findAside(userId);
+    /**
+     * Developer/Tester is able to choose whether the application should use
+     * MongoDB as its underlying data storage or a simple Java data structure
+     * to (temporarily) store the data/objects during runtime.
+     */
+    public void initDb() {
+        dbManager.connect();
     }
-    return null;
-  }
 
-  /**
-   * Save user account.
-   *
-   * @param userAccount {@link UserAccount}
-   */
-  public void save(final UserAccount userAccount) {
-    LOGGER.info("Save record!");
-    if (cachingPolicy == CachingPolicy.THROUGH) {
-      cacheStore.writeThrough(userAccount);
-    } else if (cachingPolicy == CachingPolicy.AROUND) {
-      cacheStore.writeAround(userAccount);
-    } else if (cachingPolicy == CachingPolicy.BEHIND) {
-      cacheStore.writeBehind(userAccount);
-    } else if (cachingPolicy == CachingPolicy.ASIDE) {
-      saveAside(userAccount);
+    /**
+     * Initialize caching policy.
+     *
+     * @param policy is a {@link CachingPolicy}
+     */
+    public void initCachingPolicy(final CachingPolicy policy) {
+        cachingPolicy = policy;
+        if (cachingPolicy == CachingPolicy.BEHIND) {
+            Runtime.getRuntime().addShutdownHook(new Thread(cacheStore::flushCache));
+        }
+        cacheStore.clearCache();
     }
-  }
 
-  /**
-   * Returns String.
-   *
-   * @return String
-   */
-  public String printCacheContent() {
-    return cacheStore.print();
-  }
+    /**
+     * Find user account.
+     *
+     * @param userId String
+     * @return {@link UserAccount}
+     */
+    public UserAccount find(final String userId) {
+        LOGGER.info("Trying to find {} in cache", userId);
+        if (cachingPolicy == CachingPolicy.THROUGH
+                || cachingPolicy == CachingPolicy.AROUND) {
+            return cacheStore.readThrough(userId);
+        } else if (cachingPolicy == CachingPolicy.BEHIND) {
+            return cacheStore.readThroughWithWriteBackPolicy(userId);
+        } else if (cachingPolicy == CachingPolicy.ASIDE) {
+            return findAside(userId);
+        }
+        return null;
+    }
 
-  /**
-   * Cache-Aside save user account helper.
-   *
-   * @param userAccount {@link UserAccount}
-   */
-  private void saveAside(final UserAccount userAccount) {
-    dbManager.updateDb(userAccount);
-    cacheStore.invalidate(userAccount.getUserId());
-  }
+    /**
+     * Save user account.
+     *
+     * @param userAccount {@link UserAccount}
+     */
+    public void save(final UserAccount userAccount) {
+        LOGGER.info("Save record!");
+        if (cachingPolicy == CachingPolicy.THROUGH) {
+            cacheStore.writeThrough(userAccount);
+        } else if (cachingPolicy == CachingPolicy.AROUND) {
+            cacheStore.writeAround(userAccount);
+        } else if (cachingPolicy == CachingPolicy.BEHIND) {
+            cacheStore.writeBehind(userAccount);
+        } else if (cachingPolicy == CachingPolicy.ASIDE) {
+            saveAside(userAccount);
+        }
+    }
 
-  /**
-   * Cache-Aside find user account helper.
-   *
-   * @param userId String
-   * @return {@link UserAccount}
-   */
-  private UserAccount findAside(final String userId) {
-    return Optional.ofNullable(cacheStore.get(userId))
-            .or(() -> {
-              Optional<UserAccount> userAccount =
-                      Optional.ofNullable(dbManager.readFromDb(userId));
-              userAccount.ifPresent(account -> cacheStore.set(userId, account));
-              return userAccount;
-            })
-            .orElse(null);
-  }
+    /**
+     * Returns String.
+     *
+     * @return String
+     */
+    public String printCacheContent() {
+        return cacheStore.print();
+    }
+
+    /**
+     * Cache-Aside save user account helper.
+     *
+     * @param userAccount {@link UserAccount}
+     */
+    private void saveAside(final UserAccount userAccount) {
+        dbManager.updateDb(userAccount);
+        cacheStore.invalidate(userAccount.getUserId());
+    }
+
+    /**
+     * Cache-Aside find user account helper.
+     *
+     * @param userId String
+     * @return {@link UserAccount}
+     */
+    private UserAccount findAside(final String userId) {
+        return Optional.ofNullable(cacheStore.get(userId))
+                .or(() -> {
+                    Optional<UserAccount> userAccount =
+                            Optional.ofNullable(dbManager.readFromDb(userId));
+                    userAccount.ifPresent(account -> cacheStore.set(userId, account));
+                    return userAccount;
+                })
+                .orElse(null);
+    }
 }

@@ -35,22 +35,22 @@ import org.junit.jupiter.api.BeforeEach;
  */
 class FixedStepGameLoopTest {
 
-  private FixedStepGameLoop gameLoop;
+    private FixedStepGameLoop gameLoop;
 
-  @BeforeEach
-  void setup() {
-    gameLoop = new FixedStepGameLoop();
-  }
+    @BeforeEach
+    void setup() {
+        gameLoop = new FixedStepGameLoop();
+    }
 
-  @AfterEach
-  void tearDown() {
-    gameLoop = null;
-  }
+    @AfterEach
+    void tearDown() {
+        gameLoop = null;
+    }
 
-  @Test
-  void testUpdate() {
-    gameLoop.update();
-    assertEquals(0.01f, gameLoop.controller.getBulletPosition(), 0);
-  }
+    @Test
+    void testUpdate() {
+        gameLoop.update();
+        assertEquals(0.01f, gameLoop.controller.getBulletPosition(), 0);
+    }
 
 }

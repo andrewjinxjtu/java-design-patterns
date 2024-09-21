@@ -40,7 +40,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Message {
 
-  private MessageType type;
-  private String content;
+    private MessageType type;
+    private String content;
 
 }

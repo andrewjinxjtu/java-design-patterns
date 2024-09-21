@@ -10,17 +10,16 @@ tag:
 
 Bir sınıfın yalnızca bir örneğine sahip olduğundan emin olun ve ona global bir erişim noktası sağlayın.
 
-
 ## Açıklama
 
 Örnek
 
 > Büyücülerin büyülerini çalıstıkları tek bir fildişi kule olabilir. Aynı büyülü fildişi kule,
 > büyücüler tarafından her zaman kullanılır. Buradaki fildişi kulesi singleton tasarım desenine örnektir.
-Özetle
+> Özetle
 
 > Belirli bir sınıftan yalnızca bir nesnenin oluşturulmasını sağlar.
-Wikipedia açıklaması
+> Wikipedia açıklaması
 
 
 
@@ -32,6 +31,7 @@ Wikipedia açıklaması
 Joshua Bloch, Effective Java 2nd Edition p.18
 
 > Enum singleton tasarım desenini uygulamak için en iyi yoldur.
+
 ```java
 public enum EnumIvoryTower {
   INSTANCE
@@ -54,8 +54,10 @@ assertEquals(enumIvoryTower1, enumIvoryTower2); // true
 
 Singleton tasarım deseni şu durumlarda kullanılmalıdır
 
-* Bir sınıfın tam olarak bir örneği olmalı ve iyi bilinen bir erişim noktasından istemciler tarafından erişilebilir olmalıdır.
-* Tek örnek alt sınıflandırma yoluyla genişletilebilir olduğunda ve istemciler, kodlarını değiştirmeden genişletilmiş bir örnek kullanabilmelidir
+* Bir sınıfın tam olarak bir örneği olmalı ve iyi bilinen bir erişim noktasından istemciler tarafından erişilebilir
+  olmalıdır.
+* Tek örnek alt sınıflandırma yoluyla genişletilebilir olduğunda ve istemciler, kodlarını değiştirmeden genişletilmiş
+  bir örnek kullanabilmelidir
 
 ## Use Case
 
@@ -69,11 +71,11 @@ Singleton tasarım deseni şu durumlarda kullanılmalıdır
 * [java.awt.Desktop#getDesktop()](http://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#getDesktop--)
 * [java.lang.System#getSecurityManager()](http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#getSecurityManager--)
 
-
 ## Sonuçlar
 
 * Kendi yaratımını ve yaşam döngüsünü kontrol ederek Tek Sorumluluk İlkesini (SRP) ihlal ediyor.
-* Bu nesne tarafından kullanılan bir nesnenin ve kaynakların serbest bırakılmasını önleyen global bir paylaşılan örnek kullanmayı teşvik eder.
+* Bu nesne tarafından kullanılan bir nesnenin ve kaynakların serbest bırakılmasını önleyen global bir paylaşılan örnek
+  kullanmayı teşvik eder.
 * Birbirine sıkı bağlı kod oluşturur. Singleton tasarım deseni kullanan istemci sınıflarını test etmek zorlaşır.
 * Bir Singleton tasarım deseninden alt sınıflar oluşturmak neredeyse imkansız hale gelir.
 

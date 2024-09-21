@@ -48,17 +48,17 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App {
 
-  /**
-   * Program entry point.
-   */
-  public static void main(String[] args) {
+    /**
+     * Program entry point.
+     */
+    public static void main(String[] args) {
 
-    try (var ignored = new SlidingDoor()) {
-      LOGGER.info("Walking in.");
-    }
+        try (var ignored = new SlidingDoor()) {
+            LOGGER.info("Walking in.");
+        }
 
-    try (var ignored = new TreasureChest()) {
-      LOGGER.info("Looting contents.");
+        try (var ignored = new TreasureChest()) {
+            LOGGER.info("Looting contents.");
+        }
     }
-  }
 }

@@ -26,8 +26,8 @@ package com.iluwatar.fanout.fanin;
 
 import java.util.Arrays;
 import java.util.List;
-import lombok.extern.slf4j.Slf4j;
 
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
@@ -44,30 +44,30 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App {
 
-  /**
-   * Entry point.
-   *
-   * <p>Implementation provided has a list of numbers that has to be squared and added. The list can
-   * be chunked in any way and the "activity function" {@link
-   * SquareNumberRequest#delayedSquaring(Consumer)} i.e. squaring the number ca be done
-   * concurrently. The "fan in" part is handled by the {@link Consumer} that takes in the result
-   * from each instance of activity and aggregates it whenever that particular activity function
-   * gets over.
-   */
-  public static void main(String[] args) {
-    final List<Long> numbers = Arrays.asList(1L, 3L, 4L, 7L, 8L);
+    /**
+     * Entry point.
+     *
+     * <p>Implementation provided has a list of numbers that has to be squared and added. The list can
+     * be chunked in any way and the "activity function" {@link
+     * SquareNumberRequest#delayedSquaring(Consumer)} i.e. squaring the number ca be done
+     * concurrently. The "fan in" part is handled by the {@link Consumer} that takes in the result
+     * from each instance of activity and aggregates it whenever that particular activity function
+     * gets over.
+     */
+    public static void main(String[] args) {
+        final List<Long> numbers = Arrays.asList(1L, 3L, 4L, 7L, 8L);
 
-    LOGGER.info("Numbers to be squared and get sum --> {}", numbers);
+        LOGGER.info("Numbers to be squared and get sum --> {}", numbers);
 
-    final List<SquareNumberRequest> requests =
-        numbers.stream().map(SquareNumberRequest::new).toList();
+        final List<SquareNumberRequest> requests =
+                numbers.stream().map(SquareNumberRequest::new).toList();
 
-    var consumer = new Consumer(0L);
+        var consumer = new Consumer(0L);
 
-    // Pass the request and the consumer to fanOutFanIn or sometimes referred as Orchestrator
-    // function
-    final Long sumOfSquaredNumbers = FanOutFanIn.fanOutFanIn(requests, consumer);
+        // Pass the request and the consumer to fanOutFanIn or sometimes referred as Orchestrator
+        // function
+        final Long sumOfSquaredNumbers = FanOutFanIn.fanOutFanIn(requests, consumer);
 
-    LOGGER.info("Sum of all squared numbers --> {}", sumOfSquaredNumbers);
-  }
+        LOGGER.info("Sum of all squared numbers --> {}", sumOfSquaredNumbers);
+    }
 }

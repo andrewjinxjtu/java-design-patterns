@@ -27,49 +27,49 @@ package com.iluwatar.throttling;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * A class to keep track of the counter of different Tenants.
- *
  */
 @Slf4j
 public final class CallsCount {
-  private final Map<String, AtomicLong> tenantCallsCount = new ConcurrentHashMap<>();
+    private final Map<String, AtomicLong> tenantCallsCount = new ConcurrentHashMap<>();
 
-  /**
-   * Add a new tenant to the map.
-   *
-   * @param tenantName name of the tenant.
-   */
-  public void addTenant(String tenantName) {
-    tenantCallsCount.putIfAbsent(tenantName, new AtomicLong(0));
-  }
+    /**
+     * Add a new tenant to the map.
+     *
+     * @param tenantName name of the tenant.
+     */
+    public void addTenant(String tenantName) {
+        tenantCallsCount.putIfAbsent(tenantName, new AtomicLong(0));
+    }
 
-  /**
-   * Increment the count of the specified tenant.
-   *
-   * @param tenantName name of the tenant.
-   */
-  public void incrementCount(String tenantName) {
-    tenantCallsCount.get(tenantName).incrementAndGet();
-  }
+    /**
+     * Increment the count of the specified tenant.
+     *
+     * @param tenantName name of the tenant.
+     */
+    public void incrementCount(String tenantName) {
+        tenantCallsCount.get(tenantName).incrementAndGet();
+    }
 
-  /**
-   * Get count of tenant based on tenant name.
-   *
-   * @param tenantName name of the tenant.
-   * @return the count of the tenant.
-   */
-  public long getCount(String tenantName) {
-    return tenantCallsCount.get(tenantName).get();
-  }
+    /**
+     * Get count of tenant based on tenant name.
+     *
+     * @param tenantName name of the tenant.
+     * @return the count of the tenant.
+     */
+    public long getCount(String tenantName) {
+        return tenantCallsCount.get(tenantName).get();
+    }
 
-  /**
-   * Resets the count of all the tenants in the map.
-   */
-  public void reset() {
-    tenantCallsCount.replaceAll((k, v) -> new AtomicLong(0));
-    LOGGER.info("reset counters");
-  }
+    /**
+     * Resets the count of all the tenants in the map.
+     */
+    public void reset() {
+        tenantCallsCount.replaceAll((k, v) -> new AtomicLong(0));
+        LOGGER.info("reset counters");
+    }
 }

@@ -23,13 +23,21 @@ head:
 
 ## Intent of Execute Around Design Pattern
 
-Real-world business applications often require executing necessary operations before and after the business method invocation. The Execute Around Pattern in Java provides a way to encapsulate these operations, enhancing code readability and reusability.
+Real-world business applications often require executing necessary operations before and after the business method
+invocation. The Execute Around Pattern in Java provides a way to encapsulate these operations, enhancing code
+readability and reusability.
 
 ## Detailed Explanation of Execute Around Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world analogy for the Execute Around pattern can be found in the use of rental cars. When you rent a car, the rental company handles all the setup (cleaning the car, filling it with gas, ensuring it's in good condition) and cleanup (checking the car back in, inspecting it for damage, refueling it if necessary) processes for you. As a customer, you simply use the car for your intended purpose without worrying about the setup and cleanup. This pattern of abstracting away the repetitive tasks around the main operation is similar to the Execute Around pattern in software, where the setup and cleanup of resources are handled by a reusable method, allowing the main logic to be executed seamlessly.
+> A real-world analogy for the Execute Around pattern can be found in the use of rental cars. When you rent a car, the
+> rental company handles all the setup (cleaning the car, filling it with gas, ensuring it's in good condition) and
+> cleanup (checking the car back in, inspecting it for damage, refueling it if necessary) processes for you. As a
+> customer, you simply use the car for your intended purpose without worrying about the setup and cleanup. This pattern of
+> abstracting away the repetitive tasks around the main operation is similar to the Execute Around pattern in software,
+> where the setup and cleanup of resources are handled by a reusable method, allowing the main logic to be executed
+> seamlessly.
 
 In plain words
 
@@ -37,15 +45,21 @@ In plain words
 
 [Stack Overflow](https://stackoverflow.com/questions/341971/what-is-the-execute-around-idiom) says
 
-> Basically it's the pattern where you write a method to do things which are always required, e.g. resource allocation and clean-up, and make the caller pass in "what we want to do with the resource".
+> Basically it's the pattern where you write a method to do things which are always required, e.g. resource allocation
+> and clean-up, and make the caller pass in "what we want to do with the resource".
 
 ## Programmatic Example of Execute Around Pattern in Java
 
-The Execute Around Pattern is a design pattern that is widely used in Java programming to manage resource allocation and deallocation. It ensures that important setup and cleanup operations are performed reliably around a core business operation. This pattern is particularly useful for resource management, such as handling files, databases, or network connections in Java applications.
+The Execute Around Pattern is a design pattern that is widely used in Java programming to manage resource allocation and
+deallocation. It ensures that important setup and cleanup operations are performed reliably around a core business
+operation. This pattern is particularly useful for resource management, such as handling files, databases, or network
+connections in Java applications.
 
-A class needs to be provided for writing text strings to files. To make it easy for the user, the service class opens and closes the file automatically. The user only has to specify what is written into which file.
+A class needs to be provided for writing text strings to files. To make it easy for the user, the service class opens
+and closes the file automatically. The user only has to specify what is written into which file.
 
-`SimpleFileWriter` class implements the Execute Around idiom. It takes `FileWriterAction` as a constructor argument allowing the user to specify what gets written into the file.
+`SimpleFileWriter` class implements the Execute Around idiom. It takes `FileWriterAction` as a constructor argument
+allowing the user to specify what gets written into the file.
 
 ```java
 
@@ -67,7 +81,8 @@ public class SimpleFileWriter {
 }
 ```
 
-The following code demonstrates how `SimpleFileWriter` is used. `Scanner` is used to print the file contents after the writing finishes.
+The following code demonstrates how `SimpleFileWriter` is used. `Scanner` is used to print the file contents after the
+writing finishes.
 
 ```java
   public static void main(String[] args) throws IOException {
@@ -98,16 +113,20 @@ Here's the console output.
 
 When to use the Execute Around Pattern in Java:
 
-* Useful in scenarios requiring repetitive setup and cleanup activities, particularly in resource management (e.g., files, network connections, database sessions).
+* Useful in scenarios requiring repetitive setup and cleanup activities, particularly in resource management (e.g.,
+  files, network connections, database sessions).
 * Ideal for ensuring proper resource handling and cleanup in the face of exceptions, ensuring resources do not leak.
-* Suitable in any Java application where the same preparation and finalization steps are executed around varying core functionalities.
+* Suitable in any Java application where the same preparation and finalization steps are executed around varying core
+  functionalities.
 
 ## Real-World Applications of Execute Around Pattern in Java
 
 In real-world Java applications, the Execute Around Pattern is applied in these scenarios:
 
-* Java's try-with-resources statement, which ensures that resources are closed after execution regardless of whether an exception was thrown.
-* Frameworks like Spring for managing database transactions, where predefined cleanup or rollback operations are performed depending on the execution outcome.
+* Java's try-with-resources statement, which ensures that resources are closed after execution regardless of whether an
+  exception was thrown.
+* Frameworks like Spring for managing database transactions, where predefined cleanup or rollback operations are
+  performed depending on the execution outcome.
 
 ## Benefits and Trade-offs of Execute Around Pattern
 
@@ -121,13 +140,16 @@ Benefits:
 
 Trade-offs:
 
-* Introduces additional abstraction layers, which might increase complexity and obscure control flow for some developers.
+* Introduces additional abstraction layers, which might increase complexity and obscure control flow for some
+  developers.
 * May require more sophisticated understanding of closures and functional interfaces in Java.
 
 ## Related Java Design Patterns
 
-* [Template Method](https://java-design-patterns.com/patterns/template-method/): Similar in concept but differs in that it uses inheritance and abstract classes, while Execute Around typically uses interfaces and lambdas.
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Shares the concept of adding functionality around a core component; can be extended to wrap additional behaviors dynamically.
+* [Template Method](https://java-design-patterns.com/patterns/template-method/): Similar in concept but differs in that
+  it uses inheritance and abstract classes, while Execute Around typically uses interfaces and lambdas.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Shares the concept of adding functionality around a
+  core component; can be extended to wrap additional behaviors dynamically.
 
 ## References and Credits
 

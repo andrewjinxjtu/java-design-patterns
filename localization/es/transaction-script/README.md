@@ -76,7 +76,8 @@ public class Hotel {
 }
 ```
 
-La clase `Hotel` tiene dos métodos, uno para reservar y otro para cancelar una habitación respectivamente. Cada uno de ellos
+La clase `Hotel` tiene dos métodos, uno para reservar y otro para cancelar una habitación respectivamente. Cada uno de
+ellos
 transacción en el sistema, haciendo que `Hotel` implemente el patrón Transaction Script
 Transaction Script.
 

@@ -10,20 +10,23 @@ tag:
 
 ## Intention
 
-Regrouper les appels aux microservices en un seul endroit, la passerelle API. 
+Regrouper les appels aux microservices en un seul endroit, la passerelle API.
 L'utilisateur fait un seul appel à la passerelle API, qui appelle ensuite chaque microservice concerné.
 
 ## Explication
 
 Avec les pattrons microservices, un client peut avoir besoin de données provenant de plusieurs microservices différents.
-Si le client appelait directement chaque microservice, cela pourrait contribuer à allonger les temps de chargement, 
-puisque le client devrait faire une requete réseau pour chaque microservice appelé. En outre, le fait que le client appelle
+Si le client appelait directement chaque microservice, cela pourrait contribuer à allonger les temps de chargement,
+puisque le client devrait faire une requete réseau pour chaque microservice appelé. En outre, le fait que le client
+appelle
 chaque microservice directement le lie à ce microservice - si les implémentations internes des microservices changent
-(par exemple, si deux microservices sont combinés) ou si l'emplacement (hôte et port) d'un microservice change, 
+(par exemple, si deux microservices sont combinés) ou si l'emplacement (hôte et port) d'un microservice change,
 alors chaque client qui utilise ces microservices doit être informé de l'existence de ce microservice.
 
-L'objectif du pattron API Gateway est d'atténuer certains de ces problèmes. Dans le pattron API Gateway une entité supplémentaire
-(la passerelle API) est placée entre le client et les microservices. Le rôle de la passerelle API est d'agréger les appels aux microservices. Plutôt que le client
+L'objectif du pattron API Gateway est d'atténuer certains de ces problèmes. Dans le pattron API Gateway une entité
+supplémentaire
+(la passerelle API) est placée entre le client et les microservices. Le rôle de la passerelle API est d'agréger les
+appels aux microservices. Plutôt que le client
 appelle chaque microservice individuellement, le client appelle la passerelle API une seule fois.
 La passerelle API appelle alors chacun des microservices dont le client a besoin.
 
@@ -40,21 +43,28 @@ En clair
 Wikipedia dit
 
 > La passerelle API est un serveur qui agit comme un front-end API, reçoit les requêtes API, applique des politiques de
-> limitation et de sécurité, transmet les requêtes au service back-end et renvoie la réponse au demandeur. 
-> Une passerelle comprend souvent un moteur de transformation pour orchestrer et modifier les demandes et les réponses à la volée.
-> Une passerelle peut également fournir des fonctionnalités telles que la collecte de données analytiques et la mise en cache. 
-> La passerelle peut fournir des fonctionnalités pour prendre en charge l'authentification, l'autorisation, la sécurité, 
+> limitation et de sécurité, transmet les requêtes au service back-end et renvoie la réponse au demandeur.
+> Une passerelle comprend souvent un moteur de transformation pour orchestrer et modifier les demandes et les réponses à
+> la volée.
+> Une passerelle peut également fournir des fonctionnalités telles que la collecte de données analytiques et la mise en
+> cache.
+> La passerelle peut fournir des fonctionnalités pour prendre en charge l'authentification, l'autorisation, la sécurité,
 > l'audit et la conformité réglementaire.
 
 **Exemple de programme**
 
-Cette mise en œuvre montre à quoi pourrait ressembler le pattron de conception API Gateway pour un site de commerce électronique.
-La passerelle `ApiGateway` fait des appels aux microservices Image et Price en utilisant respectivement `ImageClientImpl` et `PriceClientImpl` respectivement.
-Les clients qui consultent le site sur un ordinateur de bureau peuvent voir à la fois les informations sur le prix et l'image d'un produit.
-Les clients qui consultent le site sur un ordinateur de bureau peuvent voir à la fois des informations sur le prix et l'image d'un produit,
+Cette mise en œuvre montre à quoi pourrait ressembler le pattron de conception API Gateway pour un site de commerce
+électronique.
+La passerelle `ApiGateway` fait des appels aux microservices Image et Price en utilisant respectivement
+`ImageClientImpl` et `PriceClientImpl` respectivement.
+Les clients qui consultent le site sur un ordinateur de bureau peuvent voir à la fois les informations sur le prix et
+l'image d'un produit.
+Les clients qui consultent le site sur un ordinateur de bureau peuvent voir à la fois des informations sur le prix et
+l'image d'un produit,
 donc la passerelle appelle les deux microservices et regroupe les données dans le modèle `DesktopProduct`.
 Cependant, les utilisateurs mobiles ne voient que les informations sur le prix ; Ils ne voient pas l'image du produit.
-Pour les utilisateurs mobiles, la passerelle `ApiGateway` ne récupère que les informations de prix, qu'elle utilise pour remplir le modèle `MobileProduct`.
+Pour les utilisateurs mobiles, la passerelle `ApiGateway` ne récupère que les informations de prix, qu'elle utilise pour
+remplir le modèle `MobileProduct`.
 
 Voici l'implémentation du microservice Image.
 
@@ -142,13 +152,15 @@ public class ApiGateway {
 ```
 
 ## Diagramme de clqsses
+
 ![alt text](../../../api-gateway/etc/api-gateway.png "API Gateway")
 
 ## Application
 
 Utilisez le pattron de passerelle API lorsque
 
-* Vous utilisez une architecture de microservices et avez besoin d'un point d'agrégation unique pour vos appels de microservices.
+* Vous utilisez une architecture de microservices et avez besoin d'un point d'agrégation unique pour vos appels de
+  microservices.
 
 ## Tutoriels
 

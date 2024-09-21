@@ -13,23 +13,24 @@ tag:
 ## 目的
 
 功能模式代表了一种以组合功能为中心的图书馆组织风格。
-简单地说，有一些类型 T，一些用于构造类型 T 的“原始”值的函数，以及一些可以以各种方式组合类型 T 的值以构建更复杂的类型 T 值的“组合器”。
+简单地说，有一些类型 T，一些用于构造类型 T 的“原始”值的函数，以及一些可以以各种方式组合类型 T 的值以构建更复杂的类型 T
+值的“组合器”。
 
 ## 解释
 
 真实世界例子
 
 > 在计算机科学中，组合逻辑被用作计算的简化模型，用于可计算性理论和证明理论。 尽管组合逻辑很简单，但它捕获了计算的许多基本特征。
-> 
+>
 
 通俗的说
 > 组合器允许从先前定义的“事物”创建新的“事物”。
-> 
+>
 
 维基百科说
 
 > 组合器是一个高阶函数，仅使用函数应用程序和之前定义的组合器来定义其参数的结果。
-> 
+>
 
 **程序示例**
 
@@ -176,13 +177,15 @@ the result of advanced query is [It was many and many a year ago,]
 the result of filtered query is [But we loved with a love that was more than love-]
 ```
 
-现在我们可以设计我们的应用程序，使其具有查询查找功能`expandedFinder`, `specializedFinder`, `advancedFinder`, `filteredFinder`，这些功能均派生自`contains`, `or`, `not`, `and`。
-
+现在我们可以设计我们的应用程序，使其具有查询查找功能`expandedFinder`, `specializedFinder`, `advancedFinder`,
+`filteredFinder`，这些功能均派生自`contains`, `or`, `not`, `and`。
 
 ## 类图
+
 ![alt text](./etc/combinator.urm.png "Combinator class diagram")
 
 ## 适用性
+
 在以下情况下使用组合器模式：
 
 - 您可以从更简单的值创建更复杂的值，但具有相同的类型（它们的组合）
@@ -193,7 +196,6 @@ the result of filtered query is [But we loved with a love that was more than lov
 - 组合阶段和应用阶段之间有明显的区别。
 - 首先构造一个实例，然后执行它。
 - 这使得该模式适用于并行环境。
-
 
 ## 现实世界的例子
 

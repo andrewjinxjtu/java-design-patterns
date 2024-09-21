@@ -34,5 +34,5 @@ package com.iluwatar.logaggregation;
  * </ul>
  */
 public enum LogLevel {
-  DEBUG, INFO, ERROR
+    DEBUG, INFO, ERROR
 }

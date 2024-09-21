@@ -6,20 +6,24 @@ tag:
  - Performance
 ---
 
-
 ## Propósito
-El patrón de diseño de objeto activo desacopla la ejecución del método de la invocación del método para los objetos que residen en su propio hilo de control. El objetivo es introducir la concurrencia mediante el uso de la invocación de métodos asíncronos y un planificador para manejar solicitudes.
+
+El patrón de diseño de objeto activo desacopla la ejecución del método de la invocación del método para los objetos que
+residen en su propio hilo de control. El objetivo es introducir la concurrencia mediante el uso de la invocación de
+métodos asíncronos y un planificador para manejar solicitudes.
 
 ## Explicación
 
-La clase que implementa el patrón de diseño de objeto activo contendrá un mecanismo de autosincronización sin utilizar métodos sincronizados (synchronized).
+La clase que implementa el patrón de diseño de objeto activo contendrá un mecanismo de autosincronización sin utilizar
+métodos sincronizados (synchronized).
 
 Ejemplo del mundo real
 
-> Los orcos son conocidos por su salvajismo y filosofía de no hacer equipo. Basándonos en este comportamiento se podría decir que tienen su propio hilo de control.
+> Los orcos son conocidos por su salvajismo y filosofía de no hacer equipo. Basándonos en este comportamiento se podría
+> decir que tienen su propio hilo de control.
 
-Podemos usar el patrón Active Object para implementar una criatura que tiene su propio hilo de control y exponer su API pero no la ejecución como tal.
-
+Podemos usar el patrón Active Object para implementar una criatura que tiene su propio hilo de control y exponer su API
+pero no la ejecución como tal.
 
 **Ejemplo Programático**
 
@@ -79,7 +83,8 @@ public abstract class ActiveCreature{
 }
 ```
 
-Podemos ver que cualquier clase que extienda de ActiveCreature tendrá su propio hilo de control para invocar y ejecutar métodos.
+Podemos ver que cualquier clase que extienda de ActiveCreature tendrá su propio hilo de control para invocar y ejecutar
+métodos.
 
 Por ejemplo, la clase Orc:
 
@@ -93,7 +98,8 @@ public class Orc extends ActiveCreature {
 }
 ```
 
-Ahora podemos crear múltiples criaturas como los Orcos, diles que coman y deambulen y lo harán en su propio hilo de control:
+Ahora podemos crear múltiples criaturas como los Orcos, diles que coman y deambulen y lo harán en su propio hilo de
+control:
 
 ```java
   public static void main(String[] args) {  

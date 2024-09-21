@@ -18,13 +18,20 @@ tag:
 
 ## Intent of Strategy Design Pattern
 
-Define a family of algorithms in Java, encapsulate each one, and make them interchangeable to enhance software development using the Strategy design pattern. Strategy lets the algorithm vary independently of the clients that use it.
+Define a family of algorithms in Java, encapsulate each one, and make them interchangeable to enhance software
+development using the Strategy design pattern. Strategy lets the algorithm vary independently of the clients that use
+it.
 
 ## Detailed Explanation of Strategy Pattern with Real-World Examples
 
 Real-world example
 
-> A practical real-world example of the Strategy design pattern in Java is evident in car navigation systems, where algorithm flexibility is paramount. Different navigation algorithms (such as shortest route, fastest route, and scenic route) can be used to determine the best path from one location to another. Each algorithm encapsulates a specific strategy for calculating the route. The user (client) can switch between these algorithms based on their preferences without changing the navigation system itself. This allows for flexible and interchangeable navigation strategies within the same system. 
+> A practical real-world example of the Strategy design pattern in Java is evident in car navigation systems, where
+> algorithm flexibility is paramount. Different navigation algorithms (such as shortest route, fastest route, and scenic
+> route) can be used to determine the best path from one location to another. Each algorithm encapsulates a specific
+> strategy for calculating the route. The user (client) can switch between these algorithms based on their preferences
+> without changing the navigation system itself. This allows for flexible and interchangeable navigation strategies within
+> the same system.
 
 In plain words
 
@@ -32,13 +39,16 @@ In plain words
 
 Wikipedia says
 
-> In computer programming, the strategy pattern (also known as the policy pattern) is a behavioral software design pattern that enables selecting an algorithm at runtime.
+> In computer programming, the strategy pattern (also known as the policy pattern) is a behavioral software design
+> pattern that enables selecting an algorithm at runtime.
 
 ## Programmatic Example of Strategy Pattern in Java
 
-Slaying dragons is a dangerous job. With experience, it becomes easier. Veteran dragonslayers have developed different fighting strategies against different types of dragons.
+Slaying dragons is a dangerous job. With experience, it becomes easier. Veteran dragonslayers have developed different
+fighting strategies against different types of dragons.
 
-Let's explore how to implement the `DragonSlayingStrategy` interface in Java, demonstrating various Strategy pattern applications.
+Let's explore how to implement the `DragonSlayingStrategy` interface in Java, demonstrating various Strategy pattern
+applications.
 
 ```java
 @FunctionalInterface
@@ -209,8 +219,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Enhances an object without changing its interface but is more concerned with responsibilities than algorithms.
-* [State](https://java-design-patterns.com/patterns/state/): Similar in structure but used to represent state-dependent behavior rather than interchangeable algorithms.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Enhances an object without changing its interface
+  but is more concerned with responsibilities than algorithms.
+* [State](https://java-design-patterns.com/patterns/state/): Similar in structure but used to represent state-dependent
+  behavior rather than interchangeable algorithms.
 
 ## References and Credits
 

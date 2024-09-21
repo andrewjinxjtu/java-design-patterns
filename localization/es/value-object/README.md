@@ -26,7 +26,8 @@ En palabras simples
 Wikipedia dice
 
 > En informática, un objeto de valor es un objeto pequeño que representa una entidad simple cuya igualdad no se basa en
-> la identidad: es decir, dos objetos de valor son iguales cuando tienen el mismo valor, no necesariamente siendo el mismo
+> la identidad: es decir, dos objetos de valor son iguales cuando tienen el mismo valor, no necesariamente siendo el
+> mismo
 > objeto.
 
 **Ejemplo Programático**

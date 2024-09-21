@@ -18,32 +18,46 @@ tag:
 
 ## Intent of Service Layer Design Pattern
 
-The Service Layer pattern is crucial for Java developers focusing on building robust application architectures that separate business processes from user interface concerns.
+The Service Layer pattern is crucial for Java developers focusing on building robust application architectures that
+separate business processes from user interface concerns.
 
-The pattern encapsulate business logic in a distinct layer to promote separation of concerns and to provide a well-defined API for the presentation layer.
+The pattern encapsulate business logic in a distinct layer to promote separation of concerns and to provide a
+well-defined API for the presentation layer.
 
 ## Detailed Explanation of Service Layer Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a complex restaurant system where orders are managed through a centralized 'service layer' to ensure efficient operation and clear communication between the front and back of the house. Each section specializes in a part of the meal, but the waitstaff don't interact directly with the kitchen staff. Instead, all orders go through a head chef who coordinates the workflow. The head chef acts like the service layer, handling the business logic (order coordination) and providing a unified interface for the waitstaff (presentation layer) to interact with the kitchen (data access layer).
+> Imagine a complex restaurant system where orders are managed through a centralized 'service layer' to ensure efficient
+> operation and clear communication between the front and back of the house. Each section specializes in a part of the
+> meal, but the waitstaff don't interact directly with the kitchen staff. Instead, all orders go through a head chef who
+> coordinates the workflow. The head chef acts like the service layer, handling the business logic (order coordination)
+> and providing a unified interface for the waitstaff (presentation layer) to interact with the kitchen (data access
+> layer).
 
 In plain words
 
-> A pattern that encapsulates business logic into a distinct layer to promote separation of concerns and provide a clear API for the presentation layer.
+> A pattern that encapsulates business logic into a distinct layer to promote separation of concerns and provide a clear
+> API for the presentation layer.
 
 Wikipedia says
 
-> Service layer is an architectural pattern, applied within the service-orientation design paradigm, which aims to organize the services, within a service inventory, into a set of logical layers. Services that are categorized into a particular layer share functionality. This helps to reduce the conceptual overhead related to managing the service inventory, as the services belonging to the same layer address a smaller set of activities.
+> Service layer is an architectural pattern, applied within the service-orientation design paradigm, which aims to
+> organize the services, within a service inventory, into a set of logical layers. Services that are categorized into a
+> particular layer share functionality. This helps to reduce the conceptual overhead related to managing the service
+> inventory, as the services belonging to the same layer address a smaller set of activities.
 
 ## Programmatic Example of Service Layer Pattern in Java
 
-Our Java implementation uses the Service Layer pattern to streamline interactions between data access objects (DAOs) and the business logic, ensuring a clean separation of concerns.
+Our Java implementation uses the Service Layer pattern to streamline interactions between data access objects (DAOs) and
+the business logic, ensuring a clean separation of concerns.
 
-The example application demonstrates interactions between a client `App` and a service `MagicService` that allows interaction between wizards, spellbooks and spells. The service is implemented with 3-layer architecture
+The example application demonstrates interactions between a client `App` and a service `MagicService` that allows
+interaction between wizards, spellbooks and spells. The service is implemented with 3-layer architecture
 (entity, dao, service).
 
-For this explanation we are looking at one vertical slice of the system. Let's start from the entity layer and look at `Wizard` class. Other entities not shown here are `Spellbook` and `Spell`.
+For this explanation we are looking at one vertical slice of the system. Let's start from the entity layer and look at
+`Wizard` class. Other entities not shown here are `Spellbook` and `Spell`.
 
 ```java
 
@@ -386,9 +400,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Facade](https://java-design-patterns.com/patterns/facade/): Simplifies interactions with complex subsystems by providing a unified interface.
-* [DAO (Data Access Object)](https://java-design-patterns.com/patterns/dao/): Often used together with the Service Layer to handle data persistence.
-* [MVC (Model-View-Controller)](https://java-design-patterns.com/patterns/model-view-controller/): The Service Layer can be used to encapsulate business logic in the model component.
+* [Facade](https://java-design-patterns.com/patterns/facade/): Simplifies interactions with complex subsystems by
+  providing a unified interface.
+* [DAO (Data Access Object)](https://java-design-patterns.com/patterns/dao/): Often used together with the Service Layer
+  to handle data persistence.
+* [MVC (Model-View-Controller)](https://java-design-patterns.com/patterns/model-view-controller/): The Service Layer can
+  be used to encapsulate business logic in the model component.
 
 ## References and Credits
 

@@ -30,6 +30,7 @@ import java.io.FileReader;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.stream.Collectors;
+
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,55 +44,55 @@ import org.slf4j.LoggerFactory;
 @Getter
 public class FileLoader implements Serializable {
 
-  /**
-   * Generated serial version UID.
-   */
-  @Serial
-  private static final long serialVersionUID = -4745803872902019069L;
+    /**
+     * Generated serial version UID.
+     */
+    @Serial
+    private static final long serialVersionUID = -4745803872902019069L;
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(FileLoader.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileLoader.class);
 
-  /**
-   * Indicates if the file is loaded or not.
-   */
-  private boolean loaded;
+    /**
+     * Indicates if the file is loaded or not.
+     */
+    private boolean loaded;
 
-  /**
-   * The name of the file that we want to load.
-   */
-  private String fileName;
+    /**
+     * The name of the file that we want to load.
+     */
+    private String fileName;
 
-  /**
-   * Loads the data of the file specified.
-   */
-  public String loadData() {
-    var dataFileName = this.fileName;
-    try (var br = new BufferedReader(new FileReader(dataFileName))) {
-      var result = br.lines().collect(Collectors.joining("\n"));
-      this.loaded = true;
-      return result;
-    } catch (Exception e) {
-      LOGGER.error("File {} does not exist", dataFileName);
+    /**
+     * Loads the data of the file specified.
+     */
+    public String loadData() {
+        var dataFileName = this.fileName;
+        try (var br = new BufferedReader(new FileReader(dataFileName))) {
+            var result = br.lines().collect(Collectors.joining("\n"));
+            this.loaded = true;
+            return result;
+        } catch (Exception e) {
+            LOGGER.error("File {} does not exist", dataFileName);
+        }
+
+        return null;
     }
 
-    return null;
-  }
+    /**
+     * Sets the path of the file to be loaded, to the given value.
+     *
+     * @param fileName The path of the file to be loaded.
+     */
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
-  /**
-   * Sets the path of the file to be loaded, to the given value.
-   *
-   * @param fileName The path of the file to be loaded.
-   */
-  public void setFileName(String fileName) {
-    this.fileName = fileName;
-  }
-
-  /**
-   * Returns true if the given file exists.
-   *
-   * @return True, if the file given exists, false otherwise.
-   */
-  public boolean fileExists() {
-    return new File(this.fileName).exists();
-  }
+    /**
+     * Returns true if the given file exists.
+     *
+     * @return True, if the file given exists, false otherwise.
+     */
+    public boolean fileExists() {
+        return new File(this.fileName).exists();
+    }
 }

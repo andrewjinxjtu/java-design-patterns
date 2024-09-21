@@ -21,11 +21,14 @@ Il décompose les tests en trois étapes claires et distinctes :
 
 ## Explication
 
-Ce pattron présente plusieurs avantages importants. Il crée une séparation claire entre la mise en place d'un test d'un test,
-les opérations et les résultats. Cette structure rend le code plus facile à lire et à comprendre. 
-Si vous placez les étapes dans l'ordre et que vous formatez votre code source pour les séparer, vous pouvez parcourir un test et comprendre rapidement ce qu'il fait.
+Ce pattron présente plusieurs avantages importants. Il crée une séparation claire entre la mise en place d'un test d'un
+test,
+les opérations et les résultats. Cette structure rend le code plus facile à lire et à comprendre.
+Si vous placez les étapes dans l'ordre et que vous formatez votre code source pour les séparer, vous pouvez parcourir un
+test et comprendre rapidement ce qu'il fait.
 
-Il impose également un certain degré de discipline lors de l'écriture des tests. Vous devez penser clairement les trois étapes de votre test.
+Il impose également un certain degré de discipline lors de l'écriture des tests. Vous devez penser clairement les trois
+étapes de votre test.
 Il est plus naturel d'écrire les tests en même temps, puisque vous avez déjà un plan.
 
 Exemple
@@ -34,7 +37,8 @@ Exemple
 
 En clair
 
-> Arrange/Act/Assert est un pattron de conception de tests qui organise les tests en trois étapes pour une maintenance facile.
+> Arrange/Act/Assert est un pattron de conception de tests qui organise les tests en trois étapes pour une maintenance
+> facile.
 
 WikiWikiWeb dit
 

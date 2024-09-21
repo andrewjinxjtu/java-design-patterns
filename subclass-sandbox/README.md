@@ -19,27 +19,40 @@ tag:
 
 ## Intent of Subclass Sandbox  Design Pattern
 
-The Subclass Sandbox design pattern in Java allows subclasses to alter the core behavior of a class by providing specific implementations of certain methods while keeping the overall structure unchanged.
-  
+The Subclass Sandbox design pattern in Java allows subclasses to alter the core behavior of a class by providing
+specific implementations of certain methods while keeping the overall structure unchanged.
+
 ## Detailed Explanation of Subclass Sandbox  Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a cooking class where the instructor provides a standard recipe structure, including steps like "prepare ingredients," "cook," and "serve." Each student follows this structure but can customize specific steps to create their unique dish. For example, one student might choose to prepare a salad, while another might prepare a stir-fry, both adhering to the same overarching recipe format. This way, the instructor ensures that all dishes are made following a consistent process, but students have the flexibility to personalize the key parts of their recipes. This mirrors the Subclass Sandbox pattern, where the core structure is defined by the superclass, and specific behaviors are customized in subclasses.
+> Imagine a cooking class where the instructor provides a standard recipe structure, including steps like "prepare
+> ingredients," "cook," and "serve." Each student follows this structure but can customize specific steps to create their
+> unique dish. For example, one student might choose to prepare a salad, while another might prepare a stir-fry, both
+> adhering to the same overarching recipe format. This way, the instructor ensures that all dishes are made following a
+> consistent process, but students have the flexibility to personalize the key parts of their recipes. This mirrors the
+> Subclass Sandbox pattern, where the core structure is defined by the superclass, and specific behaviors are customized
+> in subclasses.
 
 In plain words
 
-> The Subclass Sandbox pattern allows subclasses to customize specific behaviors within a predefined algorithm structure provided by the superclass.
+> The Subclass Sandbox pattern allows subclasses to customize specific behaviors within a predefined algorithm structure
+> provided by the superclass.
 
 [gameprogrammingpatterns.com](https://gameprogrammingpatterns.com/) says
 
-> A base class defines an abstract sandbox method and several provided operations. Marking them protected makes it clear that they are for use by derived classes. Each derived sandboxed subclass implements the sandbox method using the provided operations.
+> A base class defines an abstract sandbox method and several provided operations. Marking them protected makes it clear
+> that they are for use by derived classes. Each derived sandboxed subclass implements the sandbox method using the
+> provided operations.
 
 ## Programmatic Example of Subclass Sandbox Pattern in Java
 
-Using the Subclass Sandbox pattern, developers can create distinct functionalities within Java applications, enhancing game development and software design.
+Using the Subclass Sandbox pattern, developers can create distinct functionalities within Java applications, enhancing
+game development and software design.
 
-Suppose you want to create various superpowers in a game, where each superpower needs to move with a sound effect and spawn particles. Should you create many classes with similar methods or derive them from a base class? The Subclass Sandbox pattern enables you to handle this efficiently by deriving these classes from a common base class.
+Suppose you want to create various superpowers in a game, where each superpower needs to move with a sound effect and
+spawn particles. Should you create many classes with similar methods or derive them from a base class? The Subclass
+Sandbox pattern enables you to handle this efficiently by deriving these classes from a common base class.
 
 We start with the base class `Superpower`. It contains an abstract sandbox method `active` and some provided operations.
 
@@ -64,7 +77,8 @@ public abstract class Superpower {
 }
 ```
 
-Next, we are able to create derived sandboxed subclass that implements the sandbox method using the provided operations. Here is the first power:
+Next, we are able to create derived sandboxed subclass that implements the sandbox method using the provided operations.
+Here is the first power:
 
 ```java
 public class SkyLaunch extends Superpower {
@@ -128,16 +142,19 @@ Program output:
 13:10:23.180 [main] INFO com.iluwatar.subclasssandbox.GroundDive -- Spawn 20 particle with type GROUNDDIVE_PARTICLE
 ```
 
-## When to Use the Subclass Sandbox Pattern in Java  
+## When to Use the Subclass Sandbox Pattern in Java
 
 * Use when you want to create a framework that allows users to define their own behaviors by extending classes.
-* Applicable in scenarios where you need to enforce a specific algorithm structure while allowing certain steps to be overridden.
+* Applicable in scenarios where you need to enforce a specific algorithm structure while allowing certain steps to be
+  overridden.
 
 ## Real-World Applications of Subclass Sandbox Pattern in Java
 
-* Template method pattern in GUI frameworks where the framework provides the structure and the subclasses implement the specifics.
+* Template method pattern in GUI frameworks where the framework provides the structure and the subclasses implement the
+  specifics.
 * Game development where the core game loop is defined, but specific behaviors are provided by subclassing.
-* Java libraries like the `AbstractList` where core methods are defined and certain behaviors can be customized by extending classes.
+* Java libraries like the `AbstractList` where core methods are defined and certain behaviors can be customized by
+  extending classes.
 
 ## Benefits and Trade-offs of Subclass Sandbox Pattern
 
@@ -157,10 +174,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Both involve interchangeable behaviors, but Strategy pattern uses composition over inheritance.
-* [Template Method](https://java-design-patterns.com/patterns/template-method/): Similar in enforcing a structure where certain steps can be overridden by subclasses.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Both involve interchangeable behaviors, but Strategy
+  pattern uses composition over inheritance.
+* [Template Method](https://java-design-patterns.com/patterns/template-method/): Similar in enforcing a structure where
+  certain steps can be overridden by subclasses.
 
-## References and Credits  
+## References and Credits
 
 * [Design Patterns: Elements of Reusable Object-Oriented Software](https://amzn.to/3w0pvKI)
 * [Effective Java](https://amzn.to/4cGk2Jz)

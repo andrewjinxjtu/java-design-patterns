@@ -27,9 +27,9 @@ Em outras palavras
 
 Wikipedia diz
 
-> Em orientação a objetos, Chain of Responsibility é um padrão cuja principal função é evitar a dependência 
+> Em orientação a objetos, Chain of Responsibility é um padrão cuja principal função é evitar a dependência
 > entre um objeto receptor e um objeto solicitante. Consiste em uma série de objetos receptores e de objetos
-> de solicitação, onde cada objeto de solicitação possui uma lógica interna que separa quais são tipos de 
+> de solicitação, onde cada objeto de solicitação possui uma lógica interna que separa quais são tipos de
 > objetos receptores que podem ser manipulados. O restante é passado para os próximos objetos de solicitação da cadeia.
 
 **Exemplo de programação**
@@ -158,7 +158,8 @@ Orc soldier handling request "collect tax"
 
 Usar Chain of Responsibility quando
 
-* Mais de um objeto pode lidar com uma solicitação, e o manipulador não é conhecido a priori. O manipulador deve ser verificado automaticamente.
+* Mais de um objeto pode lidar com uma solicitação, e o manipulador não é conhecido a priori. O manipulador deve ser
+  verificado automaticamente.
 * Você deseja emitir uma solicitação para um dos vários objetos sem especificar o destinatário explicitamente.
 * O conjunto de objetos que podem lidar com uma solicitação deve ser especificado dinamicamente.
 

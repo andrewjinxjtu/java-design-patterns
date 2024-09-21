@@ -7,16 +7,22 @@ tag:
 ---
 
 ## También conocido como
+
 Application Model
 
 ## Propósito
-El modelo de presentación extrae el estado y el comportamiento de la vista a una clase modelo que forma parte de la presentación.
+
+El modelo de presentación extrae el estado y el comportamiento de la vista a una clase modelo que forma parte de la
+presentación.
 
 ## Explicación
 
 Ejemplo del mundo real
 
-> Cuando necesitamos escribir un programa con GUI, no es necesario que pongamos todo el comportamiento de la presentación en la clase view. Porque será más difícil de probar. Así que podemos utilizar Presentation Model Pattern para separar el comportamiento y la vista. La vista solo necesita cargar los datos y estados de otra clase y mostrar estos datos en la pantalla de acuerdo a los estados.
+> Cuando necesitamos escribir un programa con GUI, no es necesario que pongamos todo el comportamiento de la
+> presentación en la clase view. Porque será más difícil de probar. Así que podemos utilizar Presentation Model Pattern
+> para separar el comportamiento y la vista. La vista solo necesita cargar los datos y estados de otra clase y mostrar
+> estos datos en la pantalla de acuerdo a los estados.
 
 En palabras simples
 
@@ -24,7 +30,8 @@ En palabras simples
 
 Ejemplo de código
 
-La clase `view` es la GUI de los álbumes. Los métodos `saveToPMod` y `loadFromPMod` se utilizan para lograr la sincronización.
+La clase `view` es la GUI de los álbumes. Los métodos `saveToPMod` y `loadFromPMod` se utilizan para lograr la
+sincronización.
 
 ```java
 public class View {
@@ -167,15 +174,18 @@ public class PresentationModel {
 }
 ```
 
-Podemos ejecutar la clase `App` para iniciar esta demo. la casilla de verificación es el álbum clásico; el primer campo de texto es el nombre del artista del álbum; el segundo es el nombre del título del álbum; el último es el nombre del compositor:
+Podemos ejecutar la clase `App` para iniciar esta demo. la casilla de verificación es el álbum clásico; el primer campo
+de texto es el nombre del artista del álbum; el segundo es el nombre del título del álbum; el último es el nombre del
+compositor:
 
 ![](./etc/result.png)
 
-
 ## Diagrama de clases
+
 ![](./etc/presentation-model.urm.png "presentation model")
 
 ## Aplicabilidad
+
 Utilice el patrón de modelo de presentación cuando
 
 * Probar una presentación a través de una ventana GUI es a menudo incómodo, y en algunos casos imposible.
@@ -183,7 +193,7 @@ Utilice el patrón de modelo de presentación cuando
 
 ## Patrones relacionados
 
-- [Supervising Controller](https://martinfowler.com/eaaDev/SupervisingPresenter.html) 
+- [Supervising Controller](https://martinfowler.com/eaaDev/SupervisingPresenter.html)
 - [Passive View](https://martinfowler.com/eaaDev/PassiveScreen.html)
 
 ## Créditos

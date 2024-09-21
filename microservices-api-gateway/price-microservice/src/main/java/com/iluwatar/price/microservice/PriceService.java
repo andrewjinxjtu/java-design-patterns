@@ -29,10 +29,10 @@ package com.iluwatar.price.microservice;
  */
 public interface PriceService {
 
-  /**
-   * Getting the price of a product.
-   *
-   * @return A product's price
-   */
-  String getPrice();
+    /**
+     * Getting the price of a product.
+     *
+     * @return A product's price
+     */
+    String getPrice();
 }

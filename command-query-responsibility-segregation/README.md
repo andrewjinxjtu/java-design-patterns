@@ -16,17 +16,27 @@ tag:
 
 ## Intent of Command Query Responsibility Segregation Design Pattern
 
-Command Query Responsibility Segregation (CQRS) aims to segregate the operations that modify the state of an application (commands) from the operations that read the state (queries). This separation enhances scalability, performance, and maintainability in complex software systems.
+Command Query Responsibility Segregation (CQRS) aims to segregate the operations that modify the state of an
+application (commands) from the operations that read the state (queries). This separation enhances scalability,
+performance, and maintainability in complex software systems.
 
 ## Detailed Explanation of Command Query Responsibility Segregation Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a modern library where the tasks of borrowing and returning books (commands) are handled at the front desk, while the task of searching for books and reading them (queries) happens in the reading area. The front desk optimizes for transaction efficiency and record-keeping, ensuring books are properly checked in and out. Meanwhile, the reading area is optimized for comfort and accessibility, making it easy for readers to find and engage with the books. This separation improves the library's overall efficiency and user experience, much like the CQRS pattern enhances a software system's performance and maintainability.
+> Imagine a modern library where the tasks of borrowing and returning books (commands) are handled at the front desk,
+> while the task of searching for books and reading them (queries) happens in the reading area. The front desk optimizes
+> for transaction efficiency and record-keeping, ensuring books are properly checked in and out. Meanwhile, the reading
+> area is optimized for comfort and accessibility, making it easy for readers to find and engage with the books. This
+> separation improves the library's overall efficiency and user experience, much like the CQRS pattern enhances a software
+> system's performance and maintainability.
 
 In plain words
 
-> The CQRS design pattern separates the actions of modifying data (commands) from the actions of retrieving data (queries) to enhance performance, scalability, and maintainability in software systems. By implementing CQRS, you can optimize your system's read and write operations independently, allowing for more efficient data handling and improved overall system performance.
+> The CQRS design pattern separates the actions of modifying data (commands) from the actions of retrieving data (
+> queries) to enhance performance, scalability, and maintainability in software systems. By implementing CQRS, you can
+> optimize your system's read and write operations independently, allowing for more efficient data handling and improved
+> overall system performance.
 
 Microsoft's documentation says
 
@@ -34,7 +44,8 @@ Microsoft's documentation says
 
 ## Programmatic Example of CQRS Pattern in Java
 
-One way to implement the Command Query Responsibility Segregation (CQRS) pattern is to separate the read and write operations into different services.
+One way to implement the Command Query Responsibility Segregation (CQRS) pattern is to separate the read and write
+operations into different services.
 
 Let's see the code implementation first and explain how it works afterward.
 
@@ -78,11 +89,14 @@ public static void main(String[] args) {
 }
 ```
 
-1. Command Service: The `CommandServiceImpl` class is used for write operations. It provides methods to create authors and books, and to add books to authors.
+1. Command Service: The `CommandServiceImpl` class is used for write operations. It provides methods to create authors
+   and books, and to add books to authors.
 
-2. Query Service: The `QueryServiceImpl` class is used for read operations. It provides methods to get author and book details.
+2. Query Service: The `QueryServiceImpl` class is used for read operations. It provides methods to get author and book
+   details.
 
-This separation of concerns allows for flexibility in how the application handles data access and manipulation, and is a key aspect of the CQRS pattern.
+This separation of concerns allows for flexibility in how the application handles data access and manipulation, and is a
+key aspect of the CQRS pattern.
 
 Program output:
 
@@ -97,9 +111,12 @@ Program output:
 
 ## When to Use the Command Query Responsibility Segregation Pattern in Java
 
-* Systems requiring distinct models for read and write operations for scalability and maintainability, such as e-commerce platforms and high-traffic websites.
-* Complex domain models, like financial services or healthcare applications, where the task of updating objects differs significantly from the task of reading object data.
-* Scenarios where performance optimization for read operations is crucial, and the system can benefit from different data models or databases for reads and writes, enhancing data retrieval speed and accuracy.
+* Systems requiring distinct models for read and write operations for scalability and maintainability, such as
+  e-commerce platforms and high-traffic websites.
+* Complex domain models, like financial services or healthcare applications, where the task of updating objects differs
+  significantly from the task of reading object data.
+* Scenarios where performance optimization for read operations is crucial, and the system can benefit from different
+  data models or databases for reads and writes, enhancing data retrieval speed and accuracy.
 
 ## Real-World Applications of CQRS Pattern in Java
 
@@ -111,22 +128,30 @@ Program output:
 
 Benefits:
 
-* Scalability: By separating read and write models, each can be scaled independently according to their specific demands.
-* Optimization: Allows for the optimization of read models for query efficiency and write models for transactional integrity.
+* Scalability: By separating read and write models, each can be scaled independently according to their specific
+  demands.
+* Optimization: Allows for the optimization of read models for query efficiency and write models for transactional
+  integrity.
 * Maintainability: Reduces complexity by separating the concerns, leading to cleaner, more maintainable code.
-* Flexibility: Offers the flexibility to choose different technologies for the read and write sides according to their requirements.
+* Flexibility: Offers the flexibility to choose different technologies for the read and write sides according to their
+  requirements.
 
 Trade-Offs:
 
-* Complexity: Introduces complexity due to synchronization between read and write models, especially in consistency maintenance.
+* Complexity: Introduces complexity due to synchronization between read and write models, especially in consistency
+  maintenance.
 * Overhead: Might be an overkill for simple systems where the benefits do not outweigh the additional complexity.
-* Learning Curve: Requires a deeper understanding and careful design to implement effectively, increasing the initial learning curve.
+* Learning Curve: Requires a deeper understanding and careful design to implement effectively, increasing the initial
+  learning curve.
 
 ## Related Java Design Patterns
 
-* [Event Sourcing](https://java-design-patterns.com/patterns/event-sourcing/): Often used in conjunction with CQRS, where changes to the application state are stored as a sequence of events.
-* Domain-Driven Design (DDD): CQRS fits well within the DDD context, providing clear boundaries and separation of concerns.
-* [Repository](https://java-design-patterns.com/patterns/repository/): Can be used to abstract the data layer, providing a more seamless integration between the command and query sides.
+* [Event Sourcing](https://java-design-patterns.com/patterns/event-sourcing/): Often used in conjunction with CQRS,
+  where changes to the application state are stored as a sequence of events.
+* Domain-Driven Design (DDD): CQRS fits well within the DDD context, providing clear boundaries and separation of
+  concerns.
+* [Repository](https://java-design-patterns.com/patterns/repository/): Can be used to abstract the data layer, providing
+  a more seamless integration between the command and query sides.
 
 ## References and Credits
 

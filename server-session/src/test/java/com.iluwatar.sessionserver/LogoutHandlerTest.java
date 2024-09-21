@@ -28,10 +28,12 @@ import static org.mockito.Mockito.when;
 
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
+
 import java.io.ByteArrayOutputStream;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,62 +45,62 @@ import org.mockito.MockitoAnnotations;
  */
 public class LogoutHandlerTest {
 
-  private LogoutHandler logoutHandler;
-  private Headers headers;
-  private Map<String, Integer> sessions;
-  private Map<String, Instant> sessionCreationTimes;
+    private LogoutHandler logoutHandler;
+    private Headers headers;
+    private Map<String, Integer> sessions;
+    private Map<String, Instant> sessionCreationTimes;
 
-  @Mock
-  private HttpExchange exchange;
+    @Mock
+    private HttpExchange exchange;
 
-  /**
-   * Setup tests.
-   */
-  @BeforeEach
-  public void setUp() {
-    MockitoAnnotations.initMocks(this);
-    sessions = new HashMap<>();
-    sessionCreationTimes = new HashMap<>();
-    logoutHandler = new LogoutHandler(sessions, sessionCreationTimes);
-    headers = new Headers();
-    headers.add("Cookie",
-        "sessionID=1234"); //Exchange object methods return Header Object but Exchange is mocked so Headers must be manually created
-  }
+    /**
+     * Setup tests.
+     */
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+        sessions = new HashMap<>();
+        sessionCreationTimes = new HashMap<>();
+        logoutHandler = new LogoutHandler(sessions, sessionCreationTimes);
+        headers = new Headers();
+        headers.add("Cookie",
+                "sessionID=1234"); //Exchange object methods return Header Object but Exchange is mocked so Headers must be manually created
+    }
 
-  @Test
-  public void testHandler_SessionNotExpired() {
+    @Test
+    public void testHandler_SessionNotExpired() {
 
-    //assemble
-    sessions.put("1234", 1); //Fake login details since LoginHandler isn't called
-    sessionCreationTimes.put("1234",
-        Instant.now()); //Fake login details since LoginHandler isn't called
-    when(exchange.getRequestHeaders()).thenReturn(headers);
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    when(exchange.getResponseBody()).thenReturn(outputStream);
+        //assemble
+        sessions.put("1234", 1); //Fake login details since LoginHandler isn't called
+        sessionCreationTimes.put("1234",
+                Instant.now()); //Fake login details since LoginHandler isn't called
+        when(exchange.getRequestHeaders()).thenReturn(headers);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        when(exchange.getResponseBody()).thenReturn(outputStream);
 
-    //act
-    logoutHandler.handle(exchange);
+        //act
+        logoutHandler.handle(exchange);
 
-    //assert
-    String[] response = outputStream.toString().split("Session ID: ");
-    Assertions.assertEquals("1234", response[1]);
-    Assertions.assertFalse(sessions.containsKey(response[1]));
-    Assertions.assertFalse(sessionCreationTimes.containsKey(response[1]));
-  }
+        //assert
+        String[] response = outputStream.toString().split("Session ID: ");
+        Assertions.assertEquals("1234", response[1]);
+        Assertions.assertFalse(sessions.containsKey(response[1]));
+        Assertions.assertFalse(sessionCreationTimes.containsKey(response[1]));
+    }
 
-  @Test
-  public void testHandler_SessionExpired() {
+    @Test
+    public void testHandler_SessionExpired() {
 
-    //assemble
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    when(exchange.getRequestHeaders()).thenReturn(headers);
-    when(exchange.getResponseBody()).thenReturn(outputStream);
+        //assemble
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        when(exchange.getRequestHeaders()).thenReturn(headers);
+        when(exchange.getResponseBody()).thenReturn(outputStream);
 
-    //act
-    logoutHandler.handle(exchange);
+        //act
+        logoutHandler.handle(exchange);
 
-    //assert
-    String[] response = outputStream.toString().split("Session ID: ");
-    Assertions.assertEquals("Session has already expired!", response[0]);
-  }
+        //assert
+        String[] response = outputStream.toString().split("Session ID: ");
+        Assertions.assertEquals("Session has already expired!", response[0]);
+    }
 }

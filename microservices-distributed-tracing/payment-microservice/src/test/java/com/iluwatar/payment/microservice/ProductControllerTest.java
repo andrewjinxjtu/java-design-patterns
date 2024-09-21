@@ -35,34 +35,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class ProductControllerTest {
 
-  private PaymentController paymentController;
+    private PaymentController paymentController;
 
-  @BeforeEach
-  void setUp() {
-    paymentController = new PaymentController();
-  }
-  /**
-   * Test to process the payment.
-   */
-  @Test
-  void testValidateProduct() {
-    // Arrange
-    String request = "Sample payment process request";
-    // Act
-    ResponseEntity<Boolean> response = paymentController.payment(request);
-    // Assert
-    assertEquals(ResponseEntity.ok(true), response);
-  }
+    @BeforeEach
+    void setUp() {
+        paymentController = new PaymentController();
+    }
 
-  /**
-   * Test to process the payment with null request.
-   */
-  @Test
-  void testValidateProductWithNullRequest() {
-    // Arrange
-    // Act
-    ResponseEntity<Boolean> response = paymentController.payment(null);
-    // Assert
-    assertEquals(ResponseEntity.ok(true), response);
-  }
+    /**
+     * Test to process the payment.
+     */
+    @Test
+    void testValidateProduct() {
+        // Arrange
+        String request = "Sample payment process request";
+        // Act
+        ResponseEntity<Boolean> response = paymentController.payment(request);
+        // Assert
+        assertEquals(ResponseEntity.ok(true), response);
+    }
+
+    /**
+     * Test to process the payment with null request.
+     */
+    @Test
+    void testValidateProductWithNullRequest() {
+        // Arrange
+        // Act
+        ResponseEntity<Boolean> response = paymentController.payment(null);
+        // Assert
+        assertEquals(ResponseEntity.ok(true), response);
+    }
 }

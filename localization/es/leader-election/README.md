@@ -7,18 +7,28 @@ tag:
 ---
 
 ## Propósito
-El patrón de elección (Leader pattern) del líder se utiliza habitualmente en el diseño de sistemas en la nube. Puede ayudar a garantizar que las instancias de tarea seleccionen la instancia líder correctamente y no entren en conflicto entre sí, causen contención por recursos compartidos o interfieran inadvertidamente con el trabajo que otras instancias de tarea están realizando.
+
+El patrón de elección (Leader pattern) del líder se utiliza habitualmente en el diseño de sistemas en la nube. Puede
+ayudar a garantizar que las instancias de tarea seleccionen la instancia líder correctamente y no entren en conflicto
+entre sí, causen contención por recursos compartidos o interfieran inadvertidamente con el trabajo que otras instancias
+de tarea están realizando.
 
 ## Explicación
 
 Ejemplo del mundo real
-> En un sistema basado en la nube de escalado horizontal, múltiples instancias de la misma tarea podrían estar ejecutándose al mismo tiempo con cada instancia sirviendo a un usuario diferente. Si estas instancias escriben en un recurso compartido, es necesario coordinar sus acciones para evitar que cada instancia sobrescriba los cambios realizados por las demás. En otro escenario, si las tareas están realizando elementos individuales de un cálculo complejo en paralelo, los resultados necesitan ser agregados cuando todos ellos se completan.
+> En un sistema basado en la nube de escalado horizontal, múltiples instancias de la misma tarea podrían estar
+> ejecutándose al mismo tiempo con cada instancia sirviendo a un usuario diferente. Si estas instancias escriben en un
+> recurso compartido, es necesario coordinar sus acciones para evitar que cada instancia sobrescriba los cambios
+> realizados por las demás. En otro escenario, si las tareas están realizando elementos individuales de un cálculo
+> complejo en paralelo, los resultados necesitan ser agregados cuando todos ellos se completan.
 
 En palabras sencillas
-> este patrón se utiliza en sistemas distribuidos basados en la nube en los que el líder debe actuar como coordinador/agregador entre instancias de escalado horizontal para evitar conflictos en los recursos compartidos.
+> este patrón se utiliza en sistemas distribuidos basados en la nube en los que el líder debe actuar como
+> coordinador/agregador entre instancias de escalado horizontal para evitar conflictos en los recursos compartidos.
 
 Wikipedia dice
-> En computación distribuida, la elección del líder es el proceso de designar un único proceso como organizador de alguna tarea distribuida entre varios ordenadores (nodos).
+> En computación distribuida, la elección del líder es el proceso de designar un único proceso como organizador de
+> alguna tarea distribuida entre varios ordenadores (nodos).
 
 **Ejemplo programático**
 
@@ -230,7 +240,9 @@ public interface MessageManager {
 
 }
 ```
+
 These type of messages are used to pass among instances.
+
 ```java
 /**
  * Enum de tipo de mensaje.
@@ -322,6 +334,7 @@ public abstract class AbstractMessageManager implements MessageManager {
 ```
 
 Here the implementation of Ring Algorithm
+
 ```java
 /**
  * Implementación con algoritmo token ring. Las instancias en el sistema se organizan como un anillo.
@@ -500,6 +513,7 @@ public class RingMessageManager extends AbstractMessageManager {
 
 }
 ```
+
 ```java
 public static void main(String[] args) {
 
@@ -537,6 +551,7 @@ public static void main(String[] args) {
 ```
 
 The console output
+
 ```
 [Thread-1] INFO com.iluwatar.leaderelection.AbstractInstance - Instance 2 - Heartbeat Invoke Message handling...
 [Thread-1] INFO com.iluwatar.leaderelection.ring.RingInstance - Instance 2- Leader is not alive. Start election.
@@ -562,7 +577,9 @@ The console output
 [Thread-3] INFO com.iluwatar.leaderelection.AbstractInstance - Instance 4 - Heartbeat Invoke Message handling...
 [Thread-3] INFO com.iluwatar.leaderelection.ring.RingInstance - Instance 4- Leader is alive. Start next heartbeat in 5 second.
 ```
+
 Here the implementation of Bully algorithm
+
 ```java
 /**
  * Impelemetación con algoritmo bully. Cada instancia debe tener un id secuencial y es capaz de
@@ -787,6 +804,7 @@ public static void main(String[] args) {
 ```
 
 La salida de la consola
+
 ```
 [Thread-3] INFO com.iluwatar.leaderelection.AbstractInstance - Instance 4 - Heartbeat Invoke Message handling...
 [Thread-3] INFO com.iluwatar.leaderelection.bully.BullyInstance - Instance 4- Leader is alive.
@@ -817,17 +835,24 @@ La salida de la consola
 ```
 
 ## Diagrama de clases
+
 ![alt text](./etc/leader-election.urm.png "Leader Election pattern class diagram")
 
 ## Aplicabilidad
+
 Utilice este patrón cuando
 
-* las tareas en una aplicación distribuida, como una solución alojada en la nube, requieren una coordinación cuidadosa y no hay un líder natural.
+* las tareas en una aplicación distribuida, como una solución alojada en la nube, requieren una coordinación cuidadosa y
+  no hay un líder natural.
 
 No utilice este patrón cuando
 
-* exista un líder natural o un proceso dedicado que pueda actuar siempre como líder. Por ejemplo, puede ser posible implementar un proceso singleton que coordine las instancias de tareas. Si este proceso falla o se vuelve insalubre, el sistema puede apagarlo y reiniciarlo.
-* la coordinación entre tareas puede lograrse fácilmente utilizando un mecanismo más ligero. Por ejemplo, si varias instancias de tareas simplemente requieren un acceso coordinado a un recurso compartido, una solución preferible podría ser utilizar un bloqueo optimista o pesimista para controlar el acceso a ese recurso.
+* exista un líder natural o un proceso dedicado que pueda actuar siempre como líder. Por ejemplo, puede ser posible
+  implementar un proceso singleton que coordine las instancias de tareas. Si este proceso falla o se vuelve insalubre,
+  el sistema puede apagarlo y reiniciarlo.
+* la coordinación entre tareas puede lograrse fácilmente utilizando un mecanismo más ligero. Por ejemplo, si varias
+  instancias de tareas simplemente requieren un acceso coordinado a un recurso compartido, una solución preferible
+  podría ser utilizar un bloqueo optimista o pesimista para controlar el acceso a ese recurso.
 
 ## Créditos
 

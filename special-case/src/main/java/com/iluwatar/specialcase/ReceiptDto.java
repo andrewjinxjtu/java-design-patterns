@@ -36,12 +36,12 @@ import org.slf4j.LoggerFactory;
 @Getter
 public class ReceiptDto implements ReceiptViewModel {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(ReceiptDto.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReceiptDto.class);
 
-  private final Double price;
+    private final Double price;
 
-  @Override
-  public void show() {
-    LOGGER.info(String.format("Receipt: %s paid", price));
-  }
+    @Override
+    public void show() {
+        LOGGER.info(String.format("Receipt: %s paid", price));
+    }
 }

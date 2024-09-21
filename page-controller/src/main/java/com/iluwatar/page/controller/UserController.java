@@ -37,15 +37,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @NoArgsConstructor
 public class UserController {
-  private final UserView view = new UserView();
+    private final UserView view = new UserView();
 
-  /**
-   * Handle http GET request and access view and model.
-   */
-  @GetMapping("/user")
-  public String getUserPath(SignupModel form, Model model) {
-    model.addAttribute("name", form.getName());
-    model.addAttribute("email", form.getEmail());
-    return view.display(form);
-  }
+    /**
+     * Handle http GET request and access view and model.
+     */
+    @GetMapping("/user")
+    public String getUserPath(SignupModel form, Model model) {
+        model.addAttribute("name", form.getName());
+        model.addAttribute("email", form.getEmail());
+        return view.display(form);
+    }
 }

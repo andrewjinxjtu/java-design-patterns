@@ -37,28 +37,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderController {
 
-  private final OrderService orderService;
+    private final OrderService orderService;
 
-  /**
-   * Constructor to inject OrderService.
-   *
-   * @param orderService the service to process orders
-   */
-  public OrderController(final OrderService orderService) {
-    this.orderService = orderService;
-  }
+    /**
+     * Constructor to inject OrderService.
+     *
+     * @param orderService the service to process orders
+     */
+    public OrderController(final OrderService orderService) {
+        this.orderService = orderService;
+    }
 
-  /**
-   * Endpoint to process an order.
-   *
-   * @param request the order request body (can be null)
-   * @return ResponseEntity with a status message
-   */
-  @PostMapping("/order")
-  public ResponseEntity<String> processOrder(@RequestBody(required = false) String request) {
-    LOGGER.info("Received order request: {}", request);
-    var result = orderService.processOrder();
-    LOGGER.info("Order processed result: {}", result);
-    return ResponseEntity.ok(result);
-  }
+    /**
+     * Endpoint to process an order.
+     *
+     * @param request the order request body (can be null)
+     * @return ResponseEntity with a status message
+     */
+    @PostMapping("/order")
+    public ResponseEntity<String> processOrder(@RequestBody(required = false) String request) {
+        LOGGER.info("Received order request: {}", request);
+        var result = orderService.processOrder();
+        LOGGER.info("Order processed result: {}", result);
+        return ResponseEntity.ok(result);
+    }
 }

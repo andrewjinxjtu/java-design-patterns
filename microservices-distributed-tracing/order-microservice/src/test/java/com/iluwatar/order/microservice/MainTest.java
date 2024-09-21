@@ -32,8 +32,8 @@ import org.junit.jupiter.api.Test;
  * Application test
  */
 class MainTest {
-  @Test
-  void shouldExecuteApplicationWithoutException() {
-    assertDoesNotThrow(() -> Main.main(new String[]{}));
-  }
+    @Test
+    void shouldExecuteApplicationWithoutException() {
+        assertDoesNotThrow(() -> Main.main(new String[]{}));
+    }
 }

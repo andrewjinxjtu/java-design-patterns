@@ -29,5 +29,5 @@ package com.iluwatar.abstractdocument.domain.enums;
  */
 public enum Property {
 
-  PARTS, TYPE, PRICE, MODEL
+    PARTS, TYPE, PRICE, MODEL
 }

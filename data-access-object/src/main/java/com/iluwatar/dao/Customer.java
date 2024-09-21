@@ -40,8 +40,8 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Customer {
 
-  @EqualsAndHashCode.Include
-  private int id;
-  private String firstName;
-  private String lastName;
+    @EqualsAndHashCode.Include
+    private int id;
+    private String firstName;
+    private String lastName;
 }

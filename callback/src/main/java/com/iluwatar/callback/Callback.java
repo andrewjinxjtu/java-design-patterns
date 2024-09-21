@@ -29,5 +29,5 @@ package com.iluwatar.callback;
  */
 public interface Callback {
 
-  void call();
+    void call();
 }

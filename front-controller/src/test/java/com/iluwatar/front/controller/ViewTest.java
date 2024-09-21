@@ -27,7 +27,9 @@ package com.iluwatar.front.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.iluwatar.front.controller.utils.InMemoryAppender;
+
 import java.util.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -35,41 +37,40 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * ViewTest
- *
  */
 class ViewTest {
 
-  private InMemoryAppender appender;
+    private InMemoryAppender appender;
 
-  @BeforeEach
-  void setUp() {
-    appender = new InMemoryAppender();
-  }
+    @BeforeEach
+    void setUp() {
+        appender = new InMemoryAppender();
+    }
 
-  @AfterEach
-  void tearDown() {
-    appender.stop();
-  }
+    @AfterEach
+    void tearDown() {
+        appender.stop();
+    }
 
-  static List<Object[]> dataProvider() {
-    return List.of(
-        new Object[]{new ArcherView(), "Displaying archers"},
-        new Object[]{new CatapultView(), "Displaying catapults"},
-        new Object[]{new ErrorView(), "Error 500"}
-    );
-  }
+    static List<Object[]> dataProvider() {
+        return List.of(
+                new Object[]{new ArcherView(), "Displaying archers"},
+                new Object[]{new CatapultView(), "Displaying catapults"},
+                new Object[]{new ErrorView(), "Error 500"}
+        );
+    }
 
-  /**
-   * @param view           The view that's been tested
-   * @param displayMessage The expected display message
-   */
-  @ParameterizedTest
-  @MethodSource("dataProvider")
-  void testDisplay(View view, String displayMessage) {
-    assertEquals(0, appender.getLogSize());
-    view.display();
-    assertEquals(displayMessage, appender.getLastMessage());
-    assertEquals(1, appender.getLogSize());
-  }
+    /**
+     * @param view           The view that's been tested
+     * @param displayMessage The expected display message
+     */
+    @ParameterizedTest
+    @MethodSource("dataProvider")
+    void testDisplay(View view, String displayMessage) {
+        assertEquals(0, appender.getLogSize());
+        view.display();
+        assertEquals(displayMessage, appender.getLastMessage());
+        assertEquals(1, appender.getLogSize());
+    }
 
 }

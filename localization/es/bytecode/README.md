@@ -14,7 +14,10 @@ Permite codificar el comportamiento como instrucciones para una máquina virtual
 
 Ejemplo del mundo real
 
-> Un equipo está trabajando en un nuevo juego en el que los magos luchan entre sí. El comportamiento de los magos necesita ser cuidadosamente ajustado e iterado cientos de veces a través de pruebas de juego. No es óptimo pedir al programador que haga cambios cada vez que el diseñador del juego quiere variar el comportamiento, así que el comportamiento del mago se implementa como una máquina virtual basada en datos.
+> Un equipo está trabajando en un nuevo juego en el que los magos luchan entre sí. El comportamiento de los magos
+> necesita ser cuidadosamente ajustado e iterado cientos de veces a través de pruebas de juego. No es óptimo pedir al
+> programador que haga cambios cada vez que el diseñador del juego quiere variar el comportamiento, así que el
+> comportamiento del mago se implementa como una máquina virtual basada en datos.
 
 En palabras sencillas
 
@@ -22,7 +25,9 @@ En palabras sencillas
 
 [Gameprogrammingpatterns.com](https://gameprogrammingpatterns.com/bytecode.html) indica la documentación:
 
-> Un conjunto de instrucciones define las operaciones de bajo nivel que pueden realizarse. Una serie de instrucciones se codifica como una secuencia de bytes. Una máquina virtual ejecuta estas instrucciones de una en una, utilizando una pila para los valores intermedios. La combinación de instrucciones permite definir comportamientos complejos de alto nivel.
+> Un conjunto de instrucciones define las operaciones de bajo nivel que pueden realizarse. Una serie de instrucciones se
+> codifica como una secuencia de bytes. Una máquina virtual ejecuta estas instrucciones de una en una, utilizando una pila
+> para los valores intermedios. La combinación de instrucciones permite definir comportamientos complejos de alto nivel.
 
 **Ejemplo programático**
 
@@ -54,7 +59,9 @@ public class Wizard {
 }
 ```
 
-A continuación, mostramos las instrucciones disponibles para nuestra máquina virtual. Cada una de las instrucciones tiene su propia semántica sobre cómo opera con los datos de la pila. Por ejemplo, la instrucción ADD toma los dos elementos superiores de la pila, los suma y coloca el resultado en la pila.
+A continuación, mostramos las instrucciones disponibles para nuestra máquina virtual. Cada una de las instrucciones
+tiene su propia semántica sobre cómo opera con los datos de la pila. Por ejemplo, la instrucción ADD toma los dos
+elementos superiores de la pila, los suma y coloca el resultado en la pila.
 
 ```java
 
@@ -77,7 +84,8 @@ public enum Instruction {
 }
 ```
 
-En el corazón de nuestro ejemplo está la clase `VirtualMachine`. Toma instrucciones como entrada y las ejecuta para proporcionar el comportamiento del objeto de juego.
+En el corazón de nuestro ejemplo está la clase `VirtualMachine`. Toma instrucciones como entrada y las ejecuta para
+proporcionar el comportamiento del objeto de juego.
 
 ```java
 
@@ -218,15 +226,18 @@ Aquí está la salida de la consola.
 
 ## Aplicabilidad
 
-Utiliza el patrón Bytecode cuando tengas que definir muchos comportamientos y el lenguaje de implementación de tu juego no sea el adecuado porque:
+Utiliza el patrón Bytecode cuando tengas que definir muchos comportamientos y el lenguaje de implementación de tu juego
+no sea el adecuado porque:
 
 * Es demasiado de bajo nivel, por lo que es tedioso o propenso a errores para programar.
 * Iterar en él lleva demasiado tiempo debido a tiempos de compilación lentos u otros problemas de herramientas.
-* Tiene demasiada confianza. Si quieres asegurarte de que el comportamiento definido no puede romper el juego, necesitas separarlo del resto del código base.
+* Tiene demasiada confianza. Si quieres asegurarte de que el comportamiento definido no puede romper el juego, necesitas
+  separarlo del resto del código base.
 
 ## Usos Conocidos
 
-* Java Virtual Machine (JVM) utiliza bytecode para permitir que los programas Java se ejecuten en cualquier dispositivo que tenga JVM instalado.
+* Java Virtual Machine (JVM) utiliza bytecode para permitir que los programas Java se ejecuten en cualquier dispositivo
+  que tenga JVM instalado.
 * Python compila sus scripts a bytecode que luego es interpretado por la Máquina Virtual Python.
 * NET Framework utiliza una forma de bytecode llamada Microsoft Intermediate Language (MSIL).
 
@@ -236,18 +247,23 @@ Ventajas:
 
 * Portabilidad: Los programas pueden ejecutarse en cualquier plataforma que disponga de una máquina virtual compatible.
 * Seguridad: La máquina virtual puede aplicar controles de seguridad al código de bytes.
-* Rendimiento: Los compiladores JIT pueden optimizar el código de bytes en tiempo de ejecución, mejorando potencialmente el rendimiento respecto al código interpretado.
+* Rendimiento: Los compiladores JIT pueden optimizar el código de bytes en tiempo de ejecución, mejorando potencialmente
+  el rendimiento respecto al código interpretado.
 
 Desventajas:
 
-* Sobrecarga: Ejecutar bytecode normalmente implica más sobrecarga que ejecutar código nativo, lo que puede afectar al rendimiento.
+* Sobrecarga: Ejecutar bytecode normalmente implica más sobrecarga que ejecutar código nativo, lo que puede afectar al
+  rendimiento.
 * Complejidad: Implementar y mantener una máquina virtual añade complejidad al sistema.
 
 ## Patrones relacionados
 
-* [Intérprete](https://java-design-patterns.com/patterns/interpreter/) se utiliza a menudo dentro de la implementación de VMs para interpretar instrucciones bytecode.
-* [Comando](https://java-design-patterns.com/patterns/command/): Las instrucciones bytecode pueden ser vistas como comandos ejecutados por la VM.
-* [Método de fábrica](https://java-design-patterns.com/patterns/factory-method/): Las VMs pueden utilizar métodos de fábrica para instanciar operaciones o instrucciones definidas en el bytecode.
+* [Intérprete](https://java-design-patterns.com/patterns/interpreter/) se utiliza a menudo dentro de la implementación
+  de VMs para interpretar instrucciones bytecode.
+* [Comando](https://java-design-patterns.com/patterns/command/): Las instrucciones bytecode pueden ser vistas como
+  comandos ejecutados por la VM.
+* [Método de fábrica](https://java-design-patterns.com/patterns/factory-method/): Las VMs pueden utilizar métodos de
+  fábrica para instanciar operaciones o instrucciones definidas en el bytecode.
 
 ## Créditos
 

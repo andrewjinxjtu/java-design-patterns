@@ -32,20 +32,19 @@ import org.junit.jupiter.api.Test;
 
 /**
  * FileSelectorJframeTest
- *
  */
 class FileSelectorJframeTest {
-    
+
     /**
      * Tests if the jframe action event is triggered without any exception.
      */
     @Test
     void testActionEvent() {
-      assertDoesNotThrow(() ->{
-        FileSelectorJframe jFrame = new FileSelectorJframe();
-        ActionEvent action = new ActionEvent("dummy", 1, "dummy");
-        jFrame.actionPerformed(action);
-      });
+        assertDoesNotThrow(() -> {
+            FileSelectorJframe jFrame = new FileSelectorJframe();
+            ActionEvent action = new ActionEvent("dummy", 1, "dummy");
+            jFrame.actionPerformed(action);
+        });
     }
 
 }

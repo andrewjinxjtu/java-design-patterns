@@ -29,32 +29,32 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+
 import org.junit.jupiter.api.Test;
 
 /**
  * AlchemistShopTest
- *
  */
 class AlchemistShopTest {
 
-  @Test
-  void testShop() {
-    final var shop = new AlchemistShop();
+    @Test
+    void testShop() {
+        final var shop = new AlchemistShop();
 
-    final var bottomShelf = shop.getBottomShelf();
-    assertNotNull(bottomShelf);
-    assertEquals(5, bottomShelf.size());
+        final var bottomShelf = shop.getBottomShelf();
+        assertNotNull(bottomShelf);
+        assertEquals(5, bottomShelf.size());
 
-    final var topShelf = shop.getTopShelf();
-    assertNotNull(topShelf);
-    assertEquals(8, topShelf.size());
+        final var topShelf = shop.getTopShelf();
+        assertNotNull(topShelf);
+        assertEquals(8, topShelf.size());
 
-    final var allPotions = new ArrayList<Potion>();
-    allPotions.addAll(topShelf);
-    allPotions.addAll(bottomShelf);
+        final var allPotions = new ArrayList<Potion>();
+        allPotions.addAll(topShelf);
+        allPotions.addAll(bottomShelf);
 
-    // There are 13 potion instances, but only 5 unique instance types
-    assertEquals(13, allPotions.size());
-    assertEquals(5, new HashSet<>(allPotions).size());
-  }
+        // There are 13 potion instances, but only 5 unique instance types
+        assertEquals(13, allPotions.size());
+        assertEquals(5, new HashSet<>(allPotions).size());
+    }
 }

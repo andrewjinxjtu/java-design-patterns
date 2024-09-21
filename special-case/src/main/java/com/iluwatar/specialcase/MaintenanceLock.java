@@ -33,27 +33,27 @@ import org.slf4j.LoggerFactory;
  */
 public class MaintenanceLock {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(MaintenanceLock.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MaintenanceLock.class);
 
-  private static MaintenanceLock instance;
+    private static MaintenanceLock instance;
 
-  @Getter
-  private boolean lock = true;
+    @Getter
+    private boolean lock = true;
 
-  /**
-   * Get the instance of MaintenanceLock.
-   *
-   * @return singleton instance of MaintenanceLock
-   */
-  public static synchronized MaintenanceLock getInstance() {
-    if (instance == null) {
-      instance = new MaintenanceLock();
+    /**
+     * Get the instance of MaintenanceLock.
+     *
+     * @return singleton instance of MaintenanceLock
+     */
+    public static synchronized MaintenanceLock getInstance() {
+        if (instance == null) {
+            instance = new MaintenanceLock();
+        }
+        return instance;
     }
-    return instance;
-  }
 
-  public void setLock(boolean lock) {
-    this.lock = lock;
-    LOGGER.info("Maintenance lock is set to: {}", lock);
-  }
+    public void setLock(boolean lock) {
+        this.lock = lock;
+        LOGGER.info("Maintenance lock is set to: {}", lock);
+    }
 }

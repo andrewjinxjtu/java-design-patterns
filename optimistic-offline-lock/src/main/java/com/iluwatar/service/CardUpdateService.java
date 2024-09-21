@@ -36,24 +36,24 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CardUpdateService implements UpdateService<Card> {
 
-  private final JpaRepository<Card> cardJpaRepository;
+    private final JpaRepository<Card> cardJpaRepository;
 
-  @Override
-  public Card doUpdate(Card obj, long id) {
-    float additionalSum = obj.getSum();
-    Card cardToUpdate = cardJpaRepository.findById(id);
-    int initialVersion = cardToUpdate.getVersion();
-    float resultSum = cardToUpdate.getSum() + additionalSum;
-    cardToUpdate.setSum(resultSum);
-    //Maybe more complex business-logic e.g. HTTP-requests and so on
+    @Override
+    public Card doUpdate(Card obj, long id) {
+        float additionalSum = obj.getSum();
+        Card cardToUpdate = cardJpaRepository.findById(id);
+        int initialVersion = cardToUpdate.getVersion();
+        float resultSum = cardToUpdate.getSum() + additionalSum;
+        cardToUpdate.setSum(resultSum);
+        //Maybe more complex business-logic e.g. HTTP-requests and so on
 
-    if (initialVersion != cardJpaRepository.getEntityVersionById(id)) {
-      String exMessage =
-          String.format("Entity with id %s were updated in another transaction", id);
-      throw new ApplicationException(exMessage);
+        if (initialVersion != cardJpaRepository.getEntityVersionById(id)) {
+            String exMessage =
+                    String.format("Entity with id %s were updated in another transaction", id);
+            throw new ApplicationException(exMessage);
+        }
+
+        cardJpaRepository.update(cardToUpdate);
+        return cardToUpdate;
     }
-
-    cardJpaRepository.update(cardToUpdate);
-    return cardToUpdate;
-  }
 }

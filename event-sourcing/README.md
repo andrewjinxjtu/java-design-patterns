@@ -25,27 +25,39 @@ head:
 
 ## Intent of Event Sourcing Design Pattern
 
-Event Sourcing is a design pattern that advocates for the storage of state changes as a sequence of events. Instead of updating a record in a database, all changes are stored as individual events which, when replayed, can recreate the state of an application at any point in time.
+Event Sourcing is a design pattern that advocates for the storage of state changes as a sequence of events. Instead of
+updating a record in a database, all changes are stored as individual events which, when replayed, can recreate the
+state of an application at any point in time.
 
 ## Detailed Explanation of Event Sourcing Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a banking application that tracks all transactions for user accounts. In this system, every deposit, withdrawal, and transfer is recorded as an individual event in an event log. Instead of simply updating the current account balance, each transaction is stored as a discrete event. This approach allows the bank to maintain a complete and immutable history of all account activities. If a discrepancy occurs, the bank can replay the sequence of events to reconstruct the account state at any point in time. This provides a robust audit trail, facilitates debugging, and supports features like transaction rollback and historical data analysis.
+> Consider a banking application that tracks all transactions for user accounts. In this system, every deposit,
+> withdrawal, and transfer is recorded as an individual event in an event log. Instead of simply updating the current
+> account balance, each transaction is stored as a discrete event. This approach allows the bank to maintain a complete
+> and immutable history of all account activities. If a discrepancy occurs, the bank can replay the sequence of events to
+> reconstruct the account state at any point in time. This provides a robust audit trail, facilitates debugging, and
+> supports features like transaction rollback and historical data analysis.
 
 In plain words
 
-> Event Sourcing records all state changes as a sequence of immutable events to ensure reliable state reconstruction and auditability.
+> Event Sourcing records all state changes as a sequence of immutable events to ensure reliable state reconstruction and
+> auditability.
 
 [Microsoft's documentation](https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing) says
 
-> The Event Sourcing pattern defines an approach to handling operations on data that's driven by a sequence of events, each of which is recorded in an append-only store. Application code sends a series of events that imperatively describe each action that has occurred on the data to the event store, where they're persisted. Each event represents a set of changes to the data (such as AddedItemToOrder).
+> The Event Sourcing pattern defines an approach to handling operations on data that's driven by a sequence of events,
+> each of which is recorded in an append-only store. Application code sends a series of events that imperatively describe
+> each action that has occurred on the data to the event store, where they're persisted. Each event represents a set of
+> changes to the data (such as AddedItemToOrder).
 
 ## Programmatic Example of Event Sourcing Pattern in Java
 
 In the programmatic example we transfer some money between bank accounts.
 
-The `Event` class manages a queue of events and controls thread operations for asynchronous processing. Each event can be seen as a state change that affects the state of the system.
+The `Event` class manages a queue of events and controls thread operations for asynchronous processing. Each event can
+be seen as a state change that affects the state of the system.
 
 ```java
 public class Event {
@@ -69,7 +81,8 @@ public class Event {
 }
 ```
 
-The `triggerEvent` method is where the events are created. Each time an event is triggered, it is created and added to the queue. This event contains the details of the state change.
+The `triggerEvent` method is where the events are created. Each time an event is triggered, it is created and added to
+the queue. This event contains the details of the state change.
 
 ```java
 public void triggerEvent(EventMessage eventMessage) {
@@ -85,7 +98,9 @@ public void triggerEvent(EventMessage eventMessage) {
 }
 ```
 
-The `init` and `startThread` methods ensure the thread is properly initialized and running. The `stopService` method is used to stop the thread when it's no longer needed. These methods manage the lifecycle of the thread used to process the events.
+The `init` and `startThread` methods ensure the thread is properly initialized and running. The `stopService` method is
+used to stop the thread when it's no longer needed. These methods manage the lifecycle of the thread used to process the
+events.
 
 ```java
 public synchronized void stopService() throws InterruptedException {
@@ -198,13 +213,15 @@ Running the example produces the following console output.
 22:40:48.124 [main] INFO com.iluwatar.event.sourcing.app.App -- Account{accountNo=2, owner='Jon Snow', money=10100}
 ```
 
-In this example, the state of the system can be recreated at any point by replaying the events in the queue. This is a key feature of the Event Sourcing pattern.
+In this example, the state of the system can be recreated at any point by replaying the events in the queue. This is a
+key feature of the Event Sourcing pattern.
 
 ## When to Use the Event Sourcing Pattern in Java
 
 * In systems where complete audit trails and historical changes are crucial.
 * In complex domains where the state of an application is derived from a series of changes.
-* For systems that benefit from high availability and scalability as Event Sourcing naturally lends itself to distributed systems.
+* For systems that benefit from high availability and scalability as Event Sourcing naturally lends itself to
+  distributed systems.
 
 ## Real-World Applications of Event Sourcing Pattern in Java
 
@@ -229,8 +246,10 @@ Trade-offs
 
 ## Related Java Design Patterns
 
-* [Command Query Responsibility Segregation (CQRS)](https://java-design-patterns.com/patterns/cqrs/): Often used together with Event Sourcing to separate read and write responsibilities, enhancing performance and scalability.
-* Snapshot: Used to optimize Event Sourcing systems by periodically saving the current state to avoid replaying a long sequence of events.
+* [Command Query Responsibility Segregation (CQRS)](https://java-design-patterns.com/patterns/cqrs/): Often used
+  together with Event Sourcing to separate read and write responsibilities, enhancing performance and scalability.
+* Snapshot: Used to optimize Event Sourcing systems by periodically saving the current state to avoid replaying a long
+  sequence of events.
 
 ## References and Credits
 

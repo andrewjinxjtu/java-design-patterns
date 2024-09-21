@@ -31,17 +31,16 @@ import org.junit.jupiter.api.Test;
 
 /**
  * ContentTest
- *
  */
 class ContentTest {
 
-  @Test
-  void testToString() {
-    for (final var content : Content.values()) {
-      final var toString = content.toString();
-      assertNotNull(toString);
-      assertFalse(toString.trim().isEmpty());
+    @Test
+    void testToString() {
+        for (final var content : Content.values()) {
+            final var toString = content.toString();
+            assertNotNull(toString);
+            assertFalse(toString.trim().isEmpty());
+        }
     }
-  }
 
 }

@@ -33,27 +33,26 @@ import org.junit.jupiter.api.Test;
 
 /**
  * ConsumerTest
- *
  */
 class ConsumerTest {
 
-  private static final int ITEM_COUNT = 5;
+    private static final int ITEM_COUNT = 5;
 
-  @Test
-  void testConsume() throws Exception {
-    final var queue = spy(new ItemQueue());
-    for (var id = 0; id < ITEM_COUNT; id++) {
-      queue.put(new Item("producer", id));
+    @Test
+    void testConsume() throws Exception {
+        final var queue = spy(new ItemQueue());
+        for (var id = 0; id < ITEM_COUNT; id++) {
+            queue.put(new Item("producer", id));
+        }
+
+        reset(queue); // Don't count the preparation above as interactions with the queue
+        final var consumer = new Consumer("consumer", queue);
+
+        for (var id = 0; id < ITEM_COUNT; id++) {
+            consumer.consume();
+        }
+
+        verify(queue, times(ITEM_COUNT)).take();
     }
-
-    reset(queue); // Don't count the preparation above as interactions with the queue
-    final var consumer = new Consumer("consumer", queue);
-
-    for (var id = 0; id < ITEM_COUNT; id++) {
-      consumer.consume();
-    }
-
-    verify(queue, times(ITEM_COUNT)).take();
-  }
 
 }

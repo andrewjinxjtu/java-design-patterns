@@ -22,6 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -30,7 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Guard implements Permission {
 
-  protected void enter() {
-    LOGGER.info("You can enter");
-  }
+    protected void enter() {
+        LOGGER.info("You can enter");
+    }
 }

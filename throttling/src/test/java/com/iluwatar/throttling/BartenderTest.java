@@ -27,7 +27,9 @@ package com.iluwatar.throttling;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.iluwatar.throttling.timer.Throttler;
+
 import java.util.stream.IntStream;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -35,17 +37,18 @@ import org.junit.jupiter.api.Test;
  */
 class BartenderTest {
 
-  private final CallsCount callsCount = new CallsCount();
+    private final CallsCount callsCount = new CallsCount();
 
-  @Test
-  void dummyCustomerApiTest() {
-    var tenant = new BarCustomer("pirate", 2, callsCount);
-    // In order to assure that throttling limits will not be reset, we use an empty throttling implementation
-    var timer = (Throttler) () -> {};
-    var service = new Bartender(timer, callsCount);
+    @Test
+    void dummyCustomerApiTest() {
+        var tenant = new BarCustomer("pirate", 2, callsCount);
+        // In order to assure that throttling limits will not be reset, we use an empty throttling implementation
+        var timer = (Throttler) () -> {
+        };
+        var service = new Bartender(timer, callsCount);
 
-    IntStream.range(0, 5).mapToObj(i -> tenant).forEach(service::orderDrink);
-    var counter = callsCount.getCount(tenant.getName());
-    assertEquals(2, counter, "Counter limit must be reached");
-  }
+        IntStream.range(0, 5).mapToObj(i -> tenant).forEach(service::orderDrink);
+        var counter = callsCount.getCount(tenant.getName());
+        assertEquals(2, counter, "Counter limit must be reached");
+    }
 }

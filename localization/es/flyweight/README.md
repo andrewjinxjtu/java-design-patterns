@@ -192,9 +192,11 @@ Flyweight cuando se cumplan todas las condiciones siguientes:
 * Una aplicación utiliza un gran número de objetos.
 * Los costes de almacenamiento son altos debido a la gran cantidad de objetos.
 * La mayor parte del estado de los objetos puede hacerse extrínseco.
-* Muchos grupos de objetos pueden ser reemplazados por relativamente pocos objetos compartidos una vez que el estado extrínseco
+* Muchos grupos de objetos pueden ser reemplazados por relativamente pocos objetos compartidos una vez que el estado
+  extrínseco
   extrínseco.
-* La aplicación no depende de la identidad de los objetos. Dado que los objetos flyweight pueden ser compartidos, las pruebas de identidad
+* La aplicación no depende de la identidad de los objetos. Dado que los objetos flyweight pueden ser compartidos, las
+  pruebas de identidad
   devolverán verdadero para objetos conceptualmente distintos.
 
 ## Usos conocidos

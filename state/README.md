@@ -16,27 +16,35 @@ tag:
 
 ## Intent of State Design Pattern
 
-Enable an object to alter its behavior dynamically as its internal state changes, optimizing Java application responsiveness.
+Enable an object to alter its behavior dynamically as its internal state changes, optimizing Java application
+responsiveness.
 
 ## Detailed Explanation of State Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a traffic light system at an intersection. The traffic light can be in one of three states: Green, Yellow, or Red. Depending on the current state, the traffic light's behavior changes:
+> Imagine a traffic light system at an intersection. The traffic light can be in one of three states: Green, Yellow, or
+> Red. Depending on the current state, the traffic light's behavior changes:
 >
 > 1. **Green State**: Cars are allowed to pass through the intersection.
 > 2. **Yellow State**: Cars are warned that the light will soon turn red, so they should prepare to stop.
 > 3. **Red State**: Cars must stop and wait for the light to turn green.
 >
-> In this scenario, the traffic light uses the State design pattern. Each state (Green, Yellow, Red) is represented by a different object that defines what happens in that particular state. The traffic light (context) delegates the behavior to the current state object. When the state changes (e.g., from Green to Yellow), the traffic light updates its state object and changes its behavior accordingly. 
+> In this scenario, the traffic light uses the State design pattern. Each state (Green, Yellow, Red) is represented by a
+> different object that defines what happens in that particular state. The traffic light (context) delegates the behavior
+> to the current state object. When the state changes (e.g., from Green to Yellow), the traffic light updates its state
+> object and changes its behavior accordingly.
 
 In plain words
 
-> State pattern allows an object to change its behavior. 
+> State pattern allows an object to change its behavior.
 
 Wikipedia says
 
-> The state pattern is a behavioral software design pattern that allows an object to alter its behavior when its internal state changes. This pattern is close to the concept of finite-state machines. The state pattern can be interpreted as a strategy pattern, which is able to switch a strategy through invocations of methods defined in the pattern's interface.
+> The state pattern is a behavioral software design pattern that allows an object to alter its behavior when its
+> internal state changes. This pattern is close to the concept of finite-state machines. The state pattern can be
+> interpreted as a strategy pattern, which is able to switch a strategy through invocations of methods defined in the
+> pattern's interface.
 
 ## Programmatic Example of State Pattern in Java
 
@@ -171,7 +179,8 @@ Benefits:
 
 * Localizes state-specific behavior and partitions behavior for different states.
 * Makes state transitions explicit.
-* Reusable State objects can be efficiently shared among various contexts in Java, enhancing memory management and performance.
+* Reusable State objects can be efficiently shared among various contexts in Java, enhancing memory management and
+  performance.
 
 Trade-offs:
 
@@ -180,9 +189,11 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): State objects may be shared between different contexts.
+* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): State objects may be shared between different
+  contexts.
 * [Singleton](https://java-design-patterns.com/patterns/singleton/): State objects are often singletons.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Both patterns have similar structures, but the State pattern's implementations depend on the context’s state.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Both patterns have similar structures, but the State
+  pattern's implementations depend on the context’s state.
 
 ## References and Credits
 

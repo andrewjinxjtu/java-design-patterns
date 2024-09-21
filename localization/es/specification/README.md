@@ -44,8 +44,10 @@ enums Tamaño, Movimiento y Color); pero también pueden ser valores continuos (
 criatura). En este caso, es más apropiado utilizar lo que llamamos "especificación parametrizada",
 en la que el valor de la propiedad puede darse como argumento al instanciar la criatura, lo que permite
 mayor flexibilidad. Una tercera opción es combinar propiedades predefinidas y/o parametrizadas utilizando
-lógica booleana, lo que permite posibilidades de selección casi ilimitadas (esto se denomina "especificación compuesta", véase más adelante).
-especificación compuesta", véase más adelante). Los pros y los contras de cada enfoque se detallan en la tabla al final de este documento.
+lógica booleana, lo que permite posibilidades de selección casi ilimitadas (esto se denomina "especificación compuesta",
+véase más adelante).
+especificación compuesta", véase más adelante). Los pros y los contras de cada enfoque se detallan en la tabla al final
+de este documento.
 de este documento.
 
 ```java
@@ -178,21 +180,24 @@ public class ConjunctionSelector<T> extends AbstractSelector<T> {
 Todo lo que queda por hacer ahora es crear selectores de hoja (ya sean de código duro o parametrizados) que
 sean lo más genéricos posible, y podremos instanciar la clase ``AbstractSelector`` combinando
 cualquier cantidad de selectores, como se ejemplificó anteriormente. Debemos tener cuidado, sin embargo, ya que es fácil
-cometer un error al combinar muchos operadores lógicos; en particular, debemos prestar atención a la prioridad de las operaciones.
+cometer un error al combinar muchos operadores lógicos; en particular, debemos prestar atención a la prioridad de las
+operaciones.
 la prioridad de las operaciones. En general, la especificación compuesta es una gran manera de escribir más
 código reutilizable, ya que no es necesario crear una clase Selector para cada operación de filtrado. En su lugar
-simplemente creamos una instancia de ``AbstractSelector`` "sobre la marcha", utilizando selectores genéricos de "hoja" y algunos selectores booleanos básicos.
+simplemente creamos una instancia de ``AbstractSelector`` "sobre la marcha", utilizando selectores genéricos de "hoja" y
+algunos selectores booleanos básicos.
 y alguna lógica booleana básica.
 
 **Comparación de los distintos enfoques**
 
-| Patrón | Uso | Pros | Contras |
-|---|---|---|---|
-| Especificación Codificada | Los criterios de selección son pocos y se conocen de antemano | + Fácil de implementar | - Inflexible |
-| | | + Expresivo |
-| Especificación Parametrizada | Los criterios de selección abarcan un amplio rango de valores (por ejemplo, masa, velocidad,...) | + Alguna flexibilidad | - Aún requiere clases de propósito especial |
-| Especificación Compuesta | Hay muchos criterios de selección que se pueden combinar de múltiples maneras, por lo tanto, no es factible crear una clase para cada selector | + Muy flexible, sin requerir muchas clases especializadas | - Algo más difícil de comprender |
-| | | + Admite operaciones lógicas | - Todavía necesitas crear las clases base utilizadas como hojas |
+| Patrón                       | Uso                                                                                                                                            | Pros                                                      | Contras                                                         |
+|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------|
+| Especificación Codificada    | Los criterios de selección son pocos y se conocen de antemano                                                                                  | + Fácil de implementar                                    | - Inflexible                                                    |
+|                              |                                                                                                                                                | + Expresivo                                               |
+| Especificación Parametrizada | Los criterios de selección abarcan un amplio rango de valores (por ejemplo, masa, velocidad,...)                                               | + Alguna flexibilidad                                     | - Aún requiere clases de propósito especial                     |
+| Especificación Compuesta     | Hay muchos criterios de selección que se pueden combinar de múltiples maneras, por lo tanto, no es factible crear una clase para cada selector | + Muy flexible, sin requerir muchas clases especializadas | - Algo más difícil de comprender                                |
+|                              |                                                                                                                                                | + Admite operaciones lógicas                              | - Todavía necesitas crear las clases base utilizadas como hojas |
+
 ## Class diagram
 
 ![alt text](./etc/specification.png "Specification")
@@ -201,7 +206,8 @@ y alguna lógica booleana básica.
 
 Utilice el patrón Specification cuando
 
-* Necesitas seleccionar un subconjunto de objetos basándote en algún criterio, y refrescar la selección en varios momentos.
+* Necesitas seleccionar un subconjunto de objetos basándote en algún criterio, y refrescar la selección en varios
+  momentos.
 * Necesita comprobar que sólo se utilizan objetos adecuados para una determinada función (validación).
 
 ## Patrones relacionados

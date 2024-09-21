@@ -44,57 +44,56 @@ import org.junit.jupiter.api.Test;
  */
 class MongoBankTest {
 
-  private static final String TEST_DB = "lotteryDBTest";
-  private static final String TEST_ACCOUNTS_COLLECTION = "testAccounts";
+    private static final String TEST_DB = "lotteryDBTest";
+    private static final String TEST_ACCOUNTS_COLLECTION = "testAccounts";
 
-  private static MongoClient mongoClient;
-  private static MongoDatabase mongoDatabase;
+    private static MongoClient mongoClient;
+    private static MongoDatabase mongoDatabase;
 
-  private MongoBank mongoBank;
+    private MongoBank mongoBank;
 
-  private static TransitionWalker.ReachedState<RunningMongodProcess> mongodProcess;
+    private static TransitionWalker.ReachedState<RunningMongodProcess> mongodProcess;
 
-  private static ServerAddress serverAddress;
-
-
-
-  @BeforeAll
-  static void setUp() {
-    mongodProcess = Mongod.instance().start(Version.Main.V7_0);
-    serverAddress = mongodProcess.current().getServerAddress();
-    mongoClient = MongoClients.create("mongodb://" + serverAddress.toString());
-    mongoClient.startSession();
-    mongoDatabase = mongoClient.getDatabase(TEST_DB);
-  }
-
-  @AfterAll
-  static void tearDown() {
-    mongoClient.close();
-    mongodProcess.close();
-  }
+    private static ServerAddress serverAddress;
 
 
-  @BeforeEach
-  void init() {
-    System.setProperty("mongo-host", serverAddress.getHost());
-    System.setProperty("mongo-port", String.valueOf(serverAddress.getPort()));
-    mongoDatabase.drop();
-    mongoBank = new MongoBank(mongoDatabase.getName(), TEST_ACCOUNTS_COLLECTION);
-  }
+    @BeforeAll
+    static void setUp() {
+        mongodProcess = Mongod.instance().start(Version.Main.V7_0);
+        serverAddress = mongodProcess.current().getServerAddress();
+        mongoClient = MongoClients.create("mongodb://" + serverAddress.toString());
+        mongoClient.startSession();
+        mongoDatabase = mongoClient.getDatabase(TEST_DB);
+    }
 
-  @Test
-  void testSetup() {
-    assertEquals(0, mongoBank.getAccountsCollection().countDocuments());
-  }
+    @AfterAll
+    static void tearDown() {
+        mongoClient.close();
+        mongodProcess.close();
+    }
 
-  @Test
-  void testFundTransfers() {
-    assertEquals(0, mongoBank.getFunds("000-000"));
-    mongoBank.setFunds("000-000", 10);
-    assertEquals(10, mongoBank.getFunds("000-000"));
-    assertEquals(0, mongoBank.getFunds("111-111"));
-    mongoBank.transferFunds(9, "000-000", "111-111");
-    assertEquals(1, mongoBank.getFunds("000-000"));
-    assertEquals(9, mongoBank.getFunds("111-111"));
-  }
+
+    @BeforeEach
+    void init() {
+        System.setProperty("mongo-host", serverAddress.getHost());
+        System.setProperty("mongo-port", String.valueOf(serverAddress.getPort()));
+        mongoDatabase.drop();
+        mongoBank = new MongoBank(mongoDatabase.getName(), TEST_ACCOUNTS_COLLECTION);
+    }
+
+    @Test
+    void testSetup() {
+        assertEquals(0, mongoBank.getAccountsCollection().countDocuments());
+    }
+
+    @Test
+    void testFundTransfers() {
+        assertEquals(0, mongoBank.getFunds("000-000"));
+        mongoBank.setFunds("000-000", 10);
+        assertEquals(10, mongoBank.getFunds("000-000"));
+        assertEquals(0, mongoBank.getFunds("111-111"));
+        mongoBank.transferFunds(9, "000-000", "111-111");
+        assertEquals(1, mongoBank.getFunds("000-000"));
+        assertEquals(9, mongoBank.getFunds("111-111"));
+    }
 }

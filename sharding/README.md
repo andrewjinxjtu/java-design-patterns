@@ -17,13 +17,17 @@ tag:
 
 ## Intent of Sharding Design Pattern
 
-Sharding, a pivotal Java design pattern, significantly boosts database scalability and performance through horizontal partitioning.
+Sharding, a pivotal Java design pattern, significantly boosts database scalability and performance through horizontal
+partitioning.
 
 ## Detailed Explanation of Sharding Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a large e-commerce website with millions of users and transactions. To handle the immense amount of data and ensure the system remains responsive, the user data is sharded across multiple database servers. For instance, users with IDs ending in 0-4 might be stored on one server, and those ending in 5-9 on another. This distribution allows the system to handle a higher load by parallelizing read and write operations across multiple servers.
+> Consider a large e-commerce website with millions of users and transactions. To handle the immense amount of data and
+> ensure the system remains responsive, the user data is sharded across multiple database servers. For instance, users
+> with IDs ending in 0-4 might be stored on one server, and those ending in 5-9 on another. This distribution allows the
+> system to handle a higher load by parallelizing read and write operations across multiple servers.
 
 In plain words
 
@@ -31,17 +35,32 @@ In plain words
 
 Wikipedia says
 
-> Horizontal partitioning is a database design principle whereby rows of a database table are held separately, rather than being split into columns (which is what normalization and vertical partitioning do, to differing extents). Each partition forms part of a shard, which may in turn be located on a separate database server or physical location.
+> Horizontal partitioning is a database design principle whereby rows of a database table are held separately, rather
+> than being split into columns (which is what normalization and vertical partitioning do, to differing extents). Each
+> partition forms part of a shard, which may in turn be located on a separate database server or physical location.
 >
-> There are numerous advantages to the horizontal partitioning approach. Since the tables are divided and distributed into multiple servers, the total number of rows in each table in each database is reduced. This reduces index size, which generally improves search performance. A database shard can be placed on separate hardware, and multiple shards can be placed on multiple machines. This enables a distribution of the database over a large number of machines, greatly improving performance. In addition, if the database shard is based on some real-world segmentation of the data (e.g., European customers v. American customers) then it may be possible to infer the appropriate shard membership easily and automatically, and query only the relevant shard.
+> There are numerous advantages to the horizontal partitioning approach. Since the tables are divided and distributed
+> into multiple servers, the total number of rows in each table in each database is reduced. This reduces index size,
+> which generally improves search performance. A database shard can be placed on separate hardware, and multiple shards
+> can be placed on multiple machines. This enables a distribution of the database over a large number of machines, greatly
+> improving performance. In addition, if the database shard is based on some real-world segmentation of the data (e.g.,
+> European customers v. American customers) then it may be possible to infer the appropriate shard membership easily and
+> automatically, and query only the relevant shard.
 
 ## Programmatic Example of Sharding Pattern in Java
 
-Sharding is a type of database partitioning that separates very large databases into smaller, faster, more easily managed parts called data shards. The word shard means a small part of a whole. In software architecture, it refers to a horizontal partition in a database or search engine. Each individual partition is referred to as a shard or database shard.
+Sharding is a type of database partitioning that separates very large databases into smaller, faster, more easily
+managed parts called data shards. The word shard means a small part of a whole. In software architecture, it refers to a
+horizontal partition in a database or search engine. Each individual partition is referred to as a shard or database
+shard.
 
-In the given code, we have a `ShardManager` class that manages the shards. It has two subclasses `HashShardManager` and `RangeShardManager` that implement different sharding strategies. The `Shard` class represents a shard that stores data. The `Data` class represents the data to be stored in the shards.
+In the given code, we have a `ShardManager` class that manages the shards. It has two subclasses `HashShardManager` and
+`RangeShardManager` that implement different sharding strategies. The `Shard` class represents a shard that stores data.
+The `Data` class represents the data to be stored in the shards.
 
-The `ShardManager` is an abstract class that provides the basic structure for managing shards. It has a `storeData` method that stores data in a shard and an `allocateShard` method that determines which shard to store the data in. The `allocateShard` method is abstract and must be implemented by subclasses.
+The `ShardManager` is an abstract class that provides the basic structure for managing shards. It has a `storeData`
+method that stores data in a shard and an `allocateShard` method that determines which shard to store the data in. The
+`allocateShard` method is abstract and must be implemented by subclasses.
 
 ```java
 public abstract class ShardManager {
@@ -53,7 +72,8 @@ public abstract class ShardManager {
 }
 ```
 
-The `HashShardManager` is a subclass of `ShardManager` that implements a hash-based sharding strategy. In the `allocateShard` method, it calculates a hash of the data key and uses it to determine the shard to store the data in.
+The `HashShardManager` is a subclass of `ShardManager` that implements a hash-based sharding strategy. In the
+`allocateShard` method, it calculates a hash of the data key and uses it to determine the shard to store the data in.
 
 ```java
 public class HashShardManager extends ShardManager {
@@ -67,7 +87,8 @@ public class HashShardManager extends ShardManager {
 }
 ```
 
-The `RangeShardManager` is another subclass of `ShardManager` that implements a range-based sharding strategy. In the `allocateShard` method, it uses the data type to determine the shard to store the data in.
+The `RangeShardManager` is another subclass of `ShardManager` that implements a range-based sharding strategy. In the
+`allocateShard` method, it uses the data type to determine the shard to store the data in.
 
 ```java
 public class RangeShardManager extends ShardManager {
@@ -84,7 +105,8 @@ public class RangeShardManager extends ShardManager {
 }
 ```
 
-The `Shard` class represents a shard. It has a `storeData` method that stores data in the shard and a `getDataById` method that retrieves data from the shard by its id.
+The `Shard` class represents a shard. It has a `storeData` method that stores data in the shard and a `getDataById`
+method that retrieves data from the shard by its id.
 
 ```java
 public class Shard {
@@ -134,7 +156,9 @@ public class Data {
 }
 ```
 
-This is the `main` function of the example demonstrating three different sharding strategies: lookup, range, and hash. Each strategy determines which shard to store the data in a different way. The lookup strategy uses a lookup table, the range strategy uses the data type, and the hash strategy uses a hash of the data key.
+This is the `main` function of the example demonstrating three different sharding strategies: lookup, range, and hash.
+Each strategy determines which shard to store the data in a different way. The lookup strategy uses a lookup table, the
+range strategy uses the data type, and the hash strategy uses a hash of the data key.
 
 ```java
 public static void main(String[] args) {
@@ -209,7 +233,8 @@ Finally, here is the program output:
 ## When to Use the Sharding Pattern in Java
 
 * Use when dealing with large datasets that exceed the capacity of a single database.
-* Ideal for Java applications requiring robust scalability, sharding improves performance by distributing database loads effectively.
+* Ideal for Java applications requiring robust scalability, sharding improves performance by distributing database loads
+  effectively.
 * Useful for applications requiring high availability and fault tolerance.
 * Effective in environments where read and write operations can be parallelized across shards.
 
@@ -234,10 +259,14 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Caching](https://java-design-patterns.com/patterns/caching/): Can be used in conjunction with sharding to further improve performance.
-* [Data Mapper](https://java-design-patterns.com/patterns/data-mapper/): Helps in abstracting and encapsulating the details of database interactions, which can be complex in a sharded environment.
-* [Repository](https://java-design-patterns.com/patterns/repository/): Provides a way to manage data access logic centrally, which is useful when dealing with multiple shards.
-* [Service Locator](https://java-design-patterns.com/patterns/service-locator/): Can be used to find and interact with different shards in a distributed system.
+* [Caching](https://java-design-patterns.com/patterns/caching/): Can be used in conjunction with sharding to further
+  improve performance.
+* [Data Mapper](https://java-design-patterns.com/patterns/data-mapper/): Helps in abstracting and encapsulating the
+  details of database interactions, which can be complex in a sharded environment.
+* [Repository](https://java-design-patterns.com/patterns/repository/): Provides a way to manage data access logic
+  centrally, which is useful when dealing with multiple shards.
+* [Service Locator](https://java-design-patterns.com/patterns/service-locator/): Can be used to find and interact with
+  different shards in a distributed system.
 
 ## References and Credits
 

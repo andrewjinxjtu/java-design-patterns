@@ -18,7 +18,9 @@ Se trata de un enfoque de una página que conduce a un archivo lógico que gesti
 
 Un ejemplo real
 
-> En un sitio web de compras, hay una página de registro para dar de alta un perfil de usuario. Una vez finalizado el registro, la página de registro se redirigirá a una página de usuario para mostrar la información registrada del usuario.
+> En un sitio web de compras, hay una página de registro para dar de alta un perfil de usuario. Una vez finalizado el
+> registro, la página de registro se redirigirá a una página de usuario para mostrar la información registrada del
+> usuario.
 
 En pocas palabras
 
@@ -63,6 +65,7 @@ public class SignupController {
   }
 }
 ```
+
 Aquí está el modelo y la vista de Signup que son manejados por el controlador de Signup.
 
 ```java
@@ -150,13 +153,17 @@ public class UserView {
 ```
 
 ## Diagrama de clases
+
 ![alt text](./etc/page-controller.urm.png)
 
 ## Aplicabilidad
+
 Utilice el patrón Page Controller cuando
+
 - implementas un sitio donde la mayor parte de la lógica del controlador es simple
 - implementa un sitio en el que determinadas acciones se gestionan con una página de servidor concreta
 
 ## Créditos
+
 - [Page Controller](https://www.martinfowler.com/eaaCatalog/pageController.html)
 - [Pattern of Enterprise Application Architecture](https://www.martinfowler.com/books/eaa.html)

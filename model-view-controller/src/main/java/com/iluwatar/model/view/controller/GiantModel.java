@@ -40,13 +40,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class GiantModel {
 
-  private Health health;
-  private Fatigue fatigue;
-  private Nourishment nourishment;
+    private Health health;
+    private Fatigue fatigue;
+    private Nourishment nourishment;
 
 
-  @Override
-  public String toString() {
-    return String.format("The giant looks %s, %s and %s.", health, fatigue, nourishment);
-  }
+    @Override
+    public String toString() {
+        return String.format("The giant looks %s, %s and %s.", health, fatigue, nourishment);
+    }
 }

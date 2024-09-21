@@ -37,16 +37,16 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class UserAccount {
-  /**
-   * User Id.
-   */
-  private String userId;
-  /**
-   * User Name.
-   */
-  private String userName;
-  /**
-   * Additional Info.
-   */
-  private String additionalInfo;
+    /**
+     * User Id.
+     */
+    private String userId;
+    /**
+     * User Name.
+     */
+    private String userName;
+    /**
+     * Additional Info.
+     */
+    private String additionalInfo;
 }

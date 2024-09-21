@@ -31,113 +31,113 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 /**
  * CharacterTest
- *
  */
 class CharacterTest {
 
-  @Test
-  void testPrototypeStats() {
-    final var prototype = new Character();
+    @Test
+    void testPrototypeStats() {
+        final var prototype = new Character();
 
-    for (final var stat : Stats.values()) {
-      assertFalse(prototype.has(stat));
-      assertNull(prototype.get(stat));
+        for (final var stat : Stats.values()) {
+            assertFalse(prototype.has(stat));
+            assertNull(prototype.get(stat));
 
-      final var expectedValue = stat.ordinal();
-      prototype.set(stat, expectedValue);
-      assertTrue(prototype.has(stat));
-      assertEquals(expectedValue, prototype.get(stat));
+            final var expectedValue = stat.ordinal();
+            prototype.set(stat, expectedValue);
+            assertTrue(prototype.has(stat));
+            assertEquals(expectedValue, prototype.get(stat));
 
-      prototype.remove(stat);
-      assertFalse(prototype.has(stat));
-      assertNull(prototype.get(stat));
+            prototype.remove(stat);
+            assertFalse(prototype.has(stat));
+            assertNull(prototype.get(stat));
+        }
+
     }
 
-  }
+    @Test
+    void testCharacterStats() {
+        final var prototype = new Character();
+        Arrays.stream(Stats.values()).forEach(stat -> prototype.set(stat, stat.ordinal()));
 
-  @Test
-  void testCharacterStats() {
-    final var prototype = new Character();
-    Arrays.stream(Stats.values()).forEach(stat -> prototype.set(stat, stat.ordinal()));
-
-    final var mage = new Character(Type.MAGE, prototype);
-    for (final var stat : Stats.values()) {
-      final var expectedValue = stat.ordinal();
-      assertTrue(mage.has(stat));
-      assertEquals(expectedValue, mage.get(stat));
+        final var mage = new Character(Type.MAGE, prototype);
+        for (final var stat : Stats.values()) {
+            final var expectedValue = stat.ordinal();
+            assertTrue(mage.has(stat));
+            assertEquals(expectedValue, mage.get(stat));
+        }
     }
-  }
 
-  @Test
-  void testToString() {
-    final var prototype = new Character();
-    prototype.set(Stats.ARMOR, 1);
-    prototype.set(Stats.AGILITY, 2);
-    prototype.set(Stats.INTELLECT, 3);
-    var message = """
-            Stats:
-             - AGILITY:2
-             - ARMOR:1
-             - INTELLECT:3
-            """;
-    assertEquals(message, prototype.toString());
+    @Test
+    void testToString() {
+        final var prototype = new Character();
+        prototype.set(Stats.ARMOR, 1);
+        prototype.set(Stats.AGILITY, 2);
+        prototype.set(Stats.INTELLECT, 3);
+        var message = """
+                Stats:
+                 - AGILITY:2
+                 - ARMOR:1
+                 - INTELLECT:3
+                """;
+        assertEquals(message, prototype.toString());
 
-    final var stupid = new Character(Type.ROGUE, prototype);
-    stupid.remove(Stats.INTELLECT);
-    String expectedStupidString = """
-            Character type: ROGUE
-            Stats:
-             - AGILITY:2
-             - ARMOR:1
-            """;
-    assertEquals(expectedStupidString, stupid.toString());
+        final var stupid = new Character(Type.ROGUE, prototype);
+        stupid.remove(Stats.INTELLECT);
+        String expectedStupidString = """
+                Character type: ROGUE
+                Stats:
+                 - AGILITY:2
+                 - ARMOR:1
+                """;
+        assertEquals(expectedStupidString, stupid.toString());
 
-    final var weak = new Character("weak", prototype);
-    weak.remove(Stats.ARMOR);
-    String expectedWeakString = """
-            Player: weak
-            Stats:
-             - AGILITY:2
-             - INTELLECT:3
-            """;
-    assertEquals(expectedWeakString, weak.toString());
+        final var weak = new Character("weak", prototype);
+        weak.remove(Stats.ARMOR);
+        String expectedWeakString = """
+                Player: weak
+                Stats:
+                 - AGILITY:2
+                 - INTELLECT:3
+                """;
+        assertEquals(expectedWeakString, weak.toString());
 
-  }
+    }
 
-  @Test
-  void testName() {
-    final var prototype = new Character();
-    prototype.set(Stats.ARMOR, 1);
-    prototype.set(Stats.INTELLECT, 2);
-    assertNull(prototype.name());
+    @Test
+    void testName() {
+        final var prototype = new Character();
+        prototype.set(Stats.ARMOR, 1);
+        prototype.set(Stats.INTELLECT, 2);
+        assertNull(prototype.name());
 
-    final var stupid = new Character(Type.ROGUE, prototype);
-    stupid.remove(Stats.INTELLECT);
-    assertNull(stupid.name());
+        final var stupid = new Character(Type.ROGUE, prototype);
+        stupid.remove(Stats.INTELLECT);
+        assertNull(stupid.name());
 
-    final var weak = new Character("weak", prototype);
-    weak.remove(Stats.ARMOR);
-    assertEquals("weak", weak.name());
-  }
+        final var weak = new Character("weak", prototype);
+        weak.remove(Stats.ARMOR);
+        assertEquals("weak", weak.name());
+    }
 
-  @Test
-  void testType() {
-    final var prototype = new Character();
-    prototype.set(Stats.ARMOR, 1);
-    prototype.set(Stats.INTELLECT, 2);
-    assertNull(prototype.type());
+    @Test
+    void testType() {
+        final var prototype = new Character();
+        prototype.set(Stats.ARMOR, 1);
+        prototype.set(Stats.INTELLECT, 2);
+        assertNull(prototype.type());
 
-    final var stupid = new Character(Type.ROGUE, prototype);
-    stupid.remove(Stats.INTELLECT);
-    assertEquals(Type.ROGUE, stupid.type());
+        final var stupid = new Character(Type.ROGUE, prototype);
+        stupid.remove(Stats.INTELLECT);
+        assertEquals(Type.ROGUE, stupid.type());
 
-    final var weak = new Character("weak", prototype);
-    weak.remove(Stats.ARMOR);
-    assertNull(weak.type());
-  }
+        final var weak = new Character("weak", prototype);
+        weak.remove(Stats.ARMOR);
+        assertNull(weak.type());
+    }
 
 }

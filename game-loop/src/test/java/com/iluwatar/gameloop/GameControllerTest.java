@@ -32,27 +32,27 @@ import org.junit.jupiter.api.Test;
 
 class GameControllerTest {
 
-  private GameController controller;
+    private GameController controller;
 
-  @BeforeEach
-  void setup() {
-    controller = new GameController();
-  }
+    @BeforeEach
+    void setup() {
+        controller = new GameController();
+    }
 
-  @AfterEach
-  void tearDown() {
-    controller = null;
-  }
+    @AfterEach
+    void tearDown() {
+        controller = null;
+    }
 
-  @Test
-  void testMoveBullet() {
-    controller.moveBullet(1.5f);
-    assertEquals(1.5f, controller.bullet.getPosition(), 0);
-  }
+    @Test
+    void testMoveBullet() {
+        controller.moveBullet(1.5f);
+        assertEquals(1.5f, controller.bullet.getPosition(), 0);
+    }
 
-  @Test
-  void testGetBulletPosition() {
-    assertEquals(controller.bullet.getPosition(), controller.getBulletPosition(), 0);
-  }
+    @Test
+    void testGetBulletPosition() {
+        assertEquals(controller.bullet.getPosition(), controller.getBulletPosition(), 0);
+    }
 
 }

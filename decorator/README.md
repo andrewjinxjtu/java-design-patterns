@@ -19,25 +19,38 @@ tag:
 
 ## Intent of Decorator Design Pattern
 
-The Decorator pattern allows for the dynamic addition of responsibilities to objects without modifying their existing code. It achieves this by providing a way to "wrap" objects within objects of similar interface, enhancing Java design patterns flexibility.
+The Decorator pattern allows for the dynamic addition of responsibilities to objects without modifying their existing
+code. It achieves this by providing a way to "wrap" objects within objects of similar interface, enhancing Java design
+patterns flexibility.
 
 ## Detailed Explanation of Decorator Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a coffee shop where you can customize your coffee order. You start with a basic coffee, and you can add different ingredients like milk, sugar, whipped cream, and so on. Each addition is like a decorator in the Decorator design pattern. The base coffee object can be decorated with additional functionality (flavors, toppings) dynamically. For example, you can start with a plain coffee object, then wrap it with a milk decorator, followed by a sugar decorator, and finally a whipped cream decorator. Each decorator adds new features or modifies the behavior of the coffee object, similar to how the Decorator pattern works in software design.
+> Imagine a coffee shop where you can customize your coffee order. You start with a basic coffee, and you can add
+> different ingredients like milk, sugar, whipped cream, and so on. Each addition is like a decorator in the Decorator
+> design pattern. The base coffee object can be decorated with additional functionality (flavors, toppings) dynamically.
+> For example, you can start with a plain coffee object, then wrap it with a milk decorator, followed by a sugar
+> decorator, and finally a whipped cream decorator. Each decorator adds new features or modifies the behavior of the
+> coffee object, similar to how the Decorator pattern works in software design.
 
 In plain words
 
-> Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
+> Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a
+> decorator class.
 
 Wikipedia says
 
-> In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern as well as to the Open-Closed Principle, by allowing the functionality of a class to be extended without being modified.
+> In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an
+> individual object, either statically or dynamically, without affecting the behavior of other objects from the same
+> class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows
+> functionality to be divided between classes with unique areas of concern as well as to the Open-Closed Principle, by
+> allowing the functionality of a class to be extended without being modified.
 
 ## Programmatic Example of Decorator Pattern in Java
 
-There is an angry troll living in the nearby hills. Usually, it goes bare-handed, but sometimes it has a weapon. To arm the troll it's not necessary to create a new troll but to decorate it dynamically with a suitable weapon.
+There is an angry troll living in the nearby hills. Usually, it goes bare-handed, but sometimes it has a weapon. To arm
+the troll it's not necessary to create a new troll but to decorate it dynamically with a suitable weapon.
 
 First, we have a `SimpleTroll` implementing the `Troll` interface:
 
@@ -137,7 +150,8 @@ Program output:
 
 Decorator is used to:
 
-* Add responsibilities to individual objects dynamically and transparently, that is, without affecting other objects, a key feature of Java design patterns.
+* Add responsibilities to individual objects dynamically and transparently, that is, without affecting other objects, a
+  key feature of Java design patterns.
 * For responsibilities that can be withdrawn.
 * When extending a class is impractical due to the proliferation of subclasses that could result.
 * For when a class definition might be hidden or otherwise unavailable for subclassing.
@@ -148,8 +162,12 @@ Decorator is used to:
 
 ## Real-World Applications of Decorator Pattern in Java
 
-* GUI toolkits often use decorators to dynamically add behaviors like scrolling, borders, or layout management to components.
-* The [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html), [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html) and [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html) classes in Java are well-known examples utilizing the Decorator pattern.
+* GUI toolkits often use decorators to dynamically add behaviors like scrolling, borders, or layout management to
+  components.
+*
+The [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html), [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html)
+and [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html) classes in Java are well-known
+examples utilizing the Decorator pattern.
 * [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
 * [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
 * [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
@@ -166,14 +184,19 @@ Benefits:
 Trade-offs:
 
 * A decorator and its component aren't identical, so tests for object type will fail.
-* Decorators can lead to a system with lots of small objects that look alike to the programmer, making the desired configuration hard to achieve.
+* Decorators can lead to a system with lots of small objects that look alike to the programmer, making the desired
+  configuration hard to achieve.
 * Overuse can complicate the code structure due to the introduction of numerous small classes.
 
 ## Related Java Design Patterns
 
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): A decorator changes an object's responsibilities, while an adapter changes an object's interface.
-* [Composite](https://java-design-patterns.com/patterns/composite/): Decorators can be viewed as a degenerate composite with only one component. However, a decorator adds additional responsibilities—it isn't intended for object aggregation.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Decorator lets you change the skin of an object, while Strategy lets you change the guts.
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): A decorator changes an object's responsibilities, while
+  an adapter changes an object's interface.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Decorators can be viewed as a degenerate composite
+  with only one component. However, a decorator adds additional responsibilities—it isn't intended for object
+  aggregation.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Decorator lets you change the skin of an object,
+  while Strategy lets you change the guts.
 
 ## References and Credits
 

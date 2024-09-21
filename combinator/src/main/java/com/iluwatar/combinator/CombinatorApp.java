@@ -44,7 +44,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CombinatorApp {
 
-  private static final String TEXT = """
+    private static final String TEXT = """
             It was many and many a year ago,
             In a kingdom by the sea,
             That a maiden there lived whom you may know
@@ -58,33 +58,34 @@ public class CombinatorApp {
             With a love that the winged seraphs of heaven
             Coveted her and me.""";
 
-  /**
-   * main.
-   * @param args args
-   */
-  public static void main(String[] args) {
-    var queriesOr = new String[]{"many", "Annabel"};
-    var finder = Finders.expandedFinder(queriesOr);
-    var res = finder.find(text());
-    LOGGER.info("the result of expanded(or) query[{}] is {}", queriesOr, res);
+    /**
+     * main.
+     *
+     * @param args args
+     */
+    public static void main(String[] args) {
+        var queriesOr = new String[]{"many", "Annabel"};
+        var finder = Finders.expandedFinder(queriesOr);
+        var res = finder.find(text());
+        LOGGER.info("the result of expanded(or) query[{}] is {}", queriesOr, res);
 
-    var queriesAnd = new String[]{"Annabel", "my"};
-    finder = Finders.specializedFinder(queriesAnd);
-    res = finder.find(text());
-    LOGGER.info("the result of specialized(and) query[{}] is {}", queriesAnd, res);
+        var queriesAnd = new String[]{"Annabel", "my"};
+        finder = Finders.specializedFinder(queriesAnd);
+        res = finder.find(text());
+        LOGGER.info("the result of specialized(and) query[{}] is {}", queriesAnd, res);
 
-    finder = Finders.advancedFinder("it was", "kingdom", "sea");
-    res = finder.find(text());
-    LOGGER.info("the result of advanced query is {}", res);
+        finder = Finders.advancedFinder("it was", "kingdom", "sea");
+        res = finder.find(text());
+        LOGGER.info("the result of advanced query is {}", res);
 
-    res = Finders.filteredFinder(" was ", "many", "child").find(text());
-    LOGGER.info("the result of filtered query is {}", res);
+        res = Finders.filteredFinder(" was ", "many", "child").find(text());
+        LOGGER.info("the result of filtered query is {}", res);
 
-  }
+    }
 
-  private static String text() {
+    private static String text() {
 
-    return TEXT;
-  }
+        return TEXT;
+    }
 
 }

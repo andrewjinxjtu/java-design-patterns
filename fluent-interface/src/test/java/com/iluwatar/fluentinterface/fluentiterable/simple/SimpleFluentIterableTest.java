@@ -29,13 +29,12 @@ import com.iluwatar.fluentinterface.fluentiterable.FluentIterableTest;
 
 /**
  * SimpleFluentIterableTest
- *
  */
 class SimpleFluentIterableTest extends FluentIterableTest {
 
-  @Override
-  protected FluentIterable<Integer> createFluentIterable(Iterable<Integer> integers) {
-    return SimpleFluentIterable.fromCopyOf(integers);
-  }
+    @Override
+    protected FluentIterable<Integer> createFluentIterable(Iterable<Integer> integers) {
+        return SimpleFluentIterable.fromCopyOf(integers);
+    }
 
 }

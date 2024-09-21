@@ -35,25 +35,24 @@ import org.junit.jupiter.api.Test;
 
 /**
  * ColorSelectorTest
- *
  */
 class ColorSelectorTest {
 
-  /**
-   * Verify if the color selector gives the correct results
-   */
-  @Test
-  void testColor() {
-    final var greenCreature = mock(Creature.class);
-    when(greenCreature.getColor()).thenReturn(Color.GREEN);
+    /**
+     * Verify if the color selector gives the correct results
+     */
+    @Test
+    void testColor() {
+        final var greenCreature = mock(Creature.class);
+        when(greenCreature.getColor()).thenReturn(Color.GREEN);
 
-    final var redCreature = mock(Creature.class);
-    when(redCreature.getColor()).thenReturn(Color.RED);
+        final var redCreature = mock(Creature.class);
+        when(redCreature.getColor()).thenReturn(Color.RED);
 
-    final var greenSelector = new ColorSelector(Color.GREEN);
-    assertTrue(greenSelector.test(greenCreature));
-    assertFalse(greenSelector.test(redCreature));
+        final var greenSelector = new ColorSelector(Color.GREEN);
+        assertTrue(greenSelector.test(greenCreature));
+        assertFalse(greenSelector.test(redCreature));
 
-  }
+    }
 
 }

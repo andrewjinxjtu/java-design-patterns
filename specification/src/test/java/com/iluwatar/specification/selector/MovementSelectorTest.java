@@ -35,25 +35,24 @@ import org.junit.jupiter.api.Test;
 
 /**
  * MovementSelectorTest
- *
  */
 class MovementSelectorTest {
 
-  /**
-   * Verify if the movement selector gives the correct results.
-   */
-  @Test
-  void testMovement() {
-    final var swimmingCreature = mock(Creature.class);
-    when(swimmingCreature.getMovement()).thenReturn(Movement.SWIMMING);
+    /**
+     * Verify if the movement selector gives the correct results.
+     */
+    @Test
+    void testMovement() {
+        final var swimmingCreature = mock(Creature.class);
+        when(swimmingCreature.getMovement()).thenReturn(Movement.SWIMMING);
 
-    final var flyingCreature = mock(Creature.class);
-    when(flyingCreature.getMovement()).thenReturn(Movement.FLYING);
+        final var flyingCreature = mock(Creature.class);
+        when(flyingCreature.getMovement()).thenReturn(Movement.FLYING);
 
-    final var swimmingSelector = new MovementSelector(Movement.SWIMMING);
-    assertTrue(swimmingSelector.test(swimmingCreature));
-    assertFalse(swimmingSelector.test(flyingCreature));
+        final var swimmingSelector = new MovementSelector(Movement.SWIMMING);
+        assertTrue(swimmingSelector.test(swimmingCreature));
+        assertFalse(swimmingSelector.test(flyingCreature));
 
-  }
+    }
 
 }

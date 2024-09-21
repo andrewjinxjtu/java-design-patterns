@@ -29,10 +29,10 @@ package com.iluwatar.event.asynchronous;
  */
 public interface Event {
 
-  void start();
+    void start();
 
-  void stop();
+    void stop();
 
-  void status();
+    void status();
 
 }

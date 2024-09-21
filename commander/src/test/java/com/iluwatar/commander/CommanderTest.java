@@ -39,6 +39,7 @@ import com.iluwatar.commander.shippingservice.ShippingDatabase;
 import com.iluwatar.commander.shippingservice.ShippingService;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +116,7 @@ class CommanderTest {
                         new DatabaseUnavailableException(), new DatabaseUnavailableException(),
                         new DatabaseUnavailableException(), new DatabaseUnavailableException());
         return new Commander(employeeHandle, paymentService, shippingService,
-          messagingService, qdb, retryParams, timeLimits);
+                messagingService, qdb, retryParams, timeLimits);
     }
 
     private Commander buildCommanderObjectUnknownException() {
@@ -128,7 +129,7 @@ class CommanderTest {
         var qdb = new QueueDatabase
                 (new DatabaseUnavailableException(), new IllegalStateException());
         return new Commander(employeeHandle, paymentService, shippingService,
-            messagingService, qdb, retryParams, timeLimits);
+                messagingService, qdb, retryParams, timeLimits);
     }
 
     private Commander buildCommanderObjectNoPaymentException1() {
@@ -141,7 +142,7 @@ class CommanderTest {
         var qdb = new QueueDatabase
                 (new DatabaseUnavailableException(), new IllegalStateException());
         return new Commander(employeeHandle, paymentService, shippingService,
-            messagingService, qdb, retryParams, timeLimits);
+                messagingService, qdb, retryParams, timeLimits);
     }
 
     private Commander buildCommanderObjectNoPaymentException2() {
@@ -154,7 +155,7 @@ class CommanderTest {
         var qdb = new QueueDatabase
                 (new DatabaseUnavailableException(), new IllegalStateException());
         return new Commander(employeeHandle, paymentService, shippingService,
-            messagingService, qdb, retryParams, timeLimits);
+                messagingService, qdb, retryParams, timeLimits);
     }
 
     private Commander buildCommanderObjectNoPaymentException3() {
@@ -167,7 +168,7 @@ class CommanderTest {
         var qdb = new QueueDatabase
                 (new DatabaseUnavailableException(), new IllegalStateException());
         return new Commander(employeeHandle, paymentService, shippingService,
-            messagingService, qdb, retryParams, timeLimits);
+                messagingService, qdb, retryParams, timeLimits);
     }
 
     private Commander buildCommanderObjectWithDB() {
@@ -234,8 +235,8 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderVanilla() {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -250,8 +251,8 @@ class CommanderTest {
 
     @Test
     void testPlaceOrder() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -266,8 +267,8 @@ class CommanderTest {
 
     @Test
     void testPlaceOrder2() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -282,8 +283,8 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderNoException1() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -298,8 +299,8 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderNoException2() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -314,8 +315,8 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderNoException3() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -330,8 +331,8 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderNoException4() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -348,11 +349,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderUnknownException() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -370,11 +371,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderShortDuration() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -392,11 +393,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderShortDuration2() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -414,11 +415,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderNoExceptionShortMsgDuration() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -436,11 +437,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderNoExceptionShortQueueDuration() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -458,11 +459,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderWithDatabase() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -480,11 +481,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderWithDatabaseAndExceptions() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -527,11 +528,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderWithoutDatabase() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -549,11 +550,11 @@ class CommanderTest {
 
     @Test
     void testPlaceOrderWithoutDatabaseAndExceptions() throws Exception {
-      long paymentTime = timeLimits.paymentTime();
-      long queueTaskTime = timeLimits.queueTaskTime();
-      long messageTime = timeLimits.messageTime();
-      long employeeTime = timeLimits.employeeTime();
-      long queueTime = timeLimits.queueTime();
+        long paymentTime = timeLimits.paymentTime();
+        long queueTaskTime = timeLimits.queueTaskTime();
+        long messageTime = timeLimits.messageTime();
+        long employeeTime = timeLimits.employeeTime();
+        long queueTime = timeLimits.queueTime();
         for (double d = 0.1; d < 2; d = d + 0.1) {
             paymentTime *= d;
             queueTaskTime *= d;
@@ -595,31 +596,31 @@ class CommanderTest {
     }
 
     @Test
-    void testAllSuccessCases() throws Exception{
-      appAllCases.employeeDbSuccessCase();
-      appAllCases.messagingSuccessCase();
-      appAllCases.paymentSuccessCase();
-      appAllCases.queueSuccessCase();
-      appAllCases.shippingSuccessCase();
+    void testAllSuccessCases() throws Exception {
+        appAllCases.employeeDbSuccessCase();
+        appAllCases.messagingSuccessCase();
+        appAllCases.paymentSuccessCase();
+        appAllCases.queueSuccessCase();
+        appAllCases.shippingSuccessCase();
     }
 
     @Test
     void testAllUnavailableCase() throws Exception {
-      appAllCases.employeeDatabaseUnavailableCase();
-      appAllCases.messagingDatabaseUnavailableCasePaymentSuccess();
-      appAllCases.messagingDatabaseUnavailableCasePaymentError();
-      appAllCases.messagingDatabaseUnavailableCasePaymentFailure();
-      appAllCases.paymentDatabaseUnavailableCase();
-      appAllCases.queuePaymentTaskDatabaseUnavailableCase();
-      appAllCases.queueMessageTaskDatabaseUnavailableCase();
-      appAllCases.queueEmployeeDbTaskDatabaseUnavailableCase();
-      appAllCases.itemUnavailableCase();
-      appAllCases.shippingDatabaseUnavailableCase();
+        appAllCases.employeeDatabaseUnavailableCase();
+        appAllCases.messagingDatabaseUnavailableCasePaymentSuccess();
+        appAllCases.messagingDatabaseUnavailableCasePaymentError();
+        appAllCases.messagingDatabaseUnavailableCasePaymentFailure();
+        appAllCases.paymentDatabaseUnavailableCase();
+        appAllCases.queuePaymentTaskDatabaseUnavailableCase();
+        appAllCases.queueMessageTaskDatabaseUnavailableCase();
+        appAllCases.queueEmployeeDbTaskDatabaseUnavailableCase();
+        appAllCases.itemUnavailableCase();
+        appAllCases.shippingDatabaseUnavailableCase();
     }
 
     @Test
     void testAllNotPossibleCase() throws Exception {
-      appAllCases.paymentNotPossibleCase();
-      appAllCases.shippingItemNotPossibleCase();
+        appAllCases.paymentNotPossibleCase();
+        appAllCases.shippingItemNotPossibleCase();
     }
 }

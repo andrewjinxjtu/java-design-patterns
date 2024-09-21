@@ -31,10 +31,10 @@ import org.junit.jupiter.api.Test;
 
 class RoleTest {
 
-  @Test
-  void instanceTest() {
-    var instance = Role.BORROWER.instance();
-    assertTrue(instance.isPresent());
-    assertEquals(instance.get().getClass(), BorrowerRole.class);
-  }
+    @Test
+    void instanceTest() {
+        var instance = Role.BORROWER.instance();
+        assertTrue(instance.isPresent());
+        assertEquals(instance.get().getClass(), BorrowerRole.class);
+    }
 }

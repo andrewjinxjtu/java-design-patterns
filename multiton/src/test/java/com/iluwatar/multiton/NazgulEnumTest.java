@@ -31,22 +31,21 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 /**
  * NazgulEnumTest
- *
  */
 class NazgulEnumTest {
 
-  /**
-   * Check that multiple calls to any one of the instances in the multiton returns
-   * only that one particular instance, and do that for all instances in multiton
-   */
-  @ParameterizedTest
-  @EnumSource
-  void testTheSameObjectIsReturnedWithMultipleCalls(NazgulEnum nazgulEnum) {
-    var instance1 = nazgulEnum;
-    var instance2 = nazgulEnum;
-    var instance3 = nazgulEnum;
-    assertSame(instance1, instance2);
-    assertSame(instance1, instance3);
-    assertSame(instance2, instance3);
-  }
+    /**
+     * Check that multiple calls to any one of the instances in the multiton returns
+     * only that one particular instance, and do that for all instances in multiton
+     */
+    @ParameterizedTest
+    @EnumSource
+    void testTheSameObjectIsReturnedWithMultipleCalls(NazgulEnum nazgulEnum) {
+        var instance1 = nazgulEnum;
+        var instance2 = nazgulEnum;
+        var instance3 = nazgulEnum;
+        assertSame(instance1, instance2);
+        assertSame(instance1, instance3);
+        assertSame(instance2, instance3);
+    }
 }

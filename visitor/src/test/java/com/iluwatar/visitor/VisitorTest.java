@@ -29,8 +29,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
+
 import java.util.LinkedList;
 import java.util.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,103 +45,103 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class VisitorTest<V extends UnitVisitor> {
 
-  private InMemoryAppender appender;
+    private InMemoryAppender appender;
 
-  @BeforeEach
-  void setUp() {
-    appender = new InMemoryAppender();
-  }
-
-  @AfterEach
-  void tearDown() {
-    appender.stop();
-  }
-
-  /**
-   * The tested visitor instance.
-   */
-  private final V visitor;
-
-  /**
-   * The expected response when being visited by a commander.
-   */
-  private final String commanderResponse;
-
-  /**
-   * The expected response when being visited by a sergeant.
-   */
-  private final String sergeantResponse;
-
-  /**
-   * The expected response when being visited by a soldier.
-   */
-  private final String soldierResponse;
-
-  /**
-   * Create a new test instance for the given visitor.
-   *
-   * @param commanderResponse The expected response when being visited by a commander
-   * @param sergeantResponse  The expected response when being visited by a sergeant
-   * @param soldierResponse   The expected response when being visited by a soldier
-   */
-  public VisitorTest(
-      final V visitor,
-      final String commanderResponse,
-      final String sergeantResponse,
-      final String soldierResponse
-  ) {
-    this.visitor = visitor;
-    this.commanderResponse = commanderResponse;
-    this.sergeantResponse = sergeantResponse;
-    this.soldierResponse = soldierResponse;
-  }
-
-  @Test
-  void testVisitCommander() {
-    this.visitor.visit(new Commander());
-    if (this.commanderResponse != null) {
-      assertEquals(this.commanderResponse, appender.getLastMessage());
-      assertEquals(1, appender.getLogSize());
-    }
-  }
-
-  @Test
-  void testVisitSergeant() {
-    this.visitor.visit(new Sergeant());
-    if (this.sergeantResponse != null) {
-      assertEquals(this.sergeantResponse, appender.getLastMessage());
-      assertEquals(1, appender.getLogSize());
-    }
-  }
-
-  @Test
-  void testVisitSoldier() {
-    this.visitor.visit(new Soldier());
-    if (this.soldierResponse != null) {
-      assertEquals(this.soldierResponse, appender.getLastMessage());
-      assertEquals(1, appender.getLogSize());
-    }
-  }
-
-  private static class InMemoryAppender extends AppenderBase<ILoggingEvent> {
-    private final List<ILoggingEvent> log = new LinkedList<>();
-
-    public InMemoryAppender() {
-      ((Logger) LoggerFactory.getLogger("root")).addAppender(this);
-      start();
+    @BeforeEach
+    void setUp() {
+        appender = new InMemoryAppender();
     }
 
-    @Override
-    protected void append(ILoggingEvent eventObject) {
-      log.add(eventObject);
+    @AfterEach
+    void tearDown() {
+        appender.stop();
     }
 
-    public int getLogSize() {
-      return log.size();
+    /**
+     * The tested visitor instance.
+     */
+    private final V visitor;
+
+    /**
+     * The expected response when being visited by a commander.
+     */
+    private final String commanderResponse;
+
+    /**
+     * The expected response when being visited by a sergeant.
+     */
+    private final String sergeantResponse;
+
+    /**
+     * The expected response when being visited by a soldier.
+     */
+    private final String soldierResponse;
+
+    /**
+     * Create a new test instance for the given visitor.
+     *
+     * @param commanderResponse The expected response when being visited by a commander
+     * @param sergeantResponse  The expected response when being visited by a sergeant
+     * @param soldierResponse   The expected response when being visited by a soldier
+     */
+    public VisitorTest(
+            final V visitor,
+            final String commanderResponse,
+            final String sergeantResponse,
+            final String soldierResponse
+    ) {
+        this.visitor = visitor;
+        this.commanderResponse = commanderResponse;
+        this.sergeantResponse = sergeantResponse;
+        this.soldierResponse = soldierResponse;
     }
 
-    public String getLastMessage() {
-      return log.get(log.size() - 1).getFormattedMessage();
+    @Test
+    void testVisitCommander() {
+        this.visitor.visit(new Commander());
+        if (this.commanderResponse != null) {
+            assertEquals(this.commanderResponse, appender.getLastMessage());
+            assertEquals(1, appender.getLogSize());
+        }
     }
-  }
+
+    @Test
+    void testVisitSergeant() {
+        this.visitor.visit(new Sergeant());
+        if (this.sergeantResponse != null) {
+            assertEquals(this.sergeantResponse, appender.getLastMessage());
+            assertEquals(1, appender.getLogSize());
+        }
+    }
+
+    @Test
+    void testVisitSoldier() {
+        this.visitor.visit(new Soldier());
+        if (this.soldierResponse != null) {
+            assertEquals(this.soldierResponse, appender.getLastMessage());
+            assertEquals(1, appender.getLogSize());
+        }
+    }
+
+    private static class InMemoryAppender extends AppenderBase<ILoggingEvent> {
+        private final List<ILoggingEvent> log = new LinkedList<>();
+
+        public InMemoryAppender() {
+            ((Logger) LoggerFactory.getLogger("root")).addAppender(this);
+            start();
+        }
+
+        @Override
+        protected void append(ILoggingEvent eventObject) {
+            log.add(eventObject);
+        }
+
+        public int getLogSize() {
+            return log.size();
+        }
+
+        public String getLastMessage() {
+            return log.get(log.size() - 1).getFormattedMessage();
+        }
+    }
 }

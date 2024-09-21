@@ -22,29 +22,44 @@ tag:
 
 ## Intent of Queue-Based Load Leveling Design Pattern
 
-The Queue-Based Load Leveling pattern expertly manages system load balancing in Java by utilizing a queue to efficiently distribute the workload among producers and consumers, enhancing system performance and scalability.
+The Queue-Based Load Leveling pattern expertly manages system load balancing in Java by utilizing a queue to efficiently
+distribute the workload among producers and consumers, enhancing system performance and scalability.
 
 ## Detailed Explanation of Queue-Based Load Leveling Pattern with Real-World Examples
 
 Real-world example
 
-> In a practical scenario, akin to a bustling restaurant, Queue-Based Load Leveling serves as a system optimization strategy, where orders are systematically queued to maintain high service quality and efficiency. During peak hours, if all customers were served immediately, the kitchen would be overwhelmed, leading to long wait times and potential mistakes in orders. To manage this, the restaurant implements a queue-based load leveling system using a ticketing machine. 
+> In a practical scenario, akin to a bustling restaurant, Queue-Based Load Leveling serves as a system optimization
+> strategy, where orders are systematically queued to maintain high service quality and efficiency. During peak hours, if
+> all customers were served immediately, the kitchen would be overwhelmed, leading to long wait times and potential
+> mistakes in orders. To manage this, the restaurant implements a queue-based load leveling system using a ticketing
+> machine.
 >
-> When customers place orders, they receive a ticket number and their order is placed in a queue. The kitchen staff then processes orders one at a time in the order they were received. This ensures that the kitchen can handle the workload at a manageable pace, preventing overload and maintaining service quality. Customers wait comfortably knowing their order is in line and will be handled efficiently, even during the busiest times.
+> When customers place orders, they receive a ticket number and their order is placed in a queue. The kitchen staff then
+> processes orders one at a time in the order they were received. This ensures that the kitchen can handle the workload at
+> a manageable pace, preventing overload and maintaining service quality. Customers wait comfortably knowing their order
+> is in line and will be handled efficiently, even during the busiest times.
 
 In plain words
 
-> Queue-Based Load Leveling is a design pattern that uses a queue to manage and balance the workload between producers and consumers, preventing system overload and ensuring smooth processing.
+> Queue-Based Load Leveling is a design pattern that uses a queue to manage and balance the workload between producers
+> and consumers, preventing system overload and ensuring smooth processing.
 
 Wikipedia says
 
-> Message Queues are essential components for inter-process communication (IPC) and inter-thread communication, using queues to manage the passing of messages. They help in decoupling producers and consumers, allowing asynchronous processing, which is a key aspect of the Queue-Based Load Leveling pattern.
+> Message Queues are essential components for inter-process communication (IPC) and inter-thread communication, using
+> queues to manage the passing of messages. They help in decoupling producers and consumers, allowing asynchronous
+> processing, which is a key aspect of the Queue-Based Load Leveling pattern.
 
 ## Programmatic Example of Queue-Based Load Leveling Pattern in Java
 
-The Queue-Based Load Leveling pattern helps to manage high-volume, sporadic bursts of tasks that can overwhelm a system. It uses a queue as a buffer to hold tasks, decoupling the task generation from task processing. Tasks are processed at a controlled rate, ensuring optimal load management and fault tolerance, crucial for maintaining robust system architecture.
+The Queue-Based Load Leveling pattern helps to manage high-volume, sporadic bursts of tasks that can overwhelm a system.
+It uses a queue as a buffer to hold tasks, decoupling the task generation from task processing. Tasks are processed at a
+controlled rate, ensuring optimal load management and fault tolerance, crucial for maintaining robust system
+architecture.
 
-First, let's look at the `MessageQueue` and `Message` classes. The `MessageQueue` acts as a buffer, storing messages until they are retrieved by the `ServiceExecutor`. The `Message` represents the tasks to be processed.
+First, let's look at the `MessageQueue` and `Message` classes. The `MessageQueue` acts as a buffer, storing messages
+until they are retrieved by the `ServiceExecutor`. The `Message` represents the tasks to be processed.
 
 ```java
 public class Message {
@@ -72,7 +87,8 @@ public class MessageQueue {
 }
 ```
 
-Next, we have the `TaskGenerator` class. This class represents the task producers. It generates tasks and submits them to the `MessageQueue`.
+Next, we have the `TaskGenerator` class. This class represents the task producers. It generates tasks and submits them
+to the `MessageQueue`.
 
 ```java
 public class TaskGenerator implements Runnable {
@@ -121,7 +137,8 @@ public class ServiceExecutor implements Runnable {
 }
 ```
 
-Finally, we have the `App` class which sets up the `TaskGenerator` and `ServiceExecutor` threads and submits them to an `ExecutorService`.
+Finally, we have the `App` class which sets up the `TaskGenerator` and `ServiceExecutor` threads and submits them to an
+`ExecutorService`.
 
 ```java
 public class App {
@@ -145,7 +162,9 @@ public class App {
 }
 ```
 
-In this example, the `TaskGenerator` threads generate tasks at a variable rate and submit them to the `MessageQueue`. The `ServiceExecutor` retrieves the tasks from the queue and processes them at its own pace, preventing the system from being overwhelmed by peak loads.
+In this example, the `TaskGenerator` threads generate tasks at a variable rate and submit them to the `MessageQueue`.
+The `ServiceExecutor` retrieves the tasks from the queue and processes them at its own pace, preventing the system from
+being overwhelmed by peak loads.
 
 Running the application produces the following console output:
 
@@ -205,9 +224,12 @@ Trade-offs:
 ## Related Java Design Patterns
 
 * Asynchronous Messaging: Queue-Based Load Leveling uses asynchronous messaging to decouple producers and consumers
-* [Circuit Breaker](https://java-design-patterns.com/patterns/circuit-breaker/): Often used in conjunction with Queue-Based Load Leveling to prevent system overloads by temporarily halting message processing
-* [Producer-Consumer](https://java-design-patterns.com/patterns/producer-consumer/): Queue-Based Load Leveling is a specific application of the Producer-Consumer pattern where the queue serves as the intermediary
-* [Retry](https://java-design-patterns.com/patterns/retry/): Works with Queue-Based Load Leveling to handle transient failures by retrying failed operations
+* [Circuit Breaker](https://java-design-patterns.com/patterns/circuit-breaker/): Often used in conjunction with
+  Queue-Based Load Leveling to prevent system overloads by temporarily halting message processing
+* [Producer-Consumer](https://java-design-patterns.com/patterns/producer-consumer/): Queue-Based Load Leveling is a
+  specific application of the Producer-Consumer pattern where the queue serves as the intermediary
+* [Retry](https://java-design-patterns.com/patterns/retry/): Works with Queue-Based Load Leveling to handle transient
+  failures by retrying failed operations
 
 ## References and Credits
 

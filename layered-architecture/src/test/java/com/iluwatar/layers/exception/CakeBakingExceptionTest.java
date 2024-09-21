@@ -39,31 +39,31 @@ import org.junit.jupiter.api.Test;
  */
 class CakeBakingExceptionTest {
 
-  /**
-   * Tests the default constructor of {@link CakeBakingException}.
-   * Ensures that an exception created with the default constructor has
-   * {@code null} as its message and cause.
-   */
-  @Test
-  void testConstructor() {
-    final var exception = new CakeBakingException();
-    assertNull(exception.getMessage(), "The message should be null for the default constructor.");
-    assertNull(exception.getCause(), "The cause should be null for the default constructor.");
-  }
+    /**
+     * Tests the default constructor of {@link CakeBakingException}.
+     * Ensures that an exception created with the default constructor has
+     * {@code null} as its message and cause.
+     */
+    @Test
+    void testConstructor() {
+        final var exception = new CakeBakingException();
+        assertNull(exception.getMessage(), "The message should be null for the default constructor.");
+        assertNull(exception.getCause(), "The cause should be null for the default constructor.");
+    }
 
-  /**
-   * Tests the constructor of {@link CakeBakingException} that accepts a message.
-   * Ensures that an exception created with this constructor correctly stores the provided message
-   * and has {@code null} as its cause.
-   */
-  @Test
-  void testConstructorWithMessage() {
-    final var expectedMessage = "message";
-    final var exception = new CakeBakingException(expectedMessage);
-    assertEquals(expectedMessage, exception.getMessage(),
-        "The stored message should match the expected message.");
-    assertNull(exception.getCause(),
-        "The cause should be null when an exception is created with only a message.");
-  }
+    /**
+     * Tests the constructor of {@link CakeBakingException} that accepts a message.
+     * Ensures that an exception created with this constructor correctly stores the provided message
+     * and has {@code null} as its cause.
+     */
+    @Test
+    void testConstructorWithMessage() {
+        final var expectedMessage = "message";
+        final var exception = new CakeBakingException(expectedMessage);
+        assertEquals(expectedMessage, exception.getMessage(),
+                "The stored message should match the expected message.");
+        assertNull(exception.getCause(),
+                "The cause should be null when an exception is created with only a message.");
+    }
 
 }

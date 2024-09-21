@@ -32,33 +32,32 @@ import org.junit.jupiter.api.Test;
 
 /**
  * PoisonMessageTest
- *
  */
 class PoisonMessageTest {
 
-  @Test
-  void testAddHeader() {
-    assertThrows(UnsupportedOperationException.class, () -> POISON_PILL.addHeader(Headers.SENDER, "sender"));
-  }
+    @Test
+    void testAddHeader() {
+        assertThrows(UnsupportedOperationException.class, () -> POISON_PILL.addHeader(Headers.SENDER, "sender"));
+    }
 
-  @Test
-  void testGetHeader() {
-    assertThrows(UnsupportedOperationException.class, () -> POISON_PILL.getHeader(Headers.SENDER));
-  }
+    @Test
+    void testGetHeader() {
+        assertThrows(UnsupportedOperationException.class, () -> POISON_PILL.getHeader(Headers.SENDER));
+    }
 
-  @Test
-  void testGetHeaders() {
-    assertThrows(UnsupportedOperationException.class, POISON_PILL::getHeaders);
-  }
+    @Test
+    void testGetHeaders() {
+        assertThrows(UnsupportedOperationException.class, POISON_PILL::getHeaders);
+    }
 
-  @Test
-  void testSetBody() {
-    assertThrows(UnsupportedOperationException.class, () -> POISON_PILL.setBody("Test message."));
-  }
+    @Test
+    void testSetBody() {
+        assertThrows(UnsupportedOperationException.class, () -> POISON_PILL.setBody("Test message."));
+    }
 
-  @Test
-  void testGetBody() {
-    assertThrows(UnsupportedOperationException.class, POISON_PILL::getBody);
-  }
+    @Test
+    void testGetBody() {
+        assertThrows(UnsupportedOperationException.class, POISON_PILL::getBody);
+    }
 
 }

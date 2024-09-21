@@ -27,6 +27,7 @@ package com.iluwatar.servicelayer.spellbook;
 import com.iluwatar.servicelayer.common.BaseEntity;
 import com.iluwatar.servicelayer.spell.Spell;
 import com.iluwatar.servicelayer.wizard.Wizard;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -38,6 +39,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -50,36 +52,36 @@ import lombok.Setter;
 @Setter
 public class Spellbook extends BaseEntity {
 
-  @Id
-  @GeneratedValue
-  @Column(name = "SPELLBOOK_ID")
-  private Long id;
+    @Id
+    @GeneratedValue
+    @Column(name = "SPELLBOOK_ID")
+    private Long id;
 
-  private String name;
+    private String name;
 
-  @ManyToMany(mappedBy = "spellbooks", fetch = FetchType.EAGER)
-  private Set<Wizard> wizards;
+    @ManyToMany(mappedBy = "spellbooks", fetch = FetchType.EAGER)
+    private Set<Wizard> wizards;
 
-  @OneToMany(mappedBy = "spellbook", orphanRemoval = true, cascade = CascadeType.ALL)
-  private Set<Spell> spells;
+    @OneToMany(mappedBy = "spellbook", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<Spell> spells;
 
-  public Spellbook() {
-    spells = new HashSet<>();
-    wizards = new HashSet<>();
-  }
+    public Spellbook() {
+        spells = new HashSet<>();
+        wizards = new HashSet<>();
+    }
 
-  public Spellbook(String name) {
-    this();
-    this.name = name;
-  }
+    public Spellbook(String name) {
+        this();
+        this.name = name;
+    }
 
-  public void addSpell(Spell spell) {
-    spell.setSpellbook(this);
-    spells.add(spell);
-  }
+    public void addSpell(Spell spell) {
+        spell.setSpellbook(this);
+        spells.add(spell);
+    }
 
-  @Override
-  public String toString() {
-    return name;
-  }
+    @Override
+    public String toString() {
+        return name;
+    }
 }

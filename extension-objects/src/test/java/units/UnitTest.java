@@ -34,21 +34,21 @@ import org.junit.jupiter.api.Test;
  */
 class UnitTest {
 
-  @Test
-  void testConstGetSet() {
-    final var name = "testName";
-    final var unit = new Unit(name);
-    assertEquals(name, unit.getName());
+    @Test
+    void testConstGetSet() {
+        final var name = "testName";
+        final var unit = new Unit(name);
+        assertEquals(name, unit.getName());
 
-    final var newName = "newName";
-    unit.setName(newName);
-    assertEquals(newName, unit.getName());
+        final var newName = "newName";
+        unit.setName(newName);
+        assertEquals(newName, unit.getName());
 
 
-    assertNull(unit.getUnitExtension(""));
-    assertNull(unit.getUnitExtension("SoldierExtension"));
-    assertNull(unit.getUnitExtension("SergeantExtension"));
-    assertNull(unit.getUnitExtension("CommanderExtension"));
-  }
+        assertNull(unit.getUnitExtension(""));
+        assertNull(unit.getUnitExtension("SoldierExtension"));
+        assertNull(unit.getUnitExtension("SergeantExtension"));
+        assertNull(unit.getUnitExtension("CommanderExtension"));
+    }
 
 }

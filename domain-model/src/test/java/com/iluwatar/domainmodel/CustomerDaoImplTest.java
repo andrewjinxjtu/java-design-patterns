@@ -29,6 +29,7 @@ import org.joda.money.Money;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,126 +40,126 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerDaoImplTest {
 
-  public static final String INSERT_CUSTOMER_SQL = "insert into CUSTOMERS values('customer', 100)";
-  public static final String SELECT_CUSTOMERS_SQL = "select name, money from CUSTOMERS";
-  public static final String INSERT_PURCHASES_SQL =
-      "insert into PURCHASES values('product', 'customer')";
-  public static final String SELECT_PURCHASES_SQL =
-      "select product_name, customer_name from PURCHASES";
+    public static final String INSERT_CUSTOMER_SQL = "insert into CUSTOMERS values('customer', 100)";
+    public static final String SELECT_CUSTOMERS_SQL = "select name, money from CUSTOMERS";
+    public static final String INSERT_PURCHASES_SQL =
+            "insert into PURCHASES values('product', 'customer')";
+    public static final String SELECT_PURCHASES_SQL =
+            "select product_name, customer_name from PURCHASES";
 
-  private DataSource dataSource;
-  private Product product;
-  private Customer customer;
-  private CustomerDao customerDao;
+    private DataSource dataSource;
+    private Product product;
+    private Customer customer;
+    private CustomerDao customerDao;
 
-  @BeforeEach
-  void setUp() throws SQLException {
-    // create db schema
-    dataSource = TestUtils.createDataSource();
+    @BeforeEach
+    void setUp() throws SQLException {
+        // create db schema
+        dataSource = TestUtils.createDataSource();
 
-    TestUtils.deleteSchema(dataSource);
-    TestUtils.createSchema(dataSource);
+        TestUtils.deleteSchema(dataSource);
+        TestUtils.createSchema(dataSource);
 
-    // setup objects
-    customerDao = new CustomerDaoImpl(dataSource);
+        // setup objects
+        customerDao = new CustomerDaoImpl(dataSource);
 
-    customer = Customer.builder().name("customer").money(Money.of(CurrencyUnit.USD,100.0)).customerDao(customerDao).build();
+        customer = Customer.builder().name("customer").money(Money.of(CurrencyUnit.USD, 100.0)).customerDao(customerDao).build();
 
-    product =
-        Product.builder()
-            .name("product")
-            .price(Money.of(USD, 100.0))
-            .expirationDate(LocalDate.parse("2021-06-27"))
-            .productDao(new ProductDaoImpl(dataSource))
-            .build();
-  }
-
-  @AfterEach
-  void tearDown() throws SQLException {
-    TestUtils.deleteSchema(dataSource);
-  }
-
-  @Test
-  void shouldFindCustomerByName() throws SQLException {
-    var customer = customerDao.findByName("customer");
-
-    assertTrue(customer.isEmpty());
-
-    TestUtils.executeSQL(INSERT_CUSTOMER_SQL, dataSource);
-
-    customer = customerDao.findByName("customer");
-
-    assertTrue(customer.isPresent());
-    assertEquals("customer", customer.get().getName());
-    assertEquals(Money.of(USD, 100), customer.get().getMoney());
-  }
-
-  @Test
-  void shouldSaveCustomer() throws SQLException {
-    customerDao.save(customer);
-
-    try (var connection = dataSource.getConnection();
-        var statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(SELECT_CUSTOMERS_SQL)) {
-
-      assertTrue(rs.next());
-      assertEquals(customer.getName(), rs.getString("name"));
-      assertEquals(customer.getMoney(), Money.of(USD, rs.getBigDecimal("money")));
+        product =
+                Product.builder()
+                        .name("product")
+                        .price(Money.of(USD, 100.0))
+                        .expirationDate(LocalDate.parse("2021-06-27"))
+                        .productDao(new ProductDaoImpl(dataSource))
+                        .build();
     }
 
-    assertThrows(SQLException.class, () -> customerDao.save(customer));
-  }
-
-  @Test
-  void shouldUpdateCustomer() throws SQLException {
-    TestUtils.executeSQL(INSERT_CUSTOMER_SQL, dataSource);
-
-    customer.setMoney(Money.of(CurrencyUnit.USD, 99));
-
-    customerDao.update(customer);
-
-    try (var connection = dataSource.getConnection();
-        var statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(SELECT_CUSTOMERS_SQL)) {
-
-      assertTrue(rs.next());
-      assertEquals(customer.getName(), rs.getString("name"));
-      assertEquals(customer.getMoney(), Money.of(USD, rs.getBigDecimal("money")));
-      assertFalse(rs.next());
+    @AfterEach
+    void tearDown() throws SQLException {
+        TestUtils.deleteSchema(dataSource);
     }
-  }
 
-  @Test
-  void shouldAddProductToPurchases() throws SQLException {
-    TestUtils.executeSQL(INSERT_CUSTOMER_SQL, dataSource);
-    TestUtils.executeSQL(ProductDaoImplTest.INSERT_PRODUCT_SQL, dataSource);
+    @Test
+    void shouldFindCustomerByName() throws SQLException {
+        var customer = customerDao.findByName("customer");
 
-    customerDao.addProduct(product, customer);
+        assertTrue(customer.isEmpty());
 
-    try (var connection = dataSource.getConnection();
-        var statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(SELECT_PURCHASES_SQL)) {
+        TestUtils.executeSQL(INSERT_CUSTOMER_SQL, dataSource);
 
-      assertTrue(rs.next());
-      assertEquals(product.getName(), rs.getString("product_name"));
-      assertEquals(customer.getName(), rs.getString("customer_name"));
-      assertFalse(rs.next());
+        customer = customerDao.findByName("customer");
+
+        assertTrue(customer.isPresent());
+        assertEquals("customer", customer.get().getName());
+        assertEquals(Money.of(USD, 100), customer.get().getMoney());
     }
-  }
 
-  @Test
-  void shouldDeleteProductFromPurchases() throws SQLException {
-    TestUtils.executeSQL(INSERT_CUSTOMER_SQL, dataSource);
-    TestUtils.executeSQL(ProductDaoImplTest.INSERT_PRODUCT_SQL, dataSource);
-    TestUtils.executeSQL(INSERT_PURCHASES_SQL, dataSource);
+    @Test
+    void shouldSaveCustomer() throws SQLException {
+        customerDao.save(customer);
 
-    customerDao.deleteProduct(product, customer);
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(SELECT_CUSTOMERS_SQL)) {
 
-    try (var connection = dataSource.getConnection();
-        var statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(SELECT_PURCHASES_SQL)) {
+            assertTrue(rs.next());
+            assertEquals(customer.getName(), rs.getString("name"));
+            assertEquals(customer.getMoney(), Money.of(USD, rs.getBigDecimal("money")));
+        }
 
-      assertFalse(rs.next());
+        assertThrows(SQLException.class, () -> customerDao.save(customer));
     }
-  }
+
+    @Test
+    void shouldUpdateCustomer() throws SQLException {
+        TestUtils.executeSQL(INSERT_CUSTOMER_SQL, dataSource);
+
+        customer.setMoney(Money.of(CurrencyUnit.USD, 99));
+
+        customerDao.update(customer);
+
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(SELECT_CUSTOMERS_SQL)) {
+
+            assertTrue(rs.next());
+            assertEquals(customer.getName(), rs.getString("name"));
+            assertEquals(customer.getMoney(), Money.of(USD, rs.getBigDecimal("money")));
+            assertFalse(rs.next());
+        }
+    }
+
+    @Test
+    void shouldAddProductToPurchases() throws SQLException {
+        TestUtils.executeSQL(INSERT_CUSTOMER_SQL, dataSource);
+        TestUtils.executeSQL(ProductDaoImplTest.INSERT_PRODUCT_SQL, dataSource);
+
+        customerDao.addProduct(product, customer);
+
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(SELECT_PURCHASES_SQL)) {
+
+            assertTrue(rs.next());
+            assertEquals(product.getName(), rs.getString("product_name"));
+            assertEquals(customer.getName(), rs.getString("customer_name"));
+            assertFalse(rs.next());
+        }
+    }
+
+    @Test
+    void shouldDeleteProductFromPurchases() throws SQLException {
+        TestUtils.executeSQL(INSERT_CUSTOMER_SQL, dataSource);
+        TestUtils.executeSQL(ProductDaoImplTest.INSERT_PRODUCT_SQL, dataSource);
+        TestUtils.executeSQL(INSERT_PURCHASES_SQL, dataSource);
+
+        customerDao.deleteProduct(product, customer);
+
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(SELECT_PURCHASES_SQL)) {
+
+            assertFalse(rs.next());
+        }
+    }
 }

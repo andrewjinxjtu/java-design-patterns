@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class UserModel {
-  private String name;
-  private String email;
+    private String name;
+    private String email;
 
 }

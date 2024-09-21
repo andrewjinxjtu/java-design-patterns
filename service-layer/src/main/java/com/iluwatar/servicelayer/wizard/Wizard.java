@@ -26,6 +26,7 @@ package com.iluwatar.servicelayer.wizard;
 
 import com.iluwatar.servicelayer.common.BaseEntity;
 import com.iluwatar.servicelayer.spellbook.Spellbook;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -35,6 +36,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,32 +49,32 @@ import lombok.Setter;
 @Setter
 public class Wizard extends BaseEntity {
 
-  @Id
-  @GeneratedValue
-  @Column(name = "WIZARD_ID")
-  private Long id;
+    @Id
+    @GeneratedValue
+    @Column(name = "WIZARD_ID")
+    private Long id;
 
-  private String name;
+    private String name;
 
-  @ManyToMany(cascade = CascadeType.ALL)
-  private Set<Spellbook> spellbooks;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Spellbook> spellbooks;
 
-  public Wizard() {
-    spellbooks = new HashSet<>();
-  }
+    public Wizard() {
+        spellbooks = new HashSet<>();
+    }
 
-  public Wizard(String name) {
-    this();
-    this.name = name;
-  }
+    public Wizard(String name) {
+        this();
+        this.name = name;
+    }
 
-  public void addSpellbook(Spellbook spellbook) {
-    spellbook.getWizards().add(this);
-    spellbooks.add(spellbook);
-  }
+    public void addSpellbook(Spellbook spellbook) {
+        spellbook.getWizards().add(this);
+        spellbooks.add(spellbook);
+    }
 
-  @Override
-  public String toString() {
-    return name;
-  }
+    @Override
+    public String toString() {
+        return name;
+    }
 }

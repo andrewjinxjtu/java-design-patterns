@@ -17,7 +17,7 @@ Ejemplo del mundo real
 
 > Considere una estructura de árbol con unidades del ejército. El comandante tiene dos sargentos bajo él y cada sargento
 > tiene tres soldados bajo él. Dado que la jerarquía implementa el patrón visitante, podemos
-> crear fácilmente nuevos objetos que interactúen con el comandante, los sargentos, los soldados, o todos ellos. 
+> crear fácilmente nuevos objetos que interactúen con el comandante, los sargentos, los soldados, o todos ellos.
 
 
 Ejemplo del mundo real
@@ -208,9 +208,16 @@ Good to see you commander
 
 Utilice el patrón Visitor cuando
 
-* Una estructura de objetos contiene muchas clases de objetos con diferentes interfaces, y desea realizar operaciones en estos objetos que dependen de sus clases concretas.
-* Es necesario realizar muchas operaciones distintas y no relacionadas en los objetos de una estructura de objetos, y se desea evitar "contaminar" sus clases con estas operaciones. Visitor permite mantener juntas las operaciones relacionadas definiéndolas en una clase. Cuando la estructura de objetos es compartida por muchas aplicaciones, utilice Visitor para poner las operaciones sólo en aquellas aplicaciones que las necesiten.
-* Las clases que definen la estructura del objeto raramente cambian, pero a menudo se quieren definir nuevas operaciones sobre la estructura. Cambiar las clases de la estructura del objeto requiere redefinir la interfaz para todos los visitantes, lo que es potencialmente costoso. Si las clases de la estructura del objeto cambian a menudo, probablemente sea mejor definir las operaciones en esas clases.
+* Una estructura de objetos contiene muchas clases de objetos con diferentes interfaces, y desea realizar operaciones en
+  estos objetos que dependen de sus clases concretas.
+* Es necesario realizar muchas operaciones distintas y no relacionadas en los objetos de una estructura de objetos, y se
+  desea evitar "contaminar" sus clases con estas operaciones. Visitor permite mantener juntas las operaciones
+  relacionadas definiéndolas en una clase. Cuando la estructura de objetos es compartida por muchas aplicaciones,
+  utilice Visitor para poner las operaciones sólo en aquellas aplicaciones que las necesiten.
+* Las clases que definen la estructura del objeto raramente cambian, pero a menudo se quieren definir nuevas operaciones
+  sobre la estructura. Cambiar las clases de la estructura del objeto requiere redefinir la interfaz para todos los
+  visitantes, lo que es potencialmente costoso. Si las clases de la estructura del objeto cambian a menudo,
+  probablemente sea mejor definir las operaciones en esas clases.
 
 ## Tutoriales
 
@@ -220,9 +227,12 @@ Utilice el patrón Visitor cuando
 
 ## Usos conocidos
 
-* [Apache Wicket](https://github.com/apache/wicket) component tree, Mire [MarkupContainer](https://github.com/apache/wicket/blob/b60ec64d0b50a611a9549809c9ab216f0ffa3ae3/wicket-core/src/main/java/org/apache/wicket/MarkupContainer.java)
-* [javax.lang.model.element.AnnotationValue](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/AnnotationValue.html) y [AnnotationValueVisitor](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/AnnotationValueVisitor.html)
-* [javax.lang.model.element.Element](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/Element.html) y [Element Visitor](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/ElementVisitor.html)
+* [Apache Wicket](https://github.com/apache/wicket) component tree,
+  Mire [MarkupContainer](https://github.com/apache/wicket/blob/b60ec64d0b50a611a9549809c9ab216f0ffa3ae3/wicket-core/src/main/java/org/apache/wicket/MarkupContainer.java)
+* [javax.lang.model.element.AnnotationValue](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/AnnotationValue.html)
+  y [AnnotationValueVisitor](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/AnnotationValueVisitor.html)
+* [javax.lang.model.element.Element](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/Element.html)
+  y [Element Visitor](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/ElementVisitor.html)
 * [java.nio.file.FileVisitor](http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html)
 
 ## Créditos

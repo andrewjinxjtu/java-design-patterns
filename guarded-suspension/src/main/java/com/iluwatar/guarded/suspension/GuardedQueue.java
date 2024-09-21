@@ -26,6 +26,7 @@ package com.iluwatar.guarded.suspension;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -37,39 +38,39 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class GuardedQueue {
-  private final Queue<Integer> sourceList;
+    private final Queue<Integer> sourceList;
 
-  public GuardedQueue() {
-    this.sourceList = new LinkedList<>();
-  }
-
-  /**
-   * Get the last element of the queue if exists.
-   *
-   * @return last element of a queue if queue is not empty
-   */
-  public synchronized Integer get() {
-    while (sourceList.isEmpty()) {
-      try {
-        LOGGER.info("waiting");
-        wait();
-      } catch (InterruptedException e) {
-        LOGGER.error("Error occurred: ", e);
-      }
+    public GuardedQueue() {
+        this.sourceList = new LinkedList<>();
     }
-    LOGGER.info("getting");
-    return sourceList.peek();
-  }
 
-  /**
-   * Put a value in the queue.
-   *
-   * @param e number which we want to put to our queue
-   */
-  public synchronized void put(Integer e) {
-    LOGGER.info("putting");
-    sourceList.add(e);
-    LOGGER.info("notifying");
-    notify();
-  }
+    /**
+     * Get the last element of the queue if exists.
+     *
+     * @return last element of a queue if queue is not empty
+     */
+    public synchronized Integer get() {
+        while (sourceList.isEmpty()) {
+            try {
+                LOGGER.info("waiting");
+                wait();
+            } catch (InterruptedException e) {
+                LOGGER.error("Error occurred: ", e);
+            }
+        }
+        LOGGER.info("getting");
+        return sourceList.peek();
+    }
+
+    /**
+     * Put a value in the queue.
+     *
+     * @param e number which we want to put to our queue
+     */
+    public synchronized void put(Integer e) {
+        LOGGER.info("putting");
+        sourceList.add(e);
+        LOGGER.info("notifying");
+        notify();
+    }
 }

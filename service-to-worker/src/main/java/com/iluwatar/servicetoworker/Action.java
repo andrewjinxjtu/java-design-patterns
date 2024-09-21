@@ -34,52 +34,52 @@ import com.iluwatar.model.view.controller.Nourishment;
  */
 public class Action {
 
-  public GiantModel giant;
+    public GiantModel giant;
 
-  /**
-   * Instantiates a new Action.
-   *
-   * @param giant the giant
-   */
-  public Action(GiantModel giant) {
-    this.giant = giant;
-  }
+    /**
+     * Instantiates a new Action.
+     *
+     * @param giant the giant
+     */
+    public Action(GiantModel giant) {
+        this.giant = giant;
+    }
 
-  /**
-   * Update model based on command.
-   *
-   * @param command the command
-   */
-  public void updateModel(Command command) {
-    setFatigue(command.fatigue());
-    setHealth(command.health());
-    setNourishment(command.nourishment());
-  }
+    /**
+     * Update model based on command.
+     *
+     * @param command the command
+     */
+    public void updateModel(Command command) {
+        setFatigue(command.fatigue());
+        setHealth(command.health());
+        setNourishment(command.nourishment());
+    }
 
-  /**
-   * Sets health.
-   *
-   * @param health the health
-   */
-  public void setHealth(Health health) {
-    giant.setHealth(health);
-  }
+    /**
+     * Sets health.
+     *
+     * @param health the health
+     */
+    public void setHealth(Health health) {
+        giant.setHealth(health);
+    }
 
-  /**
-   * Sets fatigue.
-   *
-   * @param fatigue the fatigue
-   */
-  public void setFatigue(Fatigue fatigue) {
-    giant.setFatigue(fatigue);
-  }
+    /**
+     * Sets fatigue.
+     *
+     * @param fatigue the fatigue
+     */
+    public void setFatigue(Fatigue fatigue) {
+        giant.setFatigue(fatigue);
+    }
 
-  /**
-   * Sets nourishment.
-   *
-   * @param nourishment the nourishment
-   */
-  public void setNourishment(Nourishment nourishment) {
-    giant.setNourishment(nourishment);
-  }
+    /**
+     * Sets nourishment.
+     *
+     * @param nourishment the nourishment
+     */
+    public void setNourishment(Nourishment nourishment) {
+        giant.setNourishment(nourishment);
+    }
 }

@@ -12,25 +12,35 @@ tag:
 
 ## Intent of Builder Design Pattern
 
-The Builder design pattern in Java, a fundamental creational pattern, allows for the step-by-step construction of complex objects. It separates the construction of a complex object from its representation so that the same construction process can create different representations.
+The Builder design pattern in Java, a fundamental creational pattern, allows for the step-by-step construction of
+complex objects. It separates the construction of a complex object from its representation so that the same construction
+process can create different representations.
 
 ## Detailed Explanation of Builder Pattern with Real-World Examples
 
 Real-world example
 
 > The Java Builder pattern is particularly useful in scenarios where object creation involves numerous parameters.
-> 
-> Imagine you are building a customizable sandwich at a deli. The Builder design pattern in this context would involve a SandwichBuilder that allows you to specify each component of the sandwich, such as the type of bread, meat, cheese, vegetables, and condiments. Instead of having to know how to construct the sandwich from scratch, you use the SandwichBuilder to add each desired component step-by-step, ensuring you get exactly the sandwich you want. This separation of construction from the final product representation ensures that the same construction process can yield different types of sandwiches based on the specified components.
+>
+> Imagine you are building a customizable sandwich at a deli. The Builder design pattern in this context would involve a
+> SandwichBuilder that allows you to specify each component of the sandwich, such as the type of bread, meat, cheese,
+> vegetables, and condiments. Instead of having to know how to construct the sandwich from scratch, you use the
+> SandwichBuilder to add each desired component step-by-step, ensuring you get exactly the sandwich you want. This
+> separation of construction from the final product representation ensures that the same construction process can yield
+> different types of sandwiches based on the specified components.
 
 In plain words
 
-> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be
+> several flavors of an object. Or when there are a lot of steps involved in creation of an object.
 
 Wikipedia says
 
-> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor antipattern.
+> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the
+> telescoping constructor antipattern.
 
-With that in mind, let's explain what the telescoping constructor antipattern is. At some point, we have all encountered a constructor like the one below:
+With that in mind, let's explain what the telescoping constructor antipattern is. At some point, we have all encountered
+a constructor like the one below:
 
 ```java
 public Hero(Profession profession,String name,HairType hairType,HairColor hairColor,Armor armor,Weapon weapon){
@@ -38,13 +48,17 @@ public Hero(Profession profession,String name,HairType hairType,HairColor hairCo
 }
 ```
 
-As you can see, the number of constructor parameters can quickly become overwhelming, making it difficult to understand their arrangement. Additionally, this list of parameters might continue to grow if you decide to add more options in the future. This is known as the telescoping constructor antipattern.
+As you can see, the number of constructor parameters can quickly become overwhelming, making it difficult to understand
+their arrangement. Additionally, this list of parameters might continue to grow if you decide to add more options in the
+future. This is known as the telescoping constructor antipattern.
 
 ## Programmatic Example of Builder Pattern in Java
 
 In this Java Builder pattern example, we construct different types of `Hero` objects with varying attributes.
 
-Imagine a character generator for a role-playing game. The simplest option is to let the computer generate the character for you. However, if you prefer to manually select character details such as profession, gender, hair color, etc., the character creation becomes a step-by-step process that concludes once all selections are made.
+Imagine a character generator for a role-playing game. The simplest option is to let the computer generate the character
+for you. However, if you prefer to manually select character details such as profession, gender, hair color, etc., the
+character creation becomes a step-by-step process that concludes once all selections are made.
 
 A more sensible approach is to use the Builder pattern. First, let's consider the `Hero` that we want to create:
 
@@ -155,9 +169,11 @@ Program output:
 Use the Builder pattern when
 
 * The Builder pattern is ideal for Java applications requiring complex object creation.
-* The algorithm for creating a complex object should be independent of the parts that make up the object and how they're assembled
+* The algorithm for creating a complex object should be independent of the parts that make up the object and how they're
+  assembled
 * The construction process must allow different representations for the object that's constructed
-* It's particularly useful when a product requires a lot of steps to be created and when these steps need to be executed in a specific sequence
+* It's particularly useful when a product requires a lot of steps to be created and when these steps need to be executed
+  in a specific sequence
 
 ## Builder Pattern Java Tutorials
 
@@ -182,7 +198,8 @@ Benefits:
 
 * More control over the construction process compared to other creational patterns
 * Supports constructing objects step-by-step, defer construction steps or run steps recursively
-* Can construct objects that require a complex assembly of sub-objects. The final product is detached from the parts that make it up, as well as their assembly process
+* Can construct objects that require a complex assembly of sub-objects. The final product is detached from the parts
+  that make it up, as well as their assembly process
 * Single Responsibility Principle. You can isolate complex construction code from the business logic of the product
 
 Trade-offs:
@@ -192,9 +209,13 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Can be used in conjunction with Builder to build parts of a complex object.
+* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Can be used in conjunction with
+  Builder to build parts of a complex object.
 * [Prototype](https://java-design-patterns.com/patterns/prototype/): Builders often create objects from a prototype.
-* [Step Builder](https://java-design-patterns.com/patterns/step-builder/): It is a variation of the Builder pattern that generates a complex object using a step-by-step approach. The Step Builder pattern is a good choice when you need to build an object with a large number of optional parameters, and you want to avoid the telescoping constructor antipattern.
+* [Step Builder](https://java-design-patterns.com/patterns/step-builder/): It is a variation of the Builder pattern that
+  generates a complex object using a step-by-step approach. The Step Builder pattern is a good choice when you need to
+  build an object with a large number of optional parameters, and you want to avoid the telescoping constructor
+  antipattern.
 
 ## References and Credits
 

@@ -36,18 +36,18 @@ import org.junit.jupiter.api.Test;
  */
 class AlbumListPageTest {
 
-  private final AlbumListPage albumListPage = new AlbumListPage(new WebClient());
+    private final AlbumListPage albumListPage = new AlbumListPage(new WebClient());
 
-  @BeforeEach
-  void setUp() {
-    albumListPage.navigateToPage();
-  }
+    @BeforeEach
+    void setUp() {
+        albumListPage.navigateToPage();
+    }
 
-  @Test
-  void testSelectAlbum() {
-    var albumPage = albumListPage.selectAlbum("21");
-    albumPage.navigateToPage();
-    assertTrue(albumPage.isAt());
-  }
+    @Test
+    void testSelectAlbum() {
+        var albumPage = albumListPage.selectAlbum("21");
+        albumPage.navigateToPage();
+        assertTrue(albumPage.isAt());
+    }
 
 }

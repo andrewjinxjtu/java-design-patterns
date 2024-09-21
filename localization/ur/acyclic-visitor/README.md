@@ -16,7 +16,7 @@ tag:
 حقیقی مثال
 
 > ہمارے پاس موڈیم کلاسز کا درجہ بندی ہے۔ اس درجہ بندی میں موڈیمز کو ایک بیرونی الگورتھم کی بنیاد پر دیکھنے کی ضرورت ہے۔
-فلٹرنگ کے معیار پر (کیا یہ یونکس ہے یا DOS کے موافق موڈیم)۔
+> فلٹرنگ کے معیار پر (کیا یہ یونکس ہے یا DOS کے موافق موڈیم)۔
 
 صاف لفظوں میں
 
@@ -102,7 +102,6 @@ public class ConfigureForUnixVisitor implements ZoomVisitor {
 
 آخر میں، یہاں ایکشن میں زائرین ہیں.
 
-
 ```java
     var conUnix = new ConfigureForUnixVisitor();
     var conDos = new ConfigureForDosVisitor();
@@ -131,8 +130,10 @@ public class ConfigureForUnixVisitor implements ZoomVisitor {
 
 یہ پیٹرن استعمال کیا جا سکتا ہے:
 
-* جب آپ کو کسی موجودہ درجہ بندی میں ایک نیا فنکشن شامل کرنے کی ضرورت ہو بغیر اس درجہ بندی کو تبدیل کرنے یا متاثر کرنے کی ضرورت۔
-* جب ایسے افعال ہوتے ہیں جو درجہ بندی پر کام کرتے ہیں، لیکن ان کا تعلق خود درجہ بندی میں نہیں ہوتا ہے۔ جیسے ConfigureForDOS / ConfigureForUnix / ConfigureForX مسئلہ۔
+* جب آپ کو کسی موجودہ درجہ بندی میں ایک نیا فنکشن شامل کرنے کی ضرورت ہو بغیر اس درجہ بندی کو تبدیل کرنے یا متاثر کرنے کی
+  ضرورت۔
+* جب ایسے افعال ہوتے ہیں جو درجہ بندی پر کام کرتے ہیں، لیکن ان کا تعلق خود درجہ بندی میں نہیں ہوتا ہے۔ جیسے
+  ConfigureForDOS / ConfigureForUnix / ConfigureForX مسئلہ۔
 * جب آپ کو کسی چیز پر اس کی قسم کے لحاظ سے بہت مختلف آپریشن کرنے کی ضرورت ہوتی ہے۔
 * جب ملاحظہ کردہ کلاس کے درجہ بندی کو عنصر کلاس کے نئے مشتقات کے ساتھ کثرت سے بڑھایا جائے گا۔
 * جب عنصر کے مشتقات کو دوبارہ مرتب کرنا، دوبارہ لنک کرنا، دوبارہ جانچنا یا دوبارہ تقسیم کرنا بہت مہنگا ہوتا ہے۔
@@ -151,16 +152,16 @@ public class ConfigureForUnixVisitor implements ZoomVisitor {
 
 برائی:
 
- * خلاف ورزی کرتا ہے۔ [Liskov's Substitution Principle](https://java-design-patterns.com/principles/#liskov-substitution-principle) 
- یہ ظاہر کر کے کہ یہ تمام زائرین کو قبول کر سکتا ہے لیکن اصل میں صرف خاص مہمانوں میں دلچسپی رکھتا ہے۔
-*  ملاحظہ کرنے کے قابل طبقاتی درجہ بندی میں تمام اراکین کے لیے زائرین کا متوازی درجہ بندی بنانا ضروری ہے۔
+* خلاف ورزی کرتا
+  ہے۔ [Liskov's Substitution Principle](https://java-design-patterns.com/principles/#liskov-substitution-principle)
+  یہ ظاہر کر کے کہ یہ تمام زائرین کو قبول کر سکتا ہے لیکن اصل میں صرف خاص مہمانوں میں دلچسپی رکھتا ہے۔
+* ملاحظہ کرنے کے قابل طبقاتی درجہ بندی میں تمام اراکین کے لیے زائرین کا متوازی درجہ بندی بنانا ضروری ہے۔
 
- ## متعلقہ پیٹرن
+## متعلقہ پیٹرن
 
- [Visitor Pattern](https://java-design-patterns.com/patterns/visitor/)
+[Visitor Pattern](https://java-design-patterns.com/patterns/visitor/)
 
+کریڈٹس
 
- کریڈٹس
-
- * [Acyclic Visitor by Robert C. Martin](http://condor.depaul.edu/dmumaugh/OOT/Design-Principles/acv.pdf)
+* [Acyclic Visitor by Robert C. Martin](http://condor.depaul.edu/dmumaugh/OOT/Design-Principles/acv.pdf)
 * [Acyclic Visitor in WikiWikiWeb](https://wiki.c2.com/?AcyclicVisitor)

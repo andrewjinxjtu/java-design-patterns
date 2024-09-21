@@ -13,7 +13,8 @@ Pembungkus
 
 ## Tujuan
 
-Menyematkan tanggung jawab tambahan ke suatu objek secara dinamis. Dekorator memberikan alternatif yang fleksibel terhadap subkelas untuk memperluas fungsionalitas.
+Menyematkan tanggung jawab tambahan ke suatu objek secara dinamis. Dekorator memberikan alternatif yang fleksibel
+terhadap subkelas untuk memperluas fungsionalitas.
 
 ## Penjelasan
 
@@ -30,10 +31,10 @@ Dengan kata sederhana
 
 Wikipedia(en) mengatakan
 
-> Dalam pemrograman berorientasi objek, pola dekorator adalah pola desain yang memungkinkan perilaku 
-> ditambahkan ke objek individual, baik secara statis maupun dinamis, tanpa memengaruhi perilaku 
-> objek lain dari kelas yang sama. Pola dekorator sering kali berguna untuk mematuhi Prinsip Tanggung 
-> Jawab Tunggal, karena memungkinkan fungsionalitas dibagi antara kelas-kelas dengan area perhatian yang 
+> Dalam pemrograman berorientasi objek, pola dekorator adalah pola desain yang memungkinkan perilaku
+> ditambahkan ke objek individual, baik secara statis maupun dinamis, tanpa memengaruhi perilaku
+> objek lain dari kelas yang sama. Pola dekorator sering kali berguna untuk mematuhi Prinsip Tanggung
+> Jawab Tunggal, karena memungkinkan fungsionalitas dibagi antara kelas-kelas dengan area perhatian yang
 > unik serta Prinsip Terbuka-Tertutup, dengan memungkinkan fungsionalitas suatu kelas diperluas tanpa diubah.
 
 **Contoh Program**
@@ -68,7 +69,8 @@ public class SimpleTroll implements Troll {
 }
 ```
 
-Kemudian kita ingin menambahkan gada untuk troll tersebut. Kita dapat melakukannya secara dinamis dengan menggunakan dekorator:
+Kemudian kita ingin menambahkan gada untuk troll tersebut. Kita dapat melakukannya secara dinamis dengan menggunakan
+dekorator:
 
 ```java
 @Slf4j
@@ -140,11 +142,11 @@ Kekuatan troll dengan gada: 20.
 Dekorator digunakan untuk:
 
 * Tambahkan tanggung jawab ke objek individual secara dinamis dan transparan, tanpa
-memengaruhi objek lain.
+  memengaruhi objek lain.
 * Untuk tanggung jawab yang dapat ditarik/dihapus.
 * Dimana ekstensi dengan subkelas tidak praktis; Ketika sejumlah besar ekstensi independen
-mungkin dilakukan dan akan menghasilkan ledakan subkelas untuk mendukung setiap kombinasi, atau definisi 
-kelas mungkin tersembunyi dan/atau tidak tersedia untuk subkelas.
+  mungkin dilakukan dan akan menghasilkan ledakan subkelas untuk mendukung setiap kombinasi, atau definisi
+  kelas mungkin tersembunyi dan/atau tidak tersedia untuk subkelas.
 
 ## Tutorial
 
@@ -152,12 +154,12 @@ kelas mungkin tersembunyi dan/atau tidak tersedia untuk subkelas.
 
 ## Kegunaan yang diketahui
 
- * [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html),
- [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html) dan [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
- * [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
- * [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
- * [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
-
+* [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html),
+  [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html)
+  dan [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
+* [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
+* [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
+* [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
 
 ## Kredit
 

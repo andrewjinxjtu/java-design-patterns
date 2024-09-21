@@ -9,13 +9,17 @@ tag:
 ---
 
 ## Mục Đích
-Người dùng chỉ cần thực hiện một lần gọi duy nhất đến dịch vụ tổng hợp, sau đó dịch vụ tổng hợp sẽ gọi dịch vụ con tương ứng.
+
+Người dùng chỉ cần thực hiện một lần gọi duy nhất đến dịch vụ tổng hợp, sau đó dịch vụ tổng hợp sẽ gọi dịch vụ con tương
+ứng.
 
 ## Giải Thích
 
 Ví dụ thực tế
 
-> Trang web thị trường của chúng ta cần thông tin về sản phẩm và tồn kho hiện tại của chúng. Nó thực hiện gọi đến dịch vụ tổng hợp, sau đó dịch vụ tổng hợp gọi dịch vụ thông tin sản phẩm và dịch vụ tồn kho sản phẩm, cuối cùng trả lại thông tin kết hợp.
+> Trang web thị trường của chúng ta cần thông tin về sản phẩm và tồn kho hiện tại của chúng. Nó thực hiện gọi đến dịch
+> vụ tổng hợp, sau đó dịch vụ tổng hợp gọi dịch vụ thông tin sản phẩm và dịch vụ tồn kho sản phẩm, cuối cùng trả lại thông
+> tin kết hợp.
 
 ## Nói đơn giản hơn
 
@@ -38,7 +42,8 @@ public class Product {
 }
 ```
 
-Tiếp theo, chúng ta có thể giới thiệu Microservices `Aggregator` của chúng ta. Nó chứa các khách hàng `ProductInformationClient` và
+Tiếp theo, chúng ta có thể giới thiệu Microservices `Aggregator` của chúng ta. Nó chứa các khách hàng
+`ProductInformationClient` và
 `ProductInventoryClient` để gọi các dịch vụ con tương ứng.
 
 ```java
@@ -69,7 +74,8 @@ public class Aggregator {
 }
 ```
 
-Dưới đây là bản thể của việc triển khai dịch vụ thông tin sản phẩm. Dịch vụ tồn kho cũng tương tự như thế, nó chỉ trả về số lượng tồn kho.
+Dưới đây là bản thể của việc triển khai dịch vụ thông tin sản phẩm. Dịch vụ tồn kho cũng tương tự như thế, nó chỉ trả về
+số lượng tồn kho.
 
 ```java
 @RestController
@@ -89,11 +95,13 @@ curl http://localhost:50004/product
 ```
 
 ## Sơ Đồ Lớp
+
 ![alt text](../../../aggregator-microservices/aggregator-service/etc/aggregator-service.png "Aggregator Microservice")
 
-
 ## Các Trường Hợp Sử Dụng
-Sử dụng mẫu Microservices Tổng Hợp khi bạn cần một API chung cho các dịch vụ Microservices khác nhau, bất kể thiết bị của khách hàng.
+
+Sử dụng mẫu Microservices Tổng Hợp khi bạn cần một API chung cho các dịch vụ Microservices khác nhau, bất kể thiết bị
+của khách hàng.
 
 ## Người Đóng Góp
 

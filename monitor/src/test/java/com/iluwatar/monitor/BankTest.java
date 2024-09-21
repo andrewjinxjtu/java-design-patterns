@@ -27,53 +27,54 @@ package com.iluwatar.monitor;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
 class BankTest {
 
-  private static final int ACCOUNT_NUM = 4;
-  private static final int BASE_AMOUNT = 1000;
-  private static Bank bank;
+    private static final int ACCOUNT_NUM = 4;
+    private static final int BASE_AMOUNT = 1000;
+    private static Bank bank;
 
-  @BeforeAll
-  public static void Setup() {
-    bank = new Bank(ACCOUNT_NUM, BASE_AMOUNT);
-  }
+    @BeforeAll
+    public static void Setup() {
+        bank = new Bank(ACCOUNT_NUM, BASE_AMOUNT);
+    }
 
-  @AfterAll
-  public static void TearDown() {
-    bank = null;
-  }
+    @AfterAll
+    public static void TearDown() {
+        bank = null;
+    }
 
-  @Test
-  void GetAccountHaveNotBeNull() {
-    assertNotNull(bank.getAccounts());
-  }
+    @Test
+    void GetAccountHaveNotBeNull() {
+        assertNotNull(bank.getAccounts());
+    }
 
-  @Test
-  void LengthOfAccountsHaveToEqualsToAccountNumConstant() {
-    assumeTrue(bank.getAccounts() != null);
-    assertEquals(ACCOUNT_NUM, bank.getAccounts().length);
-  }
+    @Test
+    void LengthOfAccountsHaveToEqualsToAccountNumConstant() {
+        assumeTrue(bank.getAccounts() != null);
+        assertEquals(ACCOUNT_NUM, bank.getAccounts().length);
+    }
 
-  @Test
-  void TransferMethodHaveToTransferAmountFromAnAccountToOtherAccount() {
-    bank.transfer(0, 1, 1000);
-    int[] accounts = bank.getAccounts();
-    assertEquals(0, accounts[0]);
-    assertEquals(2000, accounts[1]);
-  }
+    @Test
+    void TransferMethodHaveToTransferAmountFromAnAccountToOtherAccount() {
+        bank.transfer(0, 1, 1000);
+        int[] accounts = bank.getAccounts();
+        assertEquals(0, accounts[0]);
+        assertEquals(2000, accounts[1]);
+    }
 
-  @Test
-  void BalanceHaveToBeOK() {
-    assertEquals(4000, bank.getBalance());
-  }
+    @Test
+    void BalanceHaveToBeOK() {
+        assertEquals(4000, bank.getBalance());
+    }
 
-  @Test
-  void ReturnBalanceWhenGivenAccountNumber() {
-    bank.transfer(0, 1, 1000);
-    assertEquals(0, bank.getBalance(0));
-    assertEquals(2000, bank.getBalance(1));
-  }
+    @Test
+    void ReturnBalanceWhenGivenAccountNumber() {
+        bank.transfer(0, 1, 1000);
+        assertEquals(0, bank.getBalance(0));
+        assertEquals(2000, bank.getBalance(1));
+    }
 }

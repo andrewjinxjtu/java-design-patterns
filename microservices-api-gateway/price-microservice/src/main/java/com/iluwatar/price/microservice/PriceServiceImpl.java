@@ -34,12 +34,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class PriceServiceImpl implements PriceService {
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getPrice() {
-    LOGGER.info("Successfully found price info");
-    return "20";
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getPrice() {
+        LOGGER.info("Successfully found price info");
+        return "20";
+    }
 }

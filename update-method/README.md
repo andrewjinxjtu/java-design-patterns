@@ -19,13 +19,20 @@ tag:
 
 ## Intent of Update Method Design Pattern
 
-The Update Method pattern in Java simulates a collection of independent objects by telling each to process one frame of behavior at a time.
+The Update Method pattern in Java simulates a collection of independent objects by telling each to process one frame of
+behavior at a time.
 
 ## Detailed Explanation of Update Method Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world example of the Update Method design pattern is a weather monitoring system. In this system, multiple display devices (such as a mobile app, a website widget, and a wall-mounted digital display) need to show the current weather conditions. These displays subscribe to updates from a central weather station, which collects data from various sensors (temperature, humidity, wind speed, etc.). When the weather station detects new data, it triggers an update method that pushes the new information to all subscribed display devices, ensuring they all show the latest weather conditions simultaneously. This ensures that all displays are synchronized and updated without the need for each device to independently check for updates.
+> A real-world example of the Update Method design pattern is a weather monitoring system. In this system, multiple
+> display devices (such as a mobile app, a website widget, and a wall-mounted digital display) need to show the current
+> weather conditions. These displays subscribe to updates from a central weather station, which collects data from various
+> sensors (temperature, humidity, wind speed, etc.). When the weather station detects new data, it triggers an update
+> method that pushes the new information to all subscribed display devices, ensuring they all show the latest weather
+> conditions simultaneously. This ensures that all displays are synchronized and updated without the need for each device
+> to independently check for updates.
 
 In plain words
 
@@ -33,13 +40,17 @@ In plain words
 
 gameprogrammingpatterns.com says
 
-> The game world maintains a collection of objects. Each object implements an update method that simulates one frame of the object’s behavior. Each frame, the game updates every object in the collection.
+> The game world maintains a collection of objects. Each object implements an update method that simulates one frame of
+> the object’s behavior. Each frame, the game updates every object in the collection.
 
 ## Programmatic Example of Update Method Pattern in Java
 
-The Update Method design pattern is a behavioral pattern that simulates a collection of independent game or application objects by telling each to process one frame of behavior at a time. This pattern is commonly used in game development, where each object in the game world needs to be updated once per frame.
+The Update Method design pattern is a behavioral pattern that simulates a collection of independent game or application
+objects by telling each to process one frame of behavior at a time. This pattern is commonly used in game development,
+where each object in the game world needs to be updated once per frame.
 
-The `World` class represents the game world. It maintains a list of entities (`List<Entity> entities`) and a boolean flag (`isRunning`) to indicate whether the game is running.
+The `World` class represents the game world. It maintains a list of entities (`List<Entity> entities`) and a boolean
+flag (`isRunning`) to indicate whether the game is running.
 
 ```java
 public class World {
@@ -55,7 +66,8 @@ public class World {
 }
 ```
 
-The `gameLoop` method is the main game loop. It continuously processes user input, updates the game state, and renders the next frame as long as the game is running.
+The `gameLoop` method is the main game loop. It continuously processes user input, updates the game state, and renders
+the next frame as long as the game is running.
 
 ```java
 private void gameLoop() {
@@ -67,7 +79,8 @@ private void gameLoop() {
 }
 ```
 
-The `processInput` method simulates handling user input. In this case, it simply introduces a random time lag to simulate real-life game situations.
+The `processInput` method simulates handling user input. In this case, it simply introduces a random time lag to
+simulate real-life game situations.
 
 ```java
 private void processInput() {
@@ -81,7 +94,8 @@ private void processInput() {
 }
 ```
 
-The `update` method is where the Update Method pattern is implemented. It iterates over all entities in the game world and calls their `update` method, allowing each entity to process one frame of behavior.
+The `update` method is where the Update Method pattern is implemented. It iterates over all entities in the game world
+and calls their `update` method, allowing each entity to process one frame of behavior.
 
 ```java
 private void update() {
@@ -91,7 +105,8 @@ private void update() {
 }
 ```
 
-The `render` method is responsible for rendering the next frame. In this example, it does nothing as it's not related to the pattern.
+The `render` method is responsible for rendering the next frame. In this example, it does nothing as it's not related to
+the pattern.
 
 ```java
 private void render() {
@@ -123,7 +138,8 @@ public void addEntity(Entity entity) {
 }
 ```
 
-In the `App` class, we can see how the `World` class and its methods are used to create a game world, add entities to it, and start the game loop.
+In the `App` class, we can see how the `World` class and its methods are used to create a game world, add entities to
+it, and start the game loop.
 
 ```java
 @Slf4j
@@ -183,13 +199,16 @@ Console output:
 14:46:35.289 [Thread-0] INFO com.iluwatar.updatemethod.Skeleton -- Skeleton 2 is on position 83.
 ```
 
-This is a basic implementation of the Update Method pattern. In a real-world application, the `Entity` class would likely have additional methods and properties, and the `update` method would contain more complex logic to simulate the entity's behavior.
+This is a basic implementation of the Update Method pattern. In a real-world application, the `Entity` class would
+likely have additional methods and properties, and the `update` method would contain more complex logic to simulate the
+entity's behavior.
 
 ## When to Use the Update Method Pattern in Java
 
 Update Method works well when:
 
-* Typically applied in scenarios where multiple objects need synchronous updates without the overhead of manual synchronization, making it a go-to for advanced Java developers.
+* Typically applied in scenarios where multiple objects need synchronous updates without the overhead of manual
+  synchronization, making it a go-to for advanced Java developers.
 * The application has a number of objects or systems that need to run simultaneously.
 * Each object’s behavior is mostly independent of the others.
 * The objects need to be simulated over time.
@@ -214,8 +233,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Component](https://java-design-patterns.com/patterns/component/): Often used in game development to allow entities to be composed of various components, each potentially having its own update method.
-* [Game Loop](https://java-design-patterns.com/patterns/game-loop/): Continuously updates game state and renders the game, which may include the Update Method for various game objects.
+* [Component](https://java-design-patterns.com/patterns/component/): Often used in game development to allow entities to
+  be composed of various components, each potentially having its own update method.
+* [Game Loop](https://java-design-patterns.com/patterns/game-loop/): Continuously updates game state and renders the
+  game, which may include the Update Method for various game objects.
 
 ## References and Credits
 

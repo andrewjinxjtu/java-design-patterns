@@ -36,22 +36,22 @@ import org.junit.jupiter.api.Test;
  */
 class InMemoryTicketRepositoryTest {
 
-  private final LotteryTicketRepository repository = new InMemoryTicketRepository();
+    private final LotteryTicketRepository repository = new InMemoryTicketRepository();
 
-  @BeforeEach
-  void clear() {
-    repository.deleteAll();
-  }
+    @BeforeEach
+    void clear() {
+        repository.deleteAll();
+    }
 
-  @Test
-  void testCrudOperations() {
-    var repository = new InMemoryTicketRepository();
-    assertTrue(repository.findAll().isEmpty());
-    var ticket = LotteryTestUtils.createLotteryTicket();
-    var id = repository.save(ticket);
-    assertTrue(id.isPresent());
-    assertEquals(1, repository.findAll().size());
-    var optionalTicket = repository.findById(id.get());
-    assertTrue(optionalTicket.isPresent());
-  }
+    @Test
+    void testCrudOperations() {
+        var repository = new InMemoryTicketRepository();
+        assertTrue(repository.findAll().isEmpty());
+        var ticket = LotteryTestUtils.createLotteryTicket();
+        var id = repository.save(ticket);
+        assertTrue(id.isPresent());
+        assertEquals(1, repository.findAll().size());
+        var optionalTicket = repository.findById(id.get());
+        assertTrue(optionalTicket.isPresent());
+    }
 }

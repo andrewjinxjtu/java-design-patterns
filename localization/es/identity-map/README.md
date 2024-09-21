@@ -16,15 +16,19 @@ Busca objetos utilizando el mapa cuando se refiere a ellos.
 
 Ejemplo del mundo real
 
-> Estamos escribiendo un programa que el usuario puede utilizar para encontrar los registros de una persona determinada en una base de datos.
+> Estamos escribiendo un programa que el usuario puede utilizar para encontrar los registros de una persona determinada
+> en una base de datos.
 
 En palabras simples
 
-> Construir un mapa de identidades que almacene los registros de los elementos buscados recientemente en la base de datos. Cuando busquemos el mismo registro la próxima vez lo cargaremos desde el mapa no iremos a la base de datos.
+> Construir un mapa de identidades que almacene los registros de los elementos buscados recientemente en la base de
+> datos. Cuando busquemos el mismo registro la próxima vez lo cargaremos desde el mapa no iremos a la base de datos.
 
 Wikipedia dice
 
-> En el diseño de DBMS, el patrón de mapa de identidad es un patrón de diseño de acceso a base de datos utilizado para mejorar el rendimiento, proporcionando un contexto específico, en la memoria caché para evitar la recuperación duplicada de los mismos datos de objetos de la base de datos
+> En el diseño de DBMS, el patrón de mapa de identidad es un patrón de diseño de acceso a base de datos utilizado para
+> mejorar el rendimiento, proporcionando un contexto específico, en la memoria caché para evitar la recuperación duplicada
+> de los mismos datos de objetos de la base de datos
 
 **Ejemplo programático**
 
@@ -56,7 +60,9 @@ public final class Person implements Serializable {
 
 ```
 
-* La siguiente es la implementación del personFinder que es la entidad que el usuario utilizará para buscar un registro en nuestra base de datos. Tiene adjunta la BD correspondiente. También mantiene un IdentityMap para almacenar los registros leídos recientemente.
+* La siguiente es la implementación del personFinder que es la entidad que el usuario utilizará para buscar un registro
+  en nuestra base de datos. Tiene adjunta la BD correspondiente. También mantiene un IdentityMap para almacenar los
+  registros leídos recientemente.
 
 ```java
 @Slf4j
@@ -94,7 +100,8 @@ public class PersonFinder {
 
 ```
 
-* El campo de mapa de identidad en la clase anterior es simplemente una abstracción de un hashMap con **personNationalId** como claves y el objeto persona correspondiente como valor. Aquí está su implementación:
+* El campo de mapa de identidad en la clase anterior es simplemente una abstracción de un hashMap con **personNationalId
+  ** como claves y el objeto persona correspondiente como valor. Aquí está su implementación:
 
 ```java
 @Slf4j
@@ -139,14 +146,16 @@ public class IdentityMap {
 
 ```
 
-* Ahora debemos construir una persona ficticia para fines de demostración y poner a esa persona en nuestra base de datos.
+* Ahora debemos construir una persona ficticia para fines de demostración y poner a esa persona en nuestra base de
+  datos.
 
 ```java
   Person person1 = new Person(1, "John", 27304159);
   db.insert(person1);
 ```
 
-* Ahora vamos a crear un objeto person finder y buscar a la persona con personNationalId = 1(supongamos que el objeto personFinder ya tiene la db y un IdentityMap adjunto):  
+* Ahora vamos a crear un objeto person finder y buscar a la persona con personNationalId = 1(supongamos que el objeto
+  personFinder ya tiene la db y un IdentityMap adjunto):
 
 ```java
   PersonFinder finder = new PersonFinder();
@@ -161,7 +170,8 @@ public class IdentityMap {
   Person found in DB.
 ```
 
-* Sin embargo, la próxima vez que busquemos de nuevo este registro lo encontraremos en el mapa, por lo que no necesitaremos ir a la base de datos.
+* Sin embargo, la próxima vez que busquemos de nuevo este registro lo encontraremos en el mapa, por lo que no
+  necesitaremos ir a la base de datos.
 
 ```java
   Person ID is:1;Person Name is:John;Phone Number is:27304159
@@ -177,14 +187,18 @@ public class IdNotFoundException extends RuntimeException {
   }
 }
 ```
+
 ## Diagrama de clases
 
 ![alt text](./etc/IdentityMap.png "Identity Map Pattern")
 
 ## Aplicabilidad
 
-* La idea detrás del patrón Identity Map es que cada vez que leemos un registro de la base de datos, primero comprobamos el Identity Map para ver si el registro ya ha sido recuperado. Esto nos permite simplemente devolver una nueva referencia al registro en memoria en lugar de crear un nuevo objeto, manteniendo la integridad referencial.
-* Una ventaja secundaria del Mapa de Identidad es que, al actuar como caché, reduce el número de llamadas a la base de datos necesarias para recuperar objetos, lo que supone una mejora del rendimiento.
+* La idea detrás del patrón Identity Map es que cada vez que leemos un registro de la base de datos, primero comprobamos
+  el Identity Map para ver si el registro ya ha sido recuperado. Esto nos permite simplemente devolver una nueva
+  referencia al registro en memoria en lugar de crear un nuevo objeto, manteniendo la integridad referencial.
+* Una ventaja secundaria del Mapa de Identidad es que, al actuar como caché, reduce el número de llamadas a la base de
+  datos necesarias para recuperar objetos, lo que supone una mejora del rendimiento.
 
 ## Créditos
 

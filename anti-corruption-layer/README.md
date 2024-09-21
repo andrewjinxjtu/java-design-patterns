@@ -24,35 +24,57 @@ tag:
 
 ## Intent of Anti-Corruption Layer Design Pattern
 
-The Anti-Corruption Layer (ACL) is a crucial design pattern in Java development, particularly for system integration and maintaining data integrity. Implement a façade or adapter layer between different subsystems that don't share the same semantics. It translates between different data formats and systems, ensuring that the integration between systems does not lead to corruption of business logic or data integrity.
+The Anti-Corruption Layer (ACL) is a crucial design pattern in Java development, particularly for system integration and
+maintaining data integrity. Implement a façade or adapter layer between different subsystems that don't share the same
+semantics. It translates between different data formats and systems, ensuring that the integration between systems does
+not lead to corruption of business logic or data integrity.
 
 ## Detailed Explanation of Anti-Corruption Layer Pattern with Real-World Examples
 
 Real-world example
 
-> This example demonstrates how the Anti-Corruption Layer ensures seamless integration between legacy systems and modern platforms, crucial for maintaining business logic integrity during system migration.
-> 
-> Imagine a large retail company transitioning its inventory management system from an old legacy software to a new modern platform. The legacy system has been in use for decades and contains complex business rules and data formats that are incompatible with the new system. Instead of directly connecting the new system to the legacy one, the company implements an Anti-Corruption Layer (ACL).
-> 
-> The ACL acts as a mediator, translating and adapting data between the two systems. When the new system requests inventory data, the ACL translates the request into a format the legacy system understands, retrieves the data, and then translates it back into a format suitable for the new system. This approach ensures that the new system remains unaffected by the intricacies of the legacy system, preventing corruption of data and business logic while facilitating a smooth transition.
+> This example demonstrates how the Anti-Corruption Layer ensures seamless integration between legacy systems and modern
+> platforms, crucial for maintaining business logic integrity during system migration.
+>
+> Imagine a large retail company transitioning its inventory management system from an old legacy software to a new
+> modern platform. The legacy system has been in use for decades and contains complex business rules and data formats that
+> are incompatible with the new system. Instead of directly connecting the new system to the legacy one, the company
+> implements an Anti-Corruption Layer (ACL).
+>
+> The ACL acts as a mediator, translating and adapting data between the two systems. When the new system requests
+> inventory data, the ACL translates the request into a format the legacy system understands, retrieves the data, and then
+> translates it back into a format suitable for the new system. This approach ensures that the new system remains
+> unaffected by the intricacies of the legacy system, preventing corruption of data and business logic while facilitating
+> a smooth transition.
 
 In plain words
 
-> The Anti-Corruption Layer design pattern protects a system from the complexities and changes of external systems by providing an intermediary translation layer.
+> The Anti-Corruption Layer design pattern protects a system from the complexities and changes of external systems by
+> providing an intermediary translation layer.
 
 [Microsoft's documentation](https://learn.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer) says
 
-> Implement a façade or adapter layer between different subsystems that don't share the same semantics. This layer translates requests that one subsystem makes to the other subsystem. Use this pattern to ensure that an application's design is not limited by dependencies on outside subsystems. This pattern was first described by Eric Evans in Domain-Driven Design.
+> Implement a façade or adapter layer between different subsystems that don't share the same semantics. This layer
+> translates requests that one subsystem makes to the other subsystem. Use this pattern to ensure that an application's
+> design is not limited by dependencies on outside subsystems. This pattern was first described by Eric Evans in
+> Domain-Driven Design.
 
 ## Programmatic Example of Anti-Corruption Layer Pattern in Java
 
-The ACL design pattern in Java provides an intermediary layer that translates data formats, ensuring that integration between different systems does not lead to data corruption.
+The ACL design pattern in Java provides an intermediary layer that translates data formats, ensuring that integration
+between different systems does not lead to data corruption.
 
 Here are 2 shop-ordering systems: `Legacy` and `Modern`.
 
-The aforementioned systems have different domain models and have to operate simultaneously. Since they work independently the orders can come either from the `Legacy` or `Modern` system. Therefore, the system that receives the legacyOrder needs to check if the legacyOrder is valid and not present in the other system. Then it can place the legacyOrder in its own system.
+The aforementioned systems have different domain models and have to operate simultaneously. Since they work
+independently the orders can come either from the `Legacy` or `Modern` system. Therefore, the system that receives the
+legacyOrder needs to check if the legacyOrder is valid and not present in the other system. Then it can place the
+legacyOrder in its own system.
 
-But for that, the system needs to know the domain model of the other system and to avoid that, the anti-corruption layer(ACL) is introduced. The ACL is a layer that translates the domain model of the `Legacy` system to the domain model of the `Modern` system and vice versa. Also, it hides all other operations with the other system, uncoupling the systems.
+But for that, the system needs to know the domain model of the other system and to avoid that, the anti-corruption
+layer(ACL) is introduced. The ACL is a layer that translates the domain model of the `Legacy` system to the domain model
+of the `Modern` system and vice versa. Also, it hides all other operations with the other system, uncoupling the
+systems.
 
 Domain model of the `Legacy` system:
 
@@ -111,7 +133,9 @@ public class AntiCorruptionLayer {
 }
 ```
 
-The connection between the systems. Wherever the `Legacy` or `Modern` system needs to communicate with the counterpart the ACL needs to be used to avoid corrupting the current domain model. The example below shows how the `Legacy` system places an order with a validation from the `Modern` system.
+The connection between the systems. Wherever the `Legacy` or `Modern` system needs to communicate with the counterpart
+the ACL needs to be used to avoid corrupting the current domain model. The example below shows how the `Legacy` system
+places an order with a validation from the `Modern` system.
 
 ```java
 public class LegacyShop {
@@ -137,11 +161,14 @@ public class LegacyShop {
 
 Use this pattern when:
 
-* A migration is planned to happen over multiple stages, but integration between new and legacy systems needs to be maintained
+* A migration is planned to happen over multiple stages, but integration between new and legacy systems needs to be
+  maintained
 * Two or more subsystems have different semantics, but still need to communicate
-* When integrating with legacy systems or external systems where direct integration might pollute the domain model of the new system
+* When integrating with legacy systems or external systems where direct integration might pollute the domain model of
+  the new system
 * In scenarios where different subsystems within a larger system use different data formats or structures
-* When there is a need to ensure loose coupling between different subsystems or external services to facilitate easier maintenance and scalability
+* When there is a need to ensure loose coupling between different subsystems or external services to facilitate easier
+  maintenance and scalability
 
 ## Anti-Corruption Layer Pattern Java Tutorials
 
@@ -150,9 +177,11 @@ Use this pattern when:
 
 ## Real-World Applications of Anti-Corruption Layer Pattern in Java
 
-* Microservices architectures where individual services must communicate without being tightly coupled to each other’s data schemas
+* Microservices architectures where individual services must communicate without being tightly coupled to each other’s
+  data schemas
 * Enterprise systems integration, especially when integrating modern systems with legacy systems
-* In bounded contexts within Domain-Driven Design (DDD) to maintain the integrity of a domain model when interacting with external systems or subsystems
+* In bounded contexts within Domain-Driven Design (DDD) to maintain the integrity of a domain model when interacting
+  with external systems or subsystems
 
 ## Benefits and Trade-offs of Anti-Corruption Layer Pattern
 
@@ -170,9 +199,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): The Anti-Corruption Layer can be implemented using the Adapter pattern to translate between different data formats or structures
-* [Facade](https://java-design-patterns.com/patterns/facade/): The Anti-Corruption Layer can be seen as a specialized form of the Facade pattern that is used to isolate different subsystems
-* [Gateway](https://java-design-patterns.com/patterns/gateway/): The Anti-Corruption Layer can be used as a Gateway to external systems to provide a unified interface
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): The Anti-Corruption Layer can be implemented using the
+  Adapter pattern to translate between different data formats or structures
+* [Facade](https://java-design-patterns.com/patterns/facade/): The Anti-Corruption Layer can be seen as a specialized
+  form of the Facade pattern that is used to isolate different subsystems
+* [Gateway](https://java-design-patterns.com/patterns/gateway/): The Anti-Corruption Layer can be used as a Gateway to
+  external systems to provide a unified interface
 
 ## References and Credits
 

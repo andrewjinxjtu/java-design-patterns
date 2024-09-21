@@ -11,21 +11,27 @@ tag:
   - Polymorphism
 ---
 
-## Also known as 
+## Also known as
 
 * Clone
 
 ## Intent of Prototype Design Pattern
 
-The Prototype pattern is used to specify the kinds of objects to create using a prototypical instance, and create new instances through object cloning.
+The Prototype pattern is used to specify the kinds of objects to create using a prototypical instance, and create new
+instances through object cloning.
 
 ## Detailed Explanation of Prototype Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a company that manufactures custom-designed furniture. Instead of creating each piece from scratch every time an order is placed, they keep prototypes of their most popular designs. When a customer places an order for a specific design, the company simply clones the prototype of that design and makes the necessary customizations. This approach saves time and resources as the basic structure and design details are already in place, allowing the company to quickly fulfill orders with consistent quality.
+> Imagine a company that manufactures custom-designed furniture. Instead of creating each piece from scratch every time
+> an order is placed, they keep prototypes of their most popular designs. When a customer places an order for a specific
+> design, the company simply clones the prototype of that design and makes the necessary customizations. This approach
+> saves time and resources as the basic structure and design details are already in place, allowing the company to quickly
+> fulfill orders with consistent quality.
 >
-> In this scenario, the furniture prototypes act like object prototypes in software, enabling efficient creation of new, customized pieces based on existing models.
+> In this scenario, the furniture prototypes act like object prototypes in software, enabling efficient creation of new,
+> customized pieces based on existing models.
 
 In plain words
 
@@ -33,11 +39,13 @@ In plain words
 
 Wikipedia says
 
-> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to
+> create is determined by a prototypical instance, which is cloned to produce new objects.
 
 ## Programmatic Example of Prototype Pattern in Java
 
-In Java, the prototype pattern is recommended to be implemented as follows. First, create an interface with a method for cloning objects. In this example, `Prototype` interface accomplishes this with its `copy` method.
+In Java, the prototype pattern is recommended to be implemented as follows. First, create an interface with a method for
+cloning objects. In this example, `Prototype` interface accomplishes this with its `copy` method.
 
 ```java
 public abstract class Prototype<T> implements Cloneable {
@@ -77,9 +85,11 @@ public class OrcBeast extends Beast {
 }
 ```
 
-We don't want to go into too many details, but the full example contains also base classes `Mage` and `Warlord` and there are specialized implementations of those for elves and orcs.
+We don't want to go into too many details, but the full example contains also base classes `Mage` and `Warlord` and
+there are specialized implementations of those for elves and orcs.
 
-To take full advantage of the prototype pattern, we create `HeroFactory` and `HeroFactoryImpl` classes to produce different kinds of creatures from prototypes.
+To take full advantage of the prototype pattern, we create `HeroFactory` and `HeroFactoryImpl` classes to produce
+different kinds of creatures from prototypes.
 
 ```java
 public interface HeroFactory {
@@ -160,7 +170,9 @@ Here's the console output from running the example.
 
 * When the classes to instantiate are specified at run-time, for example, by dynamic loading.
 * To avoid building a class hierarchy of factories that parallels the class hierarchy of products.
-* When instances of a class can have one of only a few different combinations of state. It may be more convenient to install a corresponding number of prototypes and clone them rather than instantiating the class manually, each time with the appropriate state.
+* When instances of a class can have one of only a few different combinations of state. It may be more convenient to
+  install a corresponding number of prototypes and clone them rather than instantiating the class manually, each time
+  with the appropriate state.
 * When object creation is expensive compared to cloning.
 * When the concrete classes to instantiate are unknown until runtime.
 
@@ -183,13 +195,17 @@ Leveraging the Prototype pattern in Java applications
 Trade-offs:
 
 * Requires implementing a cloning mechanism which might be complex.
-* Deep cloning can be difficult to implement correctly, especially if the classes have complex object graphs with circular references.
+* Deep cloning can be difficult to implement correctly, especially if the classes have complex object graphs with
+  circular references.
 
 ## Related Java Design Patterns
 
-* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Both involve creating objects, but Prototype uses cloning of a prototype instance whereas Abstract Factory creates objects using factory methods.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Singleton can use a prototype for creating instances if it allows cloning of its single instance.
-* [Composite](https://java-design-patterns.com/patterns/composite/): Prototypes are often used within composites to allow for dynamic creation of component trees.
+* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Both involve creating objects, but
+  Prototype uses cloning of a prototype instance whereas Abstract Factory creates objects using factory methods.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Singleton can use a prototype for creating
+  instances if it allows cloning of its single instance.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Prototypes are often used within composites to
+  allow for dynamic creation of component trees.
 
 ## References and Credits
 

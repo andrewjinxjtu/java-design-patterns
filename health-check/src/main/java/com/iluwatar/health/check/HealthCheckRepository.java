@@ -33,49 +33,49 @@ import org.springframework.stereotype.Repository;
 /**
  * A repository class for managing health check records in the database. This class provides methods
  * for checking the health of the database connection and performing test transactions.
- *
  */
 @Slf4j
 @Repository
 public class HealthCheckRepository {
 
-  private static final String HEALTH_CHECK_OK = "OK";
+    private static final String HEALTH_CHECK_OK = "OK";
 
-  @PersistenceContext private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-  /**
-   * Checks the health of the database connection by executing a simple query that should always
-   * return 1 if the connection is healthy.
-   *
-   * @return 1 if the database connection is healthy, or null otherwise
-   */
-  public Integer checkHealth() {
-    try {
-      return (Integer) entityManager.createNativeQuery("SELECT 1").getSingleResult();
-    } catch (Exception e) {
-      LOGGER.error("Health check query failed", e);
-      throw e;
+    /**
+     * Checks the health of the database connection by executing a simple query that should always
+     * return 1 if the connection is healthy.
+     *
+     * @return 1 if the database connection is healthy, or null otherwise
+     */
+    public Integer checkHealth() {
+        try {
+            return (Integer) entityManager.createNativeQuery("SELECT 1").getSingleResult();
+        } catch (Exception e) {
+            LOGGER.error("Health check query failed", e);
+            throw e;
+        }
     }
-  }
 
-  /**
-   * Performs a test transaction by writing a record to the `health_check` table, reading it back,
-   * and then deleting it. If any of these operations fail, an exception is thrown.
-   *
-   * @throws Exception if the test transaction fails
-   */
-  @Transactional
-  public void performTestTransaction() throws Exception {
-    try {
-      HealthCheck healthCheck = new HealthCheck();
-      healthCheck.setStatus(HEALTH_CHECK_OK);
-      entityManager.persist(healthCheck);
-      entityManager.flush();
-      HealthCheck retrievedHealthCheck = entityManager.find(HealthCheck.class, healthCheck.getId());
-      entityManager.remove(retrievedHealthCheck);
-    } catch (Exception e) {
-      LOGGER.error("Test transaction failed", e);
-      throw e;
+    /**
+     * Performs a test transaction by writing a record to the `health_check` table, reading it back,
+     * and then deleting it. If any of these operations fail, an exception is thrown.
+     *
+     * @throws Exception if the test transaction fails
+     */
+    @Transactional
+    public void performTestTransaction() throws Exception {
+        try {
+            HealthCheck healthCheck = new HealthCheck();
+            healthCheck.setStatus(HEALTH_CHECK_OK);
+            entityManager.persist(healthCheck);
+            entityManager.flush();
+            HealthCheck retrievedHealthCheck = entityManager.find(HealthCheck.class, healthCheck.getId());
+            entityManager.remove(retrievedHealthCheck);
+        } catch (Exception e) {
+            LOGGER.error("Test transaction failed", e);
+            throw e;
+        }
     }
-  }
 }

@@ -34,31 +34,31 @@ import org.junit.jupiter.api.Test;
  */
 class HeroStatTest {
 
-  /**
-   * Tester for equals() and hashCode() methods of a class. Using guava's EqualsTester.
-   *
-   * @see <a href="http://static.javadoc.io/com.google.guava/guava-testlib/19.0/com/google/common/testing/EqualsTester.html">
-   * http://static.javadoc.io/com.google.guava/guava-testlib/19.0/com/google/common/testing/EqualsTester.html
-   * </a>
-   */
-  @Test
-  void testEquals() {
-    var heroStatA = HeroStat.valueOf(3, 9, 2);
-    var heroStatB = HeroStat.valueOf(3, 9, 2);
-    assertEquals(heroStatA, heroStatB);
-  }
+    /**
+     * Tester for equals() and hashCode() methods of a class. Using guava's EqualsTester.
+     *
+     * @see <a href="http://static.javadoc.io/com.google.guava/guava-testlib/19.0/com/google/common/testing/EqualsTester.html">
+     * http://static.javadoc.io/com.google.guava/guava-testlib/19.0/com/google/common/testing/EqualsTester.html
+     * </a>
+     */
+    @Test
+    void testEquals() {
+        var heroStatA = HeroStat.valueOf(3, 9, 2);
+        var heroStatB = HeroStat.valueOf(3, 9, 2);
+        assertEquals(heroStatA, heroStatB);
+    }
 
-  /**
-   * The toString() for two equal values must be the same. For two non-equal values it must be
-   * different.
-   */
-  @Test
-  void testToString() {
-    var heroStatA = HeroStat.valueOf(3, 9, 2);
-    var heroStatB = HeroStat.valueOf(3, 9, 2);
-    var heroStatC = HeroStat.valueOf(3, 9, 8);
-    assertEquals(heroStatA.toString(), heroStatB.toString());
-    assertNotEquals(heroStatA.toString(), heroStatC.toString());
-  }
+    /**
+     * The toString() for two equal values must be the same. For two non-equal values it must be
+     * different.
+     */
+    @Test
+    void testToString() {
+        var heroStatA = HeroStat.valueOf(3, 9, 2);
+        var heroStatB = HeroStat.valueOf(3, 9, 2);
+        var heroStatC = HeroStat.valueOf(3, 9, 8);
+        assertEquals(heroStatA.toString(), heroStatB.toString());
+        assertNotEquals(heroStatA.toString(), heroStatC.toString());
+    }
 
 }

@@ -16,27 +16,44 @@ tag:
 
 ## Intent of Strangler Design Pattern
 
-The Strangler Pattern incrementally replaces the legacy system by building a new system alongside the old one, eventually strangling the old system. Using the pattern offer a seamless transition from old to new systems.
+The Strangler Pattern incrementally replaces the legacy system by building a new system alongside the old one,
+eventually strangling the old system. Using the pattern offer a seamless transition from old to new systems.
 
 ## Detailed Explanation of Strangler Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a city planning department that decides to modernize an old bridge that's crucial for daily commutes. Instead of demolishing the old bridge and causing major disruptions, they build a new, modern bridge next to it. As sections of the new bridge are completed, traffic is gradually diverted from the old bridge to the new one. Eventually, the entire flow of traffic moves to the new bridge, and the old bridge is either decommissioned or demolished. This way, the transition is smooth, and the city's daily activities are minimally affected. This approach mirrors the Strangler Design Pattern, where a legacy system is incrementally replaced by a new system, ensuring continuous operation during the transition.
+> Imagine a city planning department that decides to modernize an old bridge that's crucial for daily commutes. Instead
+> of demolishing the old bridge and causing major disruptions, they build a new, modern bridge next to it. As sections of
+> the new bridge are completed, traffic is gradually diverted from the old bridge to the new one. Eventually, the entire
+> flow of traffic moves to the new bridge, and the old bridge is either decommissioned or demolished. This way, the
+> transition is smooth, and the city's daily activities are minimally affected. This approach mirrors the Strangler Design
+> Pattern, where a legacy system is incrementally replaced by a new system, ensuring continuous operation during the
+> transition.
 
 In plain words
 
-> The Strangler Design Pattern incrementally replaces a legacy system by developing a new system alongside it and gradually migrating functionality until the old system is entirely replaced.
+> The Strangler Design Pattern incrementally replaces a legacy system by developing a new system alongside it and
+> gradually migrating functionality until the old system is entirely replaced.
 
 Wikipedia says
 
-> The Strangler Design Pattern involves incrementally migrating a legacy system by gradually replacing it with a new system. It wraps old code with new code, redirecting or logging uses of the old code to ensure a seamless transition. This pattern is named after the strangler fig plant, which grows around a host tree and eventually replaces it entirely. It's particularly useful for modernizing monolithic applications and transitioning them to microservices architecture with minimal risk and disruption.
+> The Strangler Design Pattern involves incrementally migrating a legacy system by gradually replacing it with a new
+> system. It wraps old code with new code, redirecting or logging uses of the old code to ensure a seamless transition.
+> This pattern is named after the strangler fig plant, which grows around a host tree and eventually replaces it entirely.
+> It's particularly useful for modernizing monolithic applications and transitioning them to microservices architecture
+> with minimal risk and disruption.
 
 ## Programmatic Example of Strangler Pattern in Java
 
-The Strangler design pattern in Java is a software design pattern that incrementally migrates a legacy system by gradually replacing specific pieces of functionality with new applications and services. As features from the legacy system are replaced, the new system eventually replaces all the old system's features, strangling the old system and allowing you to decommission it.
+The Strangler design pattern in Java is a software design pattern that incrementally migrates a legacy system by
+gradually replacing specific pieces of functionality with new applications and services. As features from the legacy
+system are replaced, the new system eventually replaces all the old system's features, strangling the old system and
+allowing you to decommission it.
 
-In the provided code, we have an example of the Strangler pattern in action. The `OldArithmetic` class represents the legacy system, while the `HalfArithmetic` and `NewArithmetic` classes represent the new system at different stages of development.
+In the provided code, we have an example of the Strangler pattern in action. The `OldArithmetic` class represents the
+legacy system, while the `HalfArithmetic` and `NewArithmetic` classes represent the new system at different stages of
+development.
 
 Let's break down the code to understand how the Strangler pattern is implemented.
 
@@ -59,7 +76,8 @@ public class OldArithmetic {
 }
 ```
 
-The `OldArithmetic` class represents the legacy system. It has two methods, `sum` and `mul`, which depend on the `OldSource` class.
+The `OldArithmetic` class represents the legacy system. It has two methods, `sum` and `mul`, which depend on the
+`OldSource` class.
 
 ```java
 public class HalfArithmetic {
@@ -88,7 +106,9 @@ public class HalfArithmetic {
 }
 ```
 
-The `HalfArithmetic` class represents the system during the migration process. It depends on both the `OldSource` and `HalfSource` classes. The `sum` method has been migrated to use the new source, while the `mul` method still uses the old source. The `ifHasZero` method is a new feature added in the new system.
+The `HalfArithmetic` class represents the system during the migration process. It depends on both the `OldSource` and
+`HalfSource` classes. The `sum` method has been migrated to use the new source, while the `mul` method still uses the
+old source. The `ifHasZero` method is a new feature added in the new system.
 
 ```java
 public class NewArithmetic {
@@ -113,7 +133,8 @@ public class NewArithmetic {
 }
 ```
 
-The `NewArithmetic` class represents the system after the migration process. It only depends on the `NewSource` class. All methods now use the new source.
+The `NewArithmetic` class represents the system after the migration process. It only depends on the `NewSource` class.
+All methods now use the new source.
 
 Here is the `main` method executing our example.
 
@@ -158,14 +179,17 @@ Console output:
 13:02:25.035 [main] INFO com.iluwatar.strangler.NewSource -- Source module 2.0
 ```
 
-This is a typical example of the Strangler pattern. The legacy system (`OldArithmetic`) is gradually replaced by the new system (`HalfArithmetic` and `NewArithmetic`). The new system is developed incrementally, and at each stage, it strangles a part of the legacy system until the legacy system is completely replaced.
+This is a typical example of the Strangler pattern. The legacy system (`OldArithmetic`) is gradually replaced by the new
+system (`HalfArithmetic` and `NewArithmetic`). The new system is developed incrementally, and at each stage, it
+strangles a part of the legacy system until the legacy system is completely replaced.
 
 ## When to Use the Strangler Pattern in Java
 
 * Use when you need to replace a monolithic or legacy system incrementally.
 * Ideal for scenarios where the system cannot be replaced in one go due to risk or complexity.
 * Suitable when you need to modernize parts of an application while ensuring continuous operation.
-* Perfect for applications requiring updates with zero downtime, the Strangler pattern supports incremental updates in complex Java systems.
+* Perfect for applications requiring updates with zero downtime, the Strangler pattern supports incremental updates in
+  complex Java systems.
 
 ## Strangler Pattern Java Tutorials
 
@@ -193,8 +217,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): Used to make new systems interact with the old system during the transition period.
-* [Facade](https://java-design-patterns.com/patterns/facade/): Can provide a unified interface to the old and new systems, simplifying client interactions.
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): Used to make new systems interact with the old system
+  during the transition period.
+* [Facade](https://java-design-patterns.com/patterns/facade/): Can provide a unified interface to the old and new
+  systems, simplifying client interactions.
 * Microservices: The target architecture in many cases where the Strangler Pattern is applied.
 
 ## References and Credits

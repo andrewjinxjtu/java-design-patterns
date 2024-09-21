@@ -18,31 +18,46 @@ tag:
 
 ## Intent of Async Method Invocation Design Pattern
 
-The Async Method Invocation pattern is designed to enhance concurrency by allowing methods to be called asynchronously. This pattern helps in executing parallel tasks, reducing wait times, and improving system throughput.
+The Async Method Invocation pattern is designed to enhance concurrency by allowing methods to be called asynchronously.
+This pattern helps in executing parallel tasks, reducing wait times, and improving system throughput.
 
 ## Detailed Explanation of Async Method Invocation Pattern with Real-World Examples
 
 Real-world example
 
-> Asynchronous method invocation enables non-blocking operations, allowing multiple processes to run concurrently. This pattern is particularly useful in applications requiring high scalability and performance, such as web servers and microservices.
-> 
-> In the context of space rockets, an analogous example of the Async Method Invocation pattern can be seen in the communication between the mission control center and the onboard systems of the rocket. When mission control sends a command to the rocket to adjust its trajectory or perform a system check, they do not wait idly for the rocket to complete the task and report back. Instead, mission control continues to monitor other aspects of the mission and manage different tasks. The rocket executes the command asynchronously and sends a status update or result back to mission control once the operation is complete. This allows mission control to efficiently manage multiple concurrent operations without being blocked by any single task, similar to how asynchronous method invocation works in software systems.
+> Asynchronous method invocation enables non-blocking operations, allowing multiple processes to run concurrently. This
+> pattern is particularly useful in applications requiring high scalability and performance, such as web servers and
+> microservices.
+>
+> In the context of space rockets, an analogous example of the Async Method Invocation pattern can be seen in the
+> communication between the mission control center and the onboard systems of the rocket. When mission control sends a
+> command to the rocket to adjust its trajectory or perform a system check, they do not wait idly for the rocket to
+> complete the task and report back. Instead, mission control continues to monitor other aspects of the mission and manage
+> different tasks. The rocket executes the command asynchronously and sends a status update or result back to mission
+> control once the operation is complete. This allows mission control to efficiently manage multiple concurrent operations
+> without being blocked by any single task, similar to how asynchronous method invocation works in software systems.
 
 In plain words
 
-> Asynchronous method invocation starts task processing and returns immediately before the task is ready. The results of the task processing are returned to the caller later.
+> Asynchronous method invocation starts task processing and returns immediately before the task is ready. The results of
+> the task processing are returned to the caller later.
 
 Wikipedia says
 
-> In multithreaded computer programming, asynchronous method invocation (AMI), also known as asynchronous method calls or the asynchronous pattern is a design pattern in which the call site is not blocked while waiting for the called code to finish. Instead, the calling thread is notified when the reply arrives. Polling for a reply is an undesired option.
+> In multithreaded computer programming, asynchronous method invocation (AMI), also known as asynchronous method calls
+> or the asynchronous pattern is a design pattern in which the call site is not blocked while waiting for the called code
+> to finish. Instead, the calling thread is notified when the reply arrives. Polling for a reply is an undesired option.
 
 ## Programmatic Example of Async Method Invocation Pattern in Java
 
-Consider a scenario where multiple tasks need to be executed simultaneously. Using the Async Method Invocation pattern, you can initiate these tasks without waiting for each to complete, thus optimizing resource usage and reducing latency.
+Consider a scenario where multiple tasks need to be executed simultaneously. Using the Async Method Invocation pattern,
+you can initiate these tasks without waiting for each to complete, thus optimizing resource usage and reducing latency.
 
 In this example, we are launching space rockets and deploying lunar rovers.
 
-The application demonstrates the async method invocation pattern. The key parts of the pattern are`AsyncResult` which is an intermediate container for an asynchronously evaluated value, `AsyncCallback` which can be provided to be executed on task completion and `AsyncExecutor` that manages the execution of the async tasks.
+The application demonstrates the async method invocation pattern. The key parts of the pattern are`AsyncResult` which is
+an intermediate container for an asynchronously evaluated value, `AsyncCallback` which can be provided to be executed on
+task completion and `AsyncExecutor` that manages the execution of the async tasks.
 
 ```java
 public interface AsyncResult<T> {
@@ -161,21 +176,26 @@ Here's the program console output.
 
 ## When to Use the Async Method Invocation Pattern in Java
 
-This pattern is ideal for applications needing to manage multiple parallel tasks efficiently. It is commonly used in scenarios such as handling background processes, improving user interface responsiveness, and managing asynchronous data processing.
+This pattern is ideal for applications needing to manage multiple parallel tasks efficiently. It is commonly used in
+scenarios such as handling background processes, improving user interface responsiveness, and managing asynchronous data
+processing.
 
 Use the async method invocation pattern when
 
 * When operations do not need to complete before proceeding with the next steps in a program.
-* For tasks that are resource-intensive or time-consuming, such as IO operations, network requests, or complex computations, where making the operation synchronous would significantly impact performance or user experience.
+* For tasks that are resource-intensive or time-consuming, such as IO operations, network requests, or complex
+  computations, where making the operation synchronous would significantly impact performance or user experience.
 * In GUI applications to prevent freezing or unresponsiveness during long-running tasks.
 * In web applications for non-blocking IO operations.
 
 ## Real-World Applications of Async Method Invocation Pattern in Java
 
-Many modern applications leverage the Async Method Invocation pattern, including web servers handling concurrent requests, microservices architectures, and systems requiring intensive background processing.
+Many modern applications leverage the Async Method Invocation pattern, including web servers handling concurrent
+requests, microservices architectures, and systems requiring intensive background processing.
 
 * Web servers handling HTTP requests asynchronously to improve throughput and reduce latency.
-* Desktop and mobile applications using background threads to perform time-consuming operations without blocking the user interface.
+* Desktop and mobile applications using background threads to perform time-consuming operations without blocking the
+  user interface.
 * Microservices architectures where services perform asynchronous communications via messaging queues or event streams.
 * [FutureTask](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html)
 * [CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
@@ -184,27 +204,38 @@ Many modern applications leverage the Async Method Invocation pattern, including
 
 ## Benefits and Trade-offs of Async Method Invocation Pattern
 
-While this pattern offers significant performance benefits, it also introduces complexity in error handling and resource management. Proper implementation is essential to avoid potential pitfalls such as race conditions and deadlocks.
+While this pattern offers significant performance benefits, it also introduces complexity in error handling and resource
+management. Proper implementation is essential to avoid potential pitfalls such as race conditions and deadlocks.
 
 Benefits:
 
-* Improved Responsiveness: The main thread or application flow remains unblocked, improving the user experience in GUI applications and overall responsiveness.
-* Better Resource Utilization: By enabling parallel execution, system resources (like CPU and IO) are utilized more efficiently, potentially improving the application's throughput.
+* Improved Responsiveness: The main thread or application flow remains unblocked, improving the user experience in GUI
+  applications and overall responsiveness.
+* Better Resource Utilization: By enabling parallel execution, system resources (like CPU and IO) are utilized more
+  efficiently, potentially improving the application's throughput.
 * Scalability: Easier to scale applications, as tasks can be distributed across available resources more effectively.
 
 Trade-offs:
 
-* Complexity: Introducing asynchronous operations can complicate the codebase, making it more challenging to understand, debug, and maintain.
-* Resource Management: Requires careful management of threads or execution contexts, which can introduce overhead and potential resource exhaustion issues.
-* Error Handling: Asynchronous operations can make error handling more complex, as exceptions may occur in different threads or at different times.
+* Complexity: Introducing asynchronous operations can complicate the codebase, making it more challenging to understand,
+  debug, and maintain.
+* Resource Management: Requires careful management of threads or execution contexts, which can introduce overhead and
+  potential resource exhaustion issues.
+* Error Handling: Asynchronous operations can make error handling more complex, as exceptions may occur in different
+  threads or at different times.
 
 ## Related Java Design Patterns
 
-The Async Method Invocation pattern often works well with other design patterns like the Command Pattern for encapsulating requests, the Observer Pattern for event handling, and the Promise Pattern for managing asynchronous results.
+The Async Method Invocation pattern often works well with other design patterns like the Command Pattern for
+encapsulating requests, the Observer Pattern for event handling, and the Promise Pattern for managing asynchronous
+results.
 
-* [Command](https://java-design-patterns.com/patterns/command/): Asynchronous method invocation can be used to implement the Command pattern, where commands are executed asynchronously.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Asynchronous method invocation can be used to notify observers asynchronously when a subject's state changes.
-* [Promise](https://java-design-patterns.com/patterns/promise/): The AsyncResult interface can be considered a form of Promise, representing a value that may not be available yet.
+* [Command](https://java-design-patterns.com/patterns/command/): Asynchronous method invocation can be used to implement
+  the Command pattern, where commands are executed asynchronously.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Asynchronous method invocation can be used to notify
+  observers asynchronously when a subject's state changes.
+* [Promise](https://java-design-patterns.com/patterns/promise/): The AsyncResult interface can be considered a form of
+  Promise, representing a value that may not be available yet.
 
 ## References and Credits
 

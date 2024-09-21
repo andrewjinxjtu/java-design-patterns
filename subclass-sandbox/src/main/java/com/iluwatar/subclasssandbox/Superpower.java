@@ -32,39 +32,42 @@ import org.slf4j.Logger;
  */
 public abstract class Superpower {
 
-  protected Logger logger;
+    protected Logger logger;
 
-  /**
-   * Subclass of superpower should implement this sandbox method by calling the
-   * methods provided in this super class.
-   */
-  protected abstract void activate();
+    /**
+     * Subclass of superpower should implement this sandbox method by calling the
+     * methods provided in this super class.
+     */
+    protected abstract void activate();
 
-  /**
-   * Move to (x, y, z).
-   * @param x X coordinate.
-   * @param y Y coordinate.
-   * @param z Z coordinate.
-   */
-  protected void move(double x, double y, double z) {
-    logger.info("Move to ( {}, {}, {} )", x, y, z);
-  }
+    /**
+     * Move to (x, y, z).
+     *
+     * @param x X coordinate.
+     * @param y Y coordinate.
+     * @param z Z coordinate.
+     */
+    protected void move(double x, double y, double z) {
+        logger.info("Move to ( {}, {}, {} )", x, y, z);
+    }
 
-  /**
-   * Play sound effect for the superpower.
-   * @param soundName Sound name.
-   * @param volume Value of volume.
-   */
-  protected void playSound(String soundName, int volume) {
-    logger.info("Play {} with volume {}", soundName, volume);
-  }
+    /**
+     * Play sound effect for the superpower.
+     *
+     * @param soundName Sound name.
+     * @param volume    Value of volume.
+     */
+    protected void playSound(String soundName, int volume) {
+        logger.info("Play {} with volume {}", soundName, volume);
+    }
 
-  /**
-   * Spawn particles for the superpower.
-   * @param particleType Particle type.
-   * @param count Count of particles to be spawned.
-   */
-  protected void spawnParticles(String particleType, int count) {
-    logger.info("Spawn {} particle with type {}", count, particleType);
-  }
+    /**
+     * Spawn particles for the superpower.
+     *
+     * @param particleType Particle type.
+     * @param count        Count of particles to be spawned.
+     */
+    protected void spawnParticles(String particleType, int count) {
+        logger.info("Spawn {} particle with type {}", count, particleType);
+    }
 }

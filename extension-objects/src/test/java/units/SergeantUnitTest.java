@@ -34,13 +34,13 @@ import org.junit.jupiter.api.Test;
  */
 class SergeantUnitTest {
 
-  @Test
-  void getUnitExtension() {
-    final var unit = new SergeantUnit("SergeantUnitName");
+    @Test
+    void getUnitExtension() {
+        final var unit = new SergeantUnit("SergeantUnitName");
 
-    assertNull(unit.getUnitExtension("SoldierExtension"));
-    assertNotNull(unit.getUnitExtension("SergeantExtension"));
-    assertNull(unit.getUnitExtension("CommanderExtension"));
-  }
+        assertNull(unit.getUnitExtension("SoldierExtension"));
+        assertNotNull(unit.getUnitExtension("SergeantExtension"));
+        assertNull(unit.getUnitExtension("CommanderExtension"));
+    }
 
 }

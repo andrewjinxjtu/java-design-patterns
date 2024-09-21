@@ -13,27 +13,45 @@ tag:
 
 ## Intent of Leader/Followers Design Pattern
 
-To efficiently manage a set of worker threads, the Leader-Followers pattern enables multiple threads to take turns sharing a set of event sources, optimizing resource utilization and improving performance compared to a one-thread-per-source approach.
+To efficiently manage a set of worker threads, the Leader-Followers pattern enables multiple threads to take turns
+sharing a set of event sources, optimizing resource utilization and improving performance compared to a
+one-thread-per-source approach.
 
 ## Detailed Explanation of Leader/Followers Pattern with Real-World Examples
 
 Real-world Example
 
-> Imagine managing a busy restaurant with multiple servers and a single host. The host acts as the "leader" and is responsible for greeting guests, managing the waitlist, and seating guests. Once the guests are seated, the host returns to the entrance to manage new arrivals. The servers, or "followers," wait for the host to assign them tables. This assignment is done on a rotational basis where the next available server takes the next group of guests. This system ensures that the host efficiently handles the incoming flow of guests while servers focus on providing service, similar to how the Leader and Followers pattern manages threads and tasks in a software system. This approach optimizes resource utilization (in this case, staff) and ensures smooth operations during peak times, much like it optimizes thread usage in computing environments.
+> Imagine managing a busy restaurant with multiple servers and a single host. The host acts as the "leader" and is
+> responsible for greeting guests, managing the waitlist, and seating guests. Once the guests are seated, the host returns
+> to the entrance to manage new arrivals. The servers, or "followers," wait for the host to assign them tables. This
+> assignment is done on a rotational basis where the next available server takes the next group of guests. This system
+> ensures that the host efficiently handles the incoming flow of guests while servers focus on providing service, similar
+> to how the Leader and Followers pattern manages threads and tasks in a software system. This approach optimizes resource
+> utilization (in this case, staff) and ensures smooth operations during peak times, much like it optimizes thread usage
+> in computing environments.
 
 In plain words
 
-> The Leader-Followers design pattern utilizes a single leader thread to distribute work among multiple follower threads, effectively managing task delegation, thread synchronization, and improving resource efficiency in concurrent programming.
+> The Leader-Followers design pattern utilizes a single leader thread to distribute work among multiple follower
+> threads, effectively managing task delegation, thread synchronization, and improving resource efficiency in concurrent
+> programming.
 
 [martinfowler.com](https://martinfowler.com/articles/patterns-of-distributed-systems/leader-follower.html) says
 
-> Select one server in the cluster as a leader. The leader is responsible for taking decisions on behalf of the entire cluster and propagating the decisions to all the other servers.
+> Select one server in the cluster as a leader. The leader is responsible for taking decisions on behalf of the entire
+> cluster and propagating the decisions to all the other servers.
 
 ## Programmatic Example of Leader-Followers Pattern in Java
 
-The Leader-Followers pattern is a concurrency design pattern where one thread (the leader) waits for work to arrive, de-multiplexes, dispatches, and processes the work, thereby enhancing CPU cache affinity and reducing event dispatching latency. Once the leader finishes processing the work, it promotes one of the follower threads to be the new leader. This pattern is useful for enhancing CPU cache affinity, minimizing locking overhead, and reducing event dispatching latency.
+The Leader-Followers pattern is a concurrency design pattern where one thread (the leader) waits for work to arrive,
+de-multiplexes, dispatches, and processes the work, thereby enhancing CPU cache affinity and reducing event dispatching
+latency. Once the leader finishes processing the work, it promotes one of the follower threads to be the new leader.
+This pattern is useful for enhancing CPU cache affinity, minimizing locking overhead, and reducing event dispatching
+latency.
 
-In the provided code, we have a `WorkCenter` class that manages a group of `Worker` threads. One of these workers is designated as the leader and is responsible for receiving and processing tasks. Once a task is processed, the leader promotes a new leader from the remaining workers.
+In the provided code, we have a `WorkCenter` class that manages a group of `Worker` threads. One of these workers is
+designated as the leader and is responsible for receiving and processing tasks. Once a task is processed, the leader
+promotes a new leader from the remaining workers.
 
 ```java
 // WorkCenter class
@@ -63,7 +81,8 @@ public class WorkCenter {
 }
 ```
 
-In the `Worker` class, each worker is a thread that waits for tasks to process. If the worker is the leader, it processes the task and then promotes a new leader.
+In the `Worker` class, each worker is a thread that waits for tasks to process. If the worker is the leader, it
+processes the task and then promotes a new leader.
 
 ```java
 // Worker class
@@ -103,7 +122,8 @@ public class Worker implements Runnable {
 }
 ```
 
-In the `App` class, we create a `WorkCenter`, add tasks to a `TaskSet`, and then start the workers. The leader worker will start processing the tasks, and once it finishes a task, it will promote a new leader.
+In the `App` class, we create a `WorkCenter`, add tasks to a `TaskSet`, and then start the workers. The leader worker
+will start processing the tasks, and once it finishes a task, it will promote a new leader.
 
 ```java
 // App class
@@ -136,12 +156,15 @@ public class App {
 }
 ```
 
-This is a basic example of the Leader/Followers pattern. The leader worker processes tasks and promotes a new leader once it finishes a task. The new leader then starts processing the next task, and the cycle continues.
+This is a basic example of the Leader/Followers pattern. The leader worker processes tasks and promotes a new leader
+once it finishes a task. The new leader then starts processing the next task, and the cycle continues.
 
 ## When to Use the Leader/Followers Pattern in Java
 
-* The Leader-Followers pattern is useful in scenarios requiring efficient handling of multiple services on a single thread, avoiding resource thrashing, and improving scalability in concurrent programming environments.
-* Applicable in server environments where multiple client requests must be handled concurrently with minimal resource consumption.
+* The Leader-Followers pattern is useful in scenarios requiring efficient handling of multiple services on a single
+  thread, avoiding resource thrashing, and improving scalability in concurrent programming environments.
+* Applicable in server environments where multiple client requests must be handled concurrently with minimal resource
+  consumption.
 
 ## Real-World Applications of Leader-Followers Pattern in Java
 
@@ -162,8 +185,11 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Half-Sync/Half-Async](https://java-design-patterns.com/patterns/half-sync-half-async/): Leader and Followers can be seen as a variation where the synchronization aspect is divided between the leader (synchronous handling) and followers (waiting asynchronously).
-* [Thread Pool](https://java-design-patterns.com/patterns/thread-pool/): Both patterns manage a pool of worker threads, but Thread Pool assigns tasks to any available thread rather than using a leader to distribute work.
+* [Half-Sync/Half-Async](https://java-design-patterns.com/patterns/half-sync-half-async/): Leader and Followers can be
+  seen as a variation where the synchronization aspect is divided between the leader (synchronous handling) and
+  followers (waiting asynchronously).
+* [Thread Pool](https://java-design-patterns.com/patterns/thread-pool/): Both patterns manage a pool of worker threads,
+  but Thread Pool assigns tasks to any available thread rather than using a leader to distribute work.
 
 ## References and Credits
 

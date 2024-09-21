@@ -34,35 +34,34 @@ import org.junit.jupiter.api.Test;
 
 /**
  * AbstractHolderTest
- *
  */
 public abstract class AbstractHolderTest {
 
-  /**
-   * Get the internal state of the holder value
-   *
-   * @return The internal value
-   */
-  abstract Heavy getInternalHeavyValue() throws Exception;
+    /**
+     * Get the internal state of the holder value
+     *
+     * @return The internal value
+     */
+    abstract Heavy getInternalHeavyValue() throws Exception;
 
-  /**
-   * Request a lazy loaded {@link Heavy} object from the holder.
-   *
-   * @return The lazy loaded {@link Heavy} object
-   */
-  abstract Heavy getHeavy();
+    /**
+     * Request a lazy loaded {@link Heavy} object from the holder.
+     *
+     * @return The lazy loaded {@link Heavy} object
+     */
+    abstract Heavy getHeavy();
 
-  /**
-   * This test shows that the heavy field is not instantiated until the method getHeavy is called
-   */
-  @Test
-  void testGetHeavy() {
-    assertTimeout(ofMillis(3000), () -> {
-      assertNull(getInternalHeavyValue());
-      assertNotNull(getHeavy());
-      assertNotNull(getInternalHeavyValue());
-      assertSame(getHeavy(), getInternalHeavyValue());
-    });
-  }
+    /**
+     * This test shows that the heavy field is not instantiated until the method getHeavy is called
+     */
+    @Test
+    void testGetHeavy() {
+        assertTimeout(ofMillis(3000), () -> {
+            assertNull(getInternalHeavyValue());
+            assertNotNull(getHeavy());
+            assertNotNull(getInternalHeavyValue());
+            assertSame(getHeavy(), getInternalHeavyValue());
+        });
+    }
 
 }

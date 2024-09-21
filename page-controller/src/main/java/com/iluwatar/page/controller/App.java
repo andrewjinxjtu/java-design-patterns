@@ -33,16 +33,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * It is an approach of one front page leading to one logical file that handles HTTP requests and actions.
  * In this example, we build a website with signup page handling an input form with Signup Controller, Signup View, and Signup Model
  * and after signup, it is redirected to a user page handling with User Controller, User View, and User Model.
-*/
+ */
 @Slf4j
 @SpringBootApplication
 public class App {
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(final String[] args) {
-    SpringApplication.run(App.class, args);
-  }
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(final String[] args) {
+        SpringApplication.run(App.class, args);
+    }
 }

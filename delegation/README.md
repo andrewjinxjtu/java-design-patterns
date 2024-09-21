@@ -23,7 +23,10 @@ To allow an object to delegate responsibility for a task to another helper objec
 
 Real-world example
 
-> In a restaurant, the head chef delegates tasks to sous-chefs: one manages grilling, another handles salads, and a third is in charge of desserts. Each sous-chef specializes in their area, allowing the head chef to focus on overall kitchen management. This mirrors the Delegation design pattern, where a main object delegates specific tasks to helper objects, each expert in their domain.
+> In a restaurant, the head chef delegates tasks to sous-chefs: one manages grilling, another handles salads, and a
+> third is in charge of desserts. Each sous-chef specializes in their area, allowing the head chef to focus on overall
+> kitchen management. This mirrors the Delegation design pattern, where a main object delegates specific tasks to helper
+> objects, each expert in their domain.
 
 In plain words
 
@@ -31,7 +34,10 @@ In plain words
 
 Wikipedia says
 
-> In object-oriented programming, delegation refers to evaluating a member (property or method) of one object (the receiver) in the context of another original object (the sender). Delegation can be done explicitly, by passing the sending object to the receiving object, which can be done in any object-oriented language; or implicitly, by the member lookup rules of the language, which requires language support for the feature.
+> In object-oriented programming, delegation refers to evaluating a member (property or method) of one object (the
+> receiver) in the context of another original object (the sender). Delegation can be done explicitly, by passing the
+> sending object to the receiving object, which can be done in any object-oriented language; or implicitly, by the member
+> lookup rules of the language, which requires language support for the feature.
 
 ## Programmatic Example of Delegation Pattern in Java
 
@@ -69,7 +75,8 @@ public class HpPrinter implements Printer {
 }
 ```
 
-The `PrinterController` can be used as a `Printer` by delegating any work handled by this interface to an object implementing it.
+The `PrinterController` can be used as a `Printer` by delegating any work handled by this interface to an object
+implementing it.
 
 ```java
 public class PrinterController implements Printer {
@@ -87,7 +94,8 @@ public class PrinterController implements Printer {
 }
 ```
 
-In the client code, printer controllers can print messages differently depending on the object they're delegating that work to.
+In the client code, printer controllers can print messages differently depending on the object they're delegating that
+work to.
 
 ```java
 public class App {
@@ -134,20 +142,26 @@ Epson Printer:hello world
 
 Benefits:
 
-* Reduces subclassing: Objects can delegate operations to different objects and change them at runtime, reducing the need for subclassing.
+* Reduces subclassing: Objects can delegate operations to different objects and change them at runtime, reducing the
+  need for subclassing.
 * Encourages reuse: Delegation promotes the reuse of the helper object's code.
 * Increases flexibility: By delegating tasks to helper objects, you can change the behavior of your classes at runtime.
 
 Trade-offs:
 
-* Runtime Overhead: Delegation can introduce additional layers of indirection, which may result in slight performance costs.
-* Complexity: The design can become more complicated since it involves additional classes and interfaces to manage delegation.
+* Runtime Overhead: Delegation can introduce additional layers of indirection, which may result in slight performance
+  costs.
+* Complexity: The design can become more complicated since it involves additional classes and interfaces to manage
+  delegation.
 
 ## Related Java Design Patterns
 
-* [Composite](https://java-design-patterns.com/patterns/composite/): Delegation can be used within a composite pattern to delegate component-specific behavior to child components.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Delegation is often used in the strategy pattern where a context object delegates tasks to a strategy object.
-* https://java-design-patterns.com/patterns/proxy/: The proxy pattern is a form of delegation where a proxy object controls access to another object, which it delegates work to.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Delegation can be used within a composite pattern
+  to delegate component-specific behavior to child components.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Delegation is often used in the strategy pattern
+  where a context object delegates tasks to a strategy object.
+* https://java-design-patterns.com/patterns/proxy/: The proxy pattern is a form of delegation where a proxy object
+  controls access to another object, which it delegates work to.
 
 ## References and Credits
 

@@ -32,60 +32,60 @@ import static org.mockito.Mockito.*;
 
 class DispatcherTest {
 
-  private Dispatcher dispatcher;
+    private Dispatcher dispatcher;
 
-  @BeforeEach
-  public void setUp() {
-    dispatcher = new Dispatcher();
-  }
+    @BeforeEach
+    public void setUp() {
+        dispatcher = new Dispatcher();
+    }
 
-  @Test
-  void testDispatchKnownCommand() {
-    Command mockCommand = mock(ArcherCommand.class);
-    dispatcher = spy(dispatcher);
-    doReturn(mockCommand).when(dispatcher).getCommand("Archer");
+    @Test
+    void testDispatchKnownCommand() {
+        Command mockCommand = mock(ArcherCommand.class);
+        dispatcher = spy(dispatcher);
+        doReturn(mockCommand).when(dispatcher).getCommand("Archer");
 
-    dispatcher.dispatch("Archer");
+        dispatcher.dispatch("Archer");
 
-    verify(mockCommand, times(1)).process();
-  }
+        verify(mockCommand, times(1)).process();
+    }
 
-  @Test
-  void testDispatchUnknownCommand() {
-    Command mockCommand = mock(UnknownCommand.class);
-    dispatcher = spy(dispatcher);
-    doReturn(mockCommand).when(dispatcher).getCommand("Unknown");
+    @Test
+    void testDispatchUnknownCommand() {
+        Command mockCommand = mock(UnknownCommand.class);
+        dispatcher = spy(dispatcher);
+        doReturn(mockCommand).when(dispatcher).getCommand("Unknown");
 
-    dispatcher.dispatch("Unknown");
+        dispatcher.dispatch("Unknown");
 
-    verify(mockCommand, times(1)).process();
-  }
+        verify(mockCommand, times(1)).process();
+    }
 
-  @Test
-  void testGetCommandKnown() {
-    Command command = dispatcher.getCommand("Archer");
-    assertNotNull(command);
-    assertTrue(command instanceof ArcherCommand);
-  }
+    @Test
+    void testGetCommandKnown() {
+        Command command = dispatcher.getCommand("Archer");
+        assertNotNull(command);
+        assertTrue(command instanceof ArcherCommand);
+    }
 
-  @Test
-  void testGetCommandUnknown() {
-    Command command = dispatcher.getCommand("Unknown");
-    assertNotNull(command);
-    assertTrue(command instanceof UnknownCommand);
-  }
+    @Test
+    void testGetCommandUnknown() {
+        Command command = dispatcher.getCommand("Unknown");
+        assertNotNull(command);
+        assertTrue(command instanceof UnknownCommand);
+    }
 
-  @Test
-  void testGetCommandClassKnown() {
-    Class<?> commandClass = Dispatcher.getCommandClass("Archer");
-    assertNotNull(commandClass);
-    assertEquals(ArcherCommand.class, commandClass);
-  }
+    @Test
+    void testGetCommandClassKnown() {
+        Class<?> commandClass = Dispatcher.getCommandClass("Archer");
+        assertNotNull(commandClass);
+        assertEquals(ArcherCommand.class, commandClass);
+    }
 
-  @Test
-  void testGetCommandClassUnknown() {
-    Class<?> commandClass = Dispatcher.getCommandClass("Unknown");
-    assertNotNull(commandClass);
-    assertEquals(UnknownCommand.class, commandClass);
-  }
+    @Test
+    void testGetCommandClassUnknown() {
+        Class<?> commandClass = Dispatcher.getCommandClass("Unknown");
+        assertNotNull(commandClass);
+        assertEquals(UnknownCommand.class, commandClass);
+    }
 }

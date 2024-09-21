@@ -33,26 +33,25 @@ package com.iluwatar.servicelocator;
  * <p>In this example we use the Service locator pattern to lookup JNDI-services and cache them for
  * subsequent requests.
  * <br>
- *
  */
 public class App {
 
-  public static final String JNDI_SERVICE_A = "jndi/serviceA";
-  public static final String JNDI_SERVICE_B = "jndi/serviceB";
+    public static final String JNDI_SERVICE_A = "jndi/serviceA";
+    public static final String JNDI_SERVICE_B = "jndi/serviceB";
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
-    var service = ServiceLocator.getService(JNDI_SERVICE_A);
-    service.execute();
-    service = ServiceLocator.getService(JNDI_SERVICE_B);
-    service.execute();
-    service = ServiceLocator.getService(JNDI_SERVICE_A);
-    service.execute();
-    service = ServiceLocator.getService(JNDI_SERVICE_A);
-    service.execute();
-  }
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
+        var service = ServiceLocator.getService(JNDI_SERVICE_A);
+        service.execute();
+        service = ServiceLocator.getService(JNDI_SERVICE_B);
+        service.execute();
+        service = ServiceLocator.getService(JNDI_SERVICE_A);
+        service.execute();
+        service = ServiceLocator.getService(JNDI_SERVICE_A);
+        service.execute();
+    }
 }

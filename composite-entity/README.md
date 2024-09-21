@@ -20,25 +20,36 @@ tag:
 
 ## Intent of Composite Entity Design Pattern
 
-The Composite Entity design pattern in Java is aimed at managing a set of interrelated persistent objects as if they were a single entity. It is commonly used in enterprise applications, particularly within the context of Enterprise JavaBeans (EJB) and similar enterprise frameworks, to represent graph-based data structures within business models. This pattern enables clients to treat these complex structures as a single unit, simplifying operations and interactions.
+The Composite Entity design pattern in Java is aimed at managing a set of interrelated persistent objects as if they
+were a single entity. It is commonly used in enterprise applications, particularly within the context of Enterprise
+JavaBeans (EJB) and similar enterprise frameworks, to represent graph-based data structures within business models. This
+pattern enables clients to treat these complex structures as a single unit, simplifying operations and interactions.
 
 ## Detailed Explanation of Composite Entity Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a university registration system where a "Student" entity is a composite entity. Each "Student" object includes several dependent objects: personal details, course enrollments, grades, and payment information. Instead of managing each of these aspects separately, the Composite Entity design pattern allows the university system to treat the "Student" as a single entity. This simplifies operations such as enrolling a student in a new course, updating grades, and processing payments, since all related actions can be managed through the composite "Student" object.
+> Consider a university registration system where a "Student" entity is a composite entity. Each "Student" object
+> includes several dependent objects: personal details, course enrollments, grades, and payment information. Instead of
+> managing each of these aspects separately, the Composite Entity design pattern allows the university system to treat
+> the "Student" as a single entity. This simplifies operations such as enrolling a student in a new course, updating
+> grades, and processing payments, since all related actions can be managed through the composite "Student" object.
 
 In plain words
 
-> The Composite Entity pattern in Java allows a set of related persistent objects to be represented and managed by a unified object, simplifying enterprise application design.
+> The Composite Entity pattern in Java allows a set of related persistent objects to be represented and managed by a
+> unified object, simplifying enterprise application design.
 
 Wikipedia says
 
-> Composite entity is a Java EE Software design pattern and it is used to model, represent, and manage a set of interrelated persistent objects rather than representing them as individual fine-grained entity beans, and also a composite entity bean represents a graph of objects.
+> Composite entity is a Java EE Software design pattern and it is used to model, represent, and manage a set of
+> interrelated persistent objects rather than representing them as individual fine-grained entity beans, and also a
+> composite entity bean represents a graph of objects.
 
 ## Programmatic Example of Composite Entity in Java
 
-For a console, there may be many interfaces that need to be managed and controlled. Using the composite entity pattern, dependent objects such as messages and signals can be combined and controlled using a single object.
+For a console, there may be many interfaces that need to be managed and controlled. Using the composite entity pattern,
+dependent objects such as messages and signals can be combined and controlled using a single object.
 
 We need a generic solution for the problem. To achieve this, let's introduce a generic Composite Entity Pattern.
 
@@ -127,10 +138,11 @@ public App(String message, String signal) {
 
 ## When to Use the Composite Entity Pattern in Java
 
-* Useful in Java enterprise applications where business objects are complex and involve various interdependent persistent objects.
-* Ideal for scenarios where clients need to work with a unified interface to a set of objects rather than individual entities.
+* Useful in Java enterprise applications where business objects are complex and involve various interdependent
+  persistent objects.
+* Ideal for scenarios where clients need to work with a unified interface to a set of objects rather than individual
+  entities.
 * Applicable in systems that require a simplified view of a complex data model for external clients or services.
-
 
 ## Real-World Applications of Composite Entity Pattern in Java
 
@@ -143,7 +155,8 @@ public App(String message, String signal) {
 Benefits:
 
 * Simplifies client interactions with complex entity models by providing a unified interface.
-* Enhances reusability and maintainability of the business layer by decoupling client code from the complex internals of business entities.
+* Enhances reusability and maintainability of the business layer by decoupling client code from the complex internals of
+  business entities.
 * Facilitates easier transaction management and consistency enforcement across a set of related persistent objects.
 
 Trade-offs:
@@ -154,9 +167,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): For dynamically adding behavior to individual objects within the composite entity without affecting the structure.
-* [Facade](https://java-design-patterns.com/patterns/facade/): Provides a simplified interface to a complex subsystem, similar to how a composite entity simplifies access to a set of objects.
-* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Useful for managing shared objects within a composite entity to reduce memory footprint.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): For dynamically adding behavior to individual
+  objects within the composite entity without affecting the structure.
+* [Facade](https://java-design-patterns.com/patterns/facade/): Provides a simplified interface to a complex subsystem,
+  similar to how a composite entity simplifies access to a set of objects.
+* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Useful for managing shared objects within a
+  composite entity to reduce memory footprint.
 
 ## References and Credits
 

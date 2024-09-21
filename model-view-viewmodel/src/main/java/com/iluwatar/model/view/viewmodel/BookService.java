@@ -31,8 +31,8 @@ import java.util.List;
  * Class representing a service to load books.
  */
 public interface BookService {
-  /* List all books
-   * @return all books
-   */
-  List<Book> load();
+    /* List all books
+     * @return all books
+     */
+    List<Book> load();
 }

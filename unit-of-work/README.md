@@ -13,25 +13,36 @@ tag:
 
 ## Intent of Unit Of Work Design Pattern
 
-Learn how the Java Unit of Work pattern expertly manages and maintains a list of objects impacted by business transactions, coordinating database changes and solving concurrency issues effectively.
+Learn how the Java Unit of Work pattern expertly manages and maintains a list of objects impacted by business
+transactions, coordinating database changes and solving concurrency issues effectively.
 
 ## Detailed Explanation of Unit Of Work Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a library scenario where a librarian meticulously tracks all books borrowed and returned, utilizing the Unit of Work design pattern to update the inventory system efficiently. Instead of updating the library's inventory system every time a single transaction occurs, the librarian keeps a list of all the changes and updates the system once at the end of the day. This approach ensures that all changes are processed together, maintaining the integrity of the inventory and reducing the number of individual updates needed. This is analogous to the Unit of Work pattern in software, where all changes to a set of objects are tracked and committed as a single transaction to maintain consistency and efficiency. 
+> Consider a library scenario where a librarian meticulously tracks all books borrowed and returned, utilizing the Unit
+> of Work design pattern to update the inventory system efficiently. Instead of updating the library's inventory system
+> every time a single transaction occurs, the librarian keeps a list of all the changes and updates the system once at the
+> end of the day. This approach ensures that all changes are processed together, maintaining the integrity of the
+> inventory and reducing the number of individual updates needed. This is analogous to the Unit of Work pattern in
+> software, where all changes to a set of objects are tracked and committed as a single transaction to maintain
+> consistency and efficiency.
 
 In plain words
 
-> The Unit of Work pattern tracks changes to objects during a transaction and commits all changes as a single unit to ensure consistency and efficiency. 
+> The Unit of Work pattern tracks changes to objects during a transaction and commits all changes as a single unit to
+> ensure consistency and efficiency.
 
 [MartinFowler.com](https://martinfowler.com/eaaCatalog/unitOfWork.html) says
 
-> Maintains a list of objects affected by a business transaction and coordinates the writing out of changes and the resolution of concurrency problems.
+> Maintains a list of objects affected by a business transaction and coordinates the writing out of changes and the
+> resolution of concurrency problems.
 
 ## Programmatic Example of Unit of Work Pattern in Java
 
-Arms dealer has a database containing weapon information. Merchants all over the town are constantly updating this information causing a high load on the database server. To make the load more manageable we apply to Unit of Work pattern to send many small updates in batches.
+Arms dealer has a database containing weapon information. Merchants all over the town are constantly updating this
+information causing a high load on the database server. To make the load more manageable we apply to Unit of Work
+pattern to send many small updates in batches.
 
 Here's the `Weapon` entity that is being persisted in the database.
 
@@ -44,7 +55,8 @@ public class Weapon {
 }
 ```
 
-The essence of the implementation is the `ArmsDealer` implementing the Unit of Work pattern. It maintains a map of database operations (`context`) that need to be done and when `commit` is called it applies them in a single batch.
+The essence of the implementation is the `ArmsDealer` implementing the Unit of Work pattern. It maintains a map of
+database operations (`context`) that need to be done and when `commit` is called it applies them in a single batch.
 
 ```java
 public interface IUnitOfWork<T> {
@@ -180,7 +192,8 @@ Here is the console output.
 
 ## When to Use the Unit Of Work Pattern in Java
 
-* he Unit of Work pattern is ideal for managing multiple database operations in Java that must be executed as a single transaction, ensuring data consistency and integrity.
+* he Unit of Work pattern is ideal for managing multiple database operations in Java that must be executed as a single
+  transaction, ensuring data consistency and integrity.
 * Ideal in scenarios where changes to the business objects must be tracked and saved in a coordinated manner.
 * Useful when working with object-relational mapping (ORM) frameworks in Java such as Hibernate.
 
@@ -211,9 +224,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Identity Map](https://java-design-patterns.com/patterns/identity-map/): Helps to ensure that each object is only loaded once per transaction, reducing redundancy and improving performance.
-* [Repository](https://java-design-patterns.com/patterns/repository/): Often used in conjunction with Unit of Work to abstract the persistence logic and provide a cleaner way to access data.
-* [Transaction Script](https://java-design-patterns.com/patterns/transaction-script/): While different in its procedural approach, it can complement Unit of Work by managing transactional logic at a higher level.
+* [Identity Map](https://java-design-patterns.com/patterns/identity-map/): Helps to ensure that each object is only
+  loaded once per transaction, reducing redundancy and improving performance.
+* [Repository](https://java-design-patterns.com/patterns/repository/): Often used in conjunction with Unit of Work to
+  abstract the persistence logic and provide a cleaner way to access data.
+* [Transaction Script](https://java-design-patterns.com/patterns/transaction-script/): While different in its procedural
+  approach, it can complement Unit of Work by managing transactional logic at a higher level.
 
 ## References and Credits
 

@@ -8,13 +8,15 @@ tag:
 
 ## Mục đích
 
-Cho phép thêm các hàm mới vào cấu trúc các lớp hiện có mà không làm ảnh hưởng đến cấu trúc của chúng, đồng thời tránh tạo ra các phụ thuộc vòng (dependency cycles) của Visitor Pattern trong Gang of Four.
+Cho phép thêm các hàm mới vào cấu trúc các lớp hiện có mà không làm ảnh hưởng đến cấu trúc của chúng, đồng thời tránh
+tạo ra các phụ thuộc vòng (dependency cycles) của Visitor Pattern trong Gang of Four.
 
 ## Giải thích
 
 Ví dụ thực tế
 
-> Chúng ta có một hệ thống các lớp modem. Những modem trong hệ thống này cần được duyệt qua bởi một thuật toán bên ngoài dựa trên một tiêu chí lọc (ví dụ như chỉ lấy các loại modem tương thích với hệ điều hành Unix hoặc DOS).
+> Chúng ta có một hệ thống các lớp modem. Những modem trong hệ thống này cần được duyệt qua bởi một thuật toán bên ngoài
+> dựa trên một tiêu chí lọc (ví dụ như chỉ lấy các loại modem tương thích với hệ điều hành Unix hoặc DOS).
 
 Nói đơn giản hơn
 
@@ -22,7 +24,9 @@ Nói đơn giản hơn
 
 Theo [WikiWikiWeb](https://wiki.c2.com/?AcyclicVisitor)
 
-> Mẫu thiết kế Acyclic Visitor cho phép thêm các hàm mới vào các hệ thống lớp hiện có mà không ảnh hưởng đến các hệ thống đó, và không tạo ra các phụ thuộc vòng (dependency cycles) như là một phần không thể tránh của Visitor Pattern trong Gang of Four.
+> Mẫu thiết kế Acyclic Visitor cho phép thêm các hàm mới vào các hệ thống lớp hiện có mà không ảnh hưởng đến các hệ
+> thống đó, và không tạo ra các phụ thuộc vòng (dependency cycles) như là một phần không thể tránh của Visitor Pattern
+> trong Gang of Four.
 
 **Mã nguồn mẫu**
 
@@ -119,13 +123,16 @@ Kết quả khi chạy chương trình:
 ```
 
 ## Sơ đồ lớp
+
 ![alt text](../../../acyclic-visitor/etc/acyclic-visitor.png "Acyclic Visitor")
 
 ## Áp dụng
+
 Mẫu thiết kế này có thể được sử dụng trong các trường hợp:
 
 * Khi bạn cần thêm một hàm mới vào một hệ thống lớp hiện có mà không cần phải sửa đổi hoặc ảnh hưởng đến hệ thống đó.
-* Khi có các hàm thao tác trên một hệ thống lớp nhưng những hàm này không nên thuộc về cùng cấu trúc của hệ thống đó. Ví dụ như vấn đề ConfigureForDOS / ConfigureForUnix / ConfigureForX.
+* Khi có các hàm thao tác trên một hệ thống lớp nhưng những hàm này không nên thuộc về cùng cấu trúc của hệ thống đó. Ví
+  dụ như vấn đề ConfigureForDOS / ConfigureForUnix / ConfigureForX.
 * Khi bạn cần thực hiện các thao tác hoàn toàn khác nhau trên một đối tượng dựa vào kiểu của nó.
 * Khi hệ thống lớp được duyệt sẽ thường xuyên được mở rộng với các lớp dẫn xuất mới của lớp Element.
 * Khi việc biên dịch lại, liên kết lại, kiểm thử lại hoặc phân phối lại các lớp dẫn xuất của Element rất tốn kém.
@@ -144,7 +151,9 @@ Mặt tích cực:
 
 Mặt tiêu cực:
 
-* Vi phạm [Nguyên tắc thay thế của Liskov](https://java-design-patterns.com/principles/#liskov-substitution-principle) bằng cách cho thấy rằng nó có thể chấp nhận tất cả các lớp visitor nhưng thực sự chỉ quan tâm đến một số lớp visitor cụ thể.
+* Vi phạm [Nguyên tắc thay thế của Liskov](https://java-design-patterns.com/principles/#liskov-substitution-principle)
+  bằng cách cho thấy rằng nó có thể chấp nhận tất cả các lớp visitor nhưng thực sự chỉ quan tâm đến một số lớp visitor
+  cụ thể.
 * Phải tạo ra một cấu trúc song song các lớp visitor cho tất cả các thành viên trong hệ thống lớp có thể được duyệt.
 
 ## Các mẫu liên quan

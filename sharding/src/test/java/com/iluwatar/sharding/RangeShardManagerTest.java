@@ -34,27 +34,27 @@ import org.junit.jupiter.api.Test;
  */
 class RangeShardManagerTest {
 
-  private RangeShardManager rangeShardManager;
+    private RangeShardManager rangeShardManager;
 
-  /**
-   * Initialize rangeShardManager instance.
-   */
-  @BeforeEach
-  void setup() {
-    rangeShardManager = new RangeShardManager();
-    var shard1 = new Shard(1);
-    var shard2 = new Shard(2);
-    var shard3 = new Shard(3);
-    rangeShardManager.addNewShard(shard1);
-    rangeShardManager.addNewShard(shard2);
-    rangeShardManager.addNewShard(shard3);
-  }
+    /**
+     * Initialize rangeShardManager instance.
+     */
+    @BeforeEach
+    void setup() {
+        rangeShardManager = new RangeShardManager();
+        var shard1 = new Shard(1);
+        var shard2 = new Shard(2);
+        var shard3 = new Shard(3);
+        rangeShardManager.addNewShard(shard1);
+        rangeShardManager.addNewShard(shard2);
+        rangeShardManager.addNewShard(shard3);
+    }
 
-  @Test
-  void testStoreData() {
-    var data = new Data(1, "test", Data.DataType.TYPE_1);
-    rangeShardManager.storeData(data);
-    assertEquals(data, rangeShardManager.getShardById(1).getDataById(1));
-  }
+    @Test
+    void testStoreData() {
+        var data = new Data(1, "test", Data.DataType.TYPE_1);
+        rangeShardManager.storeData(data);
+        assertEquals(data, rangeShardManager.getShardById(1).getDataById(1));
+    }
 
 }

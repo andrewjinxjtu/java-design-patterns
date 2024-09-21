@@ -12,25 +12,31 @@ Kit
 
 ## Intento
 
-Fornire un'interfaccia per la creazione di famiglie di oggetti correlati o dipendenti senza specificarne le classi concrete.
+Fornire un'interfaccia per la creazione di famiglie di oggetti correlati o dipendenti senza specificarne le classi
+concrete.
 
 ## Spiegazione
 
 Esempio del mondo reale
 
-> Per creare un regno, abbiamo bisogno di oggetti con un tema comune. Il regno elfico ha bisogno di un re elfico, di un castello elfico e di un esercito elfico, mentre il regno degli orchi ha bisogno di un re degli orchi, di un castello degli orchi e di un esercito degli orchi. Esiste una dipendenza tra gli oggetti all'interno del regno.
+> Per creare un regno, abbiamo bisogno di oggetti con un tema comune. Il regno elfico ha bisogno di un re elfico, di un
+> castello elfico e di un esercito elfico, mentre il regno degli orchi ha bisogno di un re degli orchi, di un castello
+> degli orchi e di un esercito degli orchi. Esiste una dipendenza tra gli oggetti all'interno del regno.
 
 In parole semplici
 
-> Una fabbrica di fabbriche; una fabbrica che raggruppa le singole fabbriche correlate o dipendenti senza specificare le loro classi concrete.
+> Una fabbrica di fabbriche; una fabbrica che raggruppa le singole fabbriche correlate o dipendenti senza specificare le
+> loro classi concrete.
 
 Wikipedia dice
 
-> L'Abstract Factory fornisce un'interfaccia per creare famiglie di oggetti connessi o dipendenti tra loro, in modo che non ci sia necessità da parte dei client di specificare i nomi delle classi concrete all'interno del proprio codice.
+> L'Abstract Factory fornisce un'interfaccia per creare famiglie di oggetti connessi o dipendenti tra loro, in modo che
+> non ci sia necessità da parte dei client di specificare i nomi delle classi concrete all'interno del proprio codice.
 
 **Esempio di codice**
 
-Traducendo l'esempio del regno sopra. Prima di tutto, abbiamo alcune interfacce e implementazioni per gli oggetti all'interno del regno.
+Traducendo l'esempio del regno sopra. Prima di tutto, abbiamo alcune interfacce e implementazioni per gli oggetti
+all'interno del regno.
 
 ```java
 public interface Castle {
@@ -118,7 +124,8 @@ public class OrcKingdomFactory implements KingdomFactory {
 }
 ```
 
-Ora abbiamo la fabbrica astratta che ci consente di creare una famiglia di oggetti correlati, ad esempio la fabbrica del regno elfico crea il castello elfico, il re elfico e l'esercito elfico, ecc.
+Ora abbiamo la fabbrica astratta che ci consente di creare una famiglia di oggetti correlati, ad esempio la fabbrica del
+regno elfico crea il castello elfico, il re elfico e l'esercito elfico, ecc.
 
 ```java
 var factory = new ElfKingdomFactory();
@@ -139,9 +146,12 @@ This is the elven king!
 This is the elven Army!
 ```
 
-Ora possiamo progettare una fabbrica per le nostre diverse fabbriche di regni. In questo esempio, abbiamo creato `FactoryMaker`, responsabile di restituire un'istanza di `ElfKingdomFactory` o `OrcKingdomFactory`.  
-Il client può utilizzare `FactoryMaker` per creare la fabbrica concreta desiderata, che a sua volta produrrà diversi oggetti concreti (derivati da `Army`, `King`, `Castle`).  
-In questo esempio, abbiamo anche utilizzato un enum per parametrizzare il tipo di fabbrica di regno richiesto dal client.
+Ora possiamo progettare una fabbrica per le nostre diverse fabbriche di regni. In questo esempio, abbiamo creato
+`FactoryMaker`, responsabile di restituire un'istanza di `ElfKingdomFactory` o `OrcKingdomFactory`.  
+Il client può utilizzare `FactoryMaker` per creare la fabbrica concreta desiderata, che a sua volta produrrà diversi
+oggetti concreti (derivati da `Army`, `King`, `Castle`).  
+In questo esempio, abbiamo anche utilizzato un enum per parametrizzare il tipo di fabbrica di regno richiesto dal
+client.
 
 ```java
 public static class FactoryMaker {
@@ -178,14 +188,14 @@ public static class FactoryMaker {
 
 ![alt text](../../../abstract-factory/etc/abstract-factory.urm.png "Abstract Factory class diagram")
 
-
 ## Applicabilità
 
 Utilizza il pattern Abstract Factory quando
 
 * Il sistema deve essere indipendente dal modo in cui i suoi prodotti vengono creati, composti e rappresentati.
 * Il sistema deve essere configurato con una delle molteplici famiglie di prodotti.
-* La famiglia di oggetti di prodotto correlati è progettata per essere utilizzata interamente, e hai bisogno di imporre questo presupposto.
+* La famiglia di oggetti di prodotto correlati è progettata per essere utilizzata interamente, e hai bisogno di imporre
+  questo presupposto.
 * Vuoi fornire una libreria di classi di prodotto e vuoi esporre solo le loro interfacce, non le loro implementazioni.
 * Il tempo di vita della dipendenza è concettualmente più breve di quella del consumer.
 * Hai bisogno di un valore di runtime per costruire una particolare dipendenza.
@@ -194,21 +204,25 @@ Utilizza il pattern Abstract Factory quando
 * Hai bisogno di coerenza tra i prodotti.
 * Non vuoi modificare il codice esistente quando aggiungi nuovi prodotti o famiglie di prodotti al programma.
 
-Esempi di casi d'uso	
+Esempi di casi d'uso
 
-* Selezionare la chiamata all'implementazione appropriata di FileSystemAcmeService o DatabaseAcmeService o NetworkAcmeService in fase di esecuzione. 
-* La scrittura di casi di unit test diventa molto più semplice. 
+* Selezionare la chiamata all'implementazione appropriata di FileSystemAcmeService o DatabaseAcmeService o
+  NetworkAcmeService in fase di esecuzione.
+* La scrittura di casi di unit test diventa molto più semplice.
 * Strumenti UI per diversi sistemi operativi.
 
 ## Conseguenze
 
-* La dependency injection in Java nasconde le dipendenze delle classi di servizio, il che può portare a errori a runtime che sarebbero stati rilevati in fase di compilazione. 
-* Se da un lato il pattern è ottimo per la creazione di oggetti predefiniti, l'aggiunta di nuovi oggetti potrebbe essere complicato. 
-* Il codice diventa più complesso di quanto dovrebbe essere, poiché vengono introdotte molte nuove interfacce e classi insieme al pattern.
+* La dependency injection in Java nasconde le dipendenze delle classi di servizio, il che può portare a errori a runtime
+  che sarebbero stati rilevati in fase di compilazione.
+* Se da un lato il pattern è ottimo per la creazione di oggetti predefiniti, l'aggiunta di nuovi oggetti potrebbe essere
+  complicato.
+* Il codice diventa più complesso di quanto dovrebbe essere, poiché vengono introdotte molte nuove interfacce e classi
+  insieme al pattern.
 
 ## Tutorial
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## Usi noti
 

@@ -33,44 +33,44 @@ import java.util.Queue;
  **/
 public class PrinterQueue {
 
-  static PrinterQueue currentInstance = null;
-  private final Queue<PrinterItem> printerItemQueue;
+    static PrinterQueue currentInstance = null;
+    private final Queue<PrinterItem> printerItemQueue;
 
-  /**
-   * This class is a singleton. The getInstance method will ensure that only one instance exists at a time.
-   */
-  public static PrinterQueue getInstance() {
-    if (Objects.isNull(currentInstance)) {
-      currentInstance = new PrinterQueue();
+    /**
+     * This class is a singleton. The getInstance method will ensure that only one instance exists at a time.
+     */
+    public static PrinterQueue getInstance() {
+        if (Objects.isNull(currentInstance)) {
+            currentInstance = new PrinterQueue();
+        }
+        return currentInstance;
     }
-    return currentInstance;
-  }
 
-  /**
-   * Empty the printer queue.
-   */
-  public void emptyQueue() {
-    currentInstance.getPrinterQueue().clear();
-  }
+    /**
+     * Empty the printer queue.
+     */
+    public void emptyQueue() {
+        currentInstance.getPrinterQueue().clear();
+    }
 
-  /**
-   * Private constructor prevents instantiation, unless using the getInstance() method.
-   */
-  private PrinterQueue() {
-    printerItemQueue = new LinkedList<>();
-  }
+    /**
+     * Private constructor prevents instantiation, unless using the getInstance() method.
+     */
+    private PrinterQueue() {
+        printerItemQueue = new LinkedList<>();
+    }
 
-  public Queue<PrinterItem> getPrinterQueue() {
-    return currentInstance.printerItemQueue;
-  }
+    public Queue<PrinterItem> getPrinterQueue() {
+        return currentInstance.printerItemQueue;
+    }
 
-  /**
-   * Adds a single print job to the queue.
-   *
-   * @param printerItem The printing job to be added to the queue
-   */
-  public void addPrinterItem(PrinterItem printerItem) {
-    currentInstance.getPrinterQueue().add(printerItem);
-  }
+    /**
+     * Adds a single print job to the queue.
+     *
+     * @param printerItem The printing job to be added to the queue
+     */
+    public void addPrinterItem(PrinterItem printerItem) {
+        currentInstance.getPrinterQueue().add(printerItem);
+    }
 
 }

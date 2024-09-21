@@ -35,24 +35,23 @@ import org.junit.jupiter.api.Test;
 
 /**
  * SizeSelectorTest
- *
  */
 class SizeSelectorTest {
 
-  /**
-   * Verify if the size selector gives the correct results
-   */
-  @Test
-  void testMovement() {
-    final var normalCreature = mock(Creature.class);
-    when(normalCreature.getSize()).thenReturn(Size.NORMAL);
+    /**
+     * Verify if the size selector gives the correct results
+     */
+    @Test
+    void testMovement() {
+        final var normalCreature = mock(Creature.class);
+        when(normalCreature.getSize()).thenReturn(Size.NORMAL);
 
-    final var smallCreature = mock(Creature.class);
-    when(smallCreature.getSize()).thenReturn(Size.SMALL);
+        final var smallCreature = mock(Creature.class);
+        when(smallCreature.getSize()).thenReturn(Size.SMALL);
 
-    final var normalSelector = new SizeSelector(Size.NORMAL);
-    assertTrue(normalSelector.test(normalCreature));
-    assertFalse(normalSelector.test(smallCreature));
-  }
+        final var normalSelector = new SizeSelector(Size.NORMAL);
+        assertTrue(normalSelector.test(normalCreature));
+        assertFalse(normalSelector.test(smallCreature));
+    }
 
 }

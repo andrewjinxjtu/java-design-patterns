@@ -7,20 +7,33 @@ tag:
 ---
 
 ## Propósito
-Un filtro de intercepción es un útil patrón de diseño Java que se utiliza cuando se desea preprocesar o postprocesar una petición en una aplicación. Estos filtros se crean y se aplican a la solicitud antes de que se le da a la aplicación de destino. Algunos ejemplos de uso incluyen la autenticación, que es necesario procesar antes de que la solicitud se entregue a la aplicación.
+
+Un filtro de intercepción es un útil patrón de diseño Java que se utiliza cuando se desea preprocesar o postprocesar una
+petición en una aplicación. Estos filtros se crean y se aplican a la solicitud antes de que se le da a la aplicación de
+destino. Algunos ejemplos de uso incluyen la autenticación, que es necesario procesar antes de que la solicitud se
+entregue a la aplicación.
 
 ## Explicación
+
 Ejemplo del mundo real
-> Un ejemplo de uso del patrón de diseño Filtro Interceptor es relevante a la hora de realizar una plataforma de comercio electrónico. Es importante implementar varios filtros para la autenticación de la cuenta, la autenticación del pago, el registro y el almacenamiento en caché. Los tipos de filtros importantes en este ejemplo son los filtros de autenticación, registro, seguridad y almacenamiento en caché.
+> Un ejemplo de uso del patrón de diseño Filtro Interceptor es relevante a la hora de realizar una plataforma de
+> comercio electrónico. Es importante implementar varios filtros para la autenticación de la cuenta, la autenticación del
+> pago, el registro y el almacenamiento en caché. Los tipos de filtros importantes en este ejemplo son los filtros de
+> autenticación, registro, seguridad y almacenamiento en caché.
 
 En palabras sencillas
-> Un filtro de intercepción en Java es como una serie de puntos de control de seguridad para peticiones y respuestas en una aplicación de software. Comprueba y procesa los datos a medida que entran y salen, ayudando con tareas como la autenticación, el registro y la seguridad, mientras mantiene el núcleo de la aplicación seguro y limpio.
+> Un filtro de intercepción en Java es como una serie de puntos de control de seguridad para peticiones y respuestas en
+> una aplicación de software. Comprueba y procesa los datos a medida que entran y salen, ayudando con tareas como la
+> autenticación, el registro y la seguridad, mientras mantiene el núcleo de la aplicación seguro y limpio.
 
 Wikipedia dice
-> El filtro de intercepción es un patrón de Java que crea filtros conectables para procesar servicios comunes de una manera estándar sin necesidad de realizar cambios en el código de procesamiento de solicitudes.
+> El filtro de intercepción es un patrón de Java que crea filtros conectables para procesar servicios comunes de una
+> manera estándar sin necesidad de realizar cambios en el código de procesamiento de solicitudes.
 
 ## Ejemplo Programático
-Como ejemplo, podemos crear una clase Filtro básica y definir un Filtro de Autenticación. Al filtro le falta lógica, pero
+
+Como ejemplo, podemos crear una clase Filtro básica y definir un Filtro de Autenticación. Al filtro le falta lógica,
+pero
 
 ```java
 // 1. Define a Filter interface
@@ -68,9 +81,12 @@ public class AuthenticationFilterExample {
     }
 }
 ```
-Este es un ejemplo básico de cómo implementar el esqueleto de un filtro. Falta la lógica de autenticación en AuthenticationFilterExample, pero se puede rellenar en los huecos.
 
-Además, el cliente puede ser configurado para ejecutar múltiples filtros en su solicitud utilizando un bucle For poblado con filtros como se puede ver a continuación:
+Este es un ejemplo básico de cómo implementar el esqueleto de un filtro. Falta la lógica de autenticación en
+AuthenticationFilterExample, pero se puede rellenar en los huecos.
+
+Además, el cliente puede ser configurado para ejecutar múltiples filtros en su solicitud utilizando un bucle For poblado
+con filtros como se puede ver a continuación:
 
 ```java
 // 1. Define a Filter interface
@@ -128,21 +144,27 @@ public class MultipleFiltersExample {
     }
 }
 ```
-Este método permite manipular y comprobar los datos de forma rápida y sencilla antes de autenticar un inicio de sesión o finalizar otro tipo de acción.
+
+Este método permite manipular y comprobar los datos de forma rápida y sencilla antes de autenticar un inicio de sesión o
+finalizar otro tipo de acción.
 
 ## Diagrama de clases
+
 ![alt text](./etc/intercepting-filter.png "Intercepting Filter")
 
 ## Aplicabilidad
+
 Utilice el patrón Filtro interceptor cuando
 
 * Un programa necesita preprocesar o postprocesar datos
 * Un sistema necesita servicios de autorización/autenticación para acceder a datos sensibles
-* Desea registrar/auditar peticiones o respuestas con fines de depuración o almacenamiento, como marcas de tiempo y acciones del usuario
+* Desea registrar/auditar peticiones o respuestas con fines de depuración o almacenamiento, como marcas de tiempo y
+  acciones del usuario
 * Desea transformar datos de un tipo a otro antes de entregarlos al proceso final.
 * Desea implementar un manejo específico de excepciones
 
 ## Consecuencias
+
 Consecuencias de la aplicación del filtro de interceptación
 
 * Aumento de la complejidad del código, disminuyendo la facilidad de lectura
@@ -157,7 +179,8 @@ Consecuencias de la aplicación del filtro de interceptación
 
 ## Ejemplos del mundo real
 
-* [javax.servlet.FilterChain](https://tomcat.apache.org/tomcat-8.0-doc/servletapi/javax/servlet/FilterChain.html) and [javax.servlet.Filter](https://tomcat.apache.org/tomcat-8.0-doc/servletapi/javax/servlet/Filter.html)
+* [javax.servlet.FilterChain](https://tomcat.apache.org/tomcat-8.0-doc/servletapi/javax/servlet/FilterChain.html)
+  and [javax.servlet.Filter](https://tomcat.apache.org/tomcat-8.0-doc/servletapi/javax/servlet/Filter.html)
 * [Struts 2 - Interceptors](https://struts.apache.org/core-developers/interceptors.html)
 
 ## Créditos

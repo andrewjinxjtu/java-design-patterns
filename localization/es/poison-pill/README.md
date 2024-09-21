@@ -9,13 +9,16 @@ tag:
 
 ## Propósito
 
-La píldora venenosa es un elemento de datos predefinido conocido que permite proporcionar un cierre graceful para un proceso de consumo distribuido independiente.
+La píldora venenosa es un elemento de datos predefinido conocido que permite proporcionar un cierre graceful para un
+proceso de consumo distribuido independiente.
 
 ## Explicación
 
 Ejemplo del mundo real
 
-> Pensemos en una cola de mensajes con un productor y un consumidor. El productor sigue introduciendo nuevos mensajes en la cola y el consumidor sigue leyéndolos. Finalmente, cuando llega el momento de cerrar la cola, el productor envía el mensaje de píldora venenosa.
+> Pensemos en una cola de mensajes con un productor y un consumidor. El productor sigue introduciendo nuevos mensajes en
+> la cola y el consumidor sigue leyéndolos. Finalmente, cuando llega el momento de cerrar la cola, el productor envía el
+> mensaje de píldora venenosa.
 
 En pocas palabras
 
@@ -77,7 +80,8 @@ public class SimpleMessage implements Message {
 }
 ```
 
-Para pasar mensajes utilizamos colas de mensajes. Aquí definimos los tipos relacionados con la cola de mensajes: `MqPublishPoint`, `MqSubscribePoint` y `MessageQueue`. `SimpleMessageQueue` implementa todas estas interfaces.
+Para pasar mensajes utilizamos colas de mensajes. Aquí definimos los tipos relacionados con la cola de mensajes:
+`MqPublishPoint`, `MqSubscribePoint` y `MessageQueue`. `SimpleMessageQueue` implementa todas estas interfaces.
 
 ```java
 public interface MqPublishPoint {
@@ -113,7 +117,9 @@ public class SimpleMessageQueue implements MessageQueue {
 }
 ```
 
-A continuación necesitamos los mensajes `Producer` y `Consumer`. Internamente utilizan las colas de mensajes de arriba. Es importante notar que cuando `Producer` se detiene, envía la píldora venenosa para informar a `Consumer` que la mensajería ha terminado.
+A continuación necesitamos los mensajes `Producer` y `Consumer`. Internamente utilizan las colas de mensajes de arriba.
+Es importante notar que cuando `Producer` se detiene, envía la píldora venenosa para informar a `Consumer` que la
+mensajería ha terminado.
 
 ```java
 public class Producer {

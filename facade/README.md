@@ -17,13 +17,19 @@ tag:
 
 ## Intent of Facade Design Pattern
 
-The Facade Design Pattern provides a unified interface to a set of interfaces in a subsystem. This Java design pattern simplifies complex system interactions.
+The Facade Design Pattern provides a unified interface to a set of interfaces in a subsystem. This Java design pattern
+simplifies complex system interactions.
 
 ## Detailed Explanation of Facade Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a home theater system with multiple components: a DVD player, projector, surround sound system, and lights. Each component has a complex interface with numerous functions and settings. To simplify the use of the home theater system, a remote control (the Facade) is provided. The remote control offers a unified interface with simple buttons like "Play Movie," "Stop," "Pause," and "Volume Up/Down," which internally communicate with the various components, managing their interactions. This makes the system easier to use without needing to understand the detailed operations of each component.
+> Imagine a home theater system with multiple components: a DVD player, projector, surround sound system, and lights.
+> Each component has a complex interface with numerous functions and settings. To simplify the use of the home theater
+> system, a remote control (the Facade) is provided. The remote control offers a unified interface with simple buttons
+> like "Play Movie," "Stop," "Pause," and "Volume Up/Down," which internally communicate with the various components,
+> managing their interactions. This makes the system easier to use without needing to understand the detailed operations
+> of each component.
 
 In plain words
 
@@ -35,9 +41,12 @@ Wikipedia says
 
 ## Programmatic Example of Facade Pattern in Java
 
-Here's an example of the Facade Design Pattern in a goldmine scenario, demonstrating how a Java facade can streamline complex operations.
+Here's an example of the Facade Design Pattern in a goldmine scenario, demonstrating how a Java facade can streamline
+complex operations.
 
-How does a goldmine work? "Well, the miners go down there and dig gold!" you say. That is what you believe because you are using a simple interface that goldmine provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
+How does a goldmine work? "Well, the miners go down there and dig gold!" you say. That is what you believe because you
+are using a simple interface that goldmine provides on the outside, internally it has to do a lot of stuff to make it
+happen. This simple interface to the complex subsystem is a facade.
 
 Here we have the dwarven mine worker hierarchy. First, there's a base class `DwarvenMineWorker`:
 
@@ -204,7 +213,8 @@ Program output:
 Use the Facade pattern in Java when:
 
 * You want to provide a simple interface to a complex subsystem.
-* Subsystems are getting more complex and depend on multiple classes, but most clients only need a part of the functionality.
+* Subsystems are getting more complex and depend on multiple classes, but most clients only need a part of the
+  functionality.
 * There is a need to layer your subsystems. Use a facade to define an entry point to each subsystem level.
 * You want to reduce dependencies and enhance code readability in Java development.
 
@@ -217,8 +227,10 @@ Use the Facade pattern in Java when:
 
 ## Real-World Applications of Facade Pattern in Java
 
-* Java libraries such as java.net.URL and javax.faces.context.FacesContext use Facade to simplify complex underlying classes.
-* In many Java frameworks, facades are used to simplify the usage of APIs by providing a simpler interface to more complex underlying code structures.
+* Java libraries such as java.net.URL and javax.faces.context.FacesContext use Facade to simplify complex underlying
+  classes.
+* In many Java frameworks, facades are used to simplify the usage of APIs by providing a simpler interface to more
+  complex underlying code structures.
 
 ## Benefits and Trade-offs of Facade Pattern
 
@@ -236,8 +248,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): Facade provides a unified interface while Adapter makes two existing interfaces work together.
-* [Mediator](https://java-design-patterns.com/patterns/mediator/): Facade defines a simpler interface to a subsystem while Mediator centralizes complex communications and control between objects.
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): Facade provides a unified interface while Adapter makes
+  two existing interfaces work together.
+* [Mediator](https://java-design-patterns.com/patterns/mediator/): Facade defines a simpler interface to a subsystem
+  while Mediator centralizes complex communications and control between objects.
 
 ## References and Credits
 

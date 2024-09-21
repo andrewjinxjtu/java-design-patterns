@@ -39,46 +39,46 @@ import static org.mockito.Mockito.eq;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class OptimisticLockTest {
 
-  private CardUpdateService cardUpdateService;
+    private CardUpdateService cardUpdateService;
 
-  private JpaRepository cardRepository;
+    private JpaRepository cardRepository;
 
-  @BeforeEach
-  public void setUp() {
-    cardRepository = Mockito.mock(JpaRepository.class);
-    cardUpdateService = new CardUpdateService(cardRepository);
-  }
+    @BeforeEach
+    public void setUp() {
+        cardRepository = Mockito.mock(JpaRepository.class);
+        cardUpdateService = new CardUpdateService(cardRepository);
+    }
 
-  @Test
-  public void shouldNotUpdateEntityOnDifferentVersion() {
-    int initialVersion = 1;
-    long cardId = 123L;
-    Card card = Card.builder()
-        .id(cardId)
-        .version(initialVersion)
-        .sum(123f)
-        .build();
-    when(cardRepository.findById(eq(cardId))).thenReturn(card);
-    when(cardRepository.getEntityVersionById(Mockito.eq(cardId))).thenReturn(initialVersion + 1);
+    @Test
+    public void shouldNotUpdateEntityOnDifferentVersion() {
+        int initialVersion = 1;
+        long cardId = 123L;
+        Card card = Card.builder()
+                .id(cardId)
+                .version(initialVersion)
+                .sum(123f)
+                .build();
+        when(cardRepository.findById(eq(cardId))).thenReturn(card);
+        when(cardRepository.getEntityVersionById(Mockito.eq(cardId))).thenReturn(initialVersion + 1);
 
-    Assertions.assertThrows(ApplicationException.class,
-        () -> cardUpdateService.doUpdate(card, cardId));
-  }
+        Assertions.assertThrows(ApplicationException.class,
+                () -> cardUpdateService.doUpdate(card, cardId));
+    }
 
-  @Test
-  public void shouldUpdateOnSameVersion() {
-    int initialVersion = 1;
-    long cardId = 123L;
-    Card card = Card.builder()
-        .id(cardId)
-        .version(initialVersion)
-        .sum(123f)
-        .build();
-    when(cardRepository.findById(eq(cardId))).thenReturn(card);
-    when(cardRepository.getEntityVersionById(Mockito.eq(cardId))).thenReturn(initialVersion);
+    @Test
+    public void shouldUpdateOnSameVersion() {
+        int initialVersion = 1;
+        long cardId = 123L;
+        Card card = Card.builder()
+                .id(cardId)
+                .version(initialVersion)
+                .sum(123f)
+                .build();
+        when(cardRepository.findById(eq(cardId))).thenReturn(card);
+        when(cardRepository.getEntityVersionById(Mockito.eq(cardId))).thenReturn(initialVersion);
 
-    cardUpdateService.doUpdate(card, cardId);
+        cardUpdateService.doUpdate(card, cardId);
 
-    Mockito.verify(cardRepository).update(Mockito.any());
-  }
+        Mockito.verify(cardRepository).update(Mockito.any());
+    }
 }

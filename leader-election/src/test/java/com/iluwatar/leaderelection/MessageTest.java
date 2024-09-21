@@ -33,17 +33,17 @@ import org.junit.jupiter.api.Test;
  */
 class MessageTest {
 
-  @Test
-  void testGetType() {
-    var message = new Message(MessageType.HEARTBEAT, "");
-    assertEquals(MessageType.HEARTBEAT, message.getType());
-  }
+    @Test
+    void testGetType() {
+        var message = new Message(MessageType.HEARTBEAT, "");
+        assertEquals(MessageType.HEARTBEAT, message.getType());
+    }
 
-  @Test
-  void testGetContent() {
-    var content = "test";
-    var message = new Message(MessageType.HEARTBEAT, content);
-    assertEquals(content, message.getContent());
-  }
+    @Test
+    void testGetContent() {
+        var content = "test";
+        var message = new Message(MessageType.HEARTBEAT, content);
+        assertEquals(content, message.getContent());
+    }
 
 }

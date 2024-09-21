@@ -20,13 +20,18 @@ tag:
 
 ## Intent of Memento Design Pattern
 
-The Memento design pattern in Java allows developers to capture and restore an object's internal state without violating encapsulation.
+The Memento design pattern in Java allows developers to capture and restore an object's internal state without violating
+encapsulation.
 
 ## Detailed Explanation of Memento Pattern with Real-World Examples
 
 Real-world example
 
-> A text editor application can utilize the Memento design pattern in Java to enable undo and redo functionalities. By capturing the current state of a document as a memento each time a change is made, the application can easily restore the document to any previous state. The snapshots are stored in a history list. When the user clicks the undo button, the editor restores the document to the state saved in the most recent memento. This process allows users to revert to previous versions of their document without exposing or altering the internal data structures of the editor.
+> A text editor application can utilize the Memento design pattern in Java to enable undo and redo functionalities. By
+> capturing the current state of a document as a memento each time a change is made, the application can easily restore
+> the document to any previous state. The snapshots are stored in a history list. When the user clicks the undo button,
+> the editor restores the document to the state saved in the most recent memento. This process allows users to revert to
+> previous versions of their document without exposing or altering the internal data structures of the editor.
 
 In plain words
 
@@ -34,11 +39,13 @@ In plain words
 
 Wikipedia says
 
-> The memento pattern is a software design pattern that provides the ability to restore an object to its previous state (undo via rollback).
+> The memento pattern is a software design pattern that provides the ability to restore an object to its previous
+> state (undo via rollback).
 
 ## Programmatic Example of Memento Pattern in Java
 
-In our astrology application, we use the Memento pattern to capture and restore the state of star objects. Each state is saved as a memento, allowing us to revert to previous states as needed.
+In our astrology application, we use the Memento pattern to capture and restore the state of star objects. Each state is
+saved as a memento, allowing us to revert to previous states as needed.
 
 Let's first define the types of stars we are capable to handle.
 
@@ -53,7 +60,8 @@ public enum StarType {
 }
 ```
 
-Next, let's jump straight to the essentials. Here's the `Star` class along with the mementos that we need to manipulate. Especially pay attention to `getMemento` and `setMemento` methods.
+Next, let's jump straight to the essentials. Here's the `Star` class along with the mementos that we need to manipulate.
+Especially pay attention to `getMemento` and `setMemento` methods.
 
 ```java
 public interface StarMemento {
@@ -165,12 +173,14 @@ Program output:
 
 Use the Memento pattern when
 
-* You need to capture an object's state in Java and restore it later without exposing its internal structure. This is crucial for maintaining encapsulation and simplifying the management of object states.
+* You need to capture an object's state in Java and restore it later without exposing its internal structure. This is
+  crucial for maintaining encapsulation and simplifying the management of object states.
 * A direct interface to obtaining the state would expose implementation details and break the object's encapsulation.
 
 ## Real-World Applications of Memento Pattern in Java
 
-The Memento pattern is used in various Java applications, including the java.util.Date and java.util.Calendar classes, which can revert to previous states. It's also common in text editors and graphic editors for undo mechanisms.
+The Memento pattern is used in various Java applications, including the java.util.Date and java.util.Calendar classes,
+which can revert to previous states. It's also common in text editors and graphic editors for undo mechanisms.
 
 ## Benefits and Trade-offs of Memento Pattern
 
@@ -186,7 +196,8 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Command](https://java-design-patterns.com/patterns/command/): Often used together; commands store state for undoing operations in mementos.
+* [Command](https://java-design-patterns.com/patterns/command/): Often used together; commands store state for undoing
+  operations in mementos.
 * [Prototype](https://java-design-patterns.com/patterns/prototype/): Mementos may use prototyping to store the state.
 
 ## References and Credits

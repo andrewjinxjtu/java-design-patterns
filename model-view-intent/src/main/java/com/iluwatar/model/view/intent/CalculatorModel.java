@@ -33,15 +33,15 @@ import lombok.Getter;
 @Data
 public class CalculatorModel {
 
-  /**
-   * Current calculator variable used for operations.
-   **/
-  @Getter
-  private final Double variable;
+    /**
+     * Current calculator variable used for operations.
+     **/
+    @Getter
+    private final Double variable;
 
-  /**
-   * Current calculator output -> is affected by operations.
-   **/
-  @Getter
-  private final Double output;
+    /**
+     * Current calculator output -> is affected by operations.
+     **/
+    @Getter
+    private final Double output;
 }

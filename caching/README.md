@@ -18,13 +18,22 @@ tag:
 
 ## Intent of Caching Design Pattern
 
-The Java Caching Design Pattern is crucial for performance optimization and resource management. It involves various caching strategies such as write-through, read-through, and LRU cache to ensure efficient data access. The caching pattern avoids expensive re-acquisition of resources by not releasing them immediately after use. The resources retain their identity, are kept in some fast-access storage, and are re-used to avoid having to acquire them again.
+The Java Caching Design Pattern is crucial for performance optimization and resource management. It involves various
+caching strategies such as write-through, read-through, and LRU cache to ensure efficient data access. The caching
+pattern avoids expensive re-acquisition of resources by not releasing them immediately after use. The resources retain
+their identity, are kept in some fast-access storage, and are re-used to avoid having to acquire them again.
 
 ## Detailed Explanation of Caching Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world example of the Caching Design Pattern in Java is a library's catalog system. By caching frequently searched book results, the system reduces database load and enhances performance. When patrons frequently search for popular books, the system can cache the results of these searches. Instead of querying the database every time a user searches for a popular book, the system quickly retrieves the results from the cache. This reduces the load on the database and provides faster response times for users, enhancing their overall experience. However, the system must also ensure that the cache is updated when new books are added or existing ones are checked out, to maintain accurate information.
+> A real-world example of the Caching Design Pattern in Java is a library's catalog system. By caching frequently
+> searched book results, the system reduces database load and enhances performance. When patrons frequently search for
+> popular books, the system can cache the results of these searches. Instead of querying the database every time a user
+> searches for a popular book, the system quickly retrieves the results from the cache. This reduces the load on the
+> database and provides faster response times for users, enhancing their overall experience. However, the system must also
+> ensure that the cache is updated when new books are added or existing ones are checked out, to maintain accurate
+> information.
 
 In plain words
 
@@ -32,15 +41,25 @@ In plain words
 
 Wikipedia says
 
-> In computing, a cache is a hardware or software component that stores data so that future requests for that data can be served faster; the data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere. A cache hit occurs when the requested data can be found in a cache, while a cache miss occurs when it cannot. Cache hits are served by reading data from the cache, which is faster than recomputing a result or reading from a slower data store; thus, the more requests that can be served from the cache, the faster the system performs.
+> In computing, a cache is a hardware or software component that stores data so that future requests for that data can
+> be served faster; the data stored in a cache might be the result of an earlier computation or a copy of data stored
+> elsewhere. A cache hit occurs when the requested data can be found in a cache, while a cache miss occurs when it cannot.
+> Cache hits are served by reading data from the cache, which is faster than recomputing a result or reading from a slower
+> data store; thus, the more requests that can be served from the cache, the faster the system performs.
 
 ## Programmatic Example of Caching Pattern in Java
 
-In this programmatic example, we demonstrate different Java caching strategies, including write-through, write-around, and write-behind, using a user account management system.
+In this programmatic example, we demonstrate different Java caching strategies, including write-through, write-around,
+and write-behind, using a user account management system.
 
-A team is working on a website that provides new homes for abandoned cats. People can post their cats on the website after registering, but all the new posts require approval from one of the site moderators. The user accounts of the site moderators contain a specific flag and the data is stored in a MongoDB database. Checking for the moderator flag each time a post is viewed becomes expensive, and it's a good idea to utilize caching here.
+A team is working on a website that provides new homes for abandoned cats. People can post their cats on the website
+after registering, but all the new posts require approval from one of the site moderators. The user accounts of the site
+moderators contain a specific flag and the data is stored in a MongoDB database. Checking for the moderator flag each
+time a post is viewed becomes expensive, and it's a good idea to utilize caching here.
 
-Let's first look at the data layer of our application. The interesting classes are `UserAccount` which is a simple Java object containing the user account details, and `DbManager` interface which handles reading and writing of these objects to/from database.
+Let's first look at the data layer of our application. The interesting classes are `UserAccount` which is a simple Java
+object containing the user account details, and `DbManager` interface which handles reading and writing of these objects
+to/from database.
 
 ```java
 
@@ -70,15 +89,21 @@ public interface DbManager {
 }
 ```
 
-In the example, we are demonstrating various different caching policies. The following caching strategies are implemented in Java: Write-through, Write-around, Write-behind, and Cache-aside. Each strategy offers unique benefits for improving performance and reducing load on the database.
+In the example, we are demonstrating various different caching policies. The following caching strategies are
+implemented in Java: Write-through, Write-around, Write-behind, and Cache-aside. Each strategy offers unique benefits
+for improving performance and reducing load on the database.
 
 * Write-through writes data to the cache and DB in a single transaction
 * Write-around writes data immediately into the DB instead of the cache
 * Write-behind writes data into the cache initially whilst the data is only written into the DB when the cache is full
 * Cache-aside pushes the responsibility of keeping the data synchronized in both data sources to the application itself
-* Read-through strategy is also included in the aforementioned strategies, and it returns data from the cache to the caller if it exists, otherwise queries from DB and stores it into the cache for future use.
+* Read-through strategy is also included in the aforementioned strategies, and it returns data from the cache to the
+  caller if it exists, otherwise queries from DB and stores it into the cache for future use.
 
-The cache implementation in `LruCache` is a hash table accompanied by a doubly linked-list. The linked-list helps in capturing and maintaining the LRU data in the cache. When data is queried (from the cache), added (to the cache), or updated, the data is moved to the front of the list to depict itself as the most-recently-used data. The LRU data is always at the end of the list.
+The cache implementation in `LruCache` is a hash table accompanied by a doubly linked-list. The linked-list helps in
+capturing and maintaining the LRU data in the cache. When data is queried (from the cache), added (to the cache), or
+updated, the data is moved to the front of the list to depict itself as the most-recently-used data. The LRU data is
+always at the end of the list.
 
 ```java
 
@@ -218,7 +243,10 @@ public class CacheStore {
 }
 ```
 
-`AppManager` helps to bridge the gap in communication between the main class and the application's back-end. DB connection is initialized through this class. The chosen caching strategy/policy is also initialized here. Before the cache can be used, the size of the cache has to be set. Depending on the chosen caching policy, `AppManager` will call the appropriate function in the `CacheStore` class.
+`AppManager` helps to bridge the gap in communication between the main class and the application's back-end. DB
+connection is initialized through this class. The chosen caching strategy/policy is also initialized here. Before the
+cache can be used, the size of the cache has to be set. Depending on the chosen caching policy, `AppManager` will call
+the appropriate function in the `CacheStore` class.
 
 ```java
 
@@ -423,14 +451,16 @@ UserAccount(userId=003, userName=Adam, additionalInfo=He likes food.)
 17:00:56.314 [Thread-0] INFO com.iluwatar.caching.CacheStore -- # flushCache...
 ```
 
-Implementing the Java Caching Design Pattern using various strategies like LRU cache and write-through caching significantly enhances application performance and scalability.
+Implementing the Java Caching Design Pattern using various strategies like LRU cache and write-through caching
+significantly enhances application performance and scalability.
 
 ## When to Use the Caching Pattern in Java
 
 Use the Caching pattern when
 
 * Repetitious acquisition, initialization, and release of the same resource cause unnecessary performance overhead
-* In scenarios where the cost of recomputing or re-fetching data is significantly higher than storing and retrieving it from cache
+* In scenarios where the cost of recomputing or re-fetching data is significantly higher than storing and retrieving it
+  from cache
 * For read-heavy applications with relatively static data or data that changes infrequently
 
 ## Real-World Applications of Caching Pattern in Java
@@ -438,28 +468,36 @@ Use the Caching pattern when
 * Web page caching to reduce server load and improve response time
 * Database query caching to avoid repeated expensive SQL queries
 * Caching results of CPU-intensive computations
-* Content Delivery Networks (CDNs) for caching static resources like images, CSS, and JavaScript files closer to the end users
+* Content Delivery Networks (CDNs) for caching static resources like images, CSS, and JavaScript files closer to the end
+  users
 
 ## Benefits and Trade-offs of Caching Pattern
 
 Benefits:
 
 * Improved Performance: Significantly reduces data access latency, leading to faster application performance
-* Reduced Load: Decreases the load on the underlying data source, which can lead to cost savings and increased longevity of the resource
-* Scalability: Enhances the scalability of applications by efficiently handling increases in load without proportional increases in resource utilization
+* Reduced Load: Decreases the load on the underlying data source, which can lead to cost savings and increased longevity
+  of the resource
+* Scalability: Enhances the scalability of applications by efficiently handling increases in load without proportional
+  increases in resource utilization
 
 Trade-Offs:
 
 * Complexity: Introduces complexity in terms of cache invalidation, consistency, and synchronization
 * Resource Utilization: Requires additional memory or storage resources to maintain the cache
-* Stale Data: There's a risk of serving outdated data if the cache is not properly invalidated or updated when the underlying data changes
+* Stale Data: There's a risk of serving outdated data if the cache is not properly invalidated or updated when the
+  underlying data changes
 
 ## Related Java Design Patterns
 
-* [Proxy](https://java-design-patterns.com/patterns/proxy/): Caching can be implemented using the Proxy pattern, where the proxy object intercepts requests and returns cached data if available
-* [Observer](https://java-design-patterns.com/patterns/observer/): Can be used to notify the cache when the underlying data changes, so that it can be updated or invalidated accordingly
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Can be used to add caching behavior to an existing object without modifying its code
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Different caching strategies can be implemented using the Strategy pattern, allowing the application to switch between them at runtime
+* [Proxy](https://java-design-patterns.com/patterns/proxy/): Caching can be implemented using the Proxy pattern, where
+  the proxy object intercepts requests and returns cached data if available
+* [Observer](https://java-design-patterns.com/patterns/observer/): Can be used to notify the cache when the underlying
+  data changes, so that it can be updated or invalidated accordingly
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Can be used to add caching behavior to an existing
+  object without modifying its code
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Different caching strategies can be implemented using
+  the Strategy pattern, allowing the application to switch between them at runtime
 
 ## References and Credits
 

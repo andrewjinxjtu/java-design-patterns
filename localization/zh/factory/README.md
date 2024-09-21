@@ -20,7 +20,8 @@ tag:
 现实例子
 
 >
-> 假设我们有一个需要连接到 SQL Server 的 Web 应用，但现在我们需要切换到连接 Oracle。为了不修改现有代码的情况下做到这一点，我们需要实现简单工厂模式。在这种模式下，可以通过调用一个静态方法来创建与给定数据库的连接。
+> 假设我们有一个需要连接到 SQL Server 的 Web 应用，但现在我们需要切换到连接
+> Oracle。为了不修改现有代码的情况下做到这一点，我们需要实现简单工厂模式。在这种模式下，可以通过调用一个静态方法来创建与给定数据库的连接。
 
 维基百科
 
@@ -77,6 +78,7 @@ public enum CarType {
   }
 }
 ```
+
 接着我们实现了一个静态方法  `getCar` 用于封装工厂类 `CarsFactory`  创建 `Car` 具体对象实例的细节。
 
 ```java
@@ -127,9 +129,11 @@ This is Ferrari.
 * [java.util.ResourceBundle#getBundle()](https://docs.oracle.com/javase/8/docs/api/java/util/ResourceBundle.html#getBundle-java.lang.String-)
 * [java.text.NumberFormat#getInstance()](https://docs.oracle.com/javase/8/docs/api/java/text/NumberFormat.html#getInstance--)
 * [java.nio.charset.Charset#forName()](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html#forName-java.lang.String-)
-* [java.net.URLStreamHandlerFactory#createURLStreamHandler(String)](https://docs.oracle.com/javase/8/docs/api/java/net/URLStreamHandlerFactory.html) (Returns different singleton objects, depending on a protocol)
+* [java.net.URLStreamHandlerFactory#createURLStreamHandler(String)](https://docs.oracle.com/javase/8/docs/api/java/net/URLStreamHandlerFactory.html) (
+  Returns different singleton objects, depending on a protocol)
 * [java.util.EnumSet#of()](https://docs.oracle.com/javase/8/docs/api/java/util/EnumSet.html#of(E))
-* [javax.xml.bind.JAXBContext#createMarshaller()](https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/JAXBContext.html#createMarshaller--) and other similar methods.
+* [javax.xml.bind.JAXBContext#createMarshaller()](https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/JAXBContext.html#createMarshaller--)
+  and other similar methods.
 
 ## 相关模式
 

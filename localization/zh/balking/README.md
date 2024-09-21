@@ -26,7 +26,8 @@ tag:
 
 **程序示例**
 
-在此示例中，` WashingMachine`是一个具有两个状态的对象，可以处于两种状态：ENABLED和WASHING。 如果机器已启用，则使用线程安全方法将状态更改为WASHING。 另一方面，如果已经进行了清洗并且任何其他线程执行`wash（）`，则它将不执行该操作，而是不执行任何操作而返回。
+在此示例中，` WashingMachine`是一个具有两个状态的对象，可以处于两种状态：ENABLED和WASHING。 如果机器已启用，则使用线程安全方法将状态更改为WASHING。
+另一方面，如果已经进行了清洗并且任何其他线程执行`wash（）`，则它将不执行该操作，而是不执行任何操作而返回。
 
 这里是`WashingMachine` 类相关的部分。
 
@@ -111,7 +112,6 @@ public interface DelayProvider {
 ![alt text](./etc/balking.png "Balking")
 
 ## 适用性
-
 
 使用止步模式当
 

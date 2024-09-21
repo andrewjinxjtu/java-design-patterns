@@ -126,7 +126,8 @@ var mage = new Hero.Builder(Profession.MAGE, "Riobard").withHairColor(HairColor.
 
 Use o padrão Builder quando
 
-* O algoritmo para criar um objeto complexo deve ser independente das partes que compõem o objeto e de como elas são montadas
+* O algoritmo para criar um objeto complexo deve ser independente das partes que compõem o objeto e de como elas são
+  montadas
 * O processo de construção deve permitir diferentes representações para o objeto construído
 
 ## Tutoriais
@@ -138,7 +139,8 @@ Use o padrão Builder quando
 ## Usos conhecidos
 
 * [java.lang.StringBuilder](http://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html)
-* [java.nio.ByteBuffer](http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html#put-byte-) bem como buffers semelhantes, como FloatBuffer, IntBuffer e assim por diante.
+* [java.nio.ByteBuffer](http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html#put-byte-) bem como buffers
+  semelhantes, como FloatBuffer, IntBuffer e assim por diante.
 * [java.lang.StringBuffer](http://docs.oracle.com/javase/8/docs/api/java/lang/StringBuffer.html#append-boolean-)
 * Todas as implementações de [java.lang.Appendable](http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html)
 * [Apache Camel builders](https://github.com/apache/camel/tree/0e195428ee04531be27a0b659005e3aa8d159d23/camel-core/src/main/java/org/apache/camel/builder)

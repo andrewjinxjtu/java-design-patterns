@@ -16,27 +16,40 @@ tag:
 
 ## Intent of Multiton Design Pattern
 
-The Multiton pattern in Java ensures a class has only unique named instances, providing a global point of access to them. Each named instance is accessed through a unique key, making it an essential part of Java design patterns.
+The Multiton pattern in Java ensures a class has only unique named instances, providing a global point of access to
+them. Each named instance is accessed through a unique key, making it an essential part of Java design patterns.
 
 ## Detailed Explanation of Multiton Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world example of the Multiton pattern is a printer management system in a large office. In this scenario, the office has several printers, each serving a different department. Instead of creating a new printer object every time a printing request is made, the system uses the Multiton pattern to ensure that each department has exactly one printer instance. When a printing request comes from a specific department, the system checks the registry of printer instances and retrieves the existing printer for that department. If no printer exists for that department, it creates one, registers it, and then returns it. This ensures efficient management of printer resources and prevents unnecessary creation of multiple printer instances for the same department.       
+> A real-world example of the Multiton pattern is a printer management system in a large office. In this scenario, the
+> office has several printers, each serving a different department. Instead of creating a new printer object every time a
+> printing request is made, the system uses the Multiton pattern to ensure that each department has exactly one printer
+> instance. When a printing request comes from a specific department, the system checks the registry of printer instances
+> and retrieves the existing printer for that department. If no printer exists for that department, it creates one,
+> registers it, and then returns it. This ensures efficient management of printer resources and prevents unnecessary
+> creation of multiple printer instances for the same department.
 
 In plain words
 
-> The Multiton pattern is an extension of the Singleton pattern, offering a way to have a map of unique named instances instead of a single instance. This makes it a valuable Java design pattern for managing named instances efficiently.
+> The Multiton pattern is an extension of the Singleton pattern, offering a way to have a map of unique named instances
+> instead of a single instance. This makes it a valuable Java design pattern for managing named instances efficiently.
 
 Wikipedia says
 
-> In software engineering, the multiton pattern is a design pattern which generalizes the singleton pattern. Whereas the singleton allows only one instance of a class to be created, the multiton pattern allows for the controlled creation of multiple instances, which it manages through the use of a map.
+> In software engineering, the multiton pattern is a design pattern which generalizes the singleton pattern. Whereas the
+> singleton allows only one instance of a class to be created, the multiton pattern allows for the controlled creation of
+> multiple instances, which it manages through the use of a map.
 
 ## Programmatic Example of Multiton Pattern in Java
 
-In this tutorial, we’ll explore how to implement the Multiton pattern in Java, covering its structure, benefits, and providing code examples. By following these implementation tips, you’ll be able to effectively utilize this Java design pattern.
+In this tutorial, we’ll explore how to implement the Multiton pattern in Java, covering its structure, benefits, and
+providing code examples. By following these implementation tips, you’ll be able to effectively utilize this Java design
+pattern.
 
-The Nazgûl, also called ringwraiths or the Nine Riders, are Sauron's most terrible servants. By definition, there's always nine of them.
+The Nazgûl, also called ringwraiths or the Nine Riders, are Sauron's most terrible servants. By definition, there's
+always nine of them.
 
 `Nazgul` is the multiton class.
 
@@ -158,8 +171,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Multiton can be seen as an extension of the Singleton pattern where Singleton allows only one instance of a class, Multiton allows one instance per key.
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Multiton uses a method to create or retrieve instances, similar to how a Factory Method controls object creation.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Multiton can be seen as an extension of the
+  Singleton pattern where Singleton allows only one instance of a class, Multiton allows one instance per key.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Multiton uses a method to create or
+  retrieve instances, similar to how a Factory Method controls object creation.
 
 ## References and Credits
 

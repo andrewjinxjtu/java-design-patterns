@@ -31,12 +31,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class UserView {
-  /**
-   * displaying command to generate html.
-   * @param user model content.
-   */
-  public String display(SignupModel user) {
-    LOGGER.info("display user html" + " name " + user.getName() + " email " + user.getEmail());
-    return "/user";
-  }
+    /**
+     * displaying command to generate html.
+     *
+     * @param user model content.
+     */
+    public String display(SignupModel user) {
+        LOGGER.info("display user html" + " name " + user.getName() + " email " + user.getEmail());
+        return "/user";
+    }
 }

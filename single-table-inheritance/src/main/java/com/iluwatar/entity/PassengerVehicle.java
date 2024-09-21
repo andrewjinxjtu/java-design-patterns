@@ -39,10 +39,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public abstract class PassengerVehicle extends Vehicle {
 
-  private int noOfPassengers;
+    private int noOfPassengers;
 
-  protected PassengerVehicle(String manufacturer, String model, int noOfPassengers) {
-    super(manufacturer, model);
-    this.noOfPassengers = noOfPassengers;
-  }
+    protected PassengerVehicle(String manufacturer, String model, int noOfPassengers) {
+        super(manufacturer, model);
+        this.noOfPassengers = noOfPassengers;
+    }
 }

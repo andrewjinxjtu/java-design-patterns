@@ -36,15 +36,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PriceController {
 
-  private final PriceService priceService;
+    private final PriceService priceService;
 
-  /**
-   * An endpoint for a user to retrieve a product's price.
-   *
-   * @return A product's price
-   */
-  @GetMapping("/price")
-  public String getPrice() {
-    return priceService.getPrice();
-  }
+    /**
+     * An endpoint for a user to retrieve a product's price.
+     *
+     * @return A product's price
+     */
+    @GetMapping("/price")
+    public String getPrice() {
+        return priceService.getPrice();
+    }
 }

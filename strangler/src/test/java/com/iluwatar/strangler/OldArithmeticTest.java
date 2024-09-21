@@ -32,15 +32,15 @@ import org.junit.jupiter.api.Test;
  * Test methods in OldArithmetic
  */
 class OldArithmeticTest {
-  private static final OldArithmetic arithmetic = new OldArithmetic(new OldSource());
+    private static final OldArithmetic arithmetic = new OldArithmetic(new OldSource());
 
-  @Test
-  void testSum() {
-    assertEquals(0, arithmetic.sum(-1, 0, 1));
-  }
+    @Test
+    void testSum() {
+        assertEquals(0, arithmetic.sum(-1, 0, 1));
+    }
 
-  @Test
-  void testMul() {
-    assertEquals(0, arithmetic.mul(-1, 0, 1));
-  }
+    @Test
+    void testMul() {
+        assertEquals(0, arithmetic.mul(-1, 0, 1));
+    }
 }

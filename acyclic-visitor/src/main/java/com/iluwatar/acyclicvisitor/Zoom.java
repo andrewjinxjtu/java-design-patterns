@@ -32,23 +32,23 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Zoom implements Modem {
 
-  /**
-   * Accepts all visitors but honors only ZoomVisitor.
-   */
-  @Override
-  public void accept(ModemVisitor modemVisitor) {
-    if (modemVisitor instanceof ZoomVisitor) {
-      ((ZoomVisitor) modemVisitor).visit(this);
-    } else {
-      LOGGER.info("Only ZoomVisitor is allowed to visit Zoom modem");
+    /**
+     * Accepts all visitors but honors only ZoomVisitor.
+     */
+    @Override
+    public void accept(ModemVisitor modemVisitor) {
+        if (modemVisitor instanceof ZoomVisitor) {
+            ((ZoomVisitor) modemVisitor).visit(this);
+        } else {
+            LOGGER.info("Only ZoomVisitor is allowed to visit Zoom modem");
+        }
     }
-  }
 
-  /**
-   * Zoom modem's toString method.
-   */
-  @Override
-  public String toString() {
-    return "Zoom modem";
-  }
+    /**
+     * Zoom modem's toString method.
+     */
+    @Override
+    public String toString() {
+        return "Zoom modem";
+    }
 }

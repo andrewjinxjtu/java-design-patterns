@@ -8,9 +8,10 @@ tag:
 
 ## Intention
 
-Le pattron de conception Asynchronous method invocation est un pattron dans lequel le thread appelé n'est pas bloqué en 
+Le pattron de conception Asynchronous method invocation est un pattron dans lequel le thread appelé n'est pas bloqué en
 attendant la fin de l'exécution des tâches.
-Ce pattron permet le traitement parallèle de plusieurs tâches indépendantes et récupère les résultats via les callback ou patiente jusqu'à la fin.
+Ce pattron permet le traitement parallèle de plusieurs tâches indépendantes et récupère les résultats via les callback
+ou patiente jusqu'à la fin.
 
 ## Explication
 
@@ -21,14 +22,18 @@ Exemple concret
 
 En clair
 
-> Asynchronous method invocation démarre l'exécution de la tâche et retourne directement avant la fin de l'exécution de la tâche.
+> Asynchronous method invocation démarre l'exécution de la tâche et retourne directement avant la fin de l'exécution de
+> la tâche.
 > Les résultats de l'exécution des tâches sont retournés après.
 
 Wikipedia dit
 
-> Dans la programmation multithread, asynchronous method invocation (AMI), également connue sous le nom de asynchronous method calls 
-> ou le pattron asynchronous, est un pattron de conception dans lequel le site d'appel n'est pas bloqué en attendant que le code appelé se termine.
-> Au lieu de cela, le thread appelant est informé de l'arrivée de la réponse. L'interrogation pour une réponse est une option non souhaitée.
+> Dans la programmation multithread, asynchronous method invocation (AMI), également connue sous le nom de asynchronous
+> method calls
+> ou le pattron asynchronous, est un pattron de conception dans lequel le site d'appel n'est pas bloqué en attendant que
+> le code appelé se termine.
+> Au lieu de cela, le thread appelant est informé de l'arrivée de la réponse. L'interrogation pour une réponse est une
+> option non souhaitée.
 
 **Exemple de programme**
 
@@ -36,7 +41,8 @@ Dans cet exemple, nous lançons des fusées spatiales et déployons des rovers l
 
 L'application démontre le pattron async method invocation. Les éléments clés de ce modèle sont `AsyncResult`
 qui est un conteneur intermédiaire pour une valeur évaluée de manière asynchrone, `AsyncCallback` qui peut être fourni
-pour être exécuté à la fin de la tâche et `AsyncExecutor` qui gère l'exécution des tâches asynchrones. qui gère l'exécution des tâches asynchrones.
+pour être exécuté à la fin de la tâche et `AsyncExecutor` qui gère l'exécution des tâches asynchrones. qui gère
+l'exécution des tâches asynchrones.
 
 ```java
 public interface AsyncResult<T> {
@@ -156,7 +162,8 @@ Utilisez le pattron async method invocation lorsque
 
 * Vous avez plusieurs tâches indépendantes qui peuvent être exécutées en parallèle
 * Vous devez améliorer les performances d'un groupe de tâches séquentielles
-* Vous disposez d'une capacité de traitement limitée ou de tâches à long terme et l'appelant ne doit pas attendre que les tâches soient exécutées.
+* Vous disposez d'une capacité de traitement limitée ou de tâches à long terme et l'appelant ne doit pas attendre que
+  les tâches soient exécutées.
 
 ## Application concrete
 

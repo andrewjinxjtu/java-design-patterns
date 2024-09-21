@@ -28,7 +28,7 @@ package com.iluwatar.currying;
  * Enum representing different book genres.
  */
 public enum Genre {
-  FANTASY,
-  HORROR,
-  SCIFI
+    FANTASY,
+    HORROR,
+    SCIFI
 }

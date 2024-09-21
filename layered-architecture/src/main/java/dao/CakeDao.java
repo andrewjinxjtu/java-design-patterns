@@ -32,4 +32,5 @@ import org.springframework.stereotype.Repository;
  * CRUD repository for cakes.
  */
 @Repository
-public interface CakeDao extends JpaRepository<Cake, Long> {}
+public interface CakeDao extends JpaRepository<Cake, Long> {
+}

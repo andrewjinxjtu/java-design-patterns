@@ -29,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,44 +39,44 @@ import org.junit.jupiter.api.Test;
  */
 class ShardTest {
 
-  private Data data;
+    private Data data;
 
-  private Shard shard;
+    private Shard shard;
 
-  @BeforeEach
-  void setup() {
-    data = new Data(1, "test", Data.DataType.TYPE_1);
-    shard = new Shard(1);
-  }
-
-  @Test
-  void testStoreData() {
-    try {
-      shard.storeData(data);
-      var field = Shard.class.getDeclaredField("dataStore");
-      field.setAccessible(true);
-      var dataMap = (Map<Integer, Data>) field.get(shard);
-      assertEquals(1, dataMap.size());
-      assertEquals(data, dataMap.get(1));
-    } catch (NoSuchFieldException | IllegalAccessException e) {
-      fail("Fail to modify field access.");
+    @BeforeEach
+    void setup() {
+        data = new Data(1, "test", Data.DataType.TYPE_1);
+        shard = new Shard(1);
     }
 
-  }
+    @Test
+    void testStoreData() {
+        try {
+            shard.storeData(data);
+            var field = Shard.class.getDeclaredField("dataStore");
+            field.setAccessible(true);
+            var dataMap = (Map<Integer, Data>) field.get(shard);
+            assertEquals(1, dataMap.size());
+            assertEquals(data, dataMap.get(1));
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            fail("Fail to modify field access.");
+        }
 
-  @Test
-  void testClearData() {
-    try {
-      var dataMap = new HashMap<Integer, Data>();
-      dataMap.put(1, data);
-      var field = Shard.class.getDeclaredField("dataStore");
-      field.setAccessible(true);
-      field.set(shard, dataMap);
-      shard.clearData();
-      dataMap = (HashMap<Integer, Data>) field.get(shard);
-      assertEquals(0, dataMap.size());
-    } catch (NoSuchFieldException | IllegalAccessException e) {
-      fail("Fail to modify field access.");
     }
-  }
+
+    @Test
+    void testClearData() {
+        try {
+            var dataMap = new HashMap<Integer, Data>();
+            dataMap.put(1, data);
+            var field = Shard.class.getDeclaredField("dataStore");
+            field.setAccessible(true);
+            field.set(shard, dataMap);
+            shard.clearData();
+            dataMap = (HashMap<Integer, Data>) field.get(shard);
+            assertEquals(0, dataMap.size());
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            fail("Fail to modify field access.");
+        }
+    }
 }

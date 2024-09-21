@@ -49,30 +49,30 @@ import lombok.NoArgsConstructor;
 @DiscriminatorColumn(name = "VEHICLE_TYPE")
 public abstract class Vehicle {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int vehicleId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int vehicleId;
 
-  private String manufacturer;
+    private String manufacturer;
 
-  private String model;
+    private String model;
 
-  protected Vehicle(String manufacturer, String model) {
-    this.manufacturer = manufacturer;
-    this.model = model;
-  }
+    protected Vehicle(String manufacturer, String model) {
+        this.manufacturer = manufacturer;
+        this.model = model;
+    }
 
-  @Override
-  public String toString() {
-    return "Vehicle{"
-            + "vehicleId="
-            + vehicleId
-            + ", manufacturer='"
-            + manufacturer
-            + '\''
-            + ", model='"
-            + model
-            + '}';
-  }
+    @Override
+    public String toString() {
+        return "Vehicle{"
+                + "vehicleId="
+                + vehicleId
+                + ", manufacturer='"
+                + manufacturer
+                + '\''
+                + ", model='"
+                + model
+                + '}';
+    }
 
 }

@@ -13,13 +13,15 @@ y para intercalar la ejecución de funciones sin codificarlas juntas.
 
 ## Explicación
 
-La recursión es una técnica frecuentemente adoptada para resolver problemas algorítmicos en un estilo de divide y vencerás.
+La recursión es una técnica frecuentemente adoptada para resolver problemas algorítmicos en un estilo de divide y
+vencerás.
 Por ejemplo, el cálculo de la suma acumulativa de Fibonacci y los factoriales. En este tipo de
 problemas, la recursividad es más directa que su homóloga de bucle. Además, la recursividad puede
 necesitar menos código y parecer más concisa. Hay un dicho que dice que todo problema de recursión puede resolverse
 utilizando un bucle a costa de escribir código más difícil de entender.
 
-Sin embargo, las soluciones de tipo recursivo tienen una gran advertencia. Para cada llamada recursiva, normalmente se necesita
+Sin embargo, las soluciones de tipo recursivo tienen una gran advertencia. Para cada llamada recursiva, normalmente se
+necesita
 un valor intermedio almacenado y hay una cantidad limitada de memoria de pila disponible. Quedarse sin
 memoria de pila crea un error de desbordamiento de pila y detiene la ejecución del programa.
 
@@ -28,7 +30,7 @@ pila.
 
 Ejemplo del mundo real
 
-> Un cálculo Fibonacci recursivo sin el problema de desbordamiento de pila utilizando el patrón Trampoline.       
+> Un cálculo Fibonacci recursivo sin el problema de desbordamiento de pila utilizando el patrón Trampoline.
 
 En palabras sencillas
 
@@ -37,7 +39,8 @@ En palabras sencillas
 Wikipedia dice
 
 > En Java, trampoline se refiere al uso de reflection para evitar el uso de clases internas, por ejemplo en
-> eventos. La sobrecarga de tiempo de una llamada a reflection se intercambia por la sobrecarga de espacio de una clase interna.
+> eventos. La sobrecarga de tiempo de una llamada a reflection se intercambia por la sobrecarga de espacio de una clase
+> interna.
 > Trampolines en Java generalmente implican la creación de un GenericListener para pasar eventos a una clase externa.
 
 **Ejemplo programático**

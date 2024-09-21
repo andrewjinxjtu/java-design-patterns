@@ -13,13 +13,15 @@ Dependents, Publish-Subscribe
 
 ## Intento
 
-Stabilire una dipendenza uno-a-molti tra gli oggetti in modo che quando un oggetto cambia stato, tutti i suoi dipendenti vengano avvisati e aggiornati automaticamente.
+Stabilire una dipendenza uno-a-molti tra gli oggetti in modo che quando un oggetto cambia stato, tutti i suoi dipendenti
+vengano avvisati e aggiornati automaticamente.
 
 ## Spiegazione
 
 Esempio del mondo reale
 
-> In una terra lontana vivono le razze degli hobbit e degli orchi. Entrambi trascorrono la maggior parte del tempo all'aperto, quindi
+> In una terra lontana vivono le razze degli hobbit e degli orchi. Entrambi trascorrono la maggior parte del tempo
+> all'aperto, quindi
 > seguono attentamente i cambiamenti del tempo. Si potrebbe dire che osservano costantemente le
 > condizioni meteorologiche.
 
@@ -30,8 +32,10 @@ In parole semplici
 Wikipedia dice
 
 > Il pattern observer è un design pattern in cui un oggetto, chiamato soggetto,
-> mantiene una lista dei suoi dipendenti, chiamati osservatori, e li avvisa automaticamente di eventuali cambiamenti di stato,
-> di solito chiamando uno dei loro metodi. _(Testo tradotto dalla voce Observer Pattern da Wikipedia in lingua inglese)._
+> mantiene una lista dei suoi dipendenti, chiamati osservatori, e li avvisa automaticamente di eventuali cambiamenti di
+> stato,
+> di solito chiamando uno dei loro metodi. _(Testo tradotto dalla voce Observer Pattern da Wikipedia in lingua
+inglese)._
 
 **Esempio di codice**
 
@@ -141,9 +145,12 @@ The hobbits are facing sunny weather now
 
 Usa il pattern Observer in una qualsiasi delle seguenti situazioni:
 
-* Quando un'astrazione ha due aspetti, uno dipendente dall'altro. L'incapsulamento di questi aspetti in oggetti separati ti permette di variarli e riutilizzarli in modo indipendente.
-* Quando una modifica a un oggetto richiede la modifica di altri oggetti, e non sai quanti oggetti devono essere modificati.
-* Quando un oggetto dovrebbe essere in grado di avvisare altri oggetti senza fare presupposizioni su chi siano questi oggetti. In altre parole, non desideri che questi oggetti siano strettamente accoppiati.
+* Quando un'astrazione ha due aspetti, uno dipendente dall'altro. L'incapsulamento di questi aspetti in oggetti separati
+  ti permette di variarli e riutilizzarli in modo indipendente.
+* Quando una modifica a un oggetto richiede la modifica di altri oggetti, e non sai quanti oggetti devono essere
+  modificati.
+* Quando un oggetto dovrebbe essere in grado di avvisare altri oggetti senza fare presupposizioni su chi siano questi
+  oggetti. In altre parole, non desideri che questi oggetti siano strettamente accoppiati.
 
 ## Usi noti
 

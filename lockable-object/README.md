@@ -19,27 +19,43 @@ tag:
 
 ## Intent of Lockable Object Design Pattern
 
-The Lockable Object pattern in Java aims to control access to a shared resource in a multithreaded environment, ensuring thread safety by providing a mechanism for resource locking, ensuring that only one thread can access the resource at a time.
+The Lockable Object pattern in Java aims to control access to a shared resource in a multithreaded environment, ensuring
+thread safety by providing a mechanism for resource locking, ensuring that only one thread can access the resource at a
+time.
 
 ## Detailed Explanation of Lockable Object Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a shared printer in a busy office as an analogous real-world example of the Lockable Object design pattern in Java. This pattern ensures that only one thread can access the resource at a time, thus maintaining concurrency control and synchronization. Multiple employees need to print documents throughout the day, but the printer can only handle one print job at a time. To manage this, there's a locking system in place—much like a lockable object in programming—that ensures when one person is printing, others must wait their turn. This prevents print jobs from overlapping or interfering with each other, ensuring that each document is printed correctly and in the order it was sent, mirroring the concept of thread synchronization and resource locking in software development.
+> Imagine a shared printer in a busy office as an analogous real-world example of the Lockable Object design pattern in
+> Java. This pattern ensures that only one thread can access the resource at a time, thus maintaining concurrency control
+> and synchronization. Multiple employees need to print documents throughout the day, but the printer can only handle one
+> print job at a time. To manage this, there's a locking system in place—much like a lockable object in programming—that
+> ensures when one person is printing, others must wait their turn. This prevents print jobs from overlapping or
+> interfering with each other, ensuring that each document is printed correctly and in the order it was sent, mirroring
+> the concept of thread synchronization and resource locking in software development.
 
 In plain words
 
-> The Lockable Object design pattern ensures safe access to a shared resource in a multithreaded environment by allowing only one thread to access the resource at a time through locking mechanisms.
+> The Lockable Object design pattern ensures safe access to a shared resource in a multithreaded environment by allowing
+> only one thread to access the resource at a time through locking mechanisms.
 
 Wikipedia says
 
-> In computer science, a lock or mutex (from mutual exclusion) is a synchronization primitive that prevents state from being modified or accessed by multiple threads of execution at once. Locks enforce mutual exclusion concurrency control policies, and with a variety of possible methods there exist multiple unique implementations for different applications.
+> In computer science, a lock or mutex (from mutual exclusion) is a synchronization primitive that prevents state from
+> being modified or accessed by multiple threads of execution at once. Locks enforce mutual exclusion concurrency control
+> policies, and with a variety of possible methods there exist multiple unique implementations for different applications.
 
 ## Programmatic Example of Lockable Object Pattern in Java
 
-The Lockable Object pattern is a concurrency control design pattern in Java that allows only one thread to access a shared resource at a time, ensuring mutual exclusion and preventing data corruption. Instead of using the `synchronized` keyword on the methods to be synchronized, the object which implements the Lockable interface handles the request.
+The Lockable Object pattern is a concurrency control design pattern in Java that allows only one thread to access a
+shared resource at a time, ensuring mutual exclusion and preventing data corruption. Instead of using the `synchronized`
+keyword on the methods to be synchronized, the object which implements the Lockable interface handles the request.
 
-In this example, we have a `SwordOfAragorn` object that implements the `Lockable` interface. Multiple `Creature` objects, represented by `Elf`, `Orc`, and `Human` classes, are trying to acquire the sword. Each `Creature` is wrapped in a `Feind` object that implements `Runnable`, allowing each creature to attempt to acquire the sword in a separate thread.
+In this example, we have a `SwordOfAragorn` object that implements the `Lockable` interface. Multiple `Creature`
+objects, represented by `Elf`, `Orc`, and `Human` classes, are trying to acquire the sword. Each `Creature` is wrapped
+in a `Feind` object that implements `Runnable`, allowing each creature to attempt to acquire the sword in a separate
+thread.
 
 Here's the `Lockable` interface:
 
@@ -60,7 +76,8 @@ public class SwordOfAragorn implements Lockable {
 }
 ```
 
-The `Creature` class and its subclasses (`Elf`, `Orc`, `Human`) represent different creatures that can try to acquire the sword:
+The `Creature` class and its subclasses (`Elf`, `Orc`, `Human`) represent different creatures that can try to acquire
+the sword:
 
 ```java
 public abstract class Creature {
@@ -105,7 +122,8 @@ public class Feind implements Runnable {
 }
 ```
 
-In the `App` class, multiple `Feind` objects are created and submitted to an `ExecutorService`, each in a separate thread:
+In the `App` class, multiple `Feind` objects are created and submitted to an `ExecutorService`, each in a separate
+thread:
 
 ```java
 public class App implements Runnable {
@@ -125,7 +143,8 @@ public class App implements Runnable {
 }
 ```
 
-This example demonstrates the Lockable Object pattern by showing how multiple threads can attempt to acquire a lock on a shared resource, with only one thread being able to acquire the lock at a time.
+This example demonstrates the Lockable Object pattern by showing how multiple threads can attempt to acquire a lock on a
+shared resource, with only one thread being able to acquire the lock at a time.
 
 ## Detailed Explanation of Lockable Object Pattern with Real-World Examples
 
@@ -133,12 +152,14 @@ This example demonstrates the Lockable Object pattern by showing how multiple th
 
 ## When to Use the Lockable Object Pattern in Java
 
-* Use the Lockable Object pattern in Java when you need to prevent data corruption by multiple threads accessing a shared resource concurrently, ensuring thread safety and robust shared resource management.
+* Use the Lockable Object pattern in Java when you need to prevent data corruption by multiple threads accessing a
+  shared resource concurrently, ensuring thread safety and robust shared resource management.
 * Suitable for systems where thread safety is critical and data integrity must be maintained across various operations.
 
 ## Real-World Applications of Lockable Object Pattern in Java
 
-* Java’s synchronized keyword and the Lock interfaces in the java.util.concurrent.locks package implement lockable objects to manage synchronization.
+* Java’s synchronized keyword and the Lock interfaces in the java.util.concurrent.locks package implement lockable
+  objects to manage synchronization.
 
 ## Benefits and Trade-offs of Lockable Object Pattern
 
@@ -154,8 +175,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Monitor Object](https://java-design-patterns.com/patterns/monitor/): Both patterns manage access to shared resources; Monitor Object combines synchronization and encapsulation of the condition variable.
-* [Read/Write Lock](https://java-design-patterns.com/patterns/reader-writer-lock/): Specialization of Lockable Object for scenarios where read operations outnumber write operations.
+* [Monitor Object](https://java-design-patterns.com/patterns/monitor/): Both patterns manage access to shared resources;
+  Monitor Object combines synchronization and encapsulation of the condition variable.
+* [Read/Write Lock](https://java-design-patterns.com/patterns/reader-writer-lock/): Specialization of Lockable Object
+  for scenarios where read operations outnumber write operations.
 
 ## References and Credits
 

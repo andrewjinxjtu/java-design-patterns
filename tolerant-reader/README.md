@@ -17,17 +17,24 @@ tag:
 
 ## Intent of Tolerant Reader Design Pattern
 
-The Tolerant Reader pattern enhances system resilience to changes in data structures by strategically ignoring unrecognized elements, promoting robust API design.
+The Tolerant Reader pattern enhances system resilience to changes in data structures by strategically ignoring
+unrecognized elements, promoting robust API design.
 
 ## Detailed Explanation of Tolerant Reader Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a postal system that delivers letters and packages to recipients. In this system, postal workers deliver mail regardless of additional information or stickers that might be present on the envelopes or packages. If a package has extra labels or instructions that the postal system does not recognize, the postal worker ignores these and focuses only on the essential information like the address. This approach ensures that the delivery process remains functional even when senders use different formats or include unnecessary details, similar to how the Tolerant Reader pattern works in software by ignoring unrecognized data elements to maintain functionality and compatibility.
+> Imagine a postal system that delivers letters and packages to recipients. In this system, postal workers deliver mail
+> regardless of additional information or stickers that might be present on the envelopes or packages. If a package has
+> extra labels or instructions that the postal system does not recognize, the postal worker ignores these and focuses only
+> on the essential information like the address. This approach ensures that the delivery process remains functional even
+> when senders use different formats or include unnecessary details, similar to how the Tolerant Reader pattern works in
+> software by ignoring unrecognized data elements to maintain functionality and compatibility.
 
 In plain words
 
-> Utilize the Tolerant Reader pattern to establish robust and resilient communication between services, ensuring data compatibility and integration.
+> Utilize the Tolerant Reader pattern to establish robust and resilient communication between services, ensuring data
+> compatibility and integration.
 
 [Robustness Principle](https://java-design-patterns.com/principles/#robustness-principle) says
 
@@ -35,7 +42,9 @@ In plain words
 
 ## Programmatic Example of Tolerant Reader Pattern in Java
 
-We are persisting `RainbowFish` objects to file. Later on they need to be restored. What makes it problematic is that `RainbowFish` data structure is versioned and evolves over time. New version of `RainbowFish` needs to be able to restore old versions as well.
+We are persisting `RainbowFish` objects to file. Later on they need to be restored. What makes it problematic is that
+`RainbowFish` data structure is versioned and evolves over time. New version of `RainbowFish` needs to be able to
+restore old versions as well.
 
 Here's the versioned `RainbowFish`. Notice how the second version introduces additional properties.
 
@@ -173,7 +182,8 @@ Program output:
 
 ## When to Use the Tolerant Reader Pattern in Java
 
-* Apply the Tolerant Reader pattern when your system consumes data from evolving external sources, maintaining efficiency and data integrity.
+* Apply the Tolerant Reader pattern when your system consumes data from evolving external sources, maintaining
+  efficiency and data integrity.
 * Applicable when backward compatibility is required in API design.
 * Suitable for integration scenarios where different systems exchange data and evolve independently.
 
@@ -197,9 +207,13 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): Both patterns deal with data transformation and integration, but the Adapter Pattern focuses on converting interfaces, while Tolerant Reader focuses on ignoring unrecognized data.
-* [Facade](https://java-design-patterns.com/patterns/facade/): Simplifies interactions with complex systems, similar to how Tolerant Reader simplifies data consumption by ignoring irrelevant data.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Can be used in conjunction with Tolerant Reader to dynamically switch between different data handling strategies.
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): Both patterns deal with data transformation and
+  integration, but the Adapter Pattern focuses on converting interfaces, while Tolerant Reader focuses on ignoring
+  unrecognized data.
+* [Facade](https://java-design-patterns.com/patterns/facade/): Simplifies interactions with complex systems, similar to
+  how Tolerant Reader simplifies data consumption by ignoring irrelevant data.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Can be used in conjunction with Tolerant Reader to
+  dynamically switch between different data handling strategies.
 
 ## References and Credits
 

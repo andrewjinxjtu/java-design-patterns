@@ -29,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -36,40 +37,40 @@ import org.junit.jupiter.api.Test;
  */
 class CustomerResourceTest {
 
-  @Test
-  void shouldGetAllCustomers() {
-    var customers = List.of(new CustomerDto("1", "Melody", "Yates"));
-    var customerResource = new CustomerResource(customers);
-    var allCustomers = customerResource.customers();
+    @Test
+    void shouldGetAllCustomers() {
+        var customers = List.of(new CustomerDto("1", "Melody", "Yates"));
+        var customerResource = new CustomerResource(customers);
+        var allCustomers = customerResource.customers();
 
-    assertEquals(1, allCustomers.size());
-    assertEquals("1", allCustomers.get(0).id());
-    assertEquals("Melody", allCustomers.get(0).firstName());
-    assertEquals("Yates", allCustomers.get(0).lastName());
-  }
+        assertEquals(1, allCustomers.size());
+        assertEquals("1", allCustomers.get(0).id());
+        assertEquals("Melody", allCustomers.get(0).firstName());
+        assertEquals("Yates", allCustomers.get(0).lastName());
+    }
 
-  @Test
-  void shouldSaveCustomer() {
-    var customer = new CustomerDto("1", "Rita", "Reynolds");
-    var customerResource = new CustomerResource(new ArrayList<>());
+    @Test
+    void shouldSaveCustomer() {
+        var customer = new CustomerDto("1", "Rita", "Reynolds");
+        var customerResource = new CustomerResource(new ArrayList<>());
 
-    customerResource.save(customer);
+        customerResource.save(customer);
 
-    var allCustomers = customerResource.customers();
-    assertEquals("1", allCustomers.get(0).id());
-    assertEquals("Rita", allCustomers.get(0).firstName());
-    assertEquals("Reynolds", allCustomers.get(0).lastName());
-  }
+        var allCustomers = customerResource.customers();
+        assertEquals("1", allCustomers.get(0).id());
+        assertEquals("Rita", allCustomers.get(0).firstName());
+        assertEquals("Reynolds", allCustomers.get(0).lastName());
+    }
 
-  @Test
-  void shouldDeleteCustomer() {
-    var customer = new CustomerDto("1", "Terry", "Nguyen");
-    var customers = new ArrayList<>(List.of(customer));
-    var customerResource = new CustomerResource(customers);
+    @Test
+    void shouldDeleteCustomer() {
+        var customer = new CustomerDto("1", "Terry", "Nguyen");
+        var customers = new ArrayList<>(List.of(customer));
+        var customerResource = new CustomerResource(customers);
 
-    customerResource.delete(customer.id());
+        customerResource.delete(customer.id());
 
-    var allCustomers = customerResource.customers();
-    assertTrue(allCustomers.isEmpty());
-  }
+        var allCustomers = customerResource.customers();
+        assertTrue(allCustomers.isEmpty());
+    }
 }

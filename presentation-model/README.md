@@ -17,25 +17,35 @@ tag:
 
 ## Intent of Presentation Model Design Pattern
 
-The Presentation Model pattern separates the logic of the user interface (UI) from the business logic by creating a model that represents the data and behavior of the UI independently.
+The Presentation Model pattern separates the logic of the user interface (UI) from the business logic by creating a
+model that represents the data and behavior of the UI independently.
 
 ## Detailed Explanation of Presentation Model Pattern with Real-World Examples
 
 Real-world example
 
-> An analogous real-world example of the Presentation Model design pattern is the relationship between a scriptwriter, an actor, and a director in a theater production. The scriptwriter creates the script (analogous to the business logic), which the actor then interprets and performs on stage (analogous to the user interface). The director acts as the intermediary, ensuring that the actor's performance aligns with the script and the vision of the play (similar to the Presentation Model coordinating the UI and the business logic). This separation allows the script to be rewritten without changing the actor's techniques or the director's interpretation, ensuring flexibility and maintainability.
+> An analogous real-world example of the Presentation Model design pattern is the relationship between a scriptwriter,
+> an actor, and a director in a theater production. The scriptwriter creates the script (analogous to the business logic),
+> which the actor then interprets and performs on stage (analogous to the user interface). The director acts as the
+> intermediary, ensuring that the actor's performance aligns with the script and the vision of the play (similar to the
+> Presentation Model coordinating the UI and the business logic). This separation allows the script to be rewritten
+> without changing the actor's techniques or the director's interpretation, ensuring flexibility and maintainability.
 
 In plain words
 
-> The Presentation Model design pattern separates the UI logic from the business logic by creating an intermediate model that represents the data and behavior of the UI independently, enhancing testability, maintainability, and flexibility.
+> The Presentation Model design pattern separates the UI logic from the business logic by creating an intermediate model
+> that represents the data and behavior of the UI independently, enhancing testability, maintainability, and flexibility.
 
 ## Programmatic Example of Presentation Model Pattern in Java
 
-The Presentation Model design pattern is a pattern that separates the responsibility of managing the state and behavior of the GUI in a separate model class. This model class is not tied to the view and can be used to test the GUI behavior independently of the GUI itself.
+The Presentation Model design pattern is a pattern that separates the responsibility of managing the state and behavior
+of the GUI in a separate model class. This model class is not tied to the view and can be used to test the GUI behavior
+independently of the GUI itself.
 
 Let's take a look at the code provided and see how it implements the Presentation Model pattern.
 
-First, we have the `Album` class. This class represents the data model in our application. It contains properties like `title`, `artist`, `isClassical`, and `composer`.
+First, we have the `Album` class. This class represents the data model in our application. It contains properties like
+`title`, `artist`, `isClassical`, and `composer`.
 
 ```java
 @Setter
@@ -73,7 +83,9 @@ public class DisplayedAlbums {
 }
 ```
 
-The `PresentationModel` class is where the Presentation Model pattern is implemented. This class is responsible for managing the state and behavior of the GUI. It contains a reference to the `DisplayedAlbums` object and provides methods for interacting with the selected album.
+The `PresentationModel` class is where the Presentation Model pattern is implemented. This class is responsible for
+managing the state and behavior of the GUI. It contains a reference to the `DisplayedAlbums` object and provides methods
+for interacting with the selected album.
 
 ```java
 public class PresentationModel {
@@ -92,7 +104,8 @@ public class PresentationModel {
 }
 ```
 
-The `App` class is the entry point of the application. It creates a `View` object and calls its `createView` method to start the GUI.
+The `App` class is the entry point of the application. It creates a `View` object and calls its `createView` method to
+start the GUI.
 
 ```java
 public final class App {
@@ -103,28 +116,35 @@ public final class App {
 }
 ```
 
-In this example, the `PresentationModel` class is the Presentation Model. It separates the GUI's state and behavior from the `View` class, allowing the GUI to be tested independently from the actual GUI components.
+In this example, the `PresentationModel` class is the Presentation Model. It separates the GUI's state and behavior from
+the `View` class, allowing the GUI to be tested independently from the actual GUI components.
 
 ## When to Use the Presentation Model Pattern in Java
 
 Use the Presentation Model Pattern when
 
-* Use when you want to decouple the UI from the underlying business logic to allow for easier testing, maintenance, and the ability to support multiple views or platforms.
-* Ideal for applications where the UI changes frequently or needs to be different across various platforms while keeping the core logic intact.
+* Use when you want to decouple the UI from the underlying business logic to allow for easier testing, maintenance, and
+  the ability to support multiple views or platforms.
+* Ideal for applications where the UI changes frequently or needs to be different across various platforms while keeping
+  the core logic intact.
 
 ## Real-World Applications of Presentation Model Pattern in Java
 
 The Presentation Model pattern is used in:
 
-* JavaFX applications: Utilizing JavaFX properties and bindings to create a clear separation between the UI and business logic.
-* Swing applications: Employing a Presentation Model to decouple Swing components from the application logic, enhancing testability and flexibility.
-* Android apps: Implementing MVVM architecture using ViewModel classes to manage UI-related data and lifecycle-aware components.
+* JavaFX applications: Utilizing JavaFX properties and bindings to create a clear separation between the UI and business
+  logic.
+* Swing applications: Employing a Presentation Model to decouple Swing components from the application logic, enhancing
+  testability and flexibility.
+* Android apps: Implementing MVVM architecture using ViewModel classes to manage UI-related data and lifecycle-aware
+  components.
 
 ## Benefits and Trade-offs of Presentation Model Pattern
 
 Benefits:
 
-* Decoupling: Enhances [separation of concerns](https://java-design-patterns.com/principles/#separation-of-concerns), making the system more modular and testable.
+* Decoupling: Enhances [separation of concerns](https://java-design-patterns.com/principles/#separation-of-concerns),
+  making the system more modular and testable.
 * Testability: Facilitates unit testing of UI logic without the need for actual UI components.
 * Maintainability: Simplifies maintenance by isolating changes to the UI or business logic.
 * Flexibility: Supports multiple views for the same model, making it easier to adapt the UI for different platforms.
@@ -136,9 +156,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Model-View-Controller (MVC)](https://java-design-patterns.com/patterns/model-view-controller/): Similar in that it separates concerns, but Presentation Model encapsulates more of the view logic.
-* [Model-View-Presenter (MVP)](https://java-design-patterns.com/patterns/model-view-presenter/): Another UI pattern focusing on separation of concerns, but with a different interaction model.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Often used within the Presentation Model to update the UI when the model changes.
+* [Model-View-Controller (MVC)](https://java-design-patterns.com/patterns/model-view-controller/): Similar in that it
+  separates concerns, but Presentation Model encapsulates more of the view logic.
+* [Model-View-Presenter (MVP)](https://java-design-patterns.com/patterns/model-view-presenter/): Another UI pattern
+  focusing on separation of concerns, but with a different interaction model.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Often used within the Presentation Model to update
+  the UI when the model changes.
 
 ## References and Credits
 

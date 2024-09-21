@@ -58,7 +58,6 @@ public class AntiCorruptionLayerTest {
      * The 2 shops (modern and legacy) should operate independently and in the same time synchronize the data.
      * To avoid corrupting the domain models of the 2 shops, we use an anti-corruption layer
      * that transforms one model to another under the hood.
-     *
      */
     @Test
     public void antiCorruptionLayerTest() throws ShopException {
@@ -82,12 +81,12 @@ public class AntiCorruptionLayerTest {
         assertTrue(modernOrderWithIdOne.isEmpty());
 
     }
+
     /**
      * Test the anti-corruption layer.
      * Main intention is to demonstrate how the anti-corruption layer works.
      * <p>
      * This test tests the anti-corruption layer from the rule the orders should be the same in the both systems.
-     *
      */
     @Test(expected = ShopException.class)
     public void antiCorruptionLayerWithExTest() throws ShopException {

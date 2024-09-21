@@ -31,42 +31,42 @@ package com.iluwatar.front.controller;
  */
 public class Dispatcher {
 
-  /**
-   * Dispatches the request to the appropriate command.
-   *
-   * @param request the request to be handled
-   */
-  public void dispatch(String request) {
-    var command = getCommand(request);
-    command.process();
-  }
-
-  /**
-   * Retrieves the appropriate command instance for the given request.
-   *
-   * @param request the request to be handled
-   * @return the command instance corresponding to the request
-   */
-  Command getCommand(String request) {
-    var commandClass = getCommandClass(request);
-    try {
-      return (Command) commandClass.getDeclaredConstructor().newInstance();
-    } catch (Exception e) {
-      throw new ApplicationException(e);
+    /**
+     * Dispatches the request to the appropriate command.
+     *
+     * @param request the request to be handled
+     */
+    public void dispatch(String request) {
+        var command = getCommand(request);
+        command.process();
     }
-  }
 
-  /**
-   * Retrieves the Class object for the command corresponding to the given request.
-   *
-   * @param request the request to be handled
-   * @return the Class object of the command corresponding to the request
-   */
-  static Class<?> getCommandClass(String request) {
-    try {
-      return Class.forName("com.iluwatar.front.controller." + request + "Command");
-    } catch (ClassNotFoundException e) {
-      return UnknownCommand.class;
+    /**
+     * Retrieves the appropriate command instance for the given request.
+     *
+     * @param request the request to be handled
+     * @return the command instance corresponding to the request
+     */
+    Command getCommand(String request) {
+        var commandClass = getCommandClass(request);
+        try {
+            return (Command) commandClass.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            throw new ApplicationException(e);
+        }
     }
-  }
+
+    /**
+     * Retrieves the Class object for the command corresponding to the given request.
+     *
+     * @param request the request to be handled
+     * @return the Class object of the command corresponding to the request
+     */
+    static Class<?> getCommandClass(String request) {
+        try {
+            return Class.forName("com.iluwatar.front.controller." + request + "Command");
+        } catch (ClassNotFoundException e) {
+            return UnknownCommand.class;
+        }
+    }
 }

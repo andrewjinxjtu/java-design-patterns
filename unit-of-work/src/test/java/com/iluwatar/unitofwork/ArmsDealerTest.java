@@ -34,6 +34,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -41,98 +42,98 @@ import org.junit.jupiter.api.Test;
  */
 
 class ArmsDealerTest {
-  private final Weapon weapon1 = new Weapon(1, "battle ram");
-  private final Weapon weapon2 = new Weapon(1, "wooden lance");
+    private final Weapon weapon1 = new Weapon(1, "battle ram");
+    private final Weapon weapon2 = new Weapon(1, "wooden lance");
 
-  private final Map<String, List<Weapon>> context = new HashMap<>();
-  private final WeaponDatabase weaponDatabase = mock(WeaponDatabase.class);
-  private final ArmsDealer armsDealer = new ArmsDealer(context, weaponDatabase);
+    private final Map<String, List<Weapon>> context = new HashMap<>();
+    private final WeaponDatabase weaponDatabase = mock(WeaponDatabase.class);
+    private final ArmsDealer armsDealer = new ArmsDealer(context, weaponDatabase);
 
-  @Test
-  void shouldSaveNewStudentWithoutWritingToDb() {
-    armsDealer.registerNew(weapon1);
-    armsDealer.registerNew(weapon2);
+    @Test
+    void shouldSaveNewStudentWithoutWritingToDb() {
+        armsDealer.registerNew(weapon1);
+        armsDealer.registerNew(weapon2);
 
-    assertEquals(2, context.get(UnitActions.INSERT.getActionValue()).size());
-    verifyNoMoreInteractions(weaponDatabase);
-  }
+        assertEquals(2, context.get(UnitActions.INSERT.getActionValue()).size());
+        verifyNoMoreInteractions(weaponDatabase);
+    }
 
-  @Test
-  void shouldSaveDeletedStudentWithoutWritingToDb() {
-    armsDealer.registerDeleted(weapon1);
-    armsDealer.registerDeleted(weapon2);
+    @Test
+    void shouldSaveDeletedStudentWithoutWritingToDb() {
+        armsDealer.registerDeleted(weapon1);
+        armsDealer.registerDeleted(weapon2);
 
-    assertEquals(2, context.get(UnitActions.DELETE.getActionValue()).size());
-    verifyNoMoreInteractions(weaponDatabase);
-  }
+        assertEquals(2, context.get(UnitActions.DELETE.getActionValue()).size());
+        verifyNoMoreInteractions(weaponDatabase);
+    }
 
-  @Test
-  void shouldSaveModifiedStudentWithoutWritingToDb() {
-    armsDealer.registerModified(weapon1);
-    armsDealer.registerModified(weapon2);
+    @Test
+    void shouldSaveModifiedStudentWithoutWritingToDb() {
+        armsDealer.registerModified(weapon1);
+        armsDealer.registerModified(weapon2);
 
-    assertEquals(2, context.get(UnitActions.MODIFY.getActionValue()).size());
-    verifyNoMoreInteractions(weaponDatabase);
-  }
+        assertEquals(2, context.get(UnitActions.MODIFY.getActionValue()).size());
+        verifyNoMoreInteractions(weaponDatabase);
+    }
 
-  @Test
-  void shouldSaveAllLocalChangesToDb() {
-    context.put(UnitActions.INSERT.getActionValue(), List.of(weapon1));
-    context.put(UnitActions.MODIFY.getActionValue(), List.of(weapon1));
-    context.put(UnitActions.DELETE.getActionValue(), List.of(weapon1));
+    @Test
+    void shouldSaveAllLocalChangesToDb() {
+        context.put(UnitActions.INSERT.getActionValue(), List.of(weapon1));
+        context.put(UnitActions.MODIFY.getActionValue(), List.of(weapon1));
+        context.put(UnitActions.DELETE.getActionValue(), List.of(weapon1));
 
-    armsDealer.commit();
+        armsDealer.commit();
 
-    verify(weaponDatabase, times(1)).insert(weapon1);
-    verify(weaponDatabase, times(1)).modify(weapon1);
-    verify(weaponDatabase, times(1)).delete(weapon1);
-  }
+        verify(weaponDatabase, times(1)).insert(weapon1);
+        verify(weaponDatabase, times(1)).modify(weapon1);
+        verify(weaponDatabase, times(1)).delete(weapon1);
+    }
 
-  @Test
-  void shouldNotWriteToDbIfContextIsNull() {
-    var weaponRepository = new ArmsDealer(null, weaponDatabase);
+    @Test
+    void shouldNotWriteToDbIfContextIsNull() {
+        var weaponRepository = new ArmsDealer(null, weaponDatabase);
 
-    weaponRepository.commit();
+        weaponRepository.commit();
 
-    verifyNoMoreInteractions(weaponDatabase);
-  }
+        verifyNoMoreInteractions(weaponDatabase);
+    }
 
-  @Test
-  void shouldNotWriteToDbIfNothingToCommit() {
-    var weaponRepository = new ArmsDealer(new HashMap<>(), weaponDatabase);
+    @Test
+    void shouldNotWriteToDbIfNothingToCommit() {
+        var weaponRepository = new ArmsDealer(new HashMap<>(), weaponDatabase);
 
-    weaponRepository.commit();
+        weaponRepository.commit();
 
-    verifyNoMoreInteractions(weaponDatabase);
-  }
+        verifyNoMoreInteractions(weaponDatabase);
+    }
 
-  @Test
-  void shouldNotInsertToDbIfNoRegisteredStudentsToBeCommitted() {
-    context.put(UnitActions.MODIFY.getActionValue(), List.of(weapon1));
-    context.put(UnitActions.DELETE.getActionValue(), List.of(weapon1));
+    @Test
+    void shouldNotInsertToDbIfNoRegisteredStudentsToBeCommitted() {
+        context.put(UnitActions.MODIFY.getActionValue(), List.of(weapon1));
+        context.put(UnitActions.DELETE.getActionValue(), List.of(weapon1));
 
-    armsDealer.commit();
+        armsDealer.commit();
 
-    verify(weaponDatabase, never()).insert(weapon1);
-  }
+        verify(weaponDatabase, never()).insert(weapon1);
+    }
 
-  @Test
-  void shouldNotModifyToDbIfNotRegisteredStudentsToBeCommitted() {
-    context.put(UnitActions.INSERT.getActionValue(), List.of(weapon1));
-    context.put(UnitActions.DELETE.getActionValue(), List.of(weapon1));
+    @Test
+    void shouldNotModifyToDbIfNotRegisteredStudentsToBeCommitted() {
+        context.put(UnitActions.INSERT.getActionValue(), List.of(weapon1));
+        context.put(UnitActions.DELETE.getActionValue(), List.of(weapon1));
 
-    armsDealer.commit();
+        armsDealer.commit();
 
-    verify(weaponDatabase, never()).modify(weapon1);
-  }
+        verify(weaponDatabase, never()).modify(weapon1);
+    }
 
-  @Test
-  void shouldNotDeleteFromDbIfNotRegisteredStudentsToBeCommitted() {
-    context.put(UnitActions.INSERT.getActionValue(), List.of(weapon1));
-    context.put(UnitActions.MODIFY.getActionValue(), List.of(weapon1));
+    @Test
+    void shouldNotDeleteFromDbIfNotRegisteredStudentsToBeCommitted() {
+        context.put(UnitActions.INSERT.getActionValue(), List.of(weapon1));
+        context.put(UnitActions.MODIFY.getActionValue(), List.of(weapon1));
 
-    armsDealer.commit();
+        armsDealer.commit();
 
-    verify(weaponDatabase, never()).delete(weapon1);
-  }
+        verify(weaponDatabase, never()).delete(weapon1);
+    }
 }

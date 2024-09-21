@@ -33,12 +33,12 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ModernOrder {
-  private String id;
-  private Customer customer;
+    private String id;
+    private Customer customer;
 
-  private Shipment shipment;
+    private Shipment shipment;
 
-  private String extra;
+    private String extra;
 
 
 }

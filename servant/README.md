@@ -18,27 +18,39 @@ tag:
 
 ## Intent of Servant Design Pattern
 
-The Servant pattern is used to perform specific operations for a group of objects without changing the classes of the elements on which it operates.
+The Servant pattern is used to perform specific operations for a group of objects without changing the classes of the
+elements on which it operates.
 
 ## Detailed Explanation of Servant Pattern with Real-World Examples
 
 Real-world example
 
-> In a restaurant, a waiter (Servant) serves multiple tables (objects) by taking orders, delivering food, and handling payments. The waiter provides these common services without altering the fundamental nature of the tables or customers, allowing the restaurant to efficiently manage customer service while keeping the roles of the tables and customers unchanged.
+> In a restaurant, a waiter (Servant) serves multiple tables (objects) by taking orders, delivering food, and handling
+> payments. The waiter provides these common services without altering the fundamental nature of the tables or customers,
+> allowing the restaurant to efficiently manage customer service while keeping the roles of the tables and customers
+> unchanged.
 
 In plain words
 
-> The Java Servant pattern effectively centralizes common functionality for multiple classes, enabling decoupled and reusable operations in software development without altering the original classes, promoting efficient Java design practices.
+> The Java Servant pattern effectively centralizes common functionality for multiple classes, enabling decoupled and
+> reusable operations in software development without altering the original classes, promoting efficient Java design
+> practices.
 
 Wikipedia says
 
-> In software engineering, the servant pattern defines an object used to offer some functionality to a group of classes without defining that functionality in each of them. A Servant is a class whose instance (or even just class) provides methods that take care of a desired service, while objects for which (or with whom) the servant does something, are taken as parameters.
+> In software engineering, the servant pattern defines an object used to offer some functionality to a group of classes
+> without defining that functionality in each of them. A Servant is a class whose instance (or even just class) provides
+> methods that take care of a desired service, while objects for which (or with whom) the servant does something, are
+> taken as parameters.
 
 ## Programmatic Example of Servant Pattern in Java
 
-The Servant design pattern is a behavioral design pattern that defines a class that provides some sort of service to a group of classes. This pattern is particularly useful when these classes lack some common functionality that can't be added to the superclass. The Servant class brings this common functionality to a group of classes.
+The Servant design pattern is a behavioral design pattern that defines a class that provides some sort of service to a
+group of classes. This pattern is particularly useful when these classes lack some common functionality that can't be
+added to the superclass. The Servant class brings this common functionality to a group of classes.
 
-In the provided code, we have a `Servant` class that provides services to the `Royalty` class. The `Servant` class has methods like `feed()`, `giveWine()`, and `giveCompliments()` which are services provided to the `Royalty` class.
+In the provided code, we have a `Servant` class that provides services to the `Royalty` class. The `Servant` class has
+methods like `feed()`, `giveWine()`, and `giveCompliments()` which are services provided to the `Royalty` class.
 
 Here is the `Servant` class:
 
@@ -69,7 +81,8 @@ public class Servant {
 }
 ```
 
-The `Royalty` class is an interface that is implemented by the classes that use the services of the `Servant`. Here is a simplified version of the `Royalty` interface:
+The `Royalty` class is an interface that is implemented by the classes that use the services of the `Servant`. Here is a
+simplified version of the `Royalty` interface:
 
 ```java
 public interface Royalty {
@@ -85,7 +98,8 @@ public interface Royalty {
 }
 ```
 
-The `App` class uses the `Servant` to provide services to the `Royalty` objects. Here is a simplified version of the `App` class:
+The `App` class uses the `Servant` to provide services to the `Royalty` objects. Here is a simplified version of the
+`App` class:
 
 ```java
 public class App {
@@ -128,17 +142,22 @@ Running the application produces:
 09:10:38.797 [main] INFO com.iluwatar.servant.App -- Poor Travis. His days are numbered
 ```
 
-In this example, the `Servant` class provides services to the `Royalty` objects. The `Servant` class doesn't know about the specific implementation of the `Royalty` objects, it only knows that it can provide certain services to them. This is a good example of the Servant design pattern.
+In this example, the `Servant` class provides services to the `Royalty` objects. The `Servant` class doesn't know about
+the specific implementation of the `Royalty` objects, it only knows that it can provide certain services to them. This
+is a good example of the Servant design pattern.
 
 ## When to Use the Servant Pattern in Java
 
-* Use the Servant pattern when you need to provide a common functionality to a group of classes without polluding their class definitions, perfect for enhancing Java application architecture.
+* Use the Servant pattern when you need to provide a common functionality to a group of classes without polluding their
+  class definitions, perfect for enhancing Java application architecture.
 * Suitable when the operations performed on the objects are not the primary responsibility of the objects themselves.
 
 ## Real-World Applications of Servant Pattern in Java
 
-* In GUI applications to handle operations like rendering or hit-testing which are common across different UI components.
-* In games where various entities (like players, enemies, or items) need common behavior such as movement or collision detection.
+* In GUI applications to handle operations like rendering or hit-testing which are common across different UI
+  components.
+* In games where various entities (like players, enemies, or items) need common behavior such as movement or collision
+  detection.
 * Logging or auditing functionalities that are required across multiple business objects.
 
 ## Benefits and Trade-offs of Servant Pattern
@@ -155,10 +174,17 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): The Servant pattern is similar to the Adapter pattern in that both provide a way to work with classes without modifying them, but the Servant pattern focuses on providing additional behavior to multiple classes rather than adapting one interface to another.
-* [Facade](https://java-design-patterns.com/patterns/facade/): Both patterns provide a simplified interface to a set of functionalities, but the Servant pattern is typically used for adding functionalities to a group of classes, while the Facade pattern hides the complexities of a subsystem.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. The Servant pattern can be used in conjunction with the Strategy pattern to define operations that apply to multiple classes.
-* View Helper: The View Helper pattern is related as it also centralizes common functionality, but it focuses on separating presentation logic from business logic in web applications.
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): The Servant pattern is similar to the Adapter pattern
+  in that both provide a way to work with classes without modifying them, but the Servant pattern focuses on providing
+  additional behavior to multiple classes rather than adapting one interface to another.
+* [Facade](https://java-design-patterns.com/patterns/facade/): Both patterns provide a simplified interface to a set of
+  functionalities, but the Servant pattern is typically used for adding functionalities to a group of classes, while the
+  Facade pattern hides the complexities of a subsystem.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): The Strategy pattern defines a family of algorithms,
+  encapsulates each one, and makes them interchangeable. The Servant pattern can be used in conjunction with the
+  Strategy pattern to define operations that apply to multiple classes.
+* View Helper: The View Helper pattern is related as it also centralizes common functionality, but it focuses on
+  separating presentation logic from business logic in web applications.
 
 ## References and Credits
 

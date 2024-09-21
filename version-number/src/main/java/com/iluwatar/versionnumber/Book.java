@@ -33,20 +33,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Book {
-  private long id;
-  private String title = "";
-  private String author = "";
-  private long version = 0; // version number
+    private long id;
+    private String title = "";
+    private String author = "";
+    private long version = 0; // version number
 
-  public Book() {}
+    public Book() {
+    }
 
-  /**
-   * We need this copy constructor to copy book representation in {@link BookRepository}.
-   */
-  public Book(Book book) {
-    this.id = book.id;
-    this.title = book.title;
-    this.author = book.author;
-    this.version = book.version;
-  }
+    /**
+     * We need this copy constructor to copy book representation in {@link BookRepository}.
+     */
+    public Book(Book book) {
+        this.id = book.id;
+        this.title = book.title;
+        this.author = book.author;
+        this.version = book.version;
+    }
 }

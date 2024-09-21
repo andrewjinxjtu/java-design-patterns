@@ -33,41 +33,41 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * Application test
  */
 class CachingTest {
-  private App app;
+    private App app;
 
-  /**
-   * Setup of application test includes: initializing DB connection and cache size/capacity.
-   */
-  @BeforeEach
-  void setUp() {
-    // VirtualDB (instead of MongoDB) was used in running the JUnit tests
-    // to avoid Maven compilation errors. Set flag to true to run the
-    // tests with MongoDB (provided that MongoDB is installed and socket
-    // connection is open).
-    app = new App(false);
-  }
+    /**
+     * Setup of application test includes: initializing DB connection and cache size/capacity.
+     */
+    @BeforeEach
+    void setUp() {
+        // VirtualDB (instead of MongoDB) was used in running the JUnit tests
+        // to avoid Maven compilation errors. Set flag to true to run the
+        // tests with MongoDB (provided that MongoDB is installed and socket
+        // connection is open).
+        app = new App(false);
+    }
 
-  @Test
-  void testReadAndWriteThroughStrategy() {
-    assertNotNull(app);
-    app.useReadAndWriteThroughStrategy();
-  }
+    @Test
+    void testReadAndWriteThroughStrategy() {
+        assertNotNull(app);
+        app.useReadAndWriteThroughStrategy();
+    }
 
-  @Test
-  void testReadThroughAndWriteAroundStrategy() {
-    assertNotNull(app);
-    app.useReadThroughAndWriteAroundStrategy();
-  }
+    @Test
+    void testReadThroughAndWriteAroundStrategy() {
+        assertNotNull(app);
+        app.useReadThroughAndWriteAroundStrategy();
+    }
 
-  @Test
-  void testReadThroughAndWriteBehindStrategy() {
-    assertNotNull(app);
-    app.useReadThroughAndWriteBehindStrategy();
-  }
+    @Test
+    void testReadThroughAndWriteBehindStrategy() {
+        assertNotNull(app);
+        app.useReadThroughAndWriteBehindStrategy();
+    }
 
-  @Test
-  void testCacheAsideStrategy() {
-    assertNotNull(app);
-    app.useCacheAsideStategy();
-  }
+    @Test
+    void testCacheAsideStrategy() {
+        assertNotNull(app);
+        app.useCacheAsideStategy();
+    }
 }

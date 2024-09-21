@@ -29,7 +29,7 @@ package com.iluwatar.state;
  */
 public interface State {
 
-  void onEnterState();
+    void onEnterState();
 
-  void observe();
+    void observe();
 }

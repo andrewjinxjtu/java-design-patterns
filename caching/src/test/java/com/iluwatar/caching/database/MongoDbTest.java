@@ -42,62 +42,68 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class MongoDbTest {
-  private static final String ID = "123";
-  private static final String NAME = "Some user";
-  private static final String ADDITIONAL_INFO = "Some app Info";
+    private static final String ID = "123";
+    private static final String NAME = "Some user";
+    private static final String ADDITIONAL_INFO = "Some app Info";
 
-  @Mock
-  MongoDatabase db;
-  private MongoDb mongoDb = new MongoDb();
+    @Mock
+    MongoDatabase db;
+    private MongoDb mongoDb = new MongoDb();
 
-  private UserAccount userAccount;
+    private UserAccount userAccount;
 
-  @BeforeEach
-  void init() {
-    db = mock(MongoDatabase.class);
-    mongoDb.setDb(db);
-    userAccount = new UserAccount(ID, NAME, ADDITIONAL_INFO);
-  }
+    @BeforeEach
+    void init() {
+        db = mock(MongoDatabase.class);
+        mongoDb.setDb(db);
+        userAccount = new UserAccount(ID, NAME, ADDITIONAL_INFO);
+    }
 
-  @Test
-  void connect() {
-    assertDoesNotThrow(() -> mongoDb.connect());
-  }
+    @Test
+    void connect() {
+        assertDoesNotThrow(() -> mongoDb.connect());
+    }
 
-  @Test
-  void readFromDb() {
-    Document document = new Document(USER_ID, ID)
-            .append(USER_NAME, NAME)
-            .append(ADD_INFO, ADDITIONAL_INFO);
-    MongoCollection<Document> mongoCollection = mock(MongoCollection.class);
-    when(db.getCollection(CachingConstants.USER_ACCOUNT)).thenReturn(mongoCollection);
+    @Test
+    void readFromDb() {
+        Document document = new Document(USER_ID, ID)
+                .append(USER_NAME, NAME)
+                .append(ADD_INFO, ADDITIONAL_INFO);
+        MongoCollection<Document> mongoCollection = mock(MongoCollection.class);
+        when(db.getCollection(CachingConstants.USER_ACCOUNT)).thenReturn(mongoCollection);
 
-    FindIterable<Document> findIterable = mock(FindIterable.class);
-    when(mongoCollection.find(any(Document.class))).thenReturn(findIterable);
+        FindIterable<Document> findIterable = mock(FindIterable.class);
+        when(mongoCollection.find(any(Document.class))).thenReturn(findIterable);
 
-    when(findIterable.first()).thenReturn(document);
+        when(findIterable.first()).thenReturn(document);
 
-    assertEquals(mongoDb.readFromDb(ID),userAccount);
-  }
+        assertEquals(mongoDb.readFromDb(ID), userAccount);
+    }
 
-  @Test
-  void writeToDb() {
-    MongoCollection<Document> mongoCollection = mock(MongoCollection.class);
-    when(db.getCollection(CachingConstants.USER_ACCOUNT)).thenReturn(mongoCollection);
-    assertDoesNotThrow(()-> {mongoDb.writeToDb(userAccount);});
-  }
+    @Test
+    void writeToDb() {
+        MongoCollection<Document> mongoCollection = mock(MongoCollection.class);
+        when(db.getCollection(CachingConstants.USER_ACCOUNT)).thenReturn(mongoCollection);
+        assertDoesNotThrow(() -> {
+            mongoDb.writeToDb(userAccount);
+        });
+    }
 
-  @Test
-  void updateDb() {
-    MongoCollection<Document> mongoCollection = mock(MongoCollection.class);
-    when(db.getCollection(CachingConstants.USER_ACCOUNT)).thenReturn(mongoCollection);
-    assertDoesNotThrow(()-> {mongoDb.updateDb(userAccount);});
-  }
+    @Test
+    void updateDb() {
+        MongoCollection<Document> mongoCollection = mock(MongoCollection.class);
+        when(db.getCollection(CachingConstants.USER_ACCOUNT)).thenReturn(mongoCollection);
+        assertDoesNotThrow(() -> {
+            mongoDb.updateDb(userAccount);
+        });
+    }
 
-  @Test
-  void upsertDb() {
-    MongoCollection<Document> mongoCollection = mock(MongoCollection.class);
-    when(db.getCollection(CachingConstants.USER_ACCOUNT)).thenReturn(mongoCollection);
-    assertDoesNotThrow(()-> {mongoDb.upsertDb(userAccount);});
-  }
+    @Test
+    void upsertDb() {
+        MongoCollection<Document> mongoCollection = mock(MongoCollection.class);
+        when(db.getCollection(CachingConstants.USER_ACCOUNT)).thenReturn(mongoCollection);
+        assertDoesNotThrow(() -> {
+            mongoDb.upsertDb(userAccount);
+        });
+    }
 }

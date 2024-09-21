@@ -26,16 +26,15 @@ package com.iluwatar.singleton;
 
 /**
  * InitializingOnDemandHolderIdiomTest
- *
  */
 class InitializingOnDemandHolderIdiomTest
-    extends SingletonTest<InitializingOnDemandHolderIdiom> {
+        extends SingletonTest<InitializingOnDemandHolderIdiom> {
 
-  /**
-   * Create a new singleton test instance using the given 'getInstance' method.
-   */
-  public InitializingOnDemandHolderIdiomTest() {
-    super(InitializingOnDemandHolderIdiom::getInstance);
-  }
+    /**
+     * Create a new singleton test instance using the given 'getInstance' method.
+     */
+    public InitializingOnDemandHolderIdiomTest() {
+        super(InitializingOnDemandHolderIdiom::getInstance);
+    }
 
 }

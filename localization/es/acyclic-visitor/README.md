@@ -8,13 +8,15 @@ tag:
 
 ## Propósito
 
-Permitir añadir nuevas funciones a jerarquías de clases existentes sin que estas se vean afectadas, y sin crear los problemáticos círculos de dependencias que son inherentes al patrón GoF (Gang of Four) Visitor.
+Permitir añadir nuevas funciones a jerarquías de clases existentes sin que estas se vean afectadas, y sin crear los
+problemáticos círculos de dependencias que son inherentes al patrón GoF (Gang of Four) Visitor.
 
 ## Explicación
 
 Ejemplo del mundo real
 
-> Tenemos una jerarquía de clases módem. Los modems de esta jerarquía deben ser visitados por un algoritmo externo basándose en unos filtros (el módem es compatible con Unix o DOS).
+> Tenemos una jerarquía de clases módem. Los modems de esta jerarquía deben ser visitados por un algoritmo externo
+> basándose en unos filtros (el módem es compatible con Unix o DOS).
 
 En otras palabras
 
@@ -22,7 +24,9 @@ En otras palabras
 
 [WikiWikiWeb](https://wiki.c2.com/?AcyclicVisitor) dice
 
-> El patrón Acyclic Visitor permite que nuevas funciones sean añadidas a jerarquías de clases existentes sin afectar a las mismas, y sin crear los círculos de dependencias que son inherentes al patrón de visitante (Visitor Pattern) de GangOfFour.
+> El patrón Acyclic Visitor permite que nuevas funciones sean añadidas a jerarquías de clases existentes sin afectar a
+> las mismas, y sin crear los círculos de dependencias que son inherentes al patrón de visitante (Visitor Pattern) de
+> GangOfFour.
 
 **Ejemplo Programático**
 
@@ -127,7 +131,8 @@ Output del programa:
 Este patrón puede ser usado:
 
 * Cuando necesitas añadir una nueva función a una jerarquía de clases sin que esta se vea afectada o alterada.
-* Cuando hay funciones que operan sobre la jerarquía, pero no pertenecen a la jerarquía como tal. Las clases ConfigureForDOS / ConfigureForUnix / ConfigureForX por ejemplo.
+* Cuando hay funciones que operan sobre la jerarquía, pero no pertenecen a la jerarquía como tal. Las clases
+  ConfigureForDOS / ConfigureForUnix / ConfigureForX por ejemplo.
 * Cuando necesitas ejecutar operaciones muy diferentes en un objeto dependiendo de su tipo.
 * Cuando la jerarquía visitada va a ser frecuentemente extendida con derivados de la clase elemento.
 * Cuando el proceso de volver a compilar, enlazar, probar o distribuir los derivados de la clase elemento es muy pesado.
@@ -146,7 +151,9 @@ Buenas:
 
 Malas:
 
-* Viola el [Principio de sustitución de Liskov](https://java-design-patterns.com/principles/#liskov-substitution-principle) al mostrar que puede aceptar todos los visitantes solamente estando interesado en uno en particular.
+* Viola
+  el [Principio de sustitución de Liskov](https://java-design-patterns.com/principles/#liskov-substitution-principle) al
+  mostrar que puede aceptar todos los visitantes solamente estando interesado en uno en particular.
 * Hay que crear una jerarquía de visitantes paralela para todos los miembros de una jerarquía visitable.
 
 ## Patrones relacionados

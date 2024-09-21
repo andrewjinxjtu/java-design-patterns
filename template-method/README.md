@@ -18,27 +18,42 @@ tag:
 
 ## Intent of Template method Design Pattern
 
-Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure.
+Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses
+redefine certain steps of an algorithm without changing the algorithm's structure.
 
 ## Detailed Explanation of Template method Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world analogy for the Template Method pattern can be seen in the preparation of a cup of tea or coffee. The overall process (algorithm) is the same: boil water, brew the beverage, pour into cup, and add condiments. However, the specific steps of brewing the beverage differ. For tea, you steep the tea leaves in hot water, while for coffee, you brew ground coffee beans. The Template Method pattern encapsulates the invariant steps of the process (boiling water, pouring, adding condiments) in a base class, while allowing subclasses to define the specific brewing steps, thus ensuring the overall structure of making a hot drink is consistent while allowing customization where needed.
+> A real-world analogy for the Template Method pattern can be seen in the preparation of a cup of tea or coffee. The
+> overall process (algorithm) is the same: boil water, brew the beverage, pour into cup, and add condiments. However, the
+> specific steps of brewing the beverage differ. For tea, you steep the tea leaves in hot water, while for coffee, you
+> brew ground coffee beans. The Template Method pattern encapsulates the invariant steps of the process (boiling water,
+> pouring, adding condiments) in a base class, while allowing subclasses to define the specific brewing steps, thus
+> ensuring the overall structure of making a hot drink is consistent while allowing customization where needed.
 
 In plain words
 
-> The Java Template Method pattern outlines the core steps in the parent class, allowing child classes to tailor detailed implementations, enhancing code reusability and design flexibility in Java programming.
+> The Java Template Method pattern outlines the core steps in the parent class, allowing child classes to tailor
+> detailed implementations, enhancing code reusability and design flexibility in Java programming.
 
 Wikipedia says
 
-> In object-oriented programming, the template method is one of the behavioral design patterns identified by Gamma et al. in the book Design Patterns. The template method is a method in a superclass, usually an abstract superclass, and defines the skeleton of an operation in terms of a number of high-level steps. These steps are themselves implemented by additional helper methods in the same class as the template method.
+> In object-oriented programming, the template method is one of the behavioral design patterns identified by Gamma et
+> al. in the book Design Patterns. The template method is a method in a superclass, usually an abstract superclass, and
+> defines the skeleton of an operation in terms of a number of high-level steps. These steps are themselves implemented by
+> additional helper methods in the same class as the template method.
 
 ## Programmatic Example of Template Method Pattern in Java
 
-Our programmatic example is about thieves and stealing. The general steps in stealing an item are the same. First, you pick the target, next you confuse him somehow and finally, you steal the item. However, there are many ways to implement these steps.
+Our programmatic example is about thieves and stealing. The general steps in stealing an item are the same. First, you
+pick the target, next you confuse him somehow and finally, you steal the item. However, there are many ways to implement
+these steps.
 
-Let's first introduce the template method class `StealingMethod` along with its concrete implementations `SubtleMethod` and `HitAndRunMethod`. To make sure that subclasses don’t override the template method, the template method (in our case method `steal`) should be declared `final`, otherwise the skeleton defined in the base class could be overridden in subclasses.
+Let's first introduce the template method class `StealingMethod` along with its concrete implementations `SubtleMethod`
+and `HitAndRunMethod`. To make sure that subclasses don’t override the template method, the template method (in our case
+method `steal`) should be declared `final`, otherwise the skeleton defined in the base class could be overridden in
+subclasses.
 
 ```java
 @Slf4j
@@ -148,9 +163,14 @@ The program output:
 
 The Template Method pattern should be used
 
-* To implement the invariant parts of an algorithm once and leave it up to subclasses to implement the behavior that can vary
-* When common behavior among subclasses should be factored and localized in a common class to avoid code duplication. This is a good example of "refactoring to generalize" as described by Opdyke and Johnson. You first identify the differences in the existing code and then separate the differences into new operations. Finally, you replace the differing code with a template method that calls one of these new operations
-* To control subclasses extensions. You can define a template method that calls "hook" operations at specific points, thereby permitting extensions only at those points
+* To implement the invariant parts of an algorithm once and leave it up to subclasses to implement the behavior that can
+  vary
+* When common behavior among subclasses should be factored and localized in a common class to avoid code duplication.
+  This is a good example of "refactoring to generalize" as described by Opdyke and Johnson. You first identify the
+  differences in the existing code and then separate the differences into new operations. Finally, you replace the
+  differing code with a template method that calls one of these new operations
+* To control subclasses extensions. You can define a template method that calls "hook" operations at specific points,
+  thereby permitting extensions only at those points
 
 ## Template method Pattern Java Tutorials
 
@@ -158,7 +178,8 @@ The Template Method pattern should be used
 
 ## Real-World Applications of Template method Pattern in Java
 
-* Java's AbstractList and AbstractSet classes in the Collections Framework use the Template Method pattern to define common algorithms for list and set operations.
+* Java's AbstractList and AbstractSet classes in the Collections Framework use the Template Method pattern to define
+  common algorithms for list and set operations.
 * Frameworks like JUnit use Template Method to define the setup and teardown process in test cases.
 
 ## Benefits and Trade-offs of Template method Pattern
@@ -176,9 +197,13 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Often used with Template Method to create objects needed for specific steps of the algorithm.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): While Template Method defines the skeleton of an algorithm and lets subclasses implement specific steps, the Strategy Pattern defines a family of algorithms and makes them interchangeable.
-* [Subclass Sandbox](https://java-design-patterns.com/patterns/subclass-sandbox/): Complements Template Method by ensuring that subclasses can safely override specific steps of an algorithm without causing unintended side effects.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Often used with Template Method to create
+  objects needed for specific steps of the algorithm.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): While Template Method defines the skeleton of an
+  algorithm and lets subclasses implement specific steps, the Strategy Pattern defines a family of algorithms and makes
+  them interchangeable.
+* [Subclass Sandbox](https://java-design-patterns.com/patterns/subclass-sandbox/): Complements Template Method by
+  ensuring that subclasses can safely override specific steps of an algorithm without causing unintended side effects.
 
 ## References and Credits
 

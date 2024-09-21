@@ -28,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -36,28 +37,28 @@ import org.junit.jupiter.api.Test;
  */
 @Slf4j
 class GuardedQueueTest {
-  private volatile Integer value;
+    private volatile Integer value;
 
-  @Test
-  void testGet() {
-    var g = new GuardedQueue();
-    var executorService = Executors.newFixedThreadPool(2);
-    executorService.submit(() -> value = g.get());
-    executorService.submit(() -> g.put(10));
-    executorService.shutdown();
-    try {
-      executorService.awaitTermination(30, TimeUnit.SECONDS);
-    } catch (InterruptedException e) {
-      LOGGER.error("Error occurred: ", e);
+    @Test
+    void testGet() {
+        var g = new GuardedQueue();
+        var executorService = Executors.newFixedThreadPool(2);
+        executorService.submit(() -> value = g.get());
+        executorService.submit(() -> g.put(10));
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(30, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            LOGGER.error("Error occurred: ", e);
+        }
+        assertEquals(Integer.valueOf(10), value);
     }
-    assertEquals(Integer.valueOf(10), value);
-  }
 
-  @Test
-  void testPut() {
-    var g = new GuardedQueue();
-    g.put(12);
-    assertEquals(Integer.valueOf(12), g.get());
-  }
+    @Test
+    void testPut() {
+        var g = new GuardedQueue();
+        g.put(12);
+        assertEquals(Integer.valueOf(12), g.get());
+    }
 
 }

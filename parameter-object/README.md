@@ -18,33 +18,44 @@ tag:
 
 ## Intent of Parameter Object Design Pattern
 
-The Parameter Object pattern is a key Java design pattern aimed at improving code maintainability by reducing method complexity through encapsulation of parameters into a single object.
+The Parameter Object pattern is a key Java design pattern aimed at improving code maintainability by reducing method
+complexity through encapsulation of parameters into a single object.
 
 ## Detailed Explanation of Parameter Object Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine booking a travel package that includes a flight, hotel, and car rental. Instead of asking the customer to provide separate details for each component (flight details, hotel details, and car rental details) every time, a travel agent asks the customer to fill out a single comprehensive form that encapsulates all the necessary information:
+> Imagine booking a travel package that includes a flight, hotel, and car rental. Instead of asking the customer to
+> provide separate details for each component (flight details, hotel details, and car rental details) every time, a travel
+> agent asks the customer to fill out a single comprehensive form that encapsulates all the necessary information:
 >
 > - Flight details: Departure city, destination city, departure date, return date.
 > - Hotel details: Hotel name, check-in date, check-out date, room type.
 > - Car rental details: Pickup location, drop-off location, rental dates, car type.
-> 
-> In this analogy, the comprehensive form is the parameter object. It groups together all related details (parameters) into a single entity, making the booking process more streamlined and manageable. The travel agent (method) only needs to handle one form (parameter object) instead of juggling multiple pieces of information.
+>
+> In this analogy, the comprehensive form is the parameter object. It groups together all related details (parameters)
+> into a single entity, making the booking process more streamlined and manageable. The travel agent (method) only needs
+> to handle one form (parameter object) instead of juggling multiple pieces of information.
 
 In plain words
 
-> The Parameter Object pattern encapsulates multiple related parameters into a single object to simplify method signatures and enhance code maintainability.
+> The Parameter Object pattern encapsulates multiple related parameters into a single object to simplify method
+> signatures and enhance code maintainability.
 
 wiki.c2.com says
 
-> Replace the LongParameterList with a ParameterObject; an object or structure with data members representing the arguments to be passed in.
+> Replace the LongParameterList with a ParameterObject; an object or structure with data members representing the
+> arguments to be passed in.
 
 ## Programmatic Example of Parameter Object Pattern in Java
 
-The Parameter Object design pattern is a way to group multiple parameters into a single object. This simplifies method signatures and enhances code maintainability enabling Java developers to streamline complex method calls, focusing on cleaner and more maintainable Java code.
+The Parameter Object design pattern is a way to group multiple parameters into a single object. This simplifies method
+signatures and enhances code maintainability enabling Java developers to streamline complex method calls, focusing on
+cleaner and more maintainable Java code.
 
-First, let's look at the `ParameterObject` class. This class encapsulates the parameters needed for the search operation. It uses [Builder pattern](https://java-design-patterns.com/patterns/builder/) to allow for easy creation of objects, even when there are many parameters.
+First, let's look at the `ParameterObject` class. This class encapsulates the parameters needed for the search
+operation. It uses [Builder pattern](https://java-design-patterns.com/patterns/builder/) to allow for easy creation of
+objects, even when there are many parameters.
 
 ```java
 public class ParameterObject {
@@ -67,7 +78,8 @@ public class ParameterObject {
 }
 ```
 
-The `Builder` class inside `ParameterObject` provides a way to construct a `ParameterObject` instance. It has methods for setting each of the parameters, and a `build` method to create the `ParameterObject`.
+The `Builder` class inside `ParameterObject` provides a way to construct a `ParameterObject` instance. It has methods
+for setting each of the parameters, and a `build` method to create the `ParameterObject`.
 
 ```java
 public static class Builder {
@@ -97,7 +109,8 @@ public static class Builder {
 }
 ```
 
-The `SearchService` class has a `search()` method that takes a `ParameterObject` as a parameter. This method uses the parameters encapsulated in the `ParameterObject` to perform a search operation.
+The `SearchService` class has a `search()` method that takes a `ParameterObject` as a parameter. This method uses the
+parameters encapsulated in the `ParameterObject` to perform a search operation.
 
 ```java
 public class SearchService {
@@ -111,7 +124,8 @@ public class SearchService {
 }
 ```
 
-Finally, in the `App` class, we create a `ParameterObject` using its builder, and then pass it to the `search()` method of `SearchService`.
+Finally, in the `App` class, we create a `ParameterObject` using its builder, and then pass it to the `search()` method
+of `SearchService`.
 
 ```java
 public class App {
@@ -127,7 +141,9 @@ public class App {
 }
 ```
 
-This example demonstrates how the Parameter Object pattern can simplify method signatures and make the code more maintainable. It also shows how the pattern can be combined with the Builder pattern to make object creation more flexible and readable.
+This example demonstrates how the Parameter Object pattern can simplify method signatures and make the code more
+maintainable. It also shows how the pattern can be combined with the Builder pattern to make object creation more
+flexible and readable.
 
 ## When to Use the Parameter Object Pattern in Java
 
@@ -142,8 +158,10 @@ This example demonstrates how the Parameter Object pattern can simplify method s
 
 ## Real-World Applications of Parameter Object Pattern in Java
 
-* Java Libraries: Many Java frameworks and libraries use this pattern. For example, Java’s java.util.Calendar class has various methods where parameter objects are used to represent date and time components.
-* Enterprise Applications: In large enterprise systems, parameter objects are used to encapsulate configuration data passed to services or API endpoints.
+* Java Libraries: Many Java frameworks and libraries use this pattern. For example, Java’s java.util.Calendar class has
+  various methods where parameter objects are used to represent date and time components.
+* Enterprise Applications: In large enterprise systems, parameter objects are used to encapsulate configuration data
+  passed to services or API endpoints.
 
 ## Benefits and Trade-offs of Parameter Object Pattern
 
@@ -156,14 +174,18 @@ Benefits:
 
 Trade-offs:
 
-* Overhead: Introducing parameter objects can add some overhead, especially for simple methods that do not benefit significantly from this abstraction.
+* Overhead: Introducing parameter objects can add some overhead, especially for simple methods that do not benefit
+  significantly from this abstraction.
 * Complexity: The initial creation of parameter objects might add complexity, especially for beginners.
 
 ## Related Patterns
 
-* [Builder](https://java-design-patterns.com/patterns/builder/): Helps in creating complex objects step-by-step, often used in conjunction with parameter objects to manage the construction of these objects.
-* [Composite](https://java-design-patterns.com/patterns/composite/): Sometimes used with parameter objects to handle hierarchical parameter data.
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Can be used to create instances of parameter objects, particularly when different parameter combinations are needed.
+* [Builder](https://java-design-patterns.com/patterns/builder/): Helps in creating complex objects step-by-step, often
+  used in conjunction with parameter objects to manage the construction of these objects.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Sometimes used with parameter objects to handle
+  hierarchical parameter data.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Can be used to create instances of
+  parameter objects, particularly when different parameter combinations are needed.
 
 ## References and Credits
 

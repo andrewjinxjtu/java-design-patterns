@@ -36,24 +36,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TrampolineApp {
 
-  /**
-   * Main program for showing pattern. It does loop with factorial function.
-   */
-  public static void main(String[] args) {
-    LOGGER.info("Start calculating war casualties");
-    var result = loop(10, 1).result();
-    LOGGER.info("The number of orcs perished in the war: {}", result);
+    /**
+     * Main program for showing pattern. It does loop with factorial function.
+     */
+    public static void main(String[] args) {
+        LOGGER.info("Start calculating war casualties");
+        var result = loop(10, 1).result();
+        LOGGER.info("The number of orcs perished in the war: {}", result);
 
-  }
-
-  /**
-   * Manager for pattern. Define it with a factorial function.
-   */
-  public static Trampoline<Integer> loop(int times, int prod) {
-    if (times == 0) {
-      return Trampoline.done(prod);
-    } else {
-      return Trampoline.more(() -> loop(times - 1, prod * times));
     }
-  }
+
+    /**
+     * Manager for pattern. Define it with a factorial function.
+     */
+    public static Trampoline<Integer> loop(int times, int prod) {
+        if (times == 0) {
+            return Trampoline.done(prod);
+        } else {
+            return Trampoline.more(() -> loop(times - 1, prod * times));
+        }
+    }
 }

@@ -20,13 +20,22 @@ tag:
 
 ## Intent of Data Access Object Design Pattern
 
-The Data Access Object (DAO) design pattern aims to separate the application's business logic from the persistence layer, typically a database or any other storage mechanism. By using DAOs, the application can access and manipulate data without being dependent on the specific database implementation details.
+The Data Access Object (DAO) design pattern aims to separate the application's business logic from the persistence
+layer, typically a database or any other storage mechanism. By using DAOs, the application can access and manipulate
+data without being dependent on the specific database implementation details.
 
 ## Detailed Explanation of Data Access Object Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a library system where the main application manages book loans, user accounts, and inventory. The Data Access Object (DAO) pattern in this context would be used to separate the database operations (such as fetching book details, updating user records, and checking inventory) from the business logic of managing loans and accounts. For instance, there would be a `BookDAO` class responsible for all database interactions related to books, such as retrieving a book by its ISBN or updating its availability status. This abstraction allows the library system's main application code to focus on business rules and workflows, while the `BookDAO` handles the complex SQL queries and data management. This separation makes the system easier to maintain and test, as changes to the data source or business logic can be managed independently.
+> Imagine a library system where the main application manages book loans, user accounts, and inventory. The Data Access
+> Object (DAO) pattern in this context would be used to separate the database operations (such as fetching book details,
+> updating user records, and checking inventory) from the business logic of managing loans and accounts. For instance,
+> there would be a `BookDAO` class responsible for all database interactions related to books, such as retrieving a book
+> by its ISBN or updating its availability status. This abstraction allows the library system's main application code to
+> focus on business rules and workflows, while the `BookDAO` handles the complex SQL queries and data management. This
+> separation makes the system easier to maintain and test, as changes to the data source or business logic can be managed
+> independently.
 
 In plain words
 
@@ -34,11 +43,13 @@ In plain words
 
 Wikipedia says
 
-> In computer software, a data access object (DAO) is a pattern that provides an abstract interface to some type of database or other persistence mechanism.
+> In computer software, a data access object (DAO) is a pattern that provides an abstract interface to some type of
+> database or other persistence mechanism.
 
 ## Programmatic Example of DAO Pattern in Java
 
-There's a set of customers that need to be persisted to database. Additionally, we need the whole set of CRUD (create/read/update/delete) operations, so we can operate on customers easily.
+There's a set of customers that need to be persisted to database. Additionally, we need the whole set of CRUD (
+create/read/update/delete) operations, so we can operate on customers easily.
 
 Walking through our customers example, here's the basic `Customer` entity.
 
@@ -57,7 +68,8 @@ public class Customer {
 }
 ```
 
-Here's the `CustomerDao` interface and two different implementations for it. `InMemoryCustomerDao` keeps a simple map of customers in memory while `DBCustomerDao` is the real RDBMS implementation.
+Here's the `CustomerDao` interface and two different implementations for it. `InMemoryCustomerDao` keeps a simple map of
+customers in memory while `DBCustomerDao` is the real RDBMS implementation.
 
 ```java
 public interface CustomerDao {
@@ -215,7 +227,8 @@ Use the Data Access Object in any of the following situations:
 ## Real-World Applications of DAO Pattern in Java
 
 * Enterprise applications that require database interaction.
-* Applications requiring data access to be adaptable to multiple storage types (relational databases, XML files, flat files, etc.).
+* Applications requiring data access to be adaptable to multiple storage types (relational databases, XML files, flat
+  files, etc.).
 * Frameworks providing generic data access functionalities.
 
 ## Benefits and Trade-offs of Data Access Object Pattern
@@ -231,14 +244,19 @@ Trade-offs:
 
 * Layer Complexity: Introduces additional layers to the application, which can increase complexity and development time.
 * Overhead: For simple applications, the DAO pattern might introduce more overhead than necessary.
-* Learning Curve: Developers might need time to understand and implement the pattern effectively, especially in complex projects.
+* Learning Curve: Developers might need time to understand and implement the pattern effectively, especially in complex
+  projects.
 
 ## Related Java Design Patterns
 
-* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Helps in abstracting the creation of DAOs, especially when supporting multiple databases or storage mechanisms.
-* [Factory](https://java-design-patterns.com/patterns/factory/): Can be used to instantiate DAOs dynamically, providing flexibility in the choice of implementation.
-* [Service Layer](https://java-design-patterns.com/patterns/service-layer/): Often used in conjunction with the DAO pattern to define application's boundaries and its set of available operations.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Might be employed to change the data access strategy at runtime, depending on the context.
+* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Helps in abstracting the creation of
+  DAOs, especially when supporting multiple databases or storage mechanisms.
+* [Factory](https://java-design-patterns.com/patterns/factory/): Can be used to instantiate DAOs dynamically, providing
+  flexibility in the choice of implementation.
+* [Service Layer](https://java-design-patterns.com/patterns/service-layer/): Often used in conjunction with the DAO
+  pattern to define application's boundaries and its set of available operations.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Might be employed to change the data access strategy
+  at runtime, depending on the context.
 
 ## References and Credits
 

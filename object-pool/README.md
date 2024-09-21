@@ -19,25 +19,33 @@ tag:
 
 ## Intent of Object Pool Design Pattern
 
-The Object Pool design pattern in Java manages a pool of reusable objects, optimizing memory management and application performance by recycling objects rather than creating and destroying them repeatedly.
+The Object Pool design pattern in Java manages a pool of reusable objects, optimizing memory management and application
+performance by recycling objects rather than creating and destroying them repeatedly.
 
 ## Detailed Explanation of Object Pool Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a library with a limited number of study rooms that are frequently in demand. Instead of each student building their own study room whenever they need one, the library manages a pool of available study rooms. When a student needs a study room, they check one out from the pool. After they are done, they return the room back to the pool for others to use. This ensures that the study rooms are efficiently utilized without the need to build new rooms each time, thus saving time and resources, similar to how the Object Pool pattern manages the reuse of expensive objects in software.   
+> Imagine a library with a limited number of study rooms that are frequently in demand. Instead of each student building
+> their own study room whenever they need one, the library manages a pool of available study rooms. When a student needs a
+> study room, they check one out from the pool. After they are done, they return the room back to the pool for others to
+> use. This ensures that the study rooms are efficiently utilized without the need to build new rooms each time, thus
+> saving time and resources, similar to how the Object Pool pattern manages the reuse of expensive objects in software.
 
 In plain words
 
-> Object Pool manages a set of instances instead of creating and destroying them on demand. 
+> Object Pool manages a set of instances instead of creating and destroying them on demand.
 
 Wikipedia says
 
-> The object pool pattern is a software creational design pattern that uses a set of initialized objects kept ready to use – a "pool" – rather than allocating and destroying them on demand.
+> The object pool pattern is a software creational design pattern that uses a set of initialized objects kept ready to
+> use – a "pool" – rather than allocating and destroying them on demand.
 
 ## Programmatic Example of Object Pool Pattern in Java
 
-In our war game we need to use oliphaunts, massive and mythic beasts, but the problem is that they are extremely expensive to create. The solution is to create a pool of them, track which ones are in-use, and instead of disposing them re-use the instances.
+In our war game we need to use oliphaunts, massive and mythic beasts, but the problem is that they are extremely
+expensive to create. The solution is to create a pool of them, track which ones are in-use, and instead of disposing
+them re-use the instances.
 
 Here's the basic `Oliphaunt` class. These giants are very expensive to create.
 
@@ -178,14 +186,18 @@ Benefits:
 Trade-offs:
 
 * Complexity: Adds complexity to the codebase, requiring careful management of the pool.
-* Thread Safety: Requires careful handling of concurrent access to the pool, introducing potential synchronization issues.
+* Thread Safety: Requires careful handling of concurrent access to the pool, introducing potential synchronization
+  issues.
 * Initialization Cost: Initial creation of the pool can be resource-intensive.
 
 ## Related Java Design Patterns
 
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Ensures a single instance of the pool is used, providing a global point of access.
-* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Shares fine-grained objects to reduce memory usage, complementing object pooling by managing object state efficiently.
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Often used to create objects within the pool, abstracting the instantiation process.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Ensures a single instance of the pool is used,
+  providing a global point of access.
+* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Shares fine-grained objects to reduce memory usage,
+  complementing object pooling by managing object state efficiently.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Often used to create objects within the
+  pool, abstracting the instantiation process.
 
 ## References and Credits
 

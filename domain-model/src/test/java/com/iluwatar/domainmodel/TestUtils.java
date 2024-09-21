@@ -25,29 +25,30 @@
 package com.iluwatar.domainmodel;
 
 import org.h2.jdbcx.JdbcDataSource;
+
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
 public class TestUtils {
 
-  public static void executeSQL( String sql, DataSource dataSource) throws SQLException {
-    try (var connection = dataSource.getConnection();
-        var statement = connection.createStatement()) {
-      statement.executeUpdate(sql);
+    public static void executeSQL(String sql, DataSource dataSource) throws SQLException {
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement()) {
+            statement.executeUpdate(sql);
+        }
     }
-  }
 
-  public static void createSchema(DataSource dataSource) throws SQLException {
-    TestUtils.executeSQL(App.CREATE_SCHEMA_SQL, dataSource);
-  }
+    public static void createSchema(DataSource dataSource) throws SQLException {
+        TestUtils.executeSQL(App.CREATE_SCHEMA_SQL, dataSource);
+    }
 
-  public static void deleteSchema(DataSource dataSource) throws SQLException {
-    TestUtils.executeSQL(App.DELETE_SCHEMA_SQL, dataSource);
-  }
+    public static void deleteSchema(DataSource dataSource) throws SQLException {
+        TestUtils.executeSQL(App.DELETE_SCHEMA_SQL, dataSource);
+    }
 
-  public static DataSource createDataSource() {
-    var dataSource = new JdbcDataSource();
-    dataSource.setURL(App.H2_DB_URL);
-    return dataSource;
-  }
+    public static DataSource createDataSource() {
+        var dataSource = new JdbcDataSource();
+        dataSource.setURL(App.H2_DB_URL);
+        return dataSource;
+    }
 }

@@ -40,39 +40,39 @@ import org.junit.jupiter.api.Test;
  */
 class DataMapperTest {
 
-  /**
-   * This test verify that first data mapper is able to perform all CRUD operations on Student
-   */
-  @Test
-  void testFirstDataMapper() {
+    /**
+     * This test verify that first data mapper is able to perform all CRUD operations on Student
+     */
+    @Test
+    void testFirstDataMapper() {
 
-    /* Create new data mapper of first type */
-    final var mapper = new StudentDataMapperImpl();
+        /* Create new data mapper of first type */
+        final var mapper = new StudentDataMapperImpl();
 
-    /* Create new student */
-    var studentId = 1;
-    var student = new Student(studentId, "Adam", 'A');
+        /* Create new student */
+        var studentId = 1;
+        var student = new Student(studentId, "Adam", 'A');
 
-    /* Add student in respectibe db */
-    mapper.insert(student);
+        /* Add student in respectibe db */
+        mapper.insert(student);
 
-    /* Check if student is added in db */
-    assertEquals(studentId, mapper.find(student.getStudentId()).get().getStudentId());
+        /* Check if student is added in db */
+        assertEquals(studentId, mapper.find(student.getStudentId()).get().getStudentId());
 
-    /* Update existing student object */
-    var updatedName = "AdamUpdated";
-    student = new Student(student.getStudentId(), updatedName, 'A');
+        /* Update existing student object */
+        var updatedName = "AdamUpdated";
+        student = new Student(student.getStudentId(), updatedName, 'A');
 
-    /* Update student in respectibe db */
-    mapper.update(student);
+        /* Update student in respectibe db */
+        mapper.update(student);
 
-    /* Check if student is updated in db */
-    assertEquals(updatedName, mapper.find(student.getStudentId()).get().getName());
+        /* Check if student is updated in db */
+        assertEquals(updatedName, mapper.find(student.getStudentId()).get().getName());
 
-    /* Delete student in db */
-    mapper.delete(student);
+        /* Delete student in db */
+        mapper.delete(student);
 
-    /* Result should be false */
-    assertFalse(mapper.find(student.getStudentId()).isPresent());
-  }
+        /* Result should be false */
+        assertFalse(mapper.find(student.getStudentId()).isPresent());
+    }
 }

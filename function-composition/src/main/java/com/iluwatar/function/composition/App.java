@@ -25,6 +25,7 @@
 package com.iluwatar.function.composition;
 
 import java.util.function.Function;
+
 import org.slf4j.LoggerFactory;
 
 /**
@@ -32,19 +33,19 @@ import org.slf4j.LoggerFactory;
  */
 public class App {
 
-  /**
-   * Main method to demonstrate function composition using FunctionComposer.
-   *
-   * @param args command line arguments (not used)
-   */
-  public static void main(String[] args) {
-    final var logger = LoggerFactory.getLogger(App.class);
-    Function<Integer, Integer> timesTwo = x -> x * 2;
-    Function<Integer, Integer> square = x -> x * x;
+    /**
+     * Main method to demonstrate function composition using FunctionComposer.
+     *
+     * @param args command line arguments (not used)
+     */
+    public static void main(String[] args) {
+        final var logger = LoggerFactory.getLogger(App.class);
+        Function<Integer, Integer> timesTwo = x -> x * 2;
+        Function<Integer, Integer> square = x -> x * x;
 
-    Function<Integer, Integer> composedFunction = FunctionComposer.composeFunctions(timesTwo, square);
+        Function<Integer, Integer> composedFunction = FunctionComposer.composeFunctions(timesTwo, square);
 
-    int result = composedFunction.apply(3);
-    logger.info("Result of composing 'timesTwo' and 'square' functions applied to 3 is: " + result);
-  }
+        int result = composedFunction.apply(3);
+        logger.info("Result of composing 'timesTwo' and 'square' functions applied to 3 is: " + result);
+    }
 }

@@ -19,25 +19,37 @@ tag:
 
 ## Intent of Version Number Design Pattern
 
-Ensure data consistency and integrity in Java applications by tracking changes with version numbers—a crucial component of concurrent data management.
+Ensure data consistency and integrity in Java applications by tracking changes with version numbers—a crucial component
+of concurrent data management.
 
 ## Detailed Explanation of Version Number Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a library system where multiple librarians can update the details of books simultaneously. Each book entry in the library's database has a version number. When a librarian wants to update a book's details, the system checks the version number of the entry. If the version number matches the current version in the database, the update proceeds, and the version number is incremented. If the version number has changed, it means another librarian has already updated the book details, prompting the system to notify the librarian of the conflict and suggesting a review of the latest changes. This ensures that updates do not overwrite each other unintentionally, maintaining data integrity and consistency.
+> Consider a library system where multiple librarians can update the details of books simultaneously. Each book entry in
+> the library's database has a version number. When a librarian wants to update a book's details, the system checks the
+> version number of the entry. If the version number matches the current version in the database, the update proceeds, and
+> the version number is incremented. If the version number has changed, it means another librarian has already updated the
+> book details, prompting the system to notify the librarian of the conflict and suggesting a review of the latest
+> changes. This ensures that updates do not overwrite each other unintentionally, maintaining data integrity and
+> consistency.
 
 In plain words
 
-> The Version Number pattern in Java provides robust protection against concurrent updates, ensuring reliable data versioning in distributed systems.
+> The Version Number pattern in Java provides robust protection against concurrent updates, ensuring reliable data
+> versioning in distributed systems.
 
 Wikipedia says
 
-> The Version Number pattern is a technique used to manage concurrent access to data in databases and other data stores. It involves associating a version number with each record, which is incremented every time the record is updated. This pattern helps ensure that when multiple users or processes attempt to update the same data simultaneously, conflicts can be detected and resolved.
+> The Version Number pattern is a technique used to manage concurrent access to data in databases and other data stores.
+> It involves associating a version number with each record, which is incremented every time the record is updated. This
+> pattern helps ensure that when multiple users or processes attempt to update the same data simultaneously, conflicts can
+> be detected and resolved.
 
 ## Programmatic Example of Version Number Pattern in Java
 
-Alice and Bob are working on the book, which stored in the database. Our heroes are making changes simultaneously, and we need some mechanism to prevent them from overwriting each other.
+Alice and Bob are working on the book, which stored in the database. Our heroes are making changes simultaneously, and
+we need some mechanism to prevent them from overwriting each other.
 
 We have a `Book` entity, which is versioned, and has a copy-constructor:
 
@@ -185,8 +197,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Optimistic Offline Lock](https://java-design-patterns.com/patterns/optimistic-offline-lock/): Uses version numbers to detect conflicts rather than preventing them from occurring.
-* Pessimistic Offline Lock: An alternative approach to concurrency control where data is locked for updates to prevent conflicts.
+* [Optimistic Offline Lock](https://java-design-patterns.com/patterns/optimistic-offline-lock/): Uses version numbers to
+  detect conflicts rather than preventing them from occurring.
+* Pessimistic Offline Lock: An alternative approach to concurrency control where data is locked for updates to prevent
+  conflicts.
 
 ## References and Credits
 

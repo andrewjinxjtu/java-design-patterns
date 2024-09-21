@@ -31,15 +31,15 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public enum Health {
-  HEALTHY("healthy"),
-  WOUNDED("wounded"),
-  DEAD("dead");
+    HEALTHY("healthy"),
+    WOUNDED("wounded"),
+    DEAD("dead");
 
-  private final String title;
+    private final String title;
 
 
-  @Override
-  public String toString() {
-    return title;
-  }
+    @Override
+    public String toString() {
+        return title;
+    }
 }

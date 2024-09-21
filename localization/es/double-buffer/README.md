@@ -9,18 +9,29 @@ tag:
 
 ## Propósito
 
-Doble búfer es un término utilizado para describir un dispositivo que tiene dos búferes. El uso de varios búferes aumenta el rendimiento global de un dispositivo y ayuda a evitar cuellos de botella. Este ejemplo muestra el uso de doble búfer en gráficos. Se utiliza para mostrar una imagen o un fotograma mientras se almacena en el búfer otro fotograma que se mostrará a continuación. Este método hace que las animaciones y los juegos parezcan más realistas que los realizados en modo de búfer único.
+Doble búfer es un término utilizado para describir un dispositivo que tiene dos búferes. El uso de varios búferes
+aumenta el rendimiento global de un dispositivo y ayuda a evitar cuellos de botella. Este ejemplo muestra el uso de
+doble búfer en gráficos. Se utiliza para mostrar una imagen o un fotograma mientras se almacena en el búfer otro
+fotograma que se mostrará a continuación. Este método hace que las animaciones y los juegos parezcan más realistas que
+los realizados en modo de búfer único.
 
 ## Explicación
 
 Ejemplo del mundo real
-> Un ejemplo típico, y que todo motor de juego debe abordar, es el renderizado. Cuando el juego dibuja el mundo que ven los usuarios, lo hace pieza a pieza: las montañas a lo lejos, las colinas ondulantes, los árboles, cada uno a su vez. Si el usuario viera cómo se dibuja la vista de forma incremental, se rompería la ilusión de un mundo coherente. La escena debe actualizarse con fluidez y rapidez, mostrando una serie de fotogramas completos, cada uno de los cuales aparece al instante. La doble memoria intermedia resuelve el problema.
+> Un ejemplo típico, y que todo motor de juego debe abordar, es el renderizado. Cuando el juego dibuja el mundo que ven
+> los usuarios, lo hace pieza a pieza: las montañas a lo lejos, las colinas ondulantes, los árboles, cada uno a su vez. Si
+> el usuario viera cómo se dibuja la vista de forma incremental, se rompería la ilusión de un mundo coherente. La escena
+> debe actualizarse con fluidez y rapidez, mostrando una serie de fotogramas completos, cada uno de los cuales aparece al
+> instante. La doble memoria intermedia resuelve el problema.
 
 En pocas palabras
-> Garantiza un estado que se renderiza correctamente mientras ese estado se modifica de forma incremental. Se utiliza mucho en gráficos por ordenador.
+> Garantiza un estado que se renderiza correctamente mientras ese estado se modifica de forma incremental. Se utiliza
+> mucho en gráficos por ordenador.
 
 Wikipedia dice
-> En informática, el almacenamiento en búfer múltiple es el uso de más de un búfer para contener un bloque de datos, de modo que un "lector" vea una versión completa (aunque quizás antigua) de los datos, en lugar de una versión parcialmente actualizada de los datos que está creando un "escritor". Se utiliza mucho en las imágenes de ordenador.
+> En informática, el almacenamiento en búfer múltiple es el uso de más de un búfer para contener un bloque de datos, de
+> modo que un "lector" vea una versión completa (aunque quizás antigua) de los datos, en lugar de una versión parcialmente
+> actualizada de los datos que está creando un "escritor". Se utiliza mucho en las imágenes de ordenador.
 
 **Ejemplo programático**
 
@@ -229,7 +240,9 @@ La salida de la consola
 
 ## Aplicabilidad
 
-Este patrón es uno de esos que sabrás cuándo lo necesitas. Si tienes un sistema que carece de doble búfer, probablemente tendrá un aspecto visiblemente incorrecto (tearing, etc.) o se comportará de forma incorrecta. Pero decir "lo sabrás cuando lo necesites" no da mucho de sí. Más concretamente, este patrón es apropiado cuando todo esto es cierto:
+Este patrón es uno de esos que sabrás cuándo lo necesitas. Si tienes un sistema que carece de doble búfer, probablemente
+tendrá un aspecto visiblemente incorrecto (tearing, etc.) o se comportará de forma incorrecta. Pero decir "lo sabrás
+cuando lo necesites" no da mucho de sí. Más concretamente, este patrón es apropiado cuando todo esto es cierto:
 
 - Tenemos algún estado que está siendo modificado incrementalmente.
 - Ese mismo estado puede ser accedido en medio de la modificación.

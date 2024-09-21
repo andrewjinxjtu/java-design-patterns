@@ -19,27 +19,38 @@ tag:
 
 ## Intent of Optimistic Offline Lock Design Pattern
 
-The Optimistic Offline Lock pattern in Java is specifically designed to manage concurrent data modifications without the need for long-duration database locks, thus enhancing system performance and scalability.
+The Optimistic Offline Lock pattern in Java is specifically designed to manage concurrent data modifications without the
+need for long-duration database locks, thus enhancing system performance and scalability.
 
 ## Detailed Explanation of Optimistic Offline Lock Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a library with multiple users checking out and returning books. Instead of locking each book while a user is browsing or deciding whether to borrow it, the library uses an optimistic approach. Each book has a timestamp or version number. When a user decides to borrow a book, they check the book's version number. If it matches the current version, the transaction proceeds. If another user has borrowed the book in the meantime, causing a version mismatch, the first user is informed to retry. This approach allows multiple users to browse and attempt to borrow books concurrently, improving the library's efficiency and user satisfaction without locking the entire catalog.
+> Imagine a library with multiple users checking out and returning books. Instead of locking each book while a user is
+> browsing or deciding whether to borrow it, the library uses an optimistic approach. Each book has a timestamp or version
+> number. When a user decides to borrow a book, they check the book's version number. If it matches the current version,
+> the transaction proceeds. If another user has borrowed the book in the meantime, causing a version mismatch, the first
+> user is informed to retry. This approach allows multiple users to browse and attempt to borrow books concurrently,
+> improving the library's efficiency and user satisfaction without locking the entire catalog.
 
 In plain words
 
-> The Optimistic Offline Lock pattern manages concurrent data modifications by allowing transactions to proceed without locks, resolving conflicts only when they occur to enhance performance and scalability.
+> The Optimistic Offline Lock pattern manages concurrent data modifications by allowing transactions to proceed without
+> locks, resolving conflicts only when they occur to enhance performance and scalability.
 
 Wikipedia says
 
-> Optimistic concurrency control (OCC), also known as optimistic locking, is a concurrency control method applied to transactional systems such as relational database management systems and software transactional memory.
+> Optimistic concurrency control (OCC), also known as optimistic locking, is a concurrency control method applied to
+> transactional systems such as relational database management systems and software transactional memory.
 
 ## Programmatic Example of Optimistic Offline Lock Pattern in Java
 
-In this section, we delve into the practical implementation of the Optimistic Offline Lock in Java. By following these steps, you can ensure that your application handles data conflicts and concurrency with minimal overhead.
+In this section, we delve into the practical implementation of the Optimistic Offline Lock in Java. By following these
+steps, you can ensure that your application handles data conflicts and concurrency with minimal overhead.
 
-The Optimistic Offline Lock pattern is a concurrency control method that allows multiple transactions to proceed without locks, resolving conflicts only when they occur. This pattern is useful in scenarios where the likelihood of conflicting transactions is low and long-duration locks could hamper performance and scalability.
+The Optimistic Offline Lock pattern is a concurrency control method that allows multiple transactions to proceed without
+locks, resolving conflicts only when they occur. This pattern is useful in scenarios where the likelihood of conflicting
+transactions is low and long-duration locks could hamper performance and scalability.
 
 First, we have a `Card` entity that represents a bank card with a sum of money and a version number.
 
@@ -60,7 +71,12 @@ public class Card {
 }
 ```
 
-The `CardUpdateService` class implements the `UpdateService` interface and provides a method `doUpdate` to update the Card entity. The `doUpdate` method first retrieves the current version of the `Card` entity. It then performs some business logic to update the sum of money in the `Card`. Before updating the `Card` in the database, it checks if the version of the `Card` in the database is the same as the initial version it retrieved. If the versions match, it proceeds with the update. If the versions do not match, it means that another transaction has updated the `Card` in the meantime, and it throws an `ApplicationException`.
+The `CardUpdateService` class implements the `UpdateService` interface and provides a method `doUpdate` to update the
+Card entity. The `doUpdate` method first retrieves the current version of the `Card` entity. It then performs some
+business logic to update the sum of money in the `Card`. Before updating the `Card` in the database, it checks if the
+version of the `Card` in the database is the same as the initial version it retrieved. If the versions match, it
+proceeds with the update. If the versions do not match, it means that another transaction has updated the `Card` in the
+meantime, and it throws an `ApplicationException`.
 
 ```java
 
@@ -90,11 +106,14 @@ public class CardUpdateService implements UpdateService<Card> {
 }
 ```
 
-In this code snippet, the doUpdate method in the CardUpdateService class is a programmatic example of the Optimistic Offline Lock pattern. It allows the Card entity to be updated without locks and resolves conflicts by checking the version of the Card before the update.
+In this code snippet, the doUpdate method in the CardUpdateService class is a programmatic example of the Optimistic
+Offline Lock pattern. It allows the Card entity to be updated without locks and resolves conflicts by checking the
+version of the Card before the update.
 
 ## When to Use the Optimistic Offline Lock Pattern in Java
 
-* When multiple transactions need to access and modify the same data simultaneously without causing data inconsistencies.
+* When multiple transactions need to access and modify the same data simultaneously without causing data
+  inconsistencies.
 * In systems where the likelihood of conflicting transactions is low.
 * When you want to avoid long-duration locks that could hamper performance and scalability.
 
@@ -125,9 +144,13 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* Pessimistic Offline Lock: Unlike the Optimistic Offline Lock, this pattern uses locks to prevent conflicts by locking the data during the entire transaction. It is useful in high-conflict scenarios.
-* [Unit of Work](https://java-design-patterns.com/patterns/unit-of-work/): Helps in managing a set of changes as a single transaction, ensuring data integrity. It can be used in conjunction with Optimistic Offline Lock to handle complex transactions.
-* [Version Number](https://java-design-patterns.com/patterns/version-number/): A common technique used in Optimistic Offline Lock to detect conflicts by maintaining a version number for each data entity.
+* Pessimistic Offline Lock: Unlike the Optimistic Offline Lock, this pattern uses locks to prevent conflicts by locking
+  the data during the entire transaction. It is useful in high-conflict scenarios.
+* [Unit of Work](https://java-design-patterns.com/patterns/unit-of-work/): Helps in managing a set of changes as a
+  single transaction, ensuring data integrity. It can be used in conjunction with Optimistic Offline Lock to handle
+  complex transactions.
+* [Version Number](https://java-design-patterns.com/patterns/version-number/): A common technique used in Optimistic
+  Offline Lock to detect conflicts by maintaining a version number for each data entity.
 
 ## References and Credits
 

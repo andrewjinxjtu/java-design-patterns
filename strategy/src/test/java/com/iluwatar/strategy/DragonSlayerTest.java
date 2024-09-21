@@ -32,40 +32,39 @@ import org.junit.jupiter.api.Test;
 
 /**
  * DragonSlayerTest
- *
  */
 class DragonSlayerTest {
 
-  /**
-   * Verify if the dragon slayer uses the strategy during battle.
-   */
-  @Test
-  void testGoToBattle() {
-    final var strategy = mock(DragonSlayingStrategy.class);
-    final var dragonSlayer = new DragonSlayer(strategy);
+    /**
+     * Verify if the dragon slayer uses the strategy during battle.
+     */
+    @Test
+    void testGoToBattle() {
+        final var strategy = mock(DragonSlayingStrategy.class);
+        final var dragonSlayer = new DragonSlayer(strategy);
 
-    dragonSlayer.goToBattle();
-    verify(strategy).execute();
-    verifyNoMoreInteractions(strategy);
-  }
+        dragonSlayer.goToBattle();
+        verify(strategy).execute();
+        verifyNoMoreInteractions(strategy);
+    }
 
-  /**
-   * Verify if the dragon slayer uses the new strategy during battle after a change of strategy.
-   */
-  @Test
-  void testChangeStrategy() {
-    final var initialStrategy = mock(DragonSlayingStrategy.class);
-    final var dragonSlayer = new DragonSlayer(initialStrategy);
+    /**
+     * Verify if the dragon slayer uses the new strategy during battle after a change of strategy.
+     */
+    @Test
+    void testChangeStrategy() {
+        final var initialStrategy = mock(DragonSlayingStrategy.class);
+        final var dragonSlayer = new DragonSlayer(initialStrategy);
 
-    dragonSlayer.goToBattle();
-    verify(initialStrategy).execute();
+        dragonSlayer.goToBattle();
+        verify(initialStrategy).execute();
 
-    final var newStrategy = mock(DragonSlayingStrategy.class);
-    dragonSlayer.changeStrategy(newStrategy);
+        final var newStrategy = mock(DragonSlayingStrategy.class);
+        dragonSlayer.changeStrategy(newStrategy);
 
-    dragonSlayer.goToBattle();
-    verify(newStrategy).execute();
+        dragonSlayer.goToBattle();
+        verify(newStrategy).execute();
 
-    verifyNoMoreInteractions(initialStrategy, newStrategy);
-  }
+        verifyNoMoreInteractions(initialStrategy, newStrategy);
+    }
 }

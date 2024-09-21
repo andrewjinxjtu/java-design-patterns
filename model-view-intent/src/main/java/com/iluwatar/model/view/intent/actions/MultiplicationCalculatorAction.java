@@ -25,19 +25,19 @@
 package com.iluwatar.model.view.intent.actions;
 
 /**
- *  Multiplication {@link CalculatorAction}.
- * */
+ * Multiplication {@link CalculatorAction}.
+ */
 public class MultiplicationCalculatorAction implements CalculatorAction {
-  /**
-   * Subclass tag.
-   * */
-  public static final String MULTIPLICATION = "MULTIPLICATION";
+    /**
+     * Subclass tag.
+     */
+    public static final String MULTIPLICATION = "MULTIPLICATION";
 
-  /**
-   * Makes checking subclass type trivial.
-   * */
-  @Override
-  public String tag() {
-    return MULTIPLICATION;
-  }
+    /**
+     * Makes checking subclass type trivial.
+     */
+    @Override
+    public String tag() {
+        return MULTIPLICATION;
+    }
 }

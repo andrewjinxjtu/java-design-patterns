@@ -26,22 +26,21 @@ package com.iluwatar.lazy.loading;
 
 /**
  * HolderThreadSafeTest
- *
  */
 class HolderThreadSafeTest extends AbstractHolderTest {
 
-  private final HolderThreadSafe holder = new HolderThreadSafe();
+    private final HolderThreadSafe holder = new HolderThreadSafe();
 
-  @Override
-  Heavy getInternalHeavyValue() throws Exception {
-    final var holderField = HolderThreadSafe.class.getDeclaredField("heavy");
-    holderField.setAccessible(true);
-    return (Heavy) holderField.get(this.holder);
-  }
+    @Override
+    Heavy getInternalHeavyValue() throws Exception {
+        final var holderField = HolderThreadSafe.class.getDeclaredField("heavy");
+        holderField.setAccessible(true);
+        return (Heavy) holderField.get(this.holder);
+    }
 
-  @Override
-  Heavy getHeavy() {
-    return this.holder.getHeavy();
-  }
+    @Override
+    Heavy getHeavy() {
+        return this.holder.getHeavy();
+    }
 
 }

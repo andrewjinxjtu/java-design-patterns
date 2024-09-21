@@ -29,7 +29,9 @@ import com.iluwatar.featuretoggle.pattern.propertiesversion.PropertiesFeatureTog
 import com.iluwatar.featuretoggle.pattern.tieredversion.TieredFeatureToggleVersion;
 import com.iluwatar.featuretoggle.user.User;
 import com.iluwatar.featuretoggle.user.UserGroup;
+
 import java.util.Properties;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -48,66 +50,66 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App {
 
-  /**
-   * Block 1 shows the {@link PropertiesFeatureToggleVersion} being run with {@link Properties}
-   * setting the feature toggle to enabled.
-   *
-   * <p>Block 2 shows the {@link PropertiesFeatureToggleVersion} being run with {@link Properties}
-   * setting the feature toggle to disabled. Notice the difference with the printed welcome message
-   * the username is not included.
-   *
-   * <p>Block 3 shows the {@link
-   * com.iluwatar.featuretoggle.pattern.tieredversion.TieredFeatureToggleVersion} being set up with
-   * two users on who is on the free level, while the other is on the paid level. When the {@link
-   * Service#getWelcomeMessage(User)} is called with the paid {@link User} note that the welcome
-   * message contains their username, while the same service call with the free tier user is more
-   * generic. No username is printed.
-   *
-   * @see User
-   * @see UserGroup
-   * @see Service
-   * @see PropertiesFeatureToggleVersion
-   * @see com.iluwatar.featuretoggle.pattern.tieredversion.TieredFeatureToggleVersion
-   */
-  public static void main(String[] args) {
+    /**
+     * Block 1 shows the {@link PropertiesFeatureToggleVersion} being run with {@link Properties}
+     * setting the feature toggle to enabled.
+     *
+     * <p>Block 2 shows the {@link PropertiesFeatureToggleVersion} being run with {@link Properties}
+     * setting the feature toggle to disabled. Notice the difference with the printed welcome message
+     * the username is not included.
+     *
+     * <p>Block 3 shows the {@link
+     * com.iluwatar.featuretoggle.pattern.tieredversion.TieredFeatureToggleVersion} being set up with
+     * two users on who is on the free level, while the other is on the paid level. When the {@link
+     * Service#getWelcomeMessage(User)} is called with the paid {@link User} note that the welcome
+     * message contains their username, while the same service call with the free tier user is more
+     * generic. No username is printed.
+     *
+     * @see User
+     * @see UserGroup
+     * @see Service
+     * @see PropertiesFeatureToggleVersion
+     * @see com.iluwatar.featuretoggle.pattern.tieredversion.TieredFeatureToggleVersion
+     */
+    public static void main(String[] args) {
 
-    // Demonstrates the PropertiesFeatureToggleVersion running with properties
-    // that set the feature toggle to enabled.
+        // Demonstrates the PropertiesFeatureToggleVersion running with properties
+        // that set the feature toggle to enabled.
 
-    final var properties = new Properties();
-    properties.put("enhancedWelcome", true);
-    var service = new PropertiesFeatureToggleVersion(properties);
-    final var welcomeMessage = service.getWelcomeMessage(new User("Jamie No Code"));
-    LOGGER.info(welcomeMessage);
+        final var properties = new Properties();
+        properties.put("enhancedWelcome", true);
+        var service = new PropertiesFeatureToggleVersion(properties);
+        final var welcomeMessage = service.getWelcomeMessage(new User("Jamie No Code"));
+        LOGGER.info(welcomeMessage);
 
-    // Demonstrates the PropertiesFeatureToggleVersion running with properties
-    // that set the feature toggle to disabled. Note the difference in the printed welcome message
-    // where the username is not included.
+        // Demonstrates the PropertiesFeatureToggleVersion running with properties
+        // that set the feature toggle to disabled. Note the difference in the printed welcome message
+        // where the username is not included.
 
-    final var turnedOff = new Properties();
-    turnedOff.put("enhancedWelcome", false);
-    var turnedOffService = new PropertiesFeatureToggleVersion(turnedOff);
-    final var welcomeMessageturnedOff =
-        turnedOffService.getWelcomeMessage(new User("Jamie No Code"));
-    LOGGER.info(welcomeMessageturnedOff);
+        final var turnedOff = new Properties();
+        turnedOff.put("enhancedWelcome", false);
+        var turnedOffService = new PropertiesFeatureToggleVersion(turnedOff);
+        final var welcomeMessageturnedOff =
+                turnedOffService.getWelcomeMessage(new User("Jamie No Code"));
+        LOGGER.info(welcomeMessageturnedOff);
 
-    // Demonstrates the TieredFeatureToggleVersion setup with
-    // two users: one on the free tier and the other on the paid tier. When the
-    // Service#getWelcomeMessage(User) method is called with the paid user, the welcome
-    // message includes their username. In contrast, calling the same service with the free tier user results
-    // in a more generic welcome message without the username.
+        // Demonstrates the TieredFeatureToggleVersion setup with
+        // two users: one on the free tier and the other on the paid tier. When the
+        // Service#getWelcomeMessage(User) method is called with the paid user, the welcome
+        // message includes their username. In contrast, calling the same service with the free tier user results
+        // in a more generic welcome message without the username.
 
-    var service2 = new TieredFeatureToggleVersion();
+        var service2 = new TieredFeatureToggleVersion();
 
-    final var paidUser = new User("Jamie Coder");
-    final var freeUser = new User("Alan Defect");
+        final var paidUser = new User("Jamie Coder");
+        final var freeUser = new User("Alan Defect");
 
-    UserGroup.addUserToPaidGroup(paidUser);
-    UserGroup.addUserToFreeGroup(freeUser);
+        UserGroup.addUserToPaidGroup(paidUser);
+        UserGroup.addUserToFreeGroup(freeUser);
 
-    final var welcomeMessagePaidUser = service2.getWelcomeMessage(paidUser);
-    final var welcomeMessageFreeUser = service2.getWelcomeMessage(freeUser);
-    LOGGER.info(welcomeMessageFreeUser);
-    LOGGER.info(welcomeMessagePaidUser);
-  }
+        final var welcomeMessagePaidUser = service2.getWelcomeMessage(paidUser);
+        final var welcomeMessageFreeUser = service2.getWelcomeMessage(freeUser);
+        LOGGER.info(welcomeMessageFreeUser);
+        LOGGER.info(welcomeMessagePaidUser);
+    }
 }

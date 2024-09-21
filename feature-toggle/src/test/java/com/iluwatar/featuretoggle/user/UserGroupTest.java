@@ -35,31 +35,31 @@ import org.junit.jupiter.api.Test;
  */
 class UserGroupTest {
 
-  @Test
-  void testAddUserToFreeGroup() {
-    var user = new User("Free User");
-    UserGroup.addUserToFreeGroup(user);
-    assertFalse(UserGroup.isPaid(user));
-  }
+    @Test
+    void testAddUserToFreeGroup() {
+        var user = new User("Free User");
+        UserGroup.addUserToFreeGroup(user);
+        assertFalse(UserGroup.isPaid(user));
+    }
 
-  @Test
-  void testAddUserToPaidGroup() {
-    var user = new User("Paid User");
-    UserGroup.addUserToPaidGroup(user);
-    assertTrue(UserGroup.isPaid(user));
-  }
+    @Test
+    void testAddUserToPaidGroup() {
+        var user = new User("Paid User");
+        UserGroup.addUserToPaidGroup(user);
+        assertTrue(UserGroup.isPaid(user));
+    }
 
-  @Test
-  void testAddUserToPaidWhenOnFree() {
-    var user = new User("Paid User");
-    UserGroup.addUserToFreeGroup(user);
-    assertThrows(IllegalArgumentException.class, () -> UserGroup.addUserToPaidGroup(user));
-  }
+    @Test
+    void testAddUserToPaidWhenOnFree() {
+        var user = new User("Paid User");
+        UserGroup.addUserToFreeGroup(user);
+        assertThrows(IllegalArgumentException.class, () -> UserGroup.addUserToPaidGroup(user));
+    }
 
-  @Test
-  void testAddUserToFreeWhenOnPaid() {
-    var user = new User("Free User");
-    UserGroup.addUserToPaidGroup(user);
-    assertThrows(IllegalArgumentException.class, () -> UserGroup.addUserToFreeGroup(user));
-  }
+    @Test
+    void testAddUserToFreeWhenOnPaid() {
+        var user = new User("Free User");
+        UserGroup.addUserToPaidGroup(user);
+        assertThrows(IllegalArgumentException.class, () -> UserGroup.addUserToFreeGroup(user));
+    }
 }

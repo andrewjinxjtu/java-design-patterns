@@ -15,21 +15,27 @@ tag:
 
 ## Propósito
 
-Evita acoplar el emisor de una petición a su receptor dando a más de un objeto la oportunidad de gestionar la petición. Encadena los objetos receptores y pasa la solicitud a lo largo de la cadena hasta que un objeto la gestione.
+Evita acoplar el emisor de una petición a su receptor dando a más de un objeto la oportunidad de gestionar la petición.
+Encadena los objetos receptores y pasa la solicitud a lo largo de la cadena hasta que un objeto la gestione.
 
 ## Explicación
 
 Ejemplo real
 
-> El Rey Orco da órdenes en voz alta a su ejército. El más cercano a reaccionar es el comandante, luego un oficial y después un soldado. El comandante, el oficial y el soldado forman una cadena de responsabilidad.
+> El Rey Orco da órdenes en voz alta a su ejército. El más cercano a reaccionar es el comandante, luego un oficial y
+> después un soldado. El comandante, el oficial y el soldado forman una cadena de responsabilidad.
 
 En palabras sencillas
 
-> Ayuda a construir una cadena de objetos. Una solicitud entra por un extremo y sigue pasando de un objeto a otro hasta que encuentra un gestor adecuado.
+> Ayuda a construir una cadena de objetos. Una solicitud entra por un extremo y sigue pasando de un objeto a otro hasta
+> que encuentra un gestor adecuado.
 
 Wikipedia dice
 
-> En diseño orientado a objetos, el patrón de cadena de responsabilidad es un patrón de diseño que consiste en una fuente de objetos de comando y una serie de objetos de procesamiento. Cada objeto de procesamiento contiene lógica que define los tipos de objetos de comando que puede manejar; el resto se pasa al siguiente objeto de procesamiento de la cadena.
+> En diseño orientado a objetos, el patrón de cadena de responsabilidad es un patrón de diseño que consiste en una
+> fuente de objetos de comando y una serie de objetos de procesamiento. Cada objeto de procesamiento contiene lógica que
+> define los tipos de objetos de comando que puede manejar; el resto se pasa al siguiente objeto de procesamiento de la
+> cadena.
 
 **Ejemplo programático**
 
@@ -158,15 +164,18 @@ Orc soldier handling request "collect tax"
 
 Utilice Cadena de Responsabilidad cuando
 
-* Más de un objeto puede gestionar una petición, y el gestor no se conoce a priori. El gestor debe determinarse automáticamente.
+* Más de un objeto puede gestionar una petición, y el gestor no se conoce a priori. El gestor debe determinarse
+  automáticamente.
 * Se desea enviar una petición a uno de varios objetos sin especificar explícitamente el receptor.
 * El conjunto de objetos que pueden gestionar una solicitud debe especificarse dinámicamente.
 
 ## Usos conocidos
 
-* Burbujeo de eventos en frameworks GUI donde un evento puede ser manejado en múltiples niveles de la jerarquía de un componente UI.
+* Burbujeo de eventos en frameworks GUI donde un evento puede ser manejado en múltiples niveles de la jerarquía de un
+  componente UI.
 * Frameworks de middleware en los que una petición pasa a través de una cadena de objetos de procesamiento.
-* Marcos de trabajo de registro donde los mensajes pueden pasar a través de una serie de registradores, cada uno posiblemente manejándolos de manera diferente.
+* Marcos de trabajo de registro donde los mensajes pueden pasar a través de una serie de registradores, cada uno
+  posiblemente manejándolos de manera diferente.
 * [java.util.logging.Logger#log()](http://docs.oracle.com/javase/8/docs/api/java/util/logging/Logger.html#log%28java.util.logging.Level,%20java.lang.String%29)
 * [Apache Commons Chain](https://commons.apache.org/proper/commons-chain/index.html)
 * [javax.servlet.Filter#doFilter()](http://docs.oracle.com/javaee/7/api/javax/servlet/Filter.html#doFilter-javax.servlet.ServletRequest-javax.servlet.ServletResponse-javax.servlet.FilterChain-)
@@ -176,20 +185,25 @@ Utilice Cadena de Responsabilidad cuando
 Ventajas:
 
 * Acoplamiento reducido. El emisor de una petición no necesita conocer el manejador concreto que procesará la petición.
-* Mayor flexibilidad a la hora de asignar responsabilidades a los objetos. Se pueden añadir o cambiar responsabilidades para gestionar una petición cambiando los miembros y el orden de la cadena.
+* Mayor flexibilidad a la hora de asignar responsabilidades a los objetos. Se pueden añadir o cambiar responsabilidades
+  para gestionar una petición cambiando los miembros y el orden de la cadena.
 * Permite establecer un gestor por defecto si no hay ningún gestor concreto que pueda gestionar la solicitud.
 
 Desventajas:
 
 * Puede ser difícil depurar y entender el flujo, especialmente si la cadena es larga y compleja.
 * La petición puede quedar sin gestionar si la cadena no incluye un gestor "catch-all".
-* Pueden surgir problemas de rendimiento debido a la posibilidad de pasar por varios gestores antes de encontrar el correcto, o no encontrarlo en absoluto.
+* Pueden surgir problemas de rendimiento debido a la posibilidad de pasar por varios gestores antes de encontrar el
+  correcto, o no encontrarlo en absoluto.
 
 ## Patrones Relacionados
 
-* [Comando](https://java-design-patterns.com/patterns/command/): puede ser usado para encapsular una petición como un objeto, que puede ser pasado a lo largo de la cadena.
-* [Composite](https://java-design-patterns.com/patterns/composite/): la Cadena de Responsabilidad se aplica a menudo junto con el patrón Composite.
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): los decoradores pueden encadenarse de forma similar a las responsabilidades en el patrón Cadena de responsabilidad.
+* [Comando](https://java-design-patterns.com/patterns/command/): puede ser usado para encapsular una petición como un
+  objeto, que puede ser pasado a lo largo de la cadena.
+* [Composite](https://java-design-patterns.com/patterns/composite/): la Cadena de Responsabilidad se aplica a menudo
+  junto con el patrón Composite.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): los decoradores pueden encadenarse de forma similar
+  a las responsabilidades en el patrón Cadena de responsabilidad.
 
 ## Créditos
 

@@ -25,9 +25,11 @@
 package com.iluwatar.dynamicproxy;
 
 import com.iluwatar.dynamicproxy.tinyrestclient.TinyRestClient;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.net.http.HttpClient;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -37,25 +39,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AlbumInvocationHandler implements InvocationHandler {
 
-  private TinyRestClient restClient;
+    private TinyRestClient restClient;
 
-  /**
-   * Class constructor. It instantiates a TinyRestClient object.
-   *
-   * @param baseUrl    Root url for endpoints.
-   * @param httpClient Handle the http communication.
-   */
-  public AlbumInvocationHandler(String baseUrl, HttpClient httpClient) {
-    this.restClient = new TinyRestClient(baseUrl, httpClient);
-  }
+    /**
+     * Class constructor. It instantiates a TinyRestClient object.
+     *
+     * @param baseUrl    Root url for endpoints.
+     * @param httpClient Handle the http communication.
+     */
+    public AlbumInvocationHandler(String baseUrl, HttpClient httpClient) {
+        this.restClient = new TinyRestClient(baseUrl, httpClient);
+    }
 
-  @Override
-  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-    LOGGER.info("===== Calling the method {}.{}()",
-        method.getDeclaringClass().getSimpleName(), method.getName());
+        LOGGER.info("===== Calling the method {}.{}()",
+                method.getDeclaringClass().getSimpleName(), method.getName());
 
-    return restClient.send(method, args);
-  }
+        return restClient.send(method, args);
+    }
 
 }

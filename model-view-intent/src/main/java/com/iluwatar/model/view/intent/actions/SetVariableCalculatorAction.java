@@ -33,22 +33,22 @@ import lombok.Getter;
 @Data
 public final class SetVariableCalculatorAction implements CalculatorAction {
 
-  /**
-   * Subclass tag.
-   */
-  public static final String SET_VARIABLE = "SET_VARIABLE";
+    /**
+     * Subclass tag.
+     */
+    public static final String SET_VARIABLE = "SET_VARIABLE";
 
-  /**
-   * Used by {@link com.iluwatar.model.view.intent.CalculatorViewModel}.
-   */
-  @Getter
-  private final Double variable;
+    /**
+     * Used by {@link com.iluwatar.model.view.intent.CalculatorViewModel}.
+     */
+    @Getter
+    private final Double variable;
 
-  /**
-   * Makes checking subclass type trivial.
-   */
-  @Override
-  public String tag() {
-    return SET_VARIABLE;
-  }
+    /**
+     * Makes checking subclass type trivial.
+     */
+    @Override
+    public String tag() {
+        return SET_VARIABLE;
+    }
 }

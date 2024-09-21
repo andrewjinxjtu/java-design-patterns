@@ -20,21 +20,28 @@ tag:
 
 ## Intent of Converter Design Pattern
 
-The purpose of the Converter Pattern is to provide a generic, systematic way of bidirectional conversion between corresponding data types. This allows for a clean, decoupled implementation where types are unaware of each other. Additionally, the Converter pattern supports bidirectional collection mapping, minimizing boilerplate code.
+The purpose of the Converter Pattern is to provide a generic, systematic way of bidirectional conversion between
+corresponding data types. This allows for a clean, decoupled implementation where types are unaware of each other.
+Additionally, the Converter pattern supports bidirectional collection mapping, minimizing boilerplate code.
 
 ## Detailed Explanation of Converter Pattern with Real-World Examples
 
 Real-world example
 
-> In a real-world scenario, consider a library system that interacts with a third-party book database. The library uses an internal book format, while the third-party database uses a different format. By employing the Converter Pattern, a converter class can transform the third-party book data into the library's format and vice versa. This ensures seamless integration without altering the internal structures of either system.
+> In a real-world scenario, consider a library system that interacts with a third-party book database. The library uses
+> an internal book format, while the third-party database uses a different format. By employing the Converter Pattern, a
+> converter class can transform the third-party book data into the library's format and vice versa. This ensures seamless
+> integration without altering the internal structures of either system.
 
 In plain words
 
-> The Converter Pattern simplifies mapping instances of one class to instances of another class, ensuring consistent and clean data transformation.
+> The Converter Pattern simplifies mapping instances of one class to instances of another class, ensuring consistent and
+> clean data transformation.
 
 ## Programmatic Example of Converter Pattern in Java
 
-In applications, it's common for the database layer to have entities that need mapping to DTOs (Data Transfer Objects) for business logic. This mapping often involves many classes, necessitating a generic solution.
+In applications, it's common for the database layer to have entities that need mapping to DTOs (Data Transfer Objects)
+for business logic. This mapping often involves many classes, necessitating a generic solution.
 
 We introduce a generic `Converter` class:
 
@@ -148,21 +155,29 @@ Use the Converter Pattern in the following situations:
 
 Benefits:
 
-* Separation of Concerns: Encapsulates conversion logic in a single component, keeping the rest of the application unaware of the conversion details.
+* Separation of Concerns: Encapsulates conversion logic in a single component, keeping the rest of the application
+  unaware of the conversion details.
 * Reusability: Converter components can be reused across the application or even in different applications.
-* Flexibility: Makes it easy to add new conversions without impacting existing code, adhering to the [Open/Closed Principle](https://java-design-patterns.com/principles/#open-closed-principle).
-* Interoperability: Facilitates communication between different systems or application layers by translating data formats.
+* Flexibility: Makes it easy to add new conversions without impacting existing code, adhering to
+  the [Open/Closed Principle](https://java-design-patterns.com/principles/#open-closed-principle).
+* Interoperability: Facilitates communication between different systems or application layers by translating data
+  formats.
 
 Trade-offs:
 
-* Overhead: Introducing converters can add complexity and potential performance overhead, especially in systems with numerous data formats.
-* Duplication: There's a risk of duplicating model definitions if not carefully managed, leading to increased maintenance.
+* Overhead: Introducing converters can add complexity and potential performance overhead, especially in systems with
+  numerous data formats.
+* Duplication: There's a risk of duplicating model definitions if not carefully managed, leading to increased
+  maintenance.
 
 ## Related Java Design Patterns
 
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): Similar in intent to adapting interfaces, but Converter focuses on data models.
-* [Facade](https://java-design-patterns.com/patterns/facade/): Provides a simplified interface to a complex system, which might involve data conversion.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Converters can use different strategies for conversion, especially when multiple formats are involved.
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): Similar in intent to adapting interfaces, but Converter
+  focuses on data models.
+* [Facade](https://java-design-patterns.com/patterns/facade/): Provides a simplified interface to a complex system,
+  which might involve data conversion.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Converters can use different strategies for
+  conversion, especially when multiple formats are involved.
 
 ## References and Credits
 

@@ -34,13 +34,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Item {
 
-  @Getter
-  @Setter
-  private ItemType type;
-  private final String name;
+    @Getter
+    @Setter
+    private ItemType type;
+    private final String name;
 
-  @Override
-  public String toString() {
-    return name;
-  }
+    @Override
+    public String toString() {
+        return name;
+    }
 }

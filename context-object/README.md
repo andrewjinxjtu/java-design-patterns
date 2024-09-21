@@ -20,17 +20,25 @@ tags:
 
 ## Intent of Context Object Design Pattern
 
-Encapsulate the context (state and behaviors) relevant to the user or the request being processed to decouple Java application components from the complexities of the environment. This design pattern helps in managing the application's context efficiently.
+Encapsulate the context (state and behaviors) relevant to the user or the request being processed to decouple Java
+application components from the complexities of the environment. This design pattern helps in managing the application's
+context efficiently.
 
 ## Detailed Explanation of Context Object Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a busy airport where multiple services need to access and share passenger information throughout their journey. Instead of each service requesting and passing passenger details separately, the airport uses a "Passenger Context Object." This context object holds all relevant passenger information, such as identity, flight details, and preferences. Various services like check-in, security, boarding, and customer service access this context object to get or update passenger data as needed. This approach ensures consistent and efficient information handling without tightly coupling the services, similar to how the Context Object design pattern works in software.
+> Imagine a busy airport where multiple services need to access and share passenger information throughout their
+> journey. Instead of each service requesting and passing passenger details separately, the airport uses a "Passenger
+> Context Object." This context object holds all relevant passenger information, such as identity, flight details, and
+> preferences. Various services like check-in, security, boarding, and customer service access this context object to get
+> or update passenger data as needed. This approach ensures consistent and efficient information handling without tightly
+> coupling the services, similar to how the Context Object design pattern works in software.
 
 In plain words
 
-> Create an object to store and manage context data, and pass this context object wherever needed in the Java application, ensuring decoupled and cleaner code.
+> Create an object to store and manage context data, and pass this context object wherever needed in the Java
+> application, ensuring decoupled and cleaner code.
 
 [Core J2EE Patterns](http://corej2eepatterns.com/ContextObject.htm) says
 
@@ -38,7 +46,9 @@ In plain words
 
 ## Programmatic Example of Context Object in Java
 
-In a multi-layered Java application, different layers such as A, B, and C extract specific information from a shared context. Passing each piece of information individually is inefficient. The Context Object pattern efficiently stores and passes this information, improving the overall performance and maintainability of the Java application.
+In a multi-layered Java application, different layers such as A, B, and C extract specific information from a shared
+context. Passing each piece of information individually is inefficient. The Context Object pattern efficiently stores
+and passes this information, improving the overall performance and maintainability of the Java application.
 
 Define the data that the `ServiceContext` object contains.
 
@@ -64,7 +74,8 @@ public class ServiceContextFactory {
 }
 ```
 
-Instantiate the context object in the first layer. The adjoining layer calls the context in the current layer, which then further structures the object.
+Instantiate the context object in the first layer. The adjoining layer calls the context in the current layer, which
+then further structures the object.
 
 ```Java
 @Getter
@@ -158,14 +169,22 @@ Program output:
 
 ## When to Use the Context Object Pattern in Java
 
-* When there is a need to abstract and encapsulate context information in a Java application to avoid cluttering the business logic with environment-specific code. This is especially useful in web applications for encapsulating request-specific information and in distributed systems for managing user preferences and security credentials.
-* In web applications, to encapsulate request-specific information and make it easily accessible throughout the application without passing it explicitly between functions or components.
-* In distributed systems, to encapsulate contextual information about the task being performed, user preferences, or security credentials, facilitating their propagation across different components and services.
+* When there is a need to abstract and encapsulate context information in a Java application to avoid cluttering the
+  business logic with environment-specific code. This is especially useful in web applications for encapsulating
+  request-specific information and in distributed systems for managing user preferences and security credentials.
+* In web applications, to encapsulate request-specific information and make it easily accessible throughout the
+  application without passing it explicitly between functions or components.
+* In distributed systems, to encapsulate contextual information about the task being performed, user preferences, or
+  security credentials, facilitating their propagation across different components and services.
 
 ## Real-World Applications of Context Object Pattern in Java
 
-* Web application frameworks often use the Context Object pattern to encapsulate HTTP request and response objects, session information, and other request-specific data. Enterprise Java applications leverage this pattern to manage and propagate transactional information, security credentials, and user-specific settings across different layers and services.
-* Enterprise applications use Context Objects to manage and propagate transactional information, security credentials, and user-specific settings across different layers and services.
+* Web application frameworks often use the Context Object pattern to encapsulate HTTP request and response objects,
+  session information, and other request-specific data. Enterprise Java applications leverage this pattern to manage and
+  propagate transactional information, security credentials, and user-specific settings across different layers and
+  services.
+* Enterprise applications use Context Objects to manage and propagate transactional information, security credentials,
+  and user-specific settings across different layers and services.
 * [Spring: ApplicationContext](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html)
 * [Oracle: SecurityContext](https://docs.oracle.com/javaee/7/api/javax/ws/rs/core/SecurityContext.html)
 * [Oracle: ServletContext](https://docs.oracle.com/javaee/6/api/javax/servlet/ServletContext.html)
@@ -174,20 +193,27 @@ Program output:
 
 Benefits:
 
-* Decoupling: Components and services are decoupled from the specificities of the execution environment, enhancing modularity and maintainability.
+* Decoupling: Components and services are decoupled from the specificities of the execution environment, enhancing
+  modularity and maintainability.
 * Centralization: Contextual information is centralized in one place, making it easier to manage, access, and debug.
-* Flexibility: The pattern allows for flexible and dynamic context management, which can adapt to changes in the environment or requirements.
+* Flexibility: The pattern allows for flexible and dynamic context management, which can adapt to changes in the
+  environment or requirements.
 
 Trade-offs:
 
-* Overhead: Introducing a Context Object can add overhead in terms of performance, especially if not implemented efficiently.
-* Complexity: If the Context Object is not well-designed, it can become a bloated and complex monolith, difficult to manage and understand.
+* Overhead: Introducing a Context Object can add overhead in terms of performance, especially if not implemented
+  efficiently.
+* Complexity: If the Context Object is not well-designed, it can become a bloated and complex monolith, difficult to
+  manage and understand.
 
 ## Related Java Design Patterns
 
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): The Context Object is often implemented as a Singleton to ensure a global point of access.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Context Objects can use Strategies to adapt their behavior based on the context they encapsulate.
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Can be used to dynamically add responsibilities to the Context Object.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): The Context Object is often implemented as a
+  Singleton to ensure a global point of access.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Context Objects can use Strategies to adapt their
+  behavior based on the context they encapsulate.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Can be used to dynamically add responsibilities to
+  the Context Object.
 
 ## References and Credits
 

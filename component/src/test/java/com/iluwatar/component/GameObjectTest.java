@@ -26,8 +26,11 @@ package com.iluwatar.component;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.awt.event.KeyEvent;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -38,6 +41,7 @@ import lombok.extern.slf4j.Slf4j;
 class GameObjectTest {
     GameObject playerTest;
     GameObject npcTest;
+
     @BeforeEach
     public void initEach() {
         //creates player & npc objects for testing
@@ -50,10 +54,10 @@ class GameObjectTest {
      * Tests the create methods - createPlayer() and createNPC().
      */
     @Test
-    void objectTest(){
+    void objectTest() {
         LOGGER.info("objectTest:");
-        assertEquals("player",playerTest.getName());
-        assertEquals("npc",npcTest.getName());
+        assertEquals("player", playerTest.getName());
+        assertEquals("npc", npcTest.getName());
     }
 
     /**
@@ -61,7 +65,7 @@ class GameObjectTest {
      * Targets the player game object.
      */
     @Test
-    void eventInputTest(){
+    void eventInputTest() {
         LOGGER.info("eventInputTest:");
         playerTest.update(KeyEvent.KEY_LOCATION_LEFT);
         assertEquals(-1, playerTest.getVelocity());
@@ -86,7 +90,7 @@ class GameObjectTest {
      * Tests the demo component interface.
      */
     @Test
-    void npcDemoTest(){
+    void npcDemoTest() {
         LOGGER.info("npcDemoTest:");
         npcTest.demoUpdate();
         assertEquals(2, npcTest.getVelocity());

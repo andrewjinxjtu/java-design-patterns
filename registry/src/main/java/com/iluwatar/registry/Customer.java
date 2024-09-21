@@ -29,11 +29,11 @@ package com.iluwatar.registry;
  */
 public record Customer(String id, String name) {
 
-  @Override
-  public String toString() {
-    return "Customer{"
-        + "id='" + id + '\''
-        + ", name='" + name + '\''
-        + '}';
-  }
+    @Override
+    public String toString() {
+        return "Customer{"
+                + "id='" + id + '\''
+                + ", name='" + name + '\''
+                + '}';
+    }
 }

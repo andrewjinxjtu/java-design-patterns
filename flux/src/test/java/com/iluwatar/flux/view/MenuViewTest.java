@@ -40,33 +40,32 @@ import org.junit.jupiter.api.Test;
 
 /**
  * MenuViewTest
- *
  */
 class MenuViewTest {
 
-  @Test
-  void testStoreChanged() {
-    final var store = mock(MenuStore.class);
-    when(store.getSelected()).thenReturn(MenuItem.HOME);
+    @Test
+    void testStoreChanged() {
+        final var store = mock(MenuStore.class);
+        when(store.getSelected()).thenReturn(MenuItem.HOME);
 
-    final var view = new MenuView();
-    view.storeChanged(store);
+        final var view = new MenuView();
+        view.storeChanged(store);
 
-    verify(store, times(1)).getSelected();
-    verifyNoMoreInteractions(store);
-  }
+        verify(store, times(1)).getSelected();
+        verifyNoMoreInteractions(store);
+    }
 
-  @Test
-  void testItemClicked() {
-    final var store = mock(Store.class);
-    Dispatcher.getInstance().registerStore(store);
+    @Test
+    void testItemClicked() {
+        final var store = mock(Store.class);
+        Dispatcher.getInstance().registerStore(store);
 
-    final var view = new MenuView();
-    view.itemClicked(MenuItem.PRODUCTS);
+        final var view = new MenuView();
+        view.itemClicked(MenuItem.PRODUCTS);
 
-    // We should receive a menu click action and a content changed action
-    verify(store, times(2)).onAction(any(Action.class));
+        // We should receive a menu click action and a content changed action
+        verify(store, times(2)).onAction(any(Action.class));
 
-  }
+    }
 
 }

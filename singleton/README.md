@@ -23,7 +23,11 @@ Ensure a Java class only has one instance, and provide a global point of access 
 
 Real-world example
 
-> A real-world analogy for the Singleton pattern is a government issuing a passport. In a country, each citizen can only be issued one valid passport at a time. The passport office ensures that no duplicate passports are issued to the same person. Whenever a citizen needs to travel, they must use this single passport, which serves as the unique, globally recognized identifier for their travel credentials. This controlled access and unique instance management mirrors how the Singleton pattern ensures efficient object management in Java applications.
+> A real-world analogy for the Singleton pattern is a government issuing a passport. In a country, each citizen can only
+> be issued one valid passport at a time. The passport office ensures that no duplicate passports are issued to the same
+> person. Whenever a citizen needs to travel, they must use this single passport, which serves as the unique, globally
+> recognized identifier for their travel credentials. This controlled access and unique instance management mirrors how
+> the Singleton pattern ensures efficient object management in Java applications.
 
 In plain words
 
@@ -31,7 +35,8 @@ In plain words
 
 Wikipedia says
 
-> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a
+> class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
 
 ## Programmatic Example of Singleton Pattern in Java
 
@@ -41,7 +46,7 @@ Joshua Bloch, Effective Java 2nd Edition p.18
 
 ```java
 public enum EnumIvoryTower {
-  INSTANCE
+    INSTANCE
 }
 ```
 
@@ -49,9 +54,13 @@ Then in order to use:
 
 ```java
     var enumIvoryTower1 = EnumIvoryTower.INSTANCE;
-    var enumIvoryTower2 = EnumIvoryTower.INSTANCE;
-    LOGGER.info("enumIvoryTower1={}", enumIvoryTower1);
-    LOGGER.info("enumIvoryTower2={}", enumIvoryTower2);
+var enumIvoryTower2 = EnumIvoryTower.INSTANCE;
+    LOGGER.
+
+info("enumIvoryTower1={}",enumIvoryTower1);
+    LOGGER.
+
+info("enumIvoryTower2={}",enumIvoryTower2);
 ```
 
 The console output
@@ -66,7 +75,8 @@ enumIvoryTower2=com.iluwatar.singleton.EnumIvoryTower@1221555852
 Use the Singleton pattern when
 
 * There must be exactly one instance of a class, and it must be accessible to clients from a well-known access point
-* When the sole instance should be extensible by subclassing, and clients should be able to use an extended instance without modifying their code
+* When the sole instance should be extensible by subclassing, and clients should be able to use an extended instance
+  without modifying their code
 
 ## Real-World Applications of Singleton Pattern in Java
 
@@ -96,9 +106,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Often used to ensure a class only has one instance.
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Singleton pattern can be implemented using a Factory Method to encapsulate the creation logic.
-* [Prototype](https://java-design-patterns.com/patterns/prototype/): Avoids the need to create instances, can work alongside Singleton to manage unique instances.
+* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): Often used to ensure a class only has
+  one instance.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Singleton pattern can be implemented
+  using a Factory Method to encapsulate the creation logic.
+* [Prototype](https://java-design-patterns.com/patterns/prototype/): Avoids the need to create instances, can work
+  alongside Singleton to manage unique instances.
 
 ## References and Credits
 

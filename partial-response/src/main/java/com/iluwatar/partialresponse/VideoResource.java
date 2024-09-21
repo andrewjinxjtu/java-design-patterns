@@ -35,17 +35,17 @@ import java.util.Map;
  */
 
 public record VideoResource(FieldJsonMapper fieldJsonMapper, Map<Integer, Video> videos) {
-  /**
-   * Get Details.
-   *
-   * @param id     video id
-   * @param fields fields to get information about
-   * @return full response if no fields specified else partial response for given field.
-   */
-  public String getDetails(Integer id, String... fields) throws Exception {
-    if (fields.length == 0) {
-      return videos.get(id).toString();
+    /**
+     * Get Details.
+     *
+     * @param id     video id
+     * @param fields fields to get information about
+     * @return full response if no fields specified else partial response for given field.
+     */
+    public String getDetails(Integer id, String... fields) throws Exception {
+        if (fields.length == 0) {
+            return videos.get(id).toString();
+        }
+        return fieldJsonMapper.toJson(videos.get(id), fields);
     }
-    return fieldJsonMapper.toJson(videos.get(id), fields);
-  }
 }

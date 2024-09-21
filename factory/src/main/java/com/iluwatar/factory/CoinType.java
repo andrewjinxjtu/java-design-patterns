@@ -25,6 +25,7 @@
 package com.iluwatar.factory;
 
 import java.util.function.Supplier;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -35,8 +36,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum CoinType {
 
-  COPPER(CopperCoin::new),
-  GOLD(GoldCoin::new);
+    COPPER(CopperCoin::new),
+    GOLD(GoldCoin::new);
 
-  private final Supplier<Coin> constructor;
+    private final Supplier<Coin> constructor;
 }

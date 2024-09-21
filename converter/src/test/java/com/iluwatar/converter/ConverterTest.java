@@ -28,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -35,64 +36,64 @@ import org.junit.jupiter.api.Test;
  */
 class ConverterTest {
 
-  private final UserConverter userConverter = new UserConverter();
+    private final UserConverter userConverter = new UserConverter();
 
-  /**
-   * Tests whether a converter created of opposite functions holds equality as a bijection.
-   */
-  @Test
-  void testConversionsStartingFromDomain() {
-    var u1 = new User("Tom", "Hanks", true, "tom@hanks.com");
-    var u2 = userConverter.convertFromDto(userConverter.convertFromEntity(u1));
-    assertEquals(u1, u2);
-  }
+    /**
+     * Tests whether a converter created of opposite functions holds equality as a bijection.
+     */
+    @Test
+    void testConversionsStartingFromDomain() {
+        var u1 = new User("Tom", "Hanks", true, "tom@hanks.com");
+        var u2 = userConverter.convertFromDto(userConverter.convertFromEntity(u1));
+        assertEquals(u1, u2);
+    }
 
-  /**
-   * Tests whether a converter created of opposite functions holds equality as a bijection.
-   */
-  @Test
-  void testConversionsStartingFromDto() {
-    var u1 = new UserDto("Tom", "Hanks", true, "tom@hanks.com");
-    var u2 = userConverter.convertFromEntity(userConverter.convertFromDto(u1));
-    assertEquals(u1, u2);
-  }
+    /**
+     * Tests whether a converter created of opposite functions holds equality as a bijection.
+     */
+    @Test
+    void testConversionsStartingFromDto() {
+        var u1 = new UserDto("Tom", "Hanks", true, "tom@hanks.com");
+        var u2 = userConverter.convertFromEntity(userConverter.convertFromDto(u1));
+        assertEquals(u1, u2);
+    }
 
-  /**
-   * Tests the custom users converter. Thanks to Java8 lambdas, converter can be easily and cleanly
-   * instantiated allowing various different conversion strategies to be implemented.
-   */
-  @Test
-  void testCustomConverter() {
-    var converter = new Converter<UserDto, User>(
-        userDto -> new User(
-            userDto.firstName(),
-            userDto.lastName(),
-            userDto.active(),
-            String.valueOf(new Random().nextInt())
-        ),
-        user -> new UserDto(
-            user.firstName(),
-            user.lastName(),
-            user.active(),
-            user.firstName().toLowerCase() + user.lastName().toLowerCase() + "@whatever.com")
-    );
-    var u1 = new User("John", "Doe", false, "12324");
-    var userDto = converter.convertFromEntity(u1);
-    assertEquals("johndoe@whatever.com", userDto.email());
-  }
+    /**
+     * Tests the custom users converter. Thanks to Java8 lambdas, converter can be easily and cleanly
+     * instantiated allowing various different conversion strategies to be implemented.
+     */
+    @Test
+    void testCustomConverter() {
+        var converter = new Converter<UserDto, User>(
+                userDto -> new User(
+                        userDto.firstName(),
+                        userDto.lastName(),
+                        userDto.active(),
+                        String.valueOf(new Random().nextInt())
+                ),
+                user -> new UserDto(
+                        user.firstName(),
+                        user.lastName(),
+                        user.active(),
+                        user.firstName().toLowerCase() + user.lastName().toLowerCase() + "@whatever.com")
+        );
+        var u1 = new User("John", "Doe", false, "12324");
+        var userDto = converter.convertFromEntity(u1);
+        assertEquals("johndoe@whatever.com", userDto.email());
+    }
 
-  /**
-   * Test whether converting a collection of Users to DTO Users and then converting them back to
-   * domain users returns an equal collection.
-   */
-  @Test
-  void testCollectionConversion() {
-    var users = List.of(
-        new User("Camile", "Tough", false, "124sad"),
-        new User("Marti", "Luther", true, "42309fd"),
-        new User("Kate", "Smith", true, "if0243")
-    );
-    var fromDtos = userConverter.createFromDtos(userConverter.createFromEntities(users));
-    assertEquals(users, fromDtos);
-  }
+    /**
+     * Test whether converting a collection of Users to DTO Users and then converting them back to
+     * domain users returns an equal collection.
+     */
+    @Test
+    void testCollectionConversion() {
+        var users = List.of(
+                new User("Camile", "Tough", false, "124sad"),
+                new User("Marti", "Luther", true, "42309fd"),
+                new User("Kate", "Smith", true, "if0243")
+        );
+        var fromDtos = userConverter.createFromDtos(userConverter.createFromEntities(users));
+        assertEquals(users, fromDtos);
+    }
 }

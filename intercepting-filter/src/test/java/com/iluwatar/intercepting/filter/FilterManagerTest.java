@@ -36,34 +36,33 @@ import org.junit.jupiter.api.Test;
 
 /**
  * FilterManagerTest
- *
  */
 class FilterManagerTest {
 
-  @Test
-  void testFilterRequest() {
-    final var target = mock(Target.class);
-    final var filterManager = new FilterManager();
-    assertEquals("RUNNING...", filterManager.filterRequest(mock(Order.class)));
-    verifyNoMoreInteractions(target);
-  }
+    @Test
+    void testFilterRequest() {
+        final var target = mock(Target.class);
+        final var filterManager = new FilterManager();
+        assertEquals("RUNNING...", filterManager.filterRequest(mock(Order.class)));
+        verifyNoMoreInteractions(target);
+    }
 
-  @Test
-  void testAddFilter() {
-    final var target = mock(Target.class);
-    final var filterManager = new FilterManager();
+    @Test
+    void testAddFilter() {
+        final var target = mock(Target.class);
+        final var filterManager = new FilterManager();
 
-    verifyNoMoreInteractions(target);
+        verifyNoMoreInteractions(target);
 
-    final var filter = mock(Filter.class);
-    when(filter.execute(any(Order.class))).thenReturn("filter");
+        final var filter = mock(Filter.class);
+        when(filter.execute(any(Order.class))).thenReturn("filter");
 
-    filterManager.addFilter(filter);
+        filterManager.addFilter(filter);
 
-    final Order order = mock(Order.class);
-    assertEquals("filter", filterManager.filterRequest(order));
+        final Order order = mock(Order.class);
+        assertEquals("filter", filterManager.filterRequest(order));
 
-    verify(filter, times(1)).execute(any(Order.class));
-    verifyNoMoreInteractions(target, filter, order);
-  }
+        verify(filter, times(1)).execute(any(Order.class));
+        verifyNoMoreInteractions(target, filter, order);
+    }
 }

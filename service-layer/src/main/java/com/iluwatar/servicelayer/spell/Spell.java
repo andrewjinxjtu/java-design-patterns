@@ -26,6 +26,7 @@ package com.iluwatar.servicelayer.spell;
 
 import com.iluwatar.servicelayer.common.BaseEntity;
 import com.iluwatar.servicelayer.spellbook.Spellbook;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,27 +47,27 @@ import lombok.Setter;
 @Setter
 public class Spell extends BaseEntity {
 
-  private String name;
+    private String name;
 
-  @Id
-  @GeneratedValue
-  @Column(name = "SPELL_ID")
-  private Long id;
+    @Id
+    @GeneratedValue
+    @Column(name = "SPELL_ID")
+    private Long id;
 
-  @ManyToOne
-  @JoinColumn(name = "SPELLBOOK_ID_FK", referencedColumnName = "SPELLBOOK_ID")
-  private Spellbook spellbook;
+    @ManyToOne
+    @JoinColumn(name = "SPELLBOOK_ID_FK", referencedColumnName = "SPELLBOOK_ID")
+    private Spellbook spellbook;
 
-  public Spell() {
-  }
+    public Spell() {
+    }
 
-  public Spell(String name) {
-    this();
-    this.name = name;
-  }
+    public Spell(String name) {
+        this();
+        this.name = name;
+    }
 
-  @Override
-  public String toString() {
-    return name;
-  }
+    @Override
+    public String toString() {
+        return name;
+    }
 }

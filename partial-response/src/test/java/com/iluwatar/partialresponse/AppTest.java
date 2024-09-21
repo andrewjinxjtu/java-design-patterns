@@ -32,9 +32,9 @@ import org.junit.jupiter.api.Assertions;
  */
 class AppTest {
 
-  @Test
-  void shouldExecuteApplicationWithoutException() {
-    Assertions.assertDoesNotThrow(() -> App.main(new String[]{}));
-  }
+    @Test
+    void shouldExecuteApplicationWithoutException() {
+        Assertions.assertDoesNotThrow(() -> App.main(new String[]{}));
+    }
 
 }

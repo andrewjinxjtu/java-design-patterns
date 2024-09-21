@@ -6,26 +6,30 @@ tag:
  - Decoupling
 ---
 
-
 ## Propósito
 
-Separe la definición de la interfaz y su implementación en paquetes diferentes. Esto permite al cliente desconozca por completo la implementación.
+Separe la definición de la interfaz y su implementación en paquetes diferentes. Esto permite al cliente desconozca por
+completo la implementación.
 
 ## Explicación
 
 Ejemplo del mundo real
 
-> Se puede crear un generador de facturas con capacidad para utilizar diferentes calculadoras de impuestos que se pueden añadir en la factura en función del tipo de compra, región, etc.
+> Se puede crear un generador de facturas con capacidad para utilizar diferentes calculadoras de impuestos que se pueden
+> añadir en la factura en función del tipo de compra, región, etc.
 
 En pocas palabras
 
-> El patrón de interfaz separada anima a mantener las implementaciones de una interfaz desacopladas del cliente y su definición, para que el cliente no dependa de la implementación.
+> El patrón de interfaz separada anima a mantener las implementaciones de una interfaz desacopladas del cliente y su
+> definición, para que el cliente no dependa de la implementación.
 
 Un código cliente puede abstraer algunas funcionalidades específicas a una interfaz, y definir la definición de
 la interfaz como una SPI ([Service Programming Interface](https://en.wikipedia.org/wiki/Service_provider_interface)
 es una API pensada y abierta para ser implementada o ampliada por terceros). Otro paquete puede
-implementar esta definición de interfaz con una lógica concreta, que se inyectará en el código del cliente en tiempo de ejecución (con un tercero).
-cliente en tiempo de ejecución (con una tercera clase, inyectando la implementación en el cliente) o en tiempo de compilación
+implementar esta definición de interfaz con una lógica concreta, que se inyectará en el código del cliente en tiempo de
+ejecución (con un tercero).
+cliente en tiempo de ejecución (con una tercera clase, inyectando la implementación en el cliente) o en tiempo de
+compilación
 (utilizando el patrón Plugin con algún archivo configurable).
 
 **Ejemplo programático**
@@ -119,9 +123,12 @@ en la clase cliente.
 
 Utilice el patrón de interfaz separada cuando
 
-* Estás desarrollando un paquete de framework, y tu framework necesita llamar a algún código de aplicación a través de interfaces.
-* Tienes paquetes separados que implementan las funcionalidades que pueden ser conectadas a tu código cliente en tiempo de ejecución o de compilación.
-* Su código reside en una capa a la que no se le permite llamar a la capa de implementación de la interfaz por norma. Por ejemplo, una capa de dominio necesita llamar a un mapeador de datos.
+* Estás desarrollando un paquete de framework, y tu framework necesita llamar a algún código de aplicación a través de
+  interfaces.
+* Tienes paquetes separados que implementan las funcionalidades que pueden ser conectadas a tu código cliente en tiempo
+  de ejecución o de compilación.
+* Su código reside en una capa a la que no se le permite llamar a la capa de implementación de la interfaz por norma.
+  Por ejemplo, una capa de dominio necesita llamar a un mapeador de datos.
 
 ## Tutoriales
 

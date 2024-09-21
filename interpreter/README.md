@@ -16,25 +16,39 @@ tag:
 
 ## Intent of Interpreter Design Pattern
 
-The Interpreter design pattern is used to define a grammatical representation for a language and provides an interpreter to handle this grammar. This pattern is useful in scenarios where a specific set of rules or grammar needs to be interpreted and acted upon, such as in arithmetic expressions or scripting languages.
+The Interpreter design pattern is used to define a grammatical representation for a language and provides an interpreter
+to handle this grammar. This pattern is useful in scenarios where a specific set of rules or grammar needs to be
+interpreted and acted upon, such as in arithmetic expressions or scripting languages.
 
 ## Detailed Explanation of Interpreter Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a calculator application designed to interpret and calculate expressions entered by users. The application uses the Interpreter pattern in Java to parse and evaluate arithmetic expressions such as "5 + 3 * 2". Here, the Interpreter translates each part of the expression into objects that represent numbers and operations. These objects follow a defined grammar that allows the application to understand and compute the result correctly based on the rules of arithmetic. Each element of the expression corresponds to a class in the program's structure, simplifying the parsing and evaluation process for any inputted arithmetic formula.
+> Consider a calculator application designed to interpret and calculate expressions entered by users. The application
+> uses the Interpreter pattern in Java to parse and evaluate arithmetic expressions such as "5 + 3 * 2". Here, the
+> Interpreter translates each part of the expression into objects that represent numbers and operations. These objects
+> follow a defined grammar that allows the application to understand and compute the result correctly based on the rules
+> of arithmetic. Each element of the expression corresponds to a class in the program's structure, simplifying the parsing
+> and evaluation process for any inputted arithmetic formula.
 
 In plain words
 
-> The Interpreter design pattern defines a representation for a language's grammar along with an interpreter that uses the representation to interpret sentences in the language.
+> The Interpreter design pattern defines a representation for a language's grammar along with an interpreter that uses
+> the representation to interpret sentences in the language.
 
 Wikipedia says
 
-> In computer programming, the interpreter pattern is a design pattern that specifies how to evaluate sentences in a language. The basic idea is to have a class for each symbol (terminal or nonterminal) in a specialized computer language. The syntax tree of a sentence in the language is an instance of the composite pattern and is used to evaluate (interpret) the sentence for a client.
+> In computer programming, the interpreter pattern is a design pattern that specifies how to evaluate sentences in a
+> language. The basic idea is to have a class for each symbol (terminal or nonterminal) in a specialized computer
+> language. The syntax tree of a sentence in the language is an instance of the composite pattern and is used to
+> evaluate (interpret) the sentence for a client.
 
 ## Programmatic Example of Interpreter Pattern in Java
 
-To be able to interpret basic math in Java, we need a hierarchy of expressions. The `Expression` class is the base, and concrete implementations like `NumberExpression` handle specific parts of the grammar. The Interpreter pattern in Java simplifies parsing and evaluating arithmetic expressions by translating them into a structured format that the application can process.
+To be able to interpret basic math in Java, we need a hierarchy of expressions. The `Expression` class is the base, and
+concrete implementations like `NumberExpression` handle specific parts of the grammar. The Interpreter pattern in Java
+simplifies parsing and evaluating arithmetic expressions by translating them into a structured format that the
+application can process.
 
 ```java
 public abstract class Expression {
@@ -73,7 +87,8 @@ public class NumberExpression extends Expression {
 }
 ```
 
-The more complex expressions are operations such as `PlusExpression`, `MinusExpression`, and `MultiplyExpression`. Here's the first of them, the others are similar.
+The more complex expressions are operations such as `PlusExpression`, `MinusExpression`, and `MultiplyExpression`.
+Here's the first of them, the others are similar.
 
 ```java
 public class PlusExpression extends Expression {
@@ -180,10 +195,16 @@ Executing the program produces the following console output.
 
 ## When to Use the Interpreter Pattern in Java
 
-Use the Interpreter design pattern when there is a language to interpret, and you can represent statements in the language as abstract syntax trees. The Interpreter pattern works best when
+Use the Interpreter design pattern when there is a language to interpret, and you can represent statements in the
+language as abstract syntax trees. The Interpreter pattern works best when
 
-* The grammar is simple. For complex grammars, the class hierarchy for the grammar becomes large and unmanageable. Tools such as parser generators are a better alternative in such cases. They can interpret expressions without building abstract syntax trees, which can save space and possibly time.
-* Efficiency is not a critical concern. The most efficient interpreters are usually not implemented by interpreting parse trees directly but by first translating them into another form. For example, regular expressions are often transformed into state machines. But even then, the translator can be implemented by the Interpreter pattern, so the pattern is still applicable.
+* The grammar is simple. For complex grammars, the class hierarchy for the grammar becomes large and unmanageable. Tools
+  such as parser generators are a better alternative in such cases. They can interpret expressions without building
+  abstract syntax trees, which can save space and possibly time.
+* Efficiency is not a critical concern. The most efficient interpreters are usually not implemented by interpreting
+  parse trees directly but by first translating them into another form. For example, regular expressions are often
+  transformed into state machines. But even then, the translator can be implemented by the Interpreter pattern, so the
+  pattern is still applicable.
 
 ## Real-World Applications of Interpreter Pattern in Java
 
@@ -207,8 +228,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Composite](https://java-design-patterns.com/patterns/composite/): Often used together, where the Interpreter pattern leverages the Composite pattern to represent the grammar as a tree structure.
-* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Useful for sharing state to reduce memory usage in the Interpreter pattern, particularly for interpreters that deal with repetitive elements in a language.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Often used together, where the Interpreter pattern
+  leverages the Composite pattern to represent the grammar as a tree structure.
+* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Useful for sharing state to reduce memory usage in
+  the Interpreter pattern, particularly for interpreters that deal with repetitive elements in a language.
 
 ## References and Credits
 

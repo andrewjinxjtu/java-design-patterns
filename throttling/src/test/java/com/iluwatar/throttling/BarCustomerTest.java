@@ -25,6 +25,7 @@
 package com.iluwatar.throttling;
 
 import org.junit.jupiter.api.Test;
+
 import java.security.InvalidParameterException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -34,8 +35,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 class BarCustomerTest {
 
-  @Test
-  void constructorTest() {
-    assertThrows(InvalidParameterException.class, () -> new BarCustomer("sirBrave", -1, new CallsCount()));
-  }
+    @Test
+    void constructorTest() {
+        assertThrows(InvalidParameterException.class, () -> new BarCustomer("sirBrave", -1, new CallsCount()));
+    }
 }

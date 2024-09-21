@@ -32,23 +32,22 @@ import org.junit.jupiter.api.Test;
 
 /**
  * RainbowFishV2Test
- *
  */
 class RainbowFishV2Test {
 
-  /**
-   * Verify if the getters of a {@link RainbowFish} return the expected values
-   */
-  @Test
-  void testValues() {
-    final var fish = new RainbowFishV2("name", 1, 2, 3, false, true, false);
-    assertEquals("name", fish.getName());
-    assertEquals(1, fish.getAge());
-    assertEquals(2, fish.getLengthMeters());
-    assertEquals(3, fish.getWeightTons());
-    assertFalse(fish.isSleeping());
-    assertTrue(fish.isHungry());
-    assertFalse(fish.isAngry());
-  }
+    /**
+     * Verify if the getters of a {@link RainbowFish} return the expected values
+     */
+    @Test
+    void testValues() {
+        final var fish = new RainbowFishV2("name", 1, 2, 3, false, true, false);
+        assertEquals("name", fish.getName());
+        assertEquals(1, fish.getAge());
+        assertEquals(2, fish.getLengthMeters());
+        assertEquals(3, fish.getWeightTons());
+        assertFalse(fish.isSleeping());
+        assertTrue(fish.isHungry());
+        assertFalse(fish.isAngry());
+    }
 
 }

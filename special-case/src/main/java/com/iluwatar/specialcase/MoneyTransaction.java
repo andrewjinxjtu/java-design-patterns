@@ -32,6 +32,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MoneyTransaction {
 
-  private final Double amount;
-  private final Double price;
+    private final Double amount;
+    private final Double price;
 }

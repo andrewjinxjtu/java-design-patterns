@@ -28,4 +28,5 @@ package com.iluwatar.monostate;
  * The Request record. A {@link Server} can handle an instance of a Request.
  */
 
-public record Request(String value) {}
+public record Request(String value) {
+}

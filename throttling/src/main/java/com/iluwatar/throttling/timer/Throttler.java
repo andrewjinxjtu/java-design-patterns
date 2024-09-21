@@ -26,9 +26,8 @@ package com.iluwatar.throttling.timer;
 
 /**
  * An interface for defining the structure of different types of throttling ways.
- *
  */
 public interface Throttler {
 
-  void start();
+    void start();
 }

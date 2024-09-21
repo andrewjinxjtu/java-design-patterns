@@ -37,17 +37,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PaymentController {
 
-  /**
-   * Processes the payment based on the request.
-   *
-   * @param request the request body containing payment information (can be null)
-   * @return ResponseEntity containing the payment processing result (true)
-   */
-  @PostMapping("/payment/process")
-  public ResponseEntity<Boolean> payment(@RequestBody(required = false) String request) {
-    LOGGER.info("Received payment request: {}", request);
-    boolean result = true;
-    LOGGER.info("Payment result: {}", result);
-    return ResponseEntity.ok(result);
-  }
+    /**
+     * Processes the payment based on the request.
+     *
+     * @param request the request body containing payment information (can be null)
+     * @return ResponseEntity containing the payment processing result (true)
+     */
+    @PostMapping("/payment/process")
+    public ResponseEntity<Boolean> payment(@RequestBody(required = false) String request) {
+        LOGGER.info("Received payment request: {}", request);
+        boolean result = true;
+        LOGGER.info("Payment result: {}", result);
+        return ResponseEntity.ok(result);
+    }
 }

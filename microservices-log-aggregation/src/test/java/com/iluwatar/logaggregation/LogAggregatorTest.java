@@ -29,6 +29,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,43 +39,43 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class LogAggregatorTest {
 
-  @Mock
-  private CentralLogStore centralLogStore;
-  private LogAggregator logAggregator;
+    @Mock
+    private CentralLogStore centralLogStore;
+    private LogAggregator logAggregator;
 
-  @BeforeEach
-  void setUp() {
-    logAggregator = new LogAggregator(centralLogStore, LogLevel.INFO);
-  }
+    @BeforeEach
+    void setUp() {
+        logAggregator = new LogAggregator(centralLogStore, LogLevel.INFO);
+    }
 
-  @Test
-  void whenThreeInfoLogsAreCollected_thenCentralLogStoreShouldStoreAllOfThem() {
-    logAggregator.collectLog(createLogEntry(LogLevel.INFO, "Sample log message 1"));
-    logAggregator.collectLog(createLogEntry(LogLevel.INFO, "Sample log message 2"));
+    @Test
+    void whenThreeInfoLogsAreCollected_thenCentralLogStoreShouldStoreAllOfThem() {
+        logAggregator.collectLog(createLogEntry(LogLevel.INFO, "Sample log message 1"));
+        logAggregator.collectLog(createLogEntry(LogLevel.INFO, "Sample log message 2"));
 
-    verifyNoInteractionsWithCentralLogStore();
+        verifyNoInteractionsWithCentralLogStore();
 
-    logAggregator.collectLog(createLogEntry(LogLevel.INFO, "Sample log message 3"));
+        logAggregator.collectLog(createLogEntry(LogLevel.INFO, "Sample log message 3"));
 
-    verifyCentralLogStoreInvokedTimes(3);
-  }
+        verifyCentralLogStoreInvokedTimes(3);
+    }
 
-  @Test
-  void whenDebugLogIsCollected_thenNoLogsShouldBeStored() {
-    logAggregator.collectLog(createLogEntry(LogLevel.DEBUG, "Sample debug log message"));
+    @Test
+    void whenDebugLogIsCollected_thenNoLogsShouldBeStored() {
+        logAggregator.collectLog(createLogEntry(LogLevel.DEBUG, "Sample debug log message"));
 
-    verifyNoInteractionsWithCentralLogStore();
-  }
+        verifyNoInteractionsWithCentralLogStore();
+    }
 
-  private static LogEntry createLogEntry(LogLevel logLevel, String message) {
-    return new LogEntry("ServiceA", logLevel, message, LocalDateTime.now());
-  }
+    private static LogEntry createLogEntry(LogLevel logLevel, String message) {
+        return new LogEntry("ServiceA", logLevel, message, LocalDateTime.now());
+    }
 
-  private void verifyNoInteractionsWithCentralLogStore() {
-    verify(centralLogStore, times(0)).storeLog(any());
-  }
+    private void verifyNoInteractionsWithCentralLogStore() {
+        verify(centralLogStore, times(0)).storeLog(any());
+    }
 
-  private void verifyCentralLogStoreInvokedTimes(int times) {
-    verify(centralLogStore, times(times)).storeLog(any());
-  }
+    private void verifyCentralLogStoreInvokedTimes(int times) {
+        verify(centralLogStore, times(times)).storeLog(any());
+    }
 }

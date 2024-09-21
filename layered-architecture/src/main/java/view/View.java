@@ -30,6 +30,6 @@ package view;
  */
 public interface View {
 
-  void render();
+    void render();
 
 }

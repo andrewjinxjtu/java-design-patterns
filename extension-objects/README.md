@@ -17,29 +17,45 @@ tag:
 
 ## Intent of Extension Objects Design Pattern
 
-The Extension Objects pattern allows for the flexible extension of an object's behavior without modifying its structure, by attaching additional objects that can dynamically add new functionality.
+The Extension Objects pattern allows for the flexible extension of an object's behavior without modifying its structure,
+by attaching additional objects that can dynamically add new functionality.
 
 ## Detailed Explanation of Extension Objects Pattern with Real-World Examples
 
 Real-world example
 
-> An analogous real-world example of the Extension Objects design pattern can be found in modular kitchen appliances. Consider a base blender unit to which different attachments can be added, such as a food processor, juicer, or grinder. Each attachment adds new functionality to the blender without altering the base unit itself. Users can dynamically switch between different functionalities based on their current needs, making the blender highly versatile and adaptable to various tasks. This mirrors the Extension Objects pattern in software, where new functionalities are added to an object dynamically and contextually, enhancing flexibility and reuse.
+> An analogous real-world example of the Extension Objects design pattern can be found in modular kitchen appliances.
+> Consider a base blender unit to which different attachments can be added, such as a food processor, juicer, or grinder.
+> Each attachment adds new functionality to the blender without altering the base unit itself. Users can dynamically
+> switch between different functionalities based on their current needs, making the blender highly versatile and adaptable
+> to various tasks. This mirrors the Extension Objects pattern in software, where new functionalities are added to an
+> object dynamically and contextually, enhancing flexibility and reuse.
 
 In plain words
 
-> The Extension Objects pattern is used to dynamically add functionality to objects without modifying their core classes. It is a behavioural design pattern used for adding new functionality to existing classes and objects within a program. This pattern provides programmers with the ability to extend/modify class functionality without having to refactor existing source code.
+> The Extension Objects pattern is used to dynamically add functionality to objects without modifying their core
+> classes. It is a behavioural design pattern used for adding new functionality to existing classes and objects within a
+> program. This pattern provides programmers with the ability to extend/modify class functionality without having to
+> refactor existing source code.
 
 Wikipedia says
 
-> In object-oriented computer programming, an extension objects pattern is a design pattern added to an object after the original object was compiled. The modified object is often a class, a prototype or a type. Extension object patterns are features of some object-oriented programming languages. There is no syntactic difference between calling an extension method and calling a method declared in the type definition.
+> In object-oriented computer programming, an extension objects pattern is a design pattern added to an object after the
+> original object was compiled. The modified object is often a class, a prototype or a type. Extension object patterns are
+> features of some object-oriented programming languages. There is no syntactic difference between calling an extension
+> method and calling a method declared in the type definition.
 
 ## Programmatic Example of Extension Objects Pattern in Java
 
-The Extension Objects pattern allows for the flexible extension of an object's behavior without modifying its structure, by attaching additional objects that can dynamically add new functionality.
+The Extension Objects pattern allows for the flexible extension of an object's behavior without modifying its structure,
+by attaching additional objects that can dynamically add new functionality.
 
-In this Java implementation, we have three types of units: `SoldierUnit`, `SergeantUnit`, and `CommanderUnit`. Each unit can have extensions that provide additional functionality. The extensions are `SoldierExtension`, `SergeantExtension`, and `CommanderExtension`.
+In this Java implementation, we have three types of units: `SoldierUnit`, `SergeantUnit`, and `CommanderUnit`. Each unit
+can have extensions that provide additional functionality. The extensions are `SoldierExtension`, `SergeantExtension`,
+and `CommanderExtension`.
 
-The `Unit` class is the base class for all units. It has a method `getUnitExtension` that returns an extension object based on the extension name.
+The `Unit` class is the base class for all units. It has a method `getUnitExtension` that returns an extension object
+based on the extension name.
 
 ```java
 public abstract class Unit {
@@ -57,7 +73,8 @@ public abstract class Unit {
 }
 ```
 
-The `UnitExtension` interface is the base interface for all extensions. Each specific extension will implement this interface.
+The `UnitExtension` interface is the base interface for all extensions. Each specific extension will implement this
+interface.
 
 ```java
 public interface UnitExtension {
@@ -65,7 +82,8 @@ public interface UnitExtension {
 }
 ```
 
-The `SoldierUnit` class is a specific type of unit. It overrides the `getUnitExtension` method to return a `SoldierExtension` object.
+The `SoldierUnit` class is a specific type of unit. It overrides the `getUnitExtension` method to return a
+`SoldierExtension` object.
 
 ```java
 public class SoldierUnit extends Unit {
@@ -83,7 +101,8 @@ public class SoldierUnit extends Unit {
 }
 ```
 
-The `SoldierExtension` class is a specific type of extension. It implements the `UnitExtension` interface and provides additional functionality for the `SoldierUnit`.
+The `SoldierExtension` class is a specific type of extension. It implements the `UnitExtension` interface and provides
+additional functionality for the `SoldierUnit`.
 
 ```java
 public class SoldierExtension implements UnitExtension {
@@ -104,7 +123,8 @@ public class SoldierExtension implements UnitExtension {
 }
 ```
 
-In the `main` application, we create different types of units and check for each unit to have an extension. If the extension exists, we call the specific method on the extension object.
+In the `main` application, we create different types of units and check for each unit to have an extension. If the
+extension exists, we call the specific method on the extension object.
 
 ```java
 public class App {
@@ -141,7 +161,8 @@ This produces the following console output.
 22:58:03.783 [main] INFO concreteextensions.Commander -- [Commander] CommanderUnit1 is ready!
 ```
 
-This example demonstrates how the Extension Objects pattern allows for the flexible extension of an object's behavior without modifying its structure.
+This example demonstrates how the Extension Objects pattern allows for the flexible extension of an object's behavior
+without modifying its structure.
 
 ## Detailed Explanation of Extension Objects Pattern with Real-World Examples
 
@@ -149,7 +170,9 @@ This example demonstrates how the Extension Objects pattern allows for the flexi
 
 ## When to Use the Extension Objects Pattern in Java
 
-This pattern is applicable in scenarios where an object's functionality needs to be extended at runtime, avoiding the complications of subclassing. It's particularly useful in systems where object capabilities need to be augmented post-deployment, or where the capabilities might vary significantly across instances.
+This pattern is applicable in scenarios where an object's functionality needs to be extended at runtime, avoiding the
+complications of subclassing. It's particularly useful in systems where object capabilities need to be augmented
+post-deployment, or where the capabilities might vary significantly across instances.
 
 ## Real-World Applications of Extension Objects Pattern in Java
 
@@ -165,7 +188,8 @@ Benefits:
 
 * Enhances flexibility by allowing dynamic extension of an object's capabilities.
 * Promotes loose coupling between the base object and its extensions.
-* Supports the [Open/Closed Principle](https://java-design-patterns.com/principles/#open-closed-principle) by keeping the object open for extension but closed for modification.
+* Supports the [Open/Closed Principle](https://java-design-patterns.com/principles/#open-closed-principle) by keeping
+  the object open for extension but closed for modification.
 
 Trade-offs:
 
@@ -174,9 +198,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Similar in intent to add responsibilities dynamically, but uses a different structure.
-* [Composite](https://java-design-patterns.com/patterns/composite/): Also manages a group of objects, which can be seen as a form of extension.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Offers an alternative way to change the behavior of an object dynamically.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Similar in intent to add responsibilities
+  dynamically, but uses a different structure.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Also manages a group of objects, which can be seen
+  as a form of extension.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Offers an alternative way to change the behavior of
+  an object dynamically.
 
 ## References and Credits
 

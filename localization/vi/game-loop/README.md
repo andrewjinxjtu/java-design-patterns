@@ -16,25 +16,31 @@ tag:
 
 ## Mục tiêu
 
-Mẫu thiết kế Game Loop nhằm thực thi liên tục của một trò chơi, trong đó mỗi chu kỳ vòng lặp xử lý đầu vào, cập nhật trạng thái trò chơi, và hiển thị trạng thái trò chơi lên màn hình, duy trì trải nghiệm chơi mượt mà và tương tác.
+Mẫu thiết kế Game Loop nhằm thực thi liên tục của một trò chơi, trong đó mỗi chu kỳ vòng lặp xử lý đầu vào, cập nhật
+trạng thái trò chơi, và hiển thị trạng thái trò chơi lên màn hình, duy trì trải nghiệm chơi mượt mà và tương tác.
 
 ## Giải thích
 
 Ví dụ thực tế
 
-> Game loop là quá trình chính của tất cả các luồng hiển thị trò chơi. Nó hiện diện trong tất cả các trò chơi hiện đại. Nó điều khiển việc xử lý đầu vào, cập nhật trạng thái nội bộ, hiển thị, xử lý trí tuệ nhân tạo và tất cả các quá trình khác.
+> Game loop là quá trình chính của tất cả các luồng hiển thị trò chơi. Nó hiện diện trong tất cả các trò chơi hiện đại.
+> Nó điều khiển việc xử lý đầu vào, cập nhật trạng thái nội bộ, hiển thị, xử lý trí tuệ nhân tạo và tất cả các quá trình
+> khác.
 
 Nói một cách đơn giản
 
-> Mẫu Game Loop đảm bảo rằng thời gian trò chơi thực thi với tốc độ bằng nhau trong tất cả các cấu hình phần cứng khác nhau.
+> Mẫu Game Loop đảm bảo rằng thời gian trò chơi thực thi với tốc độ bằng nhau trong tất cả các cấu hình phần cứng khác
+> nhau.
 
 Theo Wikipedia
 
-> Thành phần trung tâm của bất kỳ trò chơi nào, từ góc độ lập trình, đều là game loop. Game loop cho phép trò chơi chạy trơn tru bất kể đầu vào của người dùng hoặc thiếu đầu vào.
+> Thành phần trung tâm của bất kỳ trò chơi nào, từ góc độ lập trình, đều là game loop. Game loop cho phép trò chơi chạy
+> trơn tru bất kể đầu vào của người dùng hoặc thiếu đầu vào.
 
 **Ví dụ lập trình**
 
-Hãy bắt đầu với một thứ gì đó đơn giản. Đây là lớp `Bullet` (Đạn). Đạn sẽ di chuyển trong trò chơi của chúng ta. Để dễ hình dung, ta cho nó có vị trí 1 chiều.
+Hãy bắt đầu với một thứ gì đó đơn giản. Đây là lớp `Bullet` (Đạn). Đạn sẽ di chuyển trong trò chơi của chúng ta. Để dễ
+hình dung, ta cho nó có vị trí 1 chiều.
 
 ```java
 public class Bullet {
@@ -77,7 +83,8 @@ public class GameController {
 }
 ```
 
-Bây giờ chúng ta tạo ra một vòng lặp trò chơi (game loop). Hoặc thực tế trong ví dụ minh họa này, chúng ta có loại 3 vòng lặp trò chơi khác nhau. Hãy xem lớp cha `GameLoop` trước.
+Bây giờ chúng ta tạo ra một vòng lặp trò chơi (game loop). Hoặc thực tế trong ví dụ minh họa này, chúng ta có loại 3
+vòng lặp trò chơi khác nhau. Hãy xem lớp cha `GameLoop` trước.
 
 ```java
 public enum GameStatus {
@@ -242,7 +249,8 @@ Stop variable-step game loop.
 
 ## Ứng dụng
 
-Mẫu Game Loop được áp dụng trong mô phỏng thời gian thực và trò chơi, nơi trạng thái cần được cập nhật liên tục và nhất quán để đáp ứng đầu vào của người dùng và các sự kiện khác.
+Mẫu Game Loop được áp dụng trong mô phỏng thời gian thực và trò chơi, nơi trạng thái cần được cập nhật liên tục và nhất
+quán để đáp ứng đầu vào của người dùng và các sự kiện khác.
 
 ## Các trường hợp ứng dụng đã biết
 
@@ -259,13 +267,17 @@ Mẫu Game Loop được áp dụng trong mô phỏng thời gian thực và tr�
 
 Nhược điểm:
 
-* Có thể dẫn đến vấn đề hiệu suất nếu vòng lặp không được quản lý tốt, đặc biệt là trong các hàm cập nhật hoặc hiển thị tốn nhiều tài nguyên.
+* Có thể dẫn đến vấn đề hiệu suất nếu vòng lặp không được quản lý tốt, đặc biệt là trong các hàm cập nhật hoặc hiển thị
+  tốn nhiều tài nguyên.
 * Khó khăn trong việc quản lý tỷ lệ khung hình (frame rates) khác nhau trên các phần cứng khác nhau.
 
 ## Các mẫu liên quan
 
-* [State](https://java-design-patterns.com/patterns/state/): Thường được sử dụng trong vòng lặp trò chơi để quản lý các trạng thái khác nhau của trò chơi (ví dụ: menu, đang chơi, tạm dừng). Mối quan hệ nằm ở việc quản lý hành vi cụ thể của trạng thái và chuyển đổi trạng thái một cách mượt mà trong vòng lặp trò chơi.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Hữu ích trong vòng lặp trò chơi để xử lý sự kiện, nơi các thực thể trò chơi có thể đăng ký và phản ứng với các sự kiện (ví dụ: va chạm, ghi điểm).
+* [State](https://java-design-patterns.com/patterns/state/): Thường được sử dụng trong vòng lặp trò chơi để quản lý các
+  trạng thái khác nhau của trò chơi (ví dụ: menu, đang chơi, tạm dừng). Mối quan hệ nằm ở việc quản lý hành vi cụ thể
+  của trạng thái và chuyển đổi trạng thái một cách mượt mà trong vòng lặp trò chơi.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Hữu ích trong vòng lặp trò chơi để xử lý sự kiện, nơi
+  các thực thể trò chơi có thể đăng ký và phản ứng với các sự kiện (ví dụ: va chạm, ghi điểm).
 
 ## Tham khảo
 

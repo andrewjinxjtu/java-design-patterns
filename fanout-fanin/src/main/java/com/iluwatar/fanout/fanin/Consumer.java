@@ -25,8 +25,8 @@
 package com.iluwatar.fanout.fanin;
 
 import java.util.concurrent.atomic.AtomicLong;
-import lombok.Getter;
 
+import lombok.Getter;
 
 
 /**
@@ -36,13 +36,13 @@ import lombok.Getter;
 @Getter
 public class Consumer {
 
-  private final AtomicLong sumOfSquaredNumbers;
+    private final AtomicLong sumOfSquaredNumbers;
 
-  Consumer(Long init) {
-    sumOfSquaredNumbers = new AtomicLong(init);
-  }
+    Consumer(Long init) {
+        sumOfSquaredNumbers = new AtomicLong(init);
+    }
 
-  public Long add(final Long num) {
-    return sumOfSquaredNumbers.addAndGet(num);
-  }
+    public Long add(final Long num) {
+        return sumOfSquaredNumbers.addAndGet(num);
+    }
 }

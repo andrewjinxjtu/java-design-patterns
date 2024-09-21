@@ -8,23 +8,35 @@ tag:
 ---
 
 ## Propósito
-Priorizar las peticiones enviadas a los servicios de forma que las peticiones con mayor prioridad se reciban y procesen más rápidamente que las de menor prioridad. Este patrón es útil en aplicaciones que ofrecen diferentes garantías de nivel de servicio a clientes individuales.
+
+Priorizar las peticiones enviadas a los servicios de forma que las peticiones con mayor prioridad se reciban y procesen
+más rápidamente que las de menor prioridad. Este patrón es útil en aplicaciones que ofrecen diferentes garantías de
+nivel de servicio a clientes individuales.
 
 ## Explicación
 
-Las aplicaciones pueden delegar tareas específicas en otros servicios; por ejemplo, para realizar procesamientos en segundo plano o para integrarse con otras aplicaciones o servicios. En la nube, se suele utilizar una cola de mensajes para delegar tareas al procesamiento en segundo plano. En muchos casos, el orden en que un servicio recibe las solicitudes no es importante. Sin embargo, en algunos casos puede ser necesario priorizar peticiones específicas. Estas peticiones deben ser procesadas antes que otras de menor prioridad que puedan haber sido enviadas previamente por la aplicación.
+Las aplicaciones pueden delegar tareas específicas en otros servicios; por ejemplo, para realizar procesamientos en
+segundo plano o para integrarse con otras aplicaciones o servicios. En la nube, se suele utilizar una cola de mensajes
+para delegar tareas al procesamiento en segundo plano. En muchos casos, el orden en que un servicio recibe las
+solicitudes no es importante. Sin embargo, en algunos casos puede ser necesario priorizar peticiones específicas. Estas
+peticiones deben ser procesadas antes que otras de menor prioridad que puedan haber sido enviadas previamente por la
+aplicación.
 
 Ejemplo real
 
-> Imagine un servicio de procesamiento de vídeo con clientes gratuitos y premium. Las solicitudes procedentes de los clientes premium de pago deben tener prioridad sobre las demás.
+> Imagine un servicio de procesamiento de vídeo con clientes gratuitos y premium. Las solicitudes procedentes de los
+> clientes premium de pago deben tener prioridad sobre las demás.
 
 En pocas palabras
 
-> La cola prioritaria permite procesar primero los mensajes de alta prioridad, independientemente del tamaño de la cola o de la antigüedad del mensaje.
+> La cola prioritaria permite procesar primero los mensajes de alta prioridad, independientemente del tamaño de la cola
+> o de la antigüedad del mensaje.
 
 Wikipedia dice
 
-> En informática, una cola prioritaria es un tipo de datos abstracto similar a una cola normal o a una estructura de datos de pila en la que cada elemento tiene además una "prioridad" asociada. En una cola de prioridad, un elemento con prioridad alta se sirve antes que un elemento con prioridad baja.
+> En informática, una cola prioritaria es un tipo de datos abstracto similar a una cola normal o a una estructura de
+> datos de pila en la que cada elemento tiene además una "prioridad" asociada. En una cola de prioridad, un elemento con
+> prioridad alta se sirve antes que un elemento con prioridad baja.
 
 **Ejemplo programático**
 
@@ -79,7 +91,8 @@ public class PriorityMessageQueue<T extends Comparable> {
 }
 ```
 
-El `QueueManager` tiene una `PriorityMessageQueue` y facilita la publicación de mensajes `publishMessage` y la recepción de mensajes `receiveMessage`.
+El `QueueManager` tiene una `PriorityMessageQueue` y facilita la publicación de mensajes `publishMessage` y la recepción
+de mensajes `receiveMessage`.
 
 ```java
 public class QueueManager {
@@ -177,7 +190,6 @@ No Message ... waiting
 No Message ... waiting
 No Message ... waiting
 ```
-
 
 ## Diagrama de clases
 

@@ -64,8 +64,10 @@ enumIvoryTower2=com.iluwatar.singleton.EnumIvoryTower@1221555852
 
 Utilice el patrón Singleton cuando:
 
-* Debe haber exactamente una instancia de una clase, y debe ser accesible para los clientes desde un punto de acceso conocido
-* Cuando la única instancia debe ser extensible mediante herencia, y los clientes deben poder usar una instancia extendida sin modificar su código
+* Debe haber exactamente una instancia de una clase, y debe ser accesible para los clientes desde un punto de acceso
+  conocido
+* Cuando la única instancia debe ser extensible mediante herencia, y los clientes deben poder usar una instancia
+  extendida sin modificar su código
 
 Algunos casos típicos para Singleton:
 
@@ -79,11 +81,12 @@ Algunos casos típicos para Singleton:
 * [java.awt.Desktop#getDesktop()](http://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#getDesktop--)
 * [java.lang.System#getSecurityManager()](http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#getSecurityManager--)
 
-
 ## Consecuencias
 
-* Viola el Principio de Responsabilidad Única (Single Responsibility Principle - SRP) al controlar su creación y ciclo de vida.
-* Fomenta el uso de una instancia compartida globalmente, lo que impide que un objeto y los recursos utilizados por este objeto se liberen.
+* Viola el Principio de Responsabilidad Única (Single Responsibility Principle - SRP) al controlar su creación y ciclo
+  de vida.
+* Fomenta el uso de una instancia compartida globalmente, lo que impide que un objeto y los recursos utilizados por este
+  objeto se liberen.
 * Crea un código fuertemente acoplado. Los clientes del Singleton se vuelven difíciles de probar.
 * Hace casi imposible hacer subclases de un Singleton.
 

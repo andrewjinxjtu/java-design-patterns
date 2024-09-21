@@ -36,27 +36,28 @@ import java.util.concurrent.Executors;
  */
 public class FanOutFanIn {
 
-  /**
-   * the main fanOutFanIn function or orchestrator function.
-   * @param requests List of numbers that need to be squared and summed up
-   * @param consumer Takes in the squared number from {@link SquareNumberRequest} and sums it up
-   * @return Aggregated sum of all squared numbers.
-   */
-  public static Long fanOutFanIn(
-      final List<SquareNumberRequest> requests, final Consumer consumer) {
+    /**
+     * the main fanOutFanIn function or orchestrator function.
+     *
+     * @param requests List of numbers that need to be squared and summed up
+     * @param consumer Takes in the squared number from {@link SquareNumberRequest} and sums it up
+     * @return Aggregated sum of all squared numbers.
+     */
+    public static Long fanOutFanIn(
+            final List<SquareNumberRequest> requests, final Consumer consumer) {
 
-    ExecutorService service = Executors.newFixedThreadPool(requests.size());
+        ExecutorService service = Executors.newFixedThreadPool(requests.size());
 
-    // fanning out
-    List<CompletableFuture<Void>> futures =
-        requests.stream()
-            .map(
-                request ->
-                    CompletableFuture.runAsync(() -> request.delayedSquaring(consumer), service))
-            .toList();
+        // fanning out
+        List<CompletableFuture<Void>> futures =
+                requests.stream()
+                        .map(
+                                request ->
+                                        CompletableFuture.runAsync(() -> request.delayedSquaring(consumer), service))
+                        .toList();
 
-    CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
+        CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
 
-    return consumer.getSumOfSquaredNumbers().get();
-  }
+        return consumer.getSumOfSquaredNumbers().get();
+    }
 }

@@ -33,4 +33,5 @@ import lombok.RequiredArgsConstructor;
  *
  * <p>Dto will not have any business logic in it.
  */
-public record CustomerDto(String id, String firstName, String lastName) {}
+public record CustomerDto(String id, String firstName, String lastName) {
+}

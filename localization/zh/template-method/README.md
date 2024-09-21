@@ -7,9 +7,11 @@ tag:
 ---
 
 ## 目的
+
 在一个操作中定义算法的骨架，将某些步骤推迟到子类。模板方法允许子类重新定义算法的某些步骤，而无需更改算法的结构。
 
 ## 解释
+
 真实世界例子
 
 > 偷东西的一般步骤是相同的。 首先，选择目标，然后以某种方式使其迷惑，最后，你偷走了该物品。然而这些步骤有很多实现方式。
@@ -106,6 +108,7 @@ public class HalflingThief {
   }
 }
 ```
+
 最后，我们展示半身人贼如何利用不同的偷窃方法。
 
 ```java
@@ -116,6 +119,7 @@ public class HalflingThief {
 ```
 
 ## 类图
+
 ![alt text](./etc/template_method_urm.png "Template Method")
 
 ## 适用性
@@ -123,7 +127,8 @@ public class HalflingThief {
 使用模板方法模式可以
 
 * 一次性实现一个算法中不变的部分并将其留给子类来实现可能变化的行为。
-* 子类之间的共同行为应分解并集中在一个共同类中，以避免代码重复。如Opdyke和Johnson所描述的，这是“重构概括”的一个很好的例子。你首先要确定现有代码中的差异，然后将差异拆分为新的操作。最后，将不同的代码替换为调用这些新操作之一的模板方法。
+*
+子类之间的共同行为应分解并集中在一个共同类中，以避免代码重复。如Opdyke和Johnson所描述的，这是“重构概括”的一个很好的例子。你首先要确定现有代码中的差异，然后将差异拆分为新的操作。最后，将不同的代码替换为调用这些新操作之一的模板方法。
 * 控制子类扩展。您可以定义一个模板方法，该方法在特定点调用“ 钩子”操作，从而仅允许在这些点进行扩展
 
 ## 教程
@@ -132,9 +137,10 @@ public class HalflingThief {
 
 ## Java例子
 
-* [javax.servlet.GenericServlet.init](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/GenericServlet.html#init--): 
-Method `GenericServlet.init(ServletConfig config)` calls the parameterless method `GenericServlet.init()` which is intended to be overridden in subclasses.
-Method `GenericServlet.init(ServletConfig config)` is the template method in this example.
+* [javax.servlet.GenericServlet.init](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/GenericServlet.html#init--):
+  Method `GenericServlet.init(ServletConfig config)` calls the parameterless method `GenericServlet.init()` which is
+  intended to be overridden in subclasses.
+  Method `GenericServlet.init(ServletConfig config)` is the template method in this example.
 
 ## 鸣谢
 

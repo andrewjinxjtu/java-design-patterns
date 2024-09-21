@@ -18,25 +18,41 @@ tag:
 
 ## Intent of Double Buffer Design Pattern
 
-The Double Buffer pattern in Java is designed to reduce rendering time and enhance performance in graphical or computational applications by utilizing two buffers. This pattern is crucial for smooth graphics rendering and is commonly used in game development and other real-time applications.
+The Double Buffer pattern in Java is designed to reduce rendering time and enhance performance in graphical or
+computational applications by utilizing two buffers. This pattern is crucial for smooth graphics rendering and is
+commonly used in game development and other real-time applications.
 
 ## Detailed Explanation of Double Buffer Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a busy restaurant kitchen where chefs are constantly preparing dishes, and waitstaff are constantly picking up ready dishes to serve to customers. To avoid confusion and delays, the restaurant uses a double buffer system. They have two counters: one for chefs to place newly prepared dishes and another for waitstaff to pick up the dishes. While the chefs are filling one counter with prepared dishes, the waitstaff are simultaneously clearing the other counter by picking up dishes to serve. Once the waitstaff have cleared all dishes from their counter, they switch to the counter where the chefs have placed the newly prepared dishes, and the chefs start filling the now-empty counter. This system ensures a smooth and continuous workflow without either party waiting idly, maximizing efficiency and minimizing downtime.
+> Imagine a busy restaurant kitchen where chefs are constantly preparing dishes, and waitstaff are constantly picking up
+> ready dishes to serve to customers. To avoid confusion and delays, the restaurant uses a double buffer system. They have
+> two counters: one for chefs to place newly prepared dishes and another for waitstaff to pick up the dishes. While the
+> chefs are filling one counter with prepared dishes, the waitstaff are simultaneously clearing the other counter by
+> picking up dishes to serve. Once the waitstaff have cleared all dishes from their counter, they switch to the counter
+> where the chefs have placed the newly prepared dishes, and the chefs start filling the now-empty counter. This system
+> ensures a smooth and continuous workflow without either party waiting idly, maximizing efficiency and minimizing
+> downtime.
 
 In plain words
 
-> It ensures a state that is being rendered correctly while that state is modifying incrementally. It is widely used in computer graphics.
+> It ensures a state that is being rendered correctly while that state is modifying incrementally. It is widely used in
+> computer graphics.
 
 Wikipedia says
 
-> In computer science, multiple buffering is the use of more than one buffer to hold a block of data, so that a "reader" will see a complete (though perhaps old) version of the data, rather than a partially updated version of the data being created by a "writer". It is very commonly used for computer display images.
+> In computer science, multiple buffering is the use of more than one buffer to hold a block of data, so that a "reader"
+> will see a complete (though perhaps old) version of the data, rather than a partially updated version of the data being
+> created by a "writer". It is very commonly used for computer display images.
 
 ## Programmatic Example of Double Buffer Pattern in Java
 
-A typical example, and one that every game engine must address, is rendering. When the game draws the world the users see, it does so one piece at a time - the mountains in the distance, the rolling hills, the trees, each in its turn. If the user watched the view draw incrementally like that, the illusion of a coherent world would be shattered. The scene must update smoothly and quickly, displaying a series of complete frames, each appearing instantly. Double buffering solves the problem.
+A typical example, and one that every game engine must address, is rendering. When the game draws the world the users
+see, it does so one piece at a time - the mountains in the distance, the rolling hills, the trees, each in its turn. If
+the user watched the view draw incrementally like that, the illusion of a coherent world would be shattered. The scene
+must update smoothly and quickly, displaying a series of complete frames, each appearing instantly. Double buffering
+solves the problem.
 
 `Buffer` interface that assures basic functionalities of a buffer.
 
@@ -214,8 +230,10 @@ The console output:
 
 ## When to Use the Double Buffer Pattern in Java
 
-* Real-time Applications: Ideal for video games, simulations, and GUI applications where frequent and smooth display updates are essential.
-* High Computational Tasks: Suitable for applications that require intensive data preparation, enabling parallel processing and display.
+* Real-time Applications: Ideal for video games, simulations, and GUI applications where frequent and smooth display
+  updates are essential.
+* High Computational Tasks: Suitable for applications that require intensive data preparation, enabling parallel
+  processing and display.
 * Minimizing Lag: Effective in reducing lag or stutter in data or graphics display.
 
 ## Real-World Applications of Double Buffer Pattern in Java
@@ -223,7 +241,8 @@ The console output:
 * Graphics Rendering Engines: Widely used in 2D and 3D rendering engines to ensure fluid animations and transitions.
 * GUI Frameworks: Enhances the responsiveness and smoothness of user interfaces.
 * Simulation and Modeling: Ensures real-time updates in simulations without interrupting ongoing processes.
-* Video Playback Software: Provides seamless video playback by preloading the next frame during the display of the current one.
+* Video Playback Software: Provides seamless video playback by preloading the next frame during the display of the
+  current one.
 
 ## Benefits and Trade-offs of Double Buffer Pattern
 
@@ -241,9 +260,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* Triple Buffering: An extension of the Double Buffer pattern, where three buffers are used to further optimize rendering and reduce latency.
-* [Producer-Consumer](https://java-design-patterns.com/patterns/producer-consumer/): The Double Buffer pattern can be seen as a variant of the Producer-Consumer pattern, with one buffer being "produced" while the other is "consumed".
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Often used in conjunction with the Strategy pattern to dynamically choose the buffering strategy based on runtime conditions.
+* Triple Buffering: An extension of the Double Buffer pattern, where three buffers are used to further optimize
+  rendering and reduce latency.
+* [Producer-Consumer](https://java-design-patterns.com/patterns/producer-consumer/): The Double Buffer pattern can be
+  seen as a variant of the Producer-Consumer pattern, with one buffer being "produced" while the other is "consumed".
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Often used in conjunction with the Strategy pattern
+  to dynamically choose the buffering strategy based on runtime conditions.
 
 ## References and Credits
 

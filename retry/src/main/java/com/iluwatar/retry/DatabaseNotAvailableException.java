@@ -28,18 +28,17 @@ import java.io.Serial;
 
 /**
  * Catastrophic error indicating that we have lost connection to our database.
- *
  */
 public final class DatabaseNotAvailableException extends BusinessException {
-  @Serial
-  private static final long serialVersionUID = -3750769625095997799L;
+    @Serial
+    private static final long serialVersionUID = -3750769625095997799L;
 
-  /**
-   * Ctor.
-   *
-   * @param message the error message
-   */
-  public DatabaseNotAvailableException(String message) {
-    super(message);
-  }
+    /**
+     * Ctor.
+     *
+     * @param message the error message
+     */
+    public DatabaseNotAvailableException(String message) {
+        super(message);
+    }
 }

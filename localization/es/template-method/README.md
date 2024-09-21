@@ -22,7 +22,8 @@ Ejemplo del mundo real
 
 En palabras sencillas
 
-> El patrón Template Method esboza los pasos generales en la clase padre y deja que las implementaciones hijas concretas definan los detalles.
+> El patrón Template Method esboza los pasos generales en la clase padre y deja que las implementaciones hijas concretas
+> definan los detalles.
 
 Wikipedia dice
 
@@ -134,9 +135,15 @@ Y por último, mostramos cómo el ladrón halfling utiliza los diferentes métod
 
 El patrón Template Method debería utilizarse
 
-* Para implementar las partes invariantes de un algoritmo una vez y dejar que las subclases implementen el comportamiento que puede variar.
-* Cuando el comportamiento común entre subclases debe ser factorizado y localizado en una clase común para evitar la duplicación de código. Este es un buen ejemplo de "refactorizar para generalizar", tal y como lo describen Opdyke y Johnson. Primero se identifican las diferencias en el código existente y luego se separan las diferencias en nuevas operaciones. Por último, se sustituye el código diferente por un método de plantilla que llama a una de estas nuevas operaciones
-* Para controlar las extensiones de las subclases. Puede definir un método de plantilla que llame a operaciones "gancho" en puntos específicos, permitiendo así extensiones sólo en esos puntos
+* Para implementar las partes invariantes de un algoritmo una vez y dejar que las subclases implementen el
+  comportamiento que puede variar.
+* Cuando el comportamiento común entre subclases debe ser factorizado y localizado en una clase común para evitar la
+  duplicación de código. Este es un buen ejemplo de "refactorizar para generalizar", tal y como lo describen Opdyke y
+  Johnson. Primero se identifican las diferencias en el código existente y luego se separan las diferencias en nuevas
+  operaciones. Por último, se sustituye el código diferente por un método de plantilla que llama a una de estas nuevas
+  operaciones
+* Para controlar las extensiones de las subclases. Puede definir un método de plantilla que llame a operaciones "gancho"
+  en puntos específicos, permitiendo así extensiones sólo en esos puntos
 
 ## Tutoriales
 
@@ -145,8 +152,9 @@ El patrón Template Method debería utilizarse
 ## Usos conocidos
 
 * [javax.servlet.GenericServlet.init](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/GenericServlet.html#init--):
-El método `GenericServlet.init(ServletConfig config)` llama al método sin parámetros `GenericServlet.init()` que está pensado para ser sobreescrito en subclases.
-El método `GenericServlet.init(ServletConfig config)` es el método plantilla en este ejemplo.
+  El método `GenericServlet.init(ServletConfig config)` llama al método sin parámetros `GenericServlet.init()` que está
+  pensado para ser sobreescrito en subclases.
+  El método `GenericServlet.init(ServletConfig config)` es el método plantilla en este ejemplo.
 
 ## Créditos
 

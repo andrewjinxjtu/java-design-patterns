@@ -18,13 +18,19 @@ tag:
 
 ## Intent of Command Design Pattern
 
-The Command design pattern is a behavioral pattern used in Java programming. It encapsulates a request as an object, allowing for parameterization of clients with queues, requests, and operations. This pattern also supports undoable operations, enhancing flexibility in managing and executing commands.
+The Command design pattern is a behavioral pattern used in Java programming. It encapsulates a request as an object,
+allowing for parameterization of clients with queues, requests, and operations. This pattern also supports undoable
+operations, enhancing flexibility in managing and executing commands.
 
 ## Detailed Explanation of Command Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a smart home system where you can control devices such as lights, thermostats, and security cameras through a central application. Each command to operate these devices is encapsulated as an object, enabling the system to queue, execute sequentially, and undo commands if necessary. This approach decouples control logic from device implementation, allowing easy addition of new devices or features without altering the core application. This flexibility and functionality illustrate the practical application of the Command design pattern in Java programming.
+> Imagine a smart home system where you can control devices such as lights, thermostats, and security cameras through a
+> central application. Each command to operate these devices is encapsulated as an object, enabling the system to queue,
+> execute sequentially, and undo commands if necessary. This approach decouples control logic from device implementation,
+> allowing easy addition of new devices or features without altering the core application. This flexibility and
+> functionality illustrate the practical application of the Command design pattern in Java programming.
 
 In plain words
 
@@ -32,13 +38,18 @@ In plain words
 
 Wikipedia says
 
-> In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time.
+> In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to
+> encapsulate all information needed to perform an action or trigger an event at a later time.
 
 ## Programmatic Example of Command Pattern in Java
 
-In the Command pattern, objects are used to encapsulate all information needed to perform an action or trigger an event at a later time. This pattern is particularly useful for implementing undo functionality in applications.
+In the Command pattern, objects are used to encapsulate all information needed to perform an action or trigger an event
+at a later time. This pattern is particularly useful for implementing undo functionality in applications.
 
-In our example, a `Wizard` casts spells on a `Goblin`. Each spell is a command object that can be executed and undone, demonstrating the core principles of the Command pattern in Java. The spells are executed on the goblin one by one. The first spell shrinks the goblin and the second makes him invisible. Then the wizard reverses the spells one by one. Each spell here is a command object that can be undone.
+In our example, a `Wizard` casts spells on a `Goblin`. Each spell is a command object that can be executed and undone,
+demonstrating the core principles of the Command pattern in Java. The spells are executed on the goblin one by one. The
+first spell shrinks the goblin and the second makes him invisible. Then the wizard reverses the spells one by one. Each
+spell here is a command object that can be undone.
 
 Let's start from the `Wizard` class.
 
@@ -168,15 +179,23 @@ Here's the program output:
 
 ## When to Use the Command Pattern in Java
 
-The Command design pattern is applicable when you need to parameterize objects with actions, support undo operations, or structure a system around high-level operations built on primitive ones. It is commonly used in GUI buttons, database transactions, and macro recording.
+The Command design pattern is applicable when you need to parameterize objects with actions, support undo operations, or
+structure a system around high-level operations built on primitive ones. It is commonly used in GUI buttons, database
+transactions, and macro recording.
 
 Use the Command pattern when you want to:
 
-* Parameterize objects with actions to perform, offering an object-oriented alternative to callbacks found in procedural languages. Commands can be registered and executed later.
-* Specify, queue, and execute requests at different times, allowing commands to exist independently of the original request and even be transferred across processes.
-* Support undo functionality, where the Command’s execute operation stores state and includes an un-execute operation to reverse previous actions. This allows for unlimited undo and redo capabilities by maintaining a history list.
-* Log changes to reapply them after a system crash. By adding load and store operations to the Command interface, you can maintain a persistent log of changes and recover by reloading and re-executing commands from this log.
-* Structure a system around high-level operations built on primitive operations, which is common in transaction-based systems. The Command pattern models transactions by providing a common interface for invoking and extending operations.
+* Parameterize objects with actions to perform, offering an object-oriented alternative to callbacks found in procedural
+  languages. Commands can be registered and executed later.
+* Specify, queue, and execute requests at different times, allowing commands to exist independently of the original
+  request and even be transferred across processes.
+* Support undo functionality, where the Command’s execute operation stores state and includes an un-execute operation to
+  reverse previous actions. This allows for unlimited undo and redo capabilities by maintaining a history list.
+* Log changes to reapply them after a system crash. By adding load and store operations to the Command interface, you
+  can maintain a persistent log of changes and recover by reloading and re-executing commands from this log.
+* Structure a system around high-level operations built on primitive operations, which is common in transaction-based
+  systems. The Command pattern models transactions by providing a common interface for invoking and extending
+  operations.
 * Keep a history of requests.
 * Implement callback functionality.
 * Implement undo functionality.
@@ -206,9 +225,11 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Composite](https://java-design-patterns.com/patterns/composite/): Commands can be composed using the Composite pattern to create macro commands.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Commands can be composed using the Composite
+  pattern to create macro commands.
 * [Memento](https://java-design-patterns.com/patterns/memento/): Can be used for implementing undo mechanisms.
-* [Observer](https://java-design-patterns.com/patterns/observer/): The pattern can be observed for changes that trigger commands.
+* [Observer](https://java-design-patterns.com/patterns/observer/): The pattern can be observed for changes that trigger
+  commands.
 
 ## References and Credits
 

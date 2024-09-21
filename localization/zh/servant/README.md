@@ -7,6 +7,7 @@ tag:
 ---
 
 ## 含义
+
 仆人类被用于向一组类提供一些行为，区别于在每个类定义行为-或者当我们无法排除
 公共父类中的这种行为，这些行为在仆人类被定义一次
 
@@ -22,7 +23,8 @@ tag:
 
 维基百科
 
-> 在软件工程中，仆人模式定义了一个对象，用于向一组类提供某些功能，而无需在每个类中定义该功能。 仆人是一个类，其实例（甚至只是类）提供了处理所需服务的方法，而仆人为其（或与谁）做某事的对象被视为参数。
+> 在软件工程中，仆人模式定义了一个对象，用于向一组类提供某些功能，而无需在每个类中定义该功能。
+> 仆人是一个类，其实例（甚至只是类）提供了处理所需服务的方法，而仆人为其（或与谁）做某事的对象被视为参数。
 
 **编程示例**
 
@@ -80,7 +82,9 @@ interface Royalty {
     boolean getMood();
 }
 ```
+
 国王类正在实现皇家接口
+
 ```java
 public class King implements Royalty {
 
@@ -119,7 +123,9 @@ public class King implements Royalty {
     }
 }
 ```
+
 女王类正在实现皇家接口
+
 ```java
 public class Queen implements Royalty {
 
@@ -216,11 +222,12 @@ Jenkins will live another day
 Poor Travis. His days are numbered
 ```
 
-
 ## 类图
+
 ![alt text](./etc/servant-pattern.png "Servant")
 
 ## 适用场景
+
 在什么时候使用仆人模式
 
 * 当我们希望某些对象执行一个公共操作并且不想将该操作定义为每个类中的方法时

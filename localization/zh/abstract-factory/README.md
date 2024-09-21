@@ -127,7 +127,9 @@ This is the Elven king!
 This is the Elven Army!
 ```
 
-现在，我们可以为不同的王国工厂设计工厂。 在此示例中，我们创建了FactoryMaker，负责返回ElfKingdomFactory或OrcKingdomFactory的实例。 客户可以使用FactoryMaker来创建所需的具体工厂，该工厂随后将生产不同的具体对象（军队，国王，城堡）。 在此示例中，我们还使用了一个枚举来参数化客户要求的王国工厂类型。
+现在，我们可以为不同的王国工厂设计工厂。 在此示例中，我们创建了FactoryMaker，负责返回ElfKingdomFactory或OrcKingdomFactory的实例。
+客户可以使用FactoryMaker来创建所需的具体工厂，该工厂随后将生产不同的具体对象（军队，国王，城堡）。
+在此示例中，我们还使用了一个枚举来参数化客户要求的王国工厂类型。
 
 ```java
 public static class FactoryMaker {
@@ -164,7 +166,6 @@ public static class FactoryMaker {
 
 ![alt text](./etc/abstract-factory.urm.png "Abstract Factory class diagram")
 
-
 ## 适用性
 
 在以下情况下使用抽象工厂模式
@@ -194,7 +195,7 @@ public static class FactoryMaker {
 
 ## 教程
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## 已知使用
 

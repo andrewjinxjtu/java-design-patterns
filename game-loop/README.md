@@ -18,25 +18,39 @@ tag:
 
 ## Intent of Game Loop Design Pattern
 
-The Game Loop design pattern is essential for creating smooth and interactive gaming experiences by facilitating continuous game execution. Each loop cycle processes input, updates the game state, and renders the game state to the screen, ensuring consistent performance across all hardware setups.
+The Game Loop design pattern is essential for creating smooth and interactive gaming experiences by facilitating
+continuous game execution. Each loop cycle processes input, updates the game state, and renders the game state to the
+screen, ensuring consistent performance across all hardware setups.
 
 ## Detailed Explanation of Game Loop Pattern with Real-World Examples
 
 Real-world example
 
-> A practical analogy of the Game Loop can be seen in an amusement park ride, like a roller coaster. Similar to how the ride operates in a loop, updating its state and ensuring smooth operation, the Game Loop continuously processes inputs and updates the game state for a seamless gaming experience. The roller coaster operates in a continuous loop, where the state of the ride (the position and speed of the coaster) is continuously updated while the ride is running. The control system of the roller coaster ensures that the cars move smoothly along the track, adjusting speeds, and handling the ride's safety systems in real-time. Just like the game loop, this control system repeatedly processes inputs (such as the current speed and position), updates the state, and triggers outputs (like adjusting the brakes or accelerating the cars) to maintain the desired operation throughout the duration of the ride.
+> A practical analogy of the Game Loop can be seen in an amusement park ride, like a roller coaster. Similar to how the
+> ride operates in a loop, updating its state and ensuring smooth operation, the Game Loop continuously processes inputs
+> and updates the game state for a seamless gaming experience. The roller coaster operates in a continuous loop, where the
+> state of the ride (the position and speed of the coaster) is continuously updated while the ride is running. The control
+> system of the roller coaster ensures that the cars move smoothly along the track, adjusting speeds, and handling the
+> ride's safety systems in real-time. Just like the game loop, this control system repeatedly processes inputs (such as
+> the current speed and position), updates the state, and triggers outputs (like adjusting the brakes or accelerating the
+> cars) to maintain the desired operation throughout the duration of the ride.
 
 In plain words
 
-> Game Loop pattern ensures that game time progresses in equal speed in all different hardware setups. 
+> Game Loop pattern ensures that game time progresses in equal speed in all different hardware setups.
 
 Wikipedia says
 
-> The central component of any game, from a programming standpoint, is the game loop. The game loop allows the game to run smoothly regardless of a user's input, or lack thereof.
+> The central component of any game, from a programming standpoint, is the game loop. The game loop allows the game to
+> run smoothly regardless of a user's input, or lack thereof.
 
 ## Programmatic Example of Game Loop Pattern in Java
 
-In our Java example, we illustrate a simple game loop controlling a bullet's movement, updating its position, ensuring smooth rendering, and responding to user inputs. The Game Loop is the main process driving all game rendering threads, present in all modern games. It handles input processing, internal status updates, rendering, AI, and other processes. Starting with a simple `Bullet` class, we demonstrate the movement of bullets in our game, focusing on their 1-dimensional position for demonstration purposes.
+In our Java example, we illustrate a simple game loop controlling a bullet's movement, updating its position, ensuring
+smooth rendering, and responding to user inputs. The Game Loop is the main process driving all game rendering threads,
+present in all modern games. It handles input processing, internal status updates, rendering, AI, and other processes.
+Starting with a simple `Bullet` class, we demonstrate the movement of bullets in our game, focusing on their
+1-dimensional position for demonstration purposes.
 
 ```java
 public class Bullet {
@@ -79,7 +93,8 @@ public class GameController {
 }
 ```
 
-Now we introduce the game loop. Actually, in this demo we have 3 different game loops. Let's see the base class `GameLoop` first.
+Now we introduce the game loop. Actually, in this demo we have 3 different game loops. Let's see the base class
+`GameLoop` first.
 
 ```java
 public enum GameStatus {
@@ -305,7 +320,8 @@ Stop variable-step game loop.
 
 ## When to Use the Game Loop Pattern in Java
 
-The Game Loop pattern is perfect for real-time simulations and gaming where continuous state updates and smooth frame rates are critical.
+The Game Loop pattern is perfect for real-time simulations and gaming where continuous state updates and smooth frame
+rates are critical.
 
 ## Real-World Applications of Game Loop Pattern in Java
 
@@ -327,8 +343,11 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [State](https://java-design-patterns.com/patterns/state/): Often used within a game loop to manage different states of the game (e.g., menu, playing, paused). The relationship lies in managing the state-specific behavior and transitions smoothly within the game loop.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Useful in a game loop for event handling, where game entities can subscribe to and react to events (e.g., collision, scoring).
+* [State](https://java-design-patterns.com/patterns/state/): Often used within a game loop to manage different states of
+  the game (e.g., menu, playing, paused). The relationship lies in managing the state-specific behavior and transitions
+  smoothly within the game loop.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Useful in a game loop for event handling, where game
+  entities can subscribe to and react to events (e.g., collision, scoring).
 
 ## References and Credits
 

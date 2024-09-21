@@ -125,7 +125,8 @@ Aquí está la salida en consola de la aplicación.
 Usa el patrón _Balking_ cuando
 
 * Un objeto debe ejecutar un código determinado sólo cuando se encuentra en un estado concreto.
-* Los objetos están en un estado que es propenso a bloquearse temporalmente, pero durante una cantidad de tiempo indeterminada.
+* Los objetos están en un estado que es propenso a bloquearse temporalmente, pero durante una cantidad de tiempo
+  indeterminada.
 
 ## Patrones relacionados
 

@@ -40,29 +40,28 @@ import org.junit.jupiter.api.Test;
 
 /**
  * MenuStoreTest
- *
  */
 class MenuStoreTest {
 
-  @Test
-  void testOnAction() {
-    final var menuStore = new MenuStore();
+    @Test
+    void testOnAction() {
+        final var menuStore = new MenuStore();
 
-    final var view = mock(View.class);
-    menuStore.registerView(view);
+        final var view = mock(View.class);
+        menuStore.registerView(view);
 
-    verifyNoMoreInteractions(view);
+        verifyNoMoreInteractions(view);
 
-    // Menu should not react on content action ...
-    menuStore.onAction(new ContentAction(Content.COMPANY));
-    verifyNoMoreInteractions(view);
+        // Menu should not react on content action ...
+        menuStore.onAction(new ContentAction(Content.COMPANY));
+        verifyNoMoreInteractions(view);
 
-    // ... but it should react on a menu action
-    menuStore.onAction(new MenuAction(MenuItem.PRODUCTS));
-    verify(view, times(1)).storeChanged(eq(menuStore));
-    verifyNoMoreInteractions(view);
-    assertEquals(MenuItem.PRODUCTS, menuStore.getSelected());
+        // ... but it should react on a menu action
+        menuStore.onAction(new MenuAction(MenuItem.PRODUCTS));
+        verify(view, times(1)).storeChanged(eq(menuStore));
+        verifyNoMoreInteractions(view);
+        assertEquals(MenuItem.PRODUCTS, menuStore.getSelected());
 
-  }
+    }
 
 }

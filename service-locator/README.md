@@ -17,27 +17,41 @@ tag:
 
 ## Intent of Service Locator Design Pattern
 
-The Java Service Locator pattern provides a method to decouple Java clients and services by using a central service registry.
+The Java Service Locator pattern provides a method to decouple Java clients and services by using a central service
+registry.
 
 ## Detailed Explanation of Service Locator Pattern with Real-World Examples
 
 Real-world example
 
-> In a large hotel, the concierge desk acts as a Service Locator. When guests need a service, such as booking a restaurant reservation, finding transportation, or arranging a city tour, they do not directly seek out each service themselves. Instead, they go to the concierge desk, which locates and arranges the required services. This way, the guests are decoupled from the service providers and can rely on a central point to handle their requests, ensuring convenience and efficiency.
+> In a large hotel, the concierge desk acts as a Service Locator. When guests need a service, such as booking a
+> restaurant reservation, finding transportation, or arranging a city tour, they do not directly seek out each service
+> themselves. Instead, they go to the concierge desk, which locates and arranges the required services. This way, the
+> guests are decoupled from the service providers and can rely on a central point to handle their requests, ensuring
+> convenience and efficiency.
 
 In plain words
 
-> The Service Locator pattern centralizes the logic for locating services, thereby decoupling clients from the concrete implementations of these services.
+> The Service Locator pattern centralizes the logic for locating services, thereby decoupling clients from the concrete
+> implementations of these services.
 
 Wikipedia says
 
-> The service locator pattern is a design pattern used in software development to encapsulate the processes involved in obtaining a service with a strong abstraction layer. This pattern uses a central registry known as the "service locator", which on request returns the information necessary to perform a certain task. Proponents of the pattern say the approach simplifies component-based applications where all dependencies are cleanly listed at the beginning of the whole application design, consequently making traditional dependency injection a more complex way of connecting objects. Critics of the pattern argue that it is an antipattern which obscures dependencies and makes software harder to test.
+> The service locator pattern is a design pattern used in software development to encapsulate the processes involved in
+> obtaining a service with a strong abstraction layer. This pattern uses a central registry known as the "service
+> locator", which on request returns the information necessary to perform a certain task. Proponents of the pattern say
+> the approach simplifies component-based applications where all dependencies are cleanly listed at the beginning of the
+> whole application design, consequently making traditional dependency injection a more complex way of connecting objects.
+> Critics of the pattern argue that it is an antipattern which obscures dependencies and makes software harder to test.
 
 ## Programmatic Example of Service Locator Pattern in Java
 
-The Service Locator design pattern is used to abstract the processes involved in obtaining a service. It uses a central registry, the "service locator", which returns the necessary information to perform a task upon request. This Java design pattern is particularly useful in enterprise Java applications where services need centralized management.
+The Service Locator design pattern is used to abstract the processes involved in obtaining a service. It uses a central
+registry, the "service locator", which returns the necessary information to perform a task upon request. This Java
+design pattern is particularly useful in enterprise Java applications where services need centralized management.
 
-In this example, we have a `Service` interface and a `ServiceLocator` class. The `Service` interface defines the methods that all services must implement. The `ServiceLocator` class is responsible for retrieving and caching these services.
+In this example, we have a `Service` interface and a `ServiceLocator` class. The `Service` interface defines the methods
+that all services must implement. The `ServiceLocator` class is responsible for retrieving and caching these services.
 
 ```java
 public interface Service {
@@ -49,7 +63,8 @@ public interface Service {
 }
 ```
 
-The `Service` interface defines three methods: `getName()`, `getId()`, and `execute()`. Any class that implements this interface must provide an implementation for these methods.
+The `Service` interface defines three methods: `getName()`, `getId()`, and `execute()`. Any class that implements this
+interface must provide an implementation for these methods.
 
 ```java
 public class App {
@@ -78,7 +93,9 @@ public class App {
 }
 ```
 
-In the `App` class, we use the `ServiceLocator` to get services by their names and then execute them. The `ServiceLocator` handles the details of looking up and caching the services. This way, the `App` class is decoupled from the concrete implementations of the services.
+In the `App` class, we use the `ServiceLocator` to get services by their names and then execute them. The
+`ServiceLocator` handles the details of looking up and caching the services. This way, the `App` class is decoupled from
+the concrete implementations of the services.
 
 Here is the output from running the example:
 
@@ -95,8 +112,10 @@ Here is the output from running the example:
 
 ## When to Use the Service Locator Pattern in Java
 
-* Use when you want to decouple service creation from client classes to reduce dependencies and improve code maintainability.
-* Applicable in large-scale enterprise applications where multiple services are used and dependencies need to be managed centrally.
+* Use when you want to decouple service creation from client classes to reduce dependencies and improve code
+  maintainability.
+* Applicable in large-scale enterprise applications where multiple services are used and dependencies need to be managed
+  centrally.
 * Suitable when service instances need to be reused or shared among multiple clients.
 
 ## Real-World Applications of Service Locator Pattern in Java
@@ -121,9 +140,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Factory](https://java-design-patterns.com/patterns/factory/): Both patterns deal with object creation but Service Locator focuses on locating services while Factory focuses on creating them.
-* [Dependency Injection](https://java-design-patterns.com/patterns/dependency-injection/): An alternative to Service Locator that injects dependencies directly into clients rather than having clients request them from a locator.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Service Locator often uses Singleton pattern to ensure a single instance of the locator.
+* [Factory](https://java-design-patterns.com/patterns/factory/): Both patterns deal with object creation but Service
+  Locator focuses on locating services while Factory focuses on creating them.
+* [Dependency Injection](https://java-design-patterns.com/patterns/dependency-injection/): An alternative to Service
+  Locator that injects dependencies directly into clients rather than having clients request them from a locator.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Service Locator often uses Singleton pattern to
+  ensure a single instance of the locator.
 
 ## References and Credits
 

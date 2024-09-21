@@ -36,12 +36,12 @@ import lombok.Getter;
  */
 
 public enum RemoteServiceStatus {
-  FAILURE(-1);
+    FAILURE(-1);
 
-  @Getter
-  private final long remoteServiceStatusValue;
+    @Getter
+    private final long remoteServiceStatusValue;
 
-  RemoteServiceStatus(long remoteServiceStatusValue) {
-    this.remoteServiceStatusValue = remoteServiceStatusValue;
-  }
+    RemoteServiceStatus(long remoteServiceStatusValue) {
+        this.remoteServiceStatusValue = remoteServiceStatusValue;
+    }
 }

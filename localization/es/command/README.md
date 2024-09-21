@@ -13,13 +13,16 @@ tag:
 
 ## Propósito
 
-El patrón de diseño Command encapsula una petición como un objeto, permitiendo así la parametrización de clientes con colas, peticiones y operaciones. También permite soportar operaciones deshechas.
+El patrón de diseño Command encapsula una petición como un objeto, permitiendo así la parametrización de clientes con
+colas, peticiones y operaciones. También permite soportar operaciones deshechas.
 
 ## Explicación
 
 Ejemplo real
 
-> Hay un mago lanzando hechizos sobre un goblin. Los hechizos se ejecutan sobre el duende uno a uno. El primer hechizo encoge al duende y el segundo lo hace invisible. A continuación, el mago invierte los hechizos uno a uno. Cada hechizo es un objeto de comando que se puede deshacer.
+> Hay un mago lanzando hechizos sobre un goblin. Los hechizos se ejecutan sobre el duende uno a uno. El primer hechizo
+> encoge al duende y el segundo lo hace invisible. A continuación, el mago invierte los hechizos uno a uno. Cada hechizo
+> es un objeto de comando que se puede deshacer.
 
 En palabras simples:
 
@@ -27,7 +30,9 @@ En palabras simples:
 
 Wikipedia dice:
 
-> En programación orientada a objetos, el patrón de comandos es un patrón de diseño de comportamiento en el que un objeto se utiliza para encapsular toda la información necesaria para realizar una acción o desencadenar un evento en un momento posterior.
+> En programación orientada a objetos, el patrón de comandos es un patrón de diseño de comportamiento en el que un
+> objeto se utiliza para encapsular toda la información necesaria para realizar una acción o desencadenar un evento en un
+> momento posterior.
 
 **Ejemplo programático**
 
@@ -196,11 +201,27 @@ Goblin,[size=normal][visibility=visible]
 
 Utilice el patrón Comando (Command) para:
 
-* Parametrizar objetos mediante una acción a realizar. Puedes expresar dicha parametrización en un lenguaje procedimental con una función callback, es decir, una función que se registra en algún lugar para ser llamada en un momento posterior. Los comandos son un sustituto orientado a objetos de las retrollamadas.
-* Especifican, ponen en cola y ejecutan peticiones en diferentes momentos. Un objeto Command puede tener una vida independiente de la petición original. Si el receptor de una petición puede ser representado de una manera independiente del espacio de direcciones, entonces puedes transferir un objeto comando para la petición a un proceso diferente y cumplir la petición allí.
-* Soporta deshacer. La operación de ejecución del comando puede almacenar el estado para revertir sus efectos en el propio comando. La interfaz del Comando debe tener una operación añadida de des-ejecutar que revierta los efectos de una llamada previa a ejecutar. Los comandos ejecutados se almacenan en una lista de historial. La funcionalidad de deshacer y rehacer a nivel ilimitado se consigue recorriendo esta lista hacia atrás y hacia delante llamando a un-ejecutar y ejecutar, respectivamente.
-* Soporta el registro de cambios para que puedan volver a aplicarse en caso de caída del sistema. Al aumentar la interfaz de comandos con operaciones de carga y almacenamiento, puede mantener un registro persistente de los cambios. La recuperación de un fallo implica volver a cargar los comandos registrados desde el disco y volver a ejecutarlos con la operación de ejecución.
-* Estructurar un sistema en torno a operaciones de alto nivel construidas sobre operaciones primitivas. Esta estructura es común en los sistemas de información que admiten transacciones. Una transacción encapsula un conjunto de cambios de datos. El patrón Command ofrece una forma de modelar las transacciones. Los comandos tienen una interfaz común que permite invocar todas las transacciones de la misma manera. El patrón también facilita la ampliación del sistema con nuevas transacciones.
+* Parametrizar objetos mediante una acción a realizar. Puedes expresar dicha parametrización en un lenguaje
+  procedimental con una función callback, es decir, una función que se registra en algún lugar para ser llamada en un
+  momento posterior. Los comandos son un sustituto orientado a objetos de las retrollamadas.
+* Especifican, ponen en cola y ejecutan peticiones en diferentes momentos. Un objeto Command puede tener una vida
+  independiente de la petición original. Si el receptor de una petición puede ser representado de una manera
+  independiente del espacio de direcciones, entonces puedes transferir un objeto comando para la petición a un proceso
+  diferente y cumplir la petición allí.
+* Soporta deshacer. La operación de ejecución del comando puede almacenar el estado para revertir sus efectos en el
+  propio comando. La interfaz del Comando debe tener una operación añadida de des-ejecutar que revierta los efectos de
+  una llamada previa a ejecutar. Los comandos ejecutados se almacenan en una lista de historial. La funcionalidad de
+  deshacer y rehacer a nivel ilimitado se consigue recorriendo esta lista hacia atrás y hacia delante llamando a
+  un-ejecutar y ejecutar, respectivamente.
+* Soporta el registro de cambios para que puedan volver a aplicarse en caso de caída del sistema. Al aumentar la
+  interfaz de comandos con operaciones de carga y almacenamiento, puede mantener un registro persistente de los cambios.
+  La recuperación de un fallo implica volver a cargar los comandos registrados desde el disco y volver a ejecutarlos con
+  la operación de ejecución.
+* Estructurar un sistema en torno a operaciones de alto nivel construidas sobre operaciones primitivas. Esta estructura
+  es común en los sistemas de información que admiten transacciones. Una transacción encapsula un conjunto de cambios de
+  datos. El patrón Command ofrece una forma de modelar las transacciones. Los comandos tienen una interfaz común que
+  permite invocar todas las transacciones de la misma manera. El patrón también facilita la ampliación del sistema con
+  nuevas transacciones.
 * Mantener un historial de peticiones.
 * Implementar la funcionalidad de callback.
 * Implementar la funcionalidad de deshacer.
@@ -230,9 +251,11 @@ Desventajas:
 
 ## Patrones Relacionados
 
-* [Composite](https://java-design-patterns.com/patterns/composite/): Los comandos pueden ser compuestos usando el patrón Composite para crear macro comandos.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Los comandos pueden ser compuestos usando el patrón
+  Composite para crear macro comandos.
 * [Memento](https://java-design-patterns.com/patterns/memento/): Puede usarse para implementar mecanismos de deshacer.
-* [Observador](https://java-design-patterns.com/patterns/observer/): El patrón puede ser observado para cambios que activan comandos.
+* [Observador](https://java-design-patterns.com/patterns/observer/): El patrón puede ser observado para cambios que
+  activan comandos.
 
 ## Credits
 

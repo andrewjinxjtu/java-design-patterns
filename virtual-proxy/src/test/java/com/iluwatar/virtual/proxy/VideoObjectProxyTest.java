@@ -35,19 +35,19 @@ import org.junit.jupiter.api.Test;
  * Tests for VideoObjectProxy.
  */
 public class VideoObjectProxyTest {
-  @Test
-  void shouldBeInstanceOfExpensiveObject() {
-    MatcherAssert.assertThat(new VideoObjectProxy(), instanceOf(ExpensiveObject.class));
-  }
+    @Test
+    void shouldBeInstanceOfExpensiveObject() {
+        MatcherAssert.assertThat(new VideoObjectProxy(), instanceOf(ExpensiveObject.class));
+    }
 
-  @Test
-  void constructorDoesNotThrowException() {
-    assertDoesNotThrow(VideoObjectProxy::new, "Constructor should not throw any exception");
-  }
+    @Test
+    void constructorDoesNotThrowException() {
+        assertDoesNotThrow(VideoObjectProxy::new, "Constructor should not throw any exception");
+    }
 
-  @Test
-  void processDoesNotThrowException() {
-    assertDoesNotThrow(() -> new VideoObjectProxy().process(), "Process method should not throw any exception");
-  }
+    @Test
+    void processDoesNotThrowException() {
+        assertDoesNotThrow(() -> new VideoObjectProxy().process(), "Process method should not throw any exception");
+    }
 
 }

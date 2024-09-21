@@ -21,12 +21,14 @@ Divide las UnitTests en tres pasos claros y diferenciados:
 
 ## Explicación
 
-Este patrón tiene varios beneficios significativos. Crea una clara separación entre la configuración, operaciones y resultados de un test. Esta estructura hace que el código sea más fácil de leer y comprender. Si
+Este patrón tiene varios beneficios significativos. Crea una clara separación entre la configuración, operaciones y
+resultados de un test. Esta estructura hace que el código sea más fácil de leer y comprender. Si
 colocas los pasos en orden y formateas su código para separarlos, puedes escanear un test y
 comprender rápidamente lo que hace.
 
 También impone un cierto grado de disciplina cuando escribes tus UnitTests. Tienes que visualizar
-claramente los tres pasos que tu test realizará. Esto hace que los tests sean más intuitivos de escribir a la vez que tienes presente un esquema.
+claramente los tres pasos que tu test realizará. Esto hace que los tests sean más intuitivos de escribir a la vez que
+tienes presente un esquema.
 
 Ejemplo cotidiano
 
@@ -73,7 +75,8 @@ public class Cash {
 }
 ```
 
-Luego escribimos nuestras UnitTests en función del patrón Arrange/Act/Assert. Note claramente la separación de los pasos para cada UnitTest.
+Luego escribimos nuestras UnitTests en función del patrón Arrange/Act/Assert. Note claramente la separación de los pasos
+para cada UnitTest.
 
 ```java
 class CashAAATest {

@@ -35,6 +35,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DataTransferObject {
 
-  private final Notification notification = new Notification();
+    private final Notification notification = new Notification();
 
 }

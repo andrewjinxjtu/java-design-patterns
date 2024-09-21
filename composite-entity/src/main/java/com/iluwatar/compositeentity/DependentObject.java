@@ -36,6 +36,6 @@ import lombok.Setter;
 @Getter
 public abstract class DependentObject<T> {
 
-  T data;
+    T data;
 
 }

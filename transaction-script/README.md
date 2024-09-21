@@ -18,13 +18,19 @@ tag:
 
 ## Intent of Transaction Script Design Pattern
 
-The Transaction Script pattern in Java organizes business logic by procedures where each procedure handles a single request from the presentation.
+The Transaction Script pattern in Java organizes business logic by procedures where each procedure handles a single
+request from the presentation.
 
 ## Detailed Explanation of Transaction Script Pattern with Real-World Examples
 
 Real-world example
 
-> An analogous real-world example of the Transaction Script design pattern can be seen in a bank teller's daily operations. Imagine a bank where each transaction, such as depositing money, withdrawing cash, or transferring funds between accounts, is handled by a specific script-like procedure. Each procedure takes in the necessary details (e.g., account numbers, amounts) and performs the transaction in a straightforward, step-by-step manner. This ensures that each transaction is processed correctly and independently, without the need for a complex system of rules and interactions. This simple, organized approach allows bank tellers to efficiently manage a variety of transactions throughout the day. 
+> An analogous real-world example of the Transaction Script design pattern can be seen in a bank teller's daily
+> operations. Imagine a bank where each transaction, such as depositing money, withdrawing cash, or transferring funds
+> between accounts, is handled by a specific script-like procedure. Each procedure takes in the necessary details (e.g.,
+> account numbers, amounts) and performs the transaction in a straightforward, step-by-step manner. This ensures that each
+> transaction is processed correctly and independently, without the need for a complex system of rules and interactions.
+> This simple, organized approach allows bank tellers to efficiently manage a variety of transactions throughout the day.
 
 In plain words
 
@@ -32,7 +38,11 @@ In plain words
 
 Wikipedia says
 
-> The Transaction Script design pattern is a straightforward way to organize business logic in applications, particularly suitable for scenarios where each request from the presentation layer can be handled by a single procedure. This pattern is often used in simple applications or in systems where rapid development and ease of understanding are crucial. Each transaction script is responsible for a particular task, such as processing an order or calculating a result, and typically interacts directly with the database.
+> The Transaction Script design pattern is a straightforward way to organize business logic in applications,
+> particularly suitable for scenarios where each request from the presentation layer can be handled by a single procedure.
+> This pattern is often used in simple applications or in systems where rapid development and ease of understanding are
+> crucial. Each transaction script is responsible for a particular task, such as processing an order or calculating a
+> result, and typically interacts directly with the database.
 
 ## Programmatic Example of Transaction Script Pattern in Java
 
@@ -90,11 +100,14 @@ public class Hotel {
 }
 ```
 
-The `Hotel` class has two methods, one for booking and cancelling a room respectively. Each one of them handles a single transaction in the system, making `Hotel` implement the Transaction Script pattern.
+The `Hotel` class has two methods, one for booking and cancelling a room respectively. Each one of them handles a single
+transaction in the system, making `Hotel` implement the Transaction Script pattern.
 
-The `bookRoom` method consolidates all the needed steps like checking if the room is already booked or not, if not booked then books the room and updates the database by using the DAO. 
+The `bookRoom` method consolidates all the needed steps like checking if the room is already booked or not, if not
+booked then books the room and updates the database by using the DAO.
 
-The `cancelRoom` method consolidates steps like checking if the room is booked or not, if booked then calculates the refund amount and updates the database using the DAO.
+The `cancelRoom` method consolidates steps like checking if the room is booked or not, if booked then calculates the
+refund amount and updates the database using the DAO.
 
 Here is the `App` class with `main` method for running the example.
 
@@ -183,21 +196,28 @@ public class App {
 }
 ```
 
-The `App.java` file has the `main` entry point of the application. It demonstrates the use of the Transaction Script pattern in a hotel management context. Here's a step-by-step breakdown of what happens:
+The `App.java` file has the `main` entry point of the application. It demonstrates the use of the Transaction Script
+pattern in a hotel management context. Here's a step-by-step breakdown of what happens:
 
-1. A new H2 database data source is created using the `createDataSource()` method. This data source is used to interact with the in-memory H2 database.
+1. A new H2 database data source is created using the `createDataSource()` method. This data source is used to interact
+   with the in-memory H2 database.
 
-2. The existing schema (if any) in the database is deleted using the `deleteSchema(dataSource)` method. This is done to ensure a clean state before the application starts.
+2. The existing schema (if any) in the database is deleted using the `deleteSchema(dataSource)` method. This is done to
+   ensure a clean state before the application starts.
 
-3. A new schema is created in the database using the `createSchema(dataSource)` method. The schema includes the necessary tables and relationships for the application.
+3. A new schema is created in the database using the `createSchema(dataSource)` method. The schema includes the
+   necessary tables and relationships for the application.
 
-4. An instance of `HotelDaoImpl` is created, which serves as the Data Access Object (DAO). This object is responsible for handling the database operations related to the hotel rooms.
+4. An instance of `HotelDaoImpl` is created, which serves as the Data Access Object (DAO). This object is responsible
+   for handling the database operations related to the hotel rooms.
 
-5. Sample rooms are added to the hotel using the `addRooms(dao)` method. This method generates a list of sample rooms and adds them to the hotel via the DAO.
+5. Sample rooms are added to the hotel using the `addRooms(dao)` method. This method generates a list of sample rooms
+   and adds them to the hotel via the DAO.
 
 6. The booking status of all rooms is printed using the `getRoomStatus(dao)` method.
 
-7. An instance of `Hotel` is created with the DAO as a parameter. This object represents the hotel and provides methods to book and cancel room bookings.
+7. An instance of `Hotel` is created with the DAO as a parameter. This object represents the hotel and provides methods
+   to book and cancel room bookings.
 
 8. Several rooms are booked using the `hotel.bookRoom(roomNumber)` method.
 
@@ -205,7 +225,8 @@ The `App.java` file has the `main` entry point of the application. It demonstrat
 
 10. The booking status of all rooms is printed again to reflect the changes.
 
-11. Finally, the schema in the database is deleted again using the `deleteSchema(dataSource)` method, cleaning up the state of the database.
+11. Finally, the schema in the database is deleted again using the `deleteSchema(dataSource)` method, cleaning up the
+    state of the database.
 
 Console output:
 
@@ -235,7 +256,8 @@ This pattern is suitable for simple business logic and can be easily understood 
 ## When to Use the Transaction Script Pattern in Java
 
 * Use when business logic is simple and can be easily organized into individual procedures.
-* Suitable for applications with simple transaction requirements or where the logic doesn't justify complex architectures like Domain Model.
+* Suitable for applications with simple transaction requirements or where the logic doesn't justify complex
+  architectures like Domain Model.
 
 ## Transaction Script Pattern Java Tutorials
 
@@ -252,7 +274,8 @@ This pattern is suitable for simple business logic and can be easily understood 
 
 Benefits:
 
-* Leveraging the Transaction Script pattern enhances code simplicity and accelerates development cycles, especially in startup environments.
+* Leveraging the Transaction Script pattern enhances code simplicity and accelerates development cycles, especially in
+  startup environments.
 * Simple and straightforward to implement.
 * Easy to understand and maintain for straightforward business logic.
 * Fast development cycle for small applications.
@@ -265,9 +288,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Domain Model](https://java-design-patterns.com/patterns/domain-model/): Unlike Transaction Script, Domain Model organizes business logic around the data model and is better suited for complex business rules.
-* [Service Layer](https://java-design-patterns.com/patterns/service-layer/): Often used together with Transaction Script to define an application's boundary and encapsulate the business logic.
-* [Table Module](https://java-design-patterns.com/patterns/table-module/): Similar to Transaction Script but organizes logic using a single class per table rather than a procedure per request.
+* [Domain Model](https://java-design-patterns.com/patterns/domain-model/): Unlike Transaction Script, Domain Model
+  organizes business logic around the data model and is better suited for complex business rules.
+* [Service Layer](https://java-design-patterns.com/patterns/service-layer/): Often used together with Transaction Script
+  to define an application's boundary and encapsulate the business logic.
+* [Table Module](https://java-design-patterns.com/patterns/table-module/): Similar to Transaction Script but organizes
+  logic using a single class per table rather than a procedure per request.
 
 ## References and Credits
 

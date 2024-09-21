@@ -9,14 +9,17 @@ tag:
 
 ## Propósito
 
-Proporcionar una interfaz de acceso a un conjunto de sistemas o funcionalidades externas. Gateway proporciona una vista simple y uniforme de
+Proporcionar una interfaz de acceso a un conjunto de sistemas o funcionalidades externas. Gateway proporciona una vista
+simple y uniforme de
 recursos externos a los internos de una aplicación.
 
 ## Explicación
 
 Un ejemplo real
 
-> Gateway actúa como una verdadera puerta de entrada de una ciudad determinada. Las personas dentro de la ciudad se llaman sistema interno, y las diferentes ciudades externas se llaman servicios externos. La puerta de enlace está aquí para proporcionar acceso al sistema interno a diferentes servicios externos.
+> Gateway actúa como una verdadera puerta de entrada de una ciudad determinada. Las personas dentro de la ciudad se
+> llaman sistema interno, y las diferentes ciudades externas se llaman servicios externos. La puerta de enlace está aquí
+> para proporcionar acceso al sistema interno a diferentes servicios externos.
 
 En pocas palabras
 
@@ -24,7 +27,8 @@ En pocas palabras
 
 Wikipedia dice
 
-> Un servidor que actúa como front-end de la API, recibe solicitudes de la API, aplica políticas de estrangulamiento y seguridad, pasa las solicitudes al servicio back-end y, a continuación, devuelve la respuesta al solicitante.
+> Un servidor que actúa como front-end de la API, recibe solicitudes de la API, aplica políticas de estrangulamiento y
+> seguridad, pasa las solicitudes al servicio back-end y, a continuación, devuelve la respuesta al solicitante.
 
 **Ejemplo programático**
 

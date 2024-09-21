@@ -33,15 +33,15 @@ import org.junit.jupiter.api.Test;
  * Test methods in HalfSource
  */
 class HalfSourceTest {
-  private static final HalfSource source = new HalfSource();
+    private static final HalfSource source = new HalfSource();
 
-  @Test
-  void testAccumulateSum() {
-    assertEquals(0, source.accumulateSum(-1, 0, 1));
-  }
+    @Test
+    void testAccumulateSum() {
+        assertEquals(0, source.accumulateSum(-1, 0, 1));
+    }
 
-  @Test
-  void testIfNonZero() {
-    assertFalse(source.ifNonZero(-1, 0, 1));
-  }
+    @Test
+    void testIfNonZero() {
+        assertFalse(source.ifNonZero(-1, 0, 1));
+    }
 }

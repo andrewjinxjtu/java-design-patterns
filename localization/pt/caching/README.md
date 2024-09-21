@@ -7,31 +7,45 @@ tag:
   - Cloud distributed
 ---
 
-
 ## Propósito
 
-O padrão de armazenamento em cache evita a custosa reaquisição de recursos por não liberá-los ou limpá-los imediatamente após o uso. Os recursos mantêm sua identidade, são mantidos em algum tipo de armazenamento de acesso rápido e são reutilizados para evitar a necessidade de buscá-los novamente.
+O padrão de armazenamento em cache evita a custosa reaquisição de recursos por não liberá-los ou limpá-los imediatamente
+após o uso. Os recursos mantêm sua identidade, são mantidos em algum tipo de armazenamento de acesso rápido e são
+reutilizados para evitar a necessidade de buscá-los novamente.
+
 ## Explicação
 
 Exemplo de uso em mundo real:
 
-> Uma equipe está trabalhando em um site que oferece novos lares para gatos abandonados. As pessoas podem postar seus gatos no site depois de se registrarem, mas todos os novos posts precisam da aprovação de um dos moderadores do site. As contas dos moderadores do site tem um campo específico sinalizando isso e os dados são salvos em um banco de dados MongoDB. 
-> Checar esse campo específico todas vez que um post é visualizado custa caro e é uma boa ideia usar armazenamento em cache nesse caso. 
+> Uma equipe está trabalhando em um site que oferece novos lares para gatos abandonados. As pessoas podem postar seus
+> gatos no site depois de se registrarem, mas todos os novos posts precisam da aprovação de um dos moderadores do site. As
+> contas dos moderadores do site tem um campo específico sinalizando isso e os dados são salvos em um banco de dados
+> MongoDB.
+> Checar esse campo específico todas vez que um post é visualizado custa caro e é uma boa ideia usar armazenamento em
+> cache nesse caso.
 
 De modo simples:
 
-> O padrão de armazenamento em cache guarda dados que são requisitados frequentemente em um armazenamento de rápido acesso para melhorar a performance.
+> O padrão de armazenamento em cache guarda dados que são requisitados frequentemente em um armazenamento de rápido
+> acesso para melhorar a performance.
 
 De acordo com a Wikipedia:
 
->Em computação, cache é um componente de hardware ou software que guarda dados que quando futuramente solicitados, podem ser servidos de maneira mais rapida. 
->Os dados armazenados em cache podem ser o resultado de algum cálculo anterior ou a cópia de outros dados que anteriormente estava armazenados em outro lugar. 
->Um "cache hit" (acerto de cache) acontece quando o dado requisitado é encontrado no cache, enquanto um "cache miss" (falta de cache) acontece quando os dado não é encontrado no cache.
->Os "cache hits" são lidos diretamente do cache, o que é mais rápido do que recalcular ou buscar os dados em outro lugar. Portante quando mais requisições forem atendidas pelo cache, mais rápido o sistema performa.
+> Em computação, cache é um componente de hardware ou software que guarda dados que quando futuramente solicitados,
+> podem ser servidos de maneira mais rapida.
+> Os dados armazenados em cache podem ser o resultado de algum cálculo anterior ou a cópia de outros dados que
+> anteriormente estava armazenados em outro lugar.
+> Um "cache hit" (acerto de cache) acontece quando o dado requisitado é encontrado no cache, enquanto um "cache miss" (
+> falta de cache) acontece quando os dado não é encontrado no cache.
+> Os "cache hits" são lidos diretamente do cache, o que é mais rápido do que recalcular ou buscar os dados em outro
+> lugar. Portante quando mais requisições forem atendidas pelo cache, mais rápido o sistema performa.
 
 **Exemplo programático**
 
-Vamos primeiro analisar a camada de dados da nossa aplicação. As classes que nos interessa são `UserAccount` que é um objeto Java simples que contém detalhes da conta do usuário e a interface `DbManager` que lida com a leitura e escrita desses objetos no banco de dados. 
+Vamos primeiro analisar a camada de dados da nossa aplicação. As classes que nos interessa são `UserAccount` que é um
+objeto Java simples que contém detalhes da conta do usuário e a interface `DbManager` que lida com a leitura e escrita
+desses objetos no banco de dados.
+
 ```java
 @Data
 @AllArgsConstructor
@@ -54,23 +68,30 @@ public interface DbManager {
   UserAccount upsertDb(UserAccount userAccount);
 }
 ```
+
 No exemplos, vamos demonstrar várias políticas de armazenamento de cache diferentes:
 
 * Write-through: Escreve os dados no cache e no DB em uma única transação.
 * Write-around: Escreve os dados diretamente no DB em vez de escrever no cache.
-  Write-behind: Escreve os dados no cache inicialmente enquanto os dados são escritos no banco de dados apenas quando o cache está cheio.
-  Cache-aside: Delega a responsabilidade de manter os dados sincronizados em ambas as fontes de dados (cache e DB) para a própria aplicação.
-* Read-through: Essa estratégia também está incluída nas estratégias mencionadas acima e retorna dados do cache (cache hit) para o chamador, se existir, caso contrário (cache miss), consulta o banco de dados e armazena os dados no cache para uso futuro.
-  
-The cache implementation in `LruCache` is a hash table accompanied by a doubly 
-linked-list. The linked-list helps in capturing and maintaining the LRU data in the cache. When 
-data is queried (from the cache), added (to the cache), or updated, the data is moved to the front 
-of the list to depict itself as the most-recently-used data. The LRU data is always at the end of 
+  Write-behind: Escreve os dados no cache inicialmente enquanto os dados são escritos no banco de dados apenas quando o
+  cache está cheio.
+  Cache-aside: Delega a responsabilidade de manter os dados sincronizados em ambas as fontes de dados (cache e DB) para
+  a própria aplicação.
+* Read-through: Essa estratégia também está incluída nas estratégias mencionadas acima e retorna dados do cache (cache
+  hit) para o chamador, se existir, caso contrário (cache miss), consulta o banco de dados e armazena os dados no cache
+  para uso futuro.
+
+The cache implementation in `LruCache` is a hash table accompanied by a doubly
+linked-list. The linked-list helps in capturing and maintaining the LRU data in the cache. When
+data is queried (from the cache), added (to the cache), or updated, the data is moved to the front
+of the list to depict itself as the most-recently-used data. The LRU data is always at the end of
 the list.
 
-A implementação de cache em `LruCache` é uma tabela hash acompanhada por uma lista duplamente encadeada - ou lista duplamente ligada (Doubly linked list). 
+A implementação de cache em `LruCache` é uma tabela hash acompanhada por uma lista duplamente encadeada - ou lista
+duplamente ligada (Doubly linked list).
 Essa lista ligada ajuda a capturar e manter os dados LRU (Least Recently Used - Menos Recentemente Usados) no cache.
-Quando os dados são consultados (do cache), adicionados (ao cache) ou atualizados, os dados são movidos para o início da lista como os dados mais recentemente usados. Os dados LRU estão sempre no final da lista.
+Quando os dados são consultados (do cache), adicionados (ao cache) ou atualizados, os dados são movidos para o início da
+lista como os dados mais recentemente usados. Os dados LRU estão sempre no final da lista.
 
 ```java
 @Slf4j
@@ -201,9 +222,11 @@ public class CacheStore {
 }
 ```
 
-A classe `AppManager` ajuda em fazer a ponte de comunicação entre a classe principal e o backend da aplicação. A conexão com o DB é inicializada por meio dessa classe. A estratégia ou política de cache escolhida também é inicializada aqui.
+A classe `AppManager` ajuda em fazer a ponte de comunicação entre a classe principal e o backend da aplicação. A conexão
+com o DB é inicializada por meio dessa classe. A estratégia ou política de cache escolhida também é inicializada aqui.
 Antes do cache poder ser usado, é preciso definir o tamanho do cache.
-Dependendo da estratégio de armazenamento de cache escolhida, a classe `AppManager` chamará a função (método) apropriada na classe `CacheStore`.
+Dependendo da estratégio de armazenamento de cache escolhida, a classe `AppManager` chamará a função (método) apropriada
+na classe `CacheStore`.
 
 ```java
 @Slf4j

@@ -35,8 +35,10 @@ import ch.qos.logback.core.AppenderBase;
 import dto.CakeInfo;
 import dto.CakeLayerInfo;
 import dto.CakeToppingInfo;
+
 import java.util.LinkedList;
 import java.util.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,63 +53,63 @@ import view.CakeViewImpl;
  */
 class CakeViewImplTest {
 
-  private InMemoryAppender appender;
+    private InMemoryAppender appender;
 
-  @BeforeEach
-  void setUp() {
-    appender = new InMemoryAppender(CakeViewImpl.class);
-  }
-
-  @AfterEach
-  void tearDown() {
-    appender.stop();
-  }
-
-  /**
-   * Verify if the cake view renders the expected result.
-   */
-  @Test
-  void testRender() {
-
-    final var layers = List.of(new CakeLayerInfo("layer1", 1000), new CakeLayerInfo("layer2", 2000),
-        new CakeLayerInfo("layer3", 3000));
-
-    final var cake = new CakeInfo(new CakeToppingInfo("topping", 1000), layers);
-    final var cakes = List.of(cake);
-
-    final var bakingService = mock(CakeBakingService.class);
-    when(bakingService.getAllCakes()).thenReturn(cakes);
-
-    final var cakeView = new CakeViewImpl(bakingService);
-
-    assertEquals(0, appender.getLogSize());
-
-    cakeView.render();
-    assertEquals(cake.toString(), appender.getLastMessage());
-
-  }
-
-  private static class InMemoryAppender extends AppenderBase<ILoggingEvent> {
-
-    private final List<ILoggingEvent> log = new LinkedList<>();
-
-    public InMemoryAppender(Class clazz) {
-      ((Logger) LoggerFactory.getLogger(clazz)).addAppender(this);
-      start();
+    @BeforeEach
+    void setUp() {
+        appender = new InMemoryAppender(CakeViewImpl.class);
     }
 
-    @Override
-    protected void append(ILoggingEvent eventObject) {
-      log.add(eventObject);
+    @AfterEach
+    void tearDown() {
+        appender.stop();
     }
 
-    public String getLastMessage() {
-      return log.get(log.size() - 1).getFormattedMessage();
+    /**
+     * Verify if the cake view renders the expected result.
+     */
+    @Test
+    void testRender() {
+
+        final var layers = List.of(new CakeLayerInfo("layer1", 1000), new CakeLayerInfo("layer2", 2000),
+                new CakeLayerInfo("layer3", 3000));
+
+        final var cake = new CakeInfo(new CakeToppingInfo("topping", 1000), layers);
+        final var cakes = List.of(cake);
+
+        final var bakingService = mock(CakeBakingService.class);
+        when(bakingService.getAllCakes()).thenReturn(cakes);
+
+        final var cakeView = new CakeViewImpl(bakingService);
+
+        assertEquals(0, appender.getLogSize());
+
+        cakeView.render();
+        assertEquals(cake.toString(), appender.getLastMessage());
+
     }
 
-    public int getLogSize() {
-      return log.size();
+    private static class InMemoryAppender extends AppenderBase<ILoggingEvent> {
+
+        private final List<ILoggingEvent> log = new LinkedList<>();
+
+        public InMemoryAppender(Class clazz) {
+            ((Logger) LoggerFactory.getLogger(clazz)).addAppender(this);
+            start();
+        }
+
+        @Override
+        protected void append(ILoggingEvent eventObject) {
+            log.add(eventObject);
+        }
+
+        public String getLastMessage() {
+            return log.get(log.size() - 1).getFormattedMessage();
+        }
+
+        public int getLogSize() {
+            return log.size();
+        }
     }
-  }
 
 }

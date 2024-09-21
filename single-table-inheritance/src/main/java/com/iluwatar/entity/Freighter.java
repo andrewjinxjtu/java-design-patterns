@@ -44,22 +44,22 @@ import lombok.NoArgsConstructor;
 @DiscriminatorValue(value = "FREIGHTER")
 public class Freighter extends TransportVehicle {
 
-  private double flightLength;
+    private double flightLength;
 
-  public Freighter(String manufacturer, String model, int loadCapacity, double flightLength) {
-    super(manufacturer, model, loadCapacity);
-    this.flightLength = flightLength;
-  }
+    public Freighter(String manufacturer, String model, int loadCapacity, double flightLength) {
+        super(manufacturer, model, loadCapacity);
+        this.flightLength = flightLength;
+    }
 
-  // Overridden the toString method to specify the Vehicle object
-  @Override
-  public String toString() {
-    return "Freighter{ "
-            + super.toString()
-            + " ,"
-            + "flightLength="
-            + flightLength
-            + '}';
-  }
+    // Overridden the toString method to specify the Vehicle object
+    @Override
+    public String toString() {
+        return "Freighter{ "
+                + super.toString()
+                + " ,"
+                + "flightLength="
+                + flightLength
+                + '}';
+    }
 
 }

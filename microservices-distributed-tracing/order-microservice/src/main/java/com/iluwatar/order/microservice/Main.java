@@ -65,16 +65,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * <p>This command sends a POST request to create an order, which will trigger interactions with the
  * payment and product microservices, generating tracing logs that can be viewed in Zipkin.
- *
  */
 @SpringBootApplication
 public class Main {
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
-    SpringApplication.run(Main.class, args);
-  }
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
 }

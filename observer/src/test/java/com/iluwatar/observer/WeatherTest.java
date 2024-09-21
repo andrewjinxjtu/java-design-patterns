@@ -37,63 +37,62 @@ import org.junit.jupiter.api.Test;
 
 /**
  * WeatherTest
- *
  */
 class WeatherTest {
 
-  private InMemoryAppender appender;
+    private InMemoryAppender appender;
 
-  @BeforeEach
-  void setUp() {
-    appender = new InMemoryAppender(Weather.class);
-  }
-
-  @AfterEach
-  void tearDown() {
-    appender.stop();
-  }
-
-  /**
-   * Add a {@link WeatherObserver}, verify if it gets notified of a weather change, remove the
-   * observer again and verify that there are no more notifications.
-   */
-  @Test
-  void testAddRemoveObserver() {
-    final var observer = mock(WeatherObserver.class);
-
-    final var weather = new Weather();
-    weather.addObserver(observer);
-    verifyNoMoreInteractions(observer);
-
-    weather.timePasses();
-    assertEquals("The weather changed to rainy.", appender.getLastMessage());
-    verify(observer).update(WeatherType.RAINY);
-
-    weather.removeObserver(observer);
-    weather.timePasses();
-    assertEquals("The weather changed to windy.", appender.getLastMessage());
-
-    verifyNoMoreInteractions(observer);
-    assertEquals(2, appender.getLogSize());
-  }
-
-  /**
-   * Verify if the weather passes in the order of the {@link WeatherType}s
-   */
-  @Test
-  void testTimePasses() {
-    final var observer = mock(WeatherObserver.class);
-    final var weather = new Weather();
-    weather.addObserver(observer);
-
-    final var inOrder = inOrder(observer);
-    final var weatherTypes = WeatherType.values();
-    for (var i = 1; i < 20; i++) {
-      weather.timePasses();
-      inOrder.verify(observer).update(weatherTypes[i % weatherTypes.length]);
+    @BeforeEach
+    void setUp() {
+        appender = new InMemoryAppender(Weather.class);
     }
 
-    verifyNoMoreInteractions(observer);
-  }
+    @AfterEach
+    void tearDown() {
+        appender.stop();
+    }
+
+    /**
+     * Add a {@link WeatherObserver}, verify if it gets notified of a weather change, remove the
+     * observer again and verify that there are no more notifications.
+     */
+    @Test
+    void testAddRemoveObserver() {
+        final var observer = mock(WeatherObserver.class);
+
+        final var weather = new Weather();
+        weather.addObserver(observer);
+        verifyNoMoreInteractions(observer);
+
+        weather.timePasses();
+        assertEquals("The weather changed to rainy.", appender.getLastMessage());
+        verify(observer).update(WeatherType.RAINY);
+
+        weather.removeObserver(observer);
+        weather.timePasses();
+        assertEquals("The weather changed to windy.", appender.getLastMessage());
+
+        verifyNoMoreInteractions(observer);
+        assertEquals(2, appender.getLogSize());
+    }
+
+    /**
+     * Verify if the weather passes in the order of the {@link WeatherType}s
+     */
+    @Test
+    void testTimePasses() {
+        final var observer = mock(WeatherObserver.class);
+        final var weather = new Weather();
+        weather.addObserver(observer);
+
+        final var inOrder = inOrder(observer);
+        final var weatherTypes = WeatherType.values();
+        for (var i = 1; i < 20; i++) {
+            weather.timePasses();
+            inOrder.verify(observer).update(weatherTypes[i % weatherTypes.length]);
+        }
+
+        verifyNoMoreInteractions(observer);
+    }
 
 }

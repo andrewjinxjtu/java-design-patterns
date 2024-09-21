@@ -30,37 +30,36 @@ import lombok.extern.slf4j.Slf4j;
  * This is a single service implementation of a sample service. This is the actual service that will
  * process the request. The reference for this service is to be looked upon in the JNDI server that
  * can be set in the web.xml deployment descriptor
- *
  */
 @Slf4j
 public class ServiceImpl implements Service {
 
-  private final String serviceName;
-  private final int id;
+    private final String serviceName;
+    private final int id;
 
-  /**
-   * Constructor.
-   */
-  public ServiceImpl(String serviceName) {
-    // set the service name
-    this.serviceName = serviceName;
+    /**
+     * Constructor.
+     */
+    public ServiceImpl(String serviceName) {
+        // set the service name
+        this.serviceName = serviceName;
 
-    // Generate a random id to this service object
-    this.id = (int) Math.floor(Math.random() * 1000) + 1;
-  }
+        // Generate a random id to this service object
+        this.id = (int) Math.floor(Math.random() * 1000) + 1;
+    }
 
-  @Override
-  public String getName() {
-    return serviceName;
-  }
+    @Override
+    public String getName() {
+        return serviceName;
+    }
 
-  @Override
-  public int getId() {
-    return id;
-  }
+    @Override
+    public int getId() {
+        return id;
+    }
 
-  @Override
-  public void execute() {
-    LOGGER.info("Service {} is now executing with id {}", getName(), getId());
-  }
+    @Override
+    public void execute() {
+        LOGGER.info("Service {} is now executing with id {}", getName(), getId());
+    }
 }

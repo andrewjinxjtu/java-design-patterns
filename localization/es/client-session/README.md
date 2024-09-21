@@ -13,21 +13,38 @@ tags:
 
 ## Propósito
 
-El patrón de diseño Client Session tiene como objetivo mantener el estado y los datos de un usuario a través de múltiples peticiones dentro de una aplicación web, asegurando una experiencia de usuario continua y personalizada.
+El patrón de diseño Client Session tiene como objetivo mantener el estado y los datos de un usuario a través de
+múltiples peticiones dentro de una aplicación web, asegurando una experiencia de usuario continua y personalizada.
 
 ## Explicación
 
 Ejemplo real
 
-> Quieres crear una aplicación de gestión de datos que permita a los usuarios enviar peticiones al servidor para modificar y realizar cambios en los datos almacenados en sus dispositivos. Estas peticiones son pequeñas y los datos son individuales para cada usuario, negando la necesidad de una implementación de base de datos a gran escala. Utilizando el patrón de sesión de cliente, se pueden gestionar múltiples peticiones simultáneas, equilibrando la carga de clientes entre diferentes servidores con facilidad debido a que los servidores permanecen sin estado. También se elimina la necesidad de almacenar identificadores de sesión en el lado del servidor debido a que los clientes proporcionan toda la información que un servidor necesita para realizar su proceso.
+> Quieres crear una aplicación de gestión de datos que permita a los usuarios enviar peticiones al servidor para
+> modificar y realizar cambios en los datos almacenados en sus dispositivos. Estas peticiones son pequeñas y los datos son
+> individuales para cada usuario, negando la necesidad de una implementación de base de datos a gran escala. Utilizando el
+> patrón de sesión de cliente, se pueden gestionar múltiples peticiones simultáneas, equilibrando la carga de clientes
+> entre diferentes servidores con facilidad debido a que los servidores permanecen sin estado. También se elimina la
+> necesidad de almacenar identificadores de sesión en el lado del servidor debido a que los clientes proporcionan toda la
+> información que un servidor necesita para realizar su proceso.
 
 En pocas palabras
 
-> En lugar de almacenar información sobre el cliente actual y la información a la que se está accediendo en el servidor, se mantiene sólo en el lado del cliente. El cliente tiene que enviar datos de sesión con cada solicitud al servidor y tiene que enviar un estado actualizado de vuelta al cliente, que se almacena en la máquina del cliente. El servidor no tiene que almacenar la información del cliente. ([ref](https://dzone.com/articles/practical-php-patterns/practical-php-patterns-client))
+> En lugar de almacenar información sobre el cliente actual y la información a la que se está accediendo en el servidor,
+> se mantiene sólo en el lado del cliente. El cliente tiene que enviar datos de sesión con cada solicitud al servidor y
+> tiene que enviar un estado actualizado de vuelta al cliente, que se almacena en la máquina del cliente. El servidor no
+> tiene que almacenar la información del
+> cliente. ([ref](https://dzone.com/articles/practical-php-patterns/practical-php-patterns-client))
 
 **Ejemplo programático**
 
-Aquí está el código de ejemplo para describir el patrón cliente-sesión. En el siguiente código estamos creando primero una instancia del Servidor. Esta instancia del servidor se utilizará entonces para obtener objetos Session para dos clientes. Como puedes ver en el siguiente código, el objeto Session puede ser utilizado para almacenar cualquier información relevante que sea requerida por el servidor para procesar la petición del cliente. Estos objetos Session serán pasados con cada Request al servidor. La solicitud tendrá el objeto Session que almacena los detalles relevantes del cliente junto con los datos requeridos para procesar la solicitud. La información de sesión en cada solicitud ayuda al servidor a identificar al cliente y procesar la solicitud en consecuencia.
+Aquí está el código de ejemplo para describir el patrón cliente-sesión. En el siguiente código estamos creando primero
+una instancia del Servidor. Esta instancia del servidor se utilizará entonces para obtener objetos Session para dos
+clientes. Como puedes ver en el siguiente código, el objeto Session puede ser utilizado para almacenar cualquier
+información relevante que sea requerida por el servidor para procesar la petición del cliente. Estos objetos Session
+serán pasados con cada Request al servidor. La solicitud tendrá el objeto Session que almacena los detalles relevantes
+del cliente junto con los datos requeridos para procesar la solicitud. La información de sesión en cada solicitud ayuda
+al servidor a identificar al cliente y procesar la solicitud en consecuencia.
 
 ```java
 public class App {
@@ -79,8 +96,10 @@ public class Request {
 Utilice el patrón de estado del cliente cuando:
 
 * Aplicaciones web que requieran autenticación y autorización del usuario.
-* Aplicaciones que necesiten realizar un seguimiento de las actividades y preferencias del usuario a lo largo de múltiples peticiones o visitas.
-* Sistemas donde los recursos del servidor necesitan ser optimizados descargando la gestión del estado al lado del cliente.
+* Aplicaciones que necesiten realizar un seguimiento de las actividades y preferencias del usuario a lo largo de
+  múltiples peticiones o visitas.
+* Sistemas donde los recursos del servidor necesitan ser optimizados descargando la gestión del estado al lado del
+  cliente.
 
 ## Usos conocidos
 
@@ -93,20 +112,28 @@ Utilice el patrón de estado del cliente cuando:
 Beneficios:
 
 * Mejora del rendimiento del servidor al reducir la necesidad de almacenar el estado del usuario en el servidor.
-* Mejora de la experiencia del usuario a través de contenidos personalizados y navegación fluida a través de las diferentes partes de la aplicación.
-* Flexibilidad en la gestión de sesiones a través de varios mecanismos de almacenamiento del lado del cliente (por ejemplo, cookies, Web Storage API).
+* Mejora de la experiencia del usuario a través de contenidos personalizados y navegación fluida a través de las
+  diferentes partes de la aplicación.
+* Flexibilidad en la gestión de sesiones a través de varios mecanismos de almacenamiento del lado del cliente (por
+  ejemplo, cookies, Web Storage API).
 
 Desventajas:
 
-* Riesgos potenciales de seguridad si se almacena información sensible en las sesiones del cliente sin el cifrado y la validación adecuados.
-* Dependencia de las capacidades y ajustes del cliente, como las políticas de cookies, que pueden variar según el navegador y la configuración del usuario.
-* Mayor complejidad en la lógica de gestión de sesiones, especialmente en la gestión de la caducidad, renovación y sincronización de sesiones en varios dispositivos o pestañas.
+* Riesgos potenciales de seguridad si se almacena información sensible en las sesiones del cliente sin el cifrado y la
+  validación adecuados.
+* Dependencia de las capacidades y ajustes del cliente, como las políticas de cookies, que pueden variar según el
+  navegador y la configuración del usuario.
+* Mayor complejidad en la lógica de gestión de sesiones, especialmente en la gestión de la caducidad, renovación y
+  sincronización de sesiones en varios dispositivos o pestañas.
 
 ## Patrones relacionados
 
-* Sesión Servidor: A menudo se utiliza junto con el patrón Client Session para proporcionar un equilibrio entre la eficiencia del lado del cliente y el control del lado del servidor.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Asegurar una única instancia de la sesión de un usuario en toda la aplicación.
-* [Estado](https://java-design-patterns.com/patterns/state/): Gestionar las transiciones de estado en una sesión, como los estados autenticado, invitado o caducado.
+* Sesión Servidor: A menudo se utiliza junto con el patrón Client Session para proporcionar un equilibrio entre la
+  eficiencia del lado del cliente y el control del lado del servidor.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Asegurar una única instancia de la sesión de un
+  usuario en toda la aplicación.
+* [Estado](https://java-design-patterns.com/patterns/state/): Gestionar las transiciones de estado en una sesión, como
+  los estados autenticado, invitado o caducado.
 
 ## Créditos
 

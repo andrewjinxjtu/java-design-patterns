@@ -20,13 +20,19 @@ tag:
 
 ## Intent of Microservices Aggregator Design Pattern
 
-The Microservices Aggregator pattern helps aggregate responses from multiple microservices into a single unified response, optimizing client-server interactions in scalable systems.
+The Microservices Aggregator pattern helps aggregate responses from multiple microservices into a single unified
+response, optimizing client-server interactions in scalable systems.
 
 ## Detailed Explanation of Microservices Aggregator Pattern with Real-World Examples
 
 Real-world example
 
-> In a travel booking platform, an Aggregator Microservice consolidates data from flights, hotels, and car rentals microservices, providing a seamless user experience and enhancing scalability. Instead of the user making separate requests to each service, the platform employs an Aggregator Microservice. This microservice calls each of these services, collects their responses, and then consolidates the information into a single, unified response that is sent back to the user. This simplifies the user experience by providing all necessary travel details in one place and reduces the number of direct interactions the user needs to have with the underlying services.
+> In a travel booking platform, an Aggregator Microservice consolidates data from flights, hotels, and car rentals
+> microservices, providing a seamless user experience and enhancing scalability. Instead of the user making separate
+> requests to each service, the platform employs an Aggregator Microservice. This microservice calls each of these
+> services, collects their responses, and then consolidates the information into a single, unified response that is sent
+> back to the user. This simplifies the user experience by providing all necessary travel details in one place and reduces
+> the number of direct interactions the user needs to have with the underlying services.
 
 In plain words
 
@@ -38,7 +44,8 @@ Stack Overflow says
 
 ## Programmatic Example of Microservices Aggregator Pattern in Java
 
-Our web marketplace utilizes an Aggregator microservice to fetch combined product and inventory information from separate microservices, ensuring efficient data processing and improved system performance.
+Our web marketplace utilizes an Aggregator microservice to fetch combined product and inventory information from
+separate microservices, ensuring efficient data processing and improved system performance.
 
 Let's start from the data model. Here's our `Product`.
 
@@ -50,7 +57,8 @@ public class Product {
 }
 ```
 
-Next we can introduce our `Aggregator` microservice. It contains clients `ProductInformationClient` and `ProductInventoryClient` for calling respective microservices.
+Next we can introduce our `Aggregator` microservice. It contains clients `ProductInformationClient` and
+`ProductInventoryClient` for calling respective microservices.
 
 ```java
 
@@ -81,7 +89,8 @@ public class Aggregator {
 }
 ```
 
-Here's the essence of information microservice implementation. Inventory microservice is similar, it just returns inventory counts.
+Here's the essence of information microservice implementation. Inventory microservice is similar, it just returns
+inventory counts.
 
 ```java
 
@@ -106,27 +115,39 @@ curl http://localhost:50004/product
 
 ## When to Use the Microservices Aggregator Pattern in Java
 
-The Microservices Aggregator pattern is ideal for scenarios requiring composite responses from multiple microservices, such as in e-commerce and dashboard applications where aggregated data enhances user experience and system efficiency.
+The Microservices Aggregator pattern is ideal for scenarios requiring composite responses from multiple microservices,
+such as in e-commerce and dashboard applications where aggregated data enhances user experience and system efficiency.
 
 ## Benefits and Trade-offs of Microservices Aggregator Pattern
 
 Benefits:
 
-* Simplified Client: Clients interact with just one service rather than managing calls to multiple microservices, which simplifies client-side logic.
-* Reduced Latency: By aggregating responses, the number of network calls is reduced, which can improve the application's overall latency.
-* Decoupling: Clients are decoupled from the individual microservices, allowing for more flexibility in changing the microservices landscape without impacting clients.
-* Centralized Logic: Aggregation allows for centralized transformation and logic application on the data collected from various services, which can be more efficient than handling it in the client or spreading it across multiple services.
+* Simplified Client: Clients interact with just one service rather than managing calls to multiple microservices, which
+  simplifies client-side logic.
+* Reduced Latency: By aggregating responses, the number of network calls is reduced, which can improve the application's
+  overall latency.
+* Decoupling: Clients are decoupled from the individual microservices, allowing for more flexibility in changing the
+  microservices landscape without impacting clients.
+* Centralized Logic: Aggregation allows for centralized transformation and logic application on the data collected from
+  various services, which can be more efficient than handling it in the client or spreading it across multiple services.
 
 Trade-offs:
 
-* Single Point of Failure: The aggregator service can become a bottleneck or a single point of failure if not designed with high availability and scalability in mind.
-* Complexity: Implementing an aggregator can introduce complexity, especially in terms of data aggregation logic and error handling when dealing with multiple services.
+* Single Point of Failure: The aggregator service can become a bottleneck or a single point of failure if not designed
+  with high availability and scalability in mind.
+* Complexity: Implementing an aggregator can introduce complexity, especially in terms of data aggregation logic and
+  error handling when dealing with multiple services.
 
 ## Related Java Design Patterns
 
-* [API Gateway](https://java-design-patterns.com/patterns/microservices-api-gateway/): The Microservices Aggregator pattern is often used in conjunction with an API Gateway, which provides a single entry point for clients to access multiple microservices.
-* [Composite](https://java-design-patterns.com/patterns/composite/): The Microservices Aggregator pattern can be seen as a form of the Composite pattern, where the composite is the aggregated response from multiple microservices.
-* [Facade](https://java-design-patterns.com/patterns/facade/): The Microservices Aggregator pattern can be seen as a form of the Facade pattern, where the facade is the aggregator service that provides a simplified interface to the client.
+* [API Gateway](https://java-design-patterns.com/patterns/microservices-api-gateway/): The Microservices Aggregator
+  pattern is often used in conjunction with an API Gateway, which provides a single entry point for clients to access
+  multiple microservices.
+* [Composite](https://java-design-patterns.com/patterns/composite/): The Microservices Aggregator pattern can be seen as
+  a form of the Composite pattern, where the composite is the aggregated response from multiple microservices.
+* [Facade](https://java-design-patterns.com/patterns/facade/): The Microservices Aggregator pattern can be seen as a
+  form of the Facade pattern, where the facade is the aggregator service that provides a simplified interface to the
+  client.
 
 ## References and Credits
 

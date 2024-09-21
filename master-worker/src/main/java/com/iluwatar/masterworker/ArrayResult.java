@@ -30,7 +30,7 @@ package com.iluwatar.masterworker;
 
 public class ArrayResult extends Result<int[][]> {
 
-  public ArrayResult(int[][] data) {
-    super(data);
-  }
+    public ArrayResult(int[][] data) {
+        super(data);
+    }
 }

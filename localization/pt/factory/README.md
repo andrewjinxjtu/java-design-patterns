@@ -116,8 +116,10 @@ e gerenciá-lo.
 
 Prós
 
-* Permite manter a criação de todos os objetos em um só lugar e evita espalhar a palavra-chave 'new' pela base de código.
-* Permite escrever código desacoplado. Algumas de suas principais vantagens incluem uma melhor testabilidade, código fácil de entender, componentes substituíveis, escalabilidade e funcionalidades isoladas.
+* Permite manter a criação de todos os objetos em um só lugar e evita espalhar a palavra-chave 'new' pela base de
+  código.
+* Permite escrever código desacoplado. Algumas de suas principais vantagens incluem uma melhor testabilidade, código
+  fácil de entender, componentes substituíveis, escalabilidade e funcionalidades isoladas.
 
 Contras
 
@@ -129,9 +131,11 @@ Contras
 * [java.util.ResourceBundle#getBundle()](https://docs.oracle.com/javase/8/docs/api/java/util/ResourceBundle.html#getBundle-java.lang.String-)
 * [java.text.NumberFormat#getInstance()](https://docs.oracle.com/javase/8/docs/api/java/text/NumberFormat.html#getInstance--)
 * [java.nio.charset.Charset#forName()](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html#forName-java.lang.String-)
-* [java.net.URLStreamHandlerFactory#createURLStreamHandler(String)](https://docs.oracle.com/javase/8/docs/api/java/net/URLStreamHandlerFactory.html) (retorna objetos singleton diferentes, dependendo do protocolo)
+* [java.net.URLStreamHandlerFactory#createURLStreamHandler(String)](https://docs.oracle.com/javase/8/docs/api/java/net/URLStreamHandlerFactory.html) (
+  retorna objetos singleton diferentes, dependendo do protocolo)
 * [java.util.EnumSet#of()](https://docs.oracle.com/javase/8/docs/api/java/util/EnumSet.html#of(E))
-* [javax.xml.bind.JAXBContext#createMarshaller()](https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/JAXBContext.html#createMarshaller--) e outros métodos parecidos.
+* [javax.xml.bind.JAXBContext#createMarshaller()](https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/JAXBContext.html#createMarshaller--)
+  e outros métodos parecidos.
 
 ## Padrões relacionados
 

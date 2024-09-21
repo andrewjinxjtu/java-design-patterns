@@ -43,56 +43,56 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 public class CalculatorView {
 
-  /**
-   * View model param handling the operations.
-   */
-  @Getter
-  private final CalculatorViewModel viewModel;
+    /**
+     * View model param handling the operations.
+     */
+    @Getter
+    private final CalculatorViewModel viewModel;
 
-  /**
-   * Display current view model output with logger.
-   */
-  void displayTotal() {
-    LOGGER.info(
-        "Total value = {}",
-        viewModel.getCalculatorModel().getOutput().toString()
-    );
-  }
+    /**
+     * Display current view model output with logger.
+     */
+    void displayTotal() {
+        LOGGER.info(
+                "Total value = {}",
+                viewModel.getCalculatorModel().getOutput().toString()
+        );
+    }
 
-  /**
-   * Handle addition action.
-   */
-  void add() {
-    viewModel.handleAction(new AdditionCalculatorAction());
-  }
+    /**
+     * Handle addition action.
+     */
+    void add() {
+        viewModel.handleAction(new AdditionCalculatorAction());
+    }
 
-  /**
-   * Handle subtraction action.
-   */
-  void subtract() {
-    viewModel.handleAction(new SubtractionCalculatorAction());
-  }
+    /**
+     * Handle subtraction action.
+     */
+    void subtract() {
+        viewModel.handleAction(new SubtractionCalculatorAction());
+    }
 
-  /**
-   * Handle multiplication action.
-   */
-  void multiply() {
-    viewModel.handleAction(new MultiplicationCalculatorAction());
-  }
+    /**
+     * Handle multiplication action.
+     */
+    void multiply() {
+        viewModel.handleAction(new MultiplicationCalculatorAction());
+    }
 
-  /**
-   * Handle division action.
-   */
-  void divide() {
-    viewModel.handleAction(new DivisionCalculatorAction());
-  }
+    /**
+     * Handle division action.
+     */
+    void divide() {
+        viewModel.handleAction(new DivisionCalculatorAction());
+    }
 
-  /**
-   * Handle setting new variable action.
-   *
-   * @param value -> new calculator variable.
-   */
-  void setVariable(final Double value) {
-    viewModel.handleAction(new SetVariableCalculatorAction(value));
-  }
+    /**
+     * Handle setting new variable action.
+     *
+     * @param value -> new calculator variable.
+     */
+    void setVariable(final Double value) {
+        viewModel.handleAction(new SetVariableCalculatorAction(value));
+    }
 }

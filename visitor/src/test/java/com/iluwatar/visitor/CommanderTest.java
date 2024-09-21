@@ -29,20 +29,19 @@ import static org.mockito.Mockito.verify;
 
 /**
  * CommanderTest
- *
  */
 class CommanderTest extends UnitTest<Commander> {
 
-  /**
-   * Create a new test instance for the given {@link Commander}.
-   */
-  public CommanderTest() {
-    super(Commander::new);
-  }
+    /**
+     * Create a new test instance for the given {@link Commander}.
+     */
+    public CommanderTest() {
+        super(Commander::new);
+    }
 
-  @Override
-  void verifyVisit(Commander unit, UnitVisitor mockedVisitor) {
-    verify(mockedVisitor).visit(eq(unit));
-  }
+    @Override
+    void verifyVisit(Commander unit, UnitVisitor mockedVisitor) {
+        verify(mockedVisitor).visit(eq(unit));
+    }
 
 }

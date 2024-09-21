@@ -29,6 +29,6 @@ package com.iluwatar.doublebuffer;
  */
 public enum Pixel {
 
-  WHITE,
-  BLACK
+    WHITE,
+    BLACK
 }

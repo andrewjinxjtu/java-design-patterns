@@ -6,20 +6,24 @@ tag:
  - Performance
 ---
 
-
 ## Intento
-Il design pattern active object disaccoppia l'esecuzione del metodo dall'invocazione del metodo per gli oggetti che risiedono ciascuno nel proprio thread di controllo. L'obiettivo è introdurre la concorrenza utilizzando l'invocazione asincrona dei metodi e uno scheduler per gestire le richieste.
+
+Il design pattern active object disaccoppia l'esecuzione del metodo dall'invocazione del metodo per gli oggetti che
+risiedono ciascuno nel proprio thread di controllo. L'obiettivo è introdurre la concorrenza utilizzando l'invocazione
+asincrona dei metodi e uno scheduler per gestire le richieste.
 
 ## Spiegazione
 
-La classe che implementa il pattern active object conterrà un meccanismo di autosincronizzazione senza utilizzare metodi 'synchronized'.
+La classe che implementa il pattern active object conterrà un meccanismo di autosincronizzazione senza utilizzare
+metodi 'synchronized'.
 
 Esempio del mondo reale
 
->Gli Orchi sono noti per la loro natura selvaggia e la loro anima indomabile. Sembra che abbiano il loro proprio thread di controllo basato su comportamenti precedenti.
+> Gli Orchi sono noti per la loro natura selvaggia e la loro anima indomabile. Sembra che abbiano il loro proprio thread
+> di controllo basato su comportamenti precedenti.
 
-Per implementare una creatura che ha il suo meccanismo di thread di controllo e che esponga solo la sua API e non l'esecuzione stessa, possiamo utilizzare il pattern Active Object.
-
+Per implementare una creatura che ha il suo meccanismo di thread di controllo e che esponga solo la sua API e non
+l'esecuzione stessa, possiamo utilizzare il pattern Active Object.
 
 **Esempio di codice**
 
@@ -79,7 +83,8 @@ public abstract class ActiveCreature{
 }
 ```
 
-Possiamo vedere che qualsiasi classe che estenderà la classe ActiveCreature avrà il proprio thread di controllo per invocare ed eseguire i metodi.
+Possiamo vedere che qualsiasi classe che estenderà la classe ActiveCreature avrà il proprio thread di controllo per
+invocare ed eseguire i metodi.
 
 Ad esempio, la classe Orc:
 
@@ -93,7 +98,8 @@ public class Orc extends ActiveCreature {
 }
 ```
 
-Ora possiamo creare diverse creature come gli Orchi, dir loro di mangiare e vagabondare, e loro eseguiranno queste azioni nel proprio thread di controllo:
+Ora possiamo creare diverse creature come gli Orchi, dir loro di mangiare e vagabondare, e loro eseguiranno queste
+azioni nel proprio thread di controllo:
 
 ```java
   public static void main(String[] args) {  

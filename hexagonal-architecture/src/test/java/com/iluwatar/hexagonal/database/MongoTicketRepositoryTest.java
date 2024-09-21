@@ -43,55 +43,55 @@ import org.junit.jupiter.api.Test;
 @Disabled
 class MongoTicketRepositoryTest {
 
-  private static final String TEST_DB = "lotteryTestDB";
-  private static final String TEST_TICKETS_COLLECTION = "lotteryTestTickets";
-  private static final String TEST_COUNTERS_COLLECTION = "testCounters";
+    private static final String TEST_DB = "lotteryTestDB";
+    private static final String TEST_TICKETS_COLLECTION = "lotteryTestTickets";
+    private static final String TEST_COUNTERS_COLLECTION = "testCounters";
 
-  private MongoTicketRepository repository;
+    private MongoTicketRepository repository;
 
-  @BeforeEach
-  void init() {
-    MongoConnectionPropertiesLoader.load();
-    var mongoClient = new MongoClient(System.getProperty("mongo-host"),
-        Integer.parseInt(System.getProperty("mongo-port")));
-    mongoClient.dropDatabase(TEST_DB);
-    mongoClient.close();
-    repository = new MongoTicketRepository(TEST_DB, TEST_TICKETS_COLLECTION,
-        TEST_COUNTERS_COLLECTION);
-  }
+    @BeforeEach
+    void init() {
+        MongoConnectionPropertiesLoader.load();
+        var mongoClient = new MongoClient(System.getProperty("mongo-host"),
+                Integer.parseInt(System.getProperty("mongo-port")));
+        mongoClient.dropDatabase(TEST_DB);
+        mongoClient.close();
+        repository = new MongoTicketRepository(TEST_DB, TEST_TICKETS_COLLECTION,
+                TEST_COUNTERS_COLLECTION);
+    }
 
-  @Test
-  void testSetup() {
-    assertEquals(1, repository.getCountersCollection().countDocuments());
-    assertEquals(0, repository.getTicketsCollection().countDocuments());
-  }
+    @Test
+    void testSetup() {
+        assertEquals(1, repository.getCountersCollection().countDocuments());
+        assertEquals(0, repository.getTicketsCollection().countDocuments());
+    }
 
-  @Test
-  void testNextId() {
-    assertEquals(1, repository.getNextId());
-    assertEquals(2, repository.getNextId());
-    assertEquals(3, repository.getNextId());
-  }
+    @Test
+    void testNextId() {
+        assertEquals(1, repository.getNextId());
+        assertEquals(2, repository.getNextId());
+        assertEquals(3, repository.getNextId());
+    }
 
-  @Test
-  void testCrudOperations() {
-    // create new lottery ticket and save it
-    var details = new PlayerDetails("foo@bar.com", "123-123", "07001234");
-    var random = LotteryNumbers.createRandom();
-    var original = new LotteryTicket(new LotteryTicketId(), details, random);
-    var saved = repository.save(original);
-    assertEquals(1, repository.getTicketsCollection().countDocuments());
-    assertTrue(saved.isPresent());
-    // fetch the saved lottery ticket from database and check its contents
-    var found = repository.findById(saved.get());
-    assertTrue(found.isPresent());
-    var ticket = found.get();
-    assertEquals("foo@bar.com", ticket.playerDetails().email());
-    assertEquals("123-123", ticket.playerDetails().bankAccount());
-    assertEquals("07001234", ticket.playerDetails().phoneNumber());
-    assertEquals(original.lotteryNumbers(), ticket.lotteryNumbers());
-    // clear the collection
-    repository.deleteAll();
-    assertEquals(0, repository.getTicketsCollection().countDocuments());
-  }
+    @Test
+    void testCrudOperations() {
+        // create new lottery ticket and save it
+        var details = new PlayerDetails("foo@bar.com", "123-123", "07001234");
+        var random = LotteryNumbers.createRandom();
+        var original = new LotteryTicket(new LotteryTicketId(), details, random);
+        var saved = repository.save(original);
+        assertEquals(1, repository.getTicketsCollection().countDocuments());
+        assertTrue(saved.isPresent());
+        // fetch the saved lottery ticket from database and check its contents
+        var found = repository.findById(saved.get());
+        assertTrue(found.isPresent());
+        var ticket = found.get();
+        assertEquals("foo@bar.com", ticket.playerDetails().email());
+        assertEquals("123-123", ticket.playerDetails().bankAccount());
+        assertEquals("07001234", ticket.playerDetails().phoneNumber());
+        assertEquals(original.lotteryNumbers(), ticket.lotteryNumbers());
+        // clear the collection
+        repository.deleteAll();
+        assertEquals(0, repository.getTicketsCollection().countDocuments());
+    }
 }

@@ -30,14 +30,13 @@ import org.junit.jupiter.api.Test;
 
 /**
  * ApplicationExceptionTest
- *
  */
 class ApplicationExceptionTest {
 
-  @Test
-  void testCause() {
-    final var cause = new Exception();
-    assertSame(cause, new ApplicationException(cause).getCause());
-  }
+    @Test
+    void testCause() {
+        final var cause = new Exception();
+        assertSame(cause, new ApplicationException(cause).getCause());
+    }
 
 }

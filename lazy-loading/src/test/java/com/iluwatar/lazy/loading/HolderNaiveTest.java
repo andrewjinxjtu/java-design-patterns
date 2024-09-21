@@ -26,22 +26,21 @@ package com.iluwatar.lazy.loading;
 
 /**
  * HolderNaiveTest
- *
  */
 class HolderNaiveTest extends AbstractHolderTest {
 
-  private final HolderNaive holder = new HolderNaive();
+    private final HolderNaive holder = new HolderNaive();
 
-  @Override
-  Heavy getInternalHeavyValue() throws Exception {
-    final var holderField = HolderNaive.class.getDeclaredField("heavy");
-    holderField.setAccessible(true);
-    return (Heavy) holderField.get(this.holder);
-  }
+    @Override
+    Heavy getInternalHeavyValue() throws Exception {
+        final var holderField = HolderNaive.class.getDeclaredField("heavy");
+        holderField.setAccessible(true);
+        return (Heavy) holderField.get(this.holder);
+    }
 
-  @Override
-  Heavy getHeavy() {
-    return holder.getHeavy();
-  }
+    @Override
+    Heavy getHeavy() {
+        return holder.getHeavy();
+    }
 
 }

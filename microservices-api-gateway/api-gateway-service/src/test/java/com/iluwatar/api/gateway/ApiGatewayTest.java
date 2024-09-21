@@ -38,46 +38,46 @@ import org.mockito.MockitoAnnotations;
  */
 class ApiGatewayTest {
 
-  @InjectMocks
-  private ApiGateway apiGateway;
+    @InjectMocks
+    private ApiGateway apiGateway;
 
-  @Mock
-  private ImageClient imageClient;
+    @Mock
+    private ImageClient imageClient;
 
-  @Mock
-  private PriceClient priceClient;
+    @Mock
+    private PriceClient priceClient;
 
-  @BeforeEach
-  void setup() {
-    MockitoAnnotations.openMocks(this);
-  }
+    @BeforeEach
+    void setup() {
+        MockitoAnnotations.openMocks(this);
+    }
 
-  /**
-   * Tests getting the data for a desktop client
-   */
-  @Test
-  void testGetProductDesktop() {
-    var imagePath = "/product-image.png";
-    var price = "20";
-    when(imageClient.getImagePath()).thenReturn(imagePath);
-    when(priceClient.getPrice()).thenReturn(price);
+    /**
+     * Tests getting the data for a desktop client
+     */
+    @Test
+    void testGetProductDesktop() {
+        var imagePath = "/product-image.png";
+        var price = "20";
+        when(imageClient.getImagePath()).thenReturn(imagePath);
+        when(priceClient.getPrice()).thenReturn(price);
 
-    var desktopProduct = apiGateway.getProductDesktop();
+        var desktopProduct = apiGateway.getProductDesktop();
 
-    assertEquals(price, desktopProduct.getPrice());
-    assertEquals(imagePath, desktopProduct.getImagePath());
-  }
+        assertEquals(price, desktopProduct.getPrice());
+        assertEquals(imagePath, desktopProduct.getImagePath());
+    }
 
-  /**
-   * Tests getting the data for a mobile client
-   */
-  @Test
-  void testGetProductMobile() {
-    var price = "20";
-    when(priceClient.getPrice()).thenReturn(price);
+    /**
+     * Tests getting the data for a mobile client
+     */
+    @Test
+    void testGetProductMobile() {
+        var price = "20";
+        when(priceClient.getPrice()).thenReturn(price);
 
-    var mobileProduct = apiGateway.getProductMobile();
+        var mobileProduct = apiGateway.getProductMobile();
 
-    assertEquals(price, mobileProduct.getPrice());
-  }
+        assertEquals(price, mobileProduct.getPrice());
+    }
 }

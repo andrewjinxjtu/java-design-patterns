@@ -24,27 +24,40 @@ To enable or disable features in a software application dynamically without depl
 
 Real-world Example
 
-> A real-world example of the Feature Toggle pattern is Netflix's rollout of new user interface features. When Netflix decides to introduce a new feature, such as a redesigned homepage layout or a new recommendation algorithm, they use feature toggles to control the release. Initially, the new feature is toggled off for most users, allowing only a small group of users (e.g., beta testers) to experience and provide feedback on the feature. Based on the feedback and performance metrics, Netflix can quickly toggle the feature on for a broader audience or turn it off if issues are detected, all without redeploying the application. This approach allows Netflix to continuously innovate and improve their platform while minimizing risk and ensuring a stable user experience.
+> A real-world example of the Feature Toggle pattern is Netflix's rollout of new user interface features. When Netflix
+> decides to introduce a new feature, such as a redesigned homepage layout or a new recommendation algorithm, they use
+> feature toggles to control the release. Initially, the new feature is toggled off for most users, allowing only a small
+> group of users (e.g., beta testers) to experience and provide feedback on the feature. Based on the feedback and
+> performance metrics, Netflix can quickly toggle the feature on for a broader audience or turn it off if issues are
+> detected, all without redeploying the application. This approach allows Netflix to continuously innovate and improve
+> their platform while minimizing risk and ensuring a stable user experience.
 
 In plain words
 
-> The Feature Toggle design pattern in Java allows developers to introduce new features gradually instead of deploying them all at once, facilitating better dynamic feature management.
+> The Feature Toggle design pattern in Java allows developers to introduce new features gradually instead of deploying
+> them all at once, facilitating better dynamic feature management.
 
 Wikipedia says
 
-> A feature toggle in software development provides an alternative to maintaining multiple feature branches in source code. A condition within the code enables or disables a feature during runtime. In agile settings the toggle is used in production, to switch on the feature on demand, for some or all the users.
+> A feature toggle in software development provides an alternative to maintaining multiple feature branches in source
+> code. A condition within the code enables or disables a feature during runtime. In agile settings the toggle is used in
+> production, to switch on the feature on demand, for some or all the users.
 
 ## Programmatic Example of Feature Toggle Pattern in Java
 
-This Java code example demonstrates how to display a feature when it is enabled by the developer and the user is a Premium member of the application. This approach is useful for managing subscription-locked features.
+This Java code example demonstrates how to display a feature when it is enabled by the developer and the user is a
+Premium member of the application. This approach is useful for managing subscription-locked features.
 
-The Feature Toggle pattern enables the seamless activation or deactivation of entire code executions. This allows features to be managed dynamically based on user information or configuration properties.
+The Feature Toggle pattern enables the seamless activation or deactivation of entire code executions. This allows
+features to be managed dynamically based on user information or configuration properties.
 
 Key Components:
 
-1. `PropertiesFeatureToggleVersion`: This class uses properties to control the feature toggle. The properties determine whether the enhanced version of the welcome message, which is personalized, is turned on or off.
+1. `PropertiesFeatureToggleVersion`: This class uses properties to control the feature toggle. The properties determine
+   whether the enhanced version of the welcome message, which is personalized, is turned on or off.
 
-2. `TieredFeatureToggleVersion`: This class uses user information to control the feature toggle. The feature of the personalized welcome message is dependent on the user group the user is in.
+2. `TieredFeatureToggleVersion`: This class uses user information to control the feature toggle. The feature of the
+   personalized welcome message is dependent on the user group the user is in.
 
 3. `User`: This class represents the user of the application.
 
@@ -117,8 +130,10 @@ Use the Feature Toggle Pattern in Java when:
 
 ## Real-World Applications of Feature Toggle Pattern in Java
 
-* Many web development platforms utilize the Feature Toggle design pattern to gradually roll out new features to users, ensuring stability and effective dynamic feature management.
-* Enterprise applications use feature toggles to enable or disable features during runtime to cater to different market needs.
+* Many web development platforms utilize the Feature Toggle design pattern to gradually roll out new features to users,
+  ensuring stability and effective dynamic feature management.
+* Enterprise applications use feature toggles to enable or disable features during runtime to cater to different market
+  needs.
 
 ## Benefits and Trade-offs of Feature Toggle Pattern
 
@@ -137,8 +152,11 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Both patterns allow changing the behavior of software at runtime. The Feature Toggle changes features dynamically, while the Strategy allows switching algorithms or strategies.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Useful for implementing feature toggles by notifying components of feature state changes, which allows dynamic feature modification without restarts.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Both patterns allow changing the behavior of software
+  at runtime. The Feature Toggle changes features dynamically, while the Strategy allows switching algorithms or
+  strategies.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Useful for implementing feature toggles by notifying
+  components of feature state changes, which allows dynamic feature modification without restarts.
 
 ## References and Credits
 

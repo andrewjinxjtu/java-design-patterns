@@ -32,49 +32,48 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for {@link FindCustomer}.
- *
  */
 class FindCustomerTest {
-  /**
-   * Returns the given result with no exceptions.
-   */
-  @Test
-  void noExceptions() throws Exception {
-    assertThat(new FindCustomer("123").perform(), is("123"));
-  }
-
-  /**
-   * Throws the given exception.
-   */
-  @Test
-  void oneException() {
-    var findCustomer = new FindCustomer("123", new BusinessException("test"));
-    assertThrows(BusinessException.class, findCustomer::perform);
-  }
-
-  /**
-   * Should first throw the given exceptions, then return the given result.
-   *
-   * @throws Exception not an expected exception
-   */
-  @Test
-  void resultAfterExceptions() throws Exception {
-    final var op = new FindCustomer(
-        "123",
-        new CustomerNotFoundException("not found"),
-        new DatabaseNotAvailableException("not available")
-    );
-    try {
-      op.perform();
-    } catch (CustomerNotFoundException e) {
-      //ignore
-    }
-    try {
-      op.perform();
-    } catch (DatabaseNotAvailableException e) {
-      //ignore
+    /**
+     * Returns the given result with no exceptions.
+     */
+    @Test
+    void noExceptions() throws Exception {
+        assertThat(new FindCustomer("123").perform(), is("123"));
     }
 
-    assertThat(op.perform(), is("123"));
-  }
+    /**
+     * Throws the given exception.
+     */
+    @Test
+    void oneException() {
+        var findCustomer = new FindCustomer("123", new BusinessException("test"));
+        assertThrows(BusinessException.class, findCustomer::perform);
+    }
+
+    /**
+     * Should first throw the given exceptions, then return the given result.
+     *
+     * @throws Exception not an expected exception
+     */
+    @Test
+    void resultAfterExceptions() throws Exception {
+        final var op = new FindCustomer(
+                "123",
+                new CustomerNotFoundException("not found"),
+                new DatabaseNotAvailableException("not available")
+        );
+        try {
+            op.perform();
+        } catch (CustomerNotFoundException e) {
+            //ignore
+        }
+        try {
+            op.perform();
+        } catch (DatabaseNotAvailableException e) {
+            //ignore
+        }
+
+        assertThat(op.perform(), is("123"));
+    }
 }

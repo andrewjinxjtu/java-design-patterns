@@ -31,45 +31,45 @@ import java.util.List;
  * has all product details.
  */
 public record ProductResource(List<Product> products) {
-  /**
-   * Get all products.
-   *
-   * @return : all products in list but in the scheme of private dto.
-   */
-  public List<ProductDto.Response.Private> getAllProductsForAdmin() {
-    return products
-        .stream()
-        .map(p -> new ProductDto.Response.Private().setId(p.getId()).setName(p.getName())
-            .setCost(p.getCost())
-            .setPrice(p.getPrice()))
-        .toList();
-  }
+    /**
+     * Get all products.
+     *
+     * @return : all products in list but in the scheme of private dto.
+     */
+    public List<ProductDto.Response.Private> getAllProductsForAdmin() {
+        return products
+                .stream()
+                .map(p -> new ProductDto.Response.Private().setId(p.getId()).setName(p.getName())
+                        .setCost(p.getCost())
+                        .setPrice(p.getPrice()))
+                .toList();
+    }
 
-  /**
-   * Get all products.
-   *
-   * @return : all products in list but in the scheme of public dto.
-   */
-  public List<ProductDto.Response.Public> getAllProductsForCustomer() {
-    return products
-        .stream()
-        .map(p -> new ProductDto.Response.Public().setId(p.getId()).setName(p.getName())
-            .setPrice(p.getPrice()))
-        .toList();
-  }
+    /**
+     * Get all products.
+     *
+     * @return : all products in list but in the scheme of public dto.
+     */
+    public List<ProductDto.Response.Public> getAllProductsForCustomer() {
+        return products
+                .stream()
+                .map(p -> new ProductDto.Response.Public().setId(p.getId()).setName(p.getName())
+                        .setPrice(p.getPrice()))
+                .toList();
+    }
 
-  /**
-   * Save new product.
-   *
-   * @param createProductDto save new product to list.
-   */
-  public void save(ProductDto.Request.Create createProductDto) {
-    products.add(Product.builder()
-        .id((long) (products.size() + 1))
-        .name(createProductDto.getName())
-        .supplier(createProductDto.getSupplier())
-        .price(createProductDto.getPrice())
-        .cost(createProductDto.getCost())
-        .build());
-  }
+    /**
+     * Save new product.
+     *
+     * @param createProductDto save new product to list.
+     */
+    public void save(ProductDto.Request.Create createProductDto) {
+        products.add(Product.builder()
+                .id((long) (products.size() + 1))
+                .name(createProductDto.getName())
+                .supplier(createProductDto.getSupplier())
+                .price(createProductDto.getPrice())
+                .cost(createProductDto.getCost())
+                .build());
+    }
 }

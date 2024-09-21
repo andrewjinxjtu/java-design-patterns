@@ -34,35 +34,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ProductControllerTest {
 
-  private ProductController productController;
+    private ProductController productController;
 
-  @BeforeEach
-  public void setUp() {
-    productController = new ProductController();
-  }
+    @BeforeEach
+    public void setUp() {
+        productController = new ProductController();
+    }
 
-  /**
-   * Test to validate the product.
-   */
-  @Test
-  void testValidateProduct() {
-    // Arrange
-    String request = "Sample product validation request";
-    // Act
-    ResponseEntity<Boolean> response = productController.validateProduct(request);
-    // Assert
-    assertEquals(ResponseEntity.ok(true), response);
-  }
+    /**
+     * Test to validate the product.
+     */
+    @Test
+    void testValidateProduct() {
+        // Arrange
+        String request = "Sample product validation request";
+        // Act
+        ResponseEntity<Boolean> response = productController.validateProduct(request);
+        // Assert
+        assertEquals(ResponseEntity.ok(true), response);
+    }
 
-  /**
-   * Test to validate the product with null request.
-   */
-  @Test
-  void testValidateProductWithNullRequest() {
-    // Arrange
-    // Act
-    ResponseEntity<Boolean> response = productController.validateProduct(null);
-    // Assert
-    assertEquals(ResponseEntity.ok(true), response);
-  }
+    /**
+     * Test to validate the product with null request.
+     */
+    @Test
+    void testValidateProductWithNullRequest() {
+        // Arrange
+        // Act
+        ResponseEntity<Boolean> response = productController.validateProduct(null);
+        // Assert
+        assertEquals(ResponseEntity.ok(true), response);
+    }
 }

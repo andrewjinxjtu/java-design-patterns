@@ -8,9 +8,9 @@ tag:
 
 ## 의도
 
-
-객체 구조의 요소들에 대해 수행할 작업을 나타냅니다. 방문자(Visitor)는 
+객체 구조의 요소들에 대해 수행할 작업을 나타냅니다. 방문자(Visitor)는
 연산하는 요소의 클래스를 변경하지 않고 새 연산을 정의할 수 있게 해줍니다.
+
 ## 설명
 
 살제 예제
@@ -207,8 +207,10 @@ Good to see you commander
 일반적으로 방문자(Visitor) 패턴은 다음과 같은 상황에 사용할 수 있습니다.
 
 * 객체 구조에 다양한 인터페이스를 가진 객체의 클래스가 많이 포함되어 있고, 객체들의 구현 클래스에 따라 연산되게 하고 싶을 때 사용할 수 있습니다.
-* 객체 구조에 있는 객체들에 대해 개별적이고 서로 연관이 없는 연산들을 수행하고 싶을 때, 이러한 연산들로 인해 클래스가 "오염(Polluting)"되는 것을 방지하고자 합니다. 이럴 때, 방문자(Visitor)를 사용해 관련 연산을 하나의 클래스에 정의하여 유지할 수 있습니다. 객체 구조가 여러 응용 프로그램에서 공유되는 경우에는 방문자(Visitor)를 사용해 필요한 응용 프로그램에만 연산을 추가할 수 있습니다.
-* 객체 구조를 정의하는 클래스들은 거의 변경되지 않지만, 종종 새로운 연산을 정의해야 할 때가 있습니다. 객체 구조 클래스들을 변경하려면 모둔 방문자(Visitor)에 데한 인터페이스를 재정의해야 하므로 비용이 많이 들수 있습니다. 객체 구조 클래스가 자주 변경되는 경우 해당 클래스의 연산을 정의하는 것이 더 나을 수 있습니다.
+* 객체 구조에 있는 객체들에 대해 개별적이고 서로 연관이 없는 연산들을 수행하고 싶을 때, 이러한 연산들로 인해 클래스가 "오염(Polluting)"되는 것을 방지하고자 합니다. 이럴 때, 방문자(Visitor)를
+  사용해 관련 연산을 하나의 클래스에 정의하여 유지할 수 있습니다. 객체 구조가 여러 응용 프로그램에서 공유되는 경우에는 방문자(Visitor)를 사용해 필요한 응용 프로그램에만 연산을 추가할 수 있습니다.
+* 객체 구조를 정의하는 클래스들은 거의 변경되지 않지만, 종종 새로운 연산을 정의해야 할 때가 있습니다. 객체 구조 클래스들을 변경하려면 모둔 방문자(Visitor)에 데한 인터페이스를 재정의해야 하므로 비용이
+  많이 들수 있습니다. 객체 구조 클래스가 자주 변경되는 경우 해당 클래스의 연산을 정의하는 것이 더 나을 수 있습니다.
 
 ## 튜토리얼
 
@@ -218,9 +220,13 @@ Good to see you commander
 
 ## 실제 사례
 
-* [Apache Wicket](https://github.com/apache/wicket) 구성 요소, [MarkupContainer](https://github.com/apache/wicket/blob/b60ec64d0b50a611a9549809c9ab216f0ffa3ae3/wicket-core/src/main/java/org/apache/wicket/MarkupContainer.java)를 참조하세요.
-* [javax.lang.model.element.AnnotationValue](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/AnnotationValue.html) 그리고 [AnnotationValueVisitor](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/AnnotationValueVisitor.html)
-* [javax.lang.model.element.Element](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/Element.html) 그리고 [Element Visitor](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/ElementVisitor.html)
+* [Apache Wicket](https://github.com/apache/wicket) 구성
+  요소, [MarkupContainer](https://github.com/apache/wicket/blob/b60ec64d0b50a611a9549809c9ab216f0ffa3ae3/wicket-core/src/main/java/org/apache/wicket/MarkupContainer.java)
+  를 참조하세요.
+* [javax.lang.model.element.AnnotationValue](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/AnnotationValue.html)
+  그리고 [AnnotationValueVisitor](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/AnnotationValueVisitor.html)
+* [javax.lang.model.element.Element](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/Element.html)
+  그리고 [Element Visitor](http://docs.oracle.com/javase/8/docs/api/javax/lang/model/element/ElementVisitor.html)
 * [java.nio.file.FileVisitor](http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html)
 
 ## 크레딧

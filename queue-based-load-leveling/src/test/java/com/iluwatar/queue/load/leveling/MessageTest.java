@@ -33,12 +33,12 @@ import org.junit.jupiter.api.Test;
  */
 class MessageTest {
 
-  @Test
-  void messageTest() {
+    @Test
+    void messageTest() {
 
-    // Parameterized constructor test.
-    var testMsg = "Message Test";
-    var msg = new Message(testMsg);
-    assertEquals(testMsg, msg.getMsg());
-  }
+        // Parameterized constructor test.
+        var testMsg = "Message Test";
+        var msg = new Message(testMsg);
+        assertEquals(testMsg, msg.getMsg());
+    }
 }

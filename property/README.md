@@ -19,13 +19,19 @@ tag:
 
 ## Intent of Property Design Pattern
 
-The Property design pattern in Java allows dynamic addition, removal, or modification of object properties, offering a flexible solution for developers to customize object attributes at runtime.
+The Property design pattern in Java allows dynamic addition, removal, or modification of object properties, offering a
+flexible solution for developers to customize object attributes at runtime.
 
 ## Detailed Explanation of Property Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a custom burger ordering system at a restaurant. Each burger starts with a basic configuration (bun, patty), but customers can add or remove various ingredients (cheese, lettuce, tomato, sauces) as they wish. The restaurant's ordering system uses the Property design pattern to handle this flexibility. Each burger object dynamically updates its list of properties (ingredients) based on customer choices, allowing for a wide variety of custom burgers without needing a fixed class structure for every possible combination. This ensures the system can adapt to any new ingredient without altering the core burger class.
+> Imagine a custom burger ordering system at a restaurant. Each burger starts with a basic configuration (bun, patty),
+> but customers can add or remove various ingredients (cheese, lettuce, tomato, sauces) as they wish. The restaurant's
+> ordering system uses the Property design pattern to handle this flexibility. Each burger object dynamically updates its
+> list of properties (ingredients) based on customer choices, allowing for a wide variety of custom burgers without
+> needing a fixed class structure for every possible combination. This ensures the system can adapt to any new ingredient
+> without altering the core burger class.
 
 In plain words
 
@@ -33,9 +39,12 @@ In plain words
 
 ## Programmatic Example of Property Pattern in Java
 
-The Property design pattern, also known as Prototype inheritance, is a pattern that allows objects to be created from other objects, forming object hierarchies. This pattern is particularly useful when you want to create a new object that is a slight variation of an existing object.
+The Property design pattern, also known as Prototype inheritance, is a pattern that allows objects to be created from
+other objects, forming object hierarchies. This pattern is particularly useful when you want to create a new object that
+is a slight variation of an existing object.
 
-In the given code, the Property pattern is used to create different types of characters, each with their own unique properties.
+In the given code, the Property pattern is used to create different types of characters, each with their own unique
+properties.
 
 ```java
 // The Character class represents a character in a game. It has a type and a set of properties.
@@ -81,7 +90,8 @@ public enum Type {
 }
 ```
 
-In the `main` method, we create a prototype character and then create different types of characters based on the prototype:
+In the `main` method, we create a prototype character and then create different types of characters based on the
+prototype:
 
 ```java
 public static void main(String[] args) {
@@ -155,7 +165,8 @@ Stats:
   - ENERGY:15
 ```
 
-This way, we can easily create new characters with different properties without having to create a new class for each type of character.
+This way, we can easily create new characters with different properties without having to create a new class for each
+type of character.
 
 ## When to Use the Property Pattern in Java
 
@@ -168,7 +179,8 @@ Use the Property pattern when
 ## Real-World Applications of Property Pattern in Java
 
 * Configurations in applications where different entities require different sets of configurable parameters.
-* Game development where game entities (like characters or objects) need various attributes that can change during gameplay.
+* Game development where game entities (like characters or objects) need various attributes that can change during
+  gameplay.
 * User profile management systems where user profiles can have dynamic attributes.
 
 ## Benefits and Trade-offs of Property Pattern
@@ -189,9 +201,13 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Composite](https://java-design-patterns.com/patterns/composite/): Composite allows a tree structure of objects where each node can be a complex or simple object. Property pattern can be seen as a flattened version, managing properties without hierarchy.
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Both patterns enhance an object's behavior, but the Property pattern focuses on adding properties dynamically, while the Decorator adds responsibilities.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Like the Property pattern, the Strategy pattern allows dynamic behavior changes, but Strategy is about changing the algorithm used by an object.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Composite allows a tree structure of objects where
+  each node can be a complex or simple object. Property pattern can be seen as a flattened version, managing properties
+  without hierarchy.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Both patterns enhance an object's behavior, but the
+  Property pattern focuses on adding properties dynamically, while the Decorator adds responsibilities.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Like the Property pattern, the Strategy pattern
+  allows dynamic behavior changes, but Strategy is about changing the algorithm used by an object.
 
 ## References and Credits
 

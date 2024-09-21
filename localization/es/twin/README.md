@@ -7,27 +7,33 @@ tag:
 ---
 
 ## Propósito
+
 Twin pattern es un patrón de diseño que proporciona una solución estándar para simular herencia múltiple en java
 
 ## Explicación
 
 Ejemplo real
 
-> Consideremos un juego con una pelota que necesita características de dos tipos, Game Item, e hilos para funcionar sin problemas en el juego. Podemos utilizar dos objetos, con un objeto compatible con el primer tipo y el otro compatible con el segundo tipo. El par de objetos juntos pueden funcionar como una pelota en el juego.
+> Consideremos un juego con una pelota que necesita características de dos tipos, Game Item, e hilos para funcionar sin
+> problemas en el juego. Podemos utilizar dos objetos, con un objeto compatible con el primer tipo y el otro compatible
+> con el segundo tipo. El par de objetos juntos pueden funcionar como una pelota en el juego.
 
 En palabras sencillas
 
-> Proporciona una forma de formar dos subclases estrechamente acopladas que pueden actuar como una clase gemela que tiene dos extremos.
+> Proporciona una forma de formar dos subclases estrechamente acopladas que pueden actuar como una clase gemela que
+> tiene dos extremos.
 
 Wikipedia dice
 
-> En ingeniería de software, el patrón Gemelo es un patrón de diseño de software que permite a los desarrolladores modelar herencia múltiple en lenguajes de programación que no soportan herencia múltiple. Este patrón evita muchos de los problemas de la herencia múltiple.
+> En ingeniería de software, el patrón Gemelo es un patrón de diseño de software que permite a los desarrolladores
+> modelar herencia múltiple en lenguajes de programación que no soportan herencia múltiple. Este patrón evita muchos de
+> los problemas de la herencia múltiple.
 
 **Ejemplo programático**
 
-Tomemos nuestro ejemplo anterior de la bola de juego. Consideremos que tenemos un juego en el que la pelota necesita ser tanto un `GameItem` como un `Thread`.
+Tomemos nuestro ejemplo anterior de la bola de juego. Consideremos que tenemos un juego en el que la pelota necesita ser
+tanto un `GameItem` como un `Thread`.
 En primer lugar, tenemos la clase `GameItem` dada a continuación y la clase `Thread`.
-
 
 ```java
 
@@ -129,7 +135,8 @@ public class BallThread extends Thread {
 
 ``` 
 
-Ahora, cuando necesitemos la pelota, podemos instanciar objetos tanto del `BallThread` como del `BallItem` como un par y pasarlos a su objeto par para que puedan actuar juntos según convenga.
+Ahora, cuando necesitemos la pelota, podemos instanciar objetos tanto del `BallThread` como del `BallItem` como un par y
+pasarlos a su objeto par para que puedan actuar juntos según convenga.
 
 ```java
 
@@ -141,11 +148,12 @@ ballThread.setTwin(ballItem);
 
 ```
 
-
 ## Diagrama de clases
+
 ![alt text](./etc/twin.png "Twin")
 
 ## Aplicabilidad
+
 Utilice el lenguaje Twin
 
 * Para simular herencia múltiple en un lenguaje que no soporta esta característica.

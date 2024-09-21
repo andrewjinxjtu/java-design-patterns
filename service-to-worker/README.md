@@ -14,13 +14,19 @@ tag:
 
 ## Intent of Service to Worker Design Pattern
 
-The Service to Worker design pattern in Java combines the Dispatcher View and Service Locator patterns to facilitate the separation of processing, control flow, and view management in web applications.
+The Service to Worker design pattern in Java combines the Dispatcher View and Service Locator patterns to facilitate the
+separation of processing, control flow, and view management in web applications.
 
 ## Detailed Explanation of Service to Worker Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a large restaurant chain with a central kitchen and multiple waitstaff. When a customer places an order, the waitstaff (Controller) takes the order and hands it over to the kitchen (Service). The kitchen then processes the order, prepares the dish, and hands it back to the waitstaff. The waitstaff finally delivers the dish to the customer (View). This scenario mirrors Java web applications using the Service to Worker pattern, where backend logic (like the kitchen) is separated from frontend interactions (like the waitstaff), improving focus and efficiency in design pattern implementation.
+> Imagine a large restaurant chain with a central kitchen and multiple waitstaff. When a customer places an order, the
+> waitstaff (Controller) takes the order and hands it over to the kitchen (Service). The kitchen then processes the order,
+> prepares the dish, and hands it back to the waitstaff. The waitstaff finally delivers the dish to the customer (View).
+> This scenario mirrors Java web applications using the Service to Worker pattern, where backend logic (like the kitchen)
+> is separated from frontend interactions (like the waitstaff), improving focus and efficiency in design pattern
+> implementation.
 
 In plain words
 
@@ -28,9 +34,12 @@ In plain words
 
 ## Programmatic Example of Service to Worker Pattern in Java
 
-The Service to Worker design pattern separates the processing logic from the view in web applications to improve maintainability and scalability. It combines the Dispatcher View and Service Locator patterns to facilitate the separation of processing, control flow, and view management in web applications.
+The Service to Worker design pattern separates the processing logic from the view in web applications to improve
+maintainability and scalability. It combines the Dispatcher View and Service Locator patterns to facilitate the
+separation of processing, control flow, and view management in web applications.
 
-In our example, we have a `GiantController` class, which acts as the controller in the Service to Worker pattern. It takes commands and updates the view. The `Dispatcher` class is responsible for performing actions and updating the view.
+In our example, we have a `GiantController` class, which acts as the controller in the Service to Worker pattern. It
+takes commands and updates the view. The `Dispatcher` class is responsible for performing actions and updating the view.
 
 Here is the `GiantController` class:
 
@@ -53,7 +62,8 @@ public class GiantController {
 }
 ```
 
-In the `GiantController` class, we have a `setCommand` method that takes a `Command` and an index. This method is used to control the dispatcher. The `updateView` method is used to update the view with the provided `GiantModel`.
+In the `GiantController` class, we have a `setCommand` method that takes a `Command` and an index. This method is used
+to control the dispatcher. The `updateView` method is used to update the view with the provided `GiantModel`.
 
 The `App` class is the entry point of our application:
 
@@ -83,7 +93,10 @@ public class App {
 }
 ```
 
-In the `main` method, we create two `GiantModel` instances, `giant1` and `giant2`, and two `Action` instances, `action1` and `action2`. We then create a `GiantView` instance and a `Dispatcher` instance. We add `action1` and `action2` to the `Dispatcher` and create a `GiantController` with the `Dispatcher`. We then update the view with `giant1` and `giant2`, set some commands, and update the view again.
+In the `main` method, we create two `GiantModel` instances, `giant1` and `giant2`, and two `Action` instances, `action1`
+and `action2`. We then create a `GiantView` instance and a `Dispatcher` instance. We add `action1` and `action2` to the
+`Dispatcher` and create a `GiantController` with the `Dispatcher`. We then update the view with `giant1` and `giant2`,
+set some commands, and update the view again.
 
 Console output:
 
@@ -98,7 +111,8 @@ This is a simple example of how the Service to Worker pattern can be implemented
 
 ## When to Use the Service to Worker Pattern in Java
 
-* Use when you need to separate the controller logic from the view to improve code maintainability and enable team members to work on different parts of the application independently.
+* Use when you need to separate the controller logic from the view to improve code maintainability and enable team
+  members to work on different parts of the application independently.
 * Suitable for Java web applications that utilize MVC architecture.
 * Appropriate for scenarios requiring complex request processing before displaying a view.
 
@@ -122,8 +136,10 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Model-View-Controller (MVC)](https://java-design-patterns.com/patterns/model-view-controller/): Service to Worker is a specialized form of MVC, focusing on separating request handling and view management.
-* [Front Controller](https://java-design-patterns.com/patterns/front-controller/): Often used in conjunction with Service to Worker to centralize request handling and routing.
+* [Model-View-Controller (MVC)](https://java-design-patterns.com/patterns/model-view-controller/): Service to Worker is
+  a specialized form of MVC, focusing on separating request handling and view management.
+* [Front Controller](https://java-design-patterns.com/patterns/front-controller/): Often used in conjunction with
+  Service to Worker to centralize request handling and routing.
 
 ## References and Credits
 

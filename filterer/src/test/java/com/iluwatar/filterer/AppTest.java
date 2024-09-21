@@ -30,8 +30,8 @@ import org.junit.jupiter.api.Test;
 
 class AppTest {
 
-  @Test
-  void shouldLaunchApp() {
-    assertDoesNotThrow(() -> App.main(new String[]{}));
-  }
+    @Test
+    void shouldLaunchApp() {
+        assertDoesNotThrow(() -> App.main(new String[]{}));
+    }
 }

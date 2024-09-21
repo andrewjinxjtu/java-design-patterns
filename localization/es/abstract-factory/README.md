@@ -18,19 +18,24 @@ Proveer de una interfaz para crear familias de objetos relacionados dependientes
 
 Ejemplo del mundo real
 
-> Para crear un reino necesitamos objetos con una temática común. El reino élfico necesita un rey elfo, un castillo élfico y un ejército élfico mientras que el reino orco necesita un rey orco, un castillo orco y un ejército orco. Hay una dependencia entre los objetos del reino.
+> Para crear un reino necesitamos objetos con una temática común. El reino élfico necesita un rey elfo, un castillo
+> élfico y un ejército élfico mientras que el reino orco necesita un rey orco, un castillo orco y un ejército orco. Hay
+> una dependencia entre los objetos del reino.
 
 Dicho de otra forma
 
-> Una factoría de factorías; una factoría que agrupa otras factorías individuales pero relacionadas/dependientes sin especificar su clase concreta.
+> Una factoría de factorías; una factoría que agrupa otras factorías individuales pero relacionadas/dependientes sin
+> especificar su clase concreta.
 
 Según Wikipedia
 
-> El patrón abstract factory provee una forma de encapsular un grupo de factorías individuales que tienen una temática común sin especificar sus clases concretas.
+> El patrón abstract factory provee una forma de encapsular un grupo de factorías individuales que tienen una temática
+> común sin especificar sus clases concretas.
 
 **Ejemplo Programático**
 
-Traduciendo el ejemplo anterior sobre los reinos. Primero tenemos algunas interfaces e implementaciones de los objetos del `Castle`.
+Traduciendo el ejemplo anterior sobre los reinos. Primero tenemos algunas interfaces e implementaciones de los objetos
+del `Castle`.
 
 ```java
 public interface Castle {
@@ -118,8 +123,8 @@ public class OrcKingdomFactory implements KingdomFactory {
 }
 ```
 
-Ahora tenemos la factoría abstracta que nos permite hacer familias de objetos relacionados por ejemplo la factoría del reino élfico `ElfKingdomFactory` crea el castillo `castle`, rey `king` y ejército `army` etc.
-
+Ahora tenemos la factoría abstracta que nos permite hacer familias de objetos relacionados por ejemplo la factoría del
+reino élfico `ElfKingdomFactory` crea el castillo `castle`, rey `king` y ejército `army` etc.
 
 ```java
 var factory = new ElfKingdomFactory();
@@ -140,8 +145,10 @@ This is the elven king!
 This is the elven Army!
 ```
 
-Ahora podemos diseñar una factoría para nuestras factorías de reinos. En este ejemplo creamos  `FactoryMaker`, responsable de devolver una instancia de `ElfKingdomFactory` o `OrcKingdomFactory`.  
-El cliente puede usar `FactoryMaker` para crear una factoría concreta, que a su vez, producirá diferentes objetos concretos (derivados de `Army`, `King`, `Castle`).  
+Ahora podemos diseñar una factoría para nuestras factorías de reinos. En este ejemplo creamos  `FactoryMaker`,
+responsable de devolver una instancia de `ElfKingdomFactory` o `OrcKingdomFactory`.  
+El cliente puede usar `FactoryMaker` para crear una factoría concreta, que a su vez, producirá diferentes objetos
+concretos (derivados de `Army`, `King`, `Castle`).  
 En este ejemplo también usamos un enum para parametrizar el tipo de factoría de reinos pedirá el cliente.
 
 ```java
@@ -179,7 +186,6 @@ public static class FactoryMaker {
 
 ![alt text](./etc/abstract-factory.urm.png "Diagrama de Clases de Abstract Factory")
 
-
 ## Aplicación
 
 Usar el patrón Abstract Factory cuando
@@ -191,25 +197,28 @@ Usar el patrón Abstract Factory cuando
 * El tiempo de vida de la dependencia es conceptualmente más corto que el del cliente.
 * Necesitas un valor en tiempo de ejecución para construir una dependencia.
 * Quieres decidir que producto de una familia llamar en tiempo de ejecución.
-* Necesitas proveer de uno o más parámetros solo conocidos en tiempo de ejecución antes de poder resolver la dependencia.
+* Necesitas proveer de uno o más parámetros solo conocidos en tiempo de ejecución antes de poder resolver la
+  dependencia.
 * Necesitas consistencia entre productos.
 * No quieres cambiar el código existente al añadir nuevos productos o familias de productos al programa.
 
 Ejemplos de casos de uso
 
-* Elegir llamar a la implementación correcta de FileSystemAcmeService o DatabaseAcmeService o NetworkAcmeService en tiempo de ejecución.
+* Elegir llamar a la implementación correcta de FileSystemAcmeService o DatabaseAcmeService o NetworkAcmeService en
+  tiempo de ejecución.
 * Escribir test unitarios se hace mucho más sencillo.
 * Herramientas UI (User Interface) para diferentes SO (Sistemas Operativos).
 
 ## Consecuencias
 
-* La inyección de dependencias en java esconde las dependencias de la clase servicio lo que puede llevar a errores de ejecución que se podrían haber evitado al compilar.
+* La inyección de dependencias en java esconde las dependencias de la clase servicio lo que puede llevar a errores de
+  ejecución que se podrían haber evitado al compilar.
 * Mientras que el patrón es muy bueno creando objetos predefinidos, añadir nuevos puede ser complicado.
 * El código es más complicado de lo que debería porque se añaden muchas interfaces y clases nuevas junto con el patrón.
 
 ## Tutoriales
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## Usos conocidos
 

@@ -17,27 +17,38 @@ tag:
 
 ## Intent of Private Class Data Design Pattern
 
-The Private Class Data design pattern in Java focuses on restricting access to the internal state of an object, enhancing security and reducing risks of data corruption through controlled method access.
+The Private Class Data design pattern in Java focuses on restricting access to the internal state of an object,
+enhancing security and reducing risks of data corruption through controlled method access.
 
 ## Detailed Explanation of Private Class Data Pattern with Real-World Examples
 
 Real-world example
 
-> A real-world analogy for the Private Class Data pattern is the way a bank protects customer account information. Just like a class with private fields, a bank keeps sensitive data such as account balances, transaction history, and personal information private and only accessible through specific methods. Customers interact with their accounts through well-defined interfaces such as ATMs or online banking portals, which enforce security and validation rules, ensuring that unauthorized access or modifications are prevented. This controlled access mechanism ensures the integrity and security of the data, similar to how Private Class Data protects and manages access to class attributes in software design.
+> A real-world analogy for the Private Class Data pattern is the way a bank protects customer account information. Just
+> like a class with private fields, a bank keeps sensitive data such as account balances, transaction history, and
+> personal information private and only accessible through specific methods. Customers interact with their accounts
+> through well-defined interfaces such as ATMs or online banking portals, which enforce security and validation rules,
+> ensuring that unauthorized access or modifications are prevented. This controlled access mechanism ensures the integrity
+> and security of the data, similar to how Private Class Data protects and manages access to class attributes in software
+> design.
 
 In plain words
 
-> Private class data pattern prevents manipulation of data that is meant to be immutable by separating the data from the methods that use it into a class that maintains the data state.
+> Private class data pattern prevents manipulation of data that is meant to be immutable by separating the data from the
+> methods that use it into a class that maintains the data state.
 
 Wikipedia says
 
-> Private class data is a design pattern in computer programming used to encapsulate class attributes and their manipulation.
+> Private class data is a design pattern in computer programming used to encapsulate class attributes and their
+> manipulation.
 
 ## Programmatic Example of Private Class Data Pattern in Java
 
-Imagine you are cooking a stew for your family dinner. You want to stop your family members from tasting the stew while you're still preparing it. If they do, there might not be enough stew left for dinner.
+Imagine you are cooking a stew for your family dinner. You want to stop your family members from tasting the stew while
+you're still preparing it. If they do, there might not be enough stew left for dinner.
 
-First, we have a `Stew` class where its data is not protected by private class data, making the stew's ingredient mutable to class methods. 
+First, we have a `Stew` class where its data is not protected by private class data, making the stew's ingredient
+mutable to class methods.
 
 ```java
 @Slf4j
@@ -78,7 +89,8 @@ public class Stew {
 }
 ```
 
-Now, we have `ImmutableStew` class, where its data is protected by `StewData` record. The methods in `ImmutableStew` are unable to manipulate the data of the `StewData` class.
+Now, we have `ImmutableStew` class, where its data is protected by `StewData` record. The methods in `ImmutableStew` are
+unable to manipulate the data of the `StewData` class.
 
 ```java
 public record StewData(int numPotatoes, int numCarrots, int numMeat, int numPeppers) {}
@@ -145,7 +157,8 @@ Benefits:
 
 * Enhanced Security: Reduces the risk of unintended data corruption by encapsulating the data.
 * Ease of Maintenance: Changes to the internal representation of data do not affect external code.
-* Improved Abstraction: Users interact with a simplified interface without worrying about the complexities of data management.
+* Improved Abstraction: Users interact with a simplified interface without worrying about the complexities of data
+  management.
 
 Trade-offs:
 
@@ -154,9 +167,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Proxy](https://java-design-patterns.com/patterns/proxy/): Both patterns restrict access to the underlying object but Proxy controls access to the object itself, while Private Class Data controls access to the data.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Ensures that a class has only one instance and provides a global point of access to it; often used to manage shared data with controlled access.
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Adds behavior to an object without altering its structure; can be combined with Private Class Data to manage additional state privately.
+* [Proxy](https://java-design-patterns.com/patterns/proxy/): Both patterns restrict access to the underlying object but
+  Proxy controls access to the object itself, while Private Class Data controls access to the data.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Ensures that a class has only one instance and
+  provides a global point of access to it; often used to manage shared data with controlled access.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Adds behavior to an object without altering its
+  structure; can be combined with Private Class Data to manage additional state privately.
 
 ## References and Credits
 

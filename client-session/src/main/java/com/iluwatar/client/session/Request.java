@@ -35,8 +35,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class Request {
 
-  private String data;
+    private String data;
 
-  private Session session;
+    private Session session;
 
 }

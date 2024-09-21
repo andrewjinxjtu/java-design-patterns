@@ -17,19 +17,28 @@ tag:
 
 ## Intent of Virtual Proxy Design Pattern
 
-The Virtual Proxy Design Pattern is a crucial component in Java design patterns, enabling efficient resource management and performance optimization through controlled object creation. It provides a surrogate or placeholder for another object to control its creation and access, particularly when dealing with resource-intensive operations.
+The Virtual Proxy Design Pattern is a crucial component in Java design patterns, enabling efficient resource management
+and performance optimization through controlled object creation. It provides a surrogate or placeholder for another
+object to control its creation and access, particularly when dealing with resource-intensive operations.
 
 ## Detailed Explanation of Virtual Proxy Pattern with Real-World Examples
 
 Real-world example
 
-> Just as a high-end art gallery uses photographs to save resources and reduce risks, the Virtual Proxy Pattern in Java manages resource-intensive operations by displaying only necessary objects, significantly enhancing system efficiency. To protect the actual artwork and reduce the risk of damage or theft, the gallery initially displays high-quality photographs of the artworks. When a serious buyer expresses genuine interest, the gallery then brings out the original artwork from a secure storage area for viewing.
-> 
-> In this analogy, the high-quality photograph serves as the virtual proxy for the actual artwork. The real artwork is only fetched and displayed when truly necessary, thus saving resources and reducing risk, similar to how the Virtual Proxy pattern defers object creation until it is needed.
+> Just as a high-end art gallery uses photographs to save resources and reduce risks, the Virtual Proxy Pattern in Java
+> manages resource-intensive operations by displaying only necessary objects, significantly enhancing system efficiency.
+> To protect the actual artwork and reduce the risk of damage or theft, the gallery initially displays high-quality
+> photographs of the artworks. When a serious buyer expresses genuine interest, the gallery then brings out the original
+> artwork from a secure storage area for viewing.
+>
+> In this analogy, the high-quality photograph serves as the virtual proxy for the actual artwork. The real artwork is
+> only fetched and displayed when truly necessary, thus saving resources and reducing risk, similar to how the Virtual
+> Proxy pattern defers object creation until it is needed.
 
 In plain words
 
-> The virtual proxy pattern allows a representative class to stand in for another class to control access to it, particularly for resource-intensive operations.
+> The virtual proxy pattern allows a representative class to stand in for another class to control access to it,
+> particularly for resource-intensive operations.
 
 Wikipedia says
 
@@ -39,7 +48,10 @@ Wikipedia says
 
 The Virtual Proxy design pattern in Java can optimize resource utilization and system performance.
 
-Consider an online video streaming platform where video objects are resource-intensive due to their large data size and required processing power. To efficiently manage resources, the system uses a virtual proxy to handle video objects. The virtual proxy defers the creation of actual video objects until they are explicitly required for playback, thus saving system resources and improving response times for users.
+Consider an online video streaming platform where video objects are resource-intensive due to their large data size and
+required processing power. To efficiently manage resources, the system uses a virtual proxy to handle video objects. The
+virtual proxy defers the creation of actual video objects until they are explicitly required for playback, thus saving
+system resources and improving response times for users.
 
 Given our example of a video streaming service, here is how it might be implemented:
 
@@ -149,9 +161,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Proxy](https://java-design-patterns.com/patterns/proxy/): Virtual Proxy is a specific type of the Proxy pattern focused on lazy initialization.
-* [Lazy Loading](https://java-design-patterns.com/patterns/lazy-loading/): Directly related as the core idea of Virtual Proxy is to defer object creation.
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Similar in structure, but Decorators add behavior to the objects while proxies control access.
+* [Proxy](https://java-design-patterns.com/patterns/proxy/): Virtual Proxy is a specific type of the Proxy pattern
+  focused on lazy initialization.
+* [Lazy Loading](https://java-design-patterns.com/patterns/lazy-loading/): Directly related as the core idea of Virtual
+  Proxy is to defer object creation.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Similar in structure, but Decorators add behavior
+  to the objects while proxies control access.
 
 ## References and Credits
 

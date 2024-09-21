@@ -36,10 +36,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Post {
-  /**
-   * Set the url for this http method.
-   *
-   * @return Url address.
-   */
-  String value() default "";
+    /**
+     * Set the url for this http method.
+     *
+     * @return Url address.
+     */
+    String value() default "";
 }

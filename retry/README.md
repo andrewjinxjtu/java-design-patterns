@@ -18,27 +18,37 @@ tag:
 
 ## Intent of Retry Design Pattern
 
-The Retry pattern in Java transparently retries certain operations that involve communication with external resources, particularly over the network, isolating calling code from the retry implementation details. It is crucial for developing resilient software systems that handle transient failures gracefully.
+The Retry pattern in Java transparently retries certain operations that involve communication with external resources,
+particularly over the network, isolating calling code from the retry implementation details. It is crucial for
+developing resilient software systems that handle transient failures gracefully.
 
 ## Detailed Explanation of Retry Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine you're a delivery driver attempting to deliver a package to a customer's house. You ring the doorbell, but no one answers. Instead of leaving immediately, you wait for a few minutes and try again, repeating this process a few times. This is similar to the Retry pattern in software, where a system retries a failed operation (e.g., making a network request) a certain number of times before finally giving up, in hopes that the issue (e.g., transient network glitch) will be resolved and the operation will succeed. 
+> Imagine you're a delivery driver attempting to deliver a package to a customer's house. You ring the doorbell, but no
+> one answers. Instead of leaving immediately, you wait for a few minutes and try again, repeating this process a few
+> times. This is similar to the Retry pattern in software, where a system retries a failed operation (e.g., making a
+> network request) a certain number of times before finally giving up, in hopes that the issue (e.g., transient network
+> glitch) will be resolved and the operation will succeed.
 
 In plain words
 
-> Retry pattern transparently retries failed operations over network. 
+> Retry pattern transparently retries failed operations over network.
 
 [Microsoft documentation](https://docs.microsoft.com/en-us/azure/architecture/patterns/retry) says
 
-> Enable an application to handle transient failures when it tries to connect to a service or network resource, by transparently retrying a failed operation. This can improve the stability of the application.
+> Enable an application to handle transient failures when it tries to connect to a service or network resource, by
+> transparently retrying a failed operation. This can improve the stability of the application.
 
 ## Programmatic Example of Retry Pattern in Java
 
-The Retry design pattern is a resilience pattern that allows an application to transparently attempt to execute operations multiple times in the expectation that it'll succeed. This pattern is particularly useful when the application is connecting to a network service or a remote resource, where temporary failures are common.
+The Retry design pattern is a resilience pattern that allows an application to transparently attempt to execute
+operations multiple times in the expectation that it'll succeed. This pattern is particularly useful when the
+application is connecting to a network service or a remote resource, where temporary failures are common.
 
-First, we have a `BusinessOperation` interface that represents an operation that can be performed and might throw a `BusinessException`.
+First, we have a `BusinessOperation` interface that represents an operation that can be performed and might throw a
+`BusinessException`.
 
 ```java
 public interface BusinessOperation<T> {
@@ -46,7 +56,8 @@ public interface BusinessOperation<T> {
 }
 ```
 
-Next, we have a `FindCustomer` class that implements this interface. This class simulates a flaky service that intermittently fails by throwing `BusinessException`s before eventually returning a customer's ID.
+Next, we have a `FindCustomer` class that implements this interface. This class simulates a flaky service that
+intermittently fails by throwing `BusinessException`s before eventually returning a customer's ID.
 
 ```java
 public final class FindCustomer implements BusinessOperation<String> {
@@ -57,7 +68,8 @@ public final class FindCustomer implements BusinessOperation<String> {
 }
 ```
 
-The `Retry` class is where the Retry pattern is implemented. It takes a `BusinessOperation` and a number of attempts, and it will keep trying to perform the operation until it either succeeds or the maximum number of attempts is reached.
+The `Retry` class is where the Retry pattern is implemented. It takes a `BusinessOperation` and a number of attempts,
+and it will keep trying to perform the operation until it either succeeds or the maximum number of attempts is reached.
 
 ```java
 public final class Retry<T> implements BusinessOperation<T> {
@@ -115,7 +127,10 @@ public final class Retry<T> implements BusinessOperation<T> {
 }
 ```
 
-In this class, the `perform` method tries to perform the operation. If the operation throws an exception, it checks if the exception is recoverable and if the maximum number of attempts has not been reached. If both conditions are true, it waits for a specified delay and then tries again. If the exception is not recoverable or the maximum number of attempts has been reached, it rethrows the exception.
+In this class, the `perform` method tries to perform the operation. If the operation throws an exception, it checks if
+the exception is recoverable and if the maximum number of attempts has not been reached. If both conditions are true, it
+waits for a specified delay and then tries again. If the exception is not recoverable or the maximum number of attempts
+has been reached, it rethrows the exception.
 
 Finally, here is the `App` class driving the retry pattern example.
 
@@ -189,7 +204,8 @@ Running the code produces the following console output.
 10:12:22.297 [main] INFO com.iluwatar.retry.App -- However, retrying the operation while ignoring a recoverable error will eventually yield the result 123 after a number of attempts 1
 ```
 
-This way, the Retry pattern allows the application to handle temporary failures gracefully, improving its resilience and reliability.
+This way, the Retry pattern allows the application to handle temporary failures gracefully, improving its resilience and
+reliability.
 
 ## When to Use the Retry Pattern in Java
 
@@ -219,7 +235,8 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Circuit Breaker](https://java-design-patterns.com/patterns/circuit-breaker/): Used to stop the flow of requests to an external service after a failure threshold is reached, preventing system overload.
+* [Circuit Breaker](https://java-design-patterns.com/patterns/circuit-breaker/): Used to stop the flow of requests to an
+  external service after a failure threshold is reached, preventing system overload.
 
 ## References and Credits
 

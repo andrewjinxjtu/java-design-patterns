@@ -18,21 +18,28 @@ tag:
 
 ## Intent of Component Design Pattern
 
-The Component design pattern organizes code into reusable, interchangeable components, promoting flexibility, modularity, and ease of maintenance. This pattern is especially useful in game development, enabling entities to be configured with diverse behaviors dynamically.
+The Component design pattern organizes code into reusable, interchangeable components, promoting flexibility,
+modularity, and ease of maintenance. This pattern is especially useful in game development, enabling entities to be
+configured with diverse behaviors dynamically.
 
 ## Detailed Explanation of Component Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a video game with a graphics component and a sound component. Including both in a single Java class can create maintenance challenges due to lengthy code and potential conflicts from different teams working on the same class. The Component design pattern resolves this by creating individual component classes for graphics and sound, allowing flexible and independent development. This modular approach enhances maintainability and scalability.
+> Consider a video game with a graphics component and a sound component. Including both in a single Java class can
+> create maintenance challenges due to lengthy code and potential conflicts from different teams working on the same
+> class. The Component design pattern resolves this by creating individual component classes for graphics and sound,
+> allowing flexible and independent development. This modular approach enhances maintainability and scalability.
 
 In plain words
 
-> The component design pattern provides a single attribute to be accessible by numerous objects without requiring the existence of a relationship between the objects themselves.
+> The component design pattern provides a single attribute to be accessible by numerous objects without requiring the
+> existence of a relationship between the objects themselves.
 
 ## Programmatic Example of Component Pattern in Java
 
-The `App` class creates a demonstration of the use of the component pattern by creating two different objects which inherit a small collection of individual components that are modifiable.
+The `App` class creates a demonstration of the use of the component pattern by creating two different objects which
+inherit a small collection of individual components that are modifiable.
 
 ```java
 public final class App {
@@ -49,7 +56,9 @@ public final class App {
 }
 ```
 
-Much of the program exists within the `GameObject` class, within this class, the player and NPC object create methods are set up. Additionally, this class also consists of the method calls used to update/alter information of the object's components.
+Much of the program exists within the `GameObject` class, within this class, the player and NPC object create methods
+are set up. Additionally, this class also consists of the method calls used to update/alter information of the object's
+components.
 
 ```java
 public class GameObject {
@@ -98,7 +107,9 @@ public class GameObject {
 }
 ```
 
-Upon opening the component package, the collection of components are revealed. These components provide the interface for objects to inherit these domains. The `PlayerInputComponent` class shown below updates the object's velocity characteristic based on user's key event input.
+Upon opening the component package, the collection of components are revealed. These components provide the interface
+for objects to inherit these domains. The `PlayerInputComponent` class shown below updates the object's velocity
+characteristic based on user's key event input.
 
 ```java
 public class PlayerInputComponent implements InputComponent {
@@ -126,31 +137,43 @@ public class PlayerInputComponent implements InputComponent {
 
 ## When to Use the Component Pattern in Java
 
-* Used in game development and simulations where game entities (e.g., characters, items) can have a dynamic set of abilities or states.
-* Suitable for systems requiring high modularity and systems where entities might need to change behavior at runtime without inheritance hierarchies.
+* Used in game development and simulations where game entities (e.g., characters, items) can have a dynamic set of
+  abilities or states.
+* Suitable for systems requiring high modularity and systems where entities might need to change behavior at runtime
+  without inheritance hierarchies.
 
 ## Real-World Applications of Component Pattern in Java
 
-The Component pattern is ideal for game development and simulations where entities like characters and items have dynamic abilities or states. It suits systems requiring high modularity and scenarios where entities need to change behavior at runtime without relying on inheritance hierarchies, enhancing flexibility and maintainability.
+The Component pattern is ideal for game development and simulations where entities like characters and items have
+dynamic abilities or states. It suits systems requiring high modularity and scenarios where entities need to change
+behavior at runtime without relying on inheritance hierarchies, enhancing flexibility and maintainability.
 
 ## Benefits and Trade-offs of Component Pattern
 
 Benefits:
 
-* Flexibility and Reusability: Components can be reused across different entities, making it easier to add new features or modify existing ones.
-* Decoupling: Reduces dependencies between game entity states and behaviors, facilitating easier changes and maintenance.
-* Dynamic Composition: Entities can alter their behavior at runtime by adding or removing components, providing significant flexibility in game design.
+* Flexibility and Reusability: Components can be reused across different entities, making it easier to add new features
+  or modify existing ones.
+* Decoupling: Reduces dependencies between game entity states and behaviors, facilitating easier changes and
+  maintenance.
+* Dynamic Composition: Entities can alter their behavior at runtime by adding or removing components, providing
+  significant flexibility in game design.
 
 Trade-offs:
 
-* Complexity: Can introduce additional complexity in system architecture, particularly in managing dependencies and communications between components.
-* Performance Considerations: Depending on implementation, may incur a performance overhead due to indirection and dynamic behavior, especially critical in high-performance game loops.
+* Complexity: Can introduce additional complexity in system architecture, particularly in managing dependencies and
+  communications between components.
+* Performance Considerations: Depending on implementation, may incur a performance overhead due to indirection and
+  dynamic behavior, especially critical in high-performance game loops.
 
 ## Related Java Design Patterns
 
-* [Decorator](https://java-design-patterns.com/patterns/decorator/): Similar concept of adding responsibilities dynamically, but without the focus on game entities.
-* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Can be used in conjunction with the Component pattern to share component instances among many entities to save memory.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Often used in Component systems to communicate state changes between components.
+* [Decorator](https://java-design-patterns.com/patterns/decorator/): Similar concept of adding responsibilities
+  dynamically, but without the focus on game entities.
+* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Can be used in conjunction with the Component
+  pattern to share component instances among many entities to save memory.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Often used in Component systems to communicate state
+  changes between components.
 
 ## References and Credits
 

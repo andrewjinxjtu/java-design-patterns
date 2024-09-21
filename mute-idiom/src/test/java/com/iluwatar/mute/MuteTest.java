@@ -26,6 +26,7 @@ package com.iluwatar.mute;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,40 +38,40 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class MuteTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(MuteTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MuteTest.class);
 
-  private static final String MESSAGE = "should not occur";
+    private static final String MESSAGE = "should not occur";
 
-  @Test
-  void muteShouldRunTheCheckedRunnableAndNotThrowAnyExceptionIfCheckedRunnableDoesNotThrowAnyException() {
-    assertDoesNotThrow(() -> Mute.mute(this::methodNotThrowingAnyException));
-  }
+    @Test
+    void muteShouldRunTheCheckedRunnableAndNotThrowAnyExceptionIfCheckedRunnableDoesNotThrowAnyException() {
+        assertDoesNotThrow(() -> Mute.mute(this::methodNotThrowingAnyException));
+    }
 
-  @Test
-  void muteShouldRethrowUnexpectedExceptionAsAssertionError() {
-    assertThrows(AssertionError.class, () -> Mute.mute(this::methodThrowingException));
-  }
+    @Test
+    void muteShouldRethrowUnexpectedExceptionAsAssertionError() {
+        assertThrows(AssertionError.class, () -> Mute.mute(this::methodThrowingException));
+    }
 
-  @Test
-  void loggedMuteShouldRunTheCheckedRunnableAndNotThrowAnyExceptionIfCheckedRunnableDoesNotThrowAnyException() {
-    assertDoesNotThrow(() -> Mute.mute(this::methodNotThrowingAnyException));
-  }
+    @Test
+    void loggedMuteShouldRunTheCheckedRunnableAndNotThrowAnyExceptionIfCheckedRunnableDoesNotThrowAnyException() {
+        assertDoesNotThrow(() -> Mute.mute(this::methodNotThrowingAnyException));
+    }
 
-  @Test
-  void loggedMuteShouldLogExceptionTraceBeforeSwallowingIt() {
-    var stream = new ByteArrayOutputStream();
-    System.setErr(new PrintStream(stream));
+    @Test
+    void loggedMuteShouldLogExceptionTraceBeforeSwallowingIt() {
+        var stream = new ByteArrayOutputStream();
+        System.setErr(new PrintStream(stream));
 
-    Mute.loggedMute(this::methodThrowingException);
+        Mute.loggedMute(this::methodThrowingException);
 
-    assertTrue(stream.toString().contains(MESSAGE));
-  }
+        assertTrue(stream.toString().contains(MESSAGE));
+    }
 
-  private void methodNotThrowingAnyException() {
-    LOGGER.info("Executed successfully");
-  }
+    private void methodNotThrowingAnyException() {
+        LOGGER.info("Executed successfully");
+    }
 
-  private void methodThrowingException() throws Exception {
-    throw new Exception(MESSAGE);
-  }
+    private void methodThrowingException() throws Exception {
+        throw new Exception(MESSAGE);
+    }
 }

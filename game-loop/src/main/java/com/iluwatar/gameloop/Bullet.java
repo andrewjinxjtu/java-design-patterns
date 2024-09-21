@@ -32,11 +32,11 @@ import lombok.Setter;
  */
 public class Bullet {
 
-  @Getter
-  @Setter
-  private float position;
+    @Getter
+    @Setter
+    private float position;
 
-  public Bullet() {
-    position = 0.0f;
-  }
+    public Bullet() {
+        position = 0.0f;
+    }
 }

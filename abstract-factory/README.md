@@ -18,29 +18,41 @@ tag:
 
 ## Intent of Abstract Factory Design Pattern
 
-The Abstract Factory pattern in Java provides an interface for creating families of related or dependent objects without specifying their concrete classes, enhancing modularity and flexibility in software design.
+The Abstract Factory pattern in Java provides an interface for creating families of related or dependent objects without
+specifying their concrete classes, enhancing modularity and flexibility in software design.
 
 ## Detailed Explanation of Abstract Factory Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a furniture company that uses the Abstract Factory pattern in Java to produce various styles of furniture: modern, Victorian, and rustic. Each style includes products like chairs, tables, and sofas. To ensure consistency within each style, the company uses an Abstract Factory pattern.
+> Imagine a furniture company that uses the Abstract Factory pattern in Java to produce various styles of furniture:
+> modern, Victorian, and rustic. Each style includes products like chairs, tables, and sofas. To ensure consistency within
+> each style, the company uses an Abstract Factory pattern.
 >
-> In this scenario, the Abstract Factory is an interface for creating families of related furniture objects (chairs, tables, sofas). Each concrete factory (ModernFurnitureFactory, VictorianFurnitureFactory, RusticFurnitureFactory) implements the Abstract Factory interface and creates a set of products that match the specific style. This way, clients can create a whole set of modern or Victorian furniture without worrying about the details of their instantiation. This maintains a consistent style and allows easy swapping of one style of furniture for another.
+> In this scenario, the Abstract Factory is an interface for creating families of related furniture objects (chairs,
+> tables, sofas). Each concrete factory (ModernFurnitureFactory, VictorianFurnitureFactory, RusticFurnitureFactory)
+> implements the Abstract Factory interface and creates a set of products that match the specific style. This way, clients
+> can create a whole set of modern or Victorian furniture without worrying about the details of their instantiation. This
+> maintains a consistent style and allows easy swapping of one style of furniture for another.
 
 In plain words
 
-> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
+> A factory of factories; a factory that groups the individual but related/dependent factories together without
+> specifying their concrete classes.
 
 Wikipedia says
 
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme
+> without specifying their concrete classes
 
 ## Programmatic Example of Abstract Factory in Java
 
-To create a kingdom using the Abstract Factory pattern in Java, we need objects with a common theme. The elven kingdom needs an elven king, elven castle, and elven army whereas the orcish kingdom needs an orcish king, orcish castle, and orcish army. There is a dependency between the objects in the kingdom.
+To create a kingdom using the Abstract Factory pattern in Java, we need objects with a common theme. The elven kingdom
+needs an elven king, elven castle, and elven army whereas the orcish kingdom needs an orcish king, orcish castle, and
+orcish army. There is a dependency between the objects in the kingdom.
 
-Translating the kingdom example above. First of all, we have some interfaces and implementation for the objects in the kingdom.
+Translating the kingdom example above. First of all, we have some interfaces and implementation for the objects in the
+kingdom.
 
 ```java
 public interface Castle {
@@ -118,7 +130,11 @@ public class ElfKingdomFactory implements KingdomFactory {
 // Orcish implementations similarly -> ...
 ```
 
-Now, we can design a factory for our different kingdom factories. In this example, we created `FactoryMaker`, responsible for returning an instance of either `ElfKingdomFactory` or `OrcKingdomFactory`. The client can use `FactoryMaker` to create the desired concrete factory which, in turn, will produce different concrete objects (derived from `Army`, `King`, `Castle`). In this example, we also used an enum to parameterize which type of kingdom factory the client will ask for.
+Now, we can design a factory for our different kingdom factories. In this example, we created `FactoryMaker`,
+responsible for returning an instance of either `ElfKingdomFactory` or `OrcKingdomFactory`. The client can use
+`FactoryMaker` to create the desired concrete factory which, in turn, will produce different concrete objects (derived
+from `Army`, `King`, `Castle`). In this example, we also used an enum to parameterize which type of kingdom factory the
+client will ask for.
 
 ```java
 public static class FactoryMaker {
@@ -215,9 +231,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Abstract Factory uses Factory Methods to create products.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Abstract Factory classes are often implemented as Singletons.
-* [Factory Kit](https://java-design-patterns.com/patterns/factory-kit/): Similar to Abstract Factory but focuses on configuring and managing a set of related objects in a flexible way.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Abstract Factory uses Factory Methods to
+  create products.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Abstract Factory classes are often implemented as
+  Singletons.
+* [Factory Kit](https://java-design-patterns.com/patterns/factory-kit/): Similar to Abstract Factory but focuses on
+  configuring and managing a set of related objects in a flexible way.
 
 ## References and Credits
 

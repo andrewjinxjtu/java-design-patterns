@@ -39,7 +39,8 @@ public class Product {
 }
 ```
 
-接下来，我们将介绍我们的聚合器微服务。 它包含用于调用相应微服务的客户端`ProductInformationClient`和` ProductInventoryClient`。
+接下来，我们将介绍我们的聚合器微服务。 它包含用于调用相应微服务的客户端`ProductInformationClient`和
+` ProductInventoryClient`。
 
 ```java
 @RestController

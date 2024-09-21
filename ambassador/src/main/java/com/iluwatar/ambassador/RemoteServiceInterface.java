@@ -29,5 +29,5 @@ package com.iluwatar.ambassador;
  */
 interface RemoteServiceInterface {
 
-  long doRemoteFunction(int value);
+    long doRemoteFunction(int value);
 }

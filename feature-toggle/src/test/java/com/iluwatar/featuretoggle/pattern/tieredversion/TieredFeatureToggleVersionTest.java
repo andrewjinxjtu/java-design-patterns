@@ -38,32 +38,32 @@ import org.junit.jupiter.api.Test;
  */
 class TieredFeatureToggleVersionTest {
 
-  final User paidUser = new User("Jamie Coder");
-  final User freeUser = new User("Alan Defect");
-  final Service service = new TieredFeatureToggleVersion();
+    final User paidUser = new User("Jamie Coder");
+    final User freeUser = new User("Alan Defect");
+    final Service service = new TieredFeatureToggleVersion();
 
-  @BeforeEach
-  void setUp() {
-    UserGroup.addUserToPaidGroup(paidUser);
-    UserGroup.addUserToFreeGroup(freeUser);
-  }
+    @BeforeEach
+    void setUp() {
+        UserGroup.addUserToPaidGroup(paidUser);
+        UserGroup.addUserToFreeGroup(freeUser);
+    }
 
-  @Test
-  void testGetWelcomeMessageForPaidUser() {
-    final var welcomeMessage = service.getWelcomeMessage(paidUser);
-    final var expected = "You're amazing Jamie Coder. Thanks for paying for this awesome software.";
-    assertEquals(expected, welcomeMessage);
-  }
+    @Test
+    void testGetWelcomeMessageForPaidUser() {
+        final var welcomeMessage = service.getWelcomeMessage(paidUser);
+        final var expected = "You're amazing Jamie Coder. Thanks for paying for this awesome software.";
+        assertEquals(expected, welcomeMessage);
+    }
 
-  @Test
-  void testGetWelcomeMessageForFreeUser() {
-    final var welcomeMessage = service.getWelcomeMessage(freeUser);
-    final var expected = "I suppose you can use this software.";
-    assertEquals(expected, welcomeMessage);
-  }
+    @Test
+    void testGetWelcomeMessageForFreeUser() {
+        final var welcomeMessage = service.getWelcomeMessage(freeUser);
+        final var expected = "I suppose you can use this software.";
+        assertEquals(expected, welcomeMessage);
+    }
 
-  @Test
-  void testIsEnhancedAlwaysTrueAsTiered() {
-    assertTrue(service.isEnhanced());
-  }
+    @Test
+    void testIsEnhancedAlwaysTrueAsTiered() {
+        assertTrue(service.isEnhanced());
+    }
 }

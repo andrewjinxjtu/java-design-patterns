@@ -36,21 +36,21 @@ import org.junit.jupiter.api.Test;
  */
 class LoginPageTest {
 
-  private final LoginPage loginPage = new LoginPage(new WebClient());
+    private final LoginPage loginPage = new LoginPage(new WebClient());
 
-  @BeforeEach
-  void setUp() {
-    loginPage.navigateToPage();
-  }
+    @BeforeEach
+    void setUp() {
+        loginPage.navigateToPage();
+    }
 
-  @Test
-  void testLogin() {
-    var albumListPage = loginPage
-        .enterUsername("admin")
-        .enterPassword("password")
-        .login();
-    albumListPage.navigateToPage();
-    assertTrue(albumListPage.isAt());
-  }
+    @Test
+    void testLogin() {
+        var albumListPage = loginPage
+                .enterUsername("admin")
+                .enterPassword("password")
+                .login();
+        albumListPage.navigateToPage();
+        assertTrue(albumListPage.isAt());
+    }
 
 }

@@ -24,25 +24,27 @@
  */
 package com.iluwatar.observer;
 
-import lombok.Getter; /**
+import lombok.Getter;
+
+/**
  * WeatherType enumeration.
  */
 public enum WeatherType {
 
-  SUNNY("Sunny"),
-  RAINY("Rainy"),
-  WINDY("Windy"),
-  COLD("Cold");
+    SUNNY("Sunny"),
+    RAINY("Rainy"),
+    WINDY("Windy"),
+    COLD("Cold");
 
-  @Getter
-  private final String description;
+    @Getter
+    private final String description;
 
-  WeatherType(String description) {
-    this.description = description;
-  }
+    WeatherType(String description) {
+        this.description = description;
+    }
 
-  @Override
-  public String toString() {
-    return this.name().toLowerCase();
-  }
+    @Override
+    public String toString() {
+        return this.name().toLowerCase();
+    }
 }

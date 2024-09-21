@@ -18,15 +18,24 @@ tag:
 
 ## Intent of Business Delegate Design Pattern
 
-The Business Delegate pattern is a structural design pattern in Java that adds an abstraction layer between the presentation and business tiers. By using the pattern we gain loose coupling between the tiers and encapsulate knowledge about how to locate, connect to, and interact with the business objects that make up the application.
+The Business Delegate pattern is a structural design pattern in Java that adds an abstraction layer between the
+presentation and business tiers. By using the pattern we gain loose coupling between the tiers and encapsulate knowledge
+about how to locate, connect to, and interact with the business objects that make up the application.
 
 ## Detailed Explanation of Business Delegate Pattern with Real-World Examples
 
 Real-world example
 
-> In an Enterprise application using Java EE, the Business Delegate pattern helps manage interactions between different business services.
-> 
-> Imagine a restaurant where the waitstaff serves as intermediaries between the customers and the kitchen. When a customer places an order, the waiter takes the order to the kitchen, relays any specific requests, and later brings the prepared food back to the customer. The waitstaff abstracts the complexity of the kitchen operations from the customers, allowing the chefs to focus solely on cooking without needing to interact directly with customers. This setup allows both the customer service (presentation tier) and the kitchen (business service) to operate independently and efficiently. The waitstaff acts as the Business Delegate, managing communication and ensuring smooth interactions between the two distinct areas.
+> In an Enterprise application using Java EE, the Business Delegate pattern helps manage interactions between different
+> business services.
+>
+> Imagine a restaurant where the waitstaff serves as intermediaries between the customers and the kitchen. When a
+> customer places an order, the waiter takes the order to the kitchen, relays any specific requests, and later brings the
+> prepared food back to the customer. The waitstaff abstracts the complexity of the kitchen operations from the customers,
+> allowing the chefs to focus solely on cooking without needing to interact directly with customers. This setup allows
+> both the customer service (presentation tier) and the kitchen (business service) to operate independently and
+> efficiently. The waitstaff acts as the Business Delegate, managing communication and ensuring smooth interactions
+> between the two distinct areas.
 
 In Plain Words
 
@@ -34,13 +43,19 @@ In Plain Words
 
 Wikipedia says
 
-> Business Delegate is a Java EE design pattern. This pattern is directing to reduce the coupling in between business services and the connected presentation tier, and to hide the implementation details of services (including lookup and accessibility of EJB architecture). Business Delegates acts as an adaptor to invoke business objects from the presentation tier.
+> Business Delegate is a Java EE design pattern. This pattern is directing to reduce the coupling in between business
+> services and the connected presentation tier, and to hide the implementation details of services (including lookup and
+> accessibility of EJB architecture). Business Delegates acts as an adaptor to invoke business objects from the
+> presentation tier.
 
 ## Programmatic Example of Business Delegate Pattern in Java
 
-The following Java code demonstrates how to implement the Business Delegate pattern. This pattern is particularly useful in applications requiring loose coupling and efficient service interaction.
+The following Java code demonstrates how to implement the Business Delegate pattern. This pattern is particularly useful
+in applications requiring loose coupling and efficient service interaction.
 
-A mobile phone application promises to stream any movie in existence to your device. It captures the user's search string and passes this on to the Business Delegate. The Business Delegate selects the most suitable video streaming service and plays the video from there.
+A mobile phone application promises to stream any movie in existence to your device. It captures the user's search
+string and passes this on to the Business Delegate. The Business Delegate selects the most suitable video streaming
+service and plays the video from there.
 
 First, we have an abstraction for video streaming services and a couple of implementations.
 
@@ -173,7 +188,8 @@ Benefits:
 
 * Decoupling of Presentation and Business Tiers: Allows the client tier and business services to evolve independently.
 * Location Transparency: Clients remain unaffected by changes in the location or the instantiation of business services.
-* Reuse and Scalability: Business Delegate objects can be reused by multiple clients, and the pattern supports load balancing and scalability.
+* Reuse and Scalability: Business Delegate objects can be reused by multiple clients, and the pattern supports load
+  balancing and scalability.
 
 Trade-offs:
 
@@ -182,9 +198,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Service Locator](https://java-design-patterns.com/patterns/service-locator/): Business Delegate uses Service Locator to locate business services.
-* [Session Facade](https://java-design-patterns.com/patterns/session-facade/): Business Delegate may use Session Facade to provide a unified interface to a set of business services.
-* [Composite Entity](https://java-design-patterns.com/patterns/composite-entity/): Business Delegate may use Composite Entity to manage the state of business services.
+* [Service Locator](https://java-design-patterns.com/patterns/service-locator/): Business Delegate uses Service Locator
+  to locate business services.
+* [Session Facade](https://java-design-patterns.com/patterns/session-facade/): Business Delegate may use Session Facade
+  to provide a unified interface to a set of business services.
+* [Composite Entity](https://java-design-patterns.com/patterns/composite-entity/): Business Delegate may use Composite
+  Entity to manage the state of business services.
 
 ## References and Credits
 

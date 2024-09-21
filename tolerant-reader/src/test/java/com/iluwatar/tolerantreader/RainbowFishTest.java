@@ -30,20 +30,19 @@ import org.junit.jupiter.api.Test;
 
 /**
  * RainbowFishTest
- *
  */
 class RainbowFishTest {
 
-  /**
-   * Verify if the getters of a {@link RainbowFish} return the expected values
-   */
-  @Test
-  void testValues() {
-    final var fish = new RainbowFish("name", 1, 2, 3);
-    assertEquals("name", fish.getName());
-    assertEquals(1, fish.getAge());
-    assertEquals(2, fish.getLengthMeters());
-    assertEquals(3, fish.getWeightTons());
-  }
+    /**
+     * Verify if the getters of a {@link RainbowFish} return the expected values
+     */
+    @Test
+    void testValues() {
+        final var fish = new RainbowFish("name", 1, 2, 3);
+        assertEquals("name", fish.getName());
+        assertEquals(1, fish.getAge());
+        assertEquals(2, fish.getLengthMeters());
+        assertEquals(3, fish.getWeightTons());
+    }
 
 }

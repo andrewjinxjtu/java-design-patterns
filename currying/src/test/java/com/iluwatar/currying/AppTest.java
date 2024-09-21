@@ -32,8 +32,8 @@ import org.junit.jupiter.api.Test;
  * Tests that the App can be run without throwing any exceptions.
  */
 class AppTest {
-  @Test
-  void executesWithoutExceptions() {
-    assertDoesNotThrow(() -> App.main(new String[]{}));
-  }
+    @Test
+    void executesWithoutExceptions() {
+        assertDoesNotThrow(() -> App.main(new String[]{}));
+    }
 }

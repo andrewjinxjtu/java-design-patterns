@@ -45,19 +45,19 @@ import lombok.NoArgsConstructor;
 @DiscriminatorValue(value = "CAR")
 public class Car extends PassengerVehicle {
 
-  private int engineCapacity;
+    private int engineCapacity;
 
-  public Car(String manufacturer, String model, int noOfPassengers, int engineCapacity) {
-    super(manufacturer, model, noOfPassengers);
-    this.engineCapacity = engineCapacity;
-  }
+    public Car(String manufacturer, String model, int noOfPassengers, int engineCapacity) {
+        super(manufacturer, model, noOfPassengers);
+        this.engineCapacity = engineCapacity;
+    }
 
-  // Overridden the toString method to specify the Vehicle object
-  @Override
-  public String toString() {
-    return "Car{"
-            + super.toString()
-            + '}';
-  }
+    // Overridden the toString method to specify the Vehicle object
+    @Override
+    public String toString() {
+        return "Car{"
+                + super.toString()
+                + '}';
+    }
 
 }

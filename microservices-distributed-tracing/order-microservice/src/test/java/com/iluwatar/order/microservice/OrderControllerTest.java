@@ -22,6 +22,7 @@ package com.iluwatar.order.microservice;/*
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -37,40 +38,40 @@ import static org.mockito.Mockito.when;
  */
 class OrderControllerTest {
 
-  @InjectMocks
-  private OrderController orderController;
+    @InjectMocks
+    private OrderController orderController;
 
-  @Mock
-  private OrderService orderService;
+    @Mock
+    private OrderService orderService;
 
-  @BeforeEach
-  void setup() {
-    MockitoAnnotations.openMocks(this);
-  }
+    @BeforeEach
+    void setup() {
+        MockitoAnnotations.openMocks(this);
+    }
 
-  /**
-   * Test to process the order successfully.
-   */
-  @Test
-  void processOrderShouldReturnSuccessStatus() {
-    // Arrange
-    when(orderService.processOrder()).thenReturn("Order processed successfully");
-    // Act
-    ResponseEntity<String> response = orderController.processOrder("test order");
-    // Assert
-    assertEquals("Order processed successfully", response.getBody());
-  }
+    /**
+     * Test to process the order successfully.
+     */
+    @Test
+    void processOrderShouldReturnSuccessStatus() {
+        // Arrange
+        when(orderService.processOrder()).thenReturn("Order processed successfully");
+        // Act
+        ResponseEntity<String> response = orderController.processOrder("test order");
+        // Assert
+        assertEquals("Order processed successfully", response.getBody());
+    }
 
-  /**
-   * Test to process the order with failure.
-   */
-  @Test
-  void ProcessOrderShouldReturnFailureStatusWhen() {
-    // Arrange
-    when(orderService.processOrder()).thenReturn("Order processing failed");
-    // Act
-    ResponseEntity<String> response = orderController.processOrder("test order");
-    // Assert
-    assertEquals("Order processing failed", response.getBody());
-  }
+    /**
+     * Test to process the order with failure.
+     */
+    @Test
+    void ProcessOrderShouldReturnFailureStatusWhen() {
+        // Arrange
+        when(orderService.processOrder()).thenReturn("Order processing failed");
+        // Act
+        ResponseEntity<String> response = orderController.processOrder("test order");
+        // Assert
+        assertEquals("Order processing failed", response.getBody());
+    }
 }

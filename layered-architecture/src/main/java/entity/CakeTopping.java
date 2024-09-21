@@ -50,25 +50,25 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class CakeTopping {
 
-  @Id
-  @GeneratedValue
-  private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-  private String name;
+    private String name;
 
-  private int calories;
+    private int calories;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  private Cake cake;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Cake cake;
 
-  public CakeTopping(String name, int calories) {
-    this.setName(name);
-    this.setCalories(calories);
-  }
+    public CakeTopping(String name, int calories) {
+        this.setName(name);
+        this.setCalories(calories);
+    }
 
-  @Override
-  public String toString() {
-    return String.format("id=%s name=%s calories=%d", id, name, calories);
-  }
+    @Override
+    public String toString() {
+        return String.format("id=%s name=%s calories=%d", id, name, calories);
+    }
 
 }

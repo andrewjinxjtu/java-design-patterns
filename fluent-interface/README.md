@@ -19,13 +19,21 @@ tag:
 
 ## Intent of Fluent Interface Design Pattern
 
-The primary goal of the Fluent Interface pattern is to provide an easily readable and flowing API by chaining method calls, often referred to as method chaining. This approach is ideal for building complex objects step-by-step and improving the overall developer experience.
+The primary goal of the Fluent Interface pattern is to provide an easily readable and flowing API by chaining method
+calls, often referred to as method chaining. This approach is ideal for building complex objects step-by-step and
+improving the overall developer experience.
 
 ## Detailed Explanation of Fluent Interface Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine you are at a coffee shop customizing your order step-by-step. This approach is similar to how the Fluent Interface design pattern works in Java, allowing you to chain method calls to build and configure objects sequentially. Instead of telling the barista everything at once, you specify each customization step-by-step in a way that flows naturally. For instance, you might say, "I'd like a large coffee, add two shots of espresso, no sugar, and top it with almond milk." This approach is similar to the Fluent Interface design pattern, where you chain together method calls to configure an object in a readable and intuitive manner. Just as you specify each part of your coffee order sequentially, a Fluent Interface allows you to chain method calls to build and configure objects step-by-step in code.
+> Imagine you are at a coffee shop customizing your order step-by-step. This approach is similar to how the Fluent
+> Interface design pattern works in Java, allowing you to chain method calls to build and configure objects sequentially.
+> Instead of telling the barista everything at once, you specify each customization step-by-step in a way that flows
+> naturally. For instance, you might say, "I'd like a large coffee, add two shots of espresso, no sugar, and top it with
+> almond milk." This approach is similar to the Fluent Interface design pattern, where you chain together method calls to
+> configure an object in a readable and intuitive manner. Just as you specify each part of your coffee order sequentially,
+> a Fluent Interface allows you to chain method calls to build and configure objects step-by-step in code.
 
 In plain words
 
@@ -33,11 +41,13 @@ In plain words
 
 Wikipedia says
 
-> In software engineering, a fluent interface is an object-oriented API whose design relies extensively on method chaining. Its goal is to increase code legibility by creating a  domain-specific language (DSL).
+> In software engineering, a fluent interface is an object-oriented API whose design relies extensively on method
+> chaining. Its goal is to increase code legibility by creating a domain-specific language (DSL).
 
 ## Programmatic Example of Fluent Interface Pattern in Java
 
-We need to select numbers based on different criteria from the list. It's a great chance to  utilize fluent interface pattern to provide readable easy-to-use developer experience.
+We need to select numbers based on different criteria from the list. It's a great chance to utilize fluent interface
+pattern to provide readable easy-to-use developer experience.
 
 In this example two implementations of a `FluentIterable` interface are given.
 
@@ -82,7 +92,8 @@ public class LazyFluentIterable<E> implements FluentIterable<E> {
 }
 ```
 
-Their usage is demonstrated with a simple number list that is filtered, transformed and collected. The result is printed afterward.
+Their usage is demonstrated with a simple number list that is filtered, transformed and collected. The result is printed
+afterward.
 
 ```java
 public static void main(String[] args) {
@@ -177,7 +188,8 @@ Use the Fluent Interface Pattern in Java when
 
 Benefits:
 
-* Adopting the Fluent Interface pattern in your Java projects can significantly enhance code readability and maintainability.
+* Adopting the Fluent Interface pattern in your Java projects can significantly enhance code readability and
+  maintainability.
 * Encourages building immutable objects since methods typically return new instances.
 * Reduces the need for variables as the context is maintained in the chain.
 
@@ -189,8 +201,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Builder](https://java-design-patterns.com/patterns/builder/): Often implemented using a Fluent Interface to construct objects step-by-step. The Builder Pattern focuses on constructing complex objects, while Fluent Interface emphasizes the method chaining mechanism.
-* [Chain of Responsibility](https://java-design-patterns.com/patterns/chain-of-responsibility/): Fluent Interfaces can be seen as a specific utilization of the Chain of Responsibility, where each method in the chain handles a part of the task and then delegates to the next method.
+* [Builder](https://java-design-patterns.com/patterns/builder/): Often implemented using a Fluent Interface to construct
+  objects step-by-step. The Builder Pattern focuses on constructing complex objects, while Fluent Interface emphasizes
+  the method chaining mechanism.
+* [Chain of Responsibility](https://java-design-patterns.com/patterns/chain-of-responsibility/): Fluent Interfaces can
+  be seen as a specific utilization of the Chain of Responsibility, where each method in the chain handles a part of the
+  task and then delegates to the next method.
 
 ## References and Credits
 

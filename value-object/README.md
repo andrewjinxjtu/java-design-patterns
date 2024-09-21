@@ -25,15 +25,26 @@ tag:
 
 ## Intent of Value Object Design Pattern
 
-The Value Object pattern in Java creates immutable objects that represent a descriptive aspect of the domain with no conceptual identity. It aims to enhance performance and reduce memory overhead by storing frequently accessed immutable data directly within the object that uses it, rather than separately.
+The Value Object pattern in Java creates immutable objects that represent a descriptive aspect of the domain with no
+conceptual identity. It aims to enhance performance and reduce memory overhead by storing frequently accessed immutable
+data directly within the object that uses it, rather than separately.
 
 ## Detailed Explanation of Value Object Pattern with Real-World Examples
 
 Real-world example
 
-> Consider the case of a business card. In our example, a BusinessCard class is implemented as a Value Object to demonstrate immutable data handling and efficiency in Java applications. In the real world, a business card contains information such as the person's name, job title, phone number, and email address. This information represents a specific and complete set of attributes describing the contact details of an individual but doesn't have an identity itself beyond this information.
+> Consider the case of a business card. In our example, a BusinessCard class is implemented as a Value Object to
+> demonstrate immutable data handling and efficiency in Java applications. In the real world, a business card contains
+> information such as the person's name, job title, phone number, and email address. This information represents a
+> specific and complete set of attributes describing the contact details of an individual but doesn't have an identity
+> itself beyond this information.
 >
-> In a software system, you can create a `BusinessCard` class as a Value Object. This class would be immutable, meaning once a `BusinessCard` object is created with a person's details, those details cannot change. If you need a different business card, you create a new instance rather than modifying the existing one. The equality of two `BusinessCard` objects would be based on their contained data rather than their memory addresses, ensuring that two business cards with the same details are considered equal. This mirrors how business cards in real life are used and compared based on their content, not on the physical card itself.
+> In a software system, you can create a `BusinessCard` class as a Value Object. This class would be immutable, meaning
+> once a `BusinessCard` object is created with a person's details, those details cannot change. If you need a different
+> business card, you create a new instance rather than modifying the existing one. The equality of two `BusinessCard`
+> objects would be based on their contained data rather than their memory addresses, ensuring that two business cards with
+> the same details are considered equal. This mirrors how business cards in real life are used and compared based on their
+> content, not on the physical card itself.
 
 In plain words
 
@@ -41,13 +52,16 @@ In plain words
 
 Wikipedia says
 
-> In computer science, a value object is a small object that represents a simple entity whose equality is not based on identity: i.e. two value objects are equal when they have the same value, not necessarily being the same object.
+> In computer science, a value object is a small object that represents a simple entity whose equality is not based on
+> identity: i.e. two value objects are equal when they have the same value, not necessarily being the same object.
 
 ## Programmatic Example of Value Object Pattern in Java
 
-There is a class for hero statistics in a role-playing game. The statistics contain attributes such as strength, intelligence, and luck. The statistics of different heroes should be equal when all the attributes are equal.
+There is a class for hero statistics in a role-playing game. The statistics contain attributes such as strength,
+intelligence, and luck. The statistics of different heroes should be equal when all the attributes are equal.
 
-Here is the `HeroStat` class that is the value object. Notice the use of [Lombok's `@Value`](https://projectlombok.org/features/Value) annotation.
+Here is the `HeroStat` class that is the value object. Notice the use of [Lombok's
+`@Value`](https://projectlombok.org/features/Value) annotation.
 
 ```java
 @Value(staticConstructor = "valueOf")
@@ -90,7 +104,8 @@ Here's the console output.
 
 Use the Value Object when
 
-* Apply the Value Object pattern when you need high-performance Java applications with reduced memory overhead, especially in systems requiring efficient data management.
+* Apply the Value Object pattern when you need high-performance Java applications with reduced memory overhead,
+  especially in systems requiring efficient data management.
 * When representing a set of attributes that together describe an entity but without an identity.
 * When the equality of the objects is based on the value of the properties, not the identity.
 * When you need to ensure that objects cannot be altered once created.
@@ -125,15 +140,21 @@ Trade-offs:
 * Creating a new object for every change can be less efficient for complex objects.
 * Increased memory usage due to the creation of multiple objects representing different states.
 * Increases complexity in object design and can lead to tightly coupled systems.
-* Modifying the embedded value necessitates changes across all objects that embed this value, which can complicate maintenance.
+* Modifying the embedded value necessitates changes across all objects that embed this value, which can complicate
+  maintenance.
 
 ## Related Java Design Patterns
 
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Often used to create instances of value objects.
-* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Shares objects to support large quantities using a minimal amount of memory, somewhat similar in intent but different in implementation.
-* [Builder](https://java-design-patterns.com/patterns/builder/): Can be used to construct complex value objects step by step.
-* [Prototype](https://java-design-patterns.com/patterns/prototype/): Can be used to clone existing value objects, though cloning is less common with immutable objects.
-* [Singleton](https://java-design-patterns.com/patterns/singleton/): Ensures a class has only one instance and provides a global point of access to it, can be used to manage a shared embedded value.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Often used to create instances of value
+  objects.
+* [Flyweight](https://java-design-patterns.com/patterns/flyweight/): Shares objects to support large quantities using a
+  minimal amount of memory, somewhat similar in intent but different in implementation.
+* [Builder](https://java-design-patterns.com/patterns/builder/): Can be used to construct complex value objects step by
+  step.
+* [Prototype](https://java-design-patterns.com/patterns/prototype/): Can be used to clone existing value objects, though
+  cloning is less common with immutable objects.
+* [Singleton](https://java-design-patterns.com/patterns/singleton/): Ensures a class has only one instance and provides
+  a global point of access to it, can be used to manage a shared embedded value.
 
 ## References and Credits
 

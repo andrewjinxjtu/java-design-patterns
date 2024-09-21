@@ -34,33 +34,34 @@ import lombok.Setter;
 @Setter
 public class Data {
 
-  private int key;
+    private int key;
 
-  private String value;
+    private String value;
 
-  private DataType type;
+    private DataType type;
 
-  /**
-   * Constructor of Data class.
-   * @param key data key
-   * @param value data vlue
-   * @param type data type
-   */
-  public Data(final int key, final String value, final DataType type) {
-    this.key = key;
-    this.value = value;
-    this.type = type;
-  }
+    /**
+     * Constructor of Data class.
+     *
+     * @param key   data key
+     * @param value data vlue
+     * @param type  data type
+     */
+    public Data(final int key, final String value, final DataType type) {
+        this.key = key;
+        this.value = value;
+        this.type = type;
+    }
 
-  enum DataType {
-    TYPE_1, TYPE_2, TYPE_3
-  }
+    enum DataType {
+        TYPE_1, TYPE_2, TYPE_3
+    }
 
-  @Override
-  public String toString() {
-    return "Data {" + "key="
-        + key + ", value='" + value
-        + '\'' + ", type=" + type + '}';
-  }
+    @Override
+    public String toString() {
+        return "Data {" + "key="
+                + key + ", value='" + value
+                + '\'' + ", type=" + type + '}';
+    }
 }
 

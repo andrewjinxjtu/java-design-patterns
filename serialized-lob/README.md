@@ -18,21 +18,31 @@ tag:
 
 ## Intent of Serialized LOB Design Pattern
 
-Efficiently manage and store large data objects, such as multimedia files and extensive text strings, using the Serialized LOB pattern in Java, a strategy for robust database optimization.
+Efficiently manage and store large data objects, such as multimedia files and extensive text strings, using the
+Serialized LOB pattern in Java, a strategy for robust database optimization.
 
 ## Detailed Explanation of Serialized LOB Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a social media platform optimized for performance, where users can upload and seamlessly share multimedia content, leveraging Java's Serialized LOB pattern for enhanced data handling. Instead of storing these large multimedia files on a separate file server, the platform uses the Serialized LOB design pattern to store the files directly in the database. Each uploaded image or video is serialized into a binary large object (BLOB) and stored within the user's record. This approach ensures that the multimedia files are managed within the same transactional context as other user data, providing consistency and simplifying data access and retrieval.
+> Imagine a social media platform optimized for performance, where users can upload and seamlessly share multimedia
+> content, leveraging Java's Serialized LOB pattern for enhanced data handling. Instead of storing these large multimedia
+> files on a separate file server, the platform uses the Serialized LOB design pattern to store the files directly in the
+> database. Each uploaded image or video is serialized into a binary large object (BLOB) and stored within the user's
+> record. This approach ensures that the multimedia files are managed within the same transactional context as other user
+> data, providing consistency and simplifying data access and retrieval.
 
 In plain words
 
-> The Serialized LOB design pattern manages the storage of large objects, such as files or multimedia, by serializing and storing them directly within a database.
+> The Serialized LOB design pattern manages the storage of large objects, such as files or multimedia, by serializing
+> and storing them directly within a database.
 
 ## Programmatic Example of Serialized LOB Pattern in Java
 
-The Serialized Large Object (LOB) design pattern is a way to handle large objects in a database. It involves serializing an object graph into a single large object (a BLOB or CLOB, for Binary Large Object or Character Large Object, respectively) and storing it in the database. When the object graph needs to be retrieved, it is read from the database and deserialized back into the original object graph.
+The Serialized Large Object (LOB) design pattern is a way to handle large objects in a database. It involves serializing
+an object graph into a single large object (a BLOB or CLOB, for Binary Large Object or Character Large Object,
+respectively) and storing it in the database. When the object graph needs to be retrieved, it is read from the database
+and deserialized back into the original object graph.
 
 Here's a programmatic example of the Serialized LOB design pattern:
 
@@ -45,7 +55,9 @@ public abstract class LobSerializer implements AutoCloseable {
 }
 ```
 
-The `LobSerializer` class is an abstract class that provides the structure for serializing and deserializing objects. It has two abstract methods: `serialize` and `deSerialize`. These methods are implemented by the subclasses `ClobSerializer` and `BlobSerializer`.
+The `LobSerializer` class is an abstract class that provides the structure for serializing and deserializing objects. It
+has two abstract methods: `serialize` and `deSerialize`. These methods are implemented by the subclasses
+`ClobSerializer` and `BlobSerializer`.
 
 ```java
 public class ClobSerializer extends LobSerializer {
@@ -63,7 +75,9 @@ public class ClobSerializer extends LobSerializer {
 }
 ```
 
-The `ClobSerializer` class provides an implementation for serializing and deserializing objects into XML strings. The `serialize` method converts a `Forest` object into an XML string, and the `deSerialize` method converts an XML string back into a `Forest` object.
+The `ClobSerializer` class provides an implementation for serializing and deserializing objects into XML strings. The
+`serialize` method converts a `Forest` object into an XML string, and the `deSerialize` method converts an XML string
+back into a `Forest` object.
 
 ```java
 public class BlobSerializer extends LobSerializer {
@@ -80,7 +94,9 @@ public class BlobSerializer extends LobSerializer {
 }
 ```
 
-The `BlobSerializer` class provides an implementation for serializing and deserializing objects into binary data. The `serialize` method converts a `Forest` object into binary data, and the `deSerialize` method converts binary data back into a `Forest` object.
+The `BlobSerializer` class provides an implementation for serializing and deserializing objects into binary data. The
+`serialize` method converts a `Forest` object into binary data, and the `deSerialize` method converts binary data back
+into a `Forest` object.
 
 Finally, here is the `App` class with `main` method that can be used to execute the serialization example.
 
@@ -214,9 +230,11 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [DAO (Data Access Object)](https://java-design-patterns.com/patterns/dao/): Often used in conjunction with Serialized LOB to encapsulate data access logic.
+* [DAO (Data Access Object)](https://java-design-patterns.com/patterns/dao/): Often used in conjunction with Serialized
+  LOB to encapsulate data access logic.
 * Active Record: Can use Serialized LOB for managing large data within the same record.
-* [Repository](https://java-design-patterns.com/patterns/repository/): Uses Serialized LOB to handle complex queries and data manipulation involving large objects.
+* [Repository](https://java-design-patterns.com/patterns/repository/): Uses Serialized LOB to handle complex queries and
+  data manipulation involving large objects.
 
 ## References and Credits
 

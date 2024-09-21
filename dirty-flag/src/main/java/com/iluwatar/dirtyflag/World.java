@@ -29,26 +29,25 @@ import java.util.List;
 
 /**
  * A middle-layer app that calls/passes along data from the back-end.
- *
  */
 public class World {
 
-  private List<String> countries;
-  private final DataFetcher df;
+    private List<String> countries;
+    private final DataFetcher df;
 
-  public World() {
-    this.countries = new ArrayList<>();
-    this.df = new DataFetcher();
-  }
+    public World() {
+        this.countries = new ArrayList<>();
+        this.df = new DataFetcher();
+    }
 
-  /**
-   * Calls {@link DataFetcher} to fetch data from back-end.
-   *
-   * @return List of strings
-   */
-  public List<String> fetch() {
-    var data = df.fetch();
-    countries = data.isEmpty() ? countries : data;
-    return countries;
-  }
+    /**
+     * Calls {@link DataFetcher} to fetch data from back-end.
+     *
+     * @return List of strings
+     */
+    public List<String> fetch() {
+        var data = df.fetch();
+        countries = data.isEmpty() ? countries : data;
+        return countries;
+    }
 }

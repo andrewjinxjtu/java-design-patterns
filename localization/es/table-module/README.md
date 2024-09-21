@@ -7,13 +7,17 @@ tag:
 ---
 
 ## Propósito
-El módulo de tablas organiza la lógica del dominio con una clase por tabla de la base de datos, y una única instancia de una clase contiene los distintos procedimientos que actuarán sobre los datos.
+
+El módulo de tablas organiza la lógica del dominio con una clase por tabla de la base de datos, y una única instancia de
+una clase contiene los distintos procedimientos que actuarán sobre los datos.
 
 ## Explicación
 
 Ejemplo del mundo real
 
-> Cuando tratamos con un sistema de usuarios, necesitamos algunas operaciones sobre la tabla de usuarios. Podemos utilizar el patrón de módulo de tabla en este escenario. Podemos crear una clase llamada UserTableModule e inicializar una instancia de esa clase para manejar la lógica de negocio para todas las filas de la tabla de usuarios.
+> Cuando tratamos con un sistema de usuarios, necesitamos algunas operaciones sobre la tabla de usuarios. Podemos
+> utilizar el patrón de módulo de tabla en este escenario. Podemos crear una clase llamada UserTableModule e inicializar
+> una instancia de esa clase para manejar la lógica de negocio para todas las filas de la tabla de usuarios.
 
 En palabras simples
 
@@ -21,7 +25,9 @@ En palabras simples
 
 **Ejemplo programático**
 
-En el ejemplo del sistema de usuarios, necesitamos manejar la lógica de dominio del login y registro de usuarios. Podemos utilizar el patrón de módulo de tabla y crear una instancia de la clase `UserTableModule` para manejar la lógica de negocio de todas las filas de la tabla de usuarios.
+En el ejemplo del sistema de usuarios, necesitamos manejar la lógica de dominio del login y registro de usuarios.
+Podemos utilizar el patrón de módulo de tabla y crear una instancia de la clase `UserTableModule` para manejar la lógica
+de negocio de todas las filas de la tabla de usuarios.
 
 Aquí está la entidad básica `User`.
 

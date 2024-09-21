@@ -17,27 +17,42 @@ tag:
 
 ## Intent of Circuit Breaker Design Pattern
 
-The Circuit Breaker pattern is a critical Java design pattern that helps ensure fault tolerance and resilience in microservices and distributed systems. Using Circuit Breaker, it is possible to prevent a system from repeatedly trying to execute an operation likely to fail, allowing it to recover from faults and prevent cascading failures.
+The Circuit Breaker pattern is a critical Java design pattern that helps ensure fault tolerance and resilience in
+microservices and distributed systems. Using Circuit Breaker, it is possible to prevent a system from repeatedly trying
+to execute an operation likely to fail, allowing it to recover from faults and prevent cascading failures.
 
 ## Detailed Explanation of Circuit Breaker Pattern with Real-World Examples
 
 Real-world example
 
-> Consider a real-world example of an e-commerce website that depends on multiple external payment gateways to process transactions. If one of the payment gateways becomes unresponsive or slow, the Circuit Breaker pattern can be used to detect the failure and prevent the system from repeatedly attempting to use the problematic gateway. Instead, it can quickly switch to alternative payment gateways or display an error message to the user, ensuring that the rest of the website remains functional and responsive. This avoids resource exhaustion and provides a better user experience by allowing transactions to be processed through other available services. This way, the Circuit Breaker pattern handles external API failures, ensuring the system remains functional.
+> Consider a real-world example of an e-commerce website that depends on multiple external payment gateways to process
+> transactions. If one of the payment gateways becomes unresponsive or slow, the Circuit Breaker pattern can be used to
+> detect the failure and prevent the system from repeatedly attempting to use the problematic gateway. Instead, it can
+> quickly switch to alternative payment gateways or display an error message to the user, ensuring that the rest of the
+> website remains functional and responsive. This avoids resource exhaustion and provides a better user experience by
+> allowing transactions to be processed through other available services. This way, the Circuit Breaker pattern handles
+> external API failures, ensuring the system remains functional.
 
 In plain words
 
-> Circuit Breaker allows graceful handling of failed remote services. It's especially useful when all parts of our application are highly decoupled from each other, and failure of one component doesn't mean the other parts will stop working.
+> Circuit Breaker allows graceful handling of failed remote services. It's especially useful when all parts of our
+> application are highly decoupled from each other, and failure of one component doesn't mean the other parts will stop
+> working.
 
 Wikipedia says
 
-> Circuit breaker is a design pattern used in modern software development. It is used to detect failures and encapsulates the logic of preventing a failure from constantly recurring, during maintenance, temporary external system failure or unexpected system difficulties.
+> Circuit breaker is a design pattern used in modern software development. It is used to detect failures and
+> encapsulates the logic of preventing a failure from constantly recurring, during maintenance, temporary external system
+> failure or unexpected system difficulties.
 
 ## Programmatic Example of Circuit Breaker Pattern in Java
 
-This Java example demonstrates how the Circuit Breaker pattern can manage remote service failures and maintain system stability.
+This Java example demonstrates how the Circuit Breaker pattern can manage remote service failures and maintain system
+stability.
 
-Imagine a web application that uses both local files/images and remote services to fetch data. Remote services can become slow or unresponsive, which may cause the application to hang due to thread starvation. The Circuit Breaker pattern can help detect such failures and allow the application to degrade gracefully.
+Imagine a web application that uses both local files/images and remote services to fetch data. Remote services can
+become slow or unresponsive, which may cause the application to hang due to thread starvation. The Circuit Breaker
+pattern can help detect such failures and allow the application to degrade gracefully.
 
 1. **Simulating a Delayed Remote Service**
 
@@ -174,7 +189,8 @@ Program output:
 16:59:24.780 [main] INFO com.iluwatar.circuitbreaker.App -- CLOSED
 ```
 
-This example demonstrates how the Circuit Breaker pattern can help maintain application stability and resilience by managing remote service failures.
+This example demonstrates how the Circuit Breaker pattern can help maintain application stability and resilience by
+managing remote service failures.
 
 ## When to Use the Circuit Breaker Pattern in Java
 
@@ -202,14 +218,17 @@ Benefits:
 
 Trade-Offs:
 
-* The complexity of the system increases as the pattern requires additional logic to detect failures and manage the state of the circuit breaker
-* May lead to system degradation if not properly configured, as legitimate requests might be blocked if the circuit is open
+* The complexity of the system increases as the pattern requires additional logic to detect failures and manage the
+  state of the circuit breaker
+* May lead to system degradation if not properly configured, as legitimate requests might be blocked if the circuit is
+  open
 * Requires careful tuning of thresholds and timeout periods to balance between responsiveness and protection
 
 ## Related Patterns
 
 - Bulkhead: Can be used to isolate different parts of the system to prevent failures from spreading across the system
-- [Retry Pattern](https://github.com/iluwatar/java-design-patterns/tree/master/retry): Can be used in conjunction with the Circuit Breaker pattern to retry failed operations before opening the circuit
+- [Retry Pattern](https://github.com/iluwatar/java-design-patterns/tree/master/retry): Can be used in conjunction with
+  the Circuit Breaker pattern to retry failed operations before opening the circuit
 
 ## References and Credits
 

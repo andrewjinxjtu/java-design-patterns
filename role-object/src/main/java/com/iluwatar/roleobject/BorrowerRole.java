@@ -34,10 +34,10 @@ import lombok.Setter;
 @Setter
 public class BorrowerRole extends CustomerRole {
 
-  private String name;
+    private String name;
 
-  public String borrow() {
-    return String.format("Borrower %s wants to get some money.", name);
-  }
+    public String borrow() {
+        return String.format("Borrower %s wants to get some money.", name);
+    }
 
 }

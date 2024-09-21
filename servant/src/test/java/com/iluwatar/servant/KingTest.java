@@ -31,76 +31,75 @@ import org.junit.jupiter.api.Test;
 
 /**
  * KingTest
- *
  */
 class KingTest {
 
-  @Test
-  void testHungrySoberUncomplimentedKing() {
-    final var king = new King();
-    king.changeMood();
-    assertFalse(king.getMood());
-  }
+    @Test
+    void testHungrySoberUncomplimentedKing() {
+        final var king = new King();
+        king.changeMood();
+        assertFalse(king.getMood());
+    }
 
-  @Test
-  void testFedSoberUncomplimentedKing() {
-    final var king = new King();
-    king.getFed();
-    king.changeMood();
-    assertFalse(king.getMood());
-  }
+    @Test
+    void testFedSoberUncomplimentedKing() {
+        final var king = new King();
+        king.getFed();
+        king.changeMood();
+        assertFalse(king.getMood());
+    }
 
-  @Test
-  void testHungryDrunkUncomplimentedKing() {
-    final var king = new King();
-    king.getDrink();
-    king.changeMood();
-    assertFalse(king.getMood());
-  }
+    @Test
+    void testHungryDrunkUncomplimentedKing() {
+        final var king = new King();
+        king.getDrink();
+        king.changeMood();
+        assertFalse(king.getMood());
+    }
 
-  @Test
-  void testHungrySoberComplimentedKing() {
-    final var king = new King();
-    king.receiveCompliments();
-    king.changeMood();
-    assertFalse(king.getMood());
-  }
+    @Test
+    void testHungrySoberComplimentedKing() {
+        final var king = new King();
+        king.receiveCompliments();
+        king.changeMood();
+        assertFalse(king.getMood());
+    }
 
-  @Test
-  void testFedDrunkUncomplimentedKing() {
-    final var king = new King();
-    king.getFed();
-    king.getDrink();
-    king.changeMood();
-    assertTrue(king.getMood());
-  }
+    @Test
+    void testFedDrunkUncomplimentedKing() {
+        final var king = new King();
+        king.getFed();
+        king.getDrink();
+        king.changeMood();
+        assertTrue(king.getMood());
+    }
 
-  @Test
-  void testFedSoberComplimentedKing() {
-    final var king = new King();
-    king.getFed();
-    king.receiveCompliments();
-    king.changeMood();
-    assertFalse(king.getMood());
-  }
+    @Test
+    void testFedSoberComplimentedKing() {
+        final var king = new King();
+        king.getFed();
+        king.receiveCompliments();
+        king.changeMood();
+        assertFalse(king.getMood());
+    }
 
-  @Test
-  void testFedDrunkComplimentedKing() {
-    final var king = new King();
-    king.getFed();
-    king.getDrink();
-    king.receiveCompliments();
-    king.changeMood();
-    assertFalse(king.getMood());
-  }
+    @Test
+    void testFedDrunkComplimentedKing() {
+        final var king = new King();
+        king.getFed();
+        king.getDrink();
+        king.receiveCompliments();
+        king.changeMood();
+        assertFalse(king.getMood());
+    }
 
-  @Test
-  void testHungryDrunkComplimentedKing() {
-    final King king = new King();
-    king.getDrink();
-    king.receiveCompliments();
-    king.changeMood();
-    assertFalse(king.getMood());
-  }
+    @Test
+    void testHungryDrunkComplimentedKing() {
+        final King king = new King();
+        king.getDrink();
+        king.receiveCompliments();
+        king.changeMood();
+        assertFalse(king.getMood());
+    }
 
 }

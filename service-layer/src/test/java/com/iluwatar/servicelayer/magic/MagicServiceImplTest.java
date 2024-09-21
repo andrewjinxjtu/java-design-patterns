@@ -38,119 +38,120 @@ import com.iluwatar.servicelayer.spellbook.Spellbook;
 import com.iluwatar.servicelayer.spellbook.SpellbookDao;
 import com.iluwatar.servicelayer.wizard.Wizard;
 import com.iluwatar.servicelayer.wizard.WizardDao;
+
 import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 /**
  * MagicServiceImplTest
- *
  */
 class MagicServiceImplTest {
 
-  @Test
-  void testFindAllWizards() {
-    final var wizardDao = mock(WizardDao.class);
-    final var spellbookDao = mock(SpellbookDao.class);
-    final var spellDao = mock(SpellDao.class);
+    @Test
+    void testFindAllWizards() {
+        final var wizardDao = mock(WizardDao.class);
+        final var spellbookDao = mock(SpellbookDao.class);
+        final var spellDao = mock(SpellDao.class);
 
-    final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
-    verifyNoInteractions(wizardDao, spellbookDao, spellDao);
+        final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
+        verifyNoInteractions(wizardDao, spellbookDao, spellDao);
 
-    service.findAllWizards();
-    verify(wizardDao).findAll();
-    verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
-  }
+        service.findAllWizards();
+        verify(wizardDao).findAll();
+        verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
+    }
 
-  @Test
-  void testFindAllSpellbooks() {
-    final var wizardDao = mock(WizardDao.class);
-    final var spellbookDao = mock(SpellbookDao.class);
-    final var spellDao = mock(SpellDao.class);
+    @Test
+    void testFindAllSpellbooks() {
+        final var wizardDao = mock(WizardDao.class);
+        final var spellbookDao = mock(SpellbookDao.class);
+        final var spellDao = mock(SpellDao.class);
 
-    final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
-    verifyNoInteractions(wizardDao, spellbookDao, spellDao);
+        final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
+        verifyNoInteractions(wizardDao, spellbookDao, spellDao);
 
-    service.findAllSpellbooks();
-    verify(spellbookDao).findAll();
-    verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
-  }
+        service.findAllSpellbooks();
+        verify(spellbookDao).findAll();
+        verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
+    }
 
-  @Test
-  void testFindAllSpells() {
-    final var wizardDao = mock(WizardDao.class);
-    final var spellbookDao = mock(SpellbookDao.class);
-    final var spellDao = mock(SpellDao.class);
+    @Test
+    void testFindAllSpells() {
+        final var wizardDao = mock(WizardDao.class);
+        final var spellbookDao = mock(SpellbookDao.class);
+        final var spellDao = mock(SpellDao.class);
 
-    final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
-    verifyNoInteractions(wizardDao, spellbookDao, spellDao);
+        final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
+        verifyNoInteractions(wizardDao, spellbookDao, spellDao);
 
-    service.findAllSpells();
-    verify(spellDao).findAll();
-    verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
-  }
+        service.findAllSpells();
+        verify(spellDao).findAll();
+        verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
+    }
 
-  @Test
-  void testFindWizardsWithSpellbook() {
-    final var bookname = "bookname";
-    final var spellbook = mock(Spellbook.class);
-    final var wizards = Set.of(
-        mock(Wizard.class),
-        mock(Wizard.class),
-        mock(Wizard.class)
-    );
-    when(spellbook.getWizards()).thenReturn(wizards);
+    @Test
+    void testFindWizardsWithSpellbook() {
+        final var bookname = "bookname";
+        final var spellbook = mock(Spellbook.class);
+        final var wizards = Set.of(
+                mock(Wizard.class),
+                mock(Wizard.class),
+                mock(Wizard.class)
+        );
+        when(spellbook.getWizards()).thenReturn(wizards);
 
-    final var spellbookDao = mock(SpellbookDao.class);
-    when(spellbookDao.findByName(bookname)).thenReturn(spellbook);
+        final var spellbookDao = mock(SpellbookDao.class);
+        when(spellbookDao.findByName(bookname)).thenReturn(spellbook);
 
-    final var wizardDao = mock(WizardDao.class);
-    final var spellDao = mock(SpellDao.class);
+        final var wizardDao = mock(WizardDao.class);
+        final var spellDao = mock(SpellDao.class);
 
 
-    final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
-    verifyNoInteractions(wizardDao, spellbookDao, spellDao, spellbook);
+        final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
+        verifyNoInteractions(wizardDao, spellbookDao, spellDao, spellbook);
 
-    final var result = service.findWizardsWithSpellbook(bookname);
-    verify(spellbookDao).findByName(bookname);
-    verify(spellbook).getWizards();
+        final var result = service.findWizardsWithSpellbook(bookname);
+        verify(spellbookDao).findByName(bookname);
+        verify(spellbook).getWizards();
 
-    assertNotNull(result);
-    assertEquals(3, result.size());
+        assertNotNull(result);
+        assertEquals(3, result.size());
 
-    verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
-  }
+        verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
+    }
 
-  @Test
-  void testFindWizardsWithSpell() {
-    final var wizards = Set.of(
-        mock(Wizard.class),
-        mock(Wizard.class),
-        mock(Wizard.class)
-    );
-    final var spellbook = mock(Spellbook.class);
-    when(spellbook.getWizards()).thenReturn(wizards);
+    @Test
+    void testFindWizardsWithSpell() {
+        final var wizards = Set.of(
+                mock(Wizard.class),
+                mock(Wizard.class),
+                mock(Wizard.class)
+        );
+        final var spellbook = mock(Spellbook.class);
+        when(spellbook.getWizards()).thenReturn(wizards);
 
-    final var spellbookDao = mock(SpellbookDao.class);
-    final var wizardDao = mock(WizardDao.class);
+        final var spellbookDao = mock(SpellbookDao.class);
+        final var wizardDao = mock(WizardDao.class);
 
-    final var spell = mock(Spell.class);
-    when(spell.getSpellbook()).thenReturn(spellbook);
+        final var spell = mock(Spell.class);
+        when(spell.getSpellbook()).thenReturn(spellbook);
 
-    final var spellName = "spellname";
-    final var spellDao = mock(SpellDao.class);
-    when(spellDao.findByName(spellName)).thenReturn(spell);
+        final var spellName = "spellname";
+        final var spellDao = mock(SpellDao.class);
+        when(spellDao.findByName(spellName)).thenReturn(spell);
 
-    final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
-    verifyNoInteractions(wizardDao, spellbookDao, spellDao, spellbook);
+        final var service = new MagicServiceImpl(wizardDao, spellbookDao, spellDao);
+        verifyNoInteractions(wizardDao, spellbookDao, spellDao, spellbook);
 
-    final var result = service.findWizardsWithSpell(spellName);
-    verify(spellDao).findByName(spellName);
-    verify(spellbook).getWizards();
+        final var result = service.findWizardsWithSpell(spellName);
+        verify(spellDao).findByName(spellName);
+        verify(spellbook).getWizards();
 
-    assertNotNull(result);
-    assertEquals(3, result.size());
+        assertNotNull(result);
+        assertEquals(3, result.size());
 
-    verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
-  }
+        verifyNoMoreInteractions(wizardDao, spellbookDao, spellDao);
+    }
 
 }

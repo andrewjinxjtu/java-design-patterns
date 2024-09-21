@@ -30,15 +30,14 @@ import org.junit.jupiter.api.Test;
 
 /**
  * FileLoaderTest
- *
  */
 class FileLoaderTest {
 
-  @Test
-  void testLoadData() {
-    final var fileLoader = new FileLoader();
-    fileLoader.setFileName("non-existing-file");
-    assertNull(fileLoader.loadData());
-  }
+    @Test
+    void testLoadData() {
+        final var fileLoader = new FileLoader();
+        fileLoader.setFileName("non-existing-file");
+        assertNull(fileLoader.loadData());
+    }
 
 }

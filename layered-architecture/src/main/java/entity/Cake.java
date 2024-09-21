@@ -32,8 +32,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+
 import java.util.HashSet;
 import java.util.Set;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,26 +47,26 @@ import lombok.Setter;
 @Setter
 public class Cake {
 
-  @Id
-  @GeneratedValue
-  private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-  @OneToOne(cascade = CascadeType.REMOVE)
-  private CakeTopping topping;
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private CakeTopping topping;
 
-  @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-  private Set<CakeLayer> layers;
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private Set<CakeLayer> layers;
 
-  public Cake() {
-    setLayers(new HashSet<>());
-  }
+    public Cake() {
+        setLayers(new HashSet<>());
+    }
 
-  public void addLayer(CakeLayer layer) {
-    this.layers.add(layer);
-  }
+    public void addLayer(CakeLayer layer) {
+        this.layers.add(layer);
+    }
 
-  @Override
-  public String toString() {
-    return String.format("id=%s topping=%s layers=%s", id, topping, layers.toString());
-  }
+    @Override
+    public String toString() {
+        return String.format("id=%s topping=%s layers=%s", id, topping, layers.toString());
+    }
 }

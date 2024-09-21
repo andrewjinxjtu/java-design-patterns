@@ -30,34 +30,34 @@ package com.iluwatar.servicetoworker;
  */
 public class GiantController {
 
-  public Dispatcher dispatcher;
+    public Dispatcher dispatcher;
 
-  /**
-   * Instantiates a new Giant controller.
-   *
-   * @param dispatcher the dispatcher
-   */
-  public GiantController(Dispatcher dispatcher) {
-    this.dispatcher = dispatcher;
-  }
+    /**
+     * Instantiates a new Giant controller.
+     *
+     * @param dispatcher the dispatcher
+     */
+    public GiantController(Dispatcher dispatcher) {
+        this.dispatcher = dispatcher;
+    }
 
-  /**
-   * Sets command to control the dispatcher.
-   *
-   * @param s     the s
-   * @param index the index
-   */
-  public void setCommand(Command s, int index) {
-    dispatcher.performAction(s, index);
-  }
+    /**
+     * Sets command to control the dispatcher.
+     *
+     * @param s     the s
+     * @param index the index
+     */
+    public void setCommand(Command s, int index) {
+        dispatcher.performAction(s, index);
+    }
 
-  /**
-   * Update view. This is a simple implementation, in fact, View can be implemented in a concrete
-   * way
-   *
-   * @param giantModel the giant model
-   */
-  public void updateView(GiantModel giantModel) {
-    dispatcher.updateView(giantModel);
-  }
+    /**
+     * Update view. This is a simple implementation, in fact, View can be implemented in a concrete
+     * way
+     *
+     * @param giantModel the giant model
+     */
+    public void updateView(GiantModel giantModel) {
+        dispatcher.updateView(giantModel);
+    }
 }

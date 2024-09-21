@@ -23,8 +23,10 @@
  * THE SOFTWARE.
  */
 package com.iluwatar.serializedentity;
+
 import java.io.Serial;
 import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -41,11 +43,11 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Country implements Serializable {
 
-  private int code;
-  private String name;
-  private String continents;
-  private String language;
-  @Serial
-  private static final long serialVersionUID = 7149851;
+    private int code;
+    private String name;
+    private String continents;
+    private String language;
+    @Serial
+    private static final long serialVersionUID = 7149851;
 
 }

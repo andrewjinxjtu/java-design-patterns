@@ -10,14 +10,16 @@ tag:
 
 ## Propósito
 
-El usuario realiza una sola llamada al servicio del agregador y, a continuación, el agregador llama a cada microservicio relevante.
+El usuario realiza una sola llamada al servicio del agregador y, a continuación, el agregador llama a cada microservicio
+relevante.
 
 ## Explicación
 
 Ejemplo del mundo real
 
 > Nuestro mercado web necesita información sobre los productos y su inventario actual. Hace una llamada a un agregador
-> servicio que a su vez llama al microservicio de información del producto y al microservicio de inventario del producto que devuelve la
+> servicio que a su vez llama al microservicio de información del producto y al microservicio de inventario del producto
+> que devuelve la
 > información combinada.
 
 En palabras sencillas
@@ -41,8 +43,10 @@ public class Product {
 }
 ```
 
-A continuación, podemos presentar nuestro microservicio `Aggregator` (Agregador de microservicios). Contiene él `ProductInformationClient` (Información del producto del cliente) y él
-`ProductInventoryClient` (Inventario del producto del cliente) de los clientes para llamar a los respectivos microservicios.
+A continuación, podemos presentar nuestro microservicio `Aggregator` (Agregador de microservicios). Contiene él
+`ProductInformationClient` (Información del producto del cliente) y él
+`ProductInventoryClient` (Inventario del producto del cliente) de los clientes para llamar a los respectivos
+microservicios.
 
 ```java
 @RestController
@@ -72,7 +76,8 @@ public class Aggregator {
 }
 ```
 
-Esta es la esencia de la implementación de microservicios de información. El microservicio de inventario es similar, simplemente regresa
+Esta es la esencia de la implementación de microservicios de información. El microservicio de inventario es similar,
+simplemente regresa
 recuentos de inventario.
 
 ```java
@@ -98,7 +103,8 @@ curl http://localhost:50004/product
 
 ## Aplicabilidad
 
-Utilice el patrón Agregador de microservicios (Aggregator Microservices) cuando necesite una API unificada para varios microservicios, independientemente del dispositivo cliente.
+Utilice el patrón Agregador de microservicios (Aggregator Microservices) cuando necesite una API unificada para varios
+microservicios, independientemente del dispositivo cliente.
 
 ## Créditos
 

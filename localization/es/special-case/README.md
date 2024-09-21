@@ -14,7 +14,8 @@ Define algunos casos especiales, y los encapsula en subclases que proporcionan d
 
 Ejemplo del mundo real
 
-> En un sistema de comercio electrónico, la capa de presentación espera que la capa de aplicación produzca cierto modelo de vista.
+> En un sistema de comercio electrónico, la capa de presentación espera que la capa de aplicación produzca cierto modelo
+> de vista.
 > Tenemos un escenario de éxito, en el que el modelo de vista de recibo contiene datos reales de la compra,
 > y un par de escenarios de fracaso.
 
@@ -29,7 +30,8 @@ la diferencia con el Patrón de Objeto Nulo
 
 **Ejemplo programático**
 
-Para centrarnos en el patrón en sí, implementamos la BD y el bloqueo de mantenimiento del sistema de comercio electrónico mediante la instancia singleton.
+Para centrarnos en el patrón en sí, implementamos la BD y el bloqueo de mantenimiento del sistema de comercio
+electrónico mediante la instancia singleton.
 
 ```java
 public class Db {
@@ -161,7 +163,8 @@ public class MaintenanceLock {
 }
 ```
 
-Primero presentaremos la capa de presentación, la interfaz del modelo de vista de recibo y su implementación de un escenario exitoso.
+Primero presentaremos la capa de presentación, la interfaz del modelo de vista de recibo y su implementación de un
+escenario exitoso.
 
 ```java
 public interface ReceiptViewModel {
@@ -255,7 +258,8 @@ public class InsufficientFunds implements ReceiptViewModel {
 }
 ```
 
-En segundo lugar, está la capa de aplicación, la implementación de los servicios de aplicación y la implementación de los servicios de dominio.
+En segundo lugar, está la capa de aplicación, la implementación de los servicios de aplicación y la implementación de
+los servicios de dominio.
 
 ```java
 public class ApplicationServicesImpl implements ApplicationServices {
@@ -355,7 +359,7 @@ Utilice el patrón Special Case cuando:
   para una instancia de clase en particular, o el mismo comportamiento después de una comprobación nula.
 * Devuelve un objeto real que realiza el comportamiento real, en lugar de un objeto nulo que no realiza nada.
 
-## Tutorial 
+## Tutorial
 
 * [Special Case Tutorial](https://www.codinghelmet.com/articles/reduce-cyclomatic-complexity-special-case)
 

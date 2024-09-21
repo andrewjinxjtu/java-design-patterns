@@ -36,9 +36,9 @@ import units.SergeantUnit;
 @Slf4j
 public record Sergeant(SergeantUnit unit) implements SergeantExtension {
 
-  @Override
-  public void sergeantReady() {
-    LOGGER.info("[Sergeant] " + unit.getName() + " is ready!");
-  }
+    @Override
+    public void sergeantReady() {
+        LOGGER.info("[Sergeant] " + unit.getName() + " is ready!");
+    }
 
 }

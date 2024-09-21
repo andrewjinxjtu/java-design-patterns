@@ -18,30 +18,42 @@ tag:
 
 ## Intent of Object Mother Design Pattern
 
-The Object Mother pattern simplifies the creation of objects for testing purposes in Java, ensuring that test cases are clear and maintainable by centralizing the logic needed to instantiate objects in a consistent state.
+The Object Mother pattern simplifies the creation of objects for testing purposes in Java, ensuring that test cases are
+clear and maintainable by centralizing the logic needed to instantiate objects in a consistent state.
 
 ## Detailed Explanation of Object Mother Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine you're developing a Java application for a travel agency. In your system, there are different types of travelers, such as tourists, business travelers, and travel agents, each with specific attributes and behaviors. To perform thorough testing, you need to create and manipulate these traveler objects in various contexts. The Object Mother Pattern can help you generate consistent and predefined traveler objects for testing purposes, ensuring that your tests are based on known, reliable data.
+> Imagine you're developing a Java application for a travel agency. In your system, there are different types of
+> travelers, such as tourists, business travelers, and travel agents, each with specific attributes and behaviors. To
+> perform thorough testing, you need to create and manipulate these traveler objects in various contexts. The Object
+> Mother Pattern can help you generate consistent and predefined traveler objects for testing purposes, ensuring that your
+> tests are based on known, reliable data.
 
 In plain words
 
-> The Object Mother Pattern is a design pattern used in Java to simplify the creation of objects with specific configurations, especially for testing. Instead of manually constructing objects with varying properties for each test case, you create a dedicated "Object Mother" class or method that produces these objects with predefined settings. This ensures that you have consistent and predictable test data, making your tests more reliable and easier to manage.
+> The Object Mother Pattern is a design pattern used in Java to simplify the creation of objects with specific
+> configurations, especially for testing. Instead of manually constructing objects with varying properties for each test
+> case, you create a dedicated "Object Mother" class or method that produces these objects with predefined settings. This
+> ensures that you have consistent and predictable test data, making your tests more reliable and easier to manage.
 
 wiki.c2.com says
 
-> Object Mother starts with the factory pattern, by delivering prefabricated test-ready objects via a simple method call. It moves beyond the realm of the factory by
+> Object Mother starts with the factory pattern, by delivering prefabricated test-ready objects via a simple method
+> call. It moves beyond the realm of the factory by
 > 1. facilitating the customization of created objects,
 > 2. providing methods to update the objects during the tests, and
 > 3. if necessary, deleting the object from the database at the completion of the test.
 
 ## Programmatic Example of Object Mother Pattern in Java
 
-The Object Mother is a design pattern that aims to provide an easy way to create objects for testing purposes. It encapsulates the logic for building instances of complex objects in one place, making it easier to maintain and reuse across multiple tests.
+The Object Mother is a design pattern that aims to provide an easy way to create objects for testing purposes. It
+encapsulates the logic for building instances of complex objects in one place, making it easier to maintain and reuse
+across multiple tests.
 
-First, we have the `King` class. This class represents a king with certain behaviors and states. The king can be drunk or sober, happy or unhappy. The king can also flirt with a queen, which may affect his happiness.
+First, we have the `King` class. This class represents a king with certain behaviors and states. The king can be drunk
+or sober, happy or unhappy. The king can also flirt with a queen, which may affect his happiness.
 
 ```java
 public class King implements Royalty {
@@ -83,7 +95,9 @@ public class King implements Royalty {
 }
 ```
 
-The `RoyaltyObjectMother` class is where the Object Mother pattern is implemented. This class provides static methods to create different types of `King` and `Queen` objects. These methods encapsulate the logic for creating these objects, making it easier to create them in a consistent way across multiple tests.
+The `RoyaltyObjectMother` class is where the Object Mother pattern is implemented. This class provides static methods to
+create different types of `King` and `Queen` objects. These methods encapsulate the logic for creating these objects,
+making it easier to create them in a consistent way across multiple tests.
 
 ```java
 class RoyaltyObjectMother {
@@ -104,7 +118,9 @@ class RoyaltyObjectMother {
 }
 ```
 
-In the `RoyaltyObjectMotherTest` class, we can see how the Object Mother pattern is used to create objects for testing. The `RoyaltyObjectMother` class is used to create `King` and `Queen` objects in different states, which are then used in the tests.
+In the `RoyaltyObjectMotherTest` class, we can see how the Object Mother pattern is used to create objects for testing.
+The `RoyaltyObjectMother` class is used to create `King` and `Queen` objects in different states, which are then used in
+the tests.
 
 ```java
 class RoyaltyObjectMotherTest {
@@ -121,7 +137,8 @@ class RoyaltyObjectMotherTest {
 }
 ```
 
-In this way, the Object Mother pattern simplifies the creation of objects for testing, making the tests easier to read and maintain.
+In this way, the Object Mother pattern simplifies the creation of objects for testing, making the tests easier to read
+and maintain.
 
 ## When to Use the Object Mother Pattern in Java
 
@@ -158,8 +175,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Builder](https://java-design-patterns.com/patterns/builder/): Both patterns deal with object creation. The Object Mother is often simpler and used specifically in a testing context, whereas the Builder Pattern is more general-purpose.
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Similar in the sense of centralizing object creation logic. The Object Mother is specifically aimed at tests, while Factory Method is used more broadly in application code.
+* [Builder](https://java-design-patterns.com/patterns/builder/): Both patterns deal with object creation. The Object
+  Mother is often simpler and used specifically in a testing context, whereas the Builder Pattern is more
+  general-purpose.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Similar in the sense of centralizing
+  object creation logic. The Object Mother is specifically aimed at tests, while Factory Method is used more broadly in
+  application code.
 
 ## References and Credits
 

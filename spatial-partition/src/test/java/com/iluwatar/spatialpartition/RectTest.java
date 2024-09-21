@@ -35,23 +35,23 @@ import org.junit.jupiter.api.Test;
 
 class RectTest {
 
-  @Test
-  void containsTest() {
-    var r = new Rect(10, 10, 20, 20);
-    var b1 = new Bubble(2, 2, 1, 1);
-    var b2 = new Bubble(30, 30, 2, 1);
-    //r contains b1 and not b2
-    assertTrue(r.contains(b1));
-    assertFalse(r.contains(b2));
-  }
+    @Test
+    void containsTest() {
+        var r = new Rect(10, 10, 20, 20);
+        var b1 = new Bubble(2, 2, 1, 1);
+        var b2 = new Bubble(30, 30, 2, 1);
+        //r contains b1 and not b2
+        assertTrue(r.contains(b1));
+        assertFalse(r.contains(b2));
+    }
 
-  @Test
-  void intersectsTest() {
-    var r1 = new Rect(10, 10, 20, 20);
-    var r2 = new Rect(15, 15, 20, 20);
-    var r3 = new Rect(50, 50, 20, 20);
-    //r1 intersects r2 and not r3
-    assertTrue(r1.intersects(r2));
-    assertFalse(r1.intersects(r3));
-  }
+    @Test
+    void intersectsTest() {
+        var r1 = new Rect(10, 10, 20, 20);
+        var r2 = new Rect(15, 15, 20, 20);
+        var r3 = new Rect(50, 50, 20, 20);
+        //r1 intersects r2 and not r3
+        assertTrue(r1.intersects(r2));
+        assertFalse(r1.intersects(r3));
+    }
 }

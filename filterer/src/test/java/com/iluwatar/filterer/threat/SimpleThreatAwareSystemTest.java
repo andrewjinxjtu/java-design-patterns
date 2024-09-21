@@ -27,24 +27,25 @@ package com.iluwatar.filterer.threat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 class SimpleThreatAwareSystemTest {
-  @Test
-  void shouldFilterByThreatType() {
-    //given
-    var rootkit = new SimpleThreat(ThreatType.ROOTKIT, 1, "Simple-Rootkit");
-    var trojan = new SimpleThreat(ThreatType.TROJAN, 2, "Simple-Trojan");
-    List<Threat> threats = List.of(rootkit, trojan);
+    @Test
+    void shouldFilterByThreatType() {
+        //given
+        var rootkit = new SimpleThreat(ThreatType.ROOTKIT, 1, "Simple-Rootkit");
+        var trojan = new SimpleThreat(ThreatType.TROJAN, 2, "Simple-Trojan");
+        List<Threat> threats = List.of(rootkit, trojan);
 
-    var threatAwareSystem = new SimpleThreatAwareSystem("System-1", threats);
+        var threatAwareSystem = new SimpleThreatAwareSystem("System-1", threats);
 
-    //when
-    var rootkitThreatAwareSystem = threatAwareSystem.filtered()
-        .by(threat -> threat.type() == ThreatType.ROOTKIT);
+        //when
+        var rootkitThreatAwareSystem = threatAwareSystem.filtered()
+                .by(threat -> threat.type() == ThreatType.ROOTKIT);
 
-    //then
-    assertEquals(rootkitThreatAwareSystem.threats().size(), 1);
-    assertEquals(rootkitThreatAwareSystem.threats().get(0), rootkit);
-  }
+        //then
+        assertEquals(rootkitThreatAwareSystem.threats().size(), 1);
+        assertEquals(rootkitThreatAwareSystem.threats().get(0), rootkit);
+    }
 }

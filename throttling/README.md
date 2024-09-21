@@ -18,13 +18,17 @@ tag:
 
 ## Intent of Throttling Design Pattern
 
-The Throttling Pattern, also known as Rate Limiting, limits the number of requests a system can process within a given time frame to prevent overload and ensure stability. It is crucial for resource management in Java applications.
+The Throttling Pattern, also known as Rate Limiting, limits the number of requests a system can process within a given
+time frame to prevent overload and ensure stability. It is crucial for resource management in Java applications.
 
 ## Detailed Explanation of Throttling Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine a popular amusement park that limits the number of visitors who can enter per hour to prevent overcrowding. This ensures that all visitors can enjoy the park without long wait times and maintain a pleasant experience. Similarly, the Throttling design pattern in software controls the rate of requests to a system, preventing it from being overwhelmed and ensuring consistent performance for all users.
+> Imagine a popular amusement park that limits the number of visitors who can enter per hour to prevent overcrowding.
+> This ensures that all visitors can enjoy the park without long wait times and maintain a pleasant experience. Similarly,
+> the Throttling design pattern in software controls the rate of requests to a system, preventing it from being
+> overwhelmed and ensuring consistent performance for all users.
 
 In plain words
 
@@ -32,13 +36,18 @@ In plain words
 
 [Microsoft documentation](https://docs.microsoft.com/en-us/azure/architecture/patterns/throttling) says
 
-> Control the consumption of resources used by an instance of an application, an individual tenant, or an entire service. This can allow the system to continue to function and meet service level agreements, even when an increase in demand places an extreme load on resources.
+> Control the consumption of resources used by an instance of an application, an individual tenant, or an entire
+> service. This can allow the system to continue to function and meet service level agreements, even when an increase in
+> demand places an extreme load on resources.
 
 ## Programmatic Example of Throttling Pattern in Java
 
-In this Java example, we demonstrate throttling. A young human and an old dwarf walk into a bar. They start ordering beers from the bartender. The bartender immediately sees that the young human shouldn't consume too many drinks too fast and refuses to serve if enough time has not passed. For the old dwarf, the serving rate can be higher.
+In this Java example, we demonstrate throttling. A young human and an old dwarf walk into a bar. They start ordering
+beers from the bartender. The bartender immediately sees that the young human shouldn't consume too many drinks too fast
+and refuses to serve if enough time has not passed. For the old dwarf, the serving rate can be higher.
 
-`BarCustomer` class presents the clients of the `Bartender` API. `CallsCount` tracks the number of calls per `BarCustomer`.
+`BarCustomer` class presents the clients of the `Bartender` API. `CallsCount` tracks the number of calls per
+`BarCustomer`.
 
 ```java
 @Getter
@@ -113,7 +122,8 @@ public class ThrottleTimerImpl implements Throttler {
 }
 ```
 
-`Bartender` offers the `orderDrink` service to the `BarCustomer`s. The customers probably don't know that the beer serving rate is limited by their appearances.
+`Bartender` offers the `orderDrink` service to the `BarCustomer`s. The customers probably don't know that the beer
+serving rate is limited by their appearances.
 
 ```java
 class Bartender {
@@ -144,7 +154,8 @@ class Bartender {
 }
 ```
 
-Now it is possible to see the full example in action. `BarCustomer` young human is rate-limited to 2 calls per second and the old dwarf to 4.
+Now it is possible to see the full example in action. `BarCustomer` young human is rate-limited to 2 calls per second
+and the old dwarf to 4.
 
 ```java
 @Slf4j
@@ -241,7 +252,8 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Circuit Breaker](https://java-design-patterns.com/patterns/circuit-breaker/): Works in tandem with throttling to prevent repeated attempts to access an overloaded service.
+* [Circuit Breaker](https://java-design-patterns.com/patterns/circuit-breaker/): Works in tandem with throttling to
+  prevent repeated attempts to access an overloaded service.
 * Bulkhead: Isolates different parts of the system to limit the impact of throttling on other components.
 
 ## References and Credits

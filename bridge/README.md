@@ -18,27 +18,40 @@ tag:
 
 ## Intent of Bridge Design Pattern
 
-The Bridge design pattern is a structural pattern in Java that decouples an abstraction from its implementation, allowing both to vary independently. This pattern is essential for developing flexible and extensible software systems.
+The Bridge design pattern is a structural pattern in Java that decouples an abstraction from its implementation,
+allowing both to vary independently. This pattern is essential for developing flexible and extensible software systems.
 
 ## Detailed Explanation of Bridge Pattern with Real-World Examples
 
 Real-world example
 
-> In Java, the Bridge pattern is commonly used in GUI frameworks, database drivers, and device drivers. For instance, a universal remote control (abstraction) can operate various TV brands (implementations) through a consistent interface.
+> In Java, the Bridge pattern is commonly used in GUI frameworks, database drivers, and device drivers. For instance, a
+> universal remote control (abstraction) can operate various TV brands (implementations) through a consistent interface.
 >
-> Imagine a universal remote control (abstraction) that can operate different brands and types of televisions (implementations). The remote control provides a consistent interface for operations like turning on/off, changing channels, and adjusting the volume. Each television brand or type has its own specific implementation of these operations. By using the Bridge pattern, the remote control interface is decoupled from the television implementations, allowing the remote control to work with any television regardless of its brand or internal workings. This separation allows new television models to be added without changing the remote control's code, and different remote controls can be developed to work with the same set of televisions.
+> Imagine a universal remote control (abstraction) that can operate different brands and types of televisions (
+> implementations). The remote control provides a consistent interface for operations like turning on/off, changing
+> channels, and adjusting the volume. Each television brand or type has its own specific implementation of these
+> operations. By using the Bridge pattern, the remote control interface is decoupled from the television implementations,
+> allowing the remote control to work with any television regardless of its brand or internal workings. This separation
+> allows new television models to be added without changing the remote control's code, and different remote controls can
+> be developed to work with the same set of televisions.
 
 In Plain Words
 
-> Bridge pattern is about preferring composition to inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
+> Bridge pattern is about preferring composition to inheritance. Implementation details are pushed from a hierarchy to
+> another object with a separate hierarchy.
 
 Wikipedia says
 
-> The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
+> The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its
+> implementation so that the two can vary independently"
 
 ## Programmatic Example of Bridge Pattern in Java
 
-Imagine you have a weapon that can have various enchantments, and you need to combine different weapons with different enchantments. How would you handle this? Would you create multiple copies of each weapon, each with a different enchantment, or would you create separate enchantments and apply them to the weapon as needed? The Bridge pattern enables you to do the latter.
+Imagine you have a weapon that can have various enchantments, and you need to combine different weapons with different
+enchantments. How would you handle this? Would you create multiple copies of each weapon, each with a different
+enchantment, or would you create separate enchantments and apply them to the weapon as needed? The Bridge pattern
+enables you to do the latter.
 
 Here we have the `Weapon` hierarchy:
 
@@ -211,11 +224,17 @@ The item's glow fades.
 
 Consider using the Bridge pattern when:
 
-* You need to avoid a permanent binding between an abstraction and its implementation, such as when the implementation must be chosen or switched at runtime.
-* Both the abstractions and their implementations should be extendable via subclassing, allowing independent extension of each component.
-* Changes to the implementation of an abstraction should not affect clients, meaning their code should not require recompilation.
-* You encounter a large number of classes in your hierarchy, indicating the need to split an object into two parts, a concept referred to as "nested generalizations" by Rumbaugh.
-* You want to share an implementation among multiple objects, potentially using reference counting, while keeping this detail hidden from the client, as exemplified by Coplien's String class, where multiple objects can share the same string representation.
+* You need to avoid a permanent binding between an abstraction and its implementation, such as when the implementation
+  must be chosen or switched at runtime.
+* Both the abstractions and their implementations should be extendable via subclassing, allowing independent extension
+  of each component.
+* Changes to the implementation of an abstraction should not affect clients, meaning their code should not require
+  recompilation.
+* You encounter a large number of classes in your hierarchy, indicating the need to split an object into two parts, a
+  concept referred to as "nested generalizations" by Rumbaugh.
+* You want to share an implementation among multiple objects, potentially using reference counting, while keeping this
+  detail hidden from the client, as exemplified by Coplien's String class, where multiple objects can share the same
+  string representation.
 
 ## Bridge Pattern Java Tutorials
 
@@ -223,29 +242,41 @@ Consider using the Bridge pattern when:
 
 ## Real-World Applications of Bridge Pattern in Java
 
-* GUI Frameworks where the abstraction is the window, and the implementation could be the underlying OS windowing system.
-* Database Drivers where the abstraction is a generic database interface, and the implementations are database-specific drivers.
-* Device Drivers where the abstraction is the device-independent code, and the implementation is the device-dependent code.
+* GUI Frameworks where the abstraction is the window, and the implementation could be the underlying OS windowing
+  system.
+* Database Drivers where the abstraction is a generic database interface, and the implementations are database-specific
+  drivers.
+* Device Drivers where the abstraction is the device-independent code, and the implementation is the device-dependent
+  code.
 
 ## Benefits and Trade-offs of Bridge Pattern
 
 Benefits:
 
-* Decoupling Interface and Implementation: The Bridge pattern enhances modularity by separating the interface (the high-level operations) from the implementation (the low-level operations).
+* Decoupling Interface and Implementation: The Bridge pattern enhances modularity by separating the interface (the
+  high-level operations) from the implementation (the low-level operations).
 * Improved Extensibility: You can extend the abstraction and implementation hierarchies independently.
 * Hiding Implementation Details: Clients only see the abstraction's interface, not its implementation.
 
 Trade-offs:
 
-* Increased Complexity: The pattern can complicate the system architecture and code, especially for clients unfamiliar with the pattern.
-* Runtime Overhead: The extra layer of abstraction can introduce a performance penalty, although it is often negligible in practice.
+* Increased Complexity: The pattern can complicate the system architecture and code, especially for clients unfamiliar
+  with the pattern.
+* Runtime Overhead: The extra layer of abstraction can introduce a performance penalty, although it is often negligible
+  in practice.
 
 ## Related Java Design Patterns
 
-* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): The Abstract Factory pattern can be used along with the Bridge pattern to create platforms that are independent of the concrete classes used to create their objects.
-* [Adapter](https://java-design-patterns.com/patterns/adapter/): The Adapter pattern is used to provide a different interface to an object, while the Bridge pattern is used to separate an object's interface from its implementation.
-* [Composite](https://java-design-patterns.com/patterns/composite/): The Bridge pattern is often used with the Composite pattern to model the implementation details of a component.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): The Strategy pattern is like the Bridge pattern, but with a different intent. Both patterns are based on composition: Strategy uses composition to change the behavior of a class, while Bridge uses composition to separate an abstraction from its implementation.
+* [Abstract Factory](https://java-design-patterns.com/patterns/abstract-factory/): The Abstract Factory pattern can be
+  used along with the Bridge pattern to create platforms that are independent of the concrete classes used to create
+  their objects.
+* [Adapter](https://java-design-patterns.com/patterns/adapter/): The Adapter pattern is used to provide a different
+  interface to an object, while the Bridge pattern is used to separate an object's interface from its implementation.
+* [Composite](https://java-design-patterns.com/patterns/composite/): The Bridge pattern is often used with the Composite
+  pattern to model the implementation details of a component.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): The Strategy pattern is like the Bridge pattern, but
+  with a different intent. Both patterns are based on composition: Strategy uses composition to change the behavior of a
+  class, while Bridge uses composition to separate an abstraction from its implementation.
 
 ## References and Credits
 

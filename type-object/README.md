@@ -28,25 +28,38 @@ Allow creation of flexible and extensible sets of related types.
 
 Real-world example
 
-> An analogous real-world example of the Type Object pattern can be seen in a role-playing game (RPG) character customization system. In such a game, players can choose from various character classes like Warrior, Mage, and Archer, each with its unique set of abilities and attributes. The Type Object pattern allows the game to define these character classes and their behaviors dynamically. Instead of hardcoding the details of each class, the game uses a flexible system where new character types can be added or existing ones modified without changing the underlying game logic. This extensibility lets the developers introduce new character classes through updates or expansions, keeping the game fresh and engaging for players.
+> An analogous real-world example of the Type Object pattern can be seen in a role-playing game (RPG) character
+> customization system. In such a game, players can choose from various character classes like Warrior, Mage, and Archer,
+> each with its unique set of abilities and attributes. The Type Object pattern allows the game to define these character
+> classes and their behaviors dynamically. Instead of hardcoding the details of each class, the game uses a flexible
+> system where new character types can be added or existing ones modified without changing the underlying game logic. This
+> extensibility lets the developers introduce new character classes through updates or expansions, keeping the game fresh
+> and engaging for players.
 
 In plain words
 
-> Explore how the Java Type Object pattern enables dynamic creation and management of flexible and extensible sets of related classes, ideal for Java developers seeking modularity without modifying existing codebase.
+> Explore how the Java Type Object pattern enables dynamic creation and management of flexible and extensible sets of
+> related classes, ideal for Java developers seeking modularity without modifying existing codebase.
 
 gameprogrammingpatterns.com says
 
-> Define a type object class and a typed object class. Each type object instance represents a different logical type. Each typed object stores a reference to the type object that describes its type.
+> Define a type object class and a typed object class. Each type object instance represents a different logical type.
+> Each typed object stores a reference to the type object that describes its type.
 
 ## Programmatic Example of Type Object Pattern in Java
 
-The Type Object pattern is a design pattern that allows for the creation of flexible and reusable objects by creating a class with a field that represents the 'type' of the object. This design pattern proves invaluable for scenarios where anticipated Java types are undefined upfront, or when modifications or additions are required, ensuring efficient Java development without frequent recompilations.
+The Type Object pattern is a design pattern that allows for the creation of flexible and reusable objects by creating a
+class with a field that represents the 'type' of the object. This design pattern proves invaluable for scenarios where
+anticipated Java types are undefined upfront, or when modifications or additions are required, ensuring efficient Java
+development without frequent recompilations.
 
-In the provided code, the Type Object pattern is implemented in a mini candy-crush game. The game has many different candies, which may change over time as the game is upgraded.
+In the provided code, the Type Object pattern is implemented in a mini candy-crush game. The game has many different
+candies, which may change over time as the game is upgraded.
 
 Let's break down the key components of this implementation:
 
-1. **Candy Class**: This class represents the 'type' object in this pattern. Each `Candy` has a `name`, `parent`, `points`, and `type`. The `type` is an enum that can be either `CRUSHABLE_CANDY` or `REWARD_FRUIT`.
+1. **Candy Class**: This class represents the 'type' object in this pattern. Each `Candy` has a `name`, `parent`,
+   `points`, and `type`. The `type` is an enum that can be either `CRUSHABLE_CANDY` or `REWARD_FRUIT`.
 
 ```java
 class Candy {
@@ -74,7 +87,8 @@ class Candy {
 }
 ```
 
-2. **JsonParser Class**: This class is responsible for parsing the JSON file that contains the details about the candies. It creates a `Candy` object for each candy in the JSON file and stores them in a `Hashtable`.
+2. **JsonParser Class**: This class is responsible for parsing the JSON file that contains the details about the
+   candies. It creates a `Candy` object for each candy in the JSON file and stores them in a `Hashtable`.
 
 ```java
 public class JsonParser {
@@ -94,7 +108,9 @@ public class JsonParser {
 }
 ```
 
-3. **Cell Class**: This class represents a cell in the game matrix. Each cell contains a candy that can be crushed. It also contains information on how crushing can be done, how the matrix is to be reconfigured, and how points are to be gained.
+3. **Cell Class**: This class represents a cell in the game matrix. Each cell contains a candy that can be crushed. It
+   also contains information on how crushing can be done, how the matrix is to be reconfigured, and how points are to be
+   gained.
 
 ```java
 class Cell {
@@ -138,7 +154,8 @@ class CandyGame {
 }
 ```
 
-5. **CellPool Class**: This class is a pool that reuses the candy cells that have been crushed instead of creating new ones repeatedly.
+5. **CellPool Class**: This class is a pool that reuses the candy cells that have been crushed instead of creating new
+   ones repeatedly.
 
 ```java
 class CellPool {
@@ -207,24 +224,31 @@ public class App {
 Let's break down what happens in `App` class.
 
 1. The `main` method is the entry point of the application. It starts by initializing several variables:
-  - `givenTime` is set to 50 milliseconds. This is the time limit for the game.
-  - `toWin` is set to 500 points. This is the target score to win the game.
-  - `pointsWon` is initialized to 0. This variable keeps track of the total points won so far.
-  - `numOfRows` is set to 3. This is the number of rows in the game grid.
-  - `start` and `end` are both set to the current system time in milliseconds. These variables are used to track the elapsed time.
-  - `round` is initialized to 0. This variable keeps track of the current round number.
 
-2. The game enters a loop that continues until either the player has won enough points (`pointsWon >= toWin`) or the time limit has been reached (`end - start < givenTime`).
+- `givenTime` is set to 50 milliseconds. This is the time limit for the game.
+- `toWin` is set to 500 points. This is the target score to win the game.
+- `pointsWon` is initialized to 0. This variable keeps track of the total points won so far.
+- `numOfRows` is set to 3. This is the number of rows in the game grid.
+- `start` and `end` are both set to the current system time in milliseconds. These variables are used to track the
+  elapsed time.
+- `round` is initialized to 0. This variable keeps track of the current round number.
 
-3. At the start of each round, a new `CellPool` and `CandyGame` are created. The `CellPool` is initialized with a size based on the number of cells in the game grid (`numOfRows * numOfRows + 5`). The `CandyGame` is initialized with the number of rows and the `CellPool`.
+2. The game enters a loop that continues until either the player has won enough points (`pointsWon >= toWin`) or the
+   time limit has been reached (`end - start < givenTime`).
 
-4. If it's not the first round, a message "Refreshing.." is logged. If it is the first round, a message "Starting game.." is logged.
+3. At the start of each round, a new `CellPool` and `CandyGame` are created. The `CellPool` is initialized with a size
+   based on the number of cells in the game grid (`numOfRows * numOfRows + 5`). The `CandyGame` is initialized with the
+   number of rows and the `CellPool`.
+
+4. If it's not the first round, a message "Refreshing.." is logged. If it is the first round, a message "Starting
+   game.." is logged.
 
 5. The current game status is printed by calling `cg.printGameStatus()`.
 
 6. The `end` time is updated to the current system time.
 
-7. The game round is played by calling `cg.round((int) (end - start), givenTime)`. The elapsed time and the time limit are passed as arguments.
+7. The game round is played by calling `cg.round((int) (end - start), givenTime)`. The elapsed time and the time limit
+   are passed as arguments.
 
 8. The points won in the round are added to the total points.
 
@@ -232,9 +256,12 @@ Let's break down what happens in `App` class.
 
 10. After the loop, a "Game Over" message is logged.
 
-11. If the total points won is greater than or equal to the target score, a winning message is logged. Otherwise, a losing message is logged.
+11. If the total points won is greater than or equal to the target score, a winning message is logged. Otherwise, a
+    losing message is logged.
 
-This is a simplified version of a game similar to Candy Crush, where the player tries to score as many points as possible within a given time limit. The game is played in rounds, and the player's score and the elapsed time are tracked throughout the game.
+This is a simplified version of a game similar to Candy Crush, where the player tries to score as many points as
+possible within a given time limit. The game is played in rounds, and the player's score and the elapsed time are
+tracked throughout the game.
 
 Console output:
 
@@ -292,7 +319,9 @@ Console output:
 14:36:14.465 [main] INFO com.iluwatar.typeobject.App -- You win!!
 ```
 
-In this implementation, the Type Object pattern allows for the flexible creation of `Candy` objects. The type of each candy is determined at runtime by parsing a JSON file, which makes it easy to add, modify, or remove candy types without having to recompile the code.
+In this implementation, the Type Object pattern allows for the flexible creation of `Candy` objects. The type of each
+candy is determined at runtime by parsing a JSON file, which makes it easy to add, modify, or remove candy types without
+having to recompile the code.
 
 ## When to Use the Type Object Pattern in Java
 
@@ -328,9 +357,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Often used in conjunction with Type Object to create instances of the types.
-* [Strategy](https://java-design-patterns.com/patterns/strategy/): Similar in that it defines a family of algorithms or behaviors, but focuses more on interchangeable behaviors.
-* [Prototype](https://java-design-patterns.com/patterns/prototype/): Can be used to create new instances by copying existing ones, supporting dynamic and flexible type creation.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Often used in conjunction with Type
+  Object to create instances of the types.
+* [Strategy](https://java-design-patterns.com/patterns/strategy/): Similar in that it defines a family of algorithms or
+  behaviors, but focuses more on interchangeable behaviors.
+* [Prototype](https://java-design-patterns.com/patterns/prototype/): Can be used to create new instances by copying
+  existing ones, supporting dynamic and flexible type creation.
 
 ## References and Credits
 

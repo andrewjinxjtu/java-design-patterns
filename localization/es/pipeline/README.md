@@ -8,15 +8,21 @@ tag:
 
 ## Propósito
 
-Permite procesar los datos en una serie de etapas, introduciendo una entrada inicial y pasando la salida procesada para que la utilicen las etapas siguientes.
+Permite procesar los datos en una serie de etapas, introduciendo una entrada inicial y pasando la salida procesada para
+que la utilicen las etapas siguientes.
 
 ## Explicación
 
-El patrón Pipeline utiliza etapas ordenadas para procesar una secuencia de valores de entrada. Cada tarea implementada está representada por una etapa de la tubería. Puede pensar en las canalizaciones como algo similar a las líneas de ensamblaje de una fábrica, donde cada elemento de la línea de ensamblaje se construye por etapas. El artículo parcialmente ensamblado pasa de una etapa de ensamblaje a otra. Las salidas de la cadena de montaje se producen en el mismo orden que las entradas.
+El patrón Pipeline utiliza etapas ordenadas para procesar una secuencia de valores de entrada. Cada tarea implementada
+está representada por una etapa de la tubería. Puede pensar en las canalizaciones como algo similar a las líneas de
+ensamblaje de una fábrica, donde cada elemento de la línea de ensamblaje se construye por etapas. El artículo
+parcialmente ensamblado pasa de una etapa de ensamblaje a otra. Las salidas de la cadena de montaje se producen en el
+mismo orden que las entradas.
 
 Ejemplo del mundo real
 
-> Supongamos que queremos pasar una cadena a una serie de etapas de filtrado y convertirla como una matriz char en la última etapa.
+> Supongamos que queremos pasar una cadena a una serie de etapas de filtrado y convertirla como una matriz char en la
+> última etapa.
 
 En palabras sencillas
 
@@ -24,11 +30,14 @@ En palabras sencillas
 
 Wikipedia dice
 
-> En ingeniería de software, un pipeline consiste en una cadena de elementos de procesamiento (procesos, hilos, coroutines, funciones, etc.), dispuestos de forma que la salida de cada elemento es la entrada del siguiente; el nombre es por analogía a un pipeline físico.
+> En ingeniería de software, un pipeline consiste en una cadena de elementos de procesamiento (procesos, hilos,
+> coroutines, funciones, etc.), dispuestos de forma que la salida de cada elemento es la entrada del siguiente; el nombre
+> es por analogía a un pipeline físico.
 
 **Ejemplo programático**
 
 Las etapas de nuestro pipeline se llaman `Handler`s.
+
 ```java
 interface Handler<I, O> {
   O process(I input);
@@ -91,7 +100,8 @@ Utilice el patrón Pipeline cuando desee
 
 * Ejecutar etapas individuales que produzcan un valor final.
 * Añadir legibilidad a secuencias complejas de operaciones proporcionando un constructor fluido como interfaz.
-* Mejorar la comprobabilidad del código, ya que las etapas probablemente harán una sola cosa, cumpliendo con el [Principio de Responsabilidad Única (SRP)](https://java-design-patterns.com/principles/#single-responsibility-principle)
+* Mejorar la comprobabilidad del código, ya que las etapas probablemente harán una sola cosa, cumpliendo con
+  el [Principio de Responsabilidad Única (SRP)](https://java-design-patterns.com/principles/#single-responsibility-principle)
 
 ## Usos conocidos
 

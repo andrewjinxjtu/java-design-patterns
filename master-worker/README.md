@@ -17,25 +17,39 @@ tag:
 
 ## Intent of Master-Worker Design Pattern
 
-The Master-Worker design pattern is designed to perform parallel computations by distributing tasks between a master process and multiple worker processes. This pattern enhances concurrency, performance, and scalability in software systems.
+The Master-Worker design pattern is designed to perform parallel computations by distributing tasks between a master
+process and multiple worker processes. This pattern enhances concurrency, performance, and scalability in software
+systems.
 
 ## Detailed Explanation of Master-Worker Pattern with Real-World Examples
 
 Real-world example
 
-> The Master-Worker pattern optimizes parallel task processing and throughput. For instance, in a restaurant kitchen, the head chef (master) delegates tasks to line cooks (workers), who work concurrently to prepare the order. The head chef receives the orders from the dining area and breaks down each order into specific tasks, such as grilling meat, preparing salads, and cooking desserts. Each task is assigned to a different line cook based on their expertise and current workload. The line cooks work in parallel to prepare their portion of the order, while the head chef oversees the process, ensuring everything is prepared correctly and timely. Once each component of the order is ready, the head chef gathers all parts, gives them a final check, and then plates the dishes for service. This kitchen operation mimics the Master-Worker pattern by distributing and managing tasks to optimize efficiency and output.
+> The Master-Worker pattern optimizes parallel task processing and throughput. For instance, in a restaurant kitchen,
+> the head chef (master) delegates tasks to line cooks (workers), who work concurrently to prepare the order. The head
+> chef receives the orders from the dining area and breaks down each order into specific tasks, such as grilling meat,
+> preparing salads, and cooking desserts. Each task is assigned to a different line cook based on their expertise and
+> current workload. The line cooks work in parallel to prepare their portion of the order, while the head chef oversees
+> the process, ensuring everything is prepared correctly and timely. Once each component of the order is ready, the head
+> chef gathers all parts, gives them a final check, and then plates the dishes for service. This kitchen operation mimics
+> the Master-Worker pattern by distributing and managing tasks to optimize efficiency and output.
 
 In plain words
 
-> The Master-Worker pattern involves a master process delegating tasks to multiple worker processes, which execute them concurrently and report back, optimizing parallel task processing and throughput.
+> The Master-Worker pattern involves a master process delegating tasks to multiple worker processes, which execute them
+> concurrently and report back, optimizing parallel task processing and throughput.
 
 Wikipedia says
 
-> Master–slave is a model of asymmetric communication or control where one device or process (the master) controls one or more other devices or processes (the slaves) and serves as their communication hub. In some systems, a master is selected from a group of eligible devices, with the other devices acting in the role of slaves.
+> Master–slave is a model of asymmetric communication or control where one device or process (the master) controls one
+> or more other devices or processes (the slaves) and serves as their communication hub. In some systems, a master is
+> selected from a group of eligible devices, with the other devices acting in the role of slaves.
 
 ## Programmatic Example of Master-Worker Pattern in Java
 
-In the provided code, the `MasterWorker` class initiates the concurrent computation process. The `Master` class divides the work among `Worker` objects, each performing its task in parallel, thus optimizing task processing and enhancing system efficiency.
+In the provided code, the `MasterWorker` class initiates the concurrent computation process. The `Master` class divides
+the work among `Worker` objects, each performing its task in parallel, thus optimizing task processing and enhancing
+system efficiency.
 
 ```java
 // The MasterWorker class acts as the main entry point for the Master-Worker system.
@@ -52,7 +66,8 @@ public class MasterWorker {
 }
 ```
 
-In this code, the `MasterWorker` class is initialized with a `Master` object. The `getResult` method is used to start the computation process.
+In this code, the `MasterWorker` class is initialized with a `Master` object. The `getResult` method is used to start
+the computation process.
 
 ```java
 // The Master class is responsible for dividing the work among the workers.
@@ -67,7 +82,8 @@ public abstract class Master {
 }
 ```
 
-The `Master` class has a list of `Worker` objects. The `computeResult` method is abstract and should be implemented in a subclass to define how the work is divided and how the results are aggregated.
+The `Master` class has a list of `Worker` objects. The `computeResult` method is abstract and should be implemented in a
+subclass to define how the work is divided and how the results are aggregated.
 
 ```java
 // The Worker class is responsible for performing the actual computation.
@@ -82,7 +98,8 @@ public abstract class Worker extends Thread {
 }
 ```
 
-The `Worker` class extends `Thread`, allowing it to perform computations in parallel. The `compute` method is abstract and should be implemented in a subclass to define the actual computation logic.
+The `Worker` class extends `Thread`, allowing it to perform computations in parallel. The `compute` method is abstract
+and should be implemented in a subclass to define the actual computation logic.
 
 ```java
 // The Input and Result classes are used to encapsulate the input data and the result data.
@@ -105,7 +122,8 @@ public abstract class Result<T> {
 }
 ```
 
-The `Input` class has a `divideData` method that is used to divide the input data into subtasks. The `Result` class simply encapsulates the result data.
+The `Input` class has a `divideData` method that is used to divide the input data into subtasks. The `Result` class
+simply encapsulates the result data.
 
 ## When to Use the Master-Worker Pattern in Java
 
@@ -138,9 +156,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* Task Parallelism and Data Parallelism: Master-Worker utilizes these patterns to divide work into tasks or data segments.
-* [Producer-Consumer](https://java-design-patterns.com/patterns/producer-consumer/): Similar in structure but focuses on balancing production and consumption rates; Master-Worker is more about task distribution and aggregation.
-* [Pipeline](https://java-design-patterns.com/patterns/pipeline/): Both organize processing steps but Pipeline arranges them linearly whereas Master-Worker may not impose such a sequence.
+* Task Parallelism and Data Parallelism: Master-Worker utilizes these patterns to divide work into tasks or data
+  segments.
+* [Producer-Consumer](https://java-design-patterns.com/patterns/producer-consumer/): Similar in structure but focuses on
+  balancing production and consumption rates; Master-Worker is more about task distribution and aggregation.
+* [Pipeline](https://java-design-patterns.com/patterns/pipeline/): Both organize processing steps but Pipeline arranges
+  them linearly whereas Master-Worker may not impose such a sequence.
 
 ## References and Credits
 

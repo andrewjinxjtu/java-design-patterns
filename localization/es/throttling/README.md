@@ -27,7 +27,8 @@ En palabras sencillas
 [Microsoft documentation](https://docs.microsoft.com/en-us/azure/architecture/patterns/throttling) dice
 
 > Controlar el consumo de recursos utilizados por una instancia de una aplicación, un tenant individual,
-> o un servicio completo. Esto puede permitir que el sistema continúe funcionando y cumpla con los acuerdos de nivel de servicio, incluso cuando un aumento de la demanda impone una carga extrema sobre los recursos.
+> o un servicio completo. Esto puede permitir que el sistema continúe funcionando y cumpla con los acuerdos de nivel de
+> servicio, incluso cuando un aumento de la demanda impone una carga extrema sobre los recursos.
 
 **Ejemplo programático**
 
@@ -75,7 +76,8 @@ public final class CallsCount {
 }
 ```
 
-A continuación, se introduce el servicio al que llaman los inquilinos. Para realizar un seguimiento del número de llamadas, se utiliza un temporizador de estrangulamiento.
+A continuación, se introduce el servicio al que llaman los inquilinos. Para realizar un seguimiento del número de
+llamadas, se utiliza un temporizador de estrangulamiento.
 
 ```java
 public interface Throttler {
@@ -210,7 +212,8 @@ Un extracto de la salida de consola del ejemplo:
 El patrón Throttling debe utilizarse:
 
 * Cuando se necesita restringir el acceso al servicio para no tener un alto impacto en el rendimiento del mismo.
-* Cuando varios clientes consumen los mismos recursos del servicio y la restricción debe hacerse en función del uso por cliente.
+* Cuando varios clientes consumen los mismos recursos del servicio y la restricción debe hacerse en función del uso por
+  cliente.
 
 ## Créditos
 

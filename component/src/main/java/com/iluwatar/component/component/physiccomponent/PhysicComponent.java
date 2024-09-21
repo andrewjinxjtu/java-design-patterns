@@ -30,5 +30,5 @@ import com.iluwatar.component.GameObject;
  * Generic PhysicComponent interface.
  */
 public interface PhysicComponent {
-  void update(GameObject gameObject);
+    void update(GameObject gameObject);
 }

@@ -32,13 +32,13 @@ import lombok.Getter;
  */
 @Getter
 public class VideoObjectProxy implements ExpensiveObject {
-  private RealVideoObject realVideoObject;
+    private RealVideoObject realVideoObject;
 
-  @Override
-  public void process() {
-    if (realVideoObject == null) {
-      realVideoObject = new RealVideoObject();
+    @Override
+    public void process() {
+        if (realVideoObject == null) {
+            realVideoObject = new RealVideoObject();
+        }
+        realVideoObject.process();
     }
-    realVideoObject.process();
-  }
 }

@@ -20,7 +20,8 @@ cambiar de clase.
 Ejemplo del mundo real
 
 > Al observar un mamut en su hábitat natural parece cambiar su comportamiento en función de la
-> situación. Al principio puede parecer tranquilo, pero con el tiempo, cuando detecta una amenaza, se enfada y se vuelve peligroso para su entorno.
+> situación. Al principio puede parecer tranquilo, pero con el tiempo, cuando detecta una amenaza, se enfada y se vuelve
+> peligroso para su entorno.
 > peligroso para su entorno.
 
 En palabras sencillas
@@ -31,7 +32,8 @@ Wikipedia dice
 
 > El patrón de estado es un patrón de diseño de software de comportamiento que permite a un objeto alterar su
 > comportamiento cuando cambia su estado interno. Este patrón es cercano al concepto de máquinas de estado finito.
-> máquinas de estado finito. El patrón de estado puede ser interpretado como un patrón de estrategia, que es capaz de cambiar una estrategia a través de invocaciones de métodos definidos por el usuario.
+> máquinas de estado finito. El patrón de estado puede ser interpretado como un patrón de estrategia, que es capaz de
+> cambiar una estrategia a través de invocaciones de métodos definidos por el usuario.
 > estrategia a través de invocaciones de métodos definidos en la interfaz del patrón.
 
 **Ejemplo programático**
@@ -150,14 +152,20 @@ Salida del programa:
 
 Utiliza el patrón State en cualquiera de los siguientes casos:
 
-* El comportamiento de un objeto depende de su estado, y debe cambiar su comportamiento en tiempo de ejecución dependiendo de ese estado.
-* Las operaciones tienen grandes sentencias condicionales multiparte que dependen del estado del objeto. Este estado suele estar representado por una o más constantes enumeradas. A menudo, varias operaciones contendrán esta misma estructura condicional. El patrón State coloca cada rama de la condicional en una clase separada. Esto permite tratar el estado del objeto como un objeto en sí mismo que puede variar independientemente de otros objetos.
+* El comportamiento de un objeto depende de su estado, y debe cambiar su comportamiento en tiempo de ejecución
+  dependiendo de ese estado.
+* Las operaciones tienen grandes sentencias condicionales multiparte que dependen del estado del objeto. Este estado
+  suele estar representado por una o más constantes enumeradas. A menudo, varias operaciones contendrán esta misma
+  estructura condicional. El patrón State coloca cada rama de la condicional en una clase separada. Esto permite tratar
+  el estado del objeto como un objeto en sí mismo que puede variar independientemente de otros objetos.
 
 Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
 
 ## Usos conocidos
 
-* [javax.faces.lifecycle.Lifecycle#execute()](http://docs.oracle.com/javaee/7/api/javax/faces/lifecycle/Lifecycle.html#execute-javax.faces.context.FacesContext-) controlled by [FacesServlet](http://docs.oracle.com/javaee/7/api/javax/faces/webapp/FacesServlet.html), the behavior is dependent on current phase of lifecycle.
+* [javax.faces.lifecycle.Lifecycle#execute()](http://docs.oracle.com/javaee/7/api/javax/faces/lifecycle/Lifecycle.html#execute-javax.faces.context.FacesContext-)
+  controlled by [FacesServlet](http://docs.oracle.com/javaee/7/api/javax/faces/webapp/FacesServlet.html), the behavior
+  is dependent on current phase of lifecycle.
 * [JDiameter - Diameter State Machine](https://github.com/npathai/jdiameter/blob/master/core/jdiameter/api/src/main/java/org/jdiameter/api/app/State.java)
 
 ## Créditos

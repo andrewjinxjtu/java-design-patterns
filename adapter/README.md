@@ -19,13 +19,18 @@ tag:
 
 ## Intent of Adapter Design Pattern
 
-The Adapter Design Pattern in Java converts the interface of a class into another interface that clients expect, enabling compatibility.
+The Adapter Design Pattern in Java converts the interface of a class into another interface that clients expect,
+enabling compatibility.
 
 ## Detailed Explanation of Adapter Pattern with Real-World Examples
 
 Real-world example
 
-> Consider that you have some pictures on your memory card and you need to transfer them to your computer. To transfer them, you need some kind of adapter that is compatible with your computer ports so that you can attach a memory card to your computer. In this case card reader is an adapter. Another example would be the famous power adapter; a three-legged plug can't be connected to a two-pronged outlet, it needs to use a power adapter that makes it compatible with the two-pronged outlets. Yet another example would be a translator translating words spoken by one person to another
+> Consider that you have some pictures on your memory card and you need to transfer them to your computer. To transfer
+> them, you need some kind of adapter that is compatible with your computer ports so that you can attach a memory card to
+> your computer. In this case card reader is an adapter. Another example would be the famous power adapter; a three-legged
+> plug can't be connected to a two-pronged outlet, it needs to use a power adapter that makes it compatible with the
+> two-pronged outlets. Yet another example would be a translator translating words spoken by one person to another
 
 In plain words
 
@@ -33,11 +38,14 @@ In plain words
 
 Wikipedia says
 
-> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing
+> class to be used as another interface. It is often used to make existing classes work with others without modifying
+> their source code.
 
 ## Programmatic Example of Adapter Pattern in Java
 
-The Adapter Pattern example in Java shows how a class with an incompatible interface can be adapted to work with another class.
+The Adapter Pattern example in Java shows how a class with an incompatible interface can be adapted to work with another
+class.
 
 Consider a wannabe captain that can only use rowing boats but can't sail at all.
 
@@ -74,7 +82,8 @@ public class Captain {
 }
 ```
 
-Now, let's say the pirates are coming and our captain needs to escape but there is only a fishing boat available. We need to create an adapter that allows the captain to operate the fishing boat with his rowing boat skills.
+Now, let's say the pirates are coming and our captain needs to escape but there is only a fishing boat available. We
+need to create an adapter that allows the captain to operate the fishing boat with his rowing boat skills.
 
 ```java
 @Slf4j
@@ -115,9 +124,13 @@ The program outputs:
 Use the Adapter pattern in Java when
 
 * You want to use an existing class, and its interface does not match the one you need
-* You want to create a reusable class that cooperates with unrelated or unforeseen classes, that is, classes that don't necessarily have compatible interfaces
-* You need to use several existing subclasses, but it's impractical to adapt their interface by subclassing everyone. An object adapter can adapt the interface of its parent class.
-* Most of the applications using third-party libraries use adapters as a middle layer between the application and the 3rd party library to decouple the application from the library. If another library has to be used only an adapter for the new library is required without having to change the application code.
+* You want to create a reusable class that cooperates with unrelated or unforeseen classes, that is, classes that don't
+  necessarily have compatible interfaces
+* You need to use several existing subclasses, but it's impractical to adapt their interface by subclassing everyone. An
+  object adapter can adapt the interface of its parent class.
+* Most of the applications using third-party libraries use adapters as a middle layer between the application and the
+  3rd party library to decouple the application from the library. If another library has to be used only an adapter for
+  the new library is required without having to change the application code.
 
 ## Adapter Pattern Java Tutorials
 
@@ -128,9 +141,15 @@ Use the Adapter pattern in Java when
 
 ## Benefits and Trade-offs of Adapter Pattern
 
-Class and object adapters offer different benefits and drawbacks. A class adapter adapts the Adaptee to the Target by binding to a specific Adaptee class, which means it cannot adapt a class and all its subclasses. This type of adapter allows the Adapter to override some of the Adaptee’s behavior because the Adapter is a subclass of the Adaptee. Additionally, it introduces only one object without needing extra pointer indirection to reach the Adaptee.
+Class and object adapters offer different benefits and drawbacks. A class adapter adapts the Adaptee to the Target by
+binding to a specific Adaptee class, which means it cannot adapt a class and all its subclasses. This type of adapter
+allows the Adapter to override some of the Adaptee’s behavior because the Adapter is a subclass of the Adaptee.
+Additionally, it introduces only one object without needing extra pointer indirection to reach the Adaptee.
 
-On the other hand, an object adapter allows a single Adapter to work with multiple Adaptees, including the Adaptee and all its subclasses. This type of adapter can add functionality to all Adaptees simultaneously. However, it makes overriding the Adaptee’s behavior more difficult, as it requires subclassing the Adaptee and having the Adapter refer to this subclass instead of the Adaptee itself.
+On the other hand, an object adapter allows a single Adapter to work with multiple Adaptees, including the Adaptee and
+all its subclasses. This type of adapter can add functionality to all Adaptees simultaneously. However, it makes
+overriding the Adaptee’s behavior more difficult, as it requires subclassing the Adaptee and having the Adapter refer to
+this subclass instead of the Adaptee itself.
 
 ## Real-World Applications of Adapter Pattern in Java
 

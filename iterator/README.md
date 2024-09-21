@@ -19,25 +19,35 @@ tag:
 
 ## Intent of Iterator Design Pattern
 
-The Iterator Design Pattern in Java provides a way to access elements of an aggregate object sequentially without exposing its underlying representation. This behavioral pattern is crucial for efficient collection traversal.
+The Iterator Design Pattern in Java provides a way to access elements of an aggregate object sequentially without
+exposing its underlying representation. This behavioral pattern is crucial for efficient collection traversal.
 
 ## Detailed Explanation of Iterator Pattern with Real-World Examples
 
 Real-world example
 
-> Imagine visiting a library with a vast collection of books organized in different sections such as fiction, non-fiction, science, etc. Instead of searching through every shelf yourself, the librarian provides you with a specific guidebook or a digital catalog for each section. This guidebook acts as an "iterator," allowing you to go through the books section by section, or even skip to specific types of books, without needing to know how the books are organized on the shelves. Each guidebook handles the traversal through its section, providing a consistent and efficient way to access the books, much like how the Iterator design pattern offers a uniform method to traverse different data structures in a software application.
+> Imagine visiting a library with a vast collection of books organized in different sections such as fiction,
+> non-fiction, science, etc. Instead of searching through every shelf yourself, the librarian provides you with a specific
+> guidebook or a digital catalog for each section. This guidebook acts as an "iterator," allowing you to go through the
+> books section by section, or even skip to specific types of books, without needing to know how the books are organized
+> on the shelves. Each guidebook handles the traversal through its section, providing a consistent and efficient way to
+> access the books, much like how the Iterator design pattern offers a uniform method to traverse different data
+> structures in a software application.
 
 In plain words
 
-> The Java Iterator Design Pattern provides a method to sequentially access elements of a collection without exposing its underlying structure. This pattern is widely used in Java programming for efficient data access.
+> The Java Iterator Design Pattern provides a method to sequentially access elements of a collection without exposing
+> its underlying structure. This pattern is widely used in Java programming for efficient data access.
 
 Wikipedia says
 
-> In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements.
+> In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a
+> container and access the container's elements.
 
 ## Programmatic Example of Iterator Pattern in Java
 
-The main class in our Java Iterator Design Pattern example is the `TreasureChest` that contains items. This demonstrates how to implement and use iterators for efficient collection traversal in Java.
+The main class in our Java Iterator Design Pattern example is the `TreasureChest` that contains items. This demonstrates
+how to implement and use iterators for efficient collection traversal in Java.
 
 ```java
 public class TreasureChest {
@@ -233,7 +243,8 @@ Use the Iterator design pattern in Java
 Benefits:
 
 * Reduces the coupling between data structures and algorithms used for iteration.
-* Provides a uniform interface for iterating over various types of data structures, enhancing code reusability and flexibility.
+* Provides a uniform interface for iterating over various types of data structures, enhancing code reusability and
+  flexibility.
 
 Trade-offs:
 
@@ -242,9 +253,12 @@ Trade-offs:
 
 ## Related Java Design Patterns
 
-* [Composite](https://java-design-patterns.com/patterns/composite/): Iterators are often used to traverse Composite trees.
-* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Used to create appropriate iterators for different data structures.
-* [Visitor](https://java-design-patterns.com/patterns/visitor/): Can be used with Iterator to apply operations over elements of an object structure.
+* [Composite](https://java-design-patterns.com/patterns/composite/): Iterators are often used to traverse Composite
+  trees.
+* [Factory Method](https://java-design-patterns.com/patterns/factory-method/): Used to create appropriate iterators for
+  different data structures.
+* [Visitor](https://java-design-patterns.com/patterns/visitor/): Can be used with Iterator to apply operations over
+  elements of an object structure.
 
 ## References and Credits
 

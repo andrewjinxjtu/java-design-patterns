@@ -27,6 +27,7 @@ package com.iluwatar.converter;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
+
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -40,51 +41,51 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Converter<T, U> {
 
-  private final Function<T, U> fromDto;
-  private final Function<U, T> fromEntity;
+    private final Function<T, U> fromDto;
+    private final Function<U, T> fromEntity;
 
-  /**
-   * Converts DTO to Entity.
-   *
-   * @param dto DTO entity
-   * @return The domain representation - the result of the converting function application on dto
-   *     entity.
-   */
-  public final U convertFromDto(final T dto) {
-    return fromDto.apply(dto);
-  }
+    /**
+     * Converts DTO to Entity.
+     *
+     * @param dto DTO entity
+     * @return The domain representation - the result of the converting function application on dto
+     * entity.
+     */
+    public final U convertFromDto(final T dto) {
+        return fromDto.apply(dto);
+    }
 
-  /**
-   * Converts Entity to DTO.
-   *
-   * @param entity domain entity
-   * @return The DTO representation - the result of the converting function application on domain
-   *     entity.
-   */
-  public final T convertFromEntity(final U entity) {
-    return fromEntity.apply(entity);
-  }
+    /**
+     * Converts Entity to DTO.
+     *
+     * @param entity domain entity
+     * @return The DTO representation - the result of the converting function application on domain
+     * entity.
+     */
+    public final T convertFromEntity(final U entity) {
+        return fromEntity.apply(entity);
+    }
 
-  /**
-   * Converts list of DTOs to list of Entities.
-   *
-   * @param dtos collection of DTO entities
-   * @return List of domain representation of provided entities retrieved by mapping each of them
-   *     with the conversion function
-   */
-  public final List<U> createFromDtos(final Collection<T> dtos) {
-    return dtos.stream().map(this::convertFromDto).toList();
-  }
+    /**
+     * Converts list of DTOs to list of Entities.
+     *
+     * @param dtos collection of DTO entities
+     * @return List of domain representation of provided entities retrieved by mapping each of them
+     * with the conversion function
+     */
+    public final List<U> createFromDtos(final Collection<T> dtos) {
+        return dtos.stream().map(this::convertFromDto).toList();
+    }
 
-  /**
-   * Converts list of Entities to list of DTOs.
-   *
-   * @param entities collection of domain entities
-   * @return List of domain representation of provided entities retrieved by mapping each of them
-   *     with the conversion function
-   */
-  public final List<T> createFromEntities(final Collection<U> entities) {
-    return entities.stream().map(this::convertFromEntity).toList();
-  }
+    /**
+     * Converts list of Entities to list of DTOs.
+     *
+     * @param entities collection of domain entities
+     * @return List of domain representation of provided entities retrieved by mapping each of them
+     * with the conversion function
+     */
+    public final List<T> createFromEntities(final Collection<U> entities) {
+        return entities.stream().map(this::convertFromEntity).toList();
+    }
 
 }

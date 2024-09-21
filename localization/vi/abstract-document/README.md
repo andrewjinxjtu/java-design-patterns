@@ -13,11 +13,14 @@ Tận dụng thuộc tính và khả năng linh động của các ngôn ngữ k
 ## Giải thích
 
 Tài Liệu Trừu Tượng (thuật ngữ tiếng Anh: Abstract Document) là mẫu cho phép sử dụng các thuộc tính bổ sung, không tĩnh.
-Mẫu này sử dụng khái niệm "đặc tính" (thuật ngữ gốc: "trait") để cho phép an toàn kiểu và phân tách thuộc tính của các lớp (class) khác nhau thành các tập giao diện (interface).
+Mẫu này sử dụng khái niệm "đặc tính" (thuật ngữ gốc: "trait") để cho phép an toàn kiểu và phân tách thuộc tính của các
+lớp (class) khác nhau thành các tập giao diện (interface).
 
 Ví dụ thực tế
 
->  Chiếc ô tô có thể bao gồm nhiều thành phần. Tuy nhiên, chúng ta không biết liệu một chiếc ô tô cụ thể có thể chứa những thành phần nào, tất cả hay chỉ một vài thành phần nhất định. Có thể nói rằng, những chiếc ô tô này là động và rất linh hoạt.
+> Chiếc ô tô có thể bao gồm nhiều thành phần. Tuy nhiên, chúng ta không biết liệu một chiếc ô tô cụ thể có thể chứa
+> những thành phần nào, tất cả hay chỉ một vài thành phần nhất định. Có thể nói rằng, những chiếc ô tô này là động và rất
+> linh hoạt.
 
 Một cách đơn giản
 
@@ -25,13 +28,17 @@ Một cách đơn giản
 
 Wikipedia viết (tạm dịch)
 
-> Là mẫu hướng đối tượng loại cấu trúc dùng để tổ chức các đối tượng theo dạng lưu trữ khóa-giá trị và phơi bày dữ liệu dưới dạng định kiểu. Mục đích của mẫu này là để đạt được khả năng linh hoạt cao giữa các thành phần trong ngôn ngữ định kiểu mạnh, nơi mà những thuộc tính mới có thể được thêm vào cây đối tượng một cách linh hoạt (trong khi chạy chương trình), nhưng vẫn giữ được sự hỗ trợ của an toàn kiểu. Mẫu này sử dụng khái niệm "đặc tính" (thuật ngữ gốc: "trait") để phân tách thuộc tính của các lớp (class) thành các tập giao diện (interface).
+> Là mẫu hướng đối tượng loại cấu trúc dùng để tổ chức các đối tượng theo dạng lưu trữ khóa-giá trị và phơi bày dữ liệu
+> dưới dạng định kiểu. Mục đích của mẫu này là để đạt được khả năng linh hoạt cao giữa các thành phần trong ngôn ngữ định
+> kiểu mạnh, nơi mà những thuộc tính mới có thể được thêm vào cây đối tượng một cách linh hoạt (trong khi chạy chương
+> trình), nhưng vẫn giữ được sự hỗ trợ của an toàn kiểu. Mẫu này sử dụng khái niệm "đặc tính" (thuật ngữ gốc: "trait") để
+> phân tách thuộc tính của các lớp (class) thành các tập giao diện (interface).
 
 
 **Chương trình ví dụ**
 
-Đầu tiên, định nghĩa lớp cơ sở `Document` và `AbstractDocument`. 
-2 lớp này định nghĩa đối tượng sẽ giữ bảng thuộc tính và các đối tượng con có kiểu bất kì. 
+Đầu tiên, định nghĩa lớp cơ sở `Document` và `AbstractDocument`.
+2 lớp này định nghĩa đối tượng sẽ giữ bảng thuộc tính và các đối tượng con có kiểu bất kì.
 
 ```java
 public interface Document {
@@ -77,7 +84,8 @@ public abstract class AbstractDocument implements Document {
 }
 ```
 
-Tiếp theo, chúng ta định nghĩa một enum `Property` và một tập các interface cho thuộc tính: `type`, `price`, `model`, `parts`.
+Tiếp theo, chúng ta định nghĩa một enum `Property` và một tập các interface cho thuộc tính: `type`, `price`, `model`,
+`parts`.
 Điều này cho phép ta tạo ra một giao diện tĩnh cho lớp `Car`.
 
 ```java
@@ -125,7 +133,7 @@ public class Car extends AbstractDocument implements HasModel, HasPrice, HasPart
 }
 ```
 
-Và cuối cùng là cách khởi tạo và sử dụng `Car` trong một ví dụ hoàn chỉnh. 
+Và cuối cùng là cách khởi tạo và sử dụng `Car` trong một ví dụ hoàn chỉnh.
 
 ```java
     LOGGER.info("Constructing parts and car");

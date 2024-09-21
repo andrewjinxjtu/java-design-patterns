@@ -28,21 +28,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 /**
  * WeekdayTest
- *
  */
 class WeekdayTest {
 
-  @Test
-  void testToString() {
-    Arrays.stream(Weekday.values()).forEach(weekday -> {
-      final String toString = weekday.toString();
-      assertNotNull(toString);
-      assertEquals(weekday.name(), toString.toUpperCase());
-    });
-  }
+    @Test
+    void testToString() {
+        Arrays.stream(Weekday.values()).forEach(weekday -> {
+            final String toString = weekday.toString();
+            assertNotNull(toString);
+            assertEquals(weekday.name(), toString.toUpperCase());
+        });
+    }
 
 }

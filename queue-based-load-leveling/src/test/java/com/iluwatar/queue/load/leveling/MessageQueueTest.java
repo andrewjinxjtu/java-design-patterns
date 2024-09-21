@@ -33,16 +33,16 @@ import org.junit.jupiter.api.Test;
  */
 class MessageQueueTest {
 
-  @Test
-  void messageQueueTest() {
+    @Test
+    void messageQueueTest() {
 
-    var msgQueue = new MessageQueue();
+        var msgQueue = new MessageQueue();
 
-    // submit message
-    msgQueue.submitMsg(new Message("MessageQueue Test"));
+        // submit message
+        msgQueue.submitMsg(new Message("MessageQueue Test"));
 
-    // retrieve message
-    assertEquals("MessageQueue Test", msgQueue.retrieveMsg().getMsg());
-  }
+        // retrieve message
+        assertEquals("MessageQueue Test", msgQueue.retrieveMsg().getMsg());
+    }
 
 }

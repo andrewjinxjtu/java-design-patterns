@@ -31,17 +31,17 @@ package com.iluwatar.async.method.invocation;
  */
 public interface AsyncCallback<T> {
 
-  /**
-   * Complete handler which is executed when async task is completed.
-   *
-   * @param value the evaluated value from async task
-   */
-  void onComplete(T value);
+    /**
+     * Complete handler which is executed when async task is completed.
+     *
+     * @param value the evaluated value from async task
+     */
+    void onComplete(T value);
 
-  /**
-   * Error handler which is executed when async task fails execution.
-   *
-   * @param ex exception which was thrown during async task execution(non-null)
-   */
-  void onError(Exception ex);
+    /**
+     * Error handler which is executed when async task fails execution.
+     *
+     * @param ex exception which was thrown during async task execution(non-null)
+     */
+    void onError(Exception ex);
 }

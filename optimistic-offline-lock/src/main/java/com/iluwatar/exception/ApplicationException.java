@@ -29,12 +29,12 @@ package com.iluwatar.exception;
  */
 public class ApplicationException extends RuntimeException {
 
-  /**
-   * Inherited constructor with exception message.
-   *
-   * @param message exception message
-   */
-  public ApplicationException(String message) {
-    super(message);
-  }
+    /**
+     * Inherited constructor with exception message.
+     *
+     * @param message exception message
+     */
+    public ApplicationException(String message) {
+        super(message);
+    }
 }

@@ -45,68 +45,67 @@ import org.mockito.ArgumentCaptor;
 
 /**
  * DispatcherTest
- *
  */
 class DispatcherTest {
 
-  /**
-   * Dispatcher is a singleton with no way to reset it's internal state back to the beginning.
-   * Replace the instance with a fresh one before each test to make sure test cases have no
-   * influence on each other.
-   */
-  @BeforeEach
-  void setUp() throws Exception {
-    final var constructor = Dispatcher.class.getDeclaredConstructor();
-    constructor.setAccessible(true);
+    /**
+     * Dispatcher is a singleton with no way to reset it's internal state back to the beginning.
+     * Replace the instance with a fresh one before each test to make sure test cases have no
+     * influence on each other.
+     */
+    @BeforeEach
+    void setUp() throws Exception {
+        final var constructor = Dispatcher.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
 
-    final var field = Dispatcher.class.getDeclaredField("instance");
-    field.setAccessible(true);
-    field.set(Dispatcher.getInstance(), constructor.newInstance());
-  }
+        final var field = Dispatcher.class.getDeclaredField("instance");
+        field.setAccessible(true);
+        field.set(Dispatcher.getInstance(), constructor.newInstance());
+    }
 
-  @Test
-  void testGetInstance() {
-    assertNotNull(Dispatcher.getInstance());
-    assertSame(Dispatcher.getInstance(), Dispatcher.getInstance());
-  }
+    @Test
+    void testGetInstance() {
+        assertNotNull(Dispatcher.getInstance());
+        assertSame(Dispatcher.getInstance(), Dispatcher.getInstance());
+    }
 
-  @Test
-  void testMenuItemSelected() {
-    final var dispatcher = Dispatcher.getInstance();
+    @Test
+    void testMenuItemSelected() {
+        final var dispatcher = Dispatcher.getInstance();
 
-    final var store = mock(Store.class);
-    dispatcher.registerStore(store);
-    dispatcher.menuItemSelected(MenuItem.HOME);
-    dispatcher.menuItemSelected(MenuItem.COMPANY);
+        final var store = mock(Store.class);
+        dispatcher.registerStore(store);
+        dispatcher.menuItemSelected(MenuItem.HOME);
+        dispatcher.menuItemSelected(MenuItem.COMPANY);
 
-    // We expect 4 events, 2 menu selections and 2 content change actions
-    final var actionCaptor = ArgumentCaptor.forClass(Action.class);
-    verify(store, times(4)).onAction(actionCaptor.capture());
-    verifyNoMoreInteractions(store);
+        // We expect 4 events, 2 menu selections and 2 content change actions
+        final var actionCaptor = ArgumentCaptor.forClass(Action.class);
+        verify(store, times(4)).onAction(actionCaptor.capture());
+        verifyNoMoreInteractions(store);
 
-    final var actions = actionCaptor.getAllValues();
-    final var menuActions = actions.stream()
-        .filter(a -> a.getType().equals(ActionType.MENU_ITEM_SELECTED))
-        .map(a -> (MenuAction) a)
-        .toList();
+        final var actions = actionCaptor.getAllValues();
+        final var menuActions = actions.stream()
+                .filter(a -> a.getType().equals(ActionType.MENU_ITEM_SELECTED))
+                .map(a -> (MenuAction) a)
+                .toList();
 
-    final var contentActions = actions.stream()
-        .filter(a -> a.getType().equals(ActionType.CONTENT_CHANGED))
-        .map(a -> (ContentAction) a)
-        .toList();
+        final var contentActions = actions.stream()
+                .filter(a -> a.getType().equals(ActionType.CONTENT_CHANGED))
+                .map(a -> (ContentAction) a)
+                .toList();
 
-    assertEquals(2, menuActions.size());
-    assertEquals(1, menuActions.stream().map(MenuAction::getMenuItem).filter(MenuItem.HOME::equals)
-        .count());
-    assertEquals(1, menuActions.stream().map(MenuAction::getMenuItem)
-        .filter(MenuItem.COMPANY::equals).count());
+        assertEquals(2, menuActions.size());
+        assertEquals(1, menuActions.stream().map(MenuAction::getMenuItem).filter(MenuItem.HOME::equals)
+                .count());
+        assertEquals(1, menuActions.stream().map(MenuAction::getMenuItem)
+                .filter(MenuItem.COMPANY::equals).count());
 
-    assertEquals(2, contentActions.size());
-    assertEquals(1, contentActions.stream().map(ContentAction::getContent)
-        .filter(Content.PRODUCTS::equals).count());
-    assertEquals(1, contentActions.stream().map(ContentAction::getContent)
-        .filter(Content.COMPANY::equals).count());
+        assertEquals(2, contentActions.size());
+        assertEquals(1, contentActions.stream().map(ContentAction::getContent)
+                .filter(Content.PRODUCTS::equals).count());
+        assertEquals(1, contentActions.stream().map(ContentAction::getContent)
+                .filter(Content.COMPANY::equals).count());
 
-  }
+    }
 
 }

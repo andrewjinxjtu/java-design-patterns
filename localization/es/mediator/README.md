@@ -9,13 +9,16 @@ tag:
 
 ## Propósito
 
-Define un objeto que encapsula cómo interactúa un conjunto de objetos. Mediator fomenta el acoplamiento flexible al evitar que los objetos se refieran entre sí de forma explícita, y te permite variar su interacción de forma independiente.
+Define un objeto que encapsula cómo interactúa un conjunto de objetos. Mediator fomenta el acoplamiento flexible al
+evitar que los objetos se refieran entre sí de forma explícita, y te permite variar su interacción de forma
+independiente.
 
 ## Explicación
 
 Un ejemplo real
 
-> Pícaro, mago, hobbit y cazador han decidido unir sus fuerzas y viajar en la misma party. Para evitar acoplar a cada miembro entre sí, utilizan la interfaz de la party para comunicarse entre ellos.
+> Pícaro, mago, hobbit y cazador han decidido unir sus fuerzas y viajar en la misma party. Para evitar acoplar a cada
+> miembro entre sí, utilizan la interfaz de la party para comunicarse entre ellos.
 
 En pocas palabras
 
@@ -23,13 +26,24 @@ En pocas palabras
 
 Wikipedia dice
 
-> En ingeniería de software, el patrón mediador define un objeto que encapsula cómo interactúa un conjunto de objetos. Este patrón se considera un patrón de comportamiento debido a la forma en que puede alterar el comportamiento de ejecución del programa. En la programación orientada a objetos, los programas suelen constar de muchas clases. La lógica de negocio y la computación se distribuyen entre estas clases. Sin embargo, a medida que se añaden más clases a un programa, especialmente durante el mantenimiento y/o la refactorización, el problema de la comunicación entre estas clases puede volverse más complejo. Esto hace que el programa sea más difícil de leer y mantener. Además, puede resultar difícil modificar el programa, ya que cualquier cambio puede afectar al código de otras clases. Con el patrón mediador, la comunicación entre objetos se encapsula en un objeto mediador. Los objetos ya no se comunican directamente entre sí, sino a través del mediador. Esto reduce las dependencias entre los objetos que se comunican, reduciendo así el acoplamiento.
+> En ingeniería de software, el patrón mediador define un objeto que encapsula cómo interactúa un conjunto de objetos.
+> Este patrón se considera un patrón de comportamiento debido a la forma en que puede alterar el comportamiento de
+> ejecución del programa. En la programación orientada a objetos, los programas suelen constar de muchas clases. La lógica
+> de negocio y la computación se distribuyen entre estas clases. Sin embargo, a medida que se añaden más clases a un
+> programa, especialmente durante el mantenimiento y/o la refactorización, el problema de la comunicación entre estas
+> clases puede volverse más complejo. Esto hace que el programa sea más difícil de leer y mantener. Además, puede resultar
+> difícil modificar el programa, ya que cualquier cambio puede afectar al código de otras clases. Con el patrón mediador,
+> la comunicación entre objetos se encapsula en un objeto mediador. Los objetos ya no se comunican directamente entre sí,
+> sino a través del mediador. Esto reduce las dependencias entre los objetos que se comunican, reduciendo así el
+> acoplamiento.
 
 **Ejemplo programático**
 
-En este ejemplo, el mediador encapsula cómo interactúan un conjunto de objetos. En lugar de referirse unos a otros directamente, utilizan la interfaz del mediador.
+En este ejemplo, el mediador encapsula cómo interactúan un conjunto de objetos. En lugar de referirse unos a otros
+directamente, utilizan la interfaz del mediador.
 
-Los miembros de la party `Rogue`, `Wizard`, `Hobbit`, y `Hunter` heredan del `PartyMemberBase` implementando la interfaz `PartyMember`.
+Los miembros de la party `Rogue`, `Wizard`, `Hobbit`, y `Hunter` heredan del `PartyMemberBase` implementando la interfaz
+`PartyMember`.
 
 ```java
 public interface PartyMember {
@@ -172,7 +186,8 @@ Rogue arrives for dinner
 
 Utilice el patrón Mediator cuando:
 
-* Un conjunto de objetos se comunican de formas bien definidas pero complejas. Las interdependencias resultantes no están estructuradas y son difíciles de entender
+* Un conjunto de objetos se comunican de formas bien definidas pero complejas. Las interdependencias resultantes no
+  están estructuradas y son difíciles de entender
 * La reutilización de un objeto es difícil porque hace referencia y se comunica con muchos otros objetos.
 * Un comportamiento que se distribuye entre varias clases debe ser personalizable sin muchas subclases.
 
@@ -180,8 +195,10 @@ Utilice el patrón Mediator cuando:
 
 * Todos los métodos scheduleXXX() de [java.util.Timer](http://docs.oracle.com/javase/8/docs/api/java/util/Timer.html)
 * [java.util.concurrent.Executor#execute()](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executor.html#execute-java.lang.Runnable-)
-* Métodos submit() e invokeXXX() de [java.util.concurrent.ExecutorService](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html)
-* Método scheduleXXX() de [java.util.concurrent.ScheduledExecutorService](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ScheduledExecutorService.html)
+* Métodos submit() e invokeXXX()
+  de [java.util.concurrent.ExecutorService](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html)
+* Método scheduleXXX()
+  de [java.util.concurrent.ScheduledExecutorService](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ScheduledExecutorService.html)
 * [java.lang.reflect.Method#invoke()](http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Method.html#invoke-java.lang.Object-java.lang.Object...-)
 
 ## Créditos

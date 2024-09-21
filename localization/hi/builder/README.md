@@ -23,7 +23,7 @@ tag:
 साफ़ शब्दों में
 
 > कंस्ट्रक्टर प्रदूषण से बचते हुए आपको किसी वस्तु के विभिन्न स्वाद बनाने की अनुमति देता है। उपयोगी
->जब किसी वस्तु के कई स्वाद हो सकते हैं। या जब इसमें बहुत सारे चरण शामिल हों
+> जब किसी वस्तु के कई स्वाद हो सकते हैं। या जब इसमें बहुत सारे चरण शामिल हों
 > किसी वस्तु का निर्माण।
 
 विकिपीडिया कहता है
@@ -128,7 +128,8 @@ var mage = new Hero.Builder(Profession.MAGE, "Riobard").withHairColor(HairColor.
 
 जब बिल्डर पैटर्न का उपयोग करें
 
-* एक जटिल वस्तु बनाने के लिए एल्गोरिदम उन हिस्सों से स्वतंत्र होना चाहिए जो वस्तु बनाते हैं और उन्हें कैसे इकट्ठा किया जाता है
+* एक जटिल वस्तु बनाने के लिए एल्गोरिदम उन हिस्सों से स्वतंत्र होना चाहिए जो वस्तु बनाते हैं और उन्हें कैसे इकट्ठा किया
+  जाता है
 * निर्माण प्रक्रिया में निर्मित वस्तु के लिए अलग-अलग प्रतिनिधित्व की अनुमति होनी चाहिए
 
 ## ट्यूटोरियल
@@ -140,7 +141,8 @@ var mage = new Hero.Builder(Profession.MAGE, "Riobard").withHairColor(HairColor.
 ## ज्ञात उपयोग
 
 * [java.lang.StringBuilder](http://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html)
-* [java.nio.ByteBuffer](http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html#put-byte-) साथ ही समान बफ़र्स जैसे फ़्लोटबफ़र, इंटबफ़र इत्यादि।
+* [java.nio.ByteBuffer](http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html#put-byte-) साथ ही समान बफ़र्स
+  जैसे फ़्लोटबफ़र, इंटबफ़र इत्यादि।
 * [java.lang.StringBuffer](http://docs.oracle.com/javase/8/docs/api/java/lang/StringBuffer.html#append-boolean-)
 * के सभी कार्यान्वयन [java.lang.Appendable](http://docs.oracle.com/javase/8/docs/api/java/lang/Appendable.html)
 * [Apache Camel builders](https://github.com/apache/camel/tree/0e195428ee04531be27a0b659005e3aa8d159d23/camel-core/src/main/java/org/apache/camel/builder)
